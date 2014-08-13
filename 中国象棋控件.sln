@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "中国象棋控件", "中国象棋控件.vcproj", "{7FCA6188-C7C6-479A-A8CD-EE1AE1BA7AF8}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{4BAEB427-0502-4F97-A164-54768DDABA4C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -16,10 +14,6 @@ Global
 		{7FCA6188-C7C6-479A-A8CD-EE1AE1BA7AF8}.Release|Win32.ActiveCfg = Release|Win32
 		{7FCA6188-C7C6-479A-A8CD-EE1AE1BA7AF8}.Unicode Debug|Win32.ActiveCfg = Unicode Debug|Win32
 		{7FCA6188-C7C6-479A-A8CD-EE1AE1BA7AF8}.Unicode Release|Win32.ActiveCfg = Unicode Release|Win32
-		{4BAEB427-0502-4F97-A164-54768DDABA4C}.Debug|Win32.ActiveCfg = Debug
-		{4BAEB427-0502-4F97-A164-54768DDABA4C}.Release|Win32.ActiveCfg = Release
-		{4BAEB427-0502-4F97-A164-54768DDABA4C}.Unicode Debug|Win32.ActiveCfg = Debug
-		{4BAEB427-0502-4F97-A164-54768DDABA4C}.Unicode Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

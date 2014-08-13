@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="中国象棋控件"
 	ProjectGUID="{7FCA6188-C7C6-479A-A8CD-EE1AE1BA7AF8}"
+	RootNamespace="中国象棋控件"
 	Keyword="MFCProj"
 	>
 	<Platforms>
@@ -30,7 +31,7 @@
 			<Tool
 				Name="VCCustomBuildTool"
 				Description="Registering ActiveX Control..."
-				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
+				CommandLine="regsvr32 /s  /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
 				Outputs="$(OutDir)\regsvr32.trg"
 			/>
 			<Tool
@@ -82,7 +83,7 @@
 				OutputFile=".\ReleaseU/中国象棋控件.ocx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				ModuleDefinitionFile=".\中国象棋控件.def"
+				ModuleDefinitionFile=".\ChinesChessCtr.def"
 				ProgramDatabaseFile=".\ReleaseU/中国象棋控件.pdb"
 				SubSystem="2"
 				ImportLibrary=".\ReleaseU/中国象棋控件.lib"
@@ -131,7 +132,7 @@
 			<Tool
 				Name="VCCustomBuildTool"
 				Description="Registering ActiveX Control..."
-				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
+				CommandLine="regsvr32 /s  /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
 				Outputs="$(OutDir)\regsvr32.trg"
 			/>
 			<Tool
@@ -183,7 +184,7 @@
 				OutputFile=".\DebugU/中国象棋控件.ocx"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				ModuleDefinitionFile=".\中国象棋控件.def"
+				ModuleDefinitionFile=".\ChinesChessCtr.def"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\DebugU/中国象棋控件.pdb"
 				SubSystem="2"
@@ -233,7 +234,7 @@
 			<Tool
 				Name="VCCustomBuildTool"
 				Description="Registering ActiveX Control..."
-				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
+				CommandLine="regsvr32 /s  /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
 				Outputs="$(OutDir)\regsvr32.trg"
 			/>
 			<Tool
@@ -335,7 +336,7 @@
 			<Tool
 				Name="VCCustomBuildTool"
 				Description="Registering ActiveX Control..."
-				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
+				CommandLine="regsvr32 /s  /c &quot;$(TargetPath)&quot;&#x0D;&#x0A;echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;&#x0D;&#x0A;"
 				Outputs="$(OutDir)\regsvr32.trg"
 			/>
 			<Tool
@@ -387,7 +388,7 @@
 				OutputFile=".\Release/中国象棋控件.ocx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				ModuleDefinitionFile=".\中国象棋控件.def"
+				ModuleDefinitionFile=".\ChinesChessCtr.def"
 				ProgramDatabaseFile=".\Release/中国象棋控件.pdb"
 				SubSystem="2"
 				ImportLibrary=".\Release/中国象棋控件.lib"
@@ -671,11 +672,11 @@
 				>
 			</File>
 			<File
-				RelativePath="Res\Picture\bitmap1.bmp"
+				RelativePath="bitmap1.bmp"
 				>
 			</File>
 			<File
-				RelativePath="bitmap1.bmp"
+				RelativePath="Res\Picture\bitmap1.bmp"
 				>
 			</File>
 			<File
@@ -707,15 +708,15 @@
 				>
 			</File>
 			<File
-				RelativePath="cchess.bmp"
-				>
-			</File>
-			<File
 				RelativePath="Res\cchess.bmp"
 				>
 			</File>
 			<File
 				RelativePath="Res\Picture\cchess.bmp"
+				>
+			</File>
+			<File
+				RelativePath="cchess.bmp"
 				>
 			</File>
 			<File
