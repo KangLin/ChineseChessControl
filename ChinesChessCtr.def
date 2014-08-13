@@ -1,0 +1,9 @@
+; 中国象棋控件.def : Declares the module parameters.
+
+LIBRARY      "中国象棋控件.OCX"
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
+	DllRegisterServer   @3 PRIVATE
+	DllUnregisterServer @4 PRIVATE

@@ -1,0 +1,103 @@
+// 中国象棋控件.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (中国象棋控件.tlb) that will become a resource in
+// 中国象棋控件.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(F21F4040-9EE2-42EC-9100-9D2F7923FC38), version(1.0),
+  helpfile("中国象棋控件.hlp"),
+  helpstring("中国象棋控件"),  /*显示在引用列表框中*/
+  control ]
+
+library 中国象棋控件  
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//类型
+	//常量
+	//棋子值
+	typedef enum {RShuai = 1, RShi = 2, RXiang = 3, RMa = 4, RChe = 5, RPao = 6, RBing = 7,
+              NoQiZi = 0, RQi = 1, BQi = -1,
+              BShuai = -1, BShi = -2, BXiang = -3, BMa = -4, BChe = -5, BPao = -6, BBing = -7
+            } ENUM_QiZi;
+	//走棋状态
+    typedef enum {RedReadly, RedWalked, BlackReadly, BlackWalked} ENUM_WalkState;
+	//棋盘布局
+    typedef enum {NoQi = 0, OnlyTopRed = 1, OnlyBottomBlack = 2, SwapRedBetweenBlack = 4, 
+                   OnlyTopBlack = OnlyTopRed | SwapRedBetweenBlack, 
+				   OnlyBottomRed = OnlyBottomBlack | SwapRedBetweenBlack,
+				   TopRedAndBottomBlack = OnlyTopRed | OnlyBottomBlack,
+				   TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed | SwapRedBetweenBlack
+				   } ENUM_QiPang;
+
+	//  Primary dispatch interface for CXQCtrl
+
+	[ uuid(E64CBBBF-1B35-4334-B97A-F04207F383D8),
+	  helpstring("Dispatch interface for 中国象棋控件"), hidden ]
+	dispinterface _DXQ
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CXQCtrl)
+			[id(DISPID_ENABLED), bindable, requestedit] boolean Enabled;
+			[id(1), helpstring("棋盘颜色")] OLE_COLOR QiPangColor;        //棋盘颜色
+			[id(2), helpstring("提示框的颜色")] OLE_COLOR TiShiBoxColor;    //提示框的颜色
+			[id(4), helpstring("棋盘图片")] IPictureDisp* QiPangPicture;  //棋盘图片
+			[id(3), helpstring("棋盘布局")] ENUM_QiPang QiPangLayout;     //棋盘布局
+			[id(5), helpstring("谁先走棋")] ENUM_WalkState StartSide;     //谁先走棋
+			[id(6)] short CurrentSide;
+		//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CXQCtrl)
+			[id(7), helpstring("下一步")] long NextStep();                                       //下一步
+			[id(8), helpstring("上一步")] long PreviouStep();                                    //上一步
+			[id(9), helpstring("重新开始")] void ReStart();                                       //重新开始
+			[id(10), helpstring("保存棋局")] boolean SaveChess(BSTR lpcszFileName);               //保存棋局
+			[id(11), helpstring("装载棋局并设置为结束状态")] boolean LoadChess(BSTR lpcszFileName);       //装载棋局并设置为结束状态
+			[id(12), helpstring("装载棋局并设置为开始状态")] boolean LoadChessStart(BSTR lpcszFileName);  //装载棋局并设置为开始状态
+			[id(13), helpstring("翻转棋盘")] void QiPangInterconvert();
+			[id(14),helpstring("走棋")] boolean Walk(short i, short j);
+			[id(15),helpstring("转换棋盘格为对方棋盘格")] void InterConvertCoordinate(short x, short y, short* pi, short* pj);
+			//}}AFX_ODL_METHOD
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+    };
+
+	//  Event dispatch interface for CXQCtrl
+
+	[ uuid(D15120C1-9B3C-4E56-8F32-D0ACB6FC7B89),
+	  helpstring("中国象棋控件 - 事件接口") ] 
+	dispinterface _DXQEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CXQCtrl)
+			[id(1), helpstring("")] void MoveChess(short x, short y, ENUM_QiZi chess);
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CXQCtrl
+
+	[ uuid(071AD322-22BA-45BF-9E1F-154EFAF4E42B),
+	  helpstring("中国象棋控件"), control ]
+	coclass 中国象棋   //在工具栏中鼠标移到控件图标上时出现的提示
+	{
+		[default] dispinterface _DXQ;
+		[default, source] dispinterface _DXQEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
