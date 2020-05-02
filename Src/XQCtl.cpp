@@ -1,10 +1,9 @@
 // XQCtl.cpp : Implementation of the CXQCtrl ActiveX Control class.
 
-#include "stdafx.h"
-#include "ChinesChessCtr.h"
+#include "Stdafx.h"
+#include "ChineseChessCtr.h"
 #include "XQCtl.h"
 #include "XQPpg.h"
-#include ".\xqctl.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

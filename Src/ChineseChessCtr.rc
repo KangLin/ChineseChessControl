@@ -40,7 +40,7 @@ END
 
 3 TEXTINCLUDE 
 BEGIN
-    "1 TYPELIB ""中国象棋控件.tlb""\r\n"
+    "1 TYPELIB ""ChineseChessCtr.tlb""\r\n"
     "\0"
 END
 
@@ -94,7 +94,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ABOUTDLL            ICON                    "中国象棋控件.ico"
+IDI_ABOUTDLL            ICON                    "Res\\Icon\\ChineseChessCtr.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -170,7 +170,7 @@ END
 // Bitmap
 //
 
-IDB_XQ                  BITMAP                  "res\\picture\\cchess.bmp"
+IDB_XQ                  BITMAP                  "Res\\picture\\cchess.bmp"
 IDB_QIPANG              BITMAP                  "Res\\Picture\\xqboard.BMP"
 IDB_RSHUAI              BITMAP                  "Res\\Picture\\rshuai.BMP"
 IDB_RSHI                BITMAP                  "Res\\Picture\\rshi.BMP"
@@ -232,7 +232,7 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-1 TYPELIB "中国象棋控件.tlb"
+1 TYPELIB "ChineseChessCtr.tlb"
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED

@@ -1,7 +1,7 @@
 // XQPpg.cpp : Implementation of the CXQPropPage property page class.
 
 #include "stdafx.h"
-#include "ChinesChessCtr.h"
+#include "ChineseChessCtr.h"
 #include "XQPpg.h"
 
 #ifdef _DEBUG

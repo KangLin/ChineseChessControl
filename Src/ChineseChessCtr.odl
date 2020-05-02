@@ -1,4 +1,4 @@
-// 中国象棋控件.odl : type library source for ActiveX Control project.
+// ChinesChessCtr.odl : type library source for ActiveX Control project.
 
 // This file will be processed by the Make Type Library (mktyplib) tool to
 // produce the type library (中国象棋控件.tlb) that will become a resource in
@@ -37,7 +37,7 @@ library 中国象棋控件
 	//  Primary dispatch interface for CXQCtrl
 
 	[ uuid(E64CBBBF-1B35-4334-B97A-F04207F383D8),
-	  helpstring("Dispatch interface for 中国象棋控件"), hidden ]
+	  helpstring("中国象棋控件 - 分发接口"), hidden ]
 	dispinterface _DXQ
 	{
 		properties:

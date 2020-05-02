@@ -1,0 +1,419 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>建立ActiveX控件</title>
+<link rel="stylesheet" type="text/css" href="../../../Scrpit/样式.css">
+<script language ="vbscript" src="../../../Scrpit/webscrpit.bas" ></script>
+
+</head>
+
+<body>
+
+<p align="center"><b><font size="5">建立ActiveX控件</font></b></p>
+<p align="center"><font size="2">康&nbsp; 林&nbsp; 2004年8月18日</font></p>
+<p class ="showlink" onclick="showall" id="showall">显示所有文字</p>
+
+<p >接口的实现：</p>
+<ol type="I" >
+<li>
+	<p><span class="showlink" onclick="Call Show(theory)"><b>原理</b></span></p>
+	<ol style="display:none" id= "theory">
+		<li>
+			<p class="showlink" onclick="Call Show(declear)">在IDL文件中申明函数或属性的名称与相应的派遣ID(dispID)。</p>
+			<table style="display:none"  id ="declear" class="TableStyle"><tr><td>
+				<p >IDL中定义的关系：类型库(libary)->组件类(coclass)->派遣接口(dispinterface)</p>
+				<p>派遣接口可分为一般接口与事件接口（用于申明事件的接口）</p>
+				<p>派遣接口包括属性（properties）和方法（methods）。</p>
+			</td></tr></table>
+		</li>
+		<li>
+			<p >在头文件中申明C++的函数定义或属性变量与相应的派遣ID（dispID)。</p>
+		</li>
+		<li>
+			<p ><span class="showlink" onclick="Call Show(CreateRelation)">建立派遣ID（dispID)与相应的函数或属性改变函数之间的关系。</span></p>
+			<table style="display:none" class="TableStyle" id="CreateRelation">
+			<tr><td>
+				<ol type="a">
+					<li >在头文件中加入：<font color="#FF0000">DECLARE_DISPATCH_MAP()</font></li>
+					<li >在CPP文件中加入：<font color="#FF0000">BEGIN_DISPATCH_MAP（）、END_DISPATCH_MAP()</font>。</li>
+					<li>属性：
+						<ol type="i">
+							<li><font color="#FF0000">DISP_PROPERTY_NOTIFY</font>（类[theClass]，
+												外部名称[szExternalName]，属性对应的变量[memberName]，属性改变量的响应函数[pfnAfterSet]，属性类型[vtPropType]）</li>
+							<li><font color="#FF0000">DISP_PROPERTY_NOTIFY_ID</font>(类[theClass], 
+												外部名称[szExternalName], 派遣ID[dispid], 属性对应的变量[memberName]，属性改变量的响应函数[pfnAfterSet]，属性类型[vtPropType]</li>
+							<li>在类的成员函数 <font color="#FF0000">DoPropExchange(CPropExchange* pPX)</font> 中加入持续化（加载与保存）代码
+							。</li>
+							<li>完成响应函数。</li>
+						
+						</ol>
+					</li>
+					<li>方法：
+						<ol type="i">
+							<li><font color="#FF0000">DISP_FUNCTION</font>(类名[theClass], 外部名称[szExternalName], 成员函数[pfnMember], 返回值类型[vtRetVal],参数列表[vtsParams])</li>
+							<li><font color="#FF0000">DISP_FUNCTION_ID</font>(类名[theClass], 外部名称[szExternalName], 派遣ID[dispid], 成员函数[pfnMember], 返回值类型[vtRetVal], 参数列表[vtsParams])</li>
+							<li>完成方法的成员函数体。</li>
+						</ol>
+				</ol>
+				<p>示例：</li>
+				<form >
+					<pre>
+BEGIN_DISPATCH_MAP(CXQCtrl, COleControl)
+	//{{AFX_DISPATCH_MAP(CXQCtrl)
+	DISP_PROPERTY_NOTIFY(CXQCtrl, "QiPangColor", m_QiPangColor, OnQiPangColorChanged, VT_COLOR)
+	DISP_PROPERTY_NOTIFY(CXQCtrl, "TiShiBoxColor", m_TiShiBoxColor, OnTiShiBoxColorChanged, VT_COLOR)
+	DISP_PROPERTY_NOTIFY(CXQCtrl, "QiPangLayout", m_QiPang, OnQiPangLayoutChanged, VT_I4)
+	DISP_PROPERTY_EX(CXQCtrl, "QiPangPicture", GetQiPangPicture, SetQiPangPicture, VT_PICTURE)
+	DISP_PROPERTY_EX(CXQCtrl, "StartSide", GetStartSide, SetStartSide, VT_I4)
+	DISP_PROPERTY_EX(CXQCtrl, "CurrentSide", GetCurrentSide, SetCurrentSide, VT_I2)
+	DISP_FUNCTION(CXQCtrl, "NextStep", NextStep, VT_I4, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, "PreviouStep", PreviouStep, VT_I4, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, "ReStart", ReStart, VT_EMPTY, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, "SaveChess", SaveChess, VT_BOOL, VTS_BSTR)
+	DISP_FUNCTION(CXQCtrl, "LoadChess", LoadChess, VT_BOOL, VTS_BSTR)
+	DISP_FUNCTION(CXQCtrl, "LoadChessStart", LoadChessStart, VT_BOOL, VTS_BSTR)
+	DISP_FUNCTION(CXQCtrl, "QiPangInterconvert", QiPangInterconvert, VT_EMPTY, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, "Walk", Walk, VT_BOOL, VTS_I2 VTS_I2)
+	DISP_FUNCTION(CXQCtrl, "InterConvertCoordinate", InterConvertCoordinate, VT_EMPTY, VTS_I2 VTS_I2 VTS_PI2 VTS_PI2)
+	DISP_STOCKPROP_ENABLED()
+	//}}AFX_DISPATCH_MAP
+	DISP_FUNCTION_ID(CXQCtrl, "AboutBox", DISPID_ABOUTBOX, AboutBox, VT_EMPTY, VTS_NONE)
+END_DISPATCH_MAP()
+					</pre>
+				</form>
+			</td></tr>
+			</table>
+		</li>
+	</ol>
+</li>
+<li>
+<p><b><font size="3"><span onclick="Call Show(attribol)" class ="showlink">增加属性</span></font></b></p>
+<ol style="display:none" id="attribol">
+	<li>
+	<p><font size="2"><span class ="showlink" onclick="Call Show(colorol)">颜色：</span></font></p>
+	<ol style="display:none" id="colorol">
+		<p><font size="2">1.1、用类向导添加。打开类向导。</font></p>
+		<p><img border="0" src="Picture/建立3.jpg" width="741" height="491"></p>
+		<p><font size="2">1.2、点击 Add Property...(增加属性)按钮，出现下面对话框:</font></p>
+		<p><img border="0" src="Picture/建立1.jpg" width="576" height="424"></p>
+		<p>在 External name(外部名)中填入属性名。在（Type）类型中选取属性的类型。然后点OK。</p>
+		<p>1.3、然后在 DoPropExchange 函数中增加红色部分代码：<br>/////////////////////////////////////////////////////////////////////////////<br>// CXQCtrl::DoPropExchange - Persistence support<br>
+		<br>void CXQCtrl::DoPropExchange(CPropExchange* pPX)<br>{<br>&nbsp;&nbsp;&nbsp; ExchangeVersion(pPX, MAKELONG(_wVerMinor, _wVerMajor));<br>&nbsp;&nbsp;&nbsp; COleControl::DoPropExchange(pPX);<br>
+		<br>&nbsp;&nbsp;&nbsp; // TODO: Call PX_ functions for each persistent custom property.<br>
+		<font color="#FF0000">&nbsp;&nbsp;&nbsp; PX_Color(pPX, QiPangColor, m_qiPangColor, RGB(0, 0, 255);<br>
+		</font>}</p>
+		<p><font color="#00FF00">1.4、<b>分析类向导自动增加的代码：（即手工加入属性）</b></font><br>1.4.1、先在 odl 文件中的加入下面红色代码：<br>// 中国象棋控件.odl : type library source for ActiveX Control project.<br>
+		<br>// This file will be processed by the Make Type Library (mktyplib) tool to<br>// produce the type library (中国象棋控件.tlb) that will become a resource in<br>// 中国象棋控件.ocx.<br>
+		<br>#include &lt;olectl.h><br>#include &lt;idispids.h><br><br>[ uuid(F21F4040-9EE2-42EC-9100-9D2F7923FC38), version(1.0),<br>helpfile("中国象棋控件.hlp"),<br>helpstring("中国象棋控件"),  /*显示在引用列表框中*/<br>control ]<br>library MYLib<br>{<br>importlib(STDOLE_TLB);<br>importlib(STDTYPE_TLB);<br>
+		<br>//  Primary dispatch interface for CXQCtrl<br><br>[ uuid(E64CBBBF-1B35-4334-B97A-F04207F383D8),<br>helpstring("Dispatch interface for 中国象棋控件"), hidden ]<br>dispinterface _DXQ<br>{<br>properties:<br>// NOTE - ClassWizard will maintain property information here.<br>//    Use extreme caution when editing this section.<br>//{{AFX_ODL_PROP(CXQCtrl)<br>
+		<font color="#FF0000">[id(1),<a href="#helpstring">helpstring</a>(&quot;棋盘颜色")] OLE_COLOR QiPangColor; 
+//helpstring中的字符将显示在属性提示&nbsp;</font><br>//}}AFX_ODL_PROP<br><br>methods:<br>// NOTE - ClassWizard will maintain method information here.<br>//    Use extreme caution when editing this section.<br>//{{AFX_ODL_METHOD(CXQCtrl)<br>//}}AFX_ODL_METHOD<br>
+		<br>[id(DISPID_ABOUTBOX)] void AboutBox();<br>};<br><br>//  Event dispatch interface for CXQCtrl<br>
+		<br>[ uuid(D15120C1-9B3C-4E56-8F32-D0ACB6FC7B89),<br>helpstring("Event interface for 中国象棋控件") ]&nbsp;<br>dispinterface _DXQEvents<br>{<br>properties:<br>//  Event interface has no properties<br>
+		<br>methods:<br>// NOTE - ClassWizard will maintain event information here.<br>//    Use extreme caution when editing this section.<br>//{{AFX_ODL_EVENT(CXQCtrl)<br>//}}AFX_ODL_EVENT<br>};<br>
+		<br>//  Class information for CXQCtrl<br><br>[ uuid(071AD322-22BA-45BF-9E1F-154EFAF4E42B),<br>helpstring("中国象棋控件"), control ]<br>coclass 中国象棋   //在工具栏中鼠标移到控件图标上时出现的提示<br>{<br>[default] dispinterface _DXQ;<br>[default, source] dispinterface _DXQEvents;<br>};<br>
+		<br><br>//{{AFX_APPEND_ODL}}<br>//}}AFX_APPEND_ODL}}<br>};<br></p>
+		<p>1.4.2、在头文件中下面地方加入红色的代码：</p>
+		<p>// Dispatch maps<br>//{{AFX_DISPATCH(CXQCtrl)<br>
+		<font color="#FF0000">OLE_COLOR m_qiPangColor;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//属性在控件内部存储位置<br>afx_msg void OnQiPangColorChanged();//通告函数<br></font>//}}AFX_DISPATCH<br>DECLARE_DISPATCH_MAP()</p>
+		<p>// Dispatch and event IDs<br>public:<br>enum {<br>//{{AFX_DISP_ID(CXQCtrl)<br>
+		<font color="#FF0000">dispidQiPangColor = 1L,<br></font>//}}AFX_DISP_ID<br>};</p>
+		<p>1.4.3、在接口文件中下面地方加入红色的代码：</p>
+		<p>1.4.3.1<br>/////////////////////////////////////////////////////////////////////////////<br>// Dispatch map<br>
+		<br>BEGIN_DISPATCH_MAP(CXQCtrl, COleControl)<br>//{{AFX_DISPATCH_MAP(CXQCtrl)<br>
+		<font color="#FF0000">DISP_PROPERTY_NOTIFY(CXQCtrl, "QiPangColor", m_qiPangColor, OnQiPangColorChanged, VT_COLOR)//通告函数<br>
+		</font>//}}AFX_DISPATCH_MAP<br>DISP_FUNCTION_ID(CXQCtrl, "AboutBox", DISPID_ABOUTBOX, AboutBox, VT_EMPTY, VTS_NONE)<br>END_DISPATCH_MAP()</p>
+		<p>1.4.3.2<br>/////////////////////////////////////////////////////////////////////////////<br>// CXQCtrl message handlers<br>
+		<br>void CXQCtrl::OnQiPangColorChanged()&nbsp;<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp; SetModifiedFlag();</p>
+		<p><font color="#FF0000">&nbsp;&nbsp;&nbsp;&nbsp; //重绘控件,必须加否则效果不会立即被应用<br>&nbsp;&nbsp;&nbsp;&nbsp; InvalidateControl();<br>
+		</font>}</p>
+		<p>1.4.3.3<br>/////////////////////////////////////////////////////////////////////////////<br>// CXQCtrl::DoPropExchange - Persistence support<br>
+		<br>void CXQCtrl::DoPropExchange(CPropExchange* pPX)<br>{<br>&nbsp;&nbsp;&nbsp; ExchangeVersion(pPX, MAKELONG(_wVerMinor, _wVerMajor));<br>&nbsp;&nbsp;&nbsp; COleControl::DoPropExchange(pPX);<br>
+		<br>&nbsp;&nbsp;&nbsp; // TODO: Call PX_ functions for each persistent custom property.<br>
+		<font color="#FF0000">&nbsp;&nbsp;&nbsp; PX_Color(pPX, "QiPangColor", m_qiPangColor, RGB(0, 0, 255));<br>
+		</font>}</p>
+	</ol></li>
+	<li>
+	<p><span class="showlink" onclick="Call Show(pictureattrib)">图片</span></p>
+	<ol id="pictureattrib" style="display:none">
+		<p><font size="2">2.1、用类向导添加。打开类向导。同（1.1）</font></p>
+		<p><font size="2">2.2、点击 Add Property...(增加属性)按钮，出现下面对话框:</font></p>
+		<p><img border="0" src="Picture/建立2.jpg" width="576" height="424"></p>
+		<p><font size="2">注意这里的 Implementation 中选 Get/Set methods,在    
+Type(类型）选 LPPICTUREDISP。</font></p>
+		<p><font size="2">2.3、手工增加代码</font></p>
+		<p>2.3.1、增加成员变量:&nbsp;<br>CBitmap m_QiPangPicture;//棋盘图片<br>CPictureHolder m_QiPangPictureHolder; //棋盘CPictureHolder对象</p>
+		<p>2.3.2、<a href="../多媒体/图形/CPictureHolder.htm#从_CPictureHolder_对象得到位图句柄或光标句柄" name="增加加函数从 CPictureHolder 对象得到 CBitmap 对象的函数">增加加函数从 CPictureHolder 对象得到 CBitmap 
+对象的函数</a>:</p>
+		<p><font color="#FF0000">/*******************************************************************************************************<br>函数名：GetCBitmapFromCPictureHolder<br>功  能：从CPictureHolder得到CBitmap<br>参  数：<br>CPictureHolder *ph：<br>CBitmap *pb：<br>返回值：成功返回 true;否则,返回 false。<br>作  者：康  林<br>版  本：1.0.0.1<br>日  期：2004-8-18<br>时  间：21:23:01<br>*******************************************************************************************************/<br>bool CXQCtrl::GetCBitmapFromCPictureHolder(CPictureHolder *ph, CBitmap *pb)<br>{<br>&nbsp;&nbsp;&nbsp;
+	ASSERT(ph != NULL &amp;&amp; pb != NULL);<br><br>&nbsp;&nbsp;&nbsp;
+	// if picture is a bitmap<br>&nbsp;&nbsp;&nbsp; 
+	if (PICTYPE_BITMAP == ph->GetType())<br>&nbsp;&nbsp;&nbsp; 
+	{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		HBITMAP hBitmap = NULL;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		// get handle of the bitmap<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		ph->m_pPict->get_Handle((OLE_HANDLE FAR *) &amp;hBitmap);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		if(hBitmap != NULL)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			if(pb->GetSafeHandle() != NULL)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				pb->Detach();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			pb->Attach(hBitmap);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			return true;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		}&nbsp;<br>&nbsp;&nbsp;&nbsp;
+	}<br>&nbsp;&nbsp;&nbsp;
+	return false;<br>}<br></font></p>
+		<p>2.3.3、增加存储代码：</p>
+		<p>/////////////////////////////////////////////////////////////////////////////<br>// CXQCtrl::DoPropExchange - Persistence support<br>
+		<br>void CXQCtrl::DoPropExchange(CPropExchange* pPX)<br>{<br>&nbsp;&nbsp;&nbsp;
+	ExchangeVersion(pPX, MAKELONG(_wVerMinor, _wVerMajor));<br>&nbsp;&nbsp;&nbsp; 
+	COleControl::DoPropExchange(pPX);<br><br>&nbsp;&nbsp;&nbsp;
+	// TODO: Call PX_ functions for each persistent custom property.<br>&nbsp;&nbsp;&nbsp; 
+    PX_Color(pPX, "QiPangColor", m_QiPangColor, RGB(0, 0, 0));<br>
+		<font color="#FF0000">&nbsp;&nbsp;&nbsp;	PX_Picture(pPX, "QiPangPicture", m_QiPangPictureHolder);<br>&nbsp;&nbsp;&nbsp; 
+	GetCBitmapFromCPictureHolder(&amp;m_QiPangPictureHolder, &amp;m_QiPangPicture);</font><br>
+		<br>}</p>
+		<p>2.3.4、在 SetQiPangPicture 中设置 CBitmap 对象。</p>
+		<p>void CXQCtrl::SetQiPangPicture(LPPICTUREDISP newValue)&nbsp;<br>{<br>&nbsp;&nbsp;&nbsp;
+	// TODO: Add your property handler here<br><br><font color="#FF0000">&nbsp;&nbsp;&nbsp; //设置CPictureHolder</font><br>
+		<font color="#FF0000">&nbsp;&nbsp;&nbsp;	m_QiPangPictureHolder.SetPictureDispatch(newValue);<br>&nbsp;&nbsp;&nbsp;
+//从CPitureHolder得到CBitmap<br>&nbsp;&nbsp;&nbsp;
+	GetCBitmapFromCPictureHolder(&amp;m_QiPangPictureHolder, &amp;m_QiPangPicture);<br>
+		</font><br>&nbsp;&nbsp;&nbsp;
+	//设置修改标志<br>&nbsp;&nbsp;&nbsp;
+	SetModifiedFlag();<br><font color="#FF0000">&nbsp;&nbsp;&nbsp;	//重绘控件<br>&nbsp;&nbsp;&nbsp;
+	InvalidateControl();<br></font>}</p>
+		<p><font color="#00FF00">2.4、分析类向导自动增加的代码：（即手工加入属性）</font></p>
+		<p>2.4.1、先在 odl 文件中的加入下面红色代码：</p>
+		<p>// 中国象棋控件.odl : type library source for ActiveX Control project.<br>
+		<br>// This file will be processed by the Make Type Library (mktyplib) tool to<br>// produce the type library (中国象棋控件.tlb) that will become a resource in<br>// 中国象棋控件.ocx.<br>
+		<br>#include &lt;olectl.h><br>#include &lt;idispids.h><br><br>[ uuid(F21F4040-9EE2-42EC-9100-9D2F7923FC38), version(1.0),<br>helpfile("中国象棋控件.hlp"),<br>helpstring("中国象棋控件"),  /*显示在引用列表框中*/<br>control ]<br>library MYLib<br>{<br>importlib(STDOLE_TLB);<br>importlib(STDTYPE_TLB);<br>
+		<br>//  Primary dispatch interface for CXQCtrl<br><br>[ uuid(E64CBBBF-1B35-4334-B97A-F04207F383D8),<br>helpstring("Dispatch interface for 中国象棋控件"), hidden ]<br>dispinterface _DXQ<br>{<br>properties:<br>// NOTE - ClassWizard will maintain property information here.<br>//    Use extreme caution when editing this section.<br>//{{AFX_ODL_PROP(CXQCtrl)<br>[id(1), helpstring("")] OLE_COLOR QiPangColor;//棋盘颜色<br>
+		<font color="#FF0000">[id(2)] IPictureDisp* QiPangPicture;//棋盘图片</font><br>//}}AFX_ODL_PROP<br>
+		<br>methods:<br>// NOTE - ClassWizard will maintain method information here.<br>//    Use extreme caution when editing this section.<br>//{{AFX_ODL_METHOD(CXQCtrl)<br>//}}AFX_ODL_METHOD<br>
+		<br>[id(DISPID_ABOUTBOX)] void AboutBox();<br>};<br><br>//  Event dispatch interface for CXQCtrl<br>
+		<br>[ uuid(D15120C1-9B3C-4E56-8F32-D0ACB6FC7B89),<br>helpstring("Event interface for 中国象棋控件") ]&nbsp;<br>dispinterface _DXQEvents<br>{<br>properties:<br>//  Event interface has no properties<br>
+		<br>methods:<br>// NOTE - ClassWizard will maintain event information here.<br>//    Use extreme caution when editing this section.<br>//{{AFX_ODL_EVENT(CXQCtrl)<br>//}}AFX_ODL_EVENT<br>};<br>
+		<br>//  Class information for CXQCtrl<br><br>[ uuid(071AD322-22BA-45BF-9E1F-154EFAF4E42B),<br>helpstring("中国象棋控件"), control ]<br>coclass 中国象棋   //在工具栏中鼠标移到控件图标上时出现的提示<br>{<br>[default] dispinterface _DXQ;<br>[default, source] dispinterface _DXQEvents;<br>};<br>
+		<br><br>//{{AFX_APPEND_ODL}}<br>//}}AFX_APPEND_ODL}}<br>};</p>
+		<p>2.4.2、在头文件中增加下面红色代码：</p>
+		<p>// Dispatch maps<br>//{{AFX_DISPATCH(CXQCtrl)<br>OLE_COLOR m_QiPangColor;<br>afx_msg void OnQiPangColorChanged();<br>
+		<font color="#FF0000">afx_msg LPPICTUREDISP GetQiPangPicture();<br>afx_msg void SetQiPangPicture(LPPICTUREDISP newValue);</font><br>//}}AFX_DISPATCH<br>DECLARE_DISPATCH_MAP()</p>
+		<p>// Dispatch and event IDs<br>public:<br>enum {<br>//{{AFX_DISP_ID(CXQCtrl)<br>dispidQiPangColor = 1L,<br>
+		<font color="#FF0000">dispidQiPangPicture = 2L,<br></font>//}}AFX_DISP_ID<br>};</p>
+		<p>2.4.3、在接口文件中增加下面红色代码（接口函数）：</p>
+		<p><font color="#FF0000">LPPICTUREDISP CXQCtrl::GetQiPangPicture()&nbsp;<br>{<br>// TODO: Add your property handler here<br>
+		<br>return NULL;<br>}<br><br>void CXQCtrl::SetQiPangPicture(LPPICTUREDISP newValue)&nbsp;<br>{<br>// TODO: Add your property handler here<br>
+		<br>m_QiPangPictureHolder.SetPictureDispatch(newValue);<br><br>GetCBitmapFromCPictureHolder(&amp;m_QiPangPictureHolder, &amp;m_QiPangPicture);<br>
+		<br>//设置修改标志<br>SetModifiedFlag();<br>//重绘控件<br>InvalidateControl();<br>}</font></p>
+		<p>2.4.4、增加成员变量</p>
+		<p><font color="#FF0000">CBitmap m_QiPangPicture;//棋盘图片<br>CPictureHolder m_QiPangPictureHolder; //棋盘CPictureHolder对象</font></p>
+		<p>2.4.5、增加加函数从 CPictureHolder 对象得到 CBitmap 
+对象的函数:</p>
+		<p><font color="#FF0000">/*******************************************************************************************************<br>函数名：GetCBitmapFromCPictureHolder<br>功  能：从CPictureHolder得到CBitmap<br>参  数：<br>CPictureHolder *ph：<br>CBitmap *pb：<br>返回值：成功返回 true;否则,返回 false。<br>作  者：康  林<br>版  本：1.0.0.1<br>日  期：2004-8-18<br>时  间：21:23:01<br>*******************************************************************************************************/<br>bool CXQCtrl::GetCBitmapFromCPictureHolder(CPictureHolder *ph, CBitmap *pb)<br>{<br>ASSERT(ph != NULL &amp;&amp; pb != NULL);<br>
+		<br>// if picture is a bitmap<br>if (PICTYPE_BITMAP == ph->GetType())<br>{<br>HBITMAP hBitmap = NULL;<br>
+		<br>// get handle of the bitmap<br>ph->m_pPict->get_Handle((OLE_HANDLE FAR *) &amp;hBitmap);<br>if(hBitmap != NULL)&nbsp;<br>{<br>if(pb->GetSafeHandle() != NULL)<br>pb->Detach();<br>pb->Attach(hBitmap);<br>return true;<br>}&nbsp;<br>}<br>return false;<br>}</font></p>
+		<p>2.4.6、在构造函数中初始化CBitmap 对象 m_QiPangPicture</p>
+		<p>CXQCtrl::CXQCtrl()<br>{<br>InitializeIIDs(&amp;IID_DXQ, &amp;IID_DXQEvents);<br>
+		<br>// TODO: Initialize your control's instance data here.<br>
+		<font color="#FF0000">if(m_QiPangPicture.GetSafeHandle() == NULL)<br>{<br>m_QiPangPicture.LoadBitmap(IDB_QIPANG);<br>}<br>
+		</font>}</p>
+		<p>2.4.7、增加存储代码：</p>
+		<p>/////////////////////////////////////////////////////////////////////////////<br>// CXQCtrl::DoPropExchange - Persistence support<br>
+		<br>void CXQCtrl::DoPropExchange(CPropExchange* pPX)<br>{<br>ExchangeVersion(pPX, MAKELONG(_wVerMinor, _wVerMajor));<br>COleControl::DoPropExchange(pPX);<br>
+		<br>// TODO: Call PX_ functions for each persistent custom property.<br>PX_Color(pPX, "QiPangColor", m_QiPangColor, RGB(0, 0, 0));<br>
+		<font color="#FF0000">PX_Picture(pPX, "QiPangPicture", m_QiPangPictureHolder);<br>GetCBitmapFromCPictureHolder(&amp;m_QiPangPictureHolder, &amp;m_QiPangPicture);</font><br>
+		<br>}</p>
+		<p>2.4.8、在要用CBitmap成员对象的地方使用成员对象。</p>
+	</ol>
+	<li><span onclick="call show(cursomattribol)" class ="showlink">自定类型的属性</span>
+	<ol id="cursomattribol" style="display:none">
+		<li type="a">例如要增加一个枚举常量类型 ENUM_WalkState 的属性 StartSide;</li>
+		<li type="a">按照 1、中的方法加入一个属性。</li>
+		<li type="a" class ="showlink" onclick ="call show(StartSidetable)">在ODL文件中加入下列代码（红色部分）： 
+		 
+		 
+		 
+		<font color="#FF0000">注意:枚举常量用long类型(VTS_T4)</font><table border="0" class="TableStyle" id="StartSidetable" style="display:none">
+			<tr>
+				<td>
+				<pre>library 中国象棋控件  
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);</pre>
+				<pre>	//类型
+	//常量
+	//棋子值
+	typedef enum {RShuai = 1, RShi = 2, RXiang = 3, RMa = 4, RChe = 5, RPao = 6, RBing = 7,
+              NoQiZi = 0, RQi = 1, BQi = -1,
+              BShuai = -1, BShi = -2, BXiang = -3, BMa = -4, BChe = -5, BPao = -6, BBing = -7
+            } ENUM_QiZi;
+	//走棋状态
+     <font color="#FF0000">    typedef enum {RedReadly, RedWalked, BlackReadly, BlackWalked} ENUM_WalkState;</font>	</pre>
+				<pre>	//  Primary dispatch interface for CXQCtrl</pre>
+				<pre>	[ uuid(E64CBBBF-1B35-4334-B97A-F04207F383D8),
+	  helpstring(&quot;Dispatch interface for 中国象棋控件&quot;), hidden ]
+	dispinterface _DXQ
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CXQCtrl)
+			[id(DISPID_ENABLED), bindable, requestedit] boolean Enabled;
+			[id(1), helpstring(&quot;&quot;)] OLE_COLOR QiPangColor;//棋盘颜色
+			[id(2), helpstring(&quot;&quot;)] OLE_COLOR TiShiBoxColor;//提示框的颜色
+			<font color="#FF0000">[id(3), helpstring(&quot;&quot;)] ENUM_WalkState StartSide;//把类型改为常量类型</font>
+			[id(4), helpstring(&quot;&quot;)] IPictureDisp* QiPangPicture;          //棋盘图片
+		//}}AFX_ODL_PROP
+	};
+};</pre></td>
+			</tr>
+		</table></li>
+	</ol>
+   </li>
+	</li>
+</ol></li>
+<li>
+<p align="left"><b class ="showlink" onclick ="Call Show(methor)">增加方法:</b></p>
+<ol id="methor" style ="display:none">
+	<p>1、增加方法:BOOL LoadChess(LPCTSTR lpcszFileName);</p>
+	<p align="left">1.1、打开类向导（ctrl+w)<br></p>
+	<p><img border="0" src="Picture/loadchess.gif"></p></b>
+	<p>1.2、点Add Method...按钮</p>
+	<p><img border="0" src="Picture/loadchessmatch.gif"><br></p>
+	<p><font color="#00FF00">1.3、分析类向导加入的代码（即手工加入方法）</font></p>
+	<p>1.3.1、<span class="ShowLink" onclick ="Call Show(loadchesstable)"> 先在 odl 文件中的加入下面红色代码：</span></p>
+	<table border="0" width="698" class="TableStyle" id="loadchesstable" style ="display:none">
+		<tr>
+			<td>
+			<pre>library 中国象棋控件  
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);</pre>
+			<pre>	//  Primary dispatch interface for CXQCtrl</pre>
+			<pre>	[ uuid(E64CBBBF-1B35-4334-B97A-F04207F383D8),
+	  helpstring(&quot;Dispatch interface for 中国象棋控件&quot;), hidden ]
+	dispinterface _DXQ
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CXQCtrl)
+			[id(1), helpstring(&quot;&quot;)] OLE_COLOR QiPangColor;//棋盘颜色
+			[id(3), helpstring(&quot;&quot;)] IPictureDisp* QiPangPicture;          //棋盘图片
+			[id(2), helpstring(&quot;&quot;)] OLE_COLOR TiShiBoxColor;//提示框的颜色
+			[id(DISPID_ENABLED), bindable, requestedit] boolean Enabled;
+			//}}AFX_ODL_PROP</pre>
+			<pre>		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CXQCtrl)
+			[id(4), helpstring(&quot;&quot;)] long NextStep();     //下一步
+			[id(5), helpstring(&quot;&quot;)] long PreviouStep();  //上一步
+			[id(6)] void ReStart();//重新开始
+			[id(7)] boolean SaveChess(BSTR lpcszFileName);//保存棋局
+			<font color="#FF0000">[id(8)] boolean LoadChess(BSTR lpcszFileName);//装载棋局并设置为结束状态</font>
+			[id(9)] boolean LoadChessStart(BSTR lpcszFileName);//装载棋局并设置为开始状态
+			//}}AFX_ODL_METHOD</pre>
+			<pre>			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+};</pre></td>
+		</tr>
+	</table>
+	<p>1.3.2、<span  class ="showlink" onclick="call show(methortablehand)">在头文件中下面地方加入红色的代码：</span>
+	</p>
+	<table border="0" width="100%" class="TableStyle" id="methortablehand" style="width: 680px" style="display:none">
+		<tr>
+			<td>
+			<pre>class CXQCtrl : public COleControl
+{
+// Dispatch maps
+	//{{AFX_DISPATCH(CXQCtrl)
+	//属性
+	OLE_COLOR m_QiPangColor;
+	afx_msg void OnQiPangColorChanged();
+	OLE_COLOR m_TiShiBoxColor;
+	afx_msg void OnTiShiBoxColorChanged();
+	afx_msg LPPICTUREDISP GetQiPangPicture();
+	afx_msg void SetQiPangPicture(LPPICTUREDISP newValue);
+	//方法
+	afx_msg long NextStep();                 //下一步
+	afx_msg long PreviouStep();              //上一步
+	afx_msg void ReStart();                  //重新开始
+	afx_msg BOOL SaveChess(LPCTSTR lpcszFileName);     //保存棋局
+	<font color="#FF0000">afx_msg BOOL LoadChess(LPCTSTR lpcszFileName);     //装载棋局，并设置为结束状态</font>
+	afx_msg BOOL LoadChessStart(LPCTSTR lpcszFileName);//装载棋局，并设置为开始状态
+	//}}AFX_DISPATCH
+	DECLARE_DISPATCH_MAP()</pre>
+			<pre>	afx_msg void AboutBox();</pre>
+			<pre>// Dispatch and event IDs
+public:
+	enum {
+	//{{AFX_DISP_ID(CXQCtrl)
+	dispidQiPangColor = 1L,
+	dispidQiPangPicture = 3L,
+	dispidTiShiBoxColor = 2L,
+	dispidNextStep = 4L,
+	dispidPreviouStep = 5L,
+	dispidReStart = 6L,
+	dispidSaveChess = 7L,
+	<font color="#FF0000">dispidLoadChess = 8L,</font>
+	dispidLoadChessStart = 9L,
+	//}}AFX_DISP_ID
+	};
+};</pre></td>
+		</tr>
+	</table>
+	<p>1.3.3、<span onclick="call show(methortalbeimplete)" class ="showlink">在接口文件中下面地方加入红色的代码：</span>
+	<table border="0" width="776" class="TableStyle" id="methortalbeimplete" cellpadding="0" style="display:none">
+		<tr>
+			<td>
+			<pre>/////////////////////////////////////////////////////////////////////////////
+// Dispatch map</pre>
+			<pre>BEGIN_DISPATCH_MAP(CXQCtrl, COleControl)
+	//{{AFX_DISPATCH_MAP(CXQCtrl)
+	DISP_PROPERTY_NOTIFY(CXQCtrl, &quot;QiPangColor&quot;, m_QiPangColor, OnQiPangColorChanged, VT_COLOR)
+	DISP_PROPERTY_NOTIFY(CXQCtrl, &quot;TiShiBoxColor&quot;, m_TiShiBoxColor, OnTiShiBoxColorChanged, VT_COLOR)
+	DISP_PROPERTY_EX(CXQCtrl, &quot;QiPangPicture&quot;, GetQiPangPicture, SetQiPangPicture, VT_PICTURE)
+	DISP_FUNCTION(CXQCtrl, &quot;NextStep&quot;, NextStep, VT_I4, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, &quot;PreviouStep&quot;, PreviouStep, VT_I4, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, &quot;ReStart&quot;, ReStart, VT_EMPTY, VTS_NONE)
+	DISP_FUNCTION(CXQCtrl, &quot;SaveChess&quot;, SaveChess, VT_BOOL, VTS_BSTR)
+	<font color="#FF0000">DISP_FUNCTION(CXQCtrl, &quot;LoadChess&quot;, LoadChess, VT_BOOL, VTS_BSTR)</font>
+	DISP_FUNCTION(CXQCtrl, &quot;LoadChessStart&quot;, LoadChessStart, VT_BOOL, VTS_BSTR)
+	DISP_STOCKPROP_ENABLED()
+	//}}AFX_DISPATCH_MAP
+	DISP_FUNCTION_ID(CXQCtrl, &quot;AboutBox&quot;, DISPID_ABOUTBOX, AboutBox, VT_EMPTY, VTS_NONE)
+END_DISPATCH_MAP()</pre>
+			<pre><font color="#FF0000">BOOL CXQCtrl::LoadChess(LPCTSTR lpcszFileName) 
+{ 
+         //加入代码
+	return TRUE;
+}</font></pre></td>
+		</tr>
+	</table>
+</ol></li>
+<li><b class ="ShowLink" onclick ="Call Show(gernelquestion)">常见问题:</b>
+<a href="../../../../Programe/VC/中国象棋控件/文档/问题.txt">参见</a><ol id="gernelquestion"  style ="display:none">
+	<li>每启动一个ActiveX控件是否也就启动了一个新的线程？<br>答：不是，一个ActiveX控件是运行在其应用程序线程中的，应用程序并不重新为ActiveX启动一个新线程。
+		 
+	 
+	 
+	</li>
+</ol>
+	<li>
+		<p>帮助文档：</p>
+		<a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003FEB.2052/vccore/html/_core_ActiveX_Control_Topics.htm">MFC ActiveX</a>
+	</li>
+</ol>
+
+
+<p class ="showlink" onclick="showall" id="showall1">显示所有文字</p>
+
+</body>
+
+</html>

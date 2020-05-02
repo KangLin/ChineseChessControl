@@ -1,0 +1,557 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="COM中的事件响应.files/filelist.xml">
+<title>事件响应</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>MC SYSTEM</o:Author>
+  <o:LastAuthor>康  林</o:LastAuthor>
+  <o:Revision>8</o:Revision>
+  <o:TotalTime>42</o:TotalTime>
+  <o:Created>2005-05-03T11:09:00Z</o:Created>
+  <o:LastSaved>2005-05-15T00:20:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>301</o:Words>
+  <o:Characters>1722</o:Characters>
+  <o:Company>MC SYSTEM</o:Company>
+  <o:Lines>14</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2019</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:ActiveWritingStyle Lang="EN-US" VendorID="64" DLLVersion="131078"
+   NLCheck="1">1</w:ActiveWritingStyle>
+  <w:ActiveWritingStyle Lang="ZH-CN" VendorID="64" DLLVersion="131077"
+   NLCheck="1">1</w:ActiveWritingStyle>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DoNotHyphenateCaps/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>6 磅</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>6 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>3</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas>false</w:ValidateAgainstSchemas>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotUnderlineInvalidXML/>
+  <w:DoNotShadeFormData/>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:AdjustLineHeightInTable/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="4098"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-CN style='tab-interval:36.0pt;text-justify-trim:punctuation'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:22.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt;mso-ansi-language:
+ZH-CN'>COM中的事件响应<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:22.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt;mso-ansi-language:
+ZH-CN'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>1。client向source object查询IConnectionPointContainer接口。这意味着所有的可连接对象(源对象)必须实现IConnectionPointCotainer接口，如果一个对象没有实现IConnectionPointCotainer，他就不能发出任何消息(event)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>2。如果QueryInterface成功，client传递他想接受的event接口的IID(IConnectionPointContainer::FindConnectionPoint)。如果可连接对象提供这个接口，他就会返回一个连接点对象的接口的指针。或者由client调用IConnectionPointContainer::EnumConnectionPoints来获得一个枚举对象（enumerator），这样他就可以检查所有的被提供的连接点（并看看他们能不能被使用）<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>3。假设我们获得了一个连接点的指针，client在这个接口上调用IConnectionPoint::Advise，传递一个指向将最终接受event的mini-object的IUnkonow指针。Client将负责保存从Advise返回的cookie值。<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>4。在这个连接点上，client将接受接口指针传来的event。<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>5。当他想停止接受events的时候（比如他要shuts down的时候），就调用IConnectionPoint::Unadvise，并把在第三步保存的cookie值传给他<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>MSDN里面有更详细的说明，还有一个用VC写的office com
+addins例子，里面用到连接点，下载下来看看。<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>比较简单：<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>首先加入atl支持<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>然后实现一个eventhander:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>class CClickerEventHandler :<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>public IDispEventImpl&lt;1,
+CClickerEventHandler,&amp;DIID__IClickItEvents,&amp;LIBID_CLICKERLib, 1, 0&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>public:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>BEGIN_SINK_MAP(CClickerEventHandler)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>SINK_ENTRY_EX(1,
+DIID__IClickItEvents, 1, OnCtrlMouseClick)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US style='font-size:9.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt'>SINK_ENTRY_<span
+class=GramE>EX(</span>1, DIID__IClickItEvents, 2, OnCtrlMouseMove)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>SINK_ENTRY_<span
+class=GramE>EX(</span>1, DIID__IClickItEvents, 3, OnCtrlError)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>END_SINK_<span
+class=GramE>MAP()</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>CClickerClientDlg*
+m_Parent;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>CClickerEventHandler(</span>CClickerClientDlg* parent)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>m_Parent
+= parent;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>void</span> __stdcall OnCtrlMouseClick(long x, long y)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>m_Parent-&gt;OnCtrlMouseClick(x,
+y);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>void</span> __stdcall OnCtrlMouseMove(long x, long y)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>m_Parent-&gt;OnCtrlMouseMove(x,
+y);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>void</span> __stdcall OnCtrlError(BSTR errorMsg)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>char</span> msg[128];<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>WideCharToMultiByte(</span>CP_ACP, 0, errorMsg, -1, msg,
+sizeof(msg), NULL, NULL);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>m_Parent-&gt;<span
+class=GramE>OnCtrlError(</span>msg);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'>};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>然后</span><span lang=EN-US
+style='font-size:9.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>在主程序中</span><span lang=EN-US
+style='font-size:9.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ceh
+= new CClickerEventHandler(this); //</span><span style='font-size:9.0pt;
+font-family:宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:
+宋体;color:black;mso-font-kerning:0pt'>建立事件处理对象<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>IUnknown<span
+class=GramE>*<span style='mso-spacerun:yes'>&nbsp; </span>pUnk</span> =
+GetDlgItem(IDC_CLICKIT)-&gt;GetControlUnknown();<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>CcomPtr&lt;IID_ICLICKIT&gt; spclicker;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>if(ceh
+&amp;&amp; SUCCEEDED(pUnk-&gt;QueryInterface(IID_ICLICKIT, (void**)
+&amp;spclicker))) //</span><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'>查询事件接口<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;</span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ceh-&gt;DispEventAdvise(spclicker);
+//</span><span style='font-size:9.0pt;font-family:宋体;mso-hansi-font-family:
+"Times New Roman";mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt'>通知<span
+class=GramE>事件源您的</span>对象想接收事件<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>释放</span><span style='font-size:
+9.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:
+宋体;color:black;mso-font-kerning:0pt'>：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>if(</span>spclicker)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>ceh</span>-&gt;DispEventUnadvise(spclicker);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>spclicker</span>-&gt;Release();<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>if(</span>ceh)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><span style='mso-tab-count:2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+class=GramE>delete</span> ceh;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>里面的</span><span lang=EN-US
+style='font-size:9.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt'>id</span><span
+style='font-size:9.0pt;font-family:宋体;mso-hansi-font-family:"Times New Roman";
+mso-bidi-font-family:宋体;color:black;mso-font-kerning:0pt;mso-ansi-language:
+ZH-CN'>是剧烈</span><span lang=EN-US style='font-size:9.0pt;font-family:宋体;
+mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:9.0pt;font-family:
+宋体;mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:宋体;color:black;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

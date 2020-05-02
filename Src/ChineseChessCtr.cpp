@@ -1,7 +1,7 @@
-// 中国象棋控件.cpp : Implementation of CMyApp and DLL registration.
+// ChineseChessCtr.cpp : Implementation of CChineseChessCtrApp and DLL registration.
 
 #include "stdafx.h"
-#include "ChinesChessCtr.h"
+#include "ChineseChessCtr.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -10,7 +10,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 
-CMyApp NEAR theApp;
+CChineseChessCtrApp NEAR theApp;
 
 const GUID CDECL BASED_CODE _tlid =
 		{ 0xf21f4040, 0x9ee2, 0x42ec, { 0x91, 0, 0x9d, 0x2f, 0x79, 0x23, 0xfc, 0x38 } };
@@ -19,9 +19,9 @@ const WORD _wVerMinor = 0;
 
 
 ////////////////////////////////////////////////////////////////////////////
-// CMyApp::InitInstance - DLL initialization
+// CChineseChessCtrApp::InitInstance - DLL initialization
 
-BOOL CMyApp::InitInstance()
+BOOL CChineseChessCtrApp::InitInstance()
 {
 	BOOL bInit = COleControlModule::InitInstance();
 
@@ -41,9 +41,9 @@ BOOL CMyApp::InitInstance()
 
 
 ////////////////////////////////////////////////////////////////////////////
-// CMyApp::ExitInstance - DLL termination
+// CChineseChessCtrApp::ExitInstance - DLL termination
 
-int CMyApp::ExitInstance()
+int CChineseChessCtrApp::ExitInstance()
 {
 	// TODO: Add your own module termination code here.
 

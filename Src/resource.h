@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Developer Studio generated include file.
-// Used by 中国象棋控件.rc
+// Used by ChinesChessCtr.rc
 //
 #define IDS_XQ                          1
 #define IDD_ABOUTBOX_XQ                 1

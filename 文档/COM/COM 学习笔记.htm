@@ -1,0 +1,1778 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>COM 学习笔记</title>
+<link rel="stylesheet" type="text/css" href="../../../Scrpit/样式.css">
+<script language ="vbscript" src ="../../../Scrpit/webscrpit.bas" ></script>
+<script language="JavaScript" fptype="dynamicoutline">
+<!--
+function dynOutline() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicoutline" for="document" event="onreadystatechange()">
+<!--
+initOutline()
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicoutline" src="file:///C:/Program%20Files/Microsoft%20Office/OFFICE11/fpclass/outline.js">
+</script>
+</head>
+
+<body onclick="dynOutline()" language="Javascript1.2">
+
+<p align="center"><b><font size="7">COM 学习笔记</font></b></p>
+<p align="center">康&nbsp; 林 2004年11月</p>
+<p align="left">关键词：组件、接口、动态链接库、注册表、CLSID、GUID、IID、UUID</p>
+<ol dynamicoutline initcollapsed type="I" style ="cursor:hand">
+   <li>
+<p align="left"><b>概念：</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left"><b>类型库：</b></p></li>
+	<li>
+	<p align="left"><b>组件：</b>是一个接口的集合。</p></li>
+	<li>
+	<p align="left"><b>接口：</b>是一个包含一个函数接针数组的内存结构。每一个数组元素包含的是一个由组件所实现的函数的地址。</p>
+	</li>
+<p align="left"><font color="#FF0000">组件是接口的集合,接口是函数的集合。</font></p>
+</ol>
+
+<li>
+<p align="left"><b>QueryInterface 的实现规则:</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left">QueryInterface 返回的总是同一个 IUnknown 指针。</li>
+	<li>
+	<p align="left">若客户曾经获得过某个接口，那么它将总能获取此接口。</li>
+	<li>
+	<p align="left">客户可以再次获得已经拥有的接口。</li>
+	<li>
+	<p align="left">客户可以返回到起始接口。</li>
+	<li>
+	<p align="left">若能够从某个接口获得某按按特定接口，那么可以从任意接口都将可以获得此接口。</li>
+</ol>
+<li>
+<p align="left"><b>
+<a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003FEB.2052/dnduwam/html/d35remot.htm">ProgID</a> 与 CLSID的转换：</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left">ProgIDFromCLSID<br><code><b>HRESULT CLSIDFromProgID(<br>&nbsp; LPCOLESTR</b><i> lpszProgID</i><b>,&nbsp; 
+	</b>//Pointer to the ProgID<br><b>&nbsp; LPCLSID</b><i> pclsid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</i>//Pointer to the CLSID<br><b>);</b></code></li>
+	<li>
+	<p align="left">CLSIDFromProgID <br><code><b>WINOLEAPI ProgIDFromCLSID(<br>&nbsp; REFCLSID</b><i> clsid</i><b>,&nbsp; 
+	</b>//CLSID for which the ProgID is 
+	requested<br><b>&nbsp; LPOLESTR *</b><i> lplpszProgID</i><br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</i>//Address of output variable that receives a <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// pointer to the requested ProgID string<br><b>);</b><br>　</code></li>
+</ol>
+<li>
+<p align="left"><b>CLSID 与字符串的转换：</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left">CLSIDFromString<code><b><br>HRESULT CLSIDFromString(<br>&nbsp; LPOLESTR</b><i> lpsz</i><b>,&nbsp; 
+	</b>//Pointer to the string 
+	representation of the CLSID<br><b>&nbsp; LPCLSID</b><i> pclsid&nbsp; </i>//Pointer to the CLSID<br>
+	<b>);</b></code></li>
+	<li>
+	<p align="left">StringFromCLSID<br><code><b>WINOLEAPI StringFromCLSID(<br>&nbsp; REFCLSID</b><i> rclsid</i><b>, 
+	</b>//CLSID to be converted<br><b>&nbsp; LPOLESTR *</b><i> ppsz&nbsp; </i>//Address of output variable that 
+	receives a <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// pointer to the resulting string<br><b>);</b></code></li>
+	<li>
+	<p align="left">StringFromGUID2<br><code><b>int StringFromGUID2(<br>&nbsp; REFGUID</b><i> rguid</i><b>,&nbsp; 
+	</b>//Interface identifier to be 
+	converted<br><b>&nbsp; LPOLESTR</b><i> lpsz</i><b>,&nbsp; </b>//Pointer to the resulting 
+	string on return<br><b>&nbsp; int</b><i> cchMax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	</i>//Character count of string at <i>lpsz</i><br><b>);</b><br>　</code></li>
+	<li>
+	<p align="left">StringFromIID <br><code><b>WINOLEAPI StringFromIID(<br>&nbsp; REFIID</b><i> rclsid</i><b>,&nbsp;&nbsp;&nbsp;&nbsp; 
+	</b>//Interface 
+	identifier to be converted<br><b>&nbsp; LPOLESTR *</b><i> lplpsz&nbsp; </i>//Address of output variable 
+	that receives a <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// pointer to the resulting string<br><b>);</b></code></li>
+	<li>
+	<p align="left">IIDFromString<br><code><b>WINOLEAPI IIDFromString(<br>&nbsp; LPOLESTR</b><i> lpsz</i><b>,&nbsp; 
+	</b>//Pointer to the string 
+	representation of the IID<br><b>&nbsp; LPIID</b><i> lpiid&nbsp;&nbsp;&nbsp;&nbsp; 
+	</i>//Pointer to the 
+	requested IID on return<br><b>);</b></code></li>
+</ol>
+<li>
+<p align="left"><b>注册：</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left">用程序注册：regsvr32.exe</li>
+	<li>
+	<p align="left">调用动态函数库中的注册函数：DllRegisterServer</li>
+
+	<li>
+	<p align="left">调用动态函数库中的反注册函数:DllUnregisterServer </li>
+</ol>
+<li>
+<p align="left"><b>COM库函数:</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left">CoCreateInstance<br><code><b>&nbsp; STDAPI CoCreateInstance(<br>&nbsp;&nbsp;&nbsp;&nbsp; REFCLSID</b><i> rclsid</i><b>,&nbsp;&nbsp;&nbsp;&nbsp;
+	</b>//Class identifier (CLSID) of the object<br><b>&nbsp;&nbsp;&nbsp;&nbsp; LPUNKNOWN</b><i> pUnkOuter</i><b>, 
+	</b>//Pointer 
+	to whether object is or isn't part <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// of an aggregate<br><b>&nbsp;&nbsp;&nbsp;&nbsp; DWORD</b><i> dwClsContext</i><b>,&nbsp; 
+	</b>//Context for running executable code<br><b>&nbsp;&nbsp;&nbsp;&nbsp; REFIID</b><i> riid</i><b>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</b>//Reference to the identifier of the interface<br><b>&nbsp;&nbsp;&nbsp;&nbsp; LPVOID *</b><i> ppv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</i>//Address of output variable that receives <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// the interface pointer requested in <i>riid</i><br><b>&nbsp; );<br></b>CoCreateInstance 实际上是调用  
+	</code>CoGetClassObject 实现的。CoGetClassObject 
+	将在注册表中查找指定的组件。找到之后，它将装载实现此组件的 DLL（用 <b>CoLoadLibrary</b>)。装载成功之后，它将调用在 DLL 
+	服务器中的实现的 DllGetClassObject。此函数的作用是创建相应的类厂。另外 DllGetClassObject 还将查询 
+	IClassFactory 接口，并将其返回给 CoCreateInstance。然后，CoCreatInstnce 将使用此接口来调用 
+	IClassFactory::CreateInstance 函数。并查询指 CoCreateInstance 参数 riid 
+	中指定的接口。在得到了此接口之后，CoCreateInstance 
+	将释放相应的类厂并将此接口的指针返回给客户。然后客户就能使用此指针来调用组件中的某个方法了。</li>
+	<li>
+	<p align="left">CoGetClassObject<br><code><b>STDAPI CoGetClassObject(<br>&nbsp; REFCLSID</b><i> rclsid</i><b>,&nbsp; 
+	</b>//CLSID associated with the 
+	class object<br><b>&nbsp; DWORD</b><i> dwClsContext</i><b>,</b><br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</b>//Context for running executable code<br><b>&nbsp; COSERVERINFO *</b><i> pServerInfo</i><b>,</b><br>
+	<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</b>//Pointer to machine on which the object is to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// be instantiated<br><b>&nbsp; REFIID</b><i> riid</i><b>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	</b>//Reference to the identifier of the interface<br><b>&nbsp; LPVOID *</b><i> ppv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	</i>//Address of 
+	output variable that receives the <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	// interface pointer requested in <i>riid</i><br><b>);</b></code></li>
+	<li>CoFreeUnusedLibraries：释放不再使用的DLL<br>　</li>
+</ol>
+<li>
+<b>包容与聚合：</b>
+</li>
+<li>
+<p align="left"><b>接口指针类(智能接口指针):</b></p>
+</li>
+<ol>
+	<li>
+	<p align="left">ATL中有 CComPrt 和 CComQIprt(<span class="ShowLink" onclick="Call Show(ccomptr_h)">#include &lt;ATLBASE.H&gt;</span>)
+	<table border="1" width="100%" class="TableStyle" style ="display:none" id="ccomptr_h">
+		<tr>
+			<td>
+			<pre>template &lt;class T&gt;
+class CComPtr
+{
+public:
+	typedef T _PtrClass;
+	CComPtr()
+	{
+		p=NULL;
+	}
+	CComPtr(T* lp)
+	{
+		if ((p = lp) != NULL)
+			p-&gt;AddRef();
+	}
+	CComPtr(const CComPtr&lt;T&gt;&amp; lp)
+	{
+		if ((p = lp.p) != NULL)
+			p-&gt;AddRef();
+	}
+	~CComPtr()
+	{
+		if (p)
+			p-&gt;Release();
+	}
+	void Release()
+	{
+		IUnknown* pTemp = p;
+		if (pTemp)
+		{
+			p = NULL;
+			pTemp-&gt;Release();
+		}
+	}
+	operator T*() const
+	{
+		return (T*)p;
+	}
+	T&amp; operator*() const
+	{
+		ATLASSERT(p!=NULL);
+		return *p;
+	}
+	//The assert on operator&amp; usually indicates a bug.  If this is really
+	//what is needed, however, take the address of the p member explicitly.
+	T** operator&amp;()
+	{
+		ATLASSERT(p==NULL);
+		return &amp;p;
+	}
+	_NoAddRefReleaseOnCComPtr&lt;T&gt;* operator-&gt;() const
+	{
+		ATLASSERT(p!=NULL);
+		return (_NoAddRefReleaseOnCComPtr&lt;T&gt;*)p;
+	}
+	T* operator=(T* lp)
+	{
+		return (T*)AtlComPtrAssign((IUnknown**)&amp;p, lp);
+	}
+	T* operator=(const CComPtr&lt;T&gt;&amp; lp)
+	{
+		return (T*)AtlComPtrAssign((IUnknown**)&amp;p, lp.p);
+	}
+	bool operator!() const
+	{
+		return (p == NULL);
+	}
+	bool operator&lt;(T* pT) const
+	{
+		return p &lt; pT;
+	}
+	bool operator==(T* pT) const
+	{
+		return p == pT;
+	}
+	// Compare two objects for equivalence
+	bool IsEqualObject(IUnknown* pOther)
+	{
+		if (p == NULL &amp;&amp; pOther == NULL)
+			return true; // They are both NULL objects</pre>
+			<pre>		if (p == NULL || pOther == NULL)
+			return false; // One is NULL the other is not</pre>
+			<pre>		CComPtr&lt;IUnknown&gt; punk1;
+		CComPtr&lt;IUnknown&gt; punk2;
+		p-&gt;QueryInterface(IID_IUnknown, (void**)&amp;punk1);
+		pOther-&gt;QueryInterface(IID_IUnknown, (void**)&amp;punk2);
+		return punk1 == punk2;
+	}
+	void Attach(T* p2)
+	{
+		if (p)
+			p-&gt;Release();
+		p = p2;
+	}
+	T* Detach()
+	{
+		T* pt = p;
+		p = NULL;
+		return pt;
+	}
+	HRESULT CopyTo(T** ppT)
+	{
+		ATLASSERT(ppT != NULL);
+		if (ppT == NULL)
+			return E_POINTER;
+		*ppT = p;
+		if (p)
+			p-&gt;AddRef();
+		return S_OK;
+	}
+	HRESULT SetSite(IUnknown* punkParent)
+	{
+		return AtlSetChildSite(p, punkParent);
+	}
+	HRESULT Advise(IUnknown* pUnk, const IID&amp; iid, LPDWORD pdw)
+	{
+		return AtlAdvise(p, pUnk, iid, pdw);
+	}
+	HRESULT CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter = NULL, DWORD dwClsContext = CLSCTX_ALL)
+	{
+		ATLASSERT(p == NULL);
+		return ::CoCreateInstance(rclsid, pUnkOuter, dwClsContext, __uuidof(T), (void**)&amp;p);
+	}
+	HRESULT CoCreateInstance(LPCOLESTR szProgID, LPUNKNOWN pUnkOuter = NULL, DWORD dwClsContext = CLSCTX_ALL)
+	{
+		CLSID clsid;
+		HRESULT hr = CLSIDFromProgID(szProgID, &amp;clsid);
+		ATLASSERT(p == NULL);
+		if (SUCCEEDED(hr))
+			hr = ::CoCreateInstance(clsid, pUnkOuter, dwClsContext, __uuidof(T), (void**)&amp;p);
+		return hr;
+	}
+	template &lt;class Q&gt;
+	HRESULT QueryInterface(Q** pp) const
+	{
+		ATLASSERT(pp != NULL &amp;&amp; *pp == NULL);
+		return p-&gt;QueryInterface(__uuidof(Q), (void**)pp);
+	}
+	T* p;
+};
+</pre>
+			<pre>template &lt;class T, const IID* piid = &amp;__uuidof(T)&gt;
+class CComQIPtr
+{
+public:
+	typedef T _PtrClass;
+	CComQIPtr()
+	{
+		p=NULL;
+	}
+	CComQIPtr(T* lp)
+	{
+		if ((p = lp) != NULL)
+			p-&gt;AddRef();
+	}
+	CComQIPtr(const CComQIPtr&lt;T,piid&gt;&amp; lp)
+	{
+		if ((p = lp.p) != NULL)
+			p-&gt;AddRef();
+	}
+	CComQIPtr(IUnknown* lp)
+	{
+		p=NULL;
+		if (lp != NULL)
+			lp-&gt;QueryInterface(*piid, (void **)&amp;p);
+	}
+	~CComQIPtr()
+	{
+		if (p)
+			p-&gt;Release();
+	}
+	void Release()
+	{
+		IUnknown* pTemp = p;
+		if (pTemp)
+		{
+			p = NULL;
+			pTemp-&gt;Release();
+		}
+	}
+	operator T*() const
+	{
+		return p;
+	}
+	T&amp; operator*() const
+	{
+		ATLASSERT(p!=NULL); return *p;
+	}
+	//The assert on operator&amp; usually indicates a bug.  If this is really
+	//what is needed, however, take the address of the p member explicitly.
+	T** operator&amp;()
+	{
+		ATLASSERT(p==NULL);
+		return &amp;p;
+	}
+	_NoAddRefReleaseOnCComPtr&lt;T&gt;* operator-&gt;() const
+	{
+		ATLASSERT(p!=NULL);
+		return (_NoAddRefReleaseOnCComPtr&lt;T&gt;*)p;
+	}
+	T* operator=(T* lp)
+	{
+		return (T*)AtlComPtrAssign((IUnknown**)&amp;p, lp);
+	}
+	T* operator=(const CComQIPtr&lt;T,piid&gt;&amp; lp)
+	{
+		return (T*)AtlComPtrAssign((IUnknown**)&amp;p, lp.p);
+	}
+	T* operator=(IUnknown* lp)
+	{
+		return (T*)AtlComQIPtrAssign((IUnknown**)&amp;p, lp, *piid);
+	}
+	bool operator!() const
+	{
+		return (p == NULL);
+	}
+	bool operator&lt;(T* pT) const
+	{
+		return p &lt; pT;
+	}
+	bool operator==(T* pT) const
+	{
+		return p == pT;
+	}
+	// Compare two objects for equivalence
+	bool IsEqualObject(IUnknown* pOther)
+	{
+		if (p == NULL &amp;&amp; pOther == NULL)
+			return true; // They are both NULL objects</pre>
+			<pre>		if (p == NULL || pOther == NULL)
+			return false; // One is NULL the other is not</pre>
+			<pre>		CComPtr&lt;IUnknown&gt; punk1;
+		CComPtr&lt;IUnknown&gt; punk2;
+		p-&gt;QueryInterface(IID_IUnknown, (void**)&amp;punk1);
+		pOther-&gt;QueryInterface(IID_IUnknown, (void**)&amp;punk2);
+		return punk1 == punk2;
+	}
+	void Attach(T* p2)
+	{
+		if (p)
+			p-&gt;Release();
+		p = p2;
+	}
+	T* Detach()
+	{
+		T* pt = p;
+		p = NULL;
+		return pt;
+	}
+	HRESULT CopyTo(T** ppT)
+	{
+		ATLASSERT(ppT != NULL);
+		if (ppT == NULL)
+			return E_POINTER;
+		*ppT = p;
+		if (p)
+			p-&gt;AddRef();
+		return S_OK;
+	}
+	HRESULT SetSite(IUnknown* punkParent)
+	{
+		return AtlSetChildSite(p, punkParent);
+	}
+	HRESULT Advise(IUnknown* pUnk, const IID&amp; iid, LPDWORD pdw)
+	{
+		return AtlAdvise(p, pUnk, iid, pdw);
+	}
+	HRESULT CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter = NULL, DWORD dwClsContext = CLSCTX_ALL)
+	{
+		ATLASSERT(p == NULL);
+		return ::CoCreateInstance(rclsid, pUnkOuter, dwClsContext, __uuidof(T), (void**)&amp;p);
+	}
+	HRESULT CoCreateInstance(LPCOLESTR szProgID, LPUNKNOWN pUnkOuter = NULL, DWORD dwClsContext = CLSCTX_ALL)
+	{
+		CLSID clsid;
+		HRESULT hr = CLSIDFromProgID(szProgID, &amp;clsid);
+		ATLASSERT(p == NULL);
+		if (SUCCEEDED(hr))
+			hr = ::CoCreateInstance(clsid, pUnkOuter, dwClsContext, __uuidof(T), (void**)&amp;p);
+		return hr;
+	}
+	template &lt;class Q&gt;
+	HRESULT QueryInterface(Q** pp)
+	{
+		ATLASSERT(pp != NULL &amp;&amp; *pp == NULL);
+		return p-&gt;QueryInterface(__uuidof(Q), (void**)pp);
+	}
+	T* p;
+};</pre>
+			<pre>//Specialization to make it work
+template&lt;&gt;
+class CComQIPtr&lt;IUnknown, &amp;IID_IUnknown&gt;
+{
+public:
+	typedef IUnknown _PtrClass;
+	CComQIPtr()
+	{
+		p=NULL;
+	}
+	CComQIPtr(IUnknown* lp)
+	{
+		//Actually do a QI to get identity
+		p=NULL;
+		if (lp != NULL)
+			lp-&gt;QueryInterface(IID_IUnknown, (void **)&amp;p);
+	}
+	CComQIPtr(const CComQIPtr&lt;IUnknown,&amp;IID_IUnknown&gt;&amp; lp)
+	{
+		if ((p = lp.p) != NULL)
+			p-&gt;AddRef();
+	}
+	~CComQIPtr()
+	{
+		if (p)
+			p-&gt;Release();
+	}
+	void Release()
+	{
+		IUnknown* pTemp = p;
+		if (pTemp)
+		{
+			p = NULL;
+			pTemp-&gt;Release();
+		}
+	}
+	operator IUnknown*() const
+	{
+		return p;
+	}
+	IUnknown&amp; operator*() const
+	{
+		ATLASSERT(p!=NULL);
+		return *p;
+	}
+	//The assert on operator&amp; usually indicates a bug.  If this is really
+	//what is needed, however, take the address of the p member explicitly.
+	IUnknown** operator&amp;()
+	{
+		ATLASSERT(p==NULL);
+		return &amp;p;
+	}
+	_NoAddRefReleaseOnCComPtr&lt;T&gt;* operator-&gt;() const
+	{
+		ATLASSERT(p!=NULL);
+		return (_NoAddRefReleaseOnCComPtr&lt;T&gt;*)p;
+	}
+	IUnknown* operator=(IUnknown* lp)
+	{
+		//Actually do a QI to get identity
+		return (IUnknown*)AtlComQIPtrAssign((IUnknown**)&amp;p, lp, IID_IUnknown);
+	}
+	IUnknown* operator=(const CComQIPtr&lt;IUnknown,&amp;IID_IUnknown&gt;&amp; lp)
+	{
+		return (IUnknown*)AtlComPtrAssign((IUnknown**)&amp;p, lp.p);
+	}
+	bool operator!() const
+	{
+		return (p == NULL);
+	}
+	bool operator&lt;(IUnknown* pT) const
+	{
+		return p &lt; pT;
+	}
+	bool operator==(IUnknown* pT) const
+	{
+		return p == pT;
+	}
+	// Compare two objects for equivalence
+	bool IsEqualObject(IUnknown* pOther)
+	{
+		if (p == NULL &amp;&amp; pOther == NULL)
+			return true; // They are both NULL objects</pre>
+			<pre>		if (p == NULL || pOther == NULL)
+			return false; // One is NULL the other is not</pre>
+			<pre>		CComPtr&lt;IUnknown&gt; punk1;
+		CComPtr&lt;IUnknown&gt; punk2;
+		p-&gt;QueryInterface(IID_IUnknown, (void**)&amp;punk1);
+		pOther-&gt;QueryInterface(IID_IUnknown, (void**)&amp;punk2);
+		return punk1 == punk2;
+	}
+	IUnknown* Detach()
+	{
+		IUnknown* pt = p;
+		p = NULL;
+		return pt;
+	}
+	HRESULT CopyTo(T** ppT)
+	{
+		ATLASSERT(ppT != NULL);
+		if (ppT == NULL)
+			return E_POINTER;
+		*ppT = p;
+		if (p)
+			p-&gt;AddRef();
+		return S_OK;
+	}
+	HRESULT SetSite(IUnknown* punkParent)
+	{
+		return AtlSetChildSite(p, punkParent);
+	}
+	HRESULT Advise(IUnknown* pUnk, const IID&amp; iid, LPDWORD pdw)
+	{
+		return AtlAdvise(p, pUnk, iid, pdw);
+	}
+	HRESULT CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter = NULL, DWORD dwClsContext = CLSCTX_ALL)
+	{
+		ATLASSERT(p == NULL);
+		return ::CoCreateInstance(rclsid, pUnkOuter, dwClsContext, __uuidof(T), (void**)&amp;p);
+	}
+	HRESULT CoCreateInstance(LPCOLESTR szProgID, LPUNKNOWN pUnkOuter = NULL, DWORD dwClsContext = CLSCTX_ALL)
+	{
+		CLSID clsid;
+		HRESULT hr = CLSIDFromProgID(szProgID, &amp;clsid);
+		ATLASSERT(p == NULL);
+		if (SUCCEEDED(hr))
+			hr = ::CoCreateInstance(clsid, pUnkOuter, dwClsContext, __uuidof(T), (void**)&amp;p);
+		return hr;
+	}
+	template &lt;class Q&gt;
+	HRESULT QueryInterface(Q** pp)
+	{
+		ATLASSERT(pp != NULL &amp;&amp; *pp == NULL);
+		return p-&gt;QueryInterface(__uuidof(Q), (void**)pp);
+	}
+	IUnknown* p;
+};</pre>
+			<pre>#define com_cast CComQIPtr</pre>
+			</td>
+		</tr>
+	</table>
+	</li>
+	<li>
+	<p align="left">MFC中有CIP(<span class="ShowLink" onclick ="Call Show(afxcom_h)" >#include &lt;afxcom_.h&gt;</span>)<table border="1" width="100%" id ="afxcom_h" class="TableStyle" style ="display:none">
+		<tr>
+			<td>
+			<pre>// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) 1992-1998 Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////
+// AFXCOM_.H
+//
+// THIS FILE IS FOR MFC IMPLEMENTATION ONLY.</pre>
+			<pre>#ifndef __AFXCOM_H__
+#define __AFXCOM_H__</pre>
+			<pre>#ifndef _OBJBASE_H_
+#include &lt;objbase.h&gt;
+#endif</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////</pre>
+			<pre>#ifdef _AFX_MINREBUILD
+#pragma component(minrebuild, off)
+#endif
+#ifndef _AFX_FULLTYPEINFO
+#pragma component(mintypeinfo, on)
+#endif</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////</pre>
+			<pre>#ifndef _AFX_NOFORCE_LIBS
+#pragma comment(lib, &quot;uuid.lib&quot;)
+#endif</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////</pre>
+			<pre>#ifdef _AFX_PACKING
+#pragma pack(push, _AFX_PACKING)
+#endif</pre>
+			<pre>#ifndef ASSERT
+#ifndef _INC_CRTDBG
+#include &lt;crtdbg.h&gt;
+#endif // _INC_CRTDBG
+#define ASSERT(x) _ASSERT(x)
+#endif // ASSERT</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////</pre>
+			<pre>template&lt;class _Interface, const IID* _IID&gt;
+class _CIP
+{
+public:
+	// Declare interface type so that the type may be available outside
+	// the scope of this template.
+	typedef _Interface Interface;</pre>
+			<pre>	// When the compiler supports references in template params,
+	// _CLSID will be changed to a reference.  To avoid conversion
+	// difficulties this function should be used to obtain the
+	// CLSID.
+	static const IID&amp; GetIID()
+		{ ASSERT(_IID != NULL); return *_IID; }</pre>
+			<pre>	// Construct empty in preperation for assignment.
+	_CIP();</pre>
+			<pre>	// Copy the pointer and AddRef().
+	_CIP(const _CIP&amp; cp) : _pInterface(cp._pInterface)
+		{ _AddRef(); }</pre>
+			<pre>	// Saves and AddRef()'s the interface
+	_CIP(Interface* pInterface) : _pInterface(pInterface)
+		{ _AddRef(); }</pre>
+			<pre>	// Copies the pointer.  If bAddRef is TRUE, the interface will
+	// be AddRef()ed.
+	_CIP(Interface* pInterface, BOOL bAddRef)
+		: _pInterface(pInterface)
+	{
+		if (bAddRef)
+		{
+			ASSERT(pInterface != NULL);
+			_AddRef();
+		}
+	}</pre>
+			<pre>	// Calls CoCreateClass with the provided CLSID.
+	_CIP(const CLSID&amp; clsid, DWORD dwClsContext = CLSCTX_INPROC_SERVER)
+		: _pInterface(NULL)
+	{
+		CreateObject(clsid, dwClsContext);
+	}</pre>
+			<pre>	// Calls CoCreateClass with the provided CLSID retrieved from
+	// the string.
+	_CIP(LPOLESTR str, DWORD dwClsContext = CLSCTX_INPROC_SERVER)
+		: _pInterface(NULL)
+	{
+		CreateObject(str, dwClsContext);
+	}</pre>
+			<pre>	// Saves and AddRef()s the interface.
+	_CIP&amp; operator=(Interface* pInterface)
+	{
+		if (_pInterface != pInterface)
+		{
+			Interface* pOldInterface = _pInterface;
+			_pInterface = pInterface;
+			_AddRef();
+			if (pOldInterface != NULL)
+				pOldInterface-&gt;Release();
+		}
+		return *this;
+	}</pre>
+			<pre>	// Copies and AddRef()'s the interface.
+	_CIP&amp; operator=(const _CIP&amp; cp)
+		{ return operator=(cp._pInterface); }</pre>
+			<pre>	// Releases any current interface and loads the class with the
+	// provided CLSID.
+	_CIP&amp; operator=(const CLSID&amp; clsid)
+	{
+		CreateObject(clsid);
+		return *this;
+	}</pre>
+			<pre>	// Calls CoCreateClass with the provided CLSID retrieved from
+	// the string.
+	_CIP&amp; operator=(LPOLESTR str)
+	{
+		CreateObject(str);
+		return *this;
+	}</pre>
+			<pre>	~_CIP();</pre>
+			<pre>	// Saves/sets the interface without AddRef()ing.  This call
+	// will release any previously aquired interface.
+	void Attach(Interface* pInterface)
+	{
+		_Release();
+		_pInterface = pInterface;
+	}</pre>
+			<pre>	// Saves/sets the interface only AddRef()ing if bAddRef is TRUE.
+	// This call will release any previously aquired interface.
+	void Attach(Interface* pInterface, BOOL bAddRef)
+	{
+		_Release();
+		_pInterface = pInterface;
+		if (bAddRef)
+		{
+			ASSERT(pInterface != NULL);
+			pInterface-&gt;AddRef();
+		}
+	}</pre>
+			<pre>	// Simply NULL the interface pointer so that it isn't Released()'ed.
+	void Detach()
+	{
+		ASSERT(_pInterface);
+		_pInterface = NULL;
+	}</pre>
+			<pre>	// Return the interface.  This value may be NULL
+	operator Interface*() const
+		{ return _pInterface; }</pre>
+			<pre>	// Queries for the unknown and return it
+	operator IUnknown*()
+		{ return _pInterface; }</pre>
+			<pre>	// Provides minimal level assertion before use.
+	operator Interface&amp;() const
+		{ ASSERT(_pInterface); return *_pInterface; }</pre>
+			<pre>	// Allows an instance of this class to act as though it were the
+	// actual interface.  Also provides minimal assertion verification.
+	Interface&amp; operator*() const
+		{ ASSERT(_pInterface); return *_pInterface; }</pre>
+			<pre>	// Returns the address of the interface pointer contained in this
+	// class.  This is useful when using the COM/OLE interfaces to create
+	// this interface.
+	Interface** operator&amp;()
+	{
+		_Release();
+		_pInterface = NULL;
+		return &amp;_pInterface;
+	}</pre>
+			<pre>	// Allows this class to be used as the interface itself.
+	// Also provides simple assertion verification.
+	Interface* operator-&gt;() const
+		{ ASSERT(_pInterface != NULL); return _pInterface; }</pre>
+			<pre>	// This operator is provided so that simple boolean expressions will
+	// work.  For example: &quot;if (p) ...&quot;.
+	// Returns TRUE if the pointer is not NULL.
+	operator BOOL() const
+		{ return _pInterface != NULL; }</pre>
+			<pre>	// Returns TRUE if the interface is NULL.
+	// This operator will be removed when support for type bool
+	// is added to the compiler.
+	BOOL operator!()
+		{ return _pInterface == NULL; }</pre>
+			<pre>	// Provides assertion verified, Release()ing of this interface.
+	void Release()
+	{
+		ASSERT(_pInterface != NULL);
+		_pInterface-&gt;Release();
+		_pInterface = NULL;
+	}</pre>
+			<pre>	// Provides assertion verified AddRef()ing of this interface.
+	void AddRef()
+		{ ASSERT(_pInterface != NULL); _pInterface-&gt;AddRef(); }</pre>
+			<pre>	// Another way to get the interface pointer without casting.
+	Interface* GetInterfacePtr() const
+		{ return _pInterface; }</pre>
+			<pre>	// Loads an interface for the provided CLSID.
+	// Returns an HRESULT.  Any previous interface is released.
+	HRESULT CreateObject(
+		const CLSID&amp; clsid, DWORD dwClsContext = CLSCTX_INPROC_SERVER)
+	{
+		_Release();
+		HRESULT hr = CoCreateInstance(clsid, NULL, dwClsContext,
+			GetIID(), reinterpret_cast&lt;void**&gt;(&amp;_pInterface));
+		ASSERT(SUCCEEDED(hr));
+		return hr;
+	}</pre>
+			<pre>	// Creates the class specified by clsidString.  clsidString may
+	// contain a class id, or a prog id string.
+	HRESULT CreateObject(
+		LPOLESTR clsidString, DWORD dwClsContext=CLSCTX_INPROC_SERVER)
+	{
+		ASSERT(clsidString != NULL);
+		CLSID clsid;
+		HRESULT hr;
+		if (clsidString[0] == '{')
+			hr = CLSIDFromString(clsidString, &amp;clsid);
+		else
+			hr = CLSIDFromProgID(clsidString, &amp;clsid);
+		ASSERT(SUCCEEDED(hr));
+		if (FAILED(hr))
+			return hr;
+		return CreateObject(clsid, dwClsContext);
+	}</pre>
+			<pre>	// Performs a QI on pUnknown for the interface type returned
+	// for this class.  The interface is stored.  If pUnknown is
+	// NULL, or the QI fails, E_NOINTERFACE is returned and
+	// _pInterface is set to NULL.
+	HRESULT QueryInterface(IUnknown* pUnknown)
+	{
+		if (pUnknown == NULL) // Can't QI NULL
+		{
+			operator=(static_cast&lt;Interface*&gt;(NULL));
+			return E_NOINTERFACE;
+		}</pre>
+			<pre>		// Query for this interface
+		Interface* pInterface;
+		HRESULT hr = pUnknown-&gt;QueryInterface(GetIID(),
+			reinterpret_cast&lt;void**&gt;(&amp;pInterface));
+		if (FAILED(hr))
+		{
+			// If failed intialize interface to NULL and return HRESULT.
+			Attach(NULL);
+			return hr;
+		}</pre>
+			<pre>		// Save the interface without AddRef()ing.
+		Attach(pInterface);
+		return hr;
+	}</pre>
+			<pre>private:
+	// Releases only if the interface is not null.
+	// The interface is not set to NULL.
+	void _Release()
+	{
+		if (_pInterface != NULL)
+			_pInterface-&gt;Release();
+	}</pre>
+			<pre>	// AddRefs only if the interface is not NULL
+	void _AddRef()
+	{
+		if (_pInterface != NULL)
+			_pInterface-&gt;AddRef();
+	}</pre>
+			<pre>	// The Interface.
+	Interface* _pInterface;
+}; // class _CIP</pre>
+			<pre>template&lt;class _Interface, const IID* _IID&gt;
+_CIP&lt;_Interface, _IID&gt;::_CIP&lt;_Interface, _IID&gt;()
+	: _pInterface(NULL)
+{
+}</pre>
+			<pre>template&lt;class _Interface, const IID* _IID&gt;
+_CIP&lt;_Interface, _IID&gt;::~_CIP&lt;_Interface, _IID&gt;()
+{
+	// If we still have an interface then Release() it.  The interface
+	// may be NULL if Detach() has previosly been called, or if it was
+	// never set.</pre>
+			<pre>	_Release();
+}</pre>
+			<pre>template&lt;class _Interface, const IID* _IID&gt;
+class CIP : public _CIP&lt;_Interface, _IID&gt;
+{
+public:
+	// Simplified name for base class and provide derived classes
+	// access to base type
+	typedef _CIP&lt;_Interface, _IID&gt; BC;</pre>
+			<pre>	// Provideds derived classes access to the interface type.
+	typedef _Interface Interface;</pre>
+			<pre>	// Construct empty in preperation for assignment.
+	CIP() { }
+	~CIP();</pre>
+			<pre>	// Copy the pointer and AddRef().
+	CIP(const CIP&amp; cp) : _CIP&lt;_Interface, _IID&gt;(cp) { }</pre>
+			<pre>	// Saves and AddRef()s the interface.
+	CIP(Interface* pInterface) : _CIP&lt;_Interface, _IID&gt;(pInterface) { }</pre>
+			<pre>	// Saves the interface and AddRef()s only if bAddRef is TRUE.
+	CIP(Interface* pInterface, BOOL bAddRef)
+		: _CIP&lt;_Interface, _IID&gt;(pInterface, bAddRef) { }</pre>
+			<pre>	// Queries for this interface.
+	CIP(IUnknown* pUnknown)
+	{
+		if (pUnknown == NULL)
+			return;
+		Interface* pInterface;
+		HRESULT hr = pUnknown-&gt;QueryInterface(GetIID(),
+			reinterpret_cast&lt;void**&gt;(&amp;pInterface));
+		ASSERT(SUCCEEDED(hr));
+		Attach(pInterface);
+	}</pre>
+			<pre>	// Creates the interface from the CLSID.
+	CIP(const CLSID&amp; clsid) : _CIP&lt;_Interface, _IID&gt;(clsid) { }</pre>
+			<pre>	// Creates the interface from the CLSID.
+	CIP(LPOLESTR str) : _CIP&lt;_Interface, _IID&gt;(str) { }</pre>
+			<pre>	// Copies and AddRef()'s the interface.
+	CIP&amp; operator=(const CIP&amp; cp)
+		{ _CIP&lt;_Interface, _IID&gt;::operator=(cp); return *this; }</pre>
+			<pre>	// Saves and AddRef()s the interface.
+	CIP&amp; operator=(Interface* pInterface)
+		{ _CIP&lt;_Interface, _IID&gt;::operator=(pInterface); return *this; }</pre>
+			<pre>	CIP&amp; operator=(IUnknown* pUnknown)
+	{
+		HRESULT hr = QueryInterface(pUnknown);
+		ASSERT(SUCCEEDED(hr));
+		return *this;
+	}</pre>
+			<pre>	// Releases any current interface and loads the class with the
+	// provided CLSID.
+	CIP&amp; operator=(const CLSID&amp; clsid)
+		{ _CIP&lt;_Interface, _IID&gt;::operator=(clsid); return *this; }</pre>
+			<pre>	// Releases any current interface and loads the class with the
+	// provided CLSID.
+	CIP&amp; operator=(LPOLESTR str)
+		{ _CIP&lt;_Interface, _IID&gt;::operator=(str); return *this; }
+}; // class CIP</pre>
+			<pre>template&lt;class _Interface, const IID* _IID&gt;
+CIP&lt;_Interface, _IID&gt;::~CIP()
+{
+}</pre>
+			<pre>#if _MSC_VER &gt; 1020
+template&lt;&gt;
+#endif
+class CIP&lt;IUnknown, &amp;IID_IUnknown&gt; : public _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;
+{
+public:
+	// Simplified name for base class and provide derived classes
+	// access to base type
+	typedef _CIP&lt;IUnknown, &amp;IID_IUnknown&gt; BC;</pre>
+			<pre>	// Provideds derived classes access to the interface type.
+	typedef IUnknown Interface;</pre>
+			<pre>	// Construct empty in preperation for assignment.
+	CIP() { }</pre>
+			<pre>	// Copy the pointer and AddRef().
+	CIP(const CIP&amp; cp) : _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;(cp) { }</pre>
+			<pre>	// Saves and AddRef()s the interface.
+	CIP(Interface* pInterface)
+		: _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;(pInterface) { }</pre>
+			<pre>	// Saves and then AddRef()s only if bAddRef is TRUE.
+	CIP(Interface* pInterface, BOOL bAddRef)
+		: _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;(pInterface, bAddRef) { }</pre>
+			<pre>	// Creates the interface from the CLSID.
+	CIP(const CLSID&amp; clsid) : _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;(clsid) { }</pre>
+			<pre>	// Creates the interface from the CLSID.
+	CIP(LPOLESTR str) : _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;(str) { }</pre>
+			<pre>	// Copies and AddRef()'s the interface.
+	CIP&amp; operator=(const CIP&amp; cp)
+		{ _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;::operator=(cp); return *this; }</pre>
+			<pre>	// Saves and AddRef()s the interface.  The previously saved
+	// interface is released.
+	CIP&amp; operator=(Interface* pInterface)
+		{ _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;::operator=(pInterface); return *this; }</pre>
+			<pre>	// Releases any current interface and loads the class with the
+	// provided CLSID.
+	CIP&amp; operator=(const CLSID&amp; clsid)
+		{ _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;::operator=(clsid); return *this; }</pre>
+			<pre>	// Releases any current interface and loads the class with the
+	// provided CLSID.
+	CIP&amp; operator=(LPOLESTR str)
+		{ _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;::operator=(str); return *this; }</pre>
+			<pre>	// Queries for the unknown and return it
+	operator IUnknown*()
+		{ return GetInterfacePtr(); }</pre>
+			<pre>	// Verifies that pUnknown is not null and performs assignment.
+	HRESULT QueryInterface(IUnknown* pUnknown)
+	{
+		_CIP&lt;IUnknown, &amp;IID_IUnknown&gt;::operator=(pUnknown);
+		return pUnknown != NULL ? S_OK : E_NOINTERFACE;
+	}
+};  // CIP&lt;IUnknown, &amp;IID_IUnknown&gt;</pre>
+			<pre>#define IPTR(x) CIP&lt;x, &amp;IID_##x&gt;
+#define DEFINE_IPTR(x) typedef IPTR(x) x##Ptr;</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////</pre>
+			<pre>#ifdef _AFX_PACKING
+#pragma pack(pop)
+#endif</pre>
+			<pre>#ifdef _AFX_MINREBUILD
+#pragma component(minrebuild, on)
+#endif
+#ifndef _AFX_FULLTYPEINFO
+#pragma component(mintypeinfo, off)
+#endif</pre>
+			<pre>#endif // __AFXCOM_H__</pre>
+			<pre>/////////////////////////////////////////////////////////////////////////////</pre>
+			</td>
+		</tr>
+	</table>
+	</li>
+	<li>使用接口类的成员函数，用 . 操作符。例如：<br>
+	CComQIPtr &lt;InterfaceClass, &amp;IID&gt; spIF;<br>
+	spIF.Release(); //释放接口指针</li>
+	<li>释放接口指针类(智能接口指针):<br>
+	CComQIPtr &lt;InterfaceClass, &amp;IID&gt; spIF;<br>
+	spIF = NULL; //释放接口指针</li>
+</ol>
+<li>
+<p><b>C++包装类:</b>(MFC OLE)</p>
+</li></ol> 
+<p><b><span class ="showlink" onclick ="call show(class_interface)"  >用嵌套类实现接口:</span></b></p>
+<ol id="class_interface" style="display:none">
+	<li>在CCmdTarget类和其派生类定义中使用宏  
+	<span class ="ShowLink" onclick ="Call Show(DECLARE_INTERFACE_MAP_tab)">DECLARE_INTERFACE_MAP()</span> 
+	声明接口映射表使用的一些静态成员以及两个成员函数；<table class ="TableStyle" border="0" width="568"  style ="display:none" id="DECLARE_INTERFACE_MAP_tab">
+		<tr>
+			<td>#ifdef _AFXDLL<br>#define DECLARE_INTERFACE_MAP() \<br>private: \<br>static const AFX_INTERFACEMAP_ENTRY 
+									_interfaceEntries[]; \<br>protected: \<br>static AFX_DATA const AFX_INTERFACEMAP 
+									interfaceMap; \<br>static const AFX_INTERFACEMAP* PASCAL 
+									_GetBaseInterfaceMap(); \<br>virtual const AFX_INTERFACEMAP* 
+									GetInterfaceMap() const; \<br><br>#else<br>#define DECLARE_INTERFACE_MAP() \<br>private: \<br>static const AFX_INTERFACEMAP_ENTRY 
+									_interfaceEntries[]; \<br>protected: \<br>static AFX_DATA const AFX_INTERFACEMAP 
+									interfaceMap; \<br>virtual const AFX_INTERFACEMAP* 
+									GetInterfaceMap() const; \<br><br>#endif</td>
+		</tr>
+	</table></li>
+	<li>在类的实现文件中先定义接口的 IID</li>
+	<li>在类的实现部分使用 <span class ="ShowLink" onclick ="Call Show(BEGIN_INTERFACE_MAPtable)" >BEGIN_INTERFACE_MAP、INTERFACE_PART 和 END_INTERFACE_MAP</span> 
+	宏定义接口映射表；<table class="TableStyle" style="display:none" border="1" width="100%" id="BEGIN_INTERFACE_MAPtable">
+		<tr>
+			<td>#ifdef _AFXDLL<br>
+			#define BEGIN_INTERFACE_MAP(theClass, theBase) \<br>
+			const AFX_INTERFACEMAP* PASCAL theClass::_GetBaseInterfaceMap() \<br>
+			{ return &amp;theBase::interfaceMap; } \<br>
+			const AFX_INTERFACEMAP* theClass::GetInterfaceMap() const \<br>
+			{ return &amp;theClass::interfaceMap; } \<br>
+			AFX_COMDAT const AFX_DATADEF AFX_INTERFACEMAP theClass::interfaceMap 
+			= \<br>
+			{ &amp;theClass::_GetBaseInterfaceMap, &amp;theClass::_interfaceEntries[0], 
+			}; \<br>
+			AFX_COMDAT const AFX_DATADEF AFX_INTERFACEMAP_ENTRY 
+			theClass::_interfaceEntries[] = \<br>
+			{ \<br>
+			<br>
+			#else<br>
+			#define BEGIN_INTERFACE_MAP(theClass, theBase) \<br>
+			const AFX_INTERFACEMAP* theClass::GetInterfaceMap() const \<br>
+			{ return &amp;theClass::interfaceMap; } \<br>
+			AFX_COMDAT const AFX_DATADEF AFX_INTERFACEMAP theClass::interfaceMap 
+			= \<br>
+			{ &amp;theBase::interfaceMap, &amp;theClass::_interfaceEntries[0], }; \<br>
+			AFX_COMDAT const AFX_DATADEF AFX_INTERFACEMAP_ENTRY 
+			theClass::_interfaceEntries[] = \<br>
+			{ \<br>
+			<br>
+			#endif<br>
+			<br>
+			#define INTERFACE_PART(theClass, iid, localClass) \<br>
+			{ &amp;iid, offsetof(theClass, m_x##localClass) }, \<br>
+			<br>
+			#define INTERFACE_AGGREGATE(theClass, theAggr) \<br>
+			{ NULL, offsetof(theClass, theAggr) }, \<br>
+			<br>
+			#define END_INTERFACE_MAP() \<br>
+			{ NULL, (size_t)-1 } \<br>
+			}; \</td>
+		</tr>
+	</table>
+	<p>由这三步，实现接口映射（在 CCmdtarget 中,用接口映射表实现了 IUnknown-&gt;QueryInterface&nbsp; 操作）。</li>
+	<li>为每一个接口定义嵌套类成员（定义接口）；<br><span class="ShowLink" onclick ="Call Show (BEGIN_INTERFACE_PART_table)">BEGIN_INTERFACE_PART()</span><table style ="display:none" class="TableStyle" id ="BEGIN_INTERFACE_PART_table" border="1" width="100%">
+															<tr>
+																<td>
+																<pre>#define BEGIN_INTERFACE_PART(localClass, baseClass) \
+	class X##localClass : public baseClass \
+	{ \
+	public: \
+		STDMETHOD_(ULONG, AddRef)(); \
+		STDMETHOD_(ULONG, Release)(); \
+		STDMETHOD(QueryInterface)(REFIID iid, LPVOID* ppvObj); \</pre>
+</td>
+															</tr>
+															</table><br>
+<span class ="showlink" onclick ="call show (INIT_INTERFACE_PART_table)">INIT_INTERFACE_PART()</span>定义了记录偏移量的数据成员 
+	m_nOffset，并在嵌套类的构造函数中对 m_nOffwet 进行初始赋值。所以根据此偏移经计算得到父类的指针 
+	<span onclick ="call show(pthis_table)" class ="showlink"> <a name="pThis">pThis</a></span>
+	<table id="pthis_table" class="tablestyle" style ="display:none" border="1" width="100%" height="30">
+			<tr>
+				<td>
+					<pre>#define METHOD_PROLOGUE_EX(theClass, localClass) \
+	theClass* pThis = ((theClass*)((BYTE*)this - m_nOffset)); \
+	AFX_MANAGE_STATE(pThis-&gt;m_pModuleState) \
+	pThis; // avoid warning from compiler \</pre></td>
+							</tr>
+	</table>，然后利用父类的成员函数。<br>
+<table id ="INIT_INTERFACE_PART_table" style ="display:none" class ="tablestyle" border="1" width="100%">
+																											<tr>
+																												<td>
+																												<pre>#ifndef _AFX_NO_NESTED_DERIVATION
+#define INIT_INTERFACE_PART(theClass, localClass) \
+		size_t m_nOffset; \
+		INIT_INTERFACE_PART_DERIVE(theClass, localClass) \</pre>
+																												<pre>#define INIT_INTERFACE_PART_DERIVE(theClass, localClass) \
+		X##localClass() \
+			{ m_nOffset = offsetof(theClass, m_x##localClass); } \</pre>
+																												<pre>#else
+#define INIT_INTERFACE_PART(theClass, localClass)
+#define INIT_INTERFACE_PART_DERIVE(theClass, localClass)</pre>
+																												<pre>#endif</pre>
+																												</td>
+																											</tr>
+																											</table>
+<span class ="showlink" onclick ="call show(STEMETHOD_table)">STEMETHOD_()</span><br>
+<table id="STEMETHOD_table" border="1" width="100%" class="tablestyle" style="display:none">
+																						<tr>
+																							<td>
+																							<pre>#define STDMETHOD(method)       virtual HRESULT STDMETHODCALLTYPE method
+#define STDMETHOD_(type,method) virtual type STDMETHODCALLTYPE method</pre>
+																							</td>
+																						</tr>
+																						</table>
+<span class="showlink" onclick="call show(END_INTERFACE_PART_table)">END_INTERFACE_PART()</span></li>
+	<font color="#FF00FF">注意：这里会在类中定义一个成员变量： m_xLocallClass 和一个友员类 XlocaalClass</font><table class="tablestyle" id="END_INTERFACE_PART_table" style="display:none" border="1" width="100%" id="table1">
+		<tr>
+			<td>
+			<pre>#define END_INTERFACE_PART(localClass) \
+	} m_x##localClass; \
+	friend class X##localClass; \</pre>
+			</td>
+		</tr>
+	</table>
+	<li>实现嵌套类。<br>
+	在方法中先用宏 METHOD_PROLOGUE_EX_(theClass, localClass) 得到父指针 <a href="#pThis">
+	pThis</a>，然后实现方法。<span class ="showlink" onclick ="call show(table1_queryinterface_addref_release)" ><i>QueryInterface</i>, <i>AddRef</i>, 和 <i>Release </i>的实现</span>。<br>
+　<table cellPadding="5" width="95%" id="table1_queryinterface_addref_release" class ="tablestyle" style="display:none">
+		<tr>
+			<td>
+			<pre>STDMETHODIMP_(ULONG) COleDropTarget::XDropTarget::AddRef()
+{
+    METHOD_PROLOGUE_EX_(COleDropTarget, DropTarget)
+    return pThis-&gt;ExternalAddRef();
+}
+
+STDMETHODIMP_(ULONG) COleDropTarget::XDropTarget::Release()
+{
+    METHOD_PROLOGUE_EX_(COleDropTarget, DropTarget)
+    return pThis-&gt;ExternalRelease();
+}
+
+STDMETHODIMP COleDropTarget::XDropTarget::QueryInterface(
+    REFIID iid, LPVOID* ppvObj)
+{
+    METHOD_PROLOGUE_EX_(COleDropTarget, DropTarget)
+    return pThis-&gt;ExternalQueryInterface(&amp;iid, ppvObj);
+}</pre>
+			</td>
+		</tr>
+	</table>
+	</li>
+	<li>COM 引出函数和类厂的实现。
+	    
+	<ul>
+		<li><span  class ="showlink" onclick ="call show(classfactorytable)">类厂</span><table id="classfactorytable" style="display:none" class ="tablestyle" cellPadding="5" width="95%" id="table2">
+			<tr>
+				<td>
+				<pre>COleObjectFactory cf (
+    CLSID_Math,                  // The object's CLSID
+    RUNTIME_CLASS (CComClass),   // Class representing the object
+    FALSE,                       // Many clients, one EXE
+    _T (&quot;Math.Object&quot;)           // The object's ProgID
+);</pre>
+				</td>
+			</tr>
+		</table>
+		<li>定义一个内嵌的类厂对象，在类的定义中用  
+		<span class="showlink" onclick ="call show(declare_olecreate_table)">DECLARE_OLECREATE</span></li>
+	      <table id="declare_olecreate_table" class="tablestyle" style="display:none" border="1" width="100%">
+			<tr>
+				<td>
+				<pre>#define DECLARE_OLECREATE(class_name) \
+public: \
+	static AFX_DATA COleObjectFactory factory; \
+	static AFX_DATA const GUID guid; \</pre></td>
+			</tr>
+		</table>
+		<li>实现类厂对象，在实现文件中用  
+		<span class = "showlink" onclick ="call show(IMPLEMENT_OLECREATE_table)">IMPLEMENT_OLECREATE</span></li>
+          ,external_name :<b>ProgID</b>;class_name:<b>CLSID</b><table border="1" width="100%" id ="IMPLEMENT_OLECREATE_table"  class ="tablestyle" style ="display:none">
+			<tr>
+				<td>
+				<pre>#define IMPLEMENT_OLECREATE(class_name, external_name, l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8) \
+	AFX_DATADEF COleObjectFactory class_name::factory(class_name::guid, \
+		RUNTIME_CLASS(class_name), FALSE, _T(external_name)); \
+	AFX_COMDAT const AFX_DATADEF GUID class_name::guid = \
+		{ l, w1, w2, { b1, b2, b3, b4, b5, b6, b7, b8 } }; \</pre></td>
+			</tr>
+		</table>
+	</ul></li>
+</ol>
+
+
+<p class="showlink" onclick="call show(connectionpointtable)">建立连接点</p>
+<ol id="connectionpointtable" style="display:none"><li><b>建立源对象</b>，参见潘爱民的《COM原理及应用》的第 
+	192 页的 6.4.3 节</li><ol><li><p>
+用向导生成一个 DLL 工程，注意要选中自动化。<span class="showlink" onclick ="call show(DLLWIZE)">见图</span>
+<img style ="display:none" id="DLLWIZE" border="0" src="Picture/DLL向导.JPG" width="615" height="449">
+<p>点完成。向导自动在初始化函数中加入了下面的红色部分。</p>
+		<table border="0" width="100%" id="table2">
+			<tr>
+				<td>
+				<pre>BOOL CKeyInputApp::InitInstance()
+{
+	CWinApp::InitInstance();</pre>
+				<pre>	<font color="#FF00FF">// 将所有 OLE 服务器(工厂)注册为运行。这将使
+	//  OLE 库得以从其他应用程序创建对象。
+	COleObjectFactory::RegisterAll();</font></pre>
+				<pre>	return TRUE;
+}</pre>
+				</td>
+			</tr>
+		</table>
+</li>
+		<li>
+		<p>用向导加入一个从 CCmdTarget 派生的新类，<span class="showlink" onclick ="call show(CCmdtarget_wize_mfc_imag)">见图：
+		<img id="CCmdtarget_wize_mfc_imag" style="display:none" border="0" src="Picture/MFC类向导-CCmdTarget.JPG" width="615" height="449"></span></li>
+		它自动完成了类厂的建立和 Disptach 接口。<span onclick="call show(createfactorytable)" class ="showlink">如下：</span>
+		<table  class="tablestyle" id="createfactorytable" style="display:none" border="0" width="100%" id="table3">
+			<tr>
+				<td>头文件：</td>
+			</tr>
+			<tr>
+				<td>
+				<pre>#pragma once
+</pre>
+				<pre>// CKeyInput 命令目标</pre>
+				<pre>class CKeyInput : public CCmdTarget
+{
+	DECLARE_DYNCREATE(CKeyInput)</pre>
+				<pre>public:
+	CKeyInput();
+	virtual ~CKeyInput();</pre>
+				<pre>	virtual void OnFinalRelease();</pre>
+				<pre>protected:
+	DECLARE_MESSAGE_MAP()
+	<font color="#FF00FF">DECLARE_OLECREATE(CKeyInput)
+	DECLARE_DISPATCH_MAP()
+	DECLARE_INTERFACE_MAP()</font>
+};</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>实现文件：</td>
+			</tr>
+			<tr>
+				<td>
+				<pre>// CKeyInput.cpp : 实现文件
+//</pre>
+				<pre>#include &quot;stdafx.h&quot;
+#include &quot;KeyInput.h&quot;
+#include &quot;CKeyInput.h&quot;
+</pre>
+				<pre>// CKeyInput</pre>
+				<pre>IMPLEMENT_DYNCREATE(CKeyInput, CCmdTarget)
+CKeyInput::CKeyInput()
+{
+	<font color="#FF00FF">EnableAutomation();
+	</font></pre>
+				<pre><font color="#FF00FF">	// 为了使应用程序在 OLE 自动化对象处于活动状态时保持
+	//	运行，构造函数调用 AfxOleLockApp。
+	
+	AfxOleLockApp();</font>
+}</pre>
+				<pre>CKeyInput::~CKeyInput()
+{
+	// 为了在用 OLE 自动化创建所有对象后终止应用程序，
+	// 	析构函数调用 AfxOleUnlockApp。
+	
+	AfxOleUnlockApp();
+}
+</pre>
+				<pre>void CKeyInput::OnFinalRelease()
+{
+	// 释放了对自动化对象的最后一个引用后，将调用
+	// OnFinalRelease。基类将自动
+	// 删除该对象。在调用该基类之前，请添加您的
+	// 对象所需的附加清除代码。
+
+	CCmdTarget::OnFinalRelease();
+}
+</pre>
+				<pre>BEGIN_MESSAGE_MAP(CKeyInput, CCmdTarget)
+END_MESSAGE_MAP()
+</pre>
+				<pre><font color="#FF00FF">BEGIN_DISPATCH_MAP(CKeyInput, CCmdTarget)
+END_DISPATCH_MAP()</font></pre>
+				<pre>// 注意: 我们添加 IID_IKeyInput 支持
+//以支持来自 VBA 的类型安全绑定。此 IID 必须同附加到 .IDL 文件中的
+//调度接口的 GUID 匹配。
+
+// {87741D4A-7277-4D93-98F0-D116B995FD91}
+static const IID IID_IKeyInput =
+{ 0x87741D4A, 0x7277, 0x4D93, { 0x98, 0xF0, 0xD1, 0x16, 0xB9, 0x95, 0xFD, 0x91 } };</pre>
+				<pre>BEGIN_INTERFACE_MAP(CKeyInput, CCmdTarget)
+	<font color="#FF00FF">INTERFACE_PART(CKeyInput, IID_IKeyInput, Dispatch)</font>
+END_INTERFACE_MAP()</pre>
+				<pre>// {7C6F1364-8C73-4335-B6FD-C61D53681573}
+IMPLEMENT_OLECREATE_FLAGS(CKeyInput, &quot;KeyInput.KeyInput&quot;, afxRegApartmentThreading, 0x7c6f1364, 0x8c73, 0x4335, 0xb6, 0xfd, 0xc6, 0x1d, 0x53, 0x68, 0x15, 0x73)
+</pre>
+				<pre>// CKeyInput 消息处理程序</pre>
+				</td>
+			</tr>
+			
+		</table>
+		<p>　<li>
+		<p>建立连接点容器<ul>
+			<li>在实现文件中的接口映射表中定义：<span class="showlink" onclick ="call show(interface_part_iidiconnectionpointcontainer)">INTERFACE_PART(theClass, IID_IConnectionPointContainer, 
+ConnPtContainer)</span>
+			<table border="0" width="100%" class="tablestyle" style="display:none" id="interface_part_iidiconnectionpointcontainer">
+				<tr>
+					<td>
+					<pre>BEGIN_INTERFACE_MAP(theClass, theBase)
+	INTERFACE_PART(theClass, IID, Dispatch) //这是向导加的
+	<font color="#FF00FF">INTERFACE_PART(theClass, IID_IConnectionPointContainer, ConnPtContainer)</font>
+END_INTERFACE_MAP()</pre></td>
+				</tr>
+			</table></li>
+			<li>在类 theClass 的构造函数中加入：<br>EnableAutomation();<br>
+			<font color="#FF00FF">EnableConnections();</font></li>
+		</ul></li>
+		<li>建立连接点<ul>
+			<li>在头文件中声明连接点映射表：DELARE_CONNECTION_MAP()</li>
+			<li>在实现文件中定义连接点的 IID 和 在 odl(idl) 文件中定义连接点接口</li>
+			<li>在实现文件中定义连接点映射表：</li>
+		 
+			 
+			<ul>
+				<li>BEGIN_CONNECTION_MAP(theClass, theBase)</li>
+				<li>CONNECTION_PART(theClass, IID, LocalClass)</li>
+				<li>END_CONNECTION_MAP()</li>
+			</ul>
+			<li>在头文件中定义连接点对象：</li>
+		 
+			 
+			<ul>
+				<li>BEGIN_CONNECTION_PART(theClass,LocalClass)</li>
+				<li>CONNECTION_IID(IID)</li>
+				<li>END_CONNECTION_PART(LocalClass)<font color="#FF00FF"> 
+			注意：这里会在类中定义一个成员变量： m_xLocallClass 和一个友员类 XlocaalClass</font></li>
+			</ul>
+		</ul></li>
+</ol> 
+	<li><b>实现接收器</b>，参见 195 页的 6.4.4 节<p></p></li>
+	<ol>
+	    <li>加入 COM 库初始化函数：AfxOleInit()</li>
+		<li>加入接收器对象：</li>
+		<ul>
+		    <li>BEGIN_INTERFACE_PART(theEvent, IDispatch)   //从 IDispatch 派生出来的</li>
+			<li>INIT_INTERFACE_PART(theClass, theEvent)</li>
+			<li>接收器的方法：STDMETHOD(...)</li>
+			<li>END_INTERFACE_PART(theEvent)</li>
+		</ul>
+		<li>实现接收器成员：Invoke 等。</li>
+	</ol>
+</ol>
+
+
+
+
+
+<p><b>用 ATL 实现接口</b></p>
+<p class ="showlink" onclick ="call show(ATL_table_impelement)"><b>VC6.0</b></p>
+<ol id="ATL_table_impelement" style ="display:none">
+
+
+<li>
+<p><b>建立 ATL 工程</b>
+<p>
+<ol>
+<li><span  class ="showlink" onclick ="call show(Create_ATL_Oparate)">操作步骤</span> </li>
+<form id="Create_ATL_Oparate" style ="display:none">
+<font color="#000000"><span style="text-decoration: none">步骤1：建立一个工作区(WorkSpace)。<br>
+步骤2：在工作区中，建立一个 ATL 工程(Project)。示例程序叫 Simple1，并选择DLL方式，见图一。<br>
+<br>
+<img height="467" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic01.jpg" width="612" border="0"><br>
+图一、建立 ATL DLL 工程<br>
+<br>
+　　<i><b>Dynamic Link Library(DLL)</b></i> 表示建立一个 DLL 的组件程序。<br>
+　　<i><b>Executable(EXE)</b></i> 表示建立一个 EXE 的组件程序。<br>
+　　<i><b>Service(EXE)</b></i> 表示建立一个服务程序，系统启动后就会加载并执行的程序。<br>
+　　<i><b>Allow merging of proxy/stub code</b></i> 
+选择该项表示把“代理/存根”代码合并到组件程序中，否则需要单独编译，单独注册代理存根程序。代理/存根，这个是什么概念？还记得我们在</span></font><a href="http://www.vckbase.com/document/viewdoc/?id=1493"><span style="text-decoration: none"><font color="#000000">上回书</font></span></a><font color="#000000"><span style="text-decoration: none">中介绍的吗？当调用者调用进程外或远程组件功能的时候，其实是代理/存根负责数据交换的。</li>
+ 
+</span></font>
+</form>
+
+<li><span  class ="showlink" onclick ="call show(Create_ATL_ADD_Content)">增加的内容</span> </li>
+<form id ="Create_ATL_ADD_Content" style ="display:none">
+增加的文件：<br>
+ATLCOM.def:定义 DLL 的导出函数。<br>
+<span class="showlink" onclick ="call show(init_IDL_Content)">ATLCOM.IDL:定义 COM 库和接口。</span><br>
+<pre id=init_IDL_Content style ="display:none; background-color:#FFFF00">
+import &quot;oaidl.idl&quot;;
+import &quot;ocidl.idl&quot;;
+
+[
+uuid(607C0BF2-5E09-42E7-A62F-407036FFAAD3),
+version(1.0),
+helpstring(&quot;ATLCOM 1.0 Type Library&quot;)
+]
+library ATLCOMLib
+{
+importlib(&quot;stdole32.tlb&quot;);
+importlib(&quot;stdole2.tlb&quot;);
+
+};
+ </pre>
+<span class=showlink onclick ="call show(atlcom_content)">ATLCOM.CPP：实现了COM对象实例和动态库的入口和导出函数的实现。</span>
+<div style="background-color: #FFFF00">
+<ol id=atlcom_content   style=display:none>
+	<li>对象映射表：<br>
+	BEGIN_OBJECT_MAP(ObjectMap)<br>
+	END_OBJECT_MAP()</li>
+	<li>CComModule 	_Module;</li>
+	<li>DllMain</li>
+	<li>DllCanUnloadNow</li>
+	<li>DllGetClassObject</li>
+	<li>DllRegisterServer</li>
+	<li>DllUnregistSever</li>
+</ol>
+	</div>
+	<p></p>
+<ol>
+   编译后增加的文件：
+   <li>ATLCOM_i.c:定义库的IID</li>
+   <li>ATLCOM.H:这个编译前已有，但没有内容。内容是由MIDL编译IDL文件后产生的。<br></li>
+</ol>
+	
+</form>
+</ol>
+
+
+<li><b>增加 ATL 对象类<br></b>
+<ol>
+<li><span class ="showlink" onclick ="call show(ADD_ATL_CLASS)">操作步骤</span></li>
+<form id="ADD_ATL_CLASS" style ="display:none">
+步骤1：菜单 Insert\New ATL Object...（或者用鼠标右键在 ClassView 卡片中弹出菜单）并选择Object 分类，选中 
+Simple Object 项目。见图二。<br>
+<br>
+<img height="257" src="Picture/comtut5pic02.jpg" width="413" border="0"><br>
+图二、选择建立简单COM对象<br>
+<br>
+　　<i><b>Category Object</b></i> 普通组件。其中可以选择的组件对象类型很多，但本质上，就是让向导帮我们默认加上一些接口。比如我们选 
+&quot;Simple Object&quot;，则向导给我们的组件加上 IUnknown 接口；我们选 &quot;Internet Explorer Object&quot;，则向导除了加上 
+IUnknown 接口外，再增加一个给 IE 所使用的 IObjectWithSite 接口。当然了，我们完全可以手工增加任何接口。<br>
+　　<i><b>Category Controls</b></i> ActiveX 控件。其中可以选择的 ActiveX 类型也很多。我们在后续的专门介绍 
+ActiveX 编程中再讨论。<br>
+　　<i><b>Category Miscellaneous</b></i> 辅助杂类组件。<br>
+　　<i><b>Categroy Data Access</b></i> 数据库类组件(我最讨厌数据库编程了，所以我也不会)。<br>
+<br>
+　　步骤2：增加自定义类 CFun(接口 IFun) ,见图三。<br>
+<br>
+<img height="260" src="Picture/comtut5pic03.jpg" width="421" border="0"><br>
+图三、输入类中的各项名称<br>
+　　 其实，我们只需要输入短名(Short Name)，其它的项目会自动填写。没什么多说的，只请大家注意一下 ProgID 项，默认的 ProgID 
+构造方式为“工程名.短名”。<br>
+<br>
+　　 步骤3：填写接口属性，见图四。<br>
+<img height="260" src="Picture/comtut5pic04.jpg" width="421" border="0"><br>
+图四、接口属性<br>
+<br>
+　　<i><b>Threading Model</b></i> 选择组件支持的线程模型。COM 中的线程，我认为是最讨厌，最复杂的部分。COM 
+线程和公寓的概念，留待后续介绍。现在吗......大家都选 
+Apartment，它代表什么那？简单地说：当在线程中调用组件函数的时候，这些调用会排队进行。因此，这种模式下，我们可以暂时不用考虑同步的问题。(注1)<br>
+　　 <i><b>Interface</b></i> 接口基本类型。Dual 表示支持双接口(注2)，这个非常 
+非常重要，非常非常常用，但我们今天不讲。Custom 表示自定义借口。<b>切记！切记！我们的这第一个 COM 程序中，一定要选择它！！！！</b>（如果你选错了，请删除全部内容，重新来过。）<br>
+　　 Aggregation 我们写的组件，将来是否允许被别人聚合(注3)使用。Only 表示必须被聚合才能使用，有点类似 C++ 
+中的纯虚类，你要是总工程师，只负责设计但不亲自写代码的话，才选择它。<br>
+　　<i><b>Support ISupportErrorInfo</b></i> 是否支持丰富信息的错误处理接口。以后就讲。<br>
+　　<i><b>Support Connection Points</b></i> 是否支持连接点接口（事件、回调）。以后就讲。<br>
+　　<i><b>Free Threaded Marshaler</b></i> 以后也不讲，就算打死你，我也不说！(注4)<br>
+<br>
+</form>
+<li><span class ="showlink" onclick ="call show(Add_ATL_CLASS_Content)">增加的内容</span></li>
+<form id="Add_ATL_CLASS_Content" style ="display:none">
+增加的文件：
+
+<br>
+Fun.cpp:<br>
+<span class =showlink onclick ="call show(Fun_h_content)">Fun.h:</span><br>
+<pre id=Fun_h_content style ="background-color: #FFFF00" style=display:none>
+// Fun.h : Declaration of the CFun
+
+#ifndef __FUN_H_
+#define __FUN_H_
+
+#include "resource.h"       // main symbols
+
+/////////////////////////////////////////////////////////////////////////////
+// CFun
+class ATL_NO_VTABLE CFun : 
+	public CComObjectRootEx<CComSingleThreadModel>,
+	public CComCoClass<CFun, &CLSID_Fun>,
+	public IFun
+{
+public:
+	CFun()
+	{
+	}
+
+DECLARE_REGISTRY_RESOURCEID(IDR_FUN)
+
+DECLARE_PROTECT_FINAL_CONSTRUCT()
+
+BEGIN_COM_MAP(CFun)
+	COM_INTERFACE_ENTRY(IFun)
+END_COM_MAP()
+
+// IFun
+public:
+};
+
+#endif //__FUN_H_
+</pre>
+<span class="showlink" onclick ="call show(Registvalue_Content)">Fun.rgs:关于注册值：</span>
+<pre id="Registvalue_Content" style="display:none" style="background-color: #FFFF00">
+HKCR
+{
+	ATLCOM.Fun.1 = s 'Fun Class'
+	{
+		CLSID = s '{00B276CB-650D-4E84-8B8F-A005D4C06C7C}'
+	}
+	ATLCOM.Fun = s 'Fun Class'
+	{
+		CLSID = s '{00B276CB-650D-4E84-8B8F-A005D4C06C7C}'
+		CurVer = s 'ATLCOM.Fun.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {00B276CB-650D-4E84-8B8F-A005D4C06C7C} = s 'Fun Class'
+		{
+			ProgID = s 'ATLCOM.Fun.1'
+			VersionIndependentProgID = s 'ATLCOM.Fun'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{607C0BF2-5E09-42E7-A62F-407036FFAAD3}'
+		}
+	}
+}</pre>
+<p></p><span class =showlink onclick ="call show(atlcom_idl_add_content)">ATLCOM.idl文件中增加的内容：</span>
+<pre id=atlcom_idl_add_content style ="display:none" style="background-color: #FFFF00">
+import "oaidl.idl";
+import "ocidl.idl";
+	<font color="#FF0000">[
+		object,
+		uuid(2EAC391A-5129-4EF8-BF2B-6E22DEC145DD),
+	
+		helpstring("IFun Interface"),
+		pointer_default(unique)
+	]
+	interface IFun : IUnknown
+	{
+	};</font>
+
+[
+	uuid(607C0BF2-5E09-42E7-A62F-407036FFAAD3),
+	version(1.0),
+	helpstring("ATLCOM 1.0 Type Library")
+]
+library ATLCOMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	<font color="#FF0000">[
+		uuid(00B276CB-650D-4E84-8B8F-A005D4C06C7C),
+		helpstring("Fun Class")
+	]
+	coclass Fun
+	{
+		[default] interface IFun;
+	};</font>
+};</pre>
+<p></p>
+<span class =showlink onclick ="call show(atlcom_cpp_add_content)">ATLCOM.CPP增加的内容：</span><br>
+<pre id=atlcom_cpp_add_content style =display:none style="background-color: #FFFF00">
+<span >BEGIN_OBJECT_MAP(ObjectMap)
+<font color="#FF0000">OBJECT_ENTRY(CLSID_Fun, CFun)</font>
+END_OBJECT_MAP()</span>
+</pre>
+
+编译后增加的文件：<br>
+ATLCOM_p.c<br>
+dlldata.c<br>
+</form></ol>　
+</li>
+
+<li><b>添加接口函数</b></li>
+<form>
+<ol>
+
+<li><span  onclick="call show(add_method_interface)" class =showlink>操作步骤</span> </li>
+<table style =display:none cellSpacing="0" cellPadding="0" width="100%" border="0" id="add_method_interface">
+	<tr>
+		<td vAlign="top" width="*" height="74">
+		<table cellSpacing="0" cellPadding="0" width="100%" border="0" id="table4">
+			<tr>
+				<td><b><br>
+				</b><br>
+				<img height="365" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic05.jpg" width="282" border="0"><br>
+				图五、调出增加接口方法的菜单<br>
+				<br>
+				<img height="311" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic06.jpg" width="486" border="0"><br>
+				图六、增加接口函数 Add<br>
+				<br>
+				<img height="311" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic07.jpg" width="486" border="0"><br>
+				图七、增加接口函数 Cat<br>
+				<br>
+				　　请严格按照图六的方式，增加Add()函数；由于图七中增加Cat()函数的参数比较长，我没有适当的输入空格，请大家自己输入的时候注意一下。[in]表示参数方向是输入；[out]表示参数方向是输出；[out,retval]表示参数方向是输出，同时可以作为函数运算结果的返回值。一个函数中，可以有多个[in]、[out]，但[retval]只能有一个，并且要和[out]组合后在最后一个位置。(注5)<br>
+				<img height="454" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic08.jpg" width="535" border="0"><br>
+				图八、接口函数定义完成后的图示<br>
+				　　我们都知道，要想改变 C++ 中的类函数，需要修改两个地方：一是头文件(.h)中类的函数声明，二是函数体(.cpp)文件的实现处。而我们现在用 
+				ATL 写组件程序，则还要修改一个地方，就是接口定义(IDL)文件。别着急 IDL 下次就要讨论啦。<br>
+				　　由于 vc6.0 的BUG，导致大家在增加完接口和接口函数后，可能不会向上图（图八）所表现的样式。解决方法：<br>
+				　 
+				<table cellSpacing="1" width="100%" border="1" id="table5">
+					<tr>
+						<td align="middle" width="3%">1</td>
+						<td width="60%">关闭工程，然后重新打开</td>
+						<td width="37%">该方法常常有效</td>
+					</tr>
+					<tr>
+						<td align="middle" width="3%">2</td>
+						<td width="60%">关闭 IDE，然后重新运行</td>
+						<td width="37%">　</td>
+					</tr>
+					<tr>
+						<td align="middle" width="3%">3</td>
+						<td width="60%">打开 IDL 文件，检查接口函数是否正确，如不正确请修改</td>
+						<td width="37%">　</td>
+					</tr>
+					<tr>
+						<td align="middle" width="3%">4</td>
+						<td width="60%">打开 IDL 文件，随便修改一下(加一个空格，再删除这个空格)，然后保存</td>
+						<td width="37%">该方法常常有效</td>
+					</tr>
+					<tr>
+						<td align="middle" width="3%">5</td>
+						<td width="60%">打开 h/cpp 文件，检查函数是否存在或是否正确，有则改之</td>
+						<td width="37%">无则嘉勉，不说完这个成语心理别扭</td>
+					</tr>
+					<tr>
+						<td align="middle" width="3%">6</td>
+						<td width="60%">删除 IDL/H/CPP 中的接口函数，然后</td>
+						<td width="37%">再来一遍</td>
+					</tr>
+					<tr>
+						<td align="middle" width="3%">7</td>
+						<td width="60%">重新建立工程、重新安装vc、重新安装windows、砸计算机</td>
+						<td width="37%">砸！</td>
+					</tr>
+				</table>
+				<p><b><br>
+　</b></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+
+<li><span  class =showlink onclick ="call show(add_method_add_content)">增加内容</span> </li><br>
+<div id="add_method_add_content" style =display:none>
+<span class =showlink onclick ="call show(add_method_add_content_actcom_idl_file_content)">ATLCOM.IDL文件</span><br>
+<pre id="add_method_add_content_actcom_idl_file_content" style ="display:none;background-color: #FFFF00">
+// ATLCOM.idl : IDL source for ATLCOM.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLCOM.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(2EAC391A-5129-4EF8-BF2B-6E22DEC145DD),
+	
+		helpstring("IFun Interface"),
+		pointer_default(unique)
+	]
+	interface IFun : IUnknown
+	{
+<font color="#FF0000">		[helpstring("method Add")] HRESULT Add([in]long n1,[in]long n2,[out,retval]long*pval);</font>
+	};
+
+[
+	uuid(607C0BF2-5E09-42E7-A62F-407036FFAAD3),
+	version(1.0),
+	helpstring("ATLCOM 1.0 Type Library")
+]
+library ATLCOMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(00B276CB-650D-4E84-8B8F-A005D4C06C7C),
+		helpstring("Fun Class")
+	]
+	coclass Fun
+	{
+		[default] interface IFun;
+	};
+};
+</pre>
+<span class=showlink onclick ="call show(fun_h_add_method_add_content)">Fun.h文件增加内容</span><br>
+<pre id =fun_h_add_method_add_content style ="display:none;background-color: #FFFF00">
+// Fun.h : Declaration of the CFun
+
+#ifndef __FUN_H_
+#define __FUN_H_
+
+#include "resource.h"       // main symbols
+
+/////////////////////////////////////////////////////////////////////////////
+// CFun
+class ATL_NO_VTABLE CFun : 
+	public CComObjectRootEx<CComSingleThreadModel>,
+	public CComCoClass<CFun, &CLSID_Fun>,
+	public IFun
+{
+public:
+	CFun()
+	{
+	}
+
+DECLARE_REGISTRY_RESOURCEID(IDR_FUN)
+
+DECLARE_PROTECT_FINAL_CONSTRUCT()
+
+BEGIN_COM_MAP(CFun)
+	COM_INTERFACE_ENTRY(IFun)
+END_COM_MAP()
+
+// IFun
+public:
+<font color="#FF0000">         STDMETHOD(Add)(/*[in]*/long n1,/*[in]*/long n2,/*[out,retval]*/long*pval);</font>
+};
+
+#endif //__FUN_H_
+</pre>
+<span class=showlink onclick ="call show(add_method_fun_cpp_add_content)">Fun.cpp增加内容</span><br>
+<pre id=add_method_fun_cpp_add_content style ="display:none;background-color: #FFFF00">
+// Fun.cpp : Implementation of CFun
+#include "stdafx.h"
+#include "ATLCOM.h"
+#include "Fun.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// CFun
+
+
+<font color="#FF0000">STDMETHODIMP CFun::Add(long n1, long n2, long *pval)
+{
+      // TODO: Add your implementation code here
+
+      return S_OK;
+}</font>
+</pre>
+</div>
+</ol>
+</form>
+
+
+
+</ol>
+
+<p><b>其它文章索引</b></p><ol>
+<li>字符串的处理，见 VC知识库第九期 《COM编程入门——第一部分》</li><li>用ATL建立轻量级的COM对，见 VC 知识库第十三期</li></ol></body></html>
