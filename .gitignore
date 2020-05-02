@@ -3,7 +3,6 @@
 
 Src/ChineseChessCtr_h.h
 Src/ChineseChessCtr_i.c
-Src/ChineseChessCtr.vcxproj
 
 # User-specific files
 *.suo
@@ -13,7 +12,9 @@ Src/ChineseChessCtr.vcxproj
 # Build results
 
 [Dd]ebug/
+[Dd]ebug[Uu]/
 [Rr]elease/
+[Rr]elease[Uu]/
 x64/
 build/
 [Bb]in/
@@ -29,6 +30,7 @@ build/
 # vc git cache
 .vs/
 
+*.filters
 *_i.c
 *_p.c
 *.ilk

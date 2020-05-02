@@ -189,8 +189,6 @@ SOURCE="$(InputPath)"
 
 # Begin Target
 
-# Name "中国象棋控件 - Win32 Release"
-# Name "中国象棋控件 - Win32 Debug"
 # Name "中国象棋控件 - Win32 Unicode Debug"
 # Name "中国象棋控件 - Win32 Unicode Release"
 # Begin Group "Source Files"
