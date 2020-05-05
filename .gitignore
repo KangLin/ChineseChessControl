@@ -67,6 +67,8 @@ ipch/
 *.psess
 *.vsp
 *.vspx
+*.opt
+*.plg
 
 # Guidance Automation Toolkit
 *.gpState
@@ -126,6 +128,7 @@ ClientBin/
 *.[Pp]ublish.xml
 *.pfx
 *.publishsettings
+*.bak
 
 # RIA/Silverlight projects
 Generated_Code/

@@ -24,7 +24,7 @@ CFG=中国象棋控件 - Win32 Debug
 !MESSAGE 
 
 # Begin Project
-# PROP AllowPerConfigDependencies 0
+# PROP AllowPerConfigDependencies 1
 # PROP Scc_ProjName ""
 # PROP Scc_LocalPath ""
 CPP=cl.exe
@@ -189,6 +189,8 @@ SOURCE="$(InputPath)"
 
 # Begin Target
 
+# Name "中国象棋控件 - Win32 Release"
+# Name "中国象棋控件 - Win32 Debug"
 # Name "中国象棋控件 - Win32 Unicode Debug"
 # Name "中国象棋控件 - Win32 Unicode Release"
 # Begin Group "Source Files"

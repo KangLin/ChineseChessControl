@@ -170,7 +170,7 @@ END
 // Bitmap
 //
 
-IDB_XQ                  BITMAP                  "Res\\picture\\cchess.bmp"
+IDB_XQ                  BITMAP                  "Res\\picture\\CCHESS.BMP"
 IDB_QIPANG              BITMAP                  "Res\\Picture\\xqboard.BMP"
 IDB_RSHUAI              BITMAP                  "Res\\Picture\\rshuai.BMP"
 IDB_RSHI                BITMAP                  "Res\\Picture\\rshi.BMP"
