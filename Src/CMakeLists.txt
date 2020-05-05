@@ -26,7 +26,13 @@ set(HEADER_FILES
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
 	ChineseChessCtr.rc
-	ChineseChessCtr.odl)
+	)
+
+find_package(IDL)
+if(IDL_FOUND)
+	add_idl(ChineseChessCtrIDL ChineseChessCtr.odl)
+	set(LIBS ${LIBS} ChineseChessCtrIDL)
+endif()
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -57,6 +63,7 @@ if(BUILD_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
     #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
 endif()
+return()
 
 GENERATE_EXPORT_HEADER(${PROJECT_NAME})
 string(TOLOWER ${PROJECT_NAME} LOWER_PROJECT_NAME)

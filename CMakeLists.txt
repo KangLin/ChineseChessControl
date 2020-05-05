@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(ChinesChessCtrl)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 if(POLICY CMP0083)
     cmake_policy(SET CMP0083 NEW)
@@ -50,7 +50,7 @@ message("BUILD_VERSION:${BUILD_VERSION}")
 set(VERSION ${BUILD_VERSION})
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE "Release")
+    set(CMAKE_BUILD_TYPE "Release")
 endif(NOT DEFINED CMAKE_BUILD_TYPE)
 if("Debug" STREQUAL CMAKE_BUILD_TYPE)
     add_definitions(-D_DEBUG)
@@ -80,7 +80,6 @@ SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTORCC ON)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 SET(CMAKE_VERBOSE_MAKEFILE ON)
-
 
 IF(MSVC)
     # This option is to enable the /MP switch for Visual Studio 2005 and above compilers
