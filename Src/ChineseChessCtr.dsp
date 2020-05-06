@@ -1,10 +1,10 @@
-# Microsoft Developer Studio Project File - Name="中国象棋控件" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="ChineseChessCtr" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Dynamic-Link Library" 0x0102
 
-CFG=中国象棋控件 - Win32 Debug
+CFG=ChineseChessCtr - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
@@ -13,14 +13,14 @@ CFG=中国象棋控件 - Win32 Debug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "ChineseChessCtr.mak" CFG="中国象棋控件 - Win32 Debug"
+!MESSAGE NMAKE /f "ChineseChessCtr.mak" CFG="ChineseChessCtr - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "中国象棋控件 - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "中国象棋控件 - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "中国象棋控件 - Win32 Unicode Debug" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "中国象棋控件 - Win32 Unicode Release" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessCtr - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessCtr - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessCtr - Win32 Unicode Debug" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessCtr - Win32 Unicode Release" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE 
 
 # Begin Project
@@ -31,7 +31,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "中国象棋控件 - Win32 Release"
+!IF  "$(CFG)" == "ChineseChessCtr - Win32 Release"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 0
@@ -69,7 +69,7 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "中国象棋控件 - Win32 Debug"
+!ELSEIF  "$(CFG)" == "ChineseChessCtr - Win32 Debug"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 1
@@ -108,7 +108,7 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "中国象棋控件 - Win32 Unicode Debug"
+!ELSEIF  "$(CFG)" == "ChineseChessCtr - Win32 Unicode Debug"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 1
@@ -146,7 +146,7 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "中国象棋控件 - Win32 Unicode Release"
+!ELSEIF  "$(CFG)" == "ChineseChessCtr - Win32 Unicode Release"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 0
@@ -189,10 +189,10 @@ SOURCE="$(InputPath)"
 
 # Begin Target
 
-# Name "中国象棋控件 - Win32 Release"
-# Name "中国象棋控件 - Win32 Debug"
-# Name "中国象棋控件 - Win32 Unicode Debug"
-# Name "中国象棋控件 - Win32 Unicode Release"
+# Name "ChineseChessCtr - Win32 Release"
+# Name "ChineseChessCtr - Win32 Debug"
+# Name "ChineseChessCtr - Win32 Unicode Debug"
+# Name "ChineseChessCtr - Win32 Unicode Release"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
@@ -391,19 +391,11 @@ SOURCE=.\XQCtl.bmp
 # PROP Default_Filter "txt"
 # Begin Source File
 
-SOURCE=.\ReadMe.txt
+SOURCE=..\ReadMe.txt
 # End Source File
 # Begin Source File
 
-SOURCE="..\..\..\我的文档\Web\VC\Active控件\建立ActiveX控件.htm"
-# End Source File
-# Begin Source File
-
-SOURCE=".\文档\问题.txt"
-# End Source File
-# Begin Source File
-
-SOURCE=".\文档\中国象棋控件技术文档.htm"
+SOURCE=..\README.md
 # End Source File
 # End Group
 # Begin Group "Wave"

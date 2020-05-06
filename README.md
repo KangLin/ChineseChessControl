@@ -7,8 +7,12 @@
 - [简介](#简介)
 - [屏幕截图](#屏幕截图)
 - [开发](#开发)
-  - [编译](#编译)
-  - [调试](#调试)
+  + [编译](#编译)
+  + [调试](#调试)
+  + [使用](#使用)
+    - [属性](#属性)
+    - [方法](#方法)
+    - [事件](#事件)
 
 -------------------------
 
@@ -76,3 +80,42 @@
   + ![](文档/Image/OpenActivexControlTestContainerVC2013.png)
   + ![](文档/Image/AddActivexControlTestContainer.PNG)
 - 剩下的调试步骤与上面VC6.0的一样
+
+#### 使用
+##### 属性:
+- Enabled: 允许或禁止控件
+- QiPangColor: 棋盘颜色
+- TiShiBoxColor: 提示框的颜色
+- QiPangPicture: 棋盘图片
+- QiPangLayout: 棋盘布局。取下列值：
+  + NoQi：无棋子
+  + OnlyTopRed = 1：只有上面红棋子
+  + OnlyBottomBlack = 2：只有下面红棋子
+  + SwapRedBetweenBlack = 4：交换棋子
+  + OnlyTopBlack = OnlyTopRed | SwapRedBetweenBlack：只有上面黑棋子
+  + OnlyBottomRed = OnlyBottomBlack | SwapRedBetweenBlack：只有下面红棋子
+  + TopRedAndBottomBlack = OnlyTopRed |      OnlyBottomBlack：上红下黑
+  + TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed | SwapRedBetweenBlack：上黑下红
+
+注意：如果布局不完全，则由用户控制属性（Enabled）以决定是否下棋。
+
+- StartSide: 开始走棋时的状态。这个要在 ReStart 前设置。取下列值：
+  + RedReadly：红棋准备走
+  + RedWalked：红棋正在走
+  + BlackReadly：黑棋准备走
+  + BlackWalked：黑棋正在走
+
+- CurrentSide：走棋时的状态。取上面的值。
+
+##### 方法:
+- NextStep(): 下一步
+- PreviouStep(): 上一步
+- ReStart(): 重新开始
+- SaveChess(BSTR lpcszFileName): 保存棋局
+- LoadChess(BSTR lpcszFileName): 装载棋局并设置为结束状态
+- LoadChessStart(BSTR lpcszFileName): 装载棋局并设置为开始状态
+- QiPangInterconvert():
+
+##### 事件:
+- MoveChess(short x, short y, ENUM_QiZi chess):走棋
+此事件在属性 CurrentSide 改变前发生。
