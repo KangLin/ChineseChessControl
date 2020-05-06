@@ -37,10 +37,10 @@
 ##### 编译
 - 用 cmake , 建议使用此方法
 
-    mkdir build
-	cd build
-	cmake ..
-	cmake --build .
+      mkdir build
+      cd build
+      cmake ..
+      cmake --build .
 
 - 用VC6.0打开 Src/ChineseChessCtr.dsw,直接编译
 - 用 VC2017 打开 Src/ChineseChessCtr.sln ,直接编译
