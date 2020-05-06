@@ -12,7 +12,7 @@
   helpstring("中国象棋控件"),  /*显示在引用列表框中*/
   control ]
 
-library 中国象棋控件  
+library ChineseChessCtr  
 {
 	importlib(STDOLE_TLB);
 	importlib(STDTYPE_TLB);

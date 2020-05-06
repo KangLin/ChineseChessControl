@@ -46,14 +46,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
     VERSION ${BUILD_VERSION})
 
-# Set flags
-if(ANDROID)
-    if(ANDROID_ARM_NEON)
-        target_compile_options(${PROJECT_NAME} PUBLIC -mfpu=neon-vfpv4)
-    endif()
-    
-    target_compile_options(${PROJECT_NAME} PUBLIC 
-        -frtti -fexceptions -funsafe-math-optimizations -ftree-vectorize -ffast-math)
+if(MSVC)
+	set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX .ocx)
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
@@ -67,6 +61,13 @@ if(BUILD_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
     #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
 endif()
+
+add_custom_command(
+	TARGET ${PROJECT_NAME} POST_BUILD
+	COMMAND regsvr32 /s /c $<TARGET_FILE:${PROJECT_NAME}>
+    VERBATIM
+    )
+
 return()
 
 GENERATE_EXPORT_HEADER(${PROJECT_NAME})
