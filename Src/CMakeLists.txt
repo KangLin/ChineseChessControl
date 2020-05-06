@@ -34,6 +34,10 @@ if(IDL_FOUND)
 	set(LIBS ${LIBS} ChineseChessCtrIDL)
 endif()
 
+if(MSVC)
+	set(LIBS_DEFINES ${LIBS_DEFINES} _AFXDLL)
+endif()
+
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
@@ -52,8 +56,8 @@ if(ANDROID)
         -frtti -fexceptions -funsafe-math-optimizations -ftree-vectorize -ffast-math)
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PUBLIC RABBITCOMMON ${LIBS_DEFINES})
-target_link_libraries(${PROJECT_NAME} PUBLIC RabbitCommon ${QT_LIBRARIES} ${LIBS})
+target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${QT_LIBRARIES} ${LIBS})
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${RabbitCommon_DIR}/Src
     ${CMAKE_BINARY_DIR}
