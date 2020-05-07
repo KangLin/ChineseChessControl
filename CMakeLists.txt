@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(ChinesChessCtrl)
+project(ChineseChessCtrl)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -186,8 +186,7 @@ set(OTHER_FILES
     License.md
     Authors.md
     ChangeLog.md
-    Authors_zh_CN.md
-    ChangeLog_zh_CN.md)
+    )
 if(ANDROID)
     INSTALL(FILES ${OTHER_FILES} DESTINATION "assets" COMPONENT Runtime)
 else()

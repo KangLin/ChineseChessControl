@@ -20,8 +20,8 @@
 
 // Delete the two includes below if you do not wish to use the MFC
 //  database classes
-#include <afxdb.h>			// MFC database classes
-#include <afxdao.h>			// MFC DAO database classes
+//#include <afxdb.h>			// MFC database classes
+//#include <afxdao.h>			// MFC DAO database classes
 
 //Winsocket
 #include <afxsock.h> // MFC socket extensions

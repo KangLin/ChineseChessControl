@@ -15,6 +15,21 @@ environment:
     secure: ejAYGgB+3sBispRxUSr0xw==
 
   matrix:
+  ##### msvc 2019 ########
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    GENERATORS: "Visual Studio 16 2019"
+    BUILD_TARGERT: windows_msvc
+    TOOLCHAIN_VERSION: 16
+    QT_ROOT: C:\Qt\5.12\msvc2019
+    BUILD_ARCH: x86
+  
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    GENERATORS: "Visual Studio 16 2019 Win64"
+    BUILD_TARGERT: windows_msvc
+    TOOLCHAIN_VERSION: 16
+    QT_ROOT: C:\Qt\5.12\msvc2019_64
+    BUILD_ARCH: x64
+
   ##### msvc 2017 ########
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     GENERATORS: "Visual Studio 15 2017"
@@ -56,19 +71,52 @@ environment:
     QT_ROOT: C:\Qt\5.6\msvc2013_64
     BUILD_ARCH: x64
 
+  ##### msvc 2012 ########
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 11 2012"
+    TOOLCHAIN_VERSION: 11
+    BUILD_ARCH: x86
+    
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 11 2012 Win64"
+    TOOLCHAIN_VERSION: 11
+    BUILD_ARCH: x64
+
+  ##### msvc 2010 ########
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 10 2010"
+    TOOLCHAIN_VERSION: 10
+    BUILD_ARCH: x86
+    
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 10 2010 Win64"
+    TOOLCHAIN_VERSION: 10
+    BUILD_ARCH: x64
+
+  ##### msvc 2008 ########
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 9 2008"
+    TOOLCHAIN_VERSION: 9
+    BUILD_ARCH: x86
+    
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 9 2008 Win64"
+    TOOLCHAIN_VERSION: 9
+    BUILD_ARCH: x64
+
 matrix:
   fast_finish: false
 
 init:
-  - set varch=%BUILD_ARCH%
-  - if "%BUILD_ARCH%" == "x64" set varch=amd64
-  - if "%BUILD_TARGERT%" == "windows_msvc" if %TOOLCHAIN_VERSION% LSS 15 (call "C:\Program Files (x86)\Microsoft Visual Studio %TOOLCHAIN_VERSION%.0\VC\vcvarsall.bat" %varch%) else (call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %varch%)  
-  - echo NUMBER_OF_PROCESSORS=%NUMBER_OF_PROCESSORS%
-  - echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
-  - if NOT "%QT_ROOT%" == "NO" for /f "delims=" %%i in ('%QT_ROOT%/bin/qmake -query QT_VERSION') do (set QT_VERSION=%%i) 
-  - echo QT_ROOT=%QT_ROOT%
-  - echo QT_VERSION=%QT_VERSION%
-  - del C:\msys64\usr\bin\link.exe
+  #- set varch=%BUILD_ARCH%
+  #- if "%BUILD_ARCH%" == "x64" set varch=amd64
+  #- if "%BUILD_TARGERT%" == "windows_msvc" if %TOOLCHAIN_VERSION% LSS 15 (call "C:\Program Files (x86)\Microsoft Visual Studio %TOOLCHAIN_VERSION%.0\VC\vcvarsall.bat" %varch%) else (call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %varch%)  
+  #- echo NUMBER_OF_PROCESSORS=%NUMBER_OF_PROCESSORS%
+  #- echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
+  #- if NOT "%QT_ROOT%" == "NO" for /f "delims=" %%i in ('%QT_ROOT%/bin/qmake -query QT_VERSION') do (set QT_VERSION=%%i) 
+  #- echo QT_ROOT=%QT_ROOT%
+  #- echo QT_VERSION=%QT_VERSION%
+  #- del C:\msys64\usr\bin\link.exe
 
 install:
   #- C:\msys64\autorebase.bat
@@ -81,10 +129,11 @@ before_build:
 build_script:
   - mkdir build
   - cd build
-  - cmake .. -G"%GENERATORS%"
-  - cmake --build . --config Release
+  - cmake .. -G"%GENERATORS%" -DCMAKE_INSTALL_PREFIX=%pwd%/install
+  - cmake --build . --config Release --target install
 
 artifacts:
+  - build/ChineseChessCtr-Setup-*.exe
 
 test: off
 
@@ -104,6 +153,6 @@ deploy:
     on:
       BUILD_TARGERT: windows_msvc
       TOOLCHAIN_VERSION: 14
-      QT_VERSION: 5.6.3
+      #QT_VERSION: 5.6.3
       BUILD_ARCH: x86
       appveyor_repo_tag: true        # deploy on tag push only
