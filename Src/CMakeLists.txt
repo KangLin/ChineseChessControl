@@ -64,6 +64,6 @@ endif()
 
 add_custom_command(
 	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND regsvr32 /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
+	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
 	COMMENT "Registering ActiveX Control ......"
 )

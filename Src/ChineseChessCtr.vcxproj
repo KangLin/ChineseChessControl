@@ -340,12 +340,10 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClInclude Include="XQPpg.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bitmap1.bmp" />
     <Image Include="cchess.bmp" />
     <Image Include="Res\cchess.bmp" />
     <Image Include="Res\Icon\ChineseChessCtr.ico" />
     <Image Include="Res\Picture\BCHE.BMP" />
-    <Image Include="Res\Picture\bitmap1.bmp" />
     <Image Include="Res\Picture\BMA.BMP" />
     <Image Include="Res\Picture\BPAO.BMP" />
     <Image Include="Res\Picture\BSHI.BMP" />
