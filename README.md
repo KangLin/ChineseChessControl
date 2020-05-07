@@ -26,6 +26,8 @@
 
 - 项目主页：https://github.com/KangLin/ChineseChessCtr
 
+[![Build status](https://ci.appveyor.com/api/projects/status/x9vc3w9ccniqm62c?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechessctr)
+
 #### 捐赠
 本软件如果对你有用，或者你喜欢它，请你捐赠，支持作者。谢谢！
 

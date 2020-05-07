@@ -62,8 +62,9 @@ if(BUILD_VERSION)
     #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
 endif()
 
-add_custom_command(
-	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
-	COMMENT "Registering ActiveX Control ......"
-)
+# 注册中国象棋控件
+#add_custom_command(
+#	TARGET ${PROJECT_NAME} POST_BUILD
+#	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
+#	COMMENT "Registering ActiveX Control ......"
+#)
