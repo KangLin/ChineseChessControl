@@ -5,7 +5,10 @@
 -------------------------
 
 - [简介](#简介)
+- [捐赠](#捐赠)
 - [屏幕截图](#屏幕截图)
+- [许可协议](License.md)
+- [修改日志](ChangeLog.md)
 - [开发](#开发)
   + [编译](#编译)
   + [调试](#调试)
@@ -26,31 +29,34 @@
 #### 捐赠
 本软件如果对你有用，或者你喜欢它，请你捐赠，支持作者。谢谢！
 
-![捐赠](https://github.com/KangLin/RabbitCommon/raw/master/Src/Resource/image/Contribute.png "捐赠")
+[![捐赠](https://gitee.com/kl222/RabbitCommon/raw/master/Src/Resource/image/Contribute.png "捐赠")](https://github.com/KangLin/RabbitCommon/raw/master/Src/Resource/image/Contribute.png "捐赠")
 
 #### 屏幕截图
 
 ![屏幕截图](Documents/Image/ShotScreen.png)
 
+#### [许可协议](License.md)
+#### [修改日志](ChangeLog.md)
+
 #### 开发
 
 ##### 编译
-- 用 cmake , 建议使用此方法
+- 用 cmake , 建议使用此方法编译
 
       mkdir build
       cd build
       cmake ..
       cmake --build .
 
-- 用VC6.0打开 Src/ChineseChessCtr.dsw,直接编译
-- 用 VC2017 打开 Src/ChineseChessCtr.sln ,直接编译
+- 用VC6.0打开 Src/ChineseChessCtr.dsw,直接编译。不再支持此方法编译
+- 用 VC2017 打开 Src/ChineseChessCtr.sln ,直接编译。不再支持此方法编译
 
 ##### 调试
 ###### VC6.0
 - 打开 ActiveX control test container 工具  
 ![打开 ActiveX control test container 工具](Documents/Image/OpenActivexControlTestContainer.png)
-- 注册中国象棋控件
-  这一步在编译后，会自动执行。如果没有成功，可以按下面方法注册：
+- 注册中国象棋控件  
+  这一步在编译后，会自动执行。如果没有成功，可以按下面方法之一注册：  
   **注意**:需要管理员权限
   + 手工注册
 
@@ -117,5 +123,4 @@
 - QiPangInterconvert():
 
 ##### 事件:
-- MoveChess(short x, short y, ENUM_QiZi chess):走棋
-此事件在属性 CurrentSide 改变前发生。
+- MoveChess(short x, short y, ENUM_QiZi chess):走棋。此事件在属性 CurrentSide 改变前发生。
