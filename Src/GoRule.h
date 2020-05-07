@@ -28,11 +28,11 @@ public:
 
 private:
 	ENUM_ReturnValue JiangJun(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
-	ENUM_ReturnValue ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
-	ENUM_ReturnValue BingRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
-	ENUM_ReturnValue PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
-	ENUM_ReturnValue ShuaiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
-	ENUM_ReturnValue ShiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
+	ENUM_ReturnValue ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
+	ENUM_ReturnValue BingRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
+	ENUM_ReturnValue PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
+	ENUM_ReturnValue ShuaiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
+	ENUM_ReturnValue ShiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
 	ENUM_ReturnValue XiangRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
 	ENUM_ReturnValue MaRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);
 	ENUM_ReturnValue CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[9][10]);

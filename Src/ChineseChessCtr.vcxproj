@@ -352,6 +352,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Image Include="Res\Picture\BXING.BMP" />
     <Image Include="Res\Picture\BZU.BMP" />
     <Image Include="Res\Picture\cchess.bmp" />
+    <Image Include="Res\picture\Chess.ico" />
     <Image Include="Res\Picture\CHU.BMP" />
     <Image Include="Res\Picture\han.bmp" />
     <Image Include="Res\Picture\HE.BMP" />

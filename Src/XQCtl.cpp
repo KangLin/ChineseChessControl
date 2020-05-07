@@ -74,7 +74,7 @@ END_PROPPAGEIDS(CXQCtrl)
 /////////////////////////////////////////////////////////////////////////////
 // Initialize class factory and guid
 
-IMPLEMENT_OLECREATE_EX(CXQCtrl, "CChess.XQCtrl.1",
+IMPLEMENT_OLECREATE_EX(CXQCtrl, "ChineseChess.1",
 	0x71ad322, 0x22ba, 0x45bf, 0x9e, 0x1f, 0x15, 0x4e, 0xfa, 0xf4, 0xe4, 0x2b)
 
 
@@ -122,7 +122,7 @@ void CXQCtrl::DoPropExchange(CPropExchange* pPX)
 	PX_Picture(pPX, _T("QiPangPicture"), m_QiPangPictureHolder);
 	GetCBitmapFromCPictureHolder(&m_QiPangPictureHolder, &m_QiPangPicture);
 
-	PX_Long(pPX, _T("StartSide"), (long&)m_WalkState, BlackReadly);
+	PX_Long(pPX, _T("StartSide"), (long&)m_WalkState, RedReadly);
     PX_Long(pPX, _T("QiPangLayout"), m_QiPang, TopRedAndBottomBlack);
 	TRACE(_T("DoPropExchange-End\n"));
 }
@@ -1309,7 +1309,7 @@ BOOL CXQCtrl::Inital()
 BOOL CXQCtrl::bWalkChess(int i, int j)
 {
      if(i < 0 || i > 8 || j < 0 || j > 9)
-	 {//出界
+	 {   //出界
 		 return false;
 	 }
 

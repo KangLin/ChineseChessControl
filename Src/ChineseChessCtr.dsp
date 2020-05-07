@@ -279,14 +279,6 @@ SOURCE=.\Res\Picture\BCHE.BMP
 # End Source File
 # Begin Source File
 
-SOURCE=.\bitmap1.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\bitmap1.bmp
-# End Source File
-# Begin Source File
-
 SOURCE=.\Res\Picture\BMA.BMP
 # End Source File
 # Begin Source File

@@ -30,7 +30,7 @@
 
 #### 屏幕截图
 
-![屏幕截图](文档/Image/ShotScreen.png)
+![屏幕截图](Documents/Image/ShotScreen.png)
 
 #### 开发
 
@@ -48,7 +48,7 @@
 ##### 调试
 ###### VC6.0
 - 打开 ActiveX control test container 工具  
-![打开 ActiveX control test container 工具](文档/Image/OpenActivexControlTestContainer.png)
+![打开 ActiveX control test container 工具](Documents/Image/OpenActivexControlTestContainer.png)
 - 注册中国象棋控件
   这一步在编译后，会自动执行。如果没有成功，可以按下面方法注册：
   **注意**:需要管理员权限
@@ -58,15 +58,15 @@
 
   + 用 ActiveX control test container 注册
     - 打开注册控件  
-![打开注册控件](文档/Image/OpenRegisterControl.png)
+![打开注册控件](Documents/Image/OpenRegisterControl.png)
     - 注册中国象棋控件  
-      + ![](文档/Image/RegisterControl.PNG)
-      + ![](文档/Image/RegisterChineseChessControl.PNG)
-      + ![](文档/Image/RegisteredChineseChessControl.PNG)
+      + ![](Documents/Image/RegisterControl.PNG)
+      + ![](Documents/Image/RegisterChineseChessControl.PNG)
+      + ![](Documents/Image/RegisteredChineseChessControl.PNG)
 - 插入中国象棋控件  
-![](文档/Image/InsertChineseChessControl.PNG)
+![](Documents/Image/InsertChineseChessControl.PNG)
 - 调试  
-![](文档/Image/Debug.PNG)
+![](Documents/Image/Debug.PNG)
 
 ###### VS 2017
 
@@ -77,8 +77,8 @@
 如果没安装，则可从 github 上下载[源码](https://github.com/microsoft/VCSamples/tree/master/VC2010Samples/MFC/ole/TstCon)
 
 - 工具->外部工具->添加
-  + ![](文档/Image/OpenActivexControlTestContainerVC2013.png)
-  + ![](文档/Image/AddActivexControlTestContainer.PNG)
+  + ![](Documents/Image/OpenActivexControlTestContainerVC2013.png)
+  + ![](Documents/Image/AddActivexControlTestContainer.PNG)
 - 剩下的调试步骤与上面VC6.0的一样
 
 #### 使用

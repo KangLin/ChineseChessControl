@@ -23,11 +23,16 @@ enum ENUM_XINWEI{XinWei, Left_XinWei, Right_XinWei};
 //坐标转换
 enum ENUM_ConvertCoordinate{XYToIJ, IJToXY};
 //棋盘布局
-enum ENUM_QiPang{  NoQi = 0, OnlyTopRed = 1, OnlyBottomBlack = 2, SwapRedBetweenBlack = 4, 
-                   OnlyTopBlack = OnlyTopRed | SwapRedBetweenBlack, 
-				   OnlyBottomRed = OnlyBottomBlack | SwapRedBetweenBlack,
-				   TopRedAndBottomBlack = OnlyTopRed | OnlyBottomBlack,
-				   TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed | SwapRedBetweenBlack};
+enum ENUM_QiPang{
+	NoQi = 0,
+	OnlyTopRed = 1,
+	OnlyBottomBlack = 2,
+	SwapRedBetweenBlack = 4,
+	OnlyTopBlack = OnlyTopRed | SwapRedBetweenBlack,
+	OnlyBottomRed = OnlyBottomBlack | SwapRedBetweenBlack,
+	TopRedAndBottomBlack = OnlyTopRed | OnlyBottomBlack,
+	TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed | SwapRedBetweenBlack
+};
 //走棋状态
 enum ENUM_WalkState{RedReadly, RedWalked, BlackReadly, BlackWalked};
 
