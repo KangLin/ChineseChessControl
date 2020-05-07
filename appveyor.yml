@@ -1,6 +1,6 @@
 #TODO: Change version
 
-version: 'v0.0.4.{build}'
+version: 'v1..{build}'
 
 cache:
   - model
@@ -22,13 +22,6 @@ environment:
     TOOLCHAIN_VERSION: 16
     QT_ROOT: C:\Qt\5.12\msvc2019
     BUILD_ARCH: x86
-  
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    GENERATORS: "Visual Studio 16 2019 Win64"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 16
-    QT_ROOT: C:\Qt\5.12\msvc2019_64
-    BUILD_ARCH: x64
 
   ##### msvc 2017 ########
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
@@ -71,39 +64,6 @@ environment:
     QT_ROOT: C:\Qt\5.6\msvc2013_64
     BUILD_ARCH: x64
 
-  ##### msvc 2012 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 11 2012"
-    TOOLCHAIN_VERSION: 11
-    BUILD_ARCH: x86
-    
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 11 2012 Win64"
-    TOOLCHAIN_VERSION: 11
-    BUILD_ARCH: x64
-
-  ##### msvc 2010 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 10 2010"
-    TOOLCHAIN_VERSION: 10
-    BUILD_ARCH: x86
-    
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 10 2010 Win64"
-    TOOLCHAIN_VERSION: 10
-    BUILD_ARCH: x64
-
-  ##### msvc 2008 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 9 2008"
-    TOOLCHAIN_VERSION: 9
-    BUILD_ARCH: x86
-    
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 9 2008 Win64"
-    TOOLCHAIN_VERSION: 9
-    BUILD_ARCH: x64
-
 matrix:
   fast_finish: false
 
@@ -129,11 +89,12 @@ before_build:
 build_script:
   - mkdir build
   - cd build
-  - cmake .. -G"%GENERATORS%" -DCMAKE_INSTALL_PREFIX=%pwd%/install
+  - cmake .. -G"%GENERATORS%" -DCMAKE_INSTALL_PREFIX=install
   - cmake --build . --config Release --target install
+  - call "C:\Program Files (x86)\NSIS\makensis.exe" "Install.nsi"
 
 artifacts:
-  - build/ChineseChessCtr-Setup-*.exe
+  - path: build/ChineseChessCtr-Setup-*.exe
 
 test: off
 
