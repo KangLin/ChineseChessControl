@@ -19,6 +19,9 @@ SetCompressor lzma
 !include "MUI2.nsh"
 !include "x64.nsh"
 
+;Include installation of redistributable files.
+!include ".\InstallRedistributables.nsh"
+
 ; MUI Settings
 !define MUI_ABORTWARNING
 !define MUI_ICON "install\Chess.ICO"
@@ -113,6 +116,8 @@ Function InstallRuntime
     call InstallVC64
     IfFileExists "$INSTDIR\bin\vcredist_x86.exe" 0 +2
     call InstallVC
+	IntFmt $MSVC_VERSION "%u" @MSVC_VERSION@
+	call InstallRedistributables
 FunctionEnd
 
 Function DirectoryPermissionErrorBox

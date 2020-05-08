@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(ChineseChessCtrl)
+project(ChineseChessCtr)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -178,7 +178,9 @@ add_custom_target(install-runtime
 )
 
 iF(WIN32)
-    INSTALL(FILES Install/Install.nsi DESTINATION "${CMAKE_BINARY_DIR}"
+    # 替换 Install.nsi 中的 MSVC_VERSION
+	configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
+    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh DESTINATION "${CMAKE_BINARY_DIR}"
         COMPONENT Runtime)
 endif()
 # Install other files
