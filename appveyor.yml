@@ -1,6 +1,6 @@
 #TODO: Change version
 
-version: 'v1..{build}'
+version: 'v1.0.1.{build}'
 
 cache:
   - model
@@ -116,5 +116,5 @@ deploy:
       BUILD_TARGERT: windows_msvc
       TOOLCHAIN_VERSION: 14
       #QT_VERSION: 5.6.3
-      BUILD_ARCH: x86
+      #BUILD_ARCH: x86
       appveyor_repo_tag: true        # deploy on tag push only

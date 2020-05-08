@@ -43,7 +43,8 @@
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
 
 - windows
-    - [ChineseChessControl-Setup-v1.0.0.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.0/ChineseChessControl-Setup-v1.0.0.exe)
+    - [ChineseChessControl-Setup-msvc1900-x86-v1.0.1.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1900-x86-v1.0.1.exe)
+    - [ChineseChessControl-Setup-msvc1900-x86_64-v1.0.1.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1900-x86_64-v1.0.1.exe)
   Windows安装包，支持 Windows xp 以上系统
 
 #### 开发
