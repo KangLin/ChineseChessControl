@@ -70,7 +70,7 @@ LangString LANG_DIRECTORY_PERMISSION ${LANG_SIMPCHINESE} "无目录访问权限"
 
 Name "$(LANG_PRODUCT_NAME) ${PRODUCT_VERSION}"
 Caption "$(LANG_PRODUCT_NAME) ${PRODUCT_VERSION}"
-OutFile "${PRODUCT_NAME}-Setup-${PRODUCT_VERSION}.exe"
+OutFile "${PRODUCT_NAME}-Setup-msvc@MSVC_VERSION@-@BUILD_ARCH@-${PRODUCT_VERSION}.exe"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 ;InstallDirRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_DIR_REGKEY}" ""
 
@@ -116,8 +116,9 @@ Function InstallRuntime
     call InstallVC64
     IfFileExists "$INSTDIR\bin\vcredist_x86.exe" 0 +2
     call InstallVC
-	IntFmt $MSVC_VERSION "%u" @MSVC_VERSION@
-	call InstallRedistributables
+
+    IntFmt $MSVC_VERSION "%u" @MSVC_VERSION@
+    call InstallRedistributables
 FunctionEnd
 
 Function DirectoryPermissionErrorBox

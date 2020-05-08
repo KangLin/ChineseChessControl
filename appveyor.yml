@@ -69,8 +69,8 @@ matrix:
 
 init:
   #- set varch=%BUILD_ARCH%
-  - if "%BUILD_ARCH%" == "x64" set varch=amd64
-  - if "%BUILD_TARGERT%" == "windows_msvc" if %TOOLCHAIN_VERSION% LSS 15 (call "C:\Program Files (x86)\Microsoft Visual Studio %TOOLCHAIN_VERSION%.0\VC\vcvarsall.bat" %varch%) else (call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %varch%)  
+  #- if "%BUILD_ARCH%" == "x64" set varch=amd64
+  #- if "%BUILD_TARGERT%" == "windows_msvc" if %TOOLCHAIN_VERSION% LSS 15 (call "C:\Program Files (x86)\Microsoft Visual Studio %TOOLCHAIN_VERSION%.0\VC\vcvarsall.bat" %varch%) else (call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %varch%)  
   #- echo NUMBER_OF_PROCESSORS=%NUMBER_OF_PROCESSORS%
   #- echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
   #- if NOT "%QT_ROOT%" == "NO" for /f "delims=" %%i in ('%QT_ROOT%/bin/qmake -query QT_VERSION') do (set QT_VERSION=%%i) 
@@ -95,19 +95,20 @@ build_script:
 
 artifacts:
   - path: build/ChineseChessControl-Setup-*.exe
+    name: ChineseChessControl_$(appveyor_build_version)
 
 test: off
 
 #See: https://www.appveyor.com/docs/deployment/github/
 deploy:
   - provider: GitHub
-    #release: FaceRecognizer$(appveyor_build_version)
-    #description: 'Release FaceRecognizer $(APPVEYOR_REPO_TAG_NAME) on windows'
+    #release: ChineseChessControl$(appveyor_build_version)
+    #description: 'ChineseChessControl $(APPVEYOR_REPO_TAG_NAME) on windows'
     #token : https://github.com/settings/tokens
     #password encrypt: https://ci.appveyor.com/tools/encrypt
     auth_token:
-      secure: 2eZXTfGhgCiW9GRLbg9nq7Uz8BVEw4nLzYmgBdvdUIfeEXmlHvC8Xeabsi7yumSx
-    #artifact: FaceRecognizer$(BUILD_TARGERT)$(TOOLCHAIN_VERSION)_$(BUILD_ARCH)_$(QT_VERSION)_$(appveyor_build_version)
+      secure: d6yIXuiId5YbQneorJtC35vuLCEK0iWZUOuXf0MeVA7oqPS78sdCcuv0TgPV2+9t
+    #artifact: ChineseChessControl$(BUILD_TARGERT)$(TOOLCHAIN_VERSION)_$(BUILD_ARCH)_$(QT_VERSION)_$(appveyor_build_version)
     #draft: true
     #prerelease: true
     force_update: true
