@@ -96,6 +96,8 @@
 - 剩下的调试步骤与上面VC6.0的一样
 
 #### 使用
+- [如何：向 Windows 窗体添加 ActiveX 控件](https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/how-to-add-activex-controls-to-windows-forms)
+
 ##### 属性:
 - Enabled: 允许或禁止控件
 - QiPangColor: 棋盘颜色
@@ -132,3 +134,4 @@
 
 ##### 事件:
 - MoveChess(short x, short y, ENUM_QiZi chess):走棋。此事件在属性 CurrentSide 改变前发生。
+
