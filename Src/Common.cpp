@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ChineseChessCtr.h"
+#include "ChineseChessControl.h"
 #include "common.h"
 
 #ifdef _DEBUG

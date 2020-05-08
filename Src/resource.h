@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ 生成的包含文件。
-// 供 ChineseChessCtr.rc 使用
+// 供 ChineseChessControl.rc 使用
 //
 #define IDS_XQ                          1
 #define IDD_ABOUTBOX_XQ                 1
@@ -17,6 +17,7 @@
 #define IDB_HE                          219
 #define IDB_JIE                         220
 #define IDB_KL                          221
+#define IDB_CONTRIBUTE                  224
 #define IDB_RSHUAI                      300
 #define IDB_RSHI                        301
 #define IDB_RXIANG                      302
@@ -36,7 +37,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        223
+#define _APS_NEXT_RESOURCE_VALUE        225
 #define _APS_NEXT_COMMAND_VALUE         32768
 #define _APS_NEXT_CONTROL_VALUE         201
 #define _APS_NEXT_SYMED_VALUE           101

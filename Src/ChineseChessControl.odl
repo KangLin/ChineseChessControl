@@ -1,4 +1,4 @@
-// ChinesChessCtr.odl : type library source for ActiveX Control project.
+// ChineseChessControl.odl : type library source for ActiveX Control project.
 
 // This file will be processed by the Make Type Library (mktyplib) tool to
 // produce the type library (中国象棋控件.tlb) that will become a resource in
@@ -12,7 +12,7 @@
   helpstring("中国象棋控件"),  /*显示在引用列表框中*/
   control ]
 
-library ChineseChessCtr  
+library ChineseChessControl  
 {
 	importlib(STDOLE_TLB);
 	importlib(STDTYPE_TLB);

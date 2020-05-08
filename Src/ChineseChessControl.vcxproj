@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>ChineseChessCtr</ProjectName>
+    <ProjectName>ChineseChessControl</ProjectName>
     <SccProjectName />
     <SccLocalPath />
     <Keyword>MFCProj</Keyword>
@@ -104,7 +104,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\ReleaseU\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\ReleaseU\ChineseChessCtr.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>.\ReleaseU\ChineseChessControl.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\ReleaseU\</ObjectFileName>
@@ -113,7 +113,7 @@
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TypeLibraryName>.\ReleaseU\ChineseChessCtr.tlb</TypeLibraryName>
+      <TypeLibraryName>.\ReleaseU\ChineseChessControl.tlb</TypeLibraryName>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
@@ -123,15 +123,15 @@
     </ResourceCompile>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\ReleaseU\ChineseChessCtr.bsc</OutputFile>
+      <OutputFile>.\ReleaseU\ChineseChessControl.bsc</OutputFile>
     </Bscmake>
     <Link>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>.\ReleaseU\ChineseChessCtr.ocx</OutputFile>
-      <ImportLibrary>.\ReleaseU\ChineseChessCtr.lib</ImportLibrary>
-      <ModuleDefinitionFile>.\ChineseChessCtr.def</ModuleDefinitionFile>
+      <OutputFile>.\ReleaseU\ChineseChessControl.ocx</OutputFile>
+      <ImportLibrary>.\ReleaseU\ChineseChessControl.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
     </Link>
     <CustomBuildStep>
       <Command>regsvr32 /s /c "$(TargetPath)" 
@@ -153,7 +153,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\DebugU\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\DebugU\ChineseChessCtr.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>.\DebugU\ChineseChessControl.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\DebugU\</ObjectFileName>
@@ -163,7 +163,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TypeLibraryName>.\DebugU\ChineseChessCtr.tlb</TypeLibraryName>
+      <TypeLibraryName>.\DebugU\ChineseChessControl.tlb</TypeLibraryName>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
@@ -173,16 +173,16 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\DebugU\ChineseChessCtr.bsc</OutputFile>
+      <OutputFile>.\DebugU\ChineseChessControl.bsc</OutputFile>
     </Bscmake>
     <Link>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>.\DebugU\ChineseChessCtr.ocx</OutputFile>
-      <ImportLibrary>.\DebugU\ChineseChessCtr.lib</ImportLibrary>
-      <ModuleDefinitionFile>.\ChineseChessCtr.def</ModuleDefinitionFile>
+      <OutputFile>.\DebugU\ChineseChessControl.ocx</OutputFile>
+      <ImportLibrary>.\DebugU\ChineseChessControl.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
     </Link>
     <CustomBuildStep>
       <Command>regsvr32 /s /c "$(TargetPath)" 
@@ -204,7 +204,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\Debug\ChineseChessCtr.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>.\Debug\ChineseChessControl.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\Debug\</ObjectFileName>
@@ -215,7 +215,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TypeLibraryName>.\Debug\ChineseChessCtr.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Debug\ChineseChessControl.tlb</TypeLibraryName>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
@@ -225,16 +225,16 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Debug\ChineseChessCtr.bsc</OutputFile>
+      <OutputFile>.\Debug\ChineseChessControl.bsc</OutputFile>
     </Bscmake>
     <Link>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>.\Debug\ChineseChessCtr.ocx</OutputFile>
-      <ImportLibrary>.\Debug\ChineseChessCtr.lib</ImportLibrary>
-      <ModuleDefinitionFile>.\ChineseChessCtr.def</ModuleDefinitionFile>
+      <OutputFile>.\Debug\ChineseChessControl.ocx</OutputFile>
+      <ImportLibrary>.\Debug\ChineseChessControl.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
     </Link>
     <CustomBuildStep>
       <Command>regsvr32 /s /c "$(TargetPath)" 
@@ -255,7 +255,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\Release\ChineseChessCtr.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>.\Release\ChineseChessControl.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\Release\</ObjectFileName>
@@ -264,7 +264,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TypeLibraryName>.\Release\ChineseChessCtr.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Release\ChineseChessControl.tlb</TypeLibraryName>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
@@ -274,15 +274,15 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Release\ChineseChessCtr.bsc</OutputFile>
+      <OutputFile>.\Release\ChineseChessControl.bsc</OutputFile>
     </Bscmake>
     <Link>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>.\Release\ChineseChessCtr.ocx</OutputFile>
-      <ImportLibrary>.\Release\ChineseChessCtr.lib</ImportLibrary>
-      <ModuleDefinitionFile>.\ChineseChessCtr.def</ModuleDefinitionFile>
+      <OutputFile>.\Release\ChineseChessControl.ocx</OutputFile>
+      <ImportLibrary>.\Release\ChineseChessControl.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
     </Link>
     <CustomBuildStep>
       <Command>regsvr32 /s /c "$(TargetPath)" 
@@ -292,7 +292,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ChineseChessCtr.cpp" />
+    <ClCompile Include="ChineseChessControl.cpp" />
     <ClCompile Include="common.cpp" />
     <ClCompile Include="GoRule.cpp" />
     <ClCompile Include="StdAfx.cpp">
@@ -310,11 +310,11 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\..\我的文档\Web\VC\Active控件\建立ActiveX控件.htm" />
-    <CustomBuild Include="ChineseChessCtr.def" />
+    <CustomBuild Include="ChineseChessControl.def" />
     <CustomBuild Include="文档\中国象棋控件技术文档.htm" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="ChineseChessCtr.odl">
+    <Midl Include="ChineseChessControl.odl">
       <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Unicode Release|Win32'">Win32</TargetEnvironment>
       <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Unicode Debug|Win32'">Win32</TargetEnvironment>
       <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Win32</TargetEnvironment>
@@ -322,7 +322,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </Midl>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ChineseChessCtr.rc">
+    <ResourceCompile Include="ChineseChessControl.rc">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Unicode Release|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Unicode Debug|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -330,7 +330,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChineseChessCtr.h" />
+    <ClInclude Include="ChineseChessControl.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="EnumAndStructAndConst.h" />
     <ClInclude Include="GoRule.h" />
@@ -342,7 +342,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
   <ItemGroup>
     <Image Include="cchess.bmp" />
     <Image Include="Res\cchess.bmp" />
-    <Image Include="Res\Icon\ChineseChessCtr.ico" />
+    <Image Include="Res\Icon\ChineseChessControl.ico" />
     <Image Include="Res\Picture\BCHE.BMP" />
     <Image Include="Res\Picture\BMA.BMP" />
     <Image Include="Res\Picture\BPAO.BMP" />

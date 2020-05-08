@@ -10,7 +10,7 @@
 *******************************************************************************************************/
 
 #include "stdafx.h"
-#include "ChineseChessCtr.h"
+#include "ChineseChessControl.h"
 #include "GoRule.h"
 
 #ifdef _DEBUG

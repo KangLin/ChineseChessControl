@@ -1,6 +1,6 @@
-; ChineseChessCtr.def : Declares the module parameters.
+; ChineseChessControl.def : Declares the module parameters.
 
-LIBRARY      "ChineseChessCtr.OCX"
+LIBRARY      "ChineseChessControl.OCX"
 
 EXPORTS
 	DllCanUnloadNow     @1 PRIVATE

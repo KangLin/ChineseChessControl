@@ -9,6 +9,7 @@
 - [屏幕截图](#屏幕截图)
 - [许可协议](License.md)
 - [修改日志](ChangeLog.md)
+- [下载安装包](#下载安装包)
 - [开发](#开发)
   + [编译](#编译)
   + [调试](#调试)
@@ -24,9 +25,9 @@
 
 - 中国象棋 ActivX 控件
 
-- 项目主页：https://github.com/KangLin/ChineseChessCtr
+- 项目主页：https://github.com/KangLin/ChineseChessControl
 
-[![Build status](https://ci.appveyor.com/api/projects/status/x9vc3w9ccniqm62c?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechessctr)
+[![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
 
 #### 捐赠
 本软件如果对你有用，或者你喜欢它，请你捐赠，支持作者。谢谢！
@@ -39,6 +40,11 @@
 
 #### [许可协议](License.md)
 #### [修改日志](ChangeLog.md)
+#### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
+
+- windows
+    - [ChineseChessControl-Setup-v1.0.0.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.0/ChineseChessControl-Setup-v1.0.0.exe)
+  Windows安装包，支持 Windows xp 以上系统
 
 #### 开发
 
@@ -50,8 +56,8 @@
       cmake ..
       cmake --build .
 
-- 用VC6.0打开 Src/ChineseChessCtr.dsw,直接编译。不再支持此方法编译
-- 用 VC2017 打开 Src/ChineseChessCtr.sln ,直接编译。不再支持此方法编译
+- 用VC6.0打开 Src/ChineseChessControl.dsw,直接编译。不再支持此方法编译
+- 用 VC2017 打开 Src/ChineseChessControl.sln ,直接编译。不再支持此方法编译
 
 ##### 调试
 ###### VC6.0
@@ -62,7 +68,7 @@
   **注意**:需要管理员权限
   + 手工注册
 
-				regsvr32 /s /c "D:\Source\ChineseChessCtr\Src\.\DebugU\ChineseChessCtr.ocx" 
+				regsvr32 /s /c "D:\Source\ChineseChessControl\Src\.\DebugU\ChineseChessControl.ocx" 
 
   + 用 ActiveX control test container 注册
     - 打开注册控件  

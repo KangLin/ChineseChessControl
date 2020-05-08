@@ -1,6 +1,6 @@
 set(SOURCES_FILES
     ${SOURCES_FILES}
-    ChineseChessCtr.cpp
+    ChineseChessControl.cpp
     Common.cpp
 	GoRule.cpp
 	Stdafx.cpp
@@ -14,7 +14,7 @@ set(INSTALLHEADER_FILES
 set(HEADER_FILES
     ${HEADER_FILES}
     ${INSTALLHEADER_FILES}
-	ChineseChessCtr.h
+	ChineseChessControl.h
 	Common.h
 	EnumAndStructAndConst.h
 	GoRule.h
@@ -25,18 +25,18 @@ set(HEADER_FILES
 
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
-	ChineseChessCtr.rc
+	ChineseChessControl.rc
 	)
 
 find_package(IDL)
 if(IDL_FOUND)
-	add_idl(ChineseChessCtrIDL ChineseChessCtr.odl)
-	set(LIBS ${LIBS} ChineseChessCtrIDL)
+	add_idl(ChineseChessControlIDL ChineseChessControl.odl)
+	set(LIBS ${LIBS} ChineseChessControlIDL)
 endif()
 
 if(MSVC)
 	set(LIBS_DEFINES ${LIBS_DEFINES} "_AFXDLL" "_UNICODE" "UNICODE")
-	LIST(APPEND RCC_FILES ChineseChessCtr.def)
+	LIST(APPEND RCC_FILES ChineseChessControl.def)
 endif()
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})

@@ -8,14 +8,14 @@ Function InstallRedistributables2019
 	messageBox MB_YESNO|MB_ICONQUESTION "$(^Name) needs Visual Studio 2019 Redistributable packages.$\nDo you want to download and install them?" IDNO notinstall2019
 
     ${If} ${RunningX64}
-        NSISdl::download https://aka.ms/vs/16/release/VC_redist.x86.exe $TEMP\vcredist_x64.exe
+        NSISdl::download https://aka.ms/vs/16/release/VC_redist.x64.exe $TEMP\vcredist_x64.exe
         Pop $R0 ; Get the return value
         StrCmp $R0 "success" 0 +3
         ExecWait "$TEMP\vcredist_x64.exe /norestart"
         Goto +2
         MessageBox MB_OK "vcredist_x64.exe download failed: $R0"
     ${Else}
-        NSISdl::download https://aka.ms/vs/16/release/VC_redist.x64.exe $TEMP\vcredist_x86.exe
+        NSISdl::download https://aka.ms/vs/16/release/VC_redist.x86.exe $TEMP\vcredist_x86.exe
         Pop $R0 ; Get the return value
         StrCmp $R0 "success" 0 +3
         ExecWait "$TEMP\vcredist_x86.exe /norestart"

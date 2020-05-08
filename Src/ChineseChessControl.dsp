@@ -1,26 +1,26 @@
-# Microsoft Developer Studio Project File - Name="ChineseChessCtr" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="ChineseChessControl" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Dynamic-Link Library" 0x0102
 
-CFG=ChineseChessCtr - Win32 Debug
+CFG=ChineseChessControl - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "ChineseChessCtr.mak".
+!MESSAGE NMAKE /f "ChineseChessControl.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "ChineseChessCtr.mak" CFG="ChineseChessCtr - Win32 Debug"
+!MESSAGE NMAKE /f "ChineseChessControl.mak" CFG="ChineseChessControl - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "ChineseChessCtr - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "ChineseChessCtr - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "ChineseChessCtr - Win32 Unicode Debug" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "ChineseChessCtr - Win32 Unicode Release" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessControl - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessControl - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessControl - Win32 Unicode Debug" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "ChineseChessControl - Win32 Unicode Release" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE 
 
 # Begin Project
@@ -31,7 +31,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "ChineseChessCtr - Win32 Release"
+!IF  "$(CFG)" == "ChineseChessControl - Win32 Release"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 0
@@ -59,8 +59,8 @@ LINK32=link.exe
 # ADD LINK32 /nologo /subsystem:windows /dll /machine:I386
 # Begin Custom Build - Registering ActiveX Control...
 OutDir=.\Release
-TargetPath=.\Release\ChineseChessCtr.ocx
-InputPath=.\Release\ChineseChessCtr.ocx
+TargetPath=.\Release\ChineseChessControl.ocx
+InputPath=.\Release\ChineseChessControl.ocx
 SOURCE="$(InputPath)"
 
 "$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -69,7 +69,7 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "ChineseChessCtr - Win32 Debug"
+!ELSEIF  "$(CFG)" == "ChineseChessControl - Win32 Debug"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 1
@@ -98,8 +98,8 @@ LINK32=link.exe
 # ADD LINK32 /nologo /subsystem:windows /dll /debug /machine:I386 /pdbtype:sept
 # Begin Custom Build - Registering ActiveX Control...
 OutDir=.\Debug
-TargetPath=.\Debug\ChineseChessCtr.ocx
-InputPath=.\Debug\ChineseChessCtr.ocx
+TargetPath=.\Debug\ChineseChessControl.ocx
+InputPath=.\Debug\ChineseChessControl.ocx
 SOURCE="$(InputPath)"
 
 "$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -108,7 +108,7 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "ChineseChessCtr - Win32 Unicode Debug"
+!ELSEIF  "$(CFG)" == "ChineseChessControl - Win32 Unicode Debug"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 1
@@ -136,8 +136,8 @@ LINK32=link.exe
 # ADD LINK32 /nologo /subsystem:windows /dll /debug /machine:I386 /pdbtype:sept
 # Begin Custom Build - Registering ActiveX Control...
 OutDir=.\DebugU
-TargetPath=.\DebugU\ChineseChessCtr.ocx
-InputPath=.\DebugU\ChineseChessCtr.ocx
+TargetPath=.\DebugU\ChineseChessControl.ocx
+InputPath=.\DebugU\ChineseChessControl.ocx
 SOURCE="$(InputPath)"
 
 "$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -146,7 +146,7 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "ChineseChessCtr - Win32 Unicode Release"
+!ELSEIF  "$(CFG)" == "ChineseChessControl - Win32 Unicode Release"
 
 # PROP BASE Use_MFC 2
 # PROP BASE Use_Debug_Libraries 0
@@ -175,8 +175,8 @@ LINK32=link.exe
 # ADD LINK32 /nologo /subsystem:windows /dll /machine:I386
 # Begin Custom Build - Registering ActiveX Control...
 OutDir=.\ReleaseU
-TargetPath=.\ReleaseU\ChineseChessCtr.ocx
-InputPath=.\ReleaseU\ChineseChessCtr.ocx
+TargetPath=.\ReleaseU\ChineseChessControl.ocx
+InputPath=.\ReleaseU\ChineseChessControl.ocx
 SOURCE="$(InputPath)"
 
 "$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -189,28 +189,28 @@ SOURCE="$(InputPath)"
 
 # Begin Target
 
-# Name "ChineseChessCtr - Win32 Release"
-# Name "ChineseChessCtr - Win32 Debug"
-# Name "ChineseChessCtr - Win32 Unicode Debug"
-# Name "ChineseChessCtr - Win32 Unicode Release"
+# Name "ChineseChessControl - Win32 Release"
+# Name "ChineseChessControl - Win32 Debug"
+# Name "ChineseChessControl - Win32 Unicode Debug"
+# Name "ChineseChessControl - Win32 Unicode Release"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=".\ChineseChessCtr.cpp"
+SOURCE=".\ChineseChessControl.cpp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\ChineseChessCtr.def"
+SOURCE=".\ChineseChessControl.def"
 # End Source File
 # Begin Source File
 
-SOURCE=".\ChineseChessCtr.odl"
+SOURCE=".\ChineseChessControl.odl"
 # End Source File
 # Begin Source File
 
-SOURCE=".\ChineseChessCtr.rc"
+SOURCE=".\ChineseChessControl.rc"
 # End Source File
 # Begin Source File
 
@@ -239,7 +239,7 @@ SOURCE=.\XQPpg.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=".\ChineseChessCtr.h"
+SOURCE=".\ChineseChessControl.h"
 # End Source File
 # Begin Source File
 
@@ -319,7 +319,7 @@ SOURCE=.\Res\Picture\cchess.bmp
 # End Source File
 # Begin Source File
 
-SOURCE=".\Res\Icon\ChineseChessCtr.ico"
+SOURCE=".\Res\Icon\ChineseChessControl.ico"
 # End Source File
 # Begin Source File
 
