@@ -1,6 +1,6 @@
 #TODO: Change version
 
-version: 'v1.0.0.{build}'
+version: 'v1.0.1.{build}'
 
 cache:
   - model
@@ -103,7 +103,7 @@ test: off
 deploy:
   - provider: GitHub
     #release: ChineseChessControl$(appveyor_build_version)
-    #description: 'ChineseChessControl $(APPVEYOR_REPO_TAG_NAME) on windows'
+    description: '中国象棋控件 变更详见[ChangeLog.md](ChangeLog.md)'
     #token : https://github.com/settings/tokens
     #password encrypt: https://ci.appveyor.com/tools/encrypt
     auth_token:
@@ -114,7 +114,7 @@ deploy:
     force_update: true
     on:
       BUILD_TARGERT: windows_msvc
-      TOOLCHAIN_VERSION: 14
+      #TOOLCHAIN_VERSION: 14
       #QT_VERSION: 5.6.3
       #BUILD_ARCH: x86
       appveyor_repo_tag: true        # deploy on tag push only
