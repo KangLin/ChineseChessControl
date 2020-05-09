@@ -34,12 +34,12 @@
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
 
 - windows x86
-    - [MSVC 2019 x86 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1925-x86-v1.0.1.exe)
     - [MSVC 2017 x86 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1916-x86-v1.0.1.exe)
     - [MSVC 2015 x86 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1900-x86-v1.0.1.exe)
     - [MSVC 2013 x86 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1800-x86-v1.0.1.exe)
 
 - windows x86_64
+    - [MSVC 2019 x86_64 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1925-x86_64-v1.0.1.exe)
     - [MSVC 2017 x86_64 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1916-x86_64-v1.0.1.exe)
     - [MSVC 2015 x86_64 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1900-x86_64-v1.0.1.exe)
     - [MSVC 2013 x86_64 v1.0.1](https://github.com/KangLin/ChineseChessControl/releases/download/v1.0.1/ChineseChessControl-Setup-msvc1800-x86_64-v1.0.1.exe)
