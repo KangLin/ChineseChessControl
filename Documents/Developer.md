@@ -6,6 +6,7 @@
 ### 编译
 - 用 cmake , 建议使用此方法编译
 
+      git clone https://github.com/KangLin/ChineseChessControl.git
       mkdir build
       cd build
       cmake ..
@@ -20,7 +21,7 @@
 - 打开 ActiveX control test container 工具  
 ![打开 ActiveX control test container 工具](Image/OpenActivexControlTestContainer.png)
 - 注册中国象棋控件  
-  这一步在编译后，会自动执行。如果没有成功，可以按下面方法之一注册：  
+  这一步在编译或安装时，会自动完成。如果没有成功，可以按下面方法之一注册：  
   **注意**:需要管理员权限
   + 手工注册
 

@@ -1,7 +1,0 @@
- 一、本程序包括中国象棋和中国象棋服务器两个部分。其位为：
-    中国象棋：D:\Programe\VC\中国象棋
-    中国象棋服务器：D:\Programe\VC\中国象棋\中国象棋服务器
-二、本工程包括中国象棋控件、视频捕获控件、视频显示控件。所以在编译本工程前先编译前三个控件。其位为：
-    中国象棋控件：D:\Programe\VC\中国象棋控件
-    视频捕获控件：D:\Programe\VC\AV\VideoCtrl
-    视频显示控件：D:\Programe\VC\AV\DisplayVideo
