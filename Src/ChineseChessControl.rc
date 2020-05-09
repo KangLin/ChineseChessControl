@@ -169,41 +169,41 @@ END
 // Bitmap
 //
 
-IDB_XQ                  BITMAP                  "Res\\picture\\CCHESS.BMP"
+IDB_XQ                  BITMAP                  "Res\\picture\\CHESS.BMP"
 
-IDB_QIPANG              BITMAP                  "Res\\Picture\\xqboard.BMP"
+IDB_QIPANG              BITMAP                  "Res\\Picture\\QIPANG.BMP"
 
-IDB_RSHUAI              BITMAP                  "Res\\Picture\\rshuai.BMP"
+IDB_RSHUAI              BITMAP                  "Res\\Picture\\RSHUAI.BMP"
 
-IDB_RSHI                BITMAP                  "Res\\Picture\\rshi.BMP"
+IDB_RSHI                BITMAP                  "Res\\Picture\\RSHI.BMP"
 
-IDB_RXIANG              BITMAP                  "Res\\Picture\\rxiang.BMP"
+IDB_RXIANG              BITMAP                  "Res\\Picture\\RXIANG.BMP"
 
-IDB_RMA                 BITMAP                  "Res\\Picture\\rma.BMP"
+IDB_RMA                 BITMAP                  "Res\\Picture\\RMA.BMP"
 
-IDB_RCHE                BITMAP                  "Res\\Picture\\rche.BMP"
+IDB_RCHE                BITMAP                  "Res\\Picture\\RCHE.BMP"
 
-IDB_RPAO                BITMAP                  "Res\\Picture\\rpao.BMP"
+IDB_RPAO                BITMAP                  "Res\\Picture\\RPAO.BMP"
 
-IDB_RBING               BITMAP                  "Res\\Picture\\rbing.BMP"
+IDB_RBING               BITMAP                  "Res\\Picture\\RBING.BMP"
 
-IDB_BSHUAI              BITMAP                  "Res\\Picture\\Bshuai.BMP"
+IDB_BSHUAI              BITMAP                  "Res\\Picture\\BSHUAI.BMP"
 
-IDB_BSHI                BITMAP                  "Res\\Picture\\Bshi.BMP"
+IDB_BSHI                BITMAP                  "Res\\Picture\\BSHI.BMP"
 
-IDB_BXIANG              BITMAP                  "Res\\Picture\\Bxiang.BMP"
+IDB_BXIANG              BITMAP                  "Res\\Picture\\BXIANG.BMP"
 
-IDB_BMA                 BITMAP                  "Res\\Picture\\Bma.BMP"
+IDB_BMA                 BITMAP                  "Res\\Picture\\BMA.BMP"
 
-IDB_BCHE                BITMAP                  "Res\\Picture\\Bche.BMP"
+IDB_BCHE                BITMAP                  "Res\\Picture\\BCHE.BMP"
 
-IDB_BPAO                BITMAP                  "Res\\Picture\\Bpao.BMP"
+IDB_BPAO                BITMAP                  "Res\\Picture\\BPAO.BMP"
 
-IDB_BBING               BITMAP                  "Res\\Picture\\Bzu.BMP"
+IDB_BBING               BITMAP                  "Res\\Picture\\BZU.BMP"
 
 IDB_CHU                 BITMAP                  "Res\\Picture\\CHU.BMP"
 
-IDB_HAN                 BITMAP                  "Res\\Picture\\han.bmp"
+IDB_HAN                 BITMAP                  "Res\\Picture\\HAN.bmp"
 
 IDB_HE                  BITMAP                  "Res\\Picture\\HE.BMP"
 
@@ -219,11 +219,11 @@ IDB_KL                  BITMAP                  "Res\\Picture\\KL.BMP"
 
 IDW_SELECT              WAVE                    "Res\\Sound\\Select.wav"
 
-IDW_GO                  WAVE                    "Res\\Sound\\go.wav"
+IDW_GO                  WAVE                    "Res\\Sound\\GO.wav"
 
 IDW_BEGIN               WAVE                    "Res\\Sound\\Begin.wav"
 
-IDW_CHECK               WAVE                    "Res\\Sound\\check.wav"
+IDW_CHECK               WAVE                    "Res\\Sound\\CHECK.wav"
 
 IDW_CHOOSE              WAVE                    "Res\\Sound\\Choose.wav"
 
