@@ -309,7 +309,6 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClCompile Include="XQPpg.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\..\..\我的文档\Web\VC\Active控件\建立ActiveX控件.htm" />
     <CustomBuild Include="ChineseChessControl.def" />
     <CustomBuild Include="文档\中国象棋控件技术文档.htm" />
   </ItemGroup>
@@ -340,7 +339,6 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClInclude Include="XQPpg.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="cchess.bmp" />
     <Image Include="Res\cchess.bmp" />
     <Image Include="Res\Icon\ChineseChessControl.ico" />
     <Image Include="Res\Picture\BCHE.BMP" />
@@ -358,6 +356,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Image Include="Res\Picture\HE.BMP" />
     <Image Include="Res\Picture\JIE.BMP" />
     <Image Include="Res\Picture\KL.BMP" />
+    <Image Include="Res\Picture\QIPANG.BMP" />
     <Image Include="Res\Picture\RBING.BMP" />
     <Image Include="Res\Picture\RCHE.BMP" />
     <Image Include="Res\Picture\RMA.BMP" />
@@ -365,11 +364,8 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Image Include="Res\Picture\RSHI.BMP" />
     <Image Include="Res\Picture\RShuai.bmp" />
     <Image Include="Res\Picture\RXIANG.BMP" />
-    <Image Include="Res\Picture\xqboard.BMP" />
-    <Image Include="XQCtl.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
     <Text Include="文档\问题.txt" />
   </ItemGroup>
   <ItemGroup>

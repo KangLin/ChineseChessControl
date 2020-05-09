@@ -24,7 +24,7 @@ CFG=ChineseChessControl - Win32 Debug
 !MESSAGE 
 
 # Begin Project
-# PROP AllowPerConfigDependencies 1
+# PROP AllowPerConfigDependencies 0
 # PROP Scc_ProjName ""
 # PROP Scc_LocalPath ""
 CPP=cl.exe
@@ -46,7 +46,7 @@ RSC=rc.exe
 # PROP Target_Ext "ocx"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_WINDLL" /D "_AFXDLL" /FR /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x804 /d "NDEBUG" /d "_AFXDLL"
@@ -82,10 +82,9 @@ SOURCE="$(InputPath)"
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Ext "ocx"
-# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_WINDLL" /D "_AFXDLL" /FR /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x804 /d "_DEBUG" /d "_AFXDLL"
@@ -121,9 +120,10 @@ SOURCE="$(InputPath)"
 # PROP Output_Dir "DebugU"
 # PROP Intermediate_Dir "DebugU"
 # PROP Target_Ext "ocx"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_WINDLL" /D "_AFXDLL" /FR /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_WINDLL" /D "_AFXDLL" /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x804 /d "_DEBUG" /d "_AFXDLL"
@@ -159,10 +159,9 @@ SOURCE="$(InputPath)"
 # PROP Output_Dir "ReleaseU"
 # PROP Intermediate_Dir "ReleaseU"
 # PROP Target_Ext "ocx"
-# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_WINDLL" /D "_AFXDLL" /FR /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /D "_UNICODE" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x804 /d "NDEBUG" /d "_AFXDLL"
@@ -198,27 +197,39 @@ SOURCE="$(InputPath)"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=".\ChineseChessControl.cpp"
+SOURCE=.\ChineseChessControl.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=".\ChineseChessControl.def"
+SOURCE=.\ChineseChessControl.def
 # End Source File
 # Begin Source File
 
-SOURCE=".\ChineseChessControl.odl"
+SOURCE=.\ChineseChessControl.odl
 # End Source File
 # Begin Source File
 
-SOURCE=".\ChineseChessControl.rc"
+SOURCE=.\ChineseChessControl.rc
 # End Source File
 # Begin Source File
 
-SOURCE=.\common.cpp
+SOURCE=.\Common.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Common.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\EnumAndStructAndConst.h
 # End Source File
 # Begin Source File
 
 SOURCE=.\GoRule.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\GoRule.h
 # End Source File
 # Begin Source File
 
@@ -231,7 +242,15 @@ SOURCE=.\XQCtl.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\XQCtl.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\XQPpg.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\XQPpg.h
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -239,19 +258,7 @@ SOURCE=.\XQPpg.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=".\ChineseChessControl.h"
-# End Source File
-# Begin Source File
-
-SOURCE=.\common.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\EnumAndStructAndConst.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\GoRule.h
+SOURCE=.\ChineseChessControl.h
 # End Source File
 # Begin Source File
 
@@ -260,166 +267,6 @@ SOURCE=.\Resource.h
 # Begin Source File
 
 SOURCE=.\StdAfx.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\XQCtl.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\XQPpg.h
-# End Source File
-# End Group
-# Begin Group "Resource Files"
-
-# PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
-# Begin Source File
-
-SOURCE=.\Res\Picture\BCHE.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\BMA.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\BPAO.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\BSHI.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\BShuai.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\bxiang.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\BXING.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\BZU.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\cchess.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\cchess.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\cchess.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=".\Res\Icon\ChineseChessControl.ico"
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\CHU.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\han.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\HE.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\JIE.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\KL.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RBING.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RCHE.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RMA.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RPAO.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RSHI.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RShuai.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\RXIANG.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Picture\xqboard.BMP
-# End Source File
-# Begin Source File
-
-SOURCE=.\XQCtl.bmp
-# End Source File
-# End Group
-# Begin Group "Documents"
-
-# PROP Default_Filter "txt"
-# Begin Source File
-
-SOURCE=..\ReadMe.txt
-# End Source File
-# Begin Source File
-
-SOURCE=..\README.md
-# End Source File
-# End Group
-# Begin Group "Wave"
-
-# PROP Default_Filter "wav"
-# Begin Source File
-
-SOURCE=.\Res\Sound\Begin.wav
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Sound\check.wav
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Sound\Choose.wav
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Sound\dead.wav
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Sound\eat.wav
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Sound\go.wav
-# End Source File
-# Begin Source File
-
-SOURCE=.\Res\Sound\select.wav
 # End Source File
 # End Group
 # End Target
