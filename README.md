@@ -59,6 +59,7 @@
 本软件如果对你有用，或者你喜欢它，请你捐赠，支持作者。谢谢！
 
 [![捐赠](https://gitee.com/kl222/RabbitCommon/raw/master/Src/Resource/image/Contribute.png "捐赠")](https://github.com/KangLin/RabbitCommon/raw/master/Src/Resource/image/Contribute.png "捐赠")
+
 #### [许可协议](License.md)
 #### [修改日志](ChangeLog.md)
 #### 文档
