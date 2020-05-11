@@ -2,9 +2,9 @@
 
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>COM ѧϰ�ʼ�</title>
-<link rel="stylesheet" type="text/css" href="../Scrpit/��ʽ.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>COM 学习笔记</title>
+<link rel="stylesheet" type="text/css" href="../Scrpit/样式.css">
 <script language ="vbscript" src ="../Scrpit/webscrpit.bas" ></script>
 <script language="JavaScript" fptype="dynamicoutline">
 <!--
@@ -22,42 +22,42 @@ initOutline()
 
 <body onclick="dynOutline()" language="Javascript1.2">
 
-<p align="center"><b><font size="7">COM ѧϰ�ʼ�</font></b></p>
-<p align="center">��&nbsp; �� 2004��11��</p>
-<p align="left">�ؼ��ʣ�������ӿڡ���̬���ӿ⡢ע�����CLSID��GUID��IID��UUID</p>
+<p align="center"><b><font size="7">COM 学习笔记</font></b></p>
+<p align="center">康&nbsp; 林 2004年11月</p>
+<p align="left">关键词：组件、接口、动态链接库、注册表、CLSID、GUID、IID、UUID</p>
 <ol dynamicoutline initcollapsed type="I" style ="cursor:hand">
    <li>
-<p align="left"><b>���</b></p>
+<p align="left"><b>概念：</b></p>
 </li>
 <ol>
 	<li>
-	<p align="left"><b>���Ϳ⣺</b></p></li>
+	<p align="left"><b>类型库：</b></p></li>
 	<li>
-	<p align="left"><b>�����</b>��һ���ӿڵļ��ϡ�</p></li>
+	<p align="left"><b>组件：</b>是一个接口的集合。</p></li>
 	<li>
-	<p align="left"><b>�ӿڣ�</b>��һ������һ����������������ڴ�ṹ��ÿһ������Ԫ�ذ�������һ���������ʵ�ֵĺ����ĵ�ַ��</p>
+	<p align="left"><b>接口：</b>是一个包含一个函数接针数组的内存结构。每一个数组元素包含的是一个由组件所实现的函数的地址。</p>
 	</li>
-<p align="left"><font color="#FF0000">����ǽӿڵļ���,�ӿ��Ǻ����ļ��ϡ�</font></p>
+<p align="left"><font color="#FF0000">组件是接口的集合,接口是函数的集合。</font></p>
 </ol>
 
 <li>
-<p align="left"><b>QueryInterface ��ʵ�ֹ���:</b></p>
+<p align="left"><b>QueryInterface 的实现规则:</b></p>
 </li>
 <ol>
 	<li>
-	<p align="left">QueryInterface ���ص�����ͬһ�� IUnknown ָ�롣</li>
+	<p align="left">QueryInterface 返回的总是同一个 IUnknown 指针。</li>
 	<li>
-	<p align="left">���ͻ�������ù�ĳ���ӿڣ���ô�������ܻ�ȡ�˽ӿڡ�</li>
+	<p align="left">若客户曾经获得过某个接口，那么它将总能获取此接口。</li>
 	<li>
-	<p align="left">�ͻ������ٴλ���Ѿ�ӵ�еĽӿڡ�</li>
+	<p align="left">客户可以再次获得已经拥有的接口。</li>
 	<li>
-	<p align="left">�ͻ����Է��ص���ʼ�ӿڡ�</li>
+	<p align="left">客户可以返回到起始接口。</li>
 	<li>
-	<p align="left">���ܹ���ĳ���ӿڻ��ĳ�����ض��ӿڣ���ô���Դ�����ӿڶ������Ի�ô˽ӿڡ�</li>
+	<p align="left">若能够从某个接口获得某按按特定接口，那么可以从任意接口都将可以获得此接口。</li>
 </ol>
 <li>
 <p align="left"><b>
-<a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003FEB.2052/dnduwam/html/d35remot.htm">ProgID</a> �� CLSID��ת����</b></p>
+<a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003FEB.2052/dnduwam/html/d35remot.htm">ProgID</a> 与 CLSID的转换：</b></p>
 </li>
 <ol>
 	<li>
@@ -69,10 +69,10 @@ initOutline()
 	</b>//CLSID for which the ProgID is 
 	requested<br><b>&nbsp; LPOLESTR *</b><i> lplpszProgID</i><br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</i>//Address of output variable that receives a <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-	// pointer to the requested ProgID string<br><b>);</b><br>��</code></li>
+	// pointer to the requested ProgID string<br><b>);</b><br>　</code></li>
 </ol>
 <li>
-<p align="left"><b>CLSID ���ַ�����ת����</b></p>
+<p align="left"><b>CLSID 与字符串的转换：</b></p>
 </li>
 <ol>
 	<li>
@@ -90,7 +90,7 @@ initOutline()
 	</b>//Interface identifier to be 
 	converted<br><b>&nbsp; LPOLESTR</b><i> lpsz</i><b>,&nbsp; </b>//Pointer to the resulting 
 	string on return<br><b>&nbsp; int</b><i> cchMax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-	</i>//Character count of string at <i>lpsz</i><br><b>);</b><br>��</code></li>
+	</i>//Character count of string at <i>lpsz</i><br><b>);</b><br>　</code></li>
 	<li>
 	<p align="left">StringFromIID <br><code><b>WINOLEAPI StringFromIID(<br>&nbsp; REFIID</b><i> rclsid</i><b>,&nbsp;&nbsp;&nbsp;&nbsp; 
 	</b>//Interface 
@@ -105,19 +105,19 @@ initOutline()
 	requested IID on return<br><b>);</b></code></li>
 </ol>
 <li>
-<p align="left"><b>ע�᣺</b></p>
+<p align="left"><b>注册：</b></p>
 </li>
 <ol>
 	<li>
-	<p align="left">�ó���ע�᣺regsvr32.exe</li>
+	<p align="left">用程序注册：regsvr32.exe</li>
 	<li>
-	<p align="left">���ö�̬�������е�ע�ắ����DllRegisterServer</li>
+	<p align="left">调用动态函数库中的注册函数：DllRegisterServer</li>
 
 	<li>
-	<p align="left">���ö�̬�������еķ�ע�ắ��:DllUnregisterServer </li>
+	<p align="left">调用动态函数库中的反注册函数:DllUnregisterServer </li>
 </ol>
 <li>
-<p align="left"><b>COM�⺯��:</b></p>
+<p align="left"><b>COM库函数:</b></p>
 </li>
 <ol>
 	<li>
@@ -129,14 +129,14 @@ initOutline()
 	</b>//Context for running executable code<br><b>&nbsp;&nbsp;&nbsp;&nbsp; REFIID</b><i> riid</i><b>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</b>//Reference to the identifier of the interface<br><b>&nbsp;&nbsp;&nbsp;&nbsp; LPVOID *</b><i> ppv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</i>//Address of output variable that receives <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-	// the interface pointer requested in <i>riid</i><br><b>&nbsp; );<br></b>CoCreateInstance ʵ�����ǵ���  
-	</code>CoGetClassObject ʵ�ֵġ�CoGetClassObject 
-	����ע����в���ָ����������ҵ�֮������װ��ʵ�ִ������ DLL���� <b>CoLoadLibrary</b>)��װ�سɹ�֮������������ DLL 
-	�������е�ʵ�ֵ� DllGetClassObject���˺����������Ǵ�����Ӧ���೧������ DllGetClassObject ������ѯ 
-	IClassFactory �ӿڣ������䷵�ظ� CoCreateInstance��Ȼ��CoCreatInstnce ��ʹ�ô˽ӿ������� 
-	IClassFactory::CreateInstance ����������ѯָ CoCreateInstance ���� riid 
-	��ָ���Ľӿڡ��ڵõ��˴˽ӿ�֮��CoCreateInstance 
-	���ͷ���Ӧ���೧�����˽ӿڵ�ָ�뷵�ظ��ͻ���Ȼ��ͻ�����ʹ�ô�ָ������������е�ĳ�������ˡ�</li>
+	// the interface pointer requested in <i>riid</i><br><b>&nbsp; );<br></b>CoCreateInstance 实际上是调用  
+	</code>CoGetClassObject 实现的。CoGetClassObject 
+	将在注册表中查找指定的组件。找到之后，它将装载实现此组件的 DLL（用 <b>CoLoadLibrary</b>)。装载成功之后，它将调用在 DLL 
+	服务器中的实现的 DllGetClassObject。此函数的作用是创建相应的类厂。另外 DllGetClassObject 还将查询 
+	IClassFactory 接口，并将其返回给 CoCreateInstance。然后，CoCreatInstnce 将使用此接口来调用 
+	IClassFactory::CreateInstance 函数。并查询指 CoCreateInstance 参数 riid 
+	中指定的接口。在得到了此接口之后，CoCreateInstance 
+	将释放相应的类厂并将此接口的指针返回给客户。然后客户就能使用此指针来调用组件中的某个方法了。</li>
 	<li>
 	<p align="left">CoGetClassObject<br><code><b>STDAPI CoGetClassObject(<br>&nbsp; REFCLSID</b><i> rclsid</i><b>,&nbsp; 
 	</b>//CLSID associated with the 
@@ -149,17 +149,17 @@ initOutline()
 	</i>//Address of 
 	output variable that receives the <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 	// interface pointer requested in <i>riid</i><br><b>);</b></code></li>
-	<li>CoFreeUnusedLibraries���ͷŲ���ʹ�õ�DLL<br>��</li>
+	<li>CoFreeUnusedLibraries：释放不再使用的DLL<br>　</li>
 </ol>
 <li>
-<b>������ۺϣ�</b>
+<b>包容与聚合：</b>
 </li>
 <li>
-<p align="left"><b>�ӿ�ָ����(���ܽӿ�ָ��):</b></p>
+<p align="left"><b>接口指针类(智能接口指针):</b></p>
 </li>
 <ol>
 	<li>
-	<p align="left">ATL���� CComPrt �� CComQIprt(<span class="ShowLink" onclick="Call Show(ccomptr_h)">#include &lt;ATLBASE.H&gt;</span>)
+	<p align="left">ATL中有 CComPrt 和 CComQIprt(<span class="ShowLink" onclick="Call Show(ccomptr_h)">#include &lt;ATLBASE.H&gt;</span>)
 	<table border="1" width="100%" class="TableStyle" style ="display:none" id="ccomptr_h">
 		<tr>
 			<td>
@@ -594,7 +594,7 @@ public:
 	</table>
 	</li>
 	<li>
-	<p align="left">MFC����CIP(<span class="ShowLink" onclick ="Call Show(afxcom_h)" >#include &lt;afxcom_.h&gt;</span>)<table border="1" width="100%" id ="afxcom_h" class="TableStyle" style ="display:none">
+	<p align="left">MFC中有CIP(<span class="ShowLink" onclick ="Call Show(afxcom_h)" >#include &lt;afxcom_.h&gt;</span>)<table border="1" width="100%" id ="afxcom_h" class="TableStyle" style ="display:none">
 		<tr>
 			<td>
 			<pre>// This is a part of the Microsoft Foundation Classes C++ library.
@@ -997,21 +997,21 @@ public:
 		</tr>
 	</table>
 	</li>
-	<li>ʹ�ýӿ���ĳ�Ա�������� . �����������磺<br>
+	<li>使用接口类的成员函数，用 . 操作符。例如：<br>
 	CComQIPtr &lt;InterfaceClass, &amp;IID&gt; spIF;<br>
-	spIF.Release(); //�ͷŽӿ�ָ��</li>
-	<li>�ͷŽӿ�ָ����(���ܽӿ�ָ��):<br>
+	spIF.Release(); //释放接口指针</li>
+	<li>释放接口指针类(智能接口指针):<br>
 	CComQIPtr &lt;InterfaceClass, &amp;IID&gt; spIF;<br>
-	spIF = NULL; //�ͷŽӿ�ָ��</li>
+	spIF = NULL; //释放接口指针</li>
 </ol>
 <li>
-<p><b>C++��װ��:</b>(MFC OLE)</p>
+<p><b>C++包装类:</b>(MFC OLE)</p>
 </li></ol> 
-<p><b><span class ="showlink" onclick ="call show(class_interface)"  >��Ƕ����ʵ�ֽӿ�:</span></b></p>
+<p><b><span class ="showlink" onclick ="call show(class_interface)"  >用嵌套类实现接口:</span></b></p>
 <ol id="class_interface" style="display:none">
-	<li>��CCmdTarget����������ඨ����ʹ�ú�  
+	<li>在CCmdTarget类和其派生类定义中使用宏  
 	<span class ="ShowLink" onclick ="Call Show(DECLARE_INTERFACE_MAP_tab)">DECLARE_INTERFACE_MAP()</span> 
-	�����ӿ�ӳ���ʹ�õ�һЩ��̬��Ա�Լ�������Ա������<table class ="TableStyle" border="0" width="568"  style ="display:none" id="DECLARE_INTERFACE_MAP_tab">
+	声明接口映射表使用的一些静态成员以及两个成员函数；<table class ="TableStyle" border="0" width="568"  style ="display:none" id="DECLARE_INTERFACE_MAP_tab">
 		<tr>
 			<td>#ifdef _AFXDLL<br>#define DECLARE_INTERFACE_MAP() \<br>private: \<br>static const AFX_INTERFACEMAP_ENTRY 
 									_interfaceEntries[]; \<br>protected: \<br>static AFX_DATA const AFX_INTERFACEMAP 
@@ -1023,9 +1023,9 @@ public:
 									GetInterfaceMap() const; \<br><br>#endif</td>
 		</tr>
 	</table></li>
-	<li>�����ʵ���ļ����ȶ���ӿڵ� IID</li>
-	<li>�����ʵ�ֲ���ʹ�� <span class ="ShowLink" onclick ="Call Show(BEGIN_INTERFACE_MAPtable)" >BEGIN_INTERFACE_MAP��INTERFACE_PART �� END_INTERFACE_MAP</span> 
-	�궨��ӿ�ӳ�����<table class="TableStyle" style="display:none" border="1" width="100%" id="BEGIN_INTERFACE_MAPtable">
+	<li>在类的实现文件中先定义接口的 IID</li>
+	<li>在类的实现部分使用 <span class ="ShowLink" onclick ="Call Show(BEGIN_INTERFACE_MAPtable)" >BEGIN_INTERFACE_MAP、INTERFACE_PART 和 END_INTERFACE_MAP</span> 
+	宏定义接口映射表；<table class="TableStyle" style="display:none" border="1" width="100%" id="BEGIN_INTERFACE_MAPtable">
 		<tr>
 			<td>#ifdef _AFXDLL<br>
 			#define BEGIN_INTERFACE_MAP(theClass, theBase) \<br>
@@ -1065,8 +1065,8 @@ public:
 			}; \</td>
 		</tr>
 	</table>
-	<p>����������ʵ�ֽӿ�ӳ�䣨�� CCmdtarget ��,�ýӿ�ӳ���ʵ���� IUnknown-&gt;QueryInterface&nbsp; ��������</li>
-	<li>Ϊÿһ���ӿڶ���Ƕ�����Ա������ӿڣ���<br><span class="ShowLink" onclick ="Call Show (BEGIN_INTERFACE_PART_table)">BEGIN_INTERFACE_PART()</span><table style ="display:none" class="TableStyle" id ="BEGIN_INTERFACE_PART_table" border="1" width="100%">
+	<p>由这三步，实现接口映射（在 CCmdtarget 中,用接口映射表实现了 IUnknown-&gt;QueryInterface&nbsp; 操作）。</li>
+	<li>为每一个接口定义嵌套类成员（定义接口）；<br><span class="ShowLink" onclick ="Call Show (BEGIN_INTERFACE_PART_table)">BEGIN_INTERFACE_PART()</span><table style ="display:none" class="TableStyle" id ="BEGIN_INTERFACE_PART_table" border="1" width="100%">
 															<tr>
 																<td>
 																<pre>#define BEGIN_INTERFACE_PART(localClass, baseClass) \
@@ -1079,8 +1079,8 @@ public:
 </td>
 															</tr>
 															</table><br>
-<span class ="showlink" onclick ="call show (INIT_INTERFACE_PART_table)">INIT_INTERFACE_PART()</span>�����˼�¼ƫ���������ݳ�Ա 
-	m_nOffset������Ƕ����Ĺ��캯���ж� m_nOffwet ���г�ʼ��ֵ�����Ը��ݴ�ƫ�ƾ�����õ������ָ�� 
+<span class ="showlink" onclick ="call show (INIT_INTERFACE_PART_table)">INIT_INTERFACE_PART()</span>定义了记录偏移量的数据成员 
+	m_nOffset，并在嵌套类的构造函数中对 m_nOffwet 进行初始赋值。所以根据此偏移经计算得到父类的指针 
 	<span onclick ="call show(pthis_table)" class ="showlink"> <a name="pThis">pThis</a></span>
 	<table id="pthis_table" class="tablestyle" style ="display:none" border="1" width="100%" height="30">
 			<tr>
@@ -1090,7 +1090,7 @@ public:
 	AFX_MANAGE_STATE(pThis-&gt;m_pModuleState) \
 	pThis; // avoid warning from compiler \</pre></td>
 							</tr>
-	</table>��Ȼ�����ø���ĳ�Ա������<br>
+	</table>，然后利用父类的成员函数。<br>
 <table id ="INIT_INTERFACE_PART_table" style ="display:none" class ="tablestyle" border="1" width="100%">
 																											<tr>
 																												<td>
@@ -1118,7 +1118,7 @@ public:
 																						</tr>
 																						</table>
 <span class="showlink" onclick="call show(END_INTERFACE_PART_table)">END_INTERFACE_PART()</span></li>
-	<font color="#FF00FF">ע�⣺����������ж���һ����Ա������ m_xLocallClass ��һ����Ա�� XlocaalClass</font><table class="tablestyle" id="END_INTERFACE_PART_table" style="display:none" border="1" width="100%" id="table1">
+	<font color="#FF00FF">注意：这里会在类中定义一个成员变量： m_xLocallClass 和一个友员类 XlocaalClass</font><table class="tablestyle" id="END_INTERFACE_PART_table" style="display:none" border="1" width="100%" id="table1">
 		<tr>
 			<td>
 			<pre>#define END_INTERFACE_PART(localClass) \
@@ -1127,10 +1127,10 @@ public:
 			</td>
 		</tr>
 	</table>
-	<li>ʵ��Ƕ���ࡣ<br>
-	�ڷ��������ú� METHOD_PROLOGUE_EX_(theClass, localClass) �õ���ָ�� <a href="#pThis">
-	pThis</a>��Ȼ��ʵ�ַ�����<span class ="showlink" onclick ="call show(table1_queryinterface_addref_release)" ><i>QueryInterface</i>, <i>AddRef</i>, �� <i>Release </i>��ʵ��</span>��<br>
-��<table cellPadding="5" width="95%" id="table1_queryinterface_addref_release" class ="tablestyle" style="display:none">
+	<li>实现嵌套类。<br>
+	在方法中先用宏 METHOD_PROLOGUE_EX_(theClass, localClass) 得到父指针 <a href="#pThis">
+	pThis</a>，然后实现方法。<span class ="showlink" onclick ="call show(table1_queryinterface_addref_release)" ><i>QueryInterface</i>, <i>AddRef</i>, 和 <i>Release </i>的实现</span>。<br>
+　<table cellPadding="5" width="95%" id="table1_queryinterface_addref_release" class ="tablestyle" style="display:none">
 		<tr>
 			<td>
 			<pre>STDMETHODIMP_(ULONG) COleDropTarget::XDropTarget::AddRef()
@@ -1155,10 +1155,10 @@ STDMETHODIMP COleDropTarget::XDropTarget::QueryInterface(
 		</tr>
 	</table>
 	</li>
-	<li>COM �����������೧��ʵ�֡�
+	<li>COM 引出函数和类厂的实现。
 	    
 	<ul>
-		<li><span  class ="showlink" onclick ="call show(classfactorytable)">�೧</span><table id="classfactorytable" style="display:none" class ="tablestyle" cellPadding="5" width="95%" id="table2">
+		<li><span  class ="showlink" onclick ="call show(classfactorytable)">类厂</span><table id="classfactorytable" style="display:none" class ="tablestyle" cellPadding="5" width="95%" id="table2">
 			<tr>
 				<td>
 				<pre>COleObjectFactory cf (
@@ -1170,7 +1170,7 @@ STDMETHODIMP COleDropTarget::XDropTarget::QueryInterface(
 				</td>
 			</tr>
 		</table>
-		<li>����һ����Ƕ���೧��������Ķ�������  
+		<li>定义一个内嵌的类厂对象，在类的定义中用  
 		<span class="showlink" onclick ="call show(declare_olecreate_table)">DECLARE_OLECREATE</span></li>
 	      <table id="declare_olecreate_table" class="tablestyle" style="display:none" border="1" width="100%">
 			<tr>
@@ -1181,7 +1181,7 @@ public: \
 	static AFX_DATA const GUID guid; \</pre></td>
 			</tr>
 		</table>
-		<li>ʵ���೧������ʵ���ļ�����  
+		<li>实现类厂对象，在实现文件中用  
 		<span class = "showlink" onclick ="call show(IMPLEMENT_OLECREATE_table)">IMPLEMENT_OLECREATE</span></li>
           ,external_name :<b>ProgID</b>;class_name:<b>CLSID</b><table border="1" width="100%" id ="IMPLEMENT_OLECREATE_table"  class ="tablestyle" style ="display:none">
 			<tr>
@@ -1197,20 +1197,20 @@ public: \
 </ol>
 
 
-<p class="showlink" onclick="call show(connectionpointtable)">�������ӵ�</p>
-<ol id="connectionpointtable" style="display:none"><li><b>����Դ����</b>���μ��˰���ġ�COMԭ����Ӧ�á��ĵ� 
-	192 ҳ�� 6.4.3 ��</li><ol><li><p>
-��������һ�� DLL ���̣�ע��Ҫѡ���Զ�����<span class="showlink" onclick ="call show(DLLWIZE)">��ͼ</span>
-<img style ="display:none" id="DLLWIZE" border="0" src="Picture/DLL��.JPG" width="615" height="449">
-<p>����ɡ����Զ��ڳ�ʼ�������м���������ĺ�ɫ���֡�</p>
+<p class="showlink" onclick="call show(connectionpointtable)">建立连接点</p>
+<ol id="connectionpointtable" style="display:none"><li><b>建立源对象</b>，参见潘爱民的《COM原理及应用》的第 
+	192 页的 6.4.3 节</li><ol><li><p>
+用向导生成一个 DLL 工程，注意要选中自动化。<span class="showlink" onclick ="call show(DLLWIZE)">见图</span>
+<img style ="display:none" id="DLLWIZE" border="0" src="Picture/DLL向导.JPG" width="615" height="449">
+<p>点完成。向导自动在初始化函数中加入了下面的红色部分。</p>
 		<table border="0" width="100%" id="table2">
 			<tr>
 				<td>
 				<pre>BOOL CKeyInputApp::InitInstance()
 {
 	CWinApp::InitInstance();</pre>
-				<pre>	<font color="#FF00FF">// ������ OLE ������(����)ע��Ϊ���С��⽫ʹ
-	//  OLE ����Դ�����Ӧ�ó��򴴽�����
+				<pre>	<font color="#FF00FF">// 将所有 OLE 服务器(工厂)注册为运行。这将使
+	//  OLE 库得以从其他应用程序创建对象。
 	COleObjectFactory::RegisterAll();</font></pre>
 				<pre>	return TRUE;
 }</pre>
@@ -1219,18 +1219,18 @@ public: \
 		</table>
 </li>
 		<li>
-		<p>���򵼼���һ���� CCmdTarget ���������࣬<span class="showlink" onclick ="call show(CCmdtarget_wize_mfc_imag)">��ͼ��
-		<img id="CCmdtarget_wize_mfc_imag" style="display:none" border="0" src="Picture/MFC����-CCmdTarget.JPG" width="615" height="449"></span></li>
-		���Զ�������೧�Ľ����� Disptach �ӿڡ�<span onclick="call show(createfactorytable)" class ="showlink">���£�</span>
+		<p>用向导加入一个从 CCmdTarget 派生的新类，<span class="showlink" onclick ="call show(CCmdtarget_wize_mfc_imag)">见图：
+		<img id="CCmdtarget_wize_mfc_imag" style="display:none" border="0" src="Picture/MFC类向导-CCmdTarget.JPG" width="615" height="449"></span></li>
+		它自动完成了类厂的建立和 Disptach 接口。<span onclick="call show(createfactorytable)" class ="showlink">如下：</span>
 		<table  class="tablestyle" id="createfactorytable" style="display:none" border="0" width="100%" id="table3">
 			<tr>
-				<td>ͷ�ļ���</td>
+				<td>头文件：</td>
 			</tr>
 			<tr>
 				<td>
 				<pre>#pragma once
 </pre>
-				<pre>// CKeyInput ����Ŀ��</pre>
+				<pre>// CKeyInput 命令目标</pre>
 				<pre>class CKeyInput : public CCmdTarget
 {
 	DECLARE_DYNCREATE(CKeyInput)</pre>
@@ -1247,11 +1247,11 @@ public: \
 				</td>
 			</tr>
 			<tr>
-				<td>ʵ���ļ���</td>
+				<td>实现文件：</td>
 			</tr>
 			<tr>
 				<td>
-				<pre>// CKeyInput.cpp : ʵ���ļ�
+				<pre>// CKeyInput.cpp : 实现文件
 //</pre>
 				<pre>#include &quot;stdafx.h&quot;
 #include &quot;KeyInput.h&quot;
@@ -1263,25 +1263,25 @@ CKeyInput::CKeyInput()
 {
 	<font color="#FF00FF">EnableAutomation();
 	</font></pre>
-				<pre><font color="#FF00FF">	// Ϊ��ʹӦ�ó����� OLE �Զ��������ڻ״̬ʱ����
-	//	���У����캯������ AfxOleLockApp��
+				<pre><font color="#FF00FF">	// 为了使应用程序在 OLE 自动化对象处于活动状态时保持
+	//	运行，构造函数调用 AfxOleLockApp。
 	
 	AfxOleLockApp();</font>
 }</pre>
 				<pre>CKeyInput::~CKeyInput()
 {
-	// Ϊ������ OLE �Զ����������ж������ֹӦ�ó���
-	// 	������������ AfxOleUnlockApp��
+	// 为了在用 OLE 自动化创建所有对象后终止应用程序，
+	// 	析构函数调用 AfxOleUnlockApp。
 	
 	AfxOleUnlockApp();
 }
 </pre>
 				<pre>void CKeyInput::OnFinalRelease()
 {
-	// �ͷ��˶��Զ�����������һ�����ú󣬽�����
-	// OnFinalRelease�����ཫ�Զ�
-	// ɾ���ö����ڵ��øû���֮ǰ������������
-	// ��������ĸ���������롣
+	// 释放了对自动化对象的最后一个引用后，将调用
+	// OnFinalRelease。基类将自动
+	// 删除该对象。在调用该基类之前，请添加您的
+	// 对象所需的附加清除代码。
 
 	CCmdTarget::OnFinalRelease();
 }
@@ -1291,9 +1291,9 @@ END_MESSAGE_MAP()
 </pre>
 				<pre><font color="#FF00FF">BEGIN_DISPATCH_MAP(CKeyInput, CCmdTarget)
 END_DISPATCH_MAP()</font></pre>
-				<pre>// ע��: �������� IID_IKeyInput ֧��
-//��֧������ VBA �����Ͱ�ȫ�󶨡��� IID ����ͬ���ӵ� .IDL �ļ��е�
-//���Ƚӿڵ� GUID ƥ�䡣
+				<pre>// 注意: 我们添加 IID_IKeyInput 支持
+//以支持来自 VBA 的类型安全绑定。此 IID 必须同附加到 .IDL 文件中的
+//调度接口的 GUID 匹配。
 
 // {87741D4A-7277-4D93-98F0-D116B995FD91}
 static const IID IID_IKeyInput =
@@ -1304,31 +1304,31 @@ END_INTERFACE_MAP()</pre>
 				<pre>// {7C6F1364-8C73-4335-B6FD-C61D53681573}
 IMPLEMENT_OLECREATE_FLAGS(CKeyInput, &quot;KeyInput.KeyInput&quot;, afxRegApartmentThreading, 0x7c6f1364, 0x8c73, 0x4335, 0xb6, 0xfd, 0xc6, 0x1d, 0x53, 0x68, 0x15, 0x73)
 </pre>
-				<pre>// CKeyInput ��Ϣ��������</pre>
+				<pre>// CKeyInput 消息处理程序</pre>
 				</td>
 			</tr>
 			
 		</table>
-		<p>��<li>
-		<p>�������ӵ�����<ul>
-			<li>��ʵ���ļ��еĽӿ�ӳ����ж��壺<span class="showlink" onclick ="call show(interface_part_iidiconnectionpointcontainer)">INTERFACE_PART(theClass, IID_IConnectionPointContainer, 
+		<p>　<li>
+		<p>建立连接点容器<ul>
+			<li>在实现文件中的接口映射表中定义：<span class="showlink" onclick ="call show(interface_part_iidiconnectionpointcontainer)">INTERFACE_PART(theClass, IID_IConnectionPointContainer, 
 ConnPtContainer)</span>
 			<table border="0" width="100%" class="tablestyle" style="display:none" id="interface_part_iidiconnectionpointcontainer">
 				<tr>
 					<td>
 					<pre>BEGIN_INTERFACE_MAP(theClass, theBase)
-	INTERFACE_PART(theClass, IID, Dispatch) //�����򵼼ӵ�
+	INTERFACE_PART(theClass, IID, Dispatch) //这是向导加的
 	<font color="#FF00FF">INTERFACE_PART(theClass, IID_IConnectionPointContainer, ConnPtContainer)</font>
 END_INTERFACE_MAP()</pre></td>
 				</tr>
 			</table></li>
-			<li>���� theClass �Ĺ��캯���м��룺<br>EnableAutomation();<br>
+			<li>在类 theClass 的构造函数中加入：<br>EnableAutomation();<br>
 			<font color="#FF00FF">EnableConnections();</font></li>
 		</ul></li>
-		<li>�������ӵ�<ul>
-			<li>��ͷ�ļ����������ӵ�ӳ�����DELARE_CONNECTION_MAP()</li>
-			<li>��ʵ���ļ��ж������ӵ�� IID �� �� odl(idl) �ļ��ж������ӵ�ӿ�</li>
-			<li>��ʵ���ļ��ж������ӵ�ӳ�����</li>
+		<li>建立连接点<ul>
+			<li>在头文件中声明连接点映射表：DELARE_CONNECTION_MAP()</li>
+			<li>在实现文件中定义连接点的 IID 和 在 odl(idl) 文件中定义连接点接口</li>
+			<li>在实现文件中定义连接点映射表：</li>
 		 
 			 
 			<ul>
@@ -1336,28 +1336,28 @@ END_INTERFACE_MAP()</pre></td>
 				<li>CONNECTION_PART(theClass, IID, LocalClass)</li>
 				<li>END_CONNECTION_MAP()</li>
 			</ul>
-			<li>��ͷ�ļ��ж������ӵ����</li>
+			<li>在头文件中定义连接点对象：</li>
 		 
 			 
 			<ul>
 				<li>BEGIN_CONNECTION_PART(theClass,LocalClass)</li>
 				<li>CONNECTION_IID(IID)</li>
 				<li>END_CONNECTION_PART(LocalClass)<font color="#FF00FF"> 
-			ע�⣺����������ж���һ����Ա������ m_xLocallClass ��һ����Ա�� XlocaalClass</font></li>
+			注意：这里会在类中定义一个成员变量： m_xLocallClass 和一个友员类 XlocaalClass</font></li>
 			</ul>
 		</ul></li>
 </ol> 
-	<li><b>ʵ�ֽ�����</b>���μ� 195 ҳ�� 6.4.4 ��<p></p></li>
+	<li><b>实现接收器</b>，参见 195 页的 6.4.4 节<p></p></li>
 	<ol>
-	    <li>���� COM ���ʼ��������AfxOleInit()</li>
-		<li>�������������</li>
+	    <li>加入 COM 库初始化函数：AfxOleInit()</li>
+		<li>加入接收器对象：</li>
 		<ul>
-		    <li>BEGIN_INTERFACE_PART(theEvent, IDispatch)   //�� IDispatch ����������</li>
+		    <li>BEGIN_INTERFACE_PART(theEvent, IDispatch)   //从 IDispatch 派生出来的</li>
 			<li>INIT_INTERFACE_PART(theClass, theEvent)</li>
-			<li>�������ķ�����STDMETHOD(...)</li>
+			<li>接收器的方法：STDMETHOD(...)</li>
 			<li>END_INTERFACE_PART(theEvent)</li>
 		</ul>
-		<li>ʵ�ֽ�������Ա��Invoke �ȡ�</li>
+		<li>实现接收器成员：Invoke 等。</li>
 	</ol>
 </ol>
 
@@ -1365,37 +1365,37 @@ END_INTERFACE_MAP()</pre></td>
 
 
 
-<p><b>�� ATL ʵ�ֽӿ�</b></p>
+<p><b>用 ATL 实现接口</b></p>
 <p class ="showlink" onclick ="call show(ATL_table_impelement)"><b>VC6.0</b></p>
 <ol id="ATL_table_impelement" style ="display:none">
 
 
 <li>
-<p><b>���� ATL ����</b>
+<p><b>建立 ATL 工程</b>
 <p>
 <ol>
-<li><span  class ="showlink" onclick ="call show(Create_ATL_Oparate)">��������</span> </li>
+<li><span  class ="showlink" onclick ="call show(Create_ATL_Oparate)">操作步骤</span> </li>
 <form id="Create_ATL_Oparate" style ="display:none">
-<font color="#000000"><span style="text-decoration: none">����1������һ��������(WorkSpace)��<br>
-����2���ڹ������У�����һ�� ATL ����(Project)��ʾ������� Simple1����ѡ��DLL��ʽ����ͼһ��<br>
+<font color="#000000"><span style="text-decoration: none">步骤1：建立一个工作区(WorkSpace)。<br>
+步骤2：在工作区中，建立一个 ATL 工程(Project)。示例程序叫 Simple1，并选择DLL方式，见图一。<br>
 <br>
 <img height="467" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic01.jpg" width="612" border="0"><br>
-ͼһ������ ATL DLL ����<br>
+图一、建立 ATL DLL 工程<br>
 <br>
-����<i><b>Dynamic Link Library(DLL)</b></i> ��ʾ����һ�� DLL ���������<br>
-����<i><b>Executable(EXE)</b></i> ��ʾ����һ�� EXE ���������<br>
-����<i><b>Service(EXE)</b></i> ��ʾ����һ���������ϵͳ������ͻ���ز�ִ�еĳ���<br>
-����<i><b>Allow merging of proxy/stub code</b></i> 
-ѡ������ʾ�ѡ�����/���������ϲ�����������У�������Ҫ�������룬����ע�����������򡣴���/����������ʲô������ǵ�������</span></font><a href="http://www.vckbase.com/document/viewdoc/?id=1493"><span style="text-decoration: none"><font color="#000000">�ϻ���</font></span></a><font color="#000000"><span style="text-decoration: none">�н��ܵ��𣿵������ߵ��ý������Զ��������ܵ�ʱ����ʵ�Ǵ���/����������ݽ����ġ�</li>
+　　<i><b>Dynamic Link Library(DLL)</b></i> 表示建立一个 DLL 的组件程序。<br>
+　　<i><b>Executable(EXE)</b></i> 表示建立一个 EXE 的组件程序。<br>
+　　<i><b>Service(EXE)</b></i> 表示建立一个服务程序，系统启动后就会加载并执行的程序。<br>
+　　<i><b>Allow merging of proxy/stub code</b></i> 
+选择该项表示把“代理/存根”代码合并到组件程序中，否则需要单独编译，单独注册代理存根程序。代理/存根，这个是什么概念？还记得我们在</span></font><a href="http://www.vckbase.com/document/viewdoc/?id=1493"><span style="text-decoration: none"><font color="#000000">上回书</font></span></a><font color="#000000"><span style="text-decoration: none">中介绍的吗？当调用者调用进程外或远程组件功能的时候，其实是代理/存根负责数据交换的。</li>
  
 </span></font>
 </form>
 
-<li><span  class ="showlink" onclick ="call show(Create_ATL_ADD_Content)">���ӵ�����</span> </li>
+<li><span  class ="showlink" onclick ="call show(Create_ATL_ADD_Content)">增加的内容</span> </li>
 <form id ="Create_ATL_ADD_Content" style ="display:none">
-���ӵ��ļ���<br>
-ATLCOM.def:���� DLL �ĵ���������<br>
-<span class="showlink" onclick ="call show(init_IDL_Content)">ATLCOM.IDL:���� COM ��ͽӿڡ�</span><br>
+增加的文件：<br>
+ATLCOM.def:定义 DLL 的导出函数。<br>
+<span class="showlink" onclick ="call show(init_IDL_Content)">ATLCOM.IDL:定义 COM 库和接口。</span><br>
 <pre id=init_IDL_Content style ="display:none; background-color:#FFFF00">
 import &quot;oaidl.idl&quot;;
 import &quot;ocidl.idl&quot;;
@@ -1412,10 +1412,10 @@ importlib(&quot;stdole2.tlb&quot;);
 
 };
  </pre>
-<span class=showlink onclick ="call show(atlcom_content)">ATLCOM.CPP��ʵ����COM����ʵ���Ͷ�̬�����ں͵���������ʵ�֡�</span>
+<span class=showlink onclick ="call show(atlcom_content)">ATLCOM.CPP：实现了COM对象实例和动态库的入口和导出函数的实现。</span>
 <div style="background-color: #FFFF00">
 <ol id=atlcom_content   style=display:none>
-	<li>����ӳ�����<br>
+	<li>对象映射表：<br>
 	BEGIN_OBJECT_MAP(ObjectMap)<br>
 	END_OBJECT_MAP()</li>
 	<li>CComModule 	_Module;</li>
@@ -1428,59 +1428,59 @@ importlib(&quot;stdole2.tlb&quot;);
 	</div>
 	<p></p>
 <ol>
-   ��������ӵ��ļ���
-   <li>ATLCOM_i.c:������IID</li>
-   <li>ATLCOM.H:�������ǰ���У���û�����ݡ���������MIDL����IDL�ļ�������ġ�<br></li>
+   编译后增加的文件：
+   <li>ATLCOM_i.c:定义库的IID</li>
+   <li>ATLCOM.H:这个编译前已有，但没有内容。内容是由MIDL编译IDL文件后产生的。<br></li>
 </ol>
 	
 </form>
 </ol>
 
 
-<li><b>���� ATL ������<br></b>
+<li><b>增加 ATL 对象类<br></b>
 <ol>
-<li><span class ="showlink" onclick ="call show(ADD_ATL_CLASS)">��������</span></li>
+<li><span class ="showlink" onclick ="call show(ADD_ATL_CLASS)">操作步骤</span></li>
 <form id="ADD_ATL_CLASS" style ="display:none">
-����1���˵� Insert\New ATL Object...������������Ҽ��� ClassView ��Ƭ�е����˵�����ѡ��Object ���࣬ѡ�� 
-Simple Object ��Ŀ����ͼ����<br>
+步骤1：菜单 Insert\New ATL Object...（或者用鼠标右键在 ClassView 卡片中弹出菜单）并选择Object 分类，选中 
+Simple Object 项目。见图二。<br>
 <br>
 <img height="257" src="Picture/comtut5pic02.jpg" width="413" border="0"><br>
-ͼ����ѡ������COM����<br>
+图二、选择建立简单COM对象<br>
 <br>
-����<i><b>Category Object</b></i> ��ͨ��������п���ѡ�������������ͺܶ࣬�������ϣ��������򵼰�����Ĭ�ϼ���һЩ�ӿڡ���������ѡ 
-&quot;Simple Object&quot;�����򵼸����ǵ�������� IUnknown �ӿڣ�����ѡ &quot;Internet Explorer Object&quot;�����򵼳��˼��� 
-IUnknown �ӿ��⣬������һ���� IE ��ʹ�õ� IObjectWithSite �ӿڡ���Ȼ�ˣ�������ȫ�����ֹ������κνӿڡ�<br>
-����<i><b>Category Controls</b></i> ActiveX �ؼ������п���ѡ��� ActiveX ����Ҳ�ܶࡣ�����ں�����ר�Ž��� 
-ActiveX ����������ۡ�<br>
-����<i><b>Category Miscellaneous</b></i> �������������<br>
-����<i><b>Categroy Data Access</b></i> ���ݿ������(�����������ݿ����ˣ�������Ҳ����)��<br>
+　　<i><b>Category Object</b></i> 普通组件。其中可以选择的组件对象类型很多，但本质上，就是让向导帮我们默认加上一些接口。比如我们选 
+&quot;Simple Object&quot;，则向导给我们的组件加上 IUnknown 接口；我们选 &quot;Internet Explorer Object&quot;，则向导除了加上 
+IUnknown 接口外，再增加一个给 IE 所使用的 IObjectWithSite 接口。当然了，我们完全可以手工增加任何接口。<br>
+　　<i><b>Category Controls</b></i> ActiveX 控件。其中可以选择的 ActiveX 类型也很多。我们在后续的专门介绍 
+ActiveX 编程中再讨论。<br>
+　　<i><b>Category Miscellaneous</b></i> 辅助杂类组件。<br>
+　　<i><b>Categroy Data Access</b></i> 数据库类组件(我最讨厌数据库编程了，所以我也不会)。<br>
 <br>
-��������2�������Զ����� CFun(�ӿ� IFun) ,��ͼ����<br>
+　　步骤2：增加自定义类 CFun(接口 IFun) ,见图三。<br>
 <br>
 <img height="260" src="Picture/comtut5pic03.jpg" width="421" border="0"><br>
-ͼ�����������еĸ�������<br>
-���� ��ʵ������ֻ��Ҫ�������(Short Name)����������Ŀ���Զ���д��ûʲô��˵�ģ�ֻ����ע��һ�� ProgID �Ĭ�ϵ� ProgID 
-���췽ʽΪ��������.��������<br>
+图三、输入类中的各项名称<br>
+　　 其实，我们只需要输入短名(Short Name)，其它的项目会自动填写。没什么多说的，只请大家注意一下 ProgID 项，默认的 ProgID 
+构造方式为“工程名.短名”。<br>
 <br>
-���� ����3����д�ӿ����ԣ���ͼ�ġ�<br>
+　　 步骤3：填写接口属性，见图四。<br>
 <img height="260" src="Picture/comtut5pic04.jpg" width="421" border="0"><br>
-ͼ�ġ��ӿ�����<br>
+图四、接口属性<br>
 <br>
-����<i><b>Threading Model</b></i> ѡ�����֧�ֵ��߳�ģ�͡�COM �е��̣߳�����Ϊ�������ᣬ��ӵĲ��֡�COM 
-�̺߳͹�Ԣ�ĸ�������������ܡ�������......��Ҷ�ѡ 
-Apartment��������ʲô�ǣ��򵥵�˵�������߳��е������������ʱ����Щ���û��Ŷӽ��С���ˣ�����ģʽ�£����ǿ�����ʱ���ÿ���ͬ�������⡣(ע1)<br>
-���� <i><b>Interface</b></i> �ӿڻ������͡�Dual ��ʾ֧��˫�ӿ�(ע2)������ǳ� 
-�ǳ���Ҫ���ǳ��ǳ����ã������ǽ��첻����Custom ��ʾ�Զ����ڡ�<b>�мǣ��мǣ����ǵ����һ�� COM �����У�һ��Ҫѡ������������</b>�������ѡ���ˣ���ɾ��ȫ�����ݣ�������������<br>
-���� Aggregation ����д������������Ƿ����������˾ۺ�(ע3)ʹ�á�Only ��ʾ���뱻�ۺϲ���ʹ�ã��е����� C++ 
-�еĴ����࣬��Ҫ���ܹ���ʦ��ֻ������Ƶ�������д����Ļ�����ѡ������<br>
-����<i><b>Support ISupportErrorInfo</b></i> �Ƿ�֧�ַḻ��Ϣ�Ĵ������ӿڡ��Ժ�ͽ���<br>
-����<i><b>Support Connection Points</b></i> �Ƿ�֧�����ӵ�ӿڣ��¼����ص������Ժ�ͽ���<br>
-����<i><b>Free Threaded Marshaler</b></i> �Ժ�Ҳ��������������㣬��Ҳ��˵��(ע4)<br>
+　　<i><b>Threading Model</b></i> 选择组件支持的线程模型。COM 中的线程，我认为是最讨厌，最复杂的部分。COM 
+线程和公寓的概念，留待后续介绍。现在吗......大家都选 
+Apartment，它代表什么那？简单地说：当在线程中调用组件函数的时候，这些调用会排队进行。因此，这种模式下，我们可以暂时不用考虑同步的问题。(注1)<br>
+　　 <i><b>Interface</b></i> 接口基本类型。Dual 表示支持双接口(注2)，这个非常 
+非常重要，非常非常常用，但我们今天不讲。Custom 表示自定义借口。<b>切记！切记！我们的这第一个 COM 程序中，一定要选择它！！！！</b>（如果你选错了，请删除全部内容，重新来过。）<br>
+　　 Aggregation 我们写的组件，将来是否允许被别人聚合(注3)使用。Only 表示必须被聚合才能使用，有点类似 C++ 
+中的纯虚类，你要是总工程师，只负责设计但不亲自写代码的话，才选择它。<br>
+　　<i><b>Support ISupportErrorInfo</b></i> 是否支持丰富信息的错误处理接口。以后就讲。<br>
+　　<i><b>Support Connection Points</b></i> 是否支持连接点接口（事件、回调）。以后就讲。<br>
+　　<i><b>Free Threaded Marshaler</b></i> 以后也不讲，就算打死你，我也不说！(注4)<br>
 <br>
 </form>
-<li><span class ="showlink" onclick ="call show(Add_ATL_CLASS_Content)">���ӵ�����</span></li>
+<li><span class ="showlink" onclick ="call show(Add_ATL_CLASS_Content)">增加的内容</span></li>
 <form id="Add_ATL_CLASS_Content" style ="display:none">
-���ӵ��ļ���
+增加的文件：
 
 <br>
 Fun.cpp:<br>
@@ -1519,7 +1519,7 @@ public:
 
 #endif //__FUN_H_
 </pre>
-<span class="showlink" onclick ="call show(Registvalue_Content)">Fun.rgs:����ע��ֵ��</span>
+<span class="showlink" onclick ="call show(Registvalue_Content)">Fun.rgs:关于注册值：</span>
 <pre id="Registvalue_Content" style="display:none" style="background-color: #FFFF00">
 HKCR
 {
@@ -1546,7 +1546,7 @@ HKCR
 		}
 	}
 }</pre>
-<p></p><span class =showlink onclick ="call show(atlcom_idl_add_content)">ATLCOM.idl�ļ������ӵ����ݣ�</span>
+<p></p><span class =showlink onclick ="call show(atlcom_idl_add_content)">ATLCOM.idl文件中增加的内容：</span>
 <pre id=atlcom_idl_add_content style ="display:none" style="background-color: #FFFF00">
 import "oaidl.idl";
 import "ocidl.idl";
@@ -1581,24 +1581,24 @@ library ATLCOMLib
 	};</font>
 };</pre>
 <p></p>
-<span class =showlink onclick ="call show(atlcom_cpp_add_content)">ATLCOM.CPP���ӵ����ݣ�</span><br>
+<span class =showlink onclick ="call show(atlcom_cpp_add_content)">ATLCOM.CPP增加的内容：</span><br>
 <pre id=atlcom_cpp_add_content style =display:none style="background-color: #FFFF00">
 <span >BEGIN_OBJECT_MAP(ObjectMap)
 <font color="#FF0000">OBJECT_ENTRY(CLSID_Fun, CFun)</font>
 END_OBJECT_MAP()</span>
 </pre>
 
-��������ӵ��ļ���<br>
+编译后增加的文件：<br>
 ATLCOM_p.c<br>
 dlldata.c<br>
-</form></ol>��
+</form></ol>　
 </li>
 
-<li><b>���ӽӿں���</b></li>
+<li><b>添加接口函数</b></li>
 <form>
 <ol>
 
-<li><span  onclick="call show(add_method_interface)" class =showlink>��������</span> </li>
+<li><span  onclick="call show(add_method_interface)" class =showlink>操作步骤</span> </li>
 <table style =display:none cellSpacing="0" cellPadding="0" width="100%" border="0" id="add_method_interface">
 	<tr>
 		<td vAlign="top" width="*" height="74">
@@ -1607,60 +1607,60 @@ dlldata.c<br>
 				<td><b><br>
 				</b><br>
 				<img height="365" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic05.jpg" width="282" border="0"><br>
-				ͼ�塢�������ӽӿڷ����Ĳ˵�<br>
+				图五、调出增加接口方法的菜单<br>
 				<br>
 				<img height="311" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic06.jpg" width="486" border="0"><br>
-				ͼ�������ӽӿں��� Add<br>
+				图六、增加接口函数 Add<br>
 				<br>
 				<img height="311" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic07.jpg" width="486" border="0"><br>
-				ͼ�ߡ����ӽӿں��� Cat<br>
+				图七、增加接口函数 Cat<br>
 				<br>
-				�������ϸ���ͼ���ķ�ʽ������Add()����������ͼ��������Cat()�����Ĳ����Ƚϳ�����û���ʵ�������ո������Լ������ʱ��ע��һ�¡�[in]��ʾ�������������룻[out]��ʾ���������������[out,retval]��ʾ���������������ͬʱ������Ϊ�����������ķ���ֵ��һ�������У������ж��[in]��[out]����[retval]ֻ����һ��������Ҫ��[out]��Ϻ������һ��λ�á�(ע5)<br>
+				　　请严格按照图六的方式，增加Add()函数；由于图七中增加Cat()函数的参数比较长，我没有适当的输入空格，请大家自己输入的时候注意一下。[in]表示参数方向是输入；[out]表示参数方向是输出；[out,retval]表示参数方向是输出，同时可以作为函数运算结果的返回值。一个函数中，可以有多个[in]、[out]，但[retval]只能有一个，并且要和[out]组合后在最后一个位置。(注5)<br>
 				<img height="454" src="http://www.vckbase.com/document/journal/vckbase43/images/comtut5pic08.jpg" width="535" border="0"><br>
-				ͼ�ˡ��ӿں���������ɺ��ͼʾ<br>
-				�������Ƕ�֪����Ҫ��ı� C++ �е��ຯ������Ҫ�޸������ط���һ��ͷ�ļ�(.h)����ĺ������������Ǻ�����(.cpp)�ļ���ʵ�ִ��������������� 
-				ATL д���������Ҫ�޸�һ���ط������ǽӿڶ���(IDL)�ļ������ż� IDL �´ξ�Ҫ��������<br>
-				�������� vc6.0 ��BUG�����´����������ӿںͽӿں����󣬿��ܲ�������ͼ��ͼ�ˣ������ֵ���ʽ�����������<br>
-				�� 
+				图八、接口函数定义完成后的图示<br>
+				　　我们都知道，要想改变 C++ 中的类函数，需要修改两个地方：一是头文件(.h)中类的函数声明，二是函数体(.cpp)文件的实现处。而我们现在用 
+				ATL 写组件程序，则还要修改一个地方，就是接口定义(IDL)文件。别着急 IDL 下次就要讨论啦。<br>
+				　　由于 vc6.0 的BUG，导致大家在增加完接口和接口函数后，可能不会向上图（图八）所表现的样式。解决方法：<br>
+				　 
 				<table cellSpacing="1" width="100%" border="1" id="table5">
 					<tr>
 						<td align="middle" width="3%">1</td>
-						<td width="60%">�رչ��̣�Ȼ�����´�</td>
-						<td width="37%">�÷���������Ч</td>
+						<td width="60%">关闭工程，然后重新打开</td>
+						<td width="37%">该方法常常有效</td>
 					</tr>
 					<tr>
 						<td align="middle" width="3%">2</td>
-						<td width="60%">�ر� IDE��Ȼ����������</td>
-						<td width="37%">��</td>
+						<td width="60%">关闭 IDE，然后重新运行</td>
+						<td width="37%">　</td>
 					</tr>
 					<tr>
 						<td align="middle" width="3%">3</td>
-						<td width="60%">�� IDL �ļ������ӿں����Ƿ���ȷ���粻��ȷ���޸�</td>
-						<td width="37%">��</td>
+						<td width="60%">打开 IDL 文件，检查接口函数是否正确，如不正确请修改</td>
+						<td width="37%">　</td>
 					</tr>
 					<tr>
 						<td align="middle" width="3%">4</td>
-						<td width="60%">�� IDL �ļ�������޸�һ��(��һ���ո���ɾ������ո�)��Ȼ�󱣴�</td>
-						<td width="37%">�÷���������Ч</td>
+						<td width="60%">打开 IDL 文件，随便修改一下(加一个空格，再删除这个空格)，然后保存</td>
+						<td width="37%">该方法常常有效</td>
 					</tr>
 					<tr>
 						<td align="middle" width="3%">5</td>
-						<td width="60%">�� h/cpp �ļ�����麯���Ƿ���ڻ��Ƿ���ȷ�������֮</td>
-						<td width="37%">������㣬��˵���������������Ť</td>
+						<td width="60%">打开 h/cpp 文件，检查函数是否存在或是否正确，有则改之</td>
+						<td width="37%">无则嘉勉，不说完这个成语心理别扭</td>
 					</tr>
 					<tr>
 						<td align="middle" width="3%">6</td>
-						<td width="60%">ɾ�� IDL/H/CPP �еĽӿں�����Ȼ��</td>
-						<td width="37%">����һ��</td>
+						<td width="60%">删除 IDL/H/CPP 中的接口函数，然后</td>
+						<td width="37%">再来一遍</td>
 					</tr>
 					<tr>
 						<td align="middle" width="3%">7</td>
-						<td width="60%">���½������̡����°�װvc�����°�װwindows���Ҽ����</td>
-						<td width="37%">�ң�</td>
+						<td width="60%">重新建立工程、重新安装vc、重新安装windows、砸计算机</td>
+						<td width="37%">砸！</td>
 					</tr>
 				</table>
 				<p><b><br>
-��</b></td>
+　</b></td>
 			</tr>
 		</table>
 		</td>
@@ -1668,9 +1668,9 @@ dlldata.c<br>
 </table>
 
 
-<li><span  class =showlink onclick ="call show(add_method_add_content)">��������</span> </li><br>
+<li><span  class =showlink onclick ="call show(add_method_add_content)">增加内容</span> </li><br>
 <div id="add_method_add_content" style =display:none>
-<span class =showlink onclick ="call show(add_method_add_content_actcom_idl_file_content)">ATLCOM.IDL�ļ�</span><br>
+<span class =showlink onclick ="call show(add_method_add_content_actcom_idl_file_content)">ATLCOM.IDL文件</span><br>
 <pre id="add_method_add_content_actcom_idl_file_content" style ="display:none;background-color: #FFFF00">
 // ATLCOM.idl : IDL source for ATLCOM.dll
 //
@@ -1712,7 +1712,7 @@ library ATLCOMLib
 	};
 };
 </pre>
-<span class=showlink onclick ="call show(fun_h_add_method_add_content)">Fun.h�ļ���������</span><br>
+<span class=showlink onclick ="call show(fun_h_add_method_add_content)">Fun.h文件增加内容</span><br>
 <pre id =fun_h_add_method_add_content style ="display:none;background-color: #FFFF00">
 // Fun.h : Declaration of the CFun
 
@@ -1748,7 +1748,7 @@ public:
 
 #endif //__FUN_H_
 </pre>
-<span class=showlink onclick ="call show(add_method_fun_cpp_add_content)">Fun.cpp��������</span><br>
+<span class=showlink onclick ="call show(add_method_fun_cpp_add_content)">Fun.cpp增加内容</span><br>
 <pre id=add_method_fun_cpp_add_content style ="display:none;background-color: #FFFF00">
 // Fun.cpp : Implementation of CFun
 #include "stdafx.h"
@@ -1774,5 +1774,5 @@ public:
 
 </ol>
 
-<p><b>������������</b></p><ol>
-<li>�ַ����Ĵ������� VC֪ʶ��ھ��� ��COM������š�����һ���֡�</li><li>��ATL������������COM�ԣ��� VC ֪ʶ���ʮ����</li></ol></body></html>
+<p><b>其它文章索引</b></p><ol>
+<li>字符串的处理，见 VC知识库第九期 《COM编程入门——第一部分》</li><li>用ATL建立轻量级的COM对，见 VC 知识库第十三期</li></ol></body></html>

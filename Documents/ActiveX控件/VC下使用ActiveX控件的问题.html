@@ -1,8 +1,8 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>VC֪ʶ��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>VC知识库</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 	<table class="font" height="57" width="100%" border="0">
 		<tr>
 			<td class="bigfont" borderColor="#800080" align="middle" width="27%" bgColor="#b8cfe7" height="6">
-			<font color="#800080">VC֪ʶ�⣨�壩</font> </td>
+			<font color="#800080">VC知识库（五）</font> </td>
 			<td class="bigfont" borderColor="#800080" align="middle" width="73%" bgColor="#b8cfe7" height="6">
 			<font color="#800080">www.vckbase.com</font> </td>
 		</tr>
@@ -22,11 +22,11 @@
 		<tr>
 			<td class="header" vAlign="top" align="middle" width="100%" colSpan="2" height="17">
 			<small>
-			<p align="center"><big>VC++5.0��ʹ��ActiveX�ؼ�������</big></small></td>
+			<p align="center"><big>VC++5.0下使用ActiveX控件的问题</big></small></td>
 		</tr>
 		<tr>
 			<td class="info" align="middle" width="100%" colSpan="2" height="17">
-			<small><big><font face="����">���� ��˳ƽ</font></big></small> </td>
+			<small><big><font face="宋体">刘芳 周顺平</font></big></small> </td>
 		</tr>
 		<tr>
 			<td class="font" width="100%" colSpan="2" height="22"><hr></td>
@@ -36,30 +36,30 @@
 			<table width="80%" align="center" border="0">
 				<tr>
 					<td>
-					�Դ�Microsoft������1996��3�µ�Internetרҵ������Ա���ֻ������ActiveXһ������������������������˾��������Ʒ���漰��ActiveX����������ΪActiveX����֮һ��ActiveX�ؼ������ǵõ���󿪷��ߵ���������ô������ʲô��ActiveX�ؼ��أ�</td>
+					自从Microsoft最早在1996年3月的Internet专业开发人员研讨会上提出ActiveX一词以来，到今天已有无数公司的无数产品中涉及了ActiveX技术，而作为ActiveX技术之一的ActiveX控件，更是得到广大开发者的青睐。那么，到底什么是ActiveX控件呢？</td>
 				</tr>
 				<tr>
 					<td>
-					һ���棬����ʾ�������Microsoft��Internet��ҵ����¼�����С�Ϳ��ٵĿ�������������뿪�������޹أ����κ�֧��ActiveX�ؼ�����������ƽ̨����VB��VC++��Access��VFP��Delphi��PowerBuilder�ȣ��϶�����ʹ��ActiveX�ؼ�������Ա������ʹ��Windows��׼�ؼ�һ��ʹ�ò�ͬ���̿�����ActiveX�ؼ���������ʵ�������������Ĺ�ҵ�����������������������Ч�ʡ�</td>
+					一方面，它表示将你带向Microsoft、Internet和业界的新技术的小型快速的可重用组件。它与开发语言无关，在任何支持ActiveX控件的软件开发平台（如VB、VC++、Access、VFP、Delphi、PowerBuilder等）上都可以使用ActiveX控件，程序员可以像使用Windows标准控件一样使用不同厂商开发的ActiveX控件。这样就实现了软件开发的工业化，大大地提高了软件的生产效率。</td>
 				</tr>
 				<tr>
 					<td>
-					��һ���棬������Internet��Ӧ�ó����һ�ּ��ɲ��ԡ��û����Դ�Internet������ActiveX�ؼ���Ҳ����ͨ�������ڱ��ػ��ϵ���Զ�̻��ϵ�ActiveX�ؼ��������Խ�ActiveX�ؼ����뵽Internet��ҳ�ϡ� 
-					��ȻActiveX�ؼ��Գ���Ա����˵���Ҫ����ô����ú�ActiveX�ؼ�Ҳ�ͳ�Ϊ���������������ĵ����⡣������VC++5.0Ϊ�������ߣ���һ����Ŀ��ΪTest��Ӧ�ó���Ϊ������Ա����ڿؼ�ʹ����������һЩ����������ۡ�</td>
+					另一方面，它代表Internet与应用程序的一种集成策略。用户可以从Internet上下载ActiveX控件，也可以通过网络在本地机上调用远程机上的ActiveX控件，还可以将ActiveX控件加入到Internet主页上。 
+					既然ActiveX控件对程序员是如此地重要，那么如何用好ActiveX控件也就成为软件开发者所关心的问题。本文以VC++5.0为开发工具，以一个项目名为Test的应用程序为例，针对笔者在控件使用中遇到的一些问题加以讨论。</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 				</tr>
 				<tr bgColor="#ffcc66">
-					<td><font face="����_GB2312">һ��ʹӦ�ó���֧��ActiveX�ؼ�</font></td>
+					<td><font face="楷体_GB2312">一．使应用程序支持ActiveX控件</font></td>
 				</tr>
 				<tr>
-					<td>Ҫ����Ӧ�ó�����ʹ��ActiveX�ؼ�������ʹ���Ӧ�ó����ΪActiveX�ؼ���������ActiveX 
-					�ؼ�������������ȫ֧��ActiveX�ؼ������ܰѿؼ���Ͻ��Լ��Ĵ��ڻ�Ի���ĸ�Ӧ�ó�������MFC��AppWizard������Ժܷ���ش�����İ�����������ʵ�ϣ�����AppWizard�����µ�Ӧ�ó���ʱ�����Ӧ�ó���ͱ�ȱʡ����Ϊ�ؼ�����������ʹ���ڴ���������û�м���ActiveX�ؼ�֧�֣��Ժ�Ҳ�����ֶ��ؽ��и��ġ�</td>
+					<td>要想在应用程序中使用ActiveX控件，必须使你的应用程序成为ActiveX控件包容器。ActiveX 
+					控件包容器就是完全支持ActiveX控件，并能把控件组合进自己的窗口或对话框的父应用程序。利用MFC的AppWizard，你可以很方便地创建你的包容器程序。事实上，在用AppWizard创建新的应用程序时，你的应用程序就被缺省设置为控件包容器，即使你在创建过程中没有加入ActiveX控件支持，以后也可以手动地进行更改。</td>
 				</tr>
 				<tr>
 					<td>
-					1������Ŀ��Ӧ�����.cpp�ļ���������Ϊtest.cpp����Initinstance�����м���Ժ���AfxEnableControlContainer()�ĵ��ã�������ʾ��</td>
+					1、在项目的应用类的.cpp文件（本例中为test.cpp）的Initinstance函数中加入对函数AfxEnableControlContainer()的调用，如下所示：</td>
 				</tr>
 				<tr>
 					<td>BOOL CTestApp::InitInstance()
@@ -69,41 +69,41 @@
 					<p>}</td>
 				</tr>
 				<tr>
-					<td>2������Ŀ�е�STDAFX.Hͷ�ļ��м������´��룺#include &lt;afxdisp.h&gt;<AFXDISP.H> 
-					Ȼ������������Ŀ���ɡ�</td>
+					<td>2、在项目中的STDAFX.H头文件中加入如下代码：#include &lt;afxdisp.h&gt;<AFXDISP.H> 
+					然后重新链接项目即可。</td>
 				</tr>
 				<tr>
 					<td><AFXDISP.H></td>
 				</tr>
 				<tr bgColor="#ffcc66">
-					<td><font face="����_GB2312">�����ڷǶԻ���������ʹ��ActiveX�ؼ�</font></td>
+					<td><font face="楷体_GB2312">二．在非对话框容器中使用ActiveX控件</font></td>
 				</tr>
 				<tr>
-					<td>��ʹ��һ����ע���ActiveX�ؼ�֮ǰ��������������Ƚ��ÿؼ����ӵ�Ӧ�ó����У�</td>
+					<td>在使用一个已注册的ActiveX控件之前，必须先用组件廊将该控件添加到应用程序中：</td>
 				</tr>
 				<tr>
-					<td>1����Project�˵���ѡ��Add To Project�µ�Components and Controls��</td>
+					<td>1、从Project菜单中选择Add To Project下的Components and Controls。</td>
 				</tr>
 				<tr>
-					<td>2���ڵ����ĶԻ�����˫������Registered ActiveX Control��Ŀ¼��</td>
+					<td>2、在弹出的对话框中双击并打开Registered ActiveX Control子目录。</td>
 				</tr>
 				<tr>
-					<td>3��ѡ������Ҫ�Ŀؼ������Insert��ť������Confirm Classes�Ի���</td>
+					<td>3、选择你需要的控件，点击Insert按钮，弹出Confirm Classes对话框。</td>
 				</tr>
 				<tr>
-					<td>4�����г���������ѡ����Ҫ���ࣨȱʡΪȫѡ�У���ý���ȱʡ���ã������OK���ر�Confirm 
-					Classes�Ի���</td>
+					<td>4、在列出的类名中选择需要的类（缺省为全选中，最好接受缺省设置），点击OK，关闭Confirm 
+					Classes对话框。</td>
 				</tr>
 				<tr>
-					<td>5�����Close�ر�����ȣ���ÿؼ���ͼ�꼴���뵽�Ի���༭���Ŀؼ�����ϡ�</td>
+					<td>5、点击Close关闭组件廊，则该控件的图标即加入到对话框编辑器的控件面板上。</td>
 				</tr>
 				<tr>
 					<td>
-					���������ǾͿ����ڶԻ�������ʹ��Windows��׼�ؼ�����ʹ�øÿؼ��ˡ�����ĳЩӦ���У��������Ҫ�ڷǶԻ�����������Ӧ�ó���Ĵ��ڣ���Ƕ��ActiveX�ؼ�����ʱû�жԻ���༭��������Ӧ�����ڷǶԻ���������ʹ��ActiveX�ؼ��أ�</td>
+					这样，我们就可以在对话框中像使用Windows标准控件那样使用该控件了。但在某些应用中，你可能需要在非对话框容器（如应用程序的窗口）中嵌入ActiveX控件。这时没有对话框编辑器，我们应怎样在非对话框容器中使用ActiveX控件呢？</td>
 				</tr>
 				<tr>
-					<td>������Ƚ�ActiveX�ؼ����ӵ����Ӧ�ó��������Ȼᴴ��һЩ�����ࣨ����Confirm 
-					Classes�Ի������г�����Щ�ࣩ��������һ����Ļ�����CWnd�������ǿؼ��İ����࣬���������ؼ���ؼ�������֮��Ľӿ�,���������е�Create��Ա������</td>
+					<td>当组件廊将ActiveX控件添加到你的应用程序后，组件廊会创建一些包裹类（即在Confirm 
+					Classes对话框中列出的那些类）。其中有一个类的基类是CWnd，该类是控件的包裹类，它被用作控件与控件包容器之间的接口,有两个公有的Create成员函数：</td>
 				</tr>
 				<tr>
 					<td>virtual BOOL Create(LPCTSTR lpszClassName,<p>LPCTSTR 
@@ -112,23 +112,23 @@
 					<p>CCreateContext* pContext = NULL)</td>
 				</tr>
 				<tr>
-					<td>��BOOL Create(LPCTSTR lpszWindowName, DWORD dwStyle,<p>
+					<td>和BOOL Create(LPCTSTR lpszWindowName, DWORD dwStyle,<p>
 					const RECT&amp; rect, CWnd* pParentWnd, UINT nID,</p>
 					<p>CFile* pPersist = NULL, BOOL bStorage = FALSE,</p>
 					<p>BSTR bstrLicKey = NULL)</td>
 				</tr>
 				<tr>
-					<td>���ǾͿ���ʹ�øÿؼ��İ������Create�����ڷǶԻ��������ж�̬�ش����˿ؼ���ʵ����</td>
+					<td>我们就可以使用该控件的包裹类的Create函数在非对话框容器中动态地创建此控件的实例。</td>
 				</tr>
 				<tr>
-					<td>���岽�����£���������������Ŀؼ���ΪMSFlexGrid 
-					��CMSFlexGrid�ǿؼ��İ����࣬msflexgrid.h�ǰ������ͷ�ļ���</td>
+					<td>具体步骤如下：（本例中欲加入的控件名为MSFlexGrid 
+					，CMSFlexGrid是控件的包裹类，msflexgrid.h是包裹类的头文件）</td>
 				</tr>
 				<tr>
-					<td>1��������ͷ�ļ���������ΪTestView.h���е��ඨ��ǰ����<p>#include msflexgrid.h</td>
+					<td>1、在视类头文件（本例中为TestView.h）中的类定义前加上<p>#include msflexgrid.h</td>
 				</tr>
 				<tr>
-					<td>2����TestView.h��CTestView�ඨ���protected���ּ��Ͽؼ����������͵ĳ�Ա����������</td>
+					<td>2、在TestView.h中CTestView类定义的protected部分加上控件包裹类类型的成员变量声明：</td>
 				</tr>
 				<tr>
 					<td>class CTestView : public CView
@@ -140,7 +140,7 @@
 					<p>};</td>
 				</tr>
 				<tr>
-					<td>3����ClassWizardΪ��CTestView ������ϢWM_CREATE�Ĵ�������CTestView::OnCreate���ڴ˺����У����ÿؼ���CMSFlexGrid��Create������</td>
+					<td>3、用ClassWizard为类CTestView 添加消息WM_CREATE的处理函数CTestView::OnCreate，在此函数中，调用控件类CMSFlexGrid的Create函数：</td>
 				</tr>
 				<tr>
 					<td>int CTestView::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -148,20 +148,20 @@
 					<p>if (CView::OnCreate(lpCreateStruct) == -1) return -1; </p>
 					<p>// ****** Add your code below this line ********** //</p>
 					<p>m_fgrid.Create(NULL, WS_VISIBLE, </p>
-					<p>CRect(50,50,100,100), this, 0);//��thisָ����Ϊָ�򸸴��ڵ�ָ��//</p>
+					<p>CRect(50,50,100,100), this, 0);//用this指针作为指向父窗口的指针//</p>
 					<p>m_fgrid.SetCols(2); </p>
 					<p>m_fgrid.SetRows(10); </p>
-					<p>m_fgrid.SetTextMatrix(0,0,&quot;���&quot;); </p>
-					<p>m_fgrid.SetTextMatrix(0,1,&quot;����&quot;); // ****** Add your code 
+					<p>m_fgrid.SetTextMatrix(0,0,&quot;序号&quot;); </p>
+					<p>m_fgrid.SetTextMatrix(0,1,&quot;姓名&quot;); // ****** Add your code 
 					above this line ********** // </p>
 					<p>return 0; </p>
 					<p>}</td>
 				</tr>
 				<tr>
-					<td>4���������ӹ��̣����С����Կ�����Ӧ�ó�����Ӵ�����ʱ���ؼ�Ҳ��̬�������ˡ�</td>
+					<td>4、重新链接工程，运行。可以看到当应用程序的视窗生成时，控件也动态地生成了。</td>
 				</tr>
 				<tr>
-					<td>5��������Ժ���ı�ؼ���λ�úʹ�С�����Լ̳�CWnd::MoveWindow()���������磬����ʹ�ؼ������������ڣ����ڸ������ƶ�������ʱҲ��֮�ƶ������ţ�����������ϢWM_SIZE�Ĵ�������OnSize�����������´��룺</td>
+					<td>5、如果你以后还想改变控件的位置和大小，可以继承CWnd::MoveWindow()函数。例如，若想使控件充满整个窗口，并在父窗口移动和缩放时也随之移动和缩放，可以添加消息WM_SIZE的处理函数OnSize，并加入如下代码：</td>
 				</tr>
 				<tr>
 					<td>void CTestView::OnSize(UINT nType, int cx, int cy)<p>
@@ -173,88 +173,88 @@
 					<td>&nbsp;</td>
 				</tr>
 				<tr bgColor="#ffcc66">
-					<td><font face="����_GB2312">�����ڶԻ�����ʹ������ʱ���ɼ���ActiveX�ؼ�</font></td>
+					<td><font face="楷体_GB2312">三、在对话框中使用运行时不可见的ActiveX控件</font></td>
 				</tr>
 				<tr>
-					<td>ͨ������£����ǿ��������ַ�������ȡ�Ի����еĿؼ���</td>
+					<td>通常情况下，我们可以用两种方法来存取对话框中的控件：</td>
 				</tr>
 				<tr>
-					<td>1�����ؼ���Ի���ĳ�Ա�����������ͨ���Ի������ݽ���DDX��ʵ�ֿؼ��Ͷ�Ӧ�ĳ�Ա����֮������ݽ��������������VC��������ActiveX 
+					<td>1、将控件与对话框的成员变量相关联，通过对话框数据交换DDX来实现控件和对应的成员变量之间的数据交换（详情请参阅VC联机帮助ActiveX 
 					Control Containers: Connecting an ActiveX Control to a 
-					Member Variable��</td>
+					Member Variable）</td>
 				</tr>
 				<tr>
-					<td>2�����ú���CWnd::GetDlgItem��ȡ��ָ��ؼ���ָ�롣</td>
-				</tr>
-				<tr>
-					<td>
-					��ЩActiveX�ؼ�û���û����棬������ʱ���ɼ���������ڶԻ����м���������ʱ���ɼ���ActiveX�ؼ���������CWnd::GetDlgItem����ȡ�˿ؼ�����˿ؼ�����������������Ҫ�õ������˿ؼ��Ķ���ָ�룬�ɲ�ȡ�������ַ���֮һ��</td>
-				</tr>
-				<tr>
-					<td>1����ClassWizard�ĳ�Ա������ǩ�У�ѡ��˿ؼ���ID�����Add 
-					Variable��Ȼ������һ����Ա����������Category��ѡ��Control����Variable 
-					type��ѡ��ؼ��ࡣ</td>
+					<td>2、调用函数CWnd::GetDlgItem来取得指向控件的指针。</td>
 				</tr>
 				<tr>
 					<td>
-					2������һ���˿ؼ����͵ľֲ���������������Ϊһ���Ի�������������������еĴ��루����CmyCtrl�ǿؼ��࣬IDMYCTRL1�ǿؼ�ID����</td>
+					有些ActiveX控件没有用户界面，在运行时不可见。如果你在对话框中加入了运行时不可见的ActiveX控件，并想用CWnd::GetDlgItem来存取此控件，则此控件将不能正常工作。要得到代表此控件的对象指针，可采取以下两种方法之一：</td>
+				</tr>
+				<tr>
+					<td>1、在ClassWizard的成员变量标签中，选择此控件的ID，点击Add 
+					Variable，然后输入一个成员变量名，在Category中选择Control，在Variable 
+					type中选择控件类。</td>
+				</tr>
+				<tr>
+					<td>
+					2、声明一个此控件类型的局部变量，并将它作为一个对话框项。加入类似如下所列的代码（其中CmyCtrl是控件类，IDMYCTRL1是控件ID）：</td>
 				</tr>
 				<tr>
 					<td>CMyCtrl myCtrl;
 					<p>myCtrl.SubclassDlgItem(IDC_MYCTRL1, this); // ... 
-					ʹ�ÿؼ�myCtrl ... //</p>
+					使用控件myCtrl ... //</p>
 					<p>myCtrl.UnsubclassWindow();</td>
 				</tr>
 				<tr bgColor="#ffffff">
 					<td>&nbsp;</td>
 				</tr>
 				<tr bgColor="#ffcc66">
-					<td><font face="����_GB2312">�����һ�����Ӽ���˵��</font></td>
+					<td><font face="楷体_GB2312">下面举一个例子加以说明</font></td>
 				</tr>
 				<tr>
-					<td>�������ڶԻ����м���һ������ʱ���ɼ��ļ�ʱ�ؼ�Timer Object���ÿؼ���һ����Ԥ����ʱ������ȥ֮������ 
-					Timer �¼�����ʱ���������ڸÿؼ���Interval 
-					�����У�����ǧ��֮һ��Ϊ��λָ��ʱ��ĳ��ȡ�������һ����Ա����m_num��������ÿ��һ��Intervalʱ�����1����m_num�Ƶ�10ʱ������Ϊ0������ʱ����m_Interval����200���룬���ֱ���������̬������ʾ��ǰ��m_num��m_Interval���������£�</td>
+					<td>本例将在对话框中加入一个运行时不可见的计时控件Timer Object。该控件在一个的预定的时间间隔过去之后引发 
+					Timer 事件，该时间间隔储存于该控件的Interval 
+					属性中，它以千分之一秒为单位指定时间的长度。本例用一个成员变量m_num来计数，每隔一个Interval时间递增1，当m_num计到10时，重置为0，并将时间间隔m_Interval增加200毫秒，并分别在两个静态框中显示当前的m_num和m_Interval。步骤如下：</td>
 				</tr>
 				<tr>
-					<td>1��������Ƚ�Timer�ؼ����뵽��ĿTest�С�</td>
+					<td>1、用组件廊将Timer控件加入到项目Test中。</td>
 				</tr>
 				<tr>
-					<td>2������Ŀ�в���һ���µĶԻ�������ΪCTestDlg��</td>
+					<td>2、在项目中插入一个新的对话框，类名为CTestDlg。</td>
 				</tr>
 				<tr>
-					<td>3���ڶԻ���ģ���м���ؼ�Timer 
-					Object��������ΪCIeTimer������ͼ2�����½ǡ������ԶԻ�������IDΪIDC_TIMER1�����л���All����ҳ������IntervalΪ200��</td>
+					<td>3、在对话框模板中加入控件Timer 
+					Object（包裹类为CIeTimer），如图2的右下角。打开属性对话框，设置ID为IDC_TIMER1。再切换至All属性页，设置Interval为200。</td>
 				</tr>
 				<tr>
-					<td>4���ڶԻ���ģ�������Ӿ�̬�ؼ���CaptionΪ��The current interval is������</td>
-				</tr>
-				<tr>
-					<td>
-					5������һ������Caption�ľ�̬�ؼ��������ԶԻ�������IDΪIDC_STATIC1�����л���Extended 
-					Styles����ҳ��ѡ��Static edge��ѡ��</td>
-				</tr>
-				<tr>
-					<td>6������Ctrl����ͬʱ˫����̬�ؼ�IDC_STATIC1������Add Member 
-					Variable�Ի��򣬵�һ������д������m_text1��Category����ѡ��Control��Variable 
-					type����ѡ��CStatic��</td>
-				</tr>
-				<tr>
-					<td>7�����Ӿ�̬�ؼ�&quot;The current number is:&quot;��</td>
+					<td>4、在对话框模板中添加静态控件，Caption为“The current interval is：”。</td>
 				</tr>
 				<tr>
 					<td>
-					8���ظ�����5������6������һ������Caption�ľ�̬�ؼ���IDΪIDC_STATIC2����������Ϊm_text2��</td>
+					5、添加一个不带Caption的静态控件，打开属性对话框，设置ID为IDC_STATIC1。再切换至Extended 
+					Styles属性页，选中Static edge复选框。</td>
 				</tr>
 				<tr>
-					<td>9������ClassWizard��ѡ��Message Map����ҳ����Class name 
-					��ѡ��CTestDlg��Object IDs��ѡ��IDC_TIMER1����Messages��ѡ��Timer�����Add 
-					Function����ť������OnTimerTimer1()���������� 
+					<td>6、按下Ctrl键的同时双击静态控件IDC_STATIC1，弹出Add Member 
+					Variable对话框，第一项中填写变量名m_text1，Category项中选择Control，Variable 
+					type项中选择CStatic。</td>
+				</tr>
+				<tr>
+					<td>7、添加静态控件&quot;The current number is:&quot;。</td>
+				</tr>
+				<tr>
+					<td>
+					8、重复步骤5到步骤6，添加一个不带Caption的静态控件（ID为IDC_STATIC2），变量名为m_text2。</td>
+				</tr>
+				<tr>
+					<td>9、运行ClassWizard并选择Message Map属性页，在Class name 
+					中选择CTestDlg，Object IDs中选择IDC_TIMER1，在Messages中选择Timer，点击Add 
+					Function…按钮，加入OnTimerTimer1()处理函数。 
 					</td>
 				</tr>
 				<tr>
 					<td>
-					���õ�һ�ַ�������ǰ������������ClassWizard���˿ؼ�������һ����Ա����m_timer,����OnTimerTimer1�������������´��룺</td>
+					采用第一种方法，则按前面所述步骤用ClassWizard给此控件类添加一个成员变量m_timer,并在OnTimerTimer1函数中添加如下代码：</td>
 				</tr>
 				<tr>
 					<td>void CTestDlg::OnTimerTimer1() // TODO: Add your control 
@@ -275,7 +275,7 @@
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td>�����õڶ��ַ���������Ҫ���Ӵ˿ؼ���ĳ�Ա������ֻ�轫�ӻ���ʾ����������������漴�ɣ�</td>
+					<td>若采用第二种方法，则不需要添加此控件类的成员变量，只需将加灰显示的语句用下列语句代替即可：</td>
 				</tr>
 				<tr>
 					<td>CIeTimer m_timer;
@@ -284,17 +284,17 @@
 					<p>m_timer.UnsubclassWindow();</td>
 				</tr>
 				<tr>
-					<td>����֮����Կ��������Ĳ���Խ��Խ���ˣ���Ϊʱ����Խ��Խ��</td>
+					<td>运行之后可以看到计数的步调越来越慢了（因为时间间隔越来越大）</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td>
-					ActiveX�ؼ����ؼ��˿����ߵĹ���������ʹ�ÿؼ���ʹ�����߸�Ч�ؿ��������������������Ǳ�����ʹ�ÿؼ��Ĺ������ܽ����һЩʵ�����飬ϣ���Դ������������</td>
+					ActiveX控件大大地简化了开发者的工作，灵活地使用控件能使开发者高效地开发出各种软件。以上是笔者在使用控件的过程中总结出的一些实践经验，希望对大家有所帮助。</td>
 				</tr>
 			</table>
-			<p>�� </small></td>
+			<p>　 </small></td>
 		</tr>
 		<tr>
 			<td class="font" width="100%" colSpan="2" height="12"></td>
