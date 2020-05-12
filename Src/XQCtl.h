@@ -232,7 +232,7 @@ private:
 						                只摆上方黑棋，只摆下方黑棋、
 										上红下黑棋都摆，上黑下红都摆）
 										*/
-	CGoRule *m_pGoRule;       //走棋规则指针
+	CGoRule m_GoRule;       //走棋规则指针
 	struct_File m_FileHead;   //棋局文件头
 };
 

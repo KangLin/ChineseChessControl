@@ -240,8 +240,6 @@ CXQCtrl::CXQCtrl()
 	{
 		m_BlackBing.LoadBitmap(IDB_BBING);
 	}
-
-	m_pGoRule = new CGoRule;
 }
 
 
@@ -251,7 +249,6 @@ CXQCtrl::CXQCtrl()
 CXQCtrl::~CXQCtrl()
 {
 	// TODO: Cleanup your control's instance data here.
-	delete m_pGoRule;
 }
 
 int CXQCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct) 
@@ -497,6 +494,8 @@ void CXQCtrl::OnQiPangLayoutChanged()
          int nHeightSrc：源高度
          UINT crTransparent：透明色,COLORREF类型
 返回值：无
+备  注：此函数可用于 WINDOWS 98 及以上的 WINDOWS 系统。
+        如果能确定是 WINDOWS2000 及以上的 WINDOWS 系统，可以使用 TransparentBlt 函数
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-9-1
@@ -1327,7 +1326,7 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 			 return true;
 		 }
 		 //判断能否走棋
-		 switch(m_pGoRule->GoChess(i, j, m_TiShiBoxPostion.p1.x, m_TiShiBoxPostion.p1.y, m_ChessBoard))
+		 switch(m_GoRule.GoChess(i, j, m_TiShiBoxPostion.p1.x, m_TiShiBoxPostion.p1.y, m_ChessBoard))
 		 {
 		 case JIANGJUN://将军
 			 PromptSound(_T("IDW_CHECK"));
@@ -1363,7 +1362,7 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 			 return true;
 		 }
 		 //判断能否走棋
-		 switch(m_pGoRule->GoChess(i, j, m_TiShiBoxPostion.p1.x, m_TiShiBoxPostion.p1.y, m_ChessBoard))
+		 switch(m_GoRule.GoChess(i, j, m_TiShiBoxPostion.p1.x, m_TiShiBoxPostion.p1.y, m_ChessBoard))
 		 {
 		 case JIANGJUN://将军
 			 PromptSound(_T("IDW_CHECK"));
