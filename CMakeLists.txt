@@ -167,10 +167,10 @@ endif()
 #    message(FATAL_ERROR "       cmake -DRabbitCommon_DIR= ")
 #endif()
 add_subdirectory(Src)
-option(BUILD_APP "Build applaction" OFF)
-if(BUILD_APP)
-    add_subdirectory(App)
-endif(BUILD_APP)
+option(BUILD_APP_MFC "Build MFC chinese chess applaction" OFF)
+if(BUILD_APP_MFC)
+    add_subdirectory(App/MFC/ChineseChess)
+endif(BUILD_APP_MFC)
 
 add_custom_target(install-runtime
   COMMAND
@@ -198,5 +198,5 @@ endif()
 
 message(STATUS "== Build shared library: ${BUILD_SHARED_LIBS}")
 message(STATUS "== Build arch: ${BUILD_ARCH}")
-message(STATUS "== Build applcation: ${BUILD_APP}")
+message(STATUS "== Build chinese chess MFC applcation: ${BUILD_APP_MFC}")
 message(STATUS "== With QT: ${QT5_FOUND}")
