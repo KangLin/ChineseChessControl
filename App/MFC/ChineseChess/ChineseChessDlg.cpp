@@ -58,6 +58,7 @@ CChineseChessDlg::CChineseChessDlg(CWnd* pParent /*=NULL*/)
 void CChineseChessDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_CHESS, m_Chess);
 }
 
 BEGIN_MESSAGE_MAP(CChineseChessDlg, CDialogEx)
@@ -152,3 +153,12 @@ HCURSOR CChineseChessDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+BEGIN_EVENTSINK_MAP(CChineseChessDlg, CDialogEx)
+	ON_EVENT(CChineseChessDlg, IDC_CHESS, 1, CChineseChessDlg::MoveChessChess, VTS_I2 VTS_I2 VTS_I4)
+END_EVENTSINK_MAP()
+
+
+void CChineseChessDlg::MoveChessChess(short x, short y, long chess)
+{
+	TRACE(_T("x:%d;y:%d;chess:%d"), x, y, chess);
+}

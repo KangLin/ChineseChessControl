@@ -185,6 +185,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chess.h" />
     <ClInclude Include="ChineseChess.h" />
     <ClInclude Include="ChineseChessDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Chess.cpp" />
     <ClCompile Include="ChineseChess.cpp" />
     <ClCompile Include="ChineseChessDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -215,7 +217,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="ChineseChess.rc" />
+      <UserProperties _x007B_071AD322-22BA-45BF-9E1F-154EFAF4E42B_x007D_="CChess" RESOURCE_FILE="ChineseChess.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

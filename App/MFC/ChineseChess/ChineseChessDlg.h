@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "Chess.h"
 
 
 // CChineseChessDlg ¶Ô»°¿ò
@@ -31,4 +32,8 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CChess m_Chess;
+	DECLARE_EVENTSINK_MAP()
+	void MoveChessChess(short x, short y, long chess);
 };

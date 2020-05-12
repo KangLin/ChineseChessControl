@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "ChineseChess.h"
 #include "ChineseChessDlg.h"
+#include "Chess.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
