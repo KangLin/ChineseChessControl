@@ -24,14 +24,10 @@ static char THIS_FILE[]=__FILE__;
 //////////////////////////////////////////////////////////////////////
 
 CGoRule::CGoRule()
-{
-
-}
+{}
 
 CGoRule::~CGoRule()
-{
-
-}
+{}
 
 /*******************************************************************************************************
 函数名：GoChess
@@ -52,19 +48,19 @@ CGoRule::~CGoRule()
 ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	ENUM_ReturnValue m_RV;
-	ENUM_QiZi m_GoneChessBoard[9][10];
+	ENUM_QiZi goneChessBoard[9][10];
 
 	m_RV = ChessRule(ito, jto, ifrom, jfrom, ChessBoard);
 	if(m_RV == RETURNTRUE)
 	{
 		for(int i = 0; i < 9; i++)
 			for(int j = 0; j < 10; j++)
-				m_GoneChessBoard[i][j] = ChessBoard[i][j];
+				goneChessBoard[i][j] = ChessBoard[i][j];
 		//假设走棋
-		m_GoneChessBoard[ito][jto] = m_GoneChessBoard[ifrom][jfrom];
-		m_GoneChessBoard[ifrom][jfrom] = NoQiZi;
+		goneChessBoard[ito][jto] = goneChessBoard[ifrom][jfrom];
+		goneChessBoard[ifrom][jfrom] = NoQiZi;
 		//判断将对面、叫将、将军
-		m_RV = JiangJun(ito, jto, ifrom, jfrom, m_GoneChessBoard);
+		m_RV = JiangJun(ito, jto, ifrom, jfrom, goneChessBoard);
 	}
 
 	return m_RV;

@@ -45,7 +45,7 @@ BOOL CChineseChessControlApp::InitInstance()
 int CChineseChessControlApp::ExitInstance()
 {
 	// TODO: Add your own module termination code here.
-
+	AfxSocketTerm(); //«Â¿Ì WinSocket
 	return COleControlModule::ExitInstance();
 }
 
