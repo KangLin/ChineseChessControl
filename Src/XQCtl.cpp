@@ -1553,7 +1553,7 @@ void CXQCtrl::ReStart()
     m_FileHead.dwVersion = MAKEWORD(_wVerMajor, _wVerMinor); //版本
 	HINSTANCE h=AfxGetInstanceHandle();
 	LoadString(h, IDS_XQ, m_FileHead.szAppName, MAX_STRING_BUFFER);
-	_tcscpy(m_FileHead.szAuthor, AUTHOR); //作者
+	_tcscpy_s(m_FileHead.szAuthor, AUTHOR); //作者
 	CTime t;
 	t = CTime::GetCurrentTime();
 	m_FileHead.timeStart = t.GetTime();   //开始时间
@@ -1591,7 +1591,7 @@ BOOL CXQCtrl::SaveChess(LPCTSTR lpcszFileName)
 		for(int i = 0; i <= m_iBuShu; i++)
 		{
 			TCHAR buf[16];
-			_stprintf(buf, _T("%d\n"), m_QiJu[i]);				
+			_stprintf_s(buf, _T("%d\n"), m_QiJu[i]);				
 			file.WriteString(buf);
 		}
 		file.Close();

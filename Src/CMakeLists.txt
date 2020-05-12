@@ -1,3 +1,5 @@
+project(ChineseChessControl)
+
 set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessControl.cpp
@@ -28,6 +30,7 @@ SET(RCC_FILES
 	ChineseChessControl.rc
 	)
 
+# 编译 IDL 文件
 find_package(IDL)
 if(IDL_FOUND)
 	add_idl(ChineseChessControlIDL ChineseChessControl.odl)
@@ -47,7 +50,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
     VERSION ${BUILD_VERSION})
 
+if(BUILD_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
+    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
+endif()
+
 if(MSVC)
+    # 把后缀名改为 ocx
 	set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX .ocx)
 endif()
 
@@ -58,12 +67,7 @@ target_include_directories(${PROJECT_NAME}
     ${CMAKE_BINARY_DIR}
     ${INCLUDE_DIRS})
 
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
-endif()
-
-# 注册中国象棋控件
+# 编译完成后向系统注册中国象棋控件
 add_custom_command(
 	TARGET ${PROJECT_NAME} POST_BUILD
 	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"

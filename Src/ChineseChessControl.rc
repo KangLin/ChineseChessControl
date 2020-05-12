@@ -52,7 +52,7 @@ END
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION 1,0,1,0
- FILEVERSION 1,0,1,0
+ PRODUCTVERSION 0,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -69,12 +69,12 @@ BEGIN
         BEGIN
             VALUE "Comments", "中国象棋控件  作者：康林"
             VALUE "CompanyName", "康林工作室"
-            VALUE "FileDescription", "中国象棋控件 ActiveX Control Module"
+            VALUE "FileDescription", "中国象棋控件"
             VALUE "FileVersion", "1,0,1,0"
             VALUE "InternalName", "中国象棋控件"
-            VALUE "LegalCopyright", "版权所有 (C) 2004-2005 康林工作室；保留所有权力。"
-            VALUE "OriginalFilename", "中国象棋控件.OCX"
-            VALUE "ProductName", "中国象棋控件 ActiveX Control Module"
+            VALUE "LegalCopyright", "版权所有 (C) 2004-2020 康林工作室；保留所有权力。"
+            VALUE "OriginalFilename", "ChineseChessControl.OCX"
+            VALUE "ProductName", "中国象棋控件"
             VALUE "ProductVersion", "1,0,1,0"
         END
     END

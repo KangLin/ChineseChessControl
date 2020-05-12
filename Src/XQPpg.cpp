@@ -28,7 +28,7 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // Initialize class factory and guid
 
-IMPLEMENT_OLECREATE_EX(CXQPropPage, "MY.XQPropPage.1",
+IMPLEMENT_OLECREATE_EX(CXQPropPage, "KangLinStudio.ChineseChessControlPropPage.1",
 	0x6386faf3, 0x3b5b, 0x45bf, 0x93, 0xa2, 0xa7, 0x5d, 0xeb, 0xde, 0x45, 0xef)
 
 

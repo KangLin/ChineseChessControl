@@ -100,7 +100,7 @@ ENDIF()
 IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 
-    add_compile_options(-std=c++0x -Wno-sign-compare -Wno-unused-parameter)
+    add_compile_options(-std=c++0x meter)
     
     if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
         add_compile_options(-g -ggdb)
@@ -118,9 +118,10 @@ if (BUILD_SHARED_LIBS)
        add_definitions("-fPIC")
     endif()
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-else(BUILD_SHARED_LIBS)
+elseif(Qt5_FOUND)
+    # Qt 静态插件
     add_definitions(-DQT_STATICPLUGIN)
-endif(BUILD_SHARED_LIBS)
+endif()
 
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
@@ -174,10 +175,10 @@ endif(BUILD_APP)
 add_custom_target(install-runtime
   COMMAND
      "${CMAKE_COMMAND}" -DCMAKE_INSTALL_COMPONENT=Runtime 
-     -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_install.cmake"
+         -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_install.cmake"
 )
 
-iF(WIN32)
+IF(WIN32)
     # 替换 Install.nsi 中的 MSVC_VERSION
 	configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
     INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh DESTINATION "${CMAKE_BINARY_DIR}"
