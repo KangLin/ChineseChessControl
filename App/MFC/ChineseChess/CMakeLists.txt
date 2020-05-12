@@ -38,6 +38,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
     VERSION ${BUILD_VERSION})
 
+if(MINGW)
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
+elseif(MSVC)
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
+        "/SUBSYSTEM:WINDOWS")
+endif()
+
 if(BUILD_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
     #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
