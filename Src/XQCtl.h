@@ -196,17 +196,19 @@ private:
 	void DrawQiPang(CDC *pdc, CRect rcBounds);
 
 	BOOL Inital();
+	BOOL SetQiPang(int width, int height);
 
-	LONG m_QiPangStartX;    //棋盘的开始横坐标
-	LONG m_QiPangStartY;    //棋盘的开始横坐标
-	LONG m_QiPangDistance;  //棋盘格的距离
+	LONG m_QiPangStartX;                             //棋盘的开始横坐标
+	LONG m_QiPangStartY;                             //棋盘的开始横坐标
+	LONG m_QiPangDistance;                           //棋盘格的距离
+	struct struct_TiShiBoxPostion m_TiShiBoxPostion; //提示框位置
 
 	ENUM_WalkState m_WalkState;    //走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）
 	ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
     CArray<int, int> m_QiJu;       //棋局
+
 	INT m_iBuShu;                  //走棋步数
 	BOOL m_bFuPang;                //复盘标志
-	struct struct_TiShiBoxPostion m_TiShiBoxPostion;
 
 	CBitmap m_QiPangPicture;              //棋盘背景图片
 	CPictureHolder m_QiPangPictureHolder; //棋盘背景图片的CPictureHolder对象

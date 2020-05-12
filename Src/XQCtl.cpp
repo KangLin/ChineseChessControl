@@ -163,7 +163,19 @@ CXQCtrl::CXQCtrl()
 {
 	InitializeIIDs(&IID_DXQ, &IID_DXQEvents);
     
-	// TODO: Initialize your control's instance data here.
+	m_QiPangStartX = m_QiPangStartY = 0;
+	m_QiPangDistance = 0;
+	m_WalkState = RedReadly;
+	
+	//提示框位置
+	m_TiShiBoxPostion.p1.x = -1;
+	m_TiShiBoxPostion.p1.y = -1;
+	m_TiShiBoxPostion.p2.x = -1;
+	m_TiShiBoxPostion.p2.y = -1;
+
+	//初始化重新下棋
+	m_iBuShu = -1;       //步数
+	m_bFuPang = FALSE;   //复盘标志
 	
 	if(m_QiPangPicture.GetSafeHandle() == NULL)
 	{
@@ -298,22 +310,8 @@ void CXQCtrl::OnDraw(
 void CXQCtrl::OnSize(UINT nType, int cx, int cy) 
 {
 	COleControl::OnSize(nType, cx, cy);
-
-	if(cx > cy)
-	{
-		SetControlSize(cy * 10 / 11, cy);
-		m_QiPangDistance = cy / 11;
-	}
-	else
-	{
-		SetControlSize(cx, cx * 11 / 10);
-		m_QiPangDistance = cx / 10;
-	}
-
+	SetQiPang(cx, cy);
 	//TRACE("OnSize=%d,%d,distance=%f\n", cx,cy,m_QiPangDistance);
-	
-	m_QiPangStartX = m_QiPangDistance;
-	m_QiPangStartY = m_QiPangDistance;
 }
 
 void CXQCtrl::OnLButtonUp(UINT nFlags, CPoint point) 
@@ -1225,6 +1223,35 @@ void CXQCtrl::InvalidateRectage(CPoint p)
 }
 
 /*******************************************************************************************************
+函数名：InitalQiPangPosition
+功  能：设置棋盘位置
+参  数：
+		 int width：控件窗口宽度
+		 int height：控件窗口高度
+返回值：无
+作  者：康  林
+版  本：1.0.0.1
+日  期：2020-5-12
+时  间：11:27:12
+*******************************************************************************************************/
+BOOL CXQCtrl::SetQiPang(int width, int height)
+{
+	if (width > height)
+	{
+		m_QiPangDistance = height / 11;
+		m_QiPangStartX = (width - m_QiPangDistance * 10) / 2 + m_QiPangDistance;
+		m_QiPangStartY = m_QiPangDistance;
+	}
+	else
+	{
+		m_QiPangDistance = width / 10;
+		m_QiPangStartX = m_QiPangDistance;
+		m_QiPangStartY = (height - m_QiPangDistance * 11) / 2 + m_QiPangDistance;
+	}
+	return TRUE;
+}
+
+/*******************************************************************************************************
 函数名：Inital
 功  能：初始化
 参  数：无
@@ -1236,12 +1263,18 @@ void CXQCtrl::InvalidateRectage(CPoint p)
 *******************************************************************************************************/
 BOOL CXQCtrl::Inital()
 {
-    
 	//提示框位置
 	m_TiShiBoxPostion.p1.x = -1;
     m_TiShiBoxPostion.p1.y = -1;
 	m_TiShiBoxPostion.p2.x = -1;
-    m_TiShiBoxPostion.p2.y = -1;	
+    m_TiShiBoxPostion.p2.y = -1;
+
+	CRect rect;
+	if (this->GetSafeHwnd())
+	{
+		GetWindowRect(&rect);
+		SetQiPang(rect.Width(), rect.Height());
+	}
 
 	//------------------------------------------------------------------------
 	//以下是完成 ===初始化开始棋局=== 功能的语句块

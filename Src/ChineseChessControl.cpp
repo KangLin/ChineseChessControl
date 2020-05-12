@@ -27,7 +27,6 @@ BOOL CChineseChessControlApp::InitInstance()
 
 	if (bInit)
 	{
-		// TODO: Add your own module initialization code here.
 		TRACE(_T("CXQApp::InitInstance.\n"));
 		if (!AfxSocketInit())//≥ı ºªØWinSocket
 		{
