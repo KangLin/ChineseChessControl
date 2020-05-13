@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 project(ChineseChessControl)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 if(POLICY CMP0083)
     cmake_policy(SET CMP0083 NEW)
@@ -168,7 +169,7 @@ endif()
 #endif()
 add_subdirectory(Src)
 option(BUILD_APP_MFC "Build MFC chinese chess applaction" ON)
-if(BUILD_APP_MFC)
+if(BUILD_APP_MFC AND MSVC)
     add_subdirectory(App/MFC/ChineseChess)
 endif(BUILD_APP_MFC)
 

@@ -27,6 +27,7 @@ SET(RCC_FILES
 	)
 
 if(MSVC)
+	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
 	set(LIBS_DEFINES ${LIBS_DEFINES} "_AFXDLL" "_UNICODE" "UNICODE")
 endif()
 
@@ -43,6 +44,7 @@ if(MINGW)
 elseif(MSVC)
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
         "/SUBSYSTEM:WINDOWS")
+     #target_compile_options(${PROJECT_NAME} PRIVATE "/nologo")
 endif()
 
 if(BUILD_VERSION)
