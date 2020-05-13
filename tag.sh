@@ -38,10 +38,15 @@ sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/README*.m
 MSVC_VERSION="`echo ${DEBIAN_VERSION} | sed "s/\./,/g"`,0"
 sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
 sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
-sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
 sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
 sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
 sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
+
+sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
+sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
+sed -i "s/VALUE \"FileVersion\",.*/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
+sed -i "s/VALUE \"ProductVersion\",.*/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
 
 sed -i "s/\"ChineseChessControl.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessControl.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/XQCtl.cpp
 

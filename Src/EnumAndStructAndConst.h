@@ -9,6 +9,8 @@
 #if !defined(ENUMANDSTRUCTANDCONST_H)
 #define ENUMANDSTRUCTANDCONST_H
 
+#pragma once
+
 #include "common.h"
 
 typedef enum _ENUM_QiZi{

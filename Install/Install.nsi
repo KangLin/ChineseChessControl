@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ChineseChessControl"
-!define PRODUCT_VERSION "v1.0.1"
+!define PRODUCT_VERSION "v1.0.2"
 !define PRODUCT_PUBLISHER "KangLin studio"
 !define PRODUCT_WEB_SITE "https://github.com/KangLin/${PRODUCT_NAME}"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME}.exe"
@@ -159,8 +159,10 @@ SectionEnd
 
 Section -AdditionalIcons
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
 
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  IfFileExists "$INSTDIR\bin\ChineseChess.exe" 0 +2
+    CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\ChineseChess.lnk" "$INSTDIR\bin\ChineseChess.exe"
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
 SectionEnd

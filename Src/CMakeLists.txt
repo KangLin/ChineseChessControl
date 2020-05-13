@@ -38,6 +38,7 @@ if(IDL_FOUND)
 endif()
 
 if(MSVC)
+	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
 	set(LIBS_DEFINES ${LIBS_DEFINES} "_AFXDLL" "_UNICODE" "UNICODE")
 	LIST(APPEND RCC_FILES ChineseChessControl.def)
 endif()

@@ -22,7 +22,7 @@ CONFIGURE_FILE(
 ADD_CUSTOM_TARGET(uninstall
     "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake")
 
-SET(BUILD_VERSION "v1.0.1")
+SET(BUILD_VERSION "v1.0.2")
 # Find Git Version Patch
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)
@@ -171,7 +171,7 @@ add_subdirectory(Src)
 option(BUILD_APP_MFC "Build MFC chinese chess applaction" ON)
 if(BUILD_APP_MFC AND MSVC)
     add_subdirectory(App/MFC/ChineseChess)
-endif(BUILD_APP_MFC)
+endif()
 
 add_custom_target(install-runtime
   COMMAND

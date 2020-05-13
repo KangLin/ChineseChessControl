@@ -103,15 +103,12 @@ ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM
 	case BShuai:
 	case RShuai:
 		return ShuaiRule(ito, jto, ifrom, jfrom, ChessBoard);
-		break;
 	case BPao:
 	case RPao:
 		return PaoRule(ito, jto, ifrom, jfrom, ChessBoard);
-		break;
 	case BBing:
 	case RBing:
 		return BingRule(ito, jto, ifrom, jfrom, ChessBoard);
-		break;
 	default:
 		return RETURNFALSE;
 	}
