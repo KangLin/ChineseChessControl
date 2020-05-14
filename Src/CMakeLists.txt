@@ -1,8 +1,11 @@
 project(ChineseChessControl)
 
+message(STATUS "== Build chinese chess ActiveX")
+
 set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessControl.cpp
+	ChineseChess.cpp
     Common.cpp
 	GoRule.cpp
 	Stdafx.cpp
@@ -17,6 +20,7 @@ set(HEADER_FILES
     ${HEADER_FILES}
     ${INSTALLHEADER_FILES}
 	ChineseChessControl.h
+	ChineseChess.h
 	Common.h
 	EnumAndStructAndConst.h
 	GoRule.h

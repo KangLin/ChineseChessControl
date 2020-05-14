@@ -1,6 +1,8 @@
 #if !defined(AFX_XQCTL_H__8A497636_8516_444B_868E_0E753A2D3BA9__INCLUDED_)
 #define AFX_XQCTL_H__8A497636_8516_444B_868E_0E753A2D3BA9__INCLUDED_
 
+// 象棋控件头文件
+
 #include <afxtempl.h>
 #include <vector>
 #include <mmsystem.h>
@@ -234,8 +236,8 @@ private:
 						                只摆上方黑棋，只摆下方黑棋、
 										上红下黑棋都摆，上黑下红都摆）
 										*/
-	CGoRule m_GoRule;       //走棋规则指针
-	struct_File m_FileHead;   //棋局文件头
+	CGoRule m_GoRule;       //走棋规则
+	struct_File m_FileHead; //棋局文件头
 };
 
 //{{AFX_INSERT_LOCATION}}

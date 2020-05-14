@@ -167,7 +167,11 @@ endif()
 #    message("   ag:")
 #    message(FATAL_ERROR "       cmake -DRabbitCommon_DIR= ")
 #endif()
-add_subdirectory(Src)
+
+if(MSVC)
+	add_subdirectory(Src)
+endif()
+
 option(BUILD_APP_MFC "Build MFC chinese chess applaction" ON)
 if(BUILD_APP_MFC AND MSVC)
     add_subdirectory(App/MFC/ChineseChess)
