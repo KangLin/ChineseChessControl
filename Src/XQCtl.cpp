@@ -273,7 +273,7 @@ int CXQCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	SetInitialSize(100, 110);//设置控件初始化的大小	
 
-	ReStart();	
+	ReStart();
 
 	return 0;
 }
@@ -552,27 +552,6 @@ void TransparentBlt2( HDC hdcDest,      // 目标DC
 	DeleteObject(hImageBMP);
 	DeleteObject(hMaskBMP);
 	
-}
-
-/*******************************************************************************************************
-函数名：GetQiZiSide
-功  能：得到棋子是红棋,还是黑棋
-参  数：
-         ENUM_QiZi qz：要专断的棋子
-返回值：返回红棋还是黑棋或无棋
-作  者：康  林
-版  本：1.0.0.1
-日  期：2004-9-26
-时  间：12:10:36
-*******************************************************************************************************/
-ENUM_QiZi GetQiZiSide(ENUM_QiZi qz)
-{
-	if(qz > NoQiZi)
-		return RQi;
-	if(qz < NoQiZi)
-		return BQi;
-	//if(qz = NoQiZi)
-		return NoQiZi;
 }
 
 /*******************************************************************************************************
@@ -1348,11 +1327,11 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 	 switch(m_WalkState)
 	 {
 	 case RedReadly:
-		 return RQi == GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
+		 return RQi == m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
 		 break;
 	 case RedWalked:
 		 //本方的棋,重新选取
-		 if(GetQiZiSide(m_ChessBoard[i][j]) == RQi)
+		 if(m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) == RQi)
 		 {
 			 m_iBuShu--;//重定义棋时存在上一位置
 			 m_WalkState = RedReadly;
@@ -1361,34 +1340,34 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 		 //判断能否走棋
 		 switch(m_GoRule.GoChess(i, j, m_TiShiBoxPostion.p1.x, m_TiShiBoxPostion.p1.y, m_ChessBoard))
 		 {
-		 case JIANGJUN://将军
+		 case CGoRule::JIANGJUN://将军
 			 PromptSound(_T("IDW_CHECK"));
 			 return true;
 			 break;
-		 case RETURNTRUE://可以走棋
+		 case CGoRule::RETURNTRUE://可以走棋
 			 m_ChessBoard[i][j] ? PromptSound(_T("IDW_EAT")) : PromptSound(_T("IDW_GO"));
 			 return true;
 			 break;
-		 case BEIJIANGJUN://被将
+		 case CGoRule::BEIJIANGJUN://被将
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("被将军"), MB_OK );
 			 return false;
 			 break;
-		 case JIANGDUIMIAN://将对面
+		 case CGoRule::JIANGDUIMIAN://将对面
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("将对面"), MB_OK );
 			 return false;
 			 break;
-		 case RETURNFALSE://非法走棋
+		 case CGoRule::RETURNFALSE://非法走棋
 			 return false;
 			 break;
 		 }
 
 		 break;
 	 case BlackReadly:
-		 return BQi == GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
+		 return BQi == m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
 		 break;
 	 case BlackWalked:
 		 //本方的棋,重新选取
-		 if(GetQiZiSide(m_ChessBoard[i][j]) == BQi)
+		 if(m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) == BQi)
 		 {
 			 m_iBuShu--;//重定义棋时存在上一位置
 			 m_WalkState = BlackReadly;
@@ -1397,23 +1376,23 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 		 //判断能否走棋
 		 switch(m_GoRule.GoChess(i, j, m_TiShiBoxPostion.p1.x, m_TiShiBoxPostion.p1.y, m_ChessBoard))
 		 {
-		 case JIANGJUN://将军
+		 case CGoRule::JIANGJUN://将军
 			 PromptSound(_T("IDW_CHECK"));
 			 return true;
 			 break;
-		 case RETURNTRUE://可以走棋
+		 case CGoRule::RETURNTRUE://可以走棋
 			 m_ChessBoard[i][j] ? PromptSound(_T("IDW_EAT")) : PromptSound(_T("IDW_GO"));
 			 return true;
 			 break;
-		 case BEIJIANGJUN://被将
+		 case CGoRule::BEIJIANGJUN://被将
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("被将军"), MB_OK );
 			 return false;
 			 break;
-		 case JIANGDUIMIAN://将对面
+		 case CGoRule::JIANGDUIMIAN://将对面
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("将对面"), MB_OK );
 			 return false;
 			 break;
-		 case RETURNFALSE://非法走棋
+		 case CGoRule::RETURNFALSE://非法走棋
 			 return false;
 			 break;
 		 }

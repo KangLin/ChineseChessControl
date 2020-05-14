@@ -24,6 +24,15 @@ public:
 	CGoRule();
 	virtual ~CGoRule();
     
+	static ENUM_QiZi GetQiZiSide(ENUM_QiZi qz);
+
+	typedef enum _ENUM_ReturnValue {
+		RETURNFALSE,    //错误，不能走
+		BEIJIANGJUN,    //被将军
+		JIANGDUIMIAN,   //将对面
+		JIANGJUN,       //将军
+		RETURNTRUE      //可以走棋
+	} ENUM_ReturnValue;
 	ENUM_ReturnValue GoChess(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
 
 private:

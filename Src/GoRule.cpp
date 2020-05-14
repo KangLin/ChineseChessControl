@@ -10,7 +10,6 @@
 *******************************************************************************************************/
 
 #include "stdafx.h"
-#include "ChineseChessControl.h"
 #include "GoRule.h"
 
 #ifdef _DEBUG
@@ -30,6 +29,26 @@ CGoRule::~CGoRule()
 {}
 
 /*******************************************************************************************************
+函数名：GetQiZiSide
+功  能：得到棋子是红棋,还是黑棋
+参  数：
+		 ENUM_QiZi qz：要专断的棋子
+返回值：返回红棋还是黑棋或无棋
+作  者：康  林
+版  本：1.0.0.1
+日  期：2004-9-26
+时  间：12:10:36
+*******************************************************************************************************/
+ENUM_QiZi CGoRule::GetQiZiSide(ENUM_QiZi qz)
+{
+	if (qz > NoQiZi)
+		return RQi;
+	if (qz < NoQiZi)
+		return BQi;
+	return NoQiZi;
+}
+
+/*******************************************************************************************************
 函数名：GoChess
 功  能：判断能否从点（ifrom, jfrom）到点（ito, jto）走棋
 参  数：
@@ -45,7 +64,7 @@ CGoRule::~CGoRule()
 日  期：2004-10-1
 时  间：22:34:32
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	ENUM_ReturnValue m_RV;
 	ENUM_QiZi goneChessBoard[9][10];
@@ -80,7 +99,7 @@ ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, ENUM_Q
 日  期：2004-10-1
 时  间：23:53:57
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	switch(ChessBoard[ifrom][jfrom])
 	{
@@ -130,11 +149,11 @@ ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM
 日  期：2004-10-1
 时  间：22:30:51
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	if(ito == ifrom)
 	{
-		for(;jfrom != jto;)
+		while(jfrom != jto)
 		{
 			jfrom += sig(jto - jfrom);
 			if(ChessBoard[ifrom][jfrom] != NoQiZi && (jfrom != jto))
@@ -144,12 +163,11 @@ ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_Q
 	}
 	if(jto == jfrom)
 	{
-		for(;ifrom != ito;)
+		while(ifrom != ito)
 		{
 			ifrom += sig(ito - ifrom);
 			if(ChessBoard[ifrom][jfrom] != NoQiZi && (ifrom != ito))
 				return RETURNFALSE;
-			
 		}
 		return RETURNTRUE;
 	}
@@ -171,7 +189,7 @@ ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_Q
 日  期：2004-10-1
 时  间：22:36:05
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	if(abs(ito - ifrom) == 1 && abs(jto - jfrom) == 2)
 	{
@@ -204,23 +222,19 @@ ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom, ENUM_Qi
 日  期：2004-10-1
 时  间：22:49:54
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	if(abs(ito - ifrom) == 2 
 		&& abs(jfrom - jto) == 2 
 		&& ChessBoard[ifrom + sig(ito - ifrom)][jfrom + sig(jto - jfrom)] == NoQiZi)
 	{
-		if(GetQiZiSide(ChessBoard[ifrom][jfrom]) == RQi && jto <=4)
+		if(jfrom <= 4 && jto <=4)
 			return RETURNTRUE;
-		if(GetQiZiSide(ChessBoard[ifrom][jfrom]) == BQi && jto >=5)
+		if(jfrom >=5 && jto >=5)
 			return RETURNTRUE;
-		else
-			return RETURNFALSE;
 	}
-	else
-	{
-		return RETURNFALSE;
-	}
+	
+	return RETURNFALSE;
 }
 
 /*******************************************************************************************************
@@ -237,25 +251,19 @@ ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jfrom, ENUM
 日  期：2004-10-1
 时  间：23:07:29
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
-	if(abs(ifrom - ito) == 1
-		&& abs(jfrom - jto) == 1)
+	if (abs(ifrom - ito) == 1
+		&& abs(jfrom - jto) == 1
+		&& ito >= 3 && ito <= 5)
 	{
-		if(GetQiZiSide(ChessBoard[ifrom][jfrom]) == RQi
-			&& ito >= 3 && ito <= 5 && jto >=0 && jto <= 2)
+		if (jfrom >= 0 && jfrom <= 2 && jto >= 0 && jto <= 2)
 			return RETURNTRUE;
-        if(GetQiZiSide(ChessBoard[ifrom][jfrom]) == BQi
-			&& ito >= 3 && ito <= 5 && jto >=7 && jto <= 9)
+		if (jfrom >= 7 && jfrom <= 9 && jto >= 7 && jto <= 9)
 			return RETURNTRUE;
-		else
-			return RETURNFALSE;
-		
 	}
-	else
-	{
-		return RETURNFALSE;
-	}
+
+	return RETURNFALSE;
 }
 
 /*******************************************************************************************************
@@ -272,20 +280,18 @@ ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfrom, ENUM_Q
 日  期：2004-10-1
 时  间：23:15:40
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
-		if(GetQiZiSide(ChessBoard[ifrom][jfrom]) == RQi
-			&& ito >= 3 && ito <= 5 && jto >=0 && jto <= 2 
-			&& ((abs(ito - ifrom) == 1 && jto == jfrom)
-			     || (abs(jto - jfrom) == 1 && ito == ifrom)))
+	if (ito >= 3 && ito <= 5
+		&& ((abs(ito - ifrom) == 1 && jto == jfrom)
+			|| (abs(jto - jfrom) == 1 && ito == ifrom)))
+	{
+		if (/*jfrom >= 0 &&*/ jfrom <= 2 && /*jto >= 0 &&*/ jto <= 2)
 			return RETURNTRUE;
-        if(GetQiZiSide(ChessBoard[ifrom][jfrom]) == BQi
-			&& ito >= 3 && ito <= 5 && jto >=7 && jto <= 9
-			&& ((abs(ito - ifrom) == 1 && jto == jfrom)
-			     || (abs(jto - jfrom) == 1 && ito == ifrom)))
+		if (jfrom >= 7 /*&& jfrom <= 9 */&& jto >= 7/* && jto <= 9*/)
 			return RETURNTRUE;
-		else
-			return RETURNFALSE;
+	}
+	return RETURNFALSE;
 }
 
 /*******************************************************************************************************
@@ -302,12 +308,12 @@ ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jfrom, ENUM
 日  期：2004-10-1
 时  间：23:24:18
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	if(ito == ifrom)
 	{
 		int iNum = 0;
-		for(;jfrom != jto;)
+		while(jfrom != jto)
 		{
 			jfrom += sig(jto - jfrom);
 			if(ChessBoard[ifrom][jfrom] != NoQiZi && (jfrom != jto))
@@ -334,7 +340,7 @@ ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_Q
 	if(jto == jfrom)
 	{
 		int iNum = 0;
-		for(;ifrom != ito;)
+		while(ifrom != ito)
 		{
 			ifrom += sig(ito - ifrom);
 			if(ChessBoard[ifrom][jfrom] != NoQiZi && (ifrom != ito))
@@ -376,26 +382,37 @@ ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_Q
 日  期：2004-10-1
 时  间：23:38:32
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
-	switch(GetQiZiSide(ChessBoard[ifrom][jfrom]))
+	bool bTopSide = false;
+	for (int i = 3; i < 6; i++)
 	{
-	case RQi:
-		if(jto - jfrom == 1 && ito == ifrom)
+		for (int j = 0; j < 3; j++)
+		{
+			switch (ChessBoard[i][j])
+			{
+			case RShuai:
+			case RShi:
+			case BShuai:
+			case BShi:
+				bTopSide = GetQiZiSide(ChessBoard[i][j]) == GetQiZiSide(ChessBoard[ifrom][jfrom]);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	if (bTopSide)
+	{
+		if (jto - jfrom == 1 && ito == ifrom)
 			return RETURNTRUE;
-		if(jfrom > 4 && abs(ito - ifrom) <= 1 && jto == jfrom)
+		if (jfrom > 4 && abs(ito - ifrom) <= 1 && jto == jfrom)
 			return RETURNTRUE;
-		else
-			return RETURNFALSE;
-		break;
-	case BQi:
+	} else {
 		if(jto - jfrom == -1 && ito == ifrom)		
 			return RETURNTRUE;
 		if(jfrom <= 4 && abs(ito - ifrom) <= 1 && jto == jfrom)
 			return RETURNTRUE;
-		else
-			return RETURNFALSE;
-		break;
 	}
 	return RETURNFALSE;
 }
@@ -415,7 +432,7 @@ ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfrom, ENUM_
 日  期：2004-10-2
 时  间：9:02:54
 *******************************************************************************************************/
-ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	int iRShuai, jRShuai, iBShuai, jBShuai;
 	//找黑帅

@@ -34,15 +34,6 @@ typedef enum _ENUM_QiZi{
 } ENUM_QiZi;
 
 typedef enum _ENUM_BianMa{BianMa, JieMa} ENUM_BianMa;
-typedef enum _ENUM_ReturnValue{
-	RETURNFALSE,    //错误，不能走
-	BEIJIANGJUN,    //被将军
-	JIANGDUIMIAN,   //将对面
-	JIANGJUN,       //将军
-	RETURNTRUE      //可以走棋
-} ENUM_ReturnValue;
-
-ENUM_QiZi GetQiZiSide(ENUM_QiZi qz);
 
 #define MAX_STRING_BUFFER 128
 

@@ -3,6 +3,7 @@
 
 *_h.h
 *_i.c
+*.tcs
 
 # User-specific files
 *.suo

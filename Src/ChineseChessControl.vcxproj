@@ -292,6 +292,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChineseChess.cpp" />
     <ClCompile Include="ChineseChessControl.cpp" />
     <ClCompile Include="common.cpp" />
     <ClCompile Include="GoRule.cpp" />
@@ -329,6 +330,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChineseChess.h" />
     <ClInclude Include="ChineseChessControl.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="EnumAndStructAndConst.h" />
@@ -366,6 +368,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <Image Include="Res\Picture\RXIANG.BMP" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CMakeLists.txt" />
     <Text Include="文档\问题.txt" />
   </ItemGroup>
   <ItemGroup>
