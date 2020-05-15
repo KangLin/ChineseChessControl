@@ -30,13 +30,13 @@ CPiece::~CPiece()
 bool CPiece::IsRedQiZi(ENUM_QiZi qz)
 {
 	if (NoQiZi == qz) return false;
-	return qz > NoQiZi;
+	return !(0x8 & qz);
 }
 
 bool CPiece::IsBlackQiZi(ENUM_QiZi qz)
 {
 	if (NoQiZi == qz) return false;
-	return qz < NoQiZi;
+	return 0x8 & qz;
 }
 
 bool CPiece::IsExistQiZi(ENUM_QiZi qz)
@@ -53,14 +53,14 @@ bool CPiece::IsSameSide(ENUM_QiZi me, ENUM_QiZi other)
 {
 	if (NoQiZi == me || NoQiZi == other)
 		return false;
-	return sig(me) == sig(other);
+	return (0x08 & me) == (0x08 & other);
 }
 
 bool CPiece::IsOtherSide(ENUM_QiZi me, ENUM_QiZi other)
 {
 	if (NoQiZi == me || NoQiZi == other)
 		return false;
-	return sig(me) != sig(other);
+	return (0x08 & me) != (0x08 & other);
 }
 
 bool CPiece::IsOtherSideMa(ENUM_QiZi me, ENUM_QiZi otherMa)

@@ -123,27 +123,17 @@ int CChineseChess::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, 
 	switch (bianma)
 	{
 	case BianMa:
-		int val;
-		if (CPiece::IsExistQiZi(*QZ))
-		{
-			val = sig(*QZ) * (*i + *j * 10 + abs(*QZ) * 100);
-		}
-		else
-		{
-			val = *i + *j * 10;
-		}
-		*Code = val;
-		return val;
+		*Code = (*i + *j * 10 + *QZ * 100);
+		return *Code;
 		break;
 	case JieMa:
-		*QZ = (CPiece::ENUM_QiZi)(*Code / 100);
-		//TRACE(_T("CODE=%d,QZ=%d\n"), *Code, *QZ);
+		*QZ = (CPiece::ENUM_QiZi) (*Code / 100);
+		TRACE(_T("CODE=%d,QZ=%d\n"), *Code, *QZ);
 		int v;
-		v = abs(*Code) % 100;
+		v = *Code % 100;
 		*j = v / 10;
 		*i = v % 10;
 		return 0;
-		break;
 	}
 	return 0;
 }

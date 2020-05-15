@@ -20,22 +20,25 @@ public:
 	CPiece();
 	virtual ~CPiece();
 
+	/*
+	四个位表示棋子，最左1位表示颜色	
+	*/
 	typedef enum _ENUM_QiZi {
-		RShuai = 1, //红帅
-		RShi = 2,   //红仕
-		RXiang = 3, //红相
-		RMa = 4,    //红马
-		RChe = 5,   //红车
-		RPao = 6,   //红炮
-		RBing = 7,  //红兵
-		NoQiZi = 0, //无子
-		BShuai = -1,//黑帅
-		BShi = -2,  //黑仕
-		BXiang = -3,//黑相
-		BMa = -4,   //黑马
-		BChe = -5,  //黑车
-		BPao = -6,  //黑炮
-		BBing = -7  //黑兵
+		RShuai = 1,             //红帅
+		RShi = 2,               //红仕
+		RXiang = 3,             //红相
+		RMa = 4,                //红马
+		RChe = 5,               //红车
+		RPao = 6,               //红炮
+		RBing = 7,              //红兵
+		NoQiZi = 0,             //无子
+		BShuai = 0x8 | RShuai,  //黑帅
+		BShi = 0x08 | RShi,     //黑仕
+		BXiang = 0x08 | RXiang, //黑相
+		BMa = 0x08 | RMa,       //黑马
+		BChe = 0x08 | RChe,     //黑车
+		BPao = 0x08 | RPao,     //黑炮
+		BBing = 0x08 | RBing    //黑兵
 	} ENUM_QiZi;
 
 	//static ENUM_QiZi GetQiZiSide(ENUM_QiZi qz);
