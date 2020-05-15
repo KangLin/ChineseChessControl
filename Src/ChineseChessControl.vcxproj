@@ -292,6 +292,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChessGame.cpp" />
     <ClCompile Include="ChineseChess.cpp" />
     <ClCompile Include="ChineseChessControl.cpp" />
     <ClCompile Include="common.cpp" />
@@ -331,6 +332,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChessGame.h" />
     <ClInclude Include="ChineseChess.h" />
     <ClInclude Include="ChineseChessControl.h" />
     <ClInclude Include="common.h" />

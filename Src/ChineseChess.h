@@ -3,11 +3,9 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
-
 #include "EnumAndStructAndConst.h"
 #include "GoRule.h"
+#include "ChessGame.h"
 
 class CChineseChess
 {
@@ -40,13 +38,6 @@ public:
 	int GetBoardColumn();
 
 	bool GoChess(int i, int j);
-	bool IsGoChess(int i, int j);
-	//int NextStep();                              //下一步
-	//int PreviouStep();                           //上一步
-	//int ReStart();                               //重新开始
-	//int SaveChess(char* pFileName);          //保存棋局
-	//int LoadChess(char* pFileName);          //装载棋局，并设置为结束状态
-	//int LoadChessStart(char* pFileName);     //装载棋局，并设置为开始状态
 
 protected:
 	enum PROMPT_SOUND {
@@ -65,7 +56,7 @@ protected:
 
 private:
 	int Initial();
-	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma = BianMa);
+	bool IsGoChess(int i, int j);
 	bool IsValidPosition(int i, int j);
 
 	/*
@@ -89,17 +80,15 @@ private:
 	ENUM_BoardLayout m_BoardLayout;//棋盘布局
 	ENUM_WalkState m_WalkState;    //走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）
 
+	// 提示框
 	// 上一步棋的位置
 	int m_PreviouPositionX;
 	int m_PreviouPositionY;
 	int m_CurrentPositionX;
 	int m_CurrentPositionY;
 
-	int m_iBuShu;                  //走棋步数
-	bool m_bFuPang;                //复盘标志
-	std::vector<int> m_QiJu;       //棋局
-
 	CGoRule m_GoRule;
+	CChessGame m_Game;
 };
 
 #endif //_CHINESE_CHESS_H_KL_2020_05_13__

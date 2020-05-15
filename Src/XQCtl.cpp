@@ -74,7 +74,7 @@ END_PROPPAGEIDS(CXQCtrl)
 /////////////////////////////////////////////////////////////////////////////
 // Initialize class factory and guid
 
-IMPLEMENT_OLECREATE_EX(CXQCtrl, "ChineseChessControl.1.0.2",
+IMPLEMENT_OLECREATE_EX(CXQCtrl, "ChineseChessControl.1.1.0",
 	0x71ad322, 0x22ba, 0x45bf, 0x9e, 0x1f, 0x15, 0x4e, 0xfa, 0xf4, 0xe4, 0x2b)
 
 
@@ -629,8 +629,8 @@ int CXQCtrl::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, ENUM_B
          int *i：棋盘横坐标[0,8]
          int *j：棋盘纵坐标[0,9]
          ENUM_ConvertCoordinate eCC：转换方式 
-		                             XYToIJ:从设备坐标转换到棋盘坐标(默认值)
-									 IJToXY:从棋盘坐标转换到设备坐标
+         XYToIJ:从设备坐标转换到棋盘坐标(默认值)
+		 IJToXY:从棋盘坐标转换到设备坐标
 返回值：返回真值。
 作  者：康  林
 版  本：1.0.0.1

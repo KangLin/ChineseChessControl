@@ -22,8 +22,6 @@ int CChineseChess::Initial()
 	m_WalkState = RedReadly;
 	m_PreviouPositionX = m_PreviouPositionX = -1;
 	m_CurrentPositionX = m_CurrentPositionY = -1;
-	m_iBuShu = -1;
-	m_bFuPang = false;
 	return 0;
 }
 
@@ -103,41 +101,6 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 	return 0;
 }
 
-/*******************************************************************************************************
-函数名：QiZiBianMa
-功  能：棋子编解码
-参  数：
-		 int *i：棋盘横坐标[0-8]
-		 int *j：棋盘纵坐标[0-9]
-		 CPiece::ENUM_QiZi *QZ：棋子
-		 int *Code：棋子编码
-		 ENUM_BianMa：枚举常量（BianMa:编码(默认值)，JieMa：解码）
-返回值：
-作  者：康  林
-版  本：1.0.0.1
-日  期：2004-9-2
-时  间：7:36:32
-*******************************************************************************************************/
-int CChineseChess::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma)
-{
-	switch (bianma)
-	{
-	case BianMa:
-		*Code = (*i + *j * 10 + *QZ * 100);
-		return *Code;
-		break;
-	case JieMa:
-		*QZ = (CPiece::ENUM_QiZi) (*Code / 100);
-		TRACE(_T("CODE=%d,QZ=%d\n"), *Code, *QZ);
-		int v;
-		v = *Code % 100;
-		*j = v / 10;
-		*i = v % 10;
-		return 0;
-	}
-	return 0;
-}
-
 bool CChineseChess::IsValidPosition(int i, int j)
 {
 	if (i < 0 || i > m_BoardRow - 1 || j < 0 || j > m_BoardColumn - 1)
@@ -161,26 +124,13 @@ bool CChineseChess::IsValidPosition(int i, int j)
 *******************************************************************************************************/
 bool CChineseChess::GoChess(int i, int j)
 {
-	int code;
 	if (IsGoChess(i, j))
 	{ //走棋
 
 		onGoChess(i, j, m_ChessBoard[i][j]); //事件
 
-		QiZiBianMa(&i, &j, &m_ChessBoard[i][j], &code);
-		m_iBuShu++;
-		if (!m_bFuPang)
-		{   //保存到棋局中
-			if (m_iBuShu < m_QiJu.size())
-			{
-				m_QiJu[m_iBuShu] = code;
-			}
-			else//下棋
-			{
-				m_QiJu.push_back(code);//保存到棋局中
-			}
-		}
-
+		m_Game.NextStep(i, j, m_ChessBoard[i][j]);
+		
 		// 显示提示框
 		switch (m_WalkState)
 		{
@@ -279,7 +229,6 @@ bool CChineseChess::IsGoChess(int i, int j)
 		//本方的棋,重新选取
 		if (CPiece::IsRedQiZi(m_ChessBoard[i][j]))
 		{
-			m_iBuShu--;//重定义棋时存在上一位置
 			m_WalkState = RedReadly;
 			return true;
 		}
@@ -310,7 +259,6 @@ bool CChineseChess::IsGoChess(int i, int j)
 		//本方的棋,重新选取
 		if (CPiece::IsBlackQiZi(m_ChessBoard[i][j]))
 		{
-			m_iBuShu--;//重定义棋时存在上一位置
 			m_WalkState = BlackReadly;
 			return true;
 		}

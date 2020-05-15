@@ -472,7 +472,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 			return JIANGDUIMIAN;
 	}
 
-	//判断被将军、判断将军
+	// 必须是选判断被将军，再判断将军
 	// 当前棋子是上面这一边的
 	if (CPiece::IsSameSide(ChessBoard[ito][jto], ChessBoard[iTopShuai][jTopShuai]))
 	{
