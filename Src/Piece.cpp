@@ -18,14 +18,14 @@ CPiece::~CPiece()
 日  期：2004-9-26
 时  间：12:10:36
 *******************************************************************************************************/
-CPiece::ENUM_QiZi CPiece::GetQiZiSide(ENUM_QiZi qz)
+/*CPiece::ENUM_QiZi CPiece::GetQiZiSide(ENUM_QiZi qz)
 {
 	if (qz > NoQiZi)
 		return RQi;
 	if (qz < NoQiZi)
 		return BQi;
 	return NoQiZi;
-}
+}*/
 
 bool CPiece::IsRedQiZi(ENUM_QiZi qz)
 {
@@ -51,20 +51,16 @@ bool CPiece::IsNoQiZi(ENUM_QiZi qz)
 
 bool CPiece::IsSameSide(ENUM_QiZi me, ENUM_QiZi other)
 {
-	CPiece::ENUM_QiZi meSide = GetQiZiSide(me);
-	CPiece::ENUM_QiZi otherSide = GetQiZiSide(other);
-	if (NoQiZi == meSide || NoQiZi == otherSide)
+	if (NoQiZi == me || NoQiZi == other)
 		return false;
-	return meSide == otherSide;
+	return sig(me) == sig(other);
 }
 
 bool CPiece::IsOtherSide(ENUM_QiZi me, ENUM_QiZi other)
 {
-	CPiece::ENUM_QiZi meSide = GetQiZiSide(me);
-	CPiece::ENUM_QiZi otherSide = GetQiZiSide(other);
-	if (NoQiZi == meSide || NoQiZi == otherSide)
+	if (NoQiZi == me || NoQiZi == other)
 		return false;
-	return meSide != otherSide;
+	return sig(me) != sig(other);
 }
 
 bool CPiece::IsOtherSideMa(ENUM_QiZi me, ENUM_QiZi otherMa)

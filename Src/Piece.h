@@ -12,6 +12,7 @@
 #define __PIECE_H_KL_2020_05_15__
 
 #pragma once
+#include "Common.h"
 
 class CPiece
 {
@@ -28,8 +29,6 @@ public:
 		RPao = 6,   //ºìÅÚ
 		RBing = 7,  //ºì±ø
 		NoQiZi = 0, //ÎÞ×Ó
-		RQi = 1,    //ºìÆå
-		BQi = -1,   //ºÚÆå
 		BShuai = -1,//ºÚË§
 		BShi = -2,  //ºÚÊË
 		BXiang = -3,//ºÚÏà
@@ -39,7 +38,7 @@ public:
 		BBing = -7  //ºÚ±ø
 	} ENUM_QiZi;
 
-	static ENUM_QiZi GetQiZiSide(ENUM_QiZi qz);
+	//static ENUM_QiZi GetQiZiSide(ENUM_QiZi qz);
 	static bool IsRedQiZi(ENUM_QiZi qz);
 	static bool IsBlackQiZi(ENUM_QiZi qz);
 
