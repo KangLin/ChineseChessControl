@@ -51,29 +51,28 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 	int i, j;
 	for (i = 0; i < 9; i++)
 		for (j = 0; j < 10; j++)
-			m_ChessBoard[i][j] = NoQiZi;
+			m_ChessBoard[i][j] = CPiece::NoQiZi;
 
-	
 	if (m_BoardLayout & OnlyTopBlack)
 	{
 		if (m_BoardLayout & SwapRedBetweenBlack)
 		{
-			m_ChessBoard[0][0] = m_ChessBoard[8][0] = RChe;
-			m_ChessBoard[1][0] = m_ChessBoard[7][0] = RMa;
-			m_ChessBoard[2][0] = m_ChessBoard[6][0] = RXiang;
-			m_ChessBoard[3][0] = m_ChessBoard[5][0] = RShi;
-			m_ChessBoard[4][0] = RShuai;
-			m_ChessBoard[1][2] = m_ChessBoard[7][2] = RPao;
-			m_ChessBoard[0][3] = m_ChessBoard[2][3] = m_ChessBoard[4][3] = m_ChessBoard[6][3] = m_ChessBoard[8][3] = RBing;
+			m_ChessBoard[0][0] = m_ChessBoard[8][0] = CPiece::RChe;
+			m_ChessBoard[1][0] = m_ChessBoard[7][0] = CPiece::RMa;
+			m_ChessBoard[2][0] = m_ChessBoard[6][0] = CPiece::RXiang;
+			m_ChessBoard[3][0] = m_ChessBoard[5][0] = CPiece::RShi;
+			m_ChessBoard[4][0] = CPiece::RShuai;
+			m_ChessBoard[1][2] = m_ChessBoard[7][2] = CPiece::RPao;
+			m_ChessBoard[0][3] = m_ChessBoard[2][3] = m_ChessBoard[4][3] = m_ChessBoard[6][3] = m_ChessBoard[8][3] = CPiece::RBing;
 		}
 		else {
-			m_ChessBoard[0][0] = m_ChessBoard[8][0] = BChe;
-			m_ChessBoard[1][0] = m_ChessBoard[7][0] = BMa;
-			m_ChessBoard[2][0] = m_ChessBoard[6][0] = BXiang;
-			m_ChessBoard[3][0] = m_ChessBoard[5][0] = BShi;
-			m_ChessBoard[4][0] = BShuai;
-			m_ChessBoard[1][2] = m_ChessBoard[7][2] = BPao;
-			m_ChessBoard[0][3] = m_ChessBoard[2][3] = m_ChessBoard[4][3] = m_ChessBoard[6][3] = m_ChessBoard[8][3] = BBing;
+			m_ChessBoard[0][0] = m_ChessBoard[8][0] = CPiece::BChe;
+			m_ChessBoard[1][0] = m_ChessBoard[7][0] = CPiece::BMa;
+			m_ChessBoard[2][0] = m_ChessBoard[6][0] = CPiece::BXiang;
+			m_ChessBoard[3][0] = m_ChessBoard[5][0] = CPiece::BShi;
+			m_ChessBoard[4][0] = CPiece::BShuai;
+			m_ChessBoard[1][2] = m_ChessBoard[7][2] = CPiece::BPao;
+			m_ChessBoard[0][3] = m_ChessBoard[2][3] = m_ChessBoard[4][3] = m_ChessBoard[6][3] = m_ChessBoard[8][3] = CPiece::BBing;
 		}
 	}
 
@@ -81,22 +80,22 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 	{
 		if (m_BoardLayout & SwapRedBetweenBlack)
 		{
-			m_ChessBoard[0][9] = m_ChessBoard[8][9] = BChe;
-			m_ChessBoard[1][9] = m_ChessBoard[7][9] = BMa;
-			m_ChessBoard[2][9] = m_ChessBoard[6][9] = BXiang;
-			m_ChessBoard[3][9] = m_ChessBoard[5][9] = BShi;
-			m_ChessBoard[4][9] = BShuai;
-			m_ChessBoard[1][7] = m_ChessBoard[7][7] = BPao;
-			m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6] = m_ChessBoard[6][6] = m_ChessBoard[8][6] = BBing;
+			m_ChessBoard[0][9] = m_ChessBoard[8][9] = CPiece::BChe;
+			m_ChessBoard[1][9] = m_ChessBoard[7][9] = CPiece::BMa;
+			m_ChessBoard[2][9] = m_ChessBoard[6][9] = CPiece::BXiang;
+			m_ChessBoard[3][9] = m_ChessBoard[5][9] = CPiece::BShi;
+			m_ChessBoard[4][9] = CPiece::BShuai;
+			m_ChessBoard[1][7] = m_ChessBoard[7][7] = CPiece::BPao;
+			m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6] = m_ChessBoard[6][6] = m_ChessBoard[8][6] = CPiece::BBing;
 		}
 		else {
-			m_ChessBoard[0][9] = m_ChessBoard[8][9] = RChe;
-			m_ChessBoard[1][9] = m_ChessBoard[7][9] = RMa;
-			m_ChessBoard[2][9] = m_ChessBoard[6][9] = RXiang;
-			m_ChessBoard[3][9] = m_ChessBoard[5][9] = RShi;
-			m_ChessBoard[4][9] = RShuai;
-			m_ChessBoard[1][7] = m_ChessBoard[7][7] = RPao;
-			m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6] = m_ChessBoard[6][6] = m_ChessBoard[8][6] = RBing;
+			m_ChessBoard[0][9] = m_ChessBoard[8][9] = CPiece::RChe;
+			m_ChessBoard[1][9] = m_ChessBoard[7][9] = CPiece::RMa;
+			m_ChessBoard[2][9] = m_ChessBoard[6][9] = CPiece::RXiang;
+			m_ChessBoard[3][9] = m_ChessBoard[5][9] = CPiece::RShi;
+			m_ChessBoard[4][9] = CPiece::RShuai;
+			m_ChessBoard[1][7] = m_ChessBoard[7][7] = CPiece::RPao;
+			m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6] = m_ChessBoard[6][6] = m_ChessBoard[8][6] = CPiece::RBing;
 		}
 	}
 
@@ -110,7 +109,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 参  数：
 		 int *i：棋盘横坐标[0-8]
 		 int *j：棋盘纵坐标[0-9]
-		 ENUM_QiZi *QZ：棋子
+		 CPiece::ENUM_QiZi *QZ：棋子
 		 int *Code：棋子编码
 		 ENUM_BianMa：枚举常量（BianMa:编码(默认值)，JieMa：解码）
 返回值：
@@ -119,13 +118,13 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 日  期：2004-9-2
 时  间：7:36:32
 *******************************************************************************************************/
-int CChineseChess::QiZiBianMa(int *i, int *j, ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma)
+int CChineseChess::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma)
 {
 	switch (bianma)
 	{
 	case BianMa:
 		int val;
-		if (*QZ != NoQiZi)
+		if (CPiece::IsExistQiZi(*QZ))
 		{
 			val = sig(*QZ) * (*i + *j * 10 + abs(*QZ) * 100);
 		}
@@ -137,7 +136,7 @@ int CChineseChess::QiZiBianMa(int *i, int *j, ENUM_QiZi *QZ, int *Code, ENUM_Bia
 		return val;
 		break;
 	case JieMa:
-		*QZ = (ENUM_QiZi)(*Code / 100);
+		*QZ = (CPiece::ENUM_QiZi)(*Code / 100);
 		//TRACE(_T("CODE=%d,QZ=%d\n"), *Code, *QZ);
 		int v;
 		v = abs(*Code) % 100;
@@ -217,7 +216,7 @@ bool CChineseChess::GoChess(int i, int j)
 			m_CurrentPositionY = j;
 
 			m_ChessBoard[i][j] = m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY];
-			m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY] = NoQiZi;
+			m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY] = CPiece::NoQiZi;
 
 			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
 			onDrawPrompt(m_CurrentPositionX, m_CurrentPositionY);
@@ -245,7 +244,7 @@ bool CChineseChess::GoChess(int i, int j)
 			m_CurrentPositionY = j;
 
 			m_ChessBoard[i][j] = m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY];
-			m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY] = NoQiZi;
+			m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY] = CPiece::NoQiZi;
 
 			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
 			onDrawPrompt(m_CurrentPositionX, m_CurrentPositionY);
@@ -268,7 +267,7 @@ bool CChineseChess::GoChess(int i, int j)
 参  数：
 		 int i：当前下棋的位置,横坐标[0-8]
 		 int j：当前下棋的位置,纵坐标[0-9]
-		 ENUM_QiZi qz：当前棋子
+		 CPiece::ENUM_QiZi qz：当前棋子
 返回值：如果可以下棋返回 true,否则返回 false
 作  者：康  林
 版  本：1.0.0.1
@@ -285,11 +284,10 @@ bool CChineseChess::IsGoChess(int i, int j)
 	switch (m_WalkState)
 	{
 	case RedReadly:
-		return RQi == m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
-		break;
+		return CPiece::IsRedQiZi(m_ChessBoard[i][j]) ? true : false;
 	case RedWalked:
 		//本方的棋,重新选取
-		if (m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) == RQi)
+		if (CPiece::IsRedQiZi(m_ChessBoard[i][j]))
 		{
 			m_iBuShu--;//重定义棋时存在上一位置
 			m_WalkState = RedReadly;
@@ -311,15 +309,16 @@ bool CChineseChess::IsGoChess(int i, int j)
 			onPromptMessage("这步棋不能走，否则你要输了。", "将对面");
 			return false;
 		case CGoRule::RETURNFALSE://非法走棋
+		default:
 			return false;
 		}
 
 		break;
 	case BlackReadly:
-		return BQi == m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
+		return CPiece::IsBlackQiZi(m_ChessBoard[i][j]) ? true : false;
 	case BlackWalked:
 		//本方的棋,重新选取
-		if (m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) == BQi)
+		if (CPiece::IsBlackQiZi(m_ChessBoard[i][j]))
 		{
 			m_iBuShu--;//重定义棋时存在上一位置
 			m_WalkState = BlackReadly;
@@ -331,7 +330,6 @@ bool CChineseChess::IsGoChess(int i, int j)
 		case CGoRule::JIANGJUN://将军
 			onPromptSound(JiangJun);
 			return true;
-			break;
 		case CGoRule::RETURNTRUE://可以走棋
 			m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			return true;
@@ -342,12 +340,12 @@ bool CChineseChess::IsGoChess(int i, int j)
 			onPromptMessage("这步棋不能走，否则你要输了。", "将对面");
 			return false;
 		case CGoRule::RETURNFALSE://非法走棋
+		default:
 			return false;
-			break;
 		}
 
 		break;
 	}
 
-	return true;
+	return false;
 }

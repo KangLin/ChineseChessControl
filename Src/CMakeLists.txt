@@ -6,6 +6,7 @@ set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessControl.cpp
 	ChineseChess.cpp
+	Piece.cpp
     Common.cpp
 	GoRule.cpp
 	Stdafx.cpp
@@ -21,6 +22,7 @@ set(HEADER_FILES
     ${INSTALLHEADER_FILES}
 	ChineseChessControl.h
 	ChineseChess.h
+	Piece.h
 	Common.h
 	EnumAndStructAndConst.h
 	GoRule.h

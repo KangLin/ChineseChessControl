@@ -296,6 +296,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClCompile Include="ChineseChessControl.cpp" />
     <ClCompile Include="common.cpp" />
     <ClCompile Include="GoRule.cpp" />
+    <ClCompile Include="Piece.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Unicode Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Unicode Release|Win32'">stdafx.h</PrecompiledHeaderFile>
@@ -335,6 +336,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClInclude Include="common.h" />
     <ClInclude Include="EnumAndStructAndConst.h" />
     <ClInclude Include="GoRule.h" />
+    <ClInclude Include="Piece.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="XQCtl.h" />

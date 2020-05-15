@@ -180,7 +180,7 @@ private:
     BOOL WalkChess(int i, int j, BOOL bEvent = TRUE);
 	BOOL bWalkChess(int i, int j);
 
-	int QiZiBianMa(int *i, int *j, ENUM_QiZi *QZ, int *Code,  ENUM_BianMa bianma= BianMa);
+	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code,  ENUM_BianMa bianma= BianMa);
 	BOOL ConvertCoordinate(long *x, long *y, int *i, int *j, ENUM_ConvertCoordinate eCC= XYToIJ);
 
 	BOOL PromptSound(LPCTSTR ID = NULL);
@@ -193,7 +193,7 @@ private:
 	BOOL DrawTiShiBox(CDC *pdc, CPoint p);
 	BOOL DrawTiShiBox(CDC *pdc, int i, int j);
 	BOOL DrawPicture(CDC *pdc, int i, int j, CBitmap* pbmp, BOOL CHHJKL = false);
-	BOOL DrawQiZi(CDC *pdc, int i, int j, ENUM_QiZi eQiZi);
+	BOOL DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi);
 	void DrawXinWei(CDC *pdc, int i, int j, ENUM_XINWEI xinwei = XinWei);
 	void DrawQiPang(CDC *pdc, CRect rcBounds);
 
@@ -206,7 +206,7 @@ private:
 	struct struct_TiShiBoxPostion m_TiShiBoxPostion; //提示框位置
 
 	ENUM_WalkState m_WalkState;    //走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）
-	ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
+	CPiece::ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
     CArray<int, int> m_QiJu;       //棋局
 
 	INT m_iBuShu;                  //走棋步数

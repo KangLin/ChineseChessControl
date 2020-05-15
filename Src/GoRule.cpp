@@ -29,26 +29,6 @@ CGoRule::~CGoRule()
 {}
 
 /*******************************************************************************************************
-函数名：GetQiZiSide
-功  能：得到棋子是红棋,还是黑棋
-参  数：
-		 ENUM_QiZi qz：要专断的棋子
-返回值：返回红棋还是黑棋或无棋
-作  者：康  林
-版  本：1.0.0.1
-日  期：2004-9-26
-时  间：12:10:36
-*******************************************************************************************************/
-ENUM_QiZi CGoRule::GetQiZiSide(ENUM_QiZi qz)
-{
-	if (qz > NoQiZi)
-		return RQi;
-	if (qz < NoQiZi)
-		return BQi;
-	return NoQiZi;
-}
-
-/*******************************************************************************************************
 函数名：GoChess
 功  能：判断能否从点（ifrom, jfrom）到点（ito, jto）走棋
 参  数：
@@ -56,7 +36,7 @@ ENUM_QiZi CGoRule::GetQiZiSide(ENUM_QiZi qz)
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：将对面、JIANGDUIMIAN,叫将、BEIJIANGJUN,将军、JIANGJUN,
         可以走棋、RETURNTRUE，不能走棋、RETURNFALSE,    
 作  者：康  林
@@ -64,10 +44,10 @@ ENUM_QiZi CGoRule::GetQiZiSide(ENUM_QiZi qz)
 日  期：2004-10-1
 时  间：22:34:32
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	ENUM_ReturnValue m_RV;
-	ENUM_QiZi goneChessBoard[9][10];
+	CPiece::ENUM_QiZi goneChessBoard[9][10];
 
 	m_RV = ChessRule(ito, jto, ifrom, jfrom, ChessBoard);
 	if(m_RV == RETURNTRUE)
@@ -77,9 +57,9 @@ CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfro
 				goneChessBoard[i][j] = ChessBoard[i][j];
 		//假设走棋
 		goneChessBoard[ito][jto] = goneChessBoard[ifrom][jfrom];
-		goneChessBoard[ifrom][jfrom] = NoQiZi;
+		goneChessBoard[ifrom][jfrom] = CPiece::NoQiZi;
 		//判断将对面、叫将、将军
-		m_RV = JiangJun(ito, jto, ifrom, jfrom, goneChessBoard);
+		m_RV = JiangJun(ito, jto, goneChessBoard);
 	}
 
 	return m_RV;
@@ -92,41 +72,41 @@ CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfro
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：23:53:57
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	switch(ChessBoard[ifrom][jfrom])
 	{
-	case BChe:
-	case RChe:
+	case CPiece::BChe:
+	case CPiece::RChe:
 		return CheRule(ito, jto, ifrom, jfrom, ChessBoard);
 		break;
-	case BMa:
-	case RMa:
+	case CPiece::BMa:
+	case CPiece::RMa:
 		return MaRule(ito, jto, ifrom, jfrom, ChessBoard);
 		break;
-	case BXiang:
-	case RXiang:
+	case CPiece::BXiang:
+	case CPiece::RXiang:
 		return XiangRule(ito, jto, ifrom, jfrom, ChessBoard);
 		break;
-	case BShi:
-	case RShi:
+	case CPiece::BShi:
+	case CPiece::RShi:
 		return ShiRule(ito, jto, ifrom, jfrom, ChessBoard);
 		break;
-	case BShuai:
-	case RShuai:
+	case CPiece::BShuai:
+	case CPiece::RShuai:
 		return ShuaiRule(ito, jto, ifrom, jfrom, ChessBoard);
-	case BPao:
-	case RPao:
+	case CPiece::BPao:
+	case CPiece::RPao:
 		return PaoRule(ito, jto, ifrom, jfrom, ChessBoard);
-	case BBing:
-	case RBing:
+	case CPiece::BBing:
+	case CPiece::RBing:
 		return BingRule(ito, jto, ifrom, jfrom, ChessBoard);
 	default:
 		return RETURNFALSE;
@@ -142,21 +122,21 @@ CGoRule::ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jf
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：22:30:51
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	if(ito == ifrom)
 	{
 		while(jfrom != jto)
 		{
 			jfrom += sig(jto - jfrom);
-			if(ChessBoard[ifrom][jfrom] != NoQiZi && (jfrom != jto))
+			if(CPiece::IsExistQiZi(ChessBoard[ifrom][jfrom]) && (jfrom != jto))
 				return RETURNFALSE;			
 		}
 		return RETURNTRUE;
@@ -166,7 +146,7 @@ CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfro
 		while(ifrom != ito)
 		{
 			ifrom += sig(ito - ifrom);
-			if(ChessBoard[ifrom][jfrom] != NoQiZi && (ifrom != ito))
+			if(CPiece::IsExistQiZi(ChessBoard[ifrom][jfrom]) && (ifrom != ito))
 				return RETURNFALSE;
 		}
 		return RETURNTRUE;
@@ -182,25 +162,25 @@ CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfro
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：22:36:05
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	if(abs(ito - ifrom) == 1 && abs(jto - jfrom) == 2)
 	{
-		if(ChessBoard[ifrom][jfrom + sig(jto - jfrom)] == NoQiZi)
+		if(CPiece::IsNoQiZi(ChessBoard[ifrom][jfrom + sig(jto - jfrom)]))
 			return RETURNTRUE;
 		else
 			return RETURNFALSE;	
 	}
 	if(abs(ito - ifrom) == 2 && abs(jto - jfrom) == 1)
 	{
-		if(ChessBoard[ifrom + sig(ito - ifrom)][jfrom] == NoQiZi)
+		if(CPiece::IsNoQiZi(ChessBoard[ifrom + sig(ito - ifrom)][jfrom]))
 			return RETURNTRUE;
 		else
 			return RETURNFALSE;	
@@ -215,18 +195,18 @@ CGoRule::ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：22:49:54
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	if(abs(ito - ifrom) == 2 
 		&& abs(jfrom - jto) == 2 
-		&& ChessBoard[ifrom + sig(ito - ifrom)][jfrom + sig(jto - jfrom)] == NoQiZi)
+		&& CPiece::IsNoQiZi(ChessBoard[ifrom + sig(ito - ifrom)][jfrom + sig(jto - jfrom)]))
 	{
 		if(jfrom <= 4 && jto <=4)
 			return RETURNTRUE;
@@ -244,14 +224,14 @@ CGoRule::ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jf
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：23:07:29
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	if (abs(ifrom - ito) == 1
 		&& abs(jfrom - jto) == 1
@@ -273,14 +253,14 @@ CGoRule::ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfro
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：23:15:40
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	if (ito >= 3 && ito <= 5
 		&& ((abs(ito - ifrom) == 1 && jto == jfrom)
@@ -301,14 +281,14 @@ CGoRule::ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jf
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：23:24:18
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	if(ito == ifrom)
 	{
@@ -316,19 +296,19 @@ CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfro
 		while(jfrom != jto)
 		{
 			jfrom += sig(jto - jfrom);
-			if(ChessBoard[ifrom][jfrom] != NoQiZi && (jfrom != jto))
+			if(CPiece::IsExistQiZi(ChessBoard[ifrom][jfrom]) && (jfrom != jto))
 				iNum++;
 		}
 		switch(iNum)
 		{
 		case 0:
-			if(ChessBoard[ito][jto] == NoQiZi)
+			if(CPiece::IsNoQiZi(ChessBoard[ito][jto]))
 				return RETURNTRUE;
 		    else
 				return RETURNFALSE;
 			break;
 		case 1:
-			if(ChessBoard[ito][jto] == NoQiZi)
+			if(CPiece::IsNoQiZi(ChessBoard[ito][jto]))
 				return RETURNFALSE;
 		    else
 				return RETURNTRUE;
@@ -343,20 +323,20 @@ CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfro
 		while(ifrom != ito)
 		{
 			ifrom += sig(ito - ifrom);
-			if(ChessBoard[ifrom][jfrom] != NoQiZi && (ifrom != ito))
+			if(CPiece::IsExistQiZi(ChessBoard[ifrom][jfrom]) && (ifrom != ito))
 				iNum++;
 			
 		}
 		switch(iNum)
 		{
 		case 0:
-			if(ChessBoard[ito][jto] == NoQiZi)
+			if(CPiece::IsNoQiZi(ChessBoard[ito][jto]))
 				return RETURNTRUE;
 		    else
 				return RETURNFALSE;
 			break;
 		case 1:
-			if(ChessBoard[ito][jto] == NoQiZi)
+			if(CPiece::IsNoQiZi(ChessBoard[ito][jto]))
 				return RETURNFALSE;
 		    else
 				return RETURNTRUE;
@@ -375,32 +355,36 @@ CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfro
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：如果可走返回 RETURNTRUE，否则返回 RETURNFALSE。
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-1
 时  间：23:38:32
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	bool bTopSide = false;
+	bool bExit = false;
 	for (int i = 3; i < 6; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
 			switch (ChessBoard[i][j])
 			{
-			case RShuai:
-			case RShi:
-			case BShuai:
-			case BShi:
-				bTopSide = GetQiZiSide(ChessBoard[i][j]) == GetQiZiSide(ChessBoard[ifrom][jfrom]);
+			case CPiece::RShuai:
+			case CPiece::RShi:
+			case CPiece::BShuai:
+			case CPiece::BShi:
+				bTopSide = CPiece::IsSameSide(ChessBoard[i][j], ChessBoard[ifrom][jfrom]);
+				bExit = true;
 				break;
 			default:
 				break;
 			}
 		}
+		if (bExit)
+			break;
 	}
 	if (bTopSide)
 	{
@@ -425,47 +409,60 @@ CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfr
          int jto：目标点纵坐标[0-9]
          int ifrom：源点横坐标[0-8]
          int jfrom：源点纵坐标[0-9]
-         ENUM_QiZi ChessBoard[9][10]：棋盘数组
+         CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组
 返回值：返回 JIANGDUIMIAN、BEIJIANGJUN、JIANGJUN, RETURNTRUE
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-10-2
 时  间：9:02:54
 *******************************************************************************************************/
-CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
+CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi ChessBoard[][10])
 {
-	int iRShuai, jRShuai, iBShuai, jBShuai;
+	int iTopShuai = 0, jTopShuai = 0;
+	int iBottomShuai = 0, jBottomShuai = 0;
+	bool bExit = false;
 	//找底下的帅的位置
-	for(iBShuai = 3; iBShuai < 6; iBShuai++)
+	for(iBottomShuai = 3; iBottomShuai < 6; iBottomShuai++)
 	{
-		for(jBShuai = 7; jBShuai < 10; jBShuai++)
+		for (jBottomShuai = 7; jBottomShuai < 10; jBottomShuai++)
 		{
-			if(ChessBoard[iBShuai][jBShuai] == BShuai
-				|| ChessBoard[iBShuai][jBShuai] == RShuai)
+			if (CPiece::IsShuai(ChessBoard[iBottomShuai][jBottomShuai]))
+			{
+				bExit = true;
 				break;
-		}	
-	}
-	//找上面的帅的位置
-	for(iRShuai = 3; iRShuai < 6; iRShuai++)
-	{
-		for(jRShuai = 0; jRShuai < 3; jRShuai++)
-		{
-			if (ChessBoard[iBShuai][jBShuai] == BShuai
-				|| ChessBoard[iBShuai][jBShuai] == RShuai)
-				break;
+			}
 		}
+		if (bExit) break;
 	}
+	bExit = false;
+	//找上面的帅的位置
+	for(iTopShuai = 3; iTopShuai < 6; iTopShuai++)
+	{
+		for(jTopShuai = 0; jTopShuai < 3; jTopShuai++)
+		{
+			if (CPiece::IsShuai(ChessBoard[iTopShuai][jTopShuai]))
+			{
+				bExit = true;
+				break;
+			}
+		}
+		if (bExit) break;
+	}
+	TRACE("Top shuai:%d-%d;Bootom shuai:%d-%d\n", iTopShuai, jTopShuai, iBottomShuai, jBottomShuai);
+	if (!CPiece::IsShuai(ChessBoard[iTopShuai][jTopShuai])
+		|| !CPiece::IsShuai(ChessBoard[iBottomShuai][jBottomShuai]))
+		return JIANGBEICHI;
 
 	//判断将对面
 	int i = 0, j = 0;
-	if(iBShuai == iRShuai)
+	if(iBottomShuai == iTopShuai)
 	{
-		j = jRShuai;
-		while(j != jBShuai)
+		j = jTopShuai;
+		while(j != jBottomShuai)
 		{
 			j++;
 			//判断中间是否有子
-			if(ChessBoard[iRShuai][j] != NoQiZi && j != jBShuai)
+			if(CPiece::IsExistQiZi(ChessBoard[iTopShuai][j]) && j != jBottomShuai)
 			{
 				i++;
 				break;
@@ -476,141 +473,133 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, int ifrom, int jfr
 	}
 
 	//判断被将军、判断将军
+	// 当前棋子是上面这一边的
+	if (CPiece::IsSameSide(ChessBoard[ito][jto], ChessBoard[iTopShuai][jTopShuai]))
+	{
+		//被将
+		i = iTopShuai;
+		for (j = 0; j < 10; j++)
+			if (CPiece::IsOtherSide(ChessBoard[iTopShuai][jTopShuai], ChessBoard[i][j]))
+				if (ChessRule(iTopShuai, jTopShuai, i, j, ChessBoard) == RETURNTRUE)
+					return  BEIJIANGJUN;
 
-    //被将
-	i = iRShuai;
-	for (j = 0; j < 10; j++)
-		if (IsOtherSide(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-			if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;
-	j = jRShuai;
-	for (i = 0; i < 10; i++)
-		if (IsOtherSide(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-			if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;
-	//马
-	i = iRShuai - 1;
-	j = jRShuai - 2;
-	if (j >= 0
-		&& IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j])
-		)
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		j = jTopShuai;
+		for (i = 0; i < 9; i++)
+			if (CPiece::IsOtherSide(ChessBoard[iTopShuai][jTopShuai], ChessBoard[i][j]))
+				if (ChessRule(iTopShuai, jTopShuai, i, j, ChessBoard) == RETURNTRUE)
+					return  BEIJIANGJUN;
+
+		//被马将
+		i = iTopShuai - 1;
+		j = jTopShuai - 2;
+		if (j >= 0 && MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai - 1;
-	j = jRShuai + 2;
-	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai - 1;
+		j = jTopShuai + 2;
+		if (MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai + 1;
-	j = jRShuai - 2;
-	if (j >= 0 && IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai + 1;
+		j = jTopShuai - 2;
+		if (j >= 0 && MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai + 1;
-	j = jRShuai + 2;
-	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai + 1;
+		j = jTopShuai + 2;
+		if (MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai - 2;
-	j = jRShuai - 1;
-	if (j >= 0 && IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai - 2;
+		j = jTopShuai - 1;
+		if (j >= 0 && MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai - 2;
-	j = jRShuai + 1;
-	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai - 2;
+		j = jTopShuai + 1;
+		if (MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai + 2;
-	j = jRShuai - 1;
-	if (j >= 0 && IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai + 2;
+		j = jTopShuai - 1;
+		if (j >= 0 && MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	i = iRShuai + 2;
-	j = jRShuai + 1;
-	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
-		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+		i = iTopShuai + 2;
+		j = jTopShuai + 1;
+		if (MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-	//将军
-	i = iBShuai;
-	for (j = 0; j < 10; j++)
-		if (IsOtherSide(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-			if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;
-	j = jBShuai;
-	for (i = 0; i < 10; i++)
-		if (IsOtherSide(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-			if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;
-	//马
-	i = iBShuai - 1;
-	j = jBShuai - 2;
-	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+		//将军
+		if (ChessRule(iBottomShuai, jBottomShuai, ito, jto, ChessBoard) == RETURNTRUE)
 			return  JIANGJUN;
+	}
 
-	i = iBShuai - 1;
-	j = jBShuai + 2;
-	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+	//当前棋子是下面这一边的
+	if (CPiece::IsSameSide(ChessBoard[ito][jto], ChessBoard[iBottomShuai][jBottomShuai]))
+	{
+		//被将军
+		i = iBottomShuai;
+		for (j = 0; j < 10; j++)
+			if (CPiece::IsOtherSide(ChessBoard[iBottomShuai][jBottomShuai], ChessBoard[i][j]))
+				if (ChessRule(iBottomShuai, jBottomShuai, i, j, ChessBoard) == RETURNTRUE)
+					return  BEIJIANGJUN;
+		j = jBottomShuai;
+		for (i = 0; i < 9; i++)
+			if (CPiece::IsOtherSide(ChessBoard[iBottomShuai][jBottomShuai], ChessBoard[i][j]))
+				if (ChessRule(iBottomShuai, jBottomShuai, i, j, ChessBoard) == RETURNTRUE)
+					return  BEIJIANGJUN;
+		//马
+		i = iBottomShuai - 1;
+		j = jBottomShuai - 2;
+		if (MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-	i = iBShuai + 1;
-	j = jBShuai - 2;
-	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+		i = iBottomShuai - 1;
+		j = jBottomShuai + 2;
+		if (j < 10 && MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-	i = iBShuai + 1;
-	j = jBShuai + 2;
-	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+		i = iBottomShuai + 1;
+		j = jBottomShuai - 2;
+		if (MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-	i = iBShuai - 2;
-	j = jBShuai - 1;
-	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+		i = iBottomShuai + 1;
+		j = jBottomShuai + 2;
+		if (j < 10 && MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-	i = iBShuai - 2;
-	j = jBShuai + 1;
-	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+		i = iBottomShuai - 2;
+		j = jBottomShuai - 1;
+		if (MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-	i = iBShuai + 2;
-	j = jBShuai - 1;
-	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+		i = iBottomShuai - 2;
+		j = jBottomShuai + 1;
+		if (j < 10 && MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-	i = iBShuai + 2;
-	j = jBShuai + 1;
-	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
-		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-			return  JIANGJUN;
+		i = iBottomShuai + 2;
+		j = jBottomShuai - 1;
+		if (MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
+			return  BEIJIANGJUN;
 
-		
+		i = iBottomShuai + 2;
+		j = jBottomShuai + 1;
+
+		//将军
+		if (j < 10 && MaJiangJun(iTopShuai, jTopShuai, ito, jto, ChessBoard))
+			return  BEIJIANGJUN;
+	}
+	
 	return RETURNTRUE;
 }
 
-bool CGoRule::IsOtherSide(ENUM_QiZi me, ENUM_QiZi other)
+bool CGoRule::MaJiangJun(int iShuai, int jShuai, int iMa, int jMa, CPiece::ENUM_QiZi ChessBoard[][10])
 {
-	return GetQiZiSide(me) != GetQiZiSide(other);
-}
-
-bool CGoRule::IsOtherSideMa(ENUM_QiZi me, ENUM_QiZi otherMa)
-{
-	if (!IsOtherSide(me, otherMa))
-		return false;
-	return abs(otherMa) == RMa;
+	if(CPiece::IsOtherSideMa(ChessBoard[iShuai][jShuai], ChessBoard[iMa][jMa]))
+		if (ChessRule(iShuai, jShuai, iMa, jMa, ChessBoard) == RETURNTRUE)
+			return  true;
+	return false;
 }

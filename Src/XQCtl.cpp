@@ -591,7 +591,7 @@ BOOL CXQCtrl::PromptSound(LPCTSTR ID)
 参  数：
          int *i：棋盘横坐标[0-8]
          int *j：棋盘纵坐标[0-9]
-         ENUM_QiZi *QZ：棋子
+         CPiece::ENUM_QiZi *QZ：棋子
          int *Code：棋子编码
          ENUM_BianMa：枚举常量（BianMa:编码(默认值)，JieMa：解码）
 返回值：
@@ -600,13 +600,13 @@ BOOL CXQCtrl::PromptSound(LPCTSTR ID)
 日  期：2004-9-2
 时  间：7:36:32
 *******************************************************************************************************/
-int CXQCtrl::QiZiBianMa(int *i, int *j, ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma)
+int CXQCtrl::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma)
 {
 	switch(bianma)
 	{
 	case BianMa:
 		int val;
-		if(*QZ != NoQiZi)
+		if(CPiece::IsExistQiZi(*QZ))
 		{
 			val = sig(*QZ) * (*i + *j * 10 + abs(*QZ) * 100);
 		}
@@ -618,7 +618,7 @@ int CXQCtrl::QiZiBianMa(int *i, int *j, ENUM_QiZi *QZ, int *Code, ENUM_BianMa bi
 		return val;
 		break;
 	case JieMa:
-		*QZ =(ENUM_QiZi) (*Code / 100);
+		*QZ =(CPiece::ENUM_QiZi) (*Code / 100);
 		TRACE(_T("CODE=%d,QZ=%d\n"), *Code, *QZ);
         int v;
 		v = abs(*Code) % 100;
@@ -1025,14 +1025,14 @@ BOOL CXQCtrl::DrawTiShiBox(CDC *pdc, CPoint p)
 参  数：
          int i：棋子横坐标[0-8]
          int j：棋子纵坐标[0-9]
-         ENUM_QiZi eQiZi：棋子
+         CPiece::ENUM_QiZi eQiZi：棋子
 返回值：如果成功返回 true,否则返回 false
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-9-1
 时  间：19:47:24
 *******************************************************************************************************/
-BOOL CXQCtrl::DrawQiZi(CDC *pdc, int i, int j, ENUM_QiZi eQiZi)
+BOOL CXQCtrl::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi)
 {
 	ASSERT(pdc != NULL);
 
@@ -1042,46 +1042,46 @@ BOOL CXQCtrl::DrawQiZi(CDC *pdc, int i, int j, ENUM_QiZi eQiZi)
 
 	switch(eQiZi)
 	{
-	case RShuai:
+	case CPiece::RShuai:
 		m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_RedShuai : &m_BlackShuai;
 		break;
-	case RShi:
+	case CPiece::RShi:
 		m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_RedShi : &m_BlackShi;
 		break;
-	case RXiang:
+	case CPiece::RXiang:
 		m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ?&m_RedXiang : &m_BlackXiang;
         break;
-	case RMa:
+	case CPiece::RMa:
 		m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_RedMa : &m_BlackMa;
        	break;
-	case RChe:
+	case CPiece::RChe:
 		m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_RedChe : &m_BlackChe;
         break;
-	case RPao:	
+	case CPiece::RPao:
 		m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_RedPao : &m_BlackPao;
 		break;
-	case RBing:		
+	case CPiece::RBing:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_RedBing : &m_BlackBing;
 		break;
-	case BShuai:
+	case CPiece::BShuai:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackShuai : &m_RedShuai;
 		break;
-	case BShi:
+	case CPiece::BShi:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackShi : &m_RedShi;
 		break;
-	case BXiang:
+	case CPiece::BXiang:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackXiang : &m_RedXiang;
 	    break;
-	case BMa:
+	case CPiece::BMa:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackMa : &m_RedMa;
 	    break;
-	case BChe:
+	case CPiece::BChe:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackChe : &m_RedChe;
 		break;
-	case BPao:
+	case CPiece::BPao:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackPao : &m_RedPao;
 		break;
-	case BBing:
+	case CPiece::BBing:
         m_QiZi = !(m_QiPang & SwapRedBetweenBlack) ? &m_BlackBing : &m_RedBing;
 		break;
 	}
@@ -1263,29 +1263,29 @@ BOOL CXQCtrl::Inital()
 	int i, j;
 	for(i = 0; i < 9; i++)
 		for(j = 0; j < 10; j++)
-			m_ChessBoard[i][j] = NoQiZi;
+			m_ChessBoard[i][j] = CPiece::NoQiZi;
 
 	//设置棋盘布局,红上黑下
 	if(m_QiPang & OnlyTopRed)
 	{
-		m_ChessBoard[0][0] = m_ChessBoard[8][0] = RChe;
-		m_ChessBoard[1][0] = m_ChessBoard[7][0] = RMa;
-		m_ChessBoard[2][0] = m_ChessBoard[6][0] = RXiang;
-		m_ChessBoard[3][0] = m_ChessBoard[5][0] = RShi;
-		m_ChessBoard[4][0] = RShuai;
-		m_ChessBoard[1][2] = m_ChessBoard[7][2] = RPao;
-		m_ChessBoard[0][3] = m_ChessBoard[2][3] = m_ChessBoard[4][3]= m_ChessBoard[6][3] = m_ChessBoard[8][3] = RBing;
+		m_ChessBoard[0][0] = m_ChessBoard[8][0] = CPiece::RChe;
+		m_ChessBoard[1][0] = m_ChessBoard[7][0] = CPiece::RMa;
+		m_ChessBoard[2][0] = m_ChessBoard[6][0] = CPiece::RXiang;
+		m_ChessBoard[3][0] = m_ChessBoard[5][0] = CPiece::RShi;
+		m_ChessBoard[4][0] = CPiece::RShuai;
+		m_ChessBoard[1][2] = m_ChessBoard[7][2] = CPiece::RPao;
+		m_ChessBoard[0][3] = m_ChessBoard[2][3] = m_ChessBoard[4][3]= m_ChessBoard[6][3] = m_ChessBoard[8][3] = CPiece::RBing;
 	}
 
     if(m_QiPang & OnlyBottomBlack)
 	{
-		m_ChessBoard[0][9] = m_ChessBoard[8][9] = BChe;
-		m_ChessBoard[1][9] = m_ChessBoard[7][9] = BMa;
-		m_ChessBoard[2][9] = m_ChessBoard[6][9] = BXiang;
-		m_ChessBoard[3][9] = m_ChessBoard[5][9] = BShi;
-		m_ChessBoard[4][9] = BShuai;
-		m_ChessBoard[1][7] = m_ChessBoard[7][7] = BPao;
-		m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6]= m_ChessBoard[6][6] = m_ChessBoard[8][6] = BBing;
+		m_ChessBoard[0][9] = m_ChessBoard[8][9] = CPiece::BChe;
+		m_ChessBoard[1][9] = m_ChessBoard[7][9] = CPiece::BMa;
+		m_ChessBoard[2][9] = m_ChessBoard[6][9] = CPiece::BXiang;
+		m_ChessBoard[3][9] = m_ChessBoard[5][9] = CPiece::BShi;
+		m_ChessBoard[4][9] = CPiece::BShuai;
+		m_ChessBoard[1][7] = m_ChessBoard[7][7] = CPiece::BPao;
+		m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6]= m_ChessBoard[6][6] = m_ChessBoard[8][6] = CPiece::BBing;
 	}
 
 	//
@@ -1310,7 +1310,7 @@ BOOL CXQCtrl::Inital()
 参  数：
          int i：当前下棋的位置,横坐标[0-8]
          int j：当前下棋的位置,纵坐标[0-9]
-         ENUM_QiZi qz：当前棋子
+         CPiece::ENUM_QiZi qz：当前棋子
 返回值：如果可以下棋返回 true,否则返回 false
 作  者：康  林
 版  本：1.0.0.1
@@ -1327,11 +1327,11 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 	 switch(m_WalkState)
 	 {
 	 case RedReadly:
-		 return RQi == m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
+		 return CPiece::IsRedQiZi(m_ChessBoard[i][j]) ? true : false;
 		 break;
 	 case RedWalked:
 		 //本方的棋,重新选取
-		 if(m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) == RQi)
+		 if(CPiece::IsRedQiZi(m_ChessBoard[i][j]))
 		 {
 			 m_iBuShu--;//重定义棋时存在上一位置
 			 m_WalkState = RedReadly;
@@ -1343,31 +1343,27 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 		 case CGoRule::JIANGJUN://将军
 			 PromptSound(_T("IDW_CHECK"));
 			 return true;
-			 break;
 		 case CGoRule::RETURNTRUE://可以走棋
 			 m_ChessBoard[i][j] ? PromptSound(_T("IDW_EAT")) : PromptSound(_T("IDW_GO"));
 			 return true;
-			 break;
 		 case CGoRule::BEIJIANGJUN://被将
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("被将军"), MB_OK );
 			 return false;
-			 break;
 		 case CGoRule::JIANGDUIMIAN://将对面
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("将对面"), MB_OK );
 			 return false;
-			 break;
 		 case CGoRule::RETURNFALSE://非法走棋
+		 default:
 			 return false;
-			 break;
 		 }
 
 		 break;
 	 case BlackReadly:
-		 return BQi == m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) ? true : false;
+		 return CPiece::IsBlackQiZi(m_ChessBoard[i][j]) ? true : false;
 		 break;
 	 case BlackWalked:
 		 //本方的棋,重新选取
-		 if(m_GoRule.GetQiZiSide(m_ChessBoard[i][j]) == BQi)
+		 if(CPiece::IsBlackQiZi(m_ChessBoard[i][j]))
 		 {
 			 m_iBuShu--;//重定义棋时存在上一位置
 			 m_WalkState = BlackReadly;
@@ -1379,22 +1375,18 @@ BOOL CXQCtrl::bWalkChess(int i, int j)
 		 case CGoRule::JIANGJUN://将军
 			 PromptSound(_T("IDW_CHECK"));
 			 return true;
-			 break;
 		 case CGoRule::RETURNTRUE://可以走棋
 			 m_ChessBoard[i][j] ? PromptSound(_T("IDW_EAT")) : PromptSound(_T("IDW_GO"));
 			 return true;
-			 break;
 		 case CGoRule::BEIJIANGJUN://被将
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("被将军"), MB_OK );
 			 return false;
-			 break;
 		 case CGoRule::JIANGDUIMIAN://将对面
 			 ::MessageBox(NULL, _T("这步棋不能走，否则你要输了。"), _T("将对面"), MB_OK );
 			 return false;
-			 break;
 		 case CGoRule::RETURNFALSE://非法走棋
+		 default:
 			 return false;
-			 break;
 		 }
 
 		 break;
@@ -1465,7 +1457,7 @@ BOOL CXQCtrl::WalkChess(int i, int j, BOOL bEnvet)
 			m_TiShiBoxPostion.p2.y = j;
 				
 			m_ChessBoard[i][j] = m_ChessBoard[m_TiShiBoxPostion.p1.x][m_TiShiBoxPostion.p1.y];
-			m_ChessBoard[m_TiShiBoxPostion.p1.x][m_TiShiBoxPostion.p1.y] = NoQiZi;
+			m_ChessBoard[m_TiShiBoxPostion.p1.x][m_TiShiBoxPostion.p1.y] = CPiece::NoQiZi;
 
 			InvalidateRectage(m_TiShiBoxPostion.p1);
 			InvalidateRectage(m_TiShiBoxPostion.p2);
@@ -1490,7 +1482,7 @@ BOOL CXQCtrl::WalkChess(int i, int j, BOOL bEnvet)
 			m_TiShiBoxPostion.p2.y = j;
 
 			m_ChessBoard[i][j] = m_ChessBoard[m_TiShiBoxPostion.p1.x][m_TiShiBoxPostion.p1.y];
-			m_ChessBoard[m_TiShiBoxPostion.p1.x][m_TiShiBoxPostion.p1.y] = NoQiZi;
+			m_ChessBoard[m_TiShiBoxPostion.p1.x][m_TiShiBoxPostion.p1.y] = CPiece::NoQiZi;
 
 			InvalidateRectage(m_TiShiBoxPostion.p1);
 			InvalidateRectage(m_TiShiBoxPostion.p2);
@@ -1646,7 +1638,7 @@ BOOL CXQCtrl::LoadChess(LPCTSTR lpcszFileName)
 		while(file.ReadString(str))
 		{
 			int i, j;
-			ENUM_QiZi QZ;
+			CPiece::ENUM_QiZi QZ;
 			int code = _ttoi(str);
 			QiZiBianMa(&i, &j, &QZ, &code, JieMa);		
 			WalkChess(i, j);
@@ -1726,7 +1718,7 @@ long CXQCtrl::NextStep()
 	if(m_QiJu.GetSize() > m_iBuShu + 1)
 	{
 		int i, j;
-		ENUM_QiZi QZ;
+		CPiece::ENUM_QiZi QZ;
 		QiZiBianMa(&i, &j, &QZ, &m_QiJu[m_iBuShu + 1], JieMa);
 		m_bFuPang = true;
 		WalkChess(i, j);
@@ -1752,7 +1744,7 @@ long CXQCtrl::NextStep()
 long CXQCtrl::PreviouStep() 
 {
 	int i, j;
-	ENUM_QiZi QZ;
+	CPiece::ENUM_QiZi QZ;
 	if(m_iBuShu > 0)
 	{
 		switch(m_WalkState)

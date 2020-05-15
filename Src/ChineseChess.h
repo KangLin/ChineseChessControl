@@ -1,3 +1,6 @@
+#ifndef _CHINESE_CHESS_H_KL_2020_05_13__
+#define _CHINESE_CHESS_H_KL_2020_05_13__
+
 #pragma once
 
 #include <string>
@@ -58,16 +61,31 @@ protected:
 
 	virtual int onCleanPrompt(int i, int j) = 0;
 	virtual int onDrawPrompt(int i, int j) = 0;
-	virtual int onGoChess(int i, int j, ENUM_QiZi chess) = 0;
+	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
 
 private:
 	int Initial();
-	int QiZiBianMa(int *i, int *j, ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma = BianMa);
+	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, int *Code, ENUM_BianMa bianma = BianMa);
 	bool IsValidPosition(int i, int j);
 
-	static const int m_BoardRow = 9;
-	static const int m_BoardColumn = 10;
-	ENUM_QiZi m_ChessBoard[m_BoardRow][m_BoardColumn]; //棋盘 m_ChessBoard[i][j]
+	/*
+	    棋盘描述
+
+	     (0,0) ------------------> i 或 x 方向
+		      |
+			  |
+			  |
+			  |
+			  |
+			  |
+			 \|/
+			  
+	      j 或 y 方向
+
+	*/
+	static const int m_BoardRow = 10;
+	static const int m_BoardColumn = 9;
+	CPiece::ENUM_QiZi m_ChessBoard[m_BoardColumn][m_BoardRow]; //棋盘 m_ChessBoard[i][j]
 	ENUM_BoardLayout m_BoardLayout;//棋盘布局
 	ENUM_WalkState m_WalkState;    //走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）
 
@@ -84,3 +102,4 @@ private:
 	CGoRule m_GoRule;
 };
 
+#endif //_CHINESE_CHESS_H_KL_2020_05_13__
