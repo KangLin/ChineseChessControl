@@ -435,31 +435,29 @@ CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfr
 CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10])
 {
 	int iRShuai, jRShuai, iBShuai, jBShuai;
-	//找黑帅
+	//找底下的帅的位置
 	for(iBShuai = 3; iBShuai < 6; iBShuai++)
 	{
 		for(jBShuai = 7; jBShuai < 10; jBShuai++)
 		{
-			if(ChessBoard[iBShuai][jBShuai] == BShuai)
+			if(ChessBoard[iBShuai][jBShuai] == BShuai
+				|| ChessBoard[iBShuai][jBShuai] == RShuai)
 				break;
-		}
-		if(ChessBoard[iBShuai][jBShuai] == BShuai)
-			break;		
+		}	
 	}
-	//找红帅
+	//找上面的帅的位置
 	for(iRShuai = 3; iRShuai < 6; iRShuai++)
 	{
 		for(jRShuai = 0; jRShuai < 3; jRShuai++)
 		{
-			if(ChessBoard[iRShuai][jRShuai] == RShuai)
+			if (ChessBoard[iBShuai][jBShuai] == BShuai
+				|| ChessBoard[iBShuai][jBShuai] == RShuai)
 				break;
 		}
-		if(ChessBoard[iRShuai][jRShuai] == RShuai)
-			break;		
 	}
 
 	//判断将对面
-	int i = 0, j;
+	int i = 0, j = 0;
 	if(iBShuai == iRShuai)
 	{
 		j = jRShuai;
@@ -478,252 +476,141 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, int ifrom, int jfr
 	}
 
 	//判断被将军、判断将军
-	switch(GetQiZiSide(ChessBoard[ito][jto]))
-	{	
-	case RQi:
-		//被将
-		i = iRShuai;
-		for(j = 0; j < 10; j++)
-			if(GetQiZiSide(ChessBoard[i][j]) == BQi)
-				if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  BEIJIANGJUN;
-		j = jRShuai;
-        for(i = 0; i < 10; i++)
-			if(GetQiZiSide(ChessBoard[i][j]) == BQi)
-				if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  BEIJIANGJUN;		
-		//马
-		i = iRShuai - 1;
-		j = jRShuai - 2;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
 
-		i = iRShuai - 1;
-		j = jRShuai + 2;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+    //被将
+	i = iRShuai;
+	for (j = 0; j < 10; j++)
+		if (IsOtherSide(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+			if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+				return  BEIJIANGJUN;
+	j = jRShuai;
+	for (i = 0; i < 10; i++)
+		if (IsOtherSide(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+			if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+				return  BEIJIANGJUN;
+	//马
+	i = iRShuai - 1;
+	j = jRShuai - 2;
+	if (j >= 0
+		&& IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j])
+		)
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iRShuai + 1;
-		j = jRShuai - 2;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+	i = iRShuai - 1;
+	j = jRShuai + 2;
+	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iRShuai + 1;
-		j = jRShuai + 2;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+	i = iRShuai + 1;
+	j = jRShuai - 2;
+	if (j >= 0 && IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iRShuai - 2;
-		j = jRShuai - 1;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+	i = iRShuai + 1;
+	j = jRShuai + 2;
+	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iRShuai - 2;
-		j = jRShuai + 1;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+	i = iRShuai - 2;
+	j = jRShuai - 1;
+	if (j >= 0 && IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iRShuai + 2;
-		j = jRShuai - 1;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+	i = iRShuai - 2;
+	j = jRShuai + 1;
+	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iRShuai + 2;
-		j = jRShuai + 1;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
+	i = iRShuai + 2;
+	j = jRShuai - 1;
+	if (j >= 0 && IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-        //将军
-		i = iBShuai;
-		for(j = 0; j < 10; j++)
-			if(GetQiZiSide(ChessBoard[i][j]) == RQi)
-				if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  JIANGJUN;
-		j = jBShuai;
-		for(i = 0; i < 10; i++)
-			if(GetQiZiSide(ChessBoard[i][j]) == RQi)
-				if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  JIANGJUN;
-		//马
-		i = iBShuai - 1;
-		j = jBShuai - 2;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iRShuai + 2;
+	j = jRShuai + 1;
+	if (IsOtherSideMa(ChessBoard[iRShuai][jRShuai], ChessBoard[i][j]))
+		if (ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  BEIJIANGJUN;
 
-		i = iBShuai - 1;
-		j = jBShuai + 2;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	//将军
+	i = iBShuai;
+	for (j = 0; j < 10; j++)
+		if (IsOtherSide(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+			if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+				return  JIANGJUN;
+	j = jBShuai;
+	for (i = 0; i < 10; i++)
+		if (IsOtherSide(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+			if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+				return  JIANGJUN;
+	//马
+	i = iBShuai - 1;
+	j = jBShuai - 2;
+	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 
-		i = iBShuai + 1;
-		j = jBShuai - 2;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iBShuai - 1;
+	j = jBShuai + 2;
+	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 
-		i = iBShuai + 1;
-		j = jBShuai + 2;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iBShuai + 1;
+	j = jBShuai - 2;
+	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 
-		i = iBShuai - 2;
-		j = jBShuai - 1;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iBShuai + 1;
+	j = jBShuai + 2;
+	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 
-		i = iBShuai - 2;
-		j = jBShuai + 1;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iBShuai - 2;
+	j = jBShuai - 1;
+	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 
-		i = iBShuai + 2;
-		j = jBShuai - 1;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iBShuai - 2;
+	j = jBShuai + 1;
+	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 
-		i = iBShuai + 2;
-		j = jBShuai + 1;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
+	i = iBShuai + 2;
+	j = jBShuai - 1;
+	if (IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
+
+	i = iBShuai + 2;
+	j = jBShuai + 1;
+	if (j < 10 && IsOtherSideMa(ChessBoard[iBShuai][jBShuai], ChessBoard[i][j]))
+		if (ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
+
 		
-	case BQi:
-		//被将
-		i = iBShuai;
-		for(j = 0; j < 10; j++)
-			if(GetQiZiSide(ChessBoard[i][j]) == RQi)
-				if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  BEIJIANGJUN;
-		j = jBShuai;
-		for(i = 0; i < 10; i++)
-			if(GetQiZiSide(ChessBoard[i][j]) == RQi)
-				if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  BEIJIANGJUN;
-		//马
-		i = iBShuai - 1;
-		j = jBShuai - 2;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai - 1;
-		j = jBShuai + 2;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai + 1;
-		j = jBShuai - 2;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai + 1;
-		j = jBShuai + 2;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai - 2;
-		j = jBShuai - 1;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai - 2;
-		j = jBShuai + 1;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai + 2;
-		j = jBShuai - 1;
-		if(ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-
-		i = iBShuai + 2;
-		j = jBShuai + 1;
-		if(j < 10 && ChessBoard[i][j] == RMa)
-			if(ChessRule(iBShuai, jBShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  BEIJIANGJUN;		
-		
-		//将军
-		i = iRShuai;
-		for(j = 0; j < 10; j++)
-			if(GetQiZiSide(ChessBoard[i][j]) == BQi)
-				if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-					return JIANGJUN;
-		j = jRShuai;
-        for(i = 0; i < 10; i++)
-			if(GetQiZiSide(ChessBoard[i][j]) == BQi)
-				if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-					return JIANGJUN;		
-        
-		//马
-		i = iRShuai - 1;
-		j = jRShuai - 2;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai - 1;
-		j = jRShuai + 2;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai + 1;
-		j = jRShuai - 2;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai + 1;
-		j = jRShuai + 2;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai - 2;
-		j = jRShuai - 1;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai - 2;
-		j = jRShuai + 1;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai + 2;
-		j = jRShuai - 1;
-		if(j >= 0 && ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-
-		i = iRShuai + 2;
-		j = jRShuai + 1;
-		if(ChessBoard[i][j] == BMa)
-			if(ChessRule(iRShuai, jRShuai, i, j, ChessBoard) == RETURNTRUE)
-				return  JIANGJUN;		
-		break;
-	}
-
 	return RETURNTRUE;
+}
+
+bool CGoRule::IsOtherSide(ENUM_QiZi me, ENUM_QiZi other)
+{
+	return GetQiZiSide(me) != GetQiZiSide(other);
+}
+
+bool CGoRule::IsOtherSideMa(ENUM_QiZi me, ENUM_QiZi otherMa)
+{
+	if (!IsOtherSide(me, otherMa))
+		return false;
+	return abs(otherMa) == RMa;
 }

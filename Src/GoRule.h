@@ -46,6 +46,9 @@ private:
 	ENUM_ReturnValue MaRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
 	ENUM_ReturnValue CheRule(int ito, int jto, int ifrom, int jfrom, ENUM_QiZi ChessBoard[][10]);
 
+	bool IsOtherSide(ENUM_QiZi me, ENUM_QiZi other);
+	bool IsOtherSideMa(ENUM_QiZi me, ENUM_QiZi otherMa);
+
 };
 
 #endif // !defined(AFX_GORULE_H__D75E7189_0187_471C_8E8D_237321CC4D18__INCLUDED_)
