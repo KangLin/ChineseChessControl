@@ -587,10 +587,12 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 
 		i = iBottomShuai + 2;
 		j = jBottomShuai + 1;
-
-		//将军
 		if (j < 10 && MaJiangJun(iTopShuai, jTopShuai, ito, jto, ChessBoard))
 			return  BEIJIANGJUN;
+
+		//将军
+		if (ChessRule(iTopShuai, jTopShuai, ito, jto, ChessBoard) == RETURNTRUE)
+			return  JIANGJUN;
 	}
 	
 	return RETURNTRUE;
