@@ -96,11 +96,12 @@ private:
 	//棋盘星位
 	enum ENUM_XINWEI { XinWei, Left_XinWei, Right_XinWei };
 	void DrawXinWei(CDC *pdc, int i, int j, ENUM_XINWEI xinwei = XinWei);
-	BOOL DrawTiShiBox(CDC *pdc, CPoint p);
 	BOOL DrawTiShiBox(CDC *pdc, int i, int j);
 	BOOL DrawPicture(CDC *pdc, int i, int j, CBitmap* pbmp, BOOL CHHJKL = false);
 	BOOL DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi);
 	void DrawQiPang(CDC *pdc, CRect rcBounds);
+
+	void InvalidateRectage(int i, int j);
 
 	BOOL SetQiPang(int width, int height);
 	BOOL PromptSound(LPCTSTR ID = NULL);

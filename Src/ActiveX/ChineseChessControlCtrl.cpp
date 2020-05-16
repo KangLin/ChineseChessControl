@@ -281,7 +281,14 @@ void CChineseChessControlCtrl::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CChineseChessControlCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	int i = 0, j = 0;
+	ConvertCoordinate(&point.x, &point.y, &i, &j);
+	TRACE(_T("point: i = %d j = %d\n"), i, j);
+	TRACE(_T("CXQCtrl::OnLButtonUp的当前线程:%x\n"), ::GetCurrentThreadId());
+	if (GoChess(i, j))
+	{
 
+	}
 	__super::OnLButtonUp(nFlags, point);
 }
 
@@ -302,21 +309,47 @@ void CChineseChessControlCtrl::OnSize(UINT nType, int cx, int cy)
 
 int CChineseChessControlCtrl::onPromptSound(PROMPT_SOUND sound)
 {
+	LPCTSTR pId = NULL;
+	switch (sound)
+	{
+	case JiangJun:
+		pId = _T("IDW_CHECK");
+		break;
+	case Eat:
+		pId = _T("IDW_EAT");
+		break;
+	case Go:
+		pId = _T("IDW_GO");
+		break;
+	case NoGo:
+		pId = _T("IDW_DEAD");
+		break;
+	case Select:
+		pId = _T("IDW_SELECT");
+		break;
+	default:
+		break;
+	}
+
+	PromptSound(pId);
 	return 0;
 }
 
 int CChineseChessControlCtrl::onPromptMessage(char * pMessage, char * pTitle)
 {
+	::MessageBoxA(GetSafeHwnd(), pMessage, pTitle, MB_OK);
 	return 0;
 }
 
 int CChineseChessControlCtrl::onCleanPrompt(int i, int j)
 {
+	InvalidateRectage(i, j);
 	return 0;
 }
 
 int CChineseChessControlCtrl::onDrawPrompt(int i, int j)
 {
+	InvalidateRectage(i, j);
 	return 0;
 }
 
@@ -510,7 +543,7 @@ BOOL CChineseChessControlCtrl::ConvertCoordinate(long *x, long *y, int *i, int *
 
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//以下是完成 ===中国象棋界面处理=== 的函数块
+//以下是完成 === 中国象棋界面处理 === 的函数块
 //
 
 /*******************************************************************************************************
@@ -951,4 +984,33 @@ BOOL CChineseChessControlCtrl::DrawPicture(CDC *pdc, int i, int j, CBitmap *pbmp
 	return true;
 }
 
+/*******************************************************************************************************
+函数名：InvalidateRectage
+功  能：产生无效矩形,用于删除棋子
+参  数：
+		 int i：棋盘横坐标[0-8]
+		 int j：棋盘横坐标[0-9]
+返回值：无
+作  者：康  林
+版  本：1.0.0.1
+日  期：2004-9-26
+时  间：10:49:56
+*******************************************************************************************************/
+void CChineseChessControlCtrl::InvalidateRectage(int i, int j)
+{
+	long x, y;
+	if (i >= 0 && i <= 8 && j >= 0 && j <= 9)
+	{
+		ConvertCoordinate(&x, &y, &i, &j, IJToXY);
+		RECT rect;
+		rect.top = y - m_QiPangDistance / 2 - 1;
+		rect.left = x - m_QiPangDistance / 2 - 1;
+		rect.bottom = y + m_QiPangDistance / 2 + 1;
+		rect.right = x + m_QiPangDistance / 2 + 1;
+		InvalidateControl(&rect);
+	}
+}
 
+//
+//以上是完成 === 中国象棋界面处理 === 的函数块
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
