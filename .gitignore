@@ -4,6 +4,7 @@
 *_h.h
 *_i.c
 *.tcs
+*idl.h
 
 # User-specific files
 *.suo

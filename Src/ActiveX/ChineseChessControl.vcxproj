@@ -92,7 +92,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -120,7 +120,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -211,6 +211,11 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ChessGame.cpp" />
+    <ClCompile Include="..\ChineseChess.cpp" />
+    <ClCompile Include="..\Common.cpp" />
+    <ClCompile Include="..\GoRule.cpp" />
+    <ClCompile Include="..\Piece.cpp" />
     <ClCompile Include="ChineseChessControl.cpp" />
     <ClCompile Include="ChineseChessControlCtrl.cpp" />
     <ClCompile Include="ChineseChessControlPropPage.cpp" />
@@ -222,6 +227,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\ChessGame.h" />
+    <ClInclude Include="..\ChineseChess.h" />
+    <ClInclude Include="..\Common.h" />
+    <ClInclude Include="..\GoRule.h" />
+    <ClInclude Include="..\Piece.h" />
     <ClInclude Include="ChineseChessControl.h" />
     <ClInclude Include="ChineseChessControlCtrl.h" />
     <ClInclude Include="ChineseChessControlPropPage.h" />

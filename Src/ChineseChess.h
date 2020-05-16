@@ -57,8 +57,11 @@ protected:
 private:
 	int Initial();
 	bool IsGoChess(int i, int j);
-	bool IsValidPosition(int i, int j);
 
+	CGoRule m_GoRule;
+	CChessGame m_Game;
+
+protected:
 	/*
 	    ∆Â≈Ã√Ë ˆ
 
@@ -87,8 +90,7 @@ private:
 	int m_CurrentPositionX;
 	int m_CurrentPositionY;
 
-	CGoRule m_GoRule;
-	CChessGame m_Game;
+	bool IsValidPosition(int i, int j);
 };
 
 #endif //_CHINESE_CHESS_H_KL_2020_05_13__
