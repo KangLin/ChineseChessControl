@@ -23,7 +23,10 @@ library ChineseChessControlLib
 	dispinterface _DChineseChessControl
 	{
 		properties:
-		methods:
+			[id(1), helpstring("棋盘颜色")] OLE_COLOR QiPangColor;
+			[id(2), helpstring("棋盘提示框颜色")] OLE_COLOR TiShiBoxColor;
+
+	methods:
 
 			[id(DISPID_ABOUTBOX)] void AboutBox();
 	};
