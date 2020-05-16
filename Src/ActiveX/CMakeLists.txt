@@ -11,6 +11,7 @@ set(SOURCES_FILES
 	${CMAKE_SOURCE_DIR}/Src/ChessGame.cpp
 	${CMAKE_SOURCE_DIR}/Src/Piece.cpp
 	${CMAKE_SOURCE_DIR}/Src/GoRule.cpp
+	${CMAKE_SOURCE_DIR}/Src/Common.cpp
     )
 
 set(INSTALLHEADER_FILES
@@ -28,6 +29,7 @@ set(HEADER_FILES
 	${CMAKE_SOURCE_DIR}/Src/ChessGame.h
 	${CMAKE_SOURCE_DIR}/Src/Piece.h
 	${CMAKE_SOURCE_DIR}/Src/GoRule.h
+	${CMAKE_SOURCE_DIR}/Src/Common.h
     )
 
 SET(RCC_FILES
