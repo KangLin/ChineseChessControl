@@ -23,7 +23,7 @@
 - 注册中国象棋控件  
   这一步在编译或安装时，会自动完成。如果没有成功，可以按下面方法之一注册：  
   **注意**:需要管理员权限
-  + 手工注册
+  + 手工注册，使用 regsvr32 命令
 
         regsvr32 /s /c "D:\Source\ChineseChessControl\Src\.\DebugU\ChineseChessControl.ocx" 
 
@@ -93,3 +93,6 @@
 #### 事件:
 - MoveChess(short x, short y, ENUM_QiZi chess):走棋。此事件在属性 CurrentSide 改变前发生。
 
+### 开发
+#### 字符编码
+WIndows 中文系统字符编码默认为GB2313。 linux系统下字符编码一般使用 UTF-8 。所以本项目字符釆用**多字节编码**，而不使用 UNICODE 编码。
