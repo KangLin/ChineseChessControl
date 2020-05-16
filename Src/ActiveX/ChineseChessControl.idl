@@ -1,0 +1,56 @@
+﻿// ChineseChessControl.idl: ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 生成类型库(ChineseChessControl.tlb)，该类型库将成为
+// ChineseChessControl.ocx。
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(340162b7-44f0-440b-9ad9-94843a2865d0), version(1.0),
+  helpfile("中国象棋控件.hlp"),
+  helpstring("中国象棋控件"),  /*显示在引用列表框中*/
+  control ]
+library ChineseChessControlLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CChineseChessControlCtrl 的主调度接口
+	[ 
+		uuid(c66fbdae-fb51-4fb8-b6bc-cd2cbe461bb7),
+		helpstring("中国象棋控件 - 分发接口")
+	]
+	dispinterface _DChineseChessControl
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  CChineseChessControlCtrl 的事件调度接口
+
+	[ 
+		uuid(6757238f-9836-4b8a-9c13-0acc7d6607b5),
+		helpstring("中国象棋控件 - 事件接口")
+	]
+	dispinterface _DChineseChessControlEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CChineseChessControlCtrl 的类信息
+	[
+		uuid(23ac49d1-f4fe-4ab0-b5a3-bb3cb22dfed0),
+		helpstring("中国象棋控件")
+	]
+	coclass ChineseChessControl
+	{
+		[default] dispinterface _DChineseChessControl;
+		[default, source] dispinterface _DChineseChessControlEvents;
+	};
+
+};
