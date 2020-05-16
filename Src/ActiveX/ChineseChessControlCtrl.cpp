@@ -32,6 +32,7 @@ BEGIN_DISPATCH_MAP(CChineseChessControlCtrl, COleControl)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "AboutBox", DISPID_ABOUTBOX, AboutBox, VT_EMPTY, VTS_NONE)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "QiPangColor", dispidQiPangColor, m_QiPangColor, OnQiPangColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "TiShiBoxColor", dispidTiShiBoxColor, m_TiShiBoxColor, OnTiShiBoxColorChanged, VT_COLOR)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "BoardLayout", dispidBoardLayout, m_BoardLayout, OnBoardLayoutChanged, VT_I2)
 END_DISPATCH_MAP()
 
 // 事件映射
@@ -48,7 +49,7 @@ END_PROPPAGEIDS(CChineseChessControlCtrl)
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessControlCtrl, "ChineseChessControlCtrl.1.1.1",
+IMPLEMENT_OLECREATE_EX(CChineseChessControlCtrl, "ChineseChessControl.1.1.1",
 	0x23ac49d1,0xf4fe,0x4ab0,0xb5,0xa3,0xbb,0x3c,0xb2,0x2d,0xfe,0xd0)
 
 // 键入库 ID 和版本
@@ -216,6 +217,7 @@ void CChineseChessControlCtrl::DoPropExchange(CPropExchange* pPX)
 	// TODO: 为每个持久的自定义属性调用 PX_ 函数。
 	PX_Color(pPX, _T("QiPangColor"), m_QiPangColor, RGB(0, 0, 0));
 	PX_Color(pPX, _T("TiShiBoxColor"), m_TiShiBoxColor, RGB(0, 255, 0));
+	PX_UShort(pPX, _T("BoardLayout"), (USHORT&)m_BoardLayout, (USHORT)TopBlackAndBottomRed);
 }
 
 
@@ -238,18 +240,28 @@ void CChineseChessControlCtrl::OnQiPangColorChanged()
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	// TODO:  在此添加属性处理程序代码
-
+	TRACE(_T("CChineseChessControlCtrl::OnQiPangColorChanged()"));
 	SetModifiedFlag();
 	InvalidateControl();
 }
-
 
 void CChineseChessControlCtrl::OnTiShiBoxColorChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	// TODO:  在此添加属性处理程序代码
+	TRACE(_T("CChineseChessControlCtrl::OnTiShiBoxColorChanged()"));
+	SetModifiedFlag();
+	InvalidateControl();
+}
 
+void CChineseChessControlCtrl::OnBoardLayoutChanged()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	// TODO:  在此添加属性处理程序代码
+	Initial();
+	SetBoardLayout(m_BoardLayout);
 	SetModifiedFlag();
 	InvalidateControl();
 }
@@ -717,9 +729,9 @@ void CChineseChessControlCtrl::DrawQiPang(CDC *pdc, CRect rcBounds)
 		 int i：星位的横坐标[0-8]
 		 int j：星位的纵坐标[0-9]
 		 ENUM_XINWEI xinwei：画的位置取下列值勤之一:
-							 XinWei:全画(默认值),
-							 Left_XinWei:画左边的星位
-							 Right_XinWei:画右边的星位
+         XinWei:全画(默认值),
+         Left_XinWei:画左边的星位
+         Right_XinWei:画右边的星位
 返回值：无
 作  者：康  林
 版  本：1.0.0.1
@@ -1014,3 +1026,6 @@ void CChineseChessControlCtrl::InvalidateRectage(int i, int j)
 //
 //以上是完成 === 中国象棋界面处理 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+

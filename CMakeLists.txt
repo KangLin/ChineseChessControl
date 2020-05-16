@@ -169,7 +169,7 @@ endif()
 #endif()
 
 if(MSVC)
-	add_subdirectory(Src)
+	add_subdirectory(Src/ActiveX)
 endif()
 
 option(BUILD_APP_MFC "Build MFC chinese chess applaction" ON)

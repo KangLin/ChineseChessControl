@@ -55,7 +55,6 @@ protected:
 	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
 
 private:
-	int Initial();
 	bool IsGoChess(int i, int j);
 
 	CGoRule m_GoRule;
@@ -91,6 +90,8 @@ protected:
 	int m_CurrentPositionY;
 
 	bool IsValidPosition(int i, int j);
+
+	int Initial();
 };
 
 #endif //_CHINESE_CHESS_H_KL_2020_05_13__

@@ -43,6 +43,8 @@ protected:
 	OLE_COLOR m_QiPangColor;
 	void OnTiShiBoxColorChanged();
 	OLE_COLOR m_TiShiBoxColor;
+	void OnBoardLayoutChanged();
+	ENUM_BoardLayout m_BoardLayout;
 	afx_msg void AboutBox();
 
 // 事件映射
@@ -51,8 +53,9 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
-		dispidQiPangColor = 1,
+		dispidBoardLayout = 3,
 		dispidTiShiBoxColor = 2,
+		dispidQiPangColor = 1,
 	};
 
 protected:
@@ -105,6 +108,8 @@ private:
 
 	BOOL SetQiPang(int width, int height);
 	BOOL PromptSound(LPCTSTR ID = NULL);
+
+protected:
 
 };
 

@@ -1,9 +1,7 @@
 // common.cpp: implementation of the common class.
 //
 //////////////////////////////////////////////////////////////////////
-
-#include "stdafx.h"
-#include "ChineseChessControl.h"
+#include "StdAfx.h"
 #include "common.h"
 
 #ifdef _DEBUG
