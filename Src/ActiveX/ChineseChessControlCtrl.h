@@ -1,4 +1,10 @@
-﻿#pragma once
+﻿/**
+ * @file ChineseChessControlCtrl.h.
+ *
+ * 中国象棋 ActiveX 控件的界面实现
+ */
+ 
+#pragma once
 
 // ChineseChessControlCtrl.h : CChineseChessControlCtrl ActiveX 控件类的声明。
 
@@ -7,6 +13,12 @@
 
 #include "../ChineseChess.h"
 
+/**
+ * 中国象棋 ActiveX 控件的界面实现类
+ *
+ * @author KangLin(kl222@126.com)
+ * @date 2020/5/17
+ */
 class CChineseChessControlCtrl : public COleControl, CChineseChess
 {
 	DECLARE_DYNCREATE(CChineseChessControlCtrl)
@@ -25,10 +37,10 @@ public:
 protected:
 	~CChineseChessControlCtrl();
 
-	DECLARE_OLECREATE_EX(CChineseChessControlCtrl)    // 类工厂和 guid
-	DECLARE_OLETYPELIB(CChineseChessControlCtrl)      // GetTypeInfo
-	DECLARE_PROPPAGEIDS(CChineseChessControlCtrl)     // 属性页 ID
-	DECLARE_OLECTLTYPE(CChineseChessControlCtrl)		// 类型名称和杂项状态
+	DECLARE_OLECREATE_EX(CChineseChessControlCtrl) // 类工厂和 guid
+	DECLARE_OLETYPELIB(CChineseChessControlCtrl)   // GetTypeInfo
+	DECLARE_PROPPAGEIDS(CChineseChessControlCtrl)  // 属性页 ID
+	DECLARE_OLECTLTYPE(CChineseChessControlCtrl)   // 类型名称和杂项状态
 
 // 消息映射
 	DECLARE_MESSAGE_MAP()
@@ -72,11 +84,11 @@ protected:
 	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess);
 
 private:
-	LONG m_QiPangStartX;                             //棋盘的开始横坐标
-	LONG m_QiPangStartY;                             //棋盘的开始横坐标
-	LONG m_QiPangDistance;                           //棋盘格的距离
+	LONG m_QiPangStartX;   //棋盘的开始横坐标
+	LONG m_QiPangStartY;   //棋盘的开始横坐标
+	LONG m_QiPangDistance; //棋盘格的距离
 
-	CBitmap m_QiPangPicture;              //棋盘背景图片
+	CBitmap m_QiPangPicture;			  //棋盘背景图片
 	CPictureHolder m_QiPangPictureHolder; //棋盘背景图片的CPictureHolder对象
 
 	//棋子图片

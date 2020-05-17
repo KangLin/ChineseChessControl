@@ -7,15 +7,24 @@
 #include "Piece.h"
 #include <vector>
 
+/**
+ * 棋局
+ * 完成棋局的加载、保存、复盘
+ *
+ * @author KangLin(kl222@126.com)
+ * @date 2020/5/17
+ */
 class CChessGame
 {
 public:
 	CChessGame();
 	virtual ~CChessGame();
 
+	// 调整棋局存储大小
 	int SaveStep(int i, int j, CPiece::ENUM_QiZi qz); //保存当前步
 	int RevokeStep();								  //撤回当前步
 
+	// 移动指针位置
     int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //得到上一步
 	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //得到下一步
 

@@ -25,22 +25,6 @@ int CChineseChess::Initial()
 	return 0;
 }
 
-int CChineseChess::GetBoard(int &row, int &col)
-{
-	row = GetBoardRow();
-	col = GetBoardColumn();
-	return 0;
-}
-int CChineseChess::GetBoardRow()
-{
-	return m_BoardRow;
-}
-
-int CChineseChess::GetBoardColumn()
-{
-	return m_BoardColumn;
-}
-
 int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 {
 	m_BoardLayout = layout;
@@ -111,6 +95,17 @@ bool CChineseChess::IsValidPosition(int i, int j)
 	return true;
 }
 
+/**
+ * 清理提示，并把提示框位置设置成无效值
+ *
+ * @author KangLin(kl222@126.com)
+ * @date 2020/5/17
+ *
+ * @param  int i：当前提示框的位置,横坐标[0-8]
+ * @param  int j：当前提示框的位置,纵坐标[0-9]
+ *
+ * @returns An int. 0：成功；非零：失败
+ */
 int CChineseChess::CleanPrompt(int &i, int &j)
 {
 	if (-1 == i || -1 == j)
@@ -128,6 +123,9 @@ int CChineseChess::CleanPrompt(int &i, int &j)
 参  数：
 		 int i：棋盘格横坐标[0-8]
 		 int j：棋盘格纵坐标[0-9]
+		 bool bNext： TRUE：复盘；FALSE：正常下棋
+		              区别是：正常下棋，保存着法到棋局中。
+					          复盘则不保存
 返回值：成功返回true，否则返回false。
 作  者：康  林
 版  本：1.0.0.1
@@ -141,8 +139,8 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 
 		if (!bNext)
 		{
-			onGoChess(i, j, m_ChessBoard[i][j]); //事件
-			m_Game.SaveStep(i, j, m_ChessBoard[i][j]);
+			onGoChess(i, j, m_ChessBoard[i][j]);	   //事件
+			m_Game.SaveStep(i, j, m_ChessBoard[i][j]); //保存到棋局中
 		}
 		
 		// 显示提示框
@@ -200,7 +198,7 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 		}
 		return true;
 	}
-	else//不能走
+	else //不能走
 	{
 		onPromptSound();
 		return false;

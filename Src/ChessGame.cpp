@@ -75,7 +75,7 @@ int CChessGame::SaveStep(int i, int j, CPiece::ENUM_QiZi qz)
 }
 
 /**
- * 撤回一步
+ * 撤销一步
  *
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
@@ -117,8 +117,8 @@ int CChessGame::GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  *
- * @param [in,out] i 
- * @param [in,out] j 
+ * @param  int i：当前下棋的位置,横坐标[0-8]
+ * @param  int j：当前下棋的位置,纵坐标[0-9]
  * @param [in,out] qz 
  * @returns The next step.
  */
