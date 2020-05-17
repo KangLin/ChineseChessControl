@@ -37,6 +37,7 @@ BEGIN_DISPATCH_MAP(CChineseChessControlCtrl, COleControl)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "PreviouStep", dispidPreviouStep, PreviouStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "SaveChessGame", dispidSaveChessGame, SaveChessGame, VT_BOOL, VTS_PI1)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "LoadChessGame", dispidLoadChessGame, LoadChessGame, VT_BOOL, VTS_PI1)
+	DISP_FUNCTION_ID(CChineseChessControlCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
 END_DISPATCH_MAP()
 
 // 事件映射
@@ -314,6 +315,14 @@ VARIANT_BOOL CChineseChessControlCtrl::LoadChessGame(CHAR* pszFile)
 	return VARIANT_TRUE;
 }
 
+VARIANT_BOOL CChineseChessControlCtrl::GoChess(SHORT i, SHORT j)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	if (__super::GoChess(i, j))
+		return VARIANT_TRUE;
+	return VARIANT_FALSE;
+}
 
 //
 //以上是完成 === 调度映射 === 的函数块
@@ -1067,3 +1076,5 @@ void CChineseChessControlCtrl::InvalidateRectage(int i, int j)
 //
 //以上是完成 === 中国象棋界面处理 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+

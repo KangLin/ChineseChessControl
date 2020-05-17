@@ -47,7 +47,7 @@ library ChineseChessControlLib
 			[id(5), helpstring("上一步")] VARIANT_BOOL PreviouStep();
 			[id(6), helpstring("保存棋局")] VARIANT_BOOL SaveChessGame(CHAR* pszFile);
 			[id(7), helpstring("加载棋局")] VARIANT_BOOL LoadChessGame(CHAR* pszFile);
-
+			[id(8), helpstring("走棋")] VARIANT_BOOL GoChess(SHORT i, SHORT j);
 	};
 
 	//  CChineseChessControlCtrl 的事件调度接口

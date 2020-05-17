@@ -61,6 +61,7 @@ protected:
 	afx_msg void AboutBox();
 	VARIANT_BOOL NextStep();    //下一步
 	VARIANT_BOOL PreviouStep(); //上一步
+	VARIANT_BOOL GoChess(SHORT i, SHORT j);
 	VARIANT_BOOL SaveChessGame(CHAR* pszFile);
 	VARIANT_BOOL LoadChessGame(CHAR* pszFile);
 
@@ -70,6 +71,7 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
+		dispidGoChess = 8L,
 		dispidLoadChessGame = 7L,
 		dispidSaveChessGame = 6L,
 		dispidPreviouStep = 5L,
@@ -129,6 +131,6 @@ private:
 
 	BOOL SetQiPang(int width, int height);
 	BOOL PromptSound(LPCTSTR ID = NULL);
-	
+
 };
 
