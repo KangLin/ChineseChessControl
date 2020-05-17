@@ -16,8 +16,8 @@ CChessGame::~CChessGame()
 参  数：
 		 int *i：棋盘横坐标[0-8]
 		 int *j：棋盘纵坐标[0-9]
-		 CPiece::ENUM_QiZi *QZ：棋子
-		 int *Code：棋子编码
+		 CPiece::ENUM_QiZi *qz：棋子
+		 strCODE *pCode：棋子编码
 		 ENUM_BianMa：枚举常量（BianMa:编码(默认值)，JieMa：解码）
 返回值：
 作  者：康  林
@@ -25,21 +25,21 @@ CChessGame::~CChessGame()
 日  期：2004-9-2
 时  间：7:36:32
 *******************************************************************************************************/
-int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, INT32 *Code, ENUM_BianMa bianma)
+int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma)
 {
 	switch (bianma)
 	{
 	case BianMa:
-		*Code = *i | (*j << 4) | (*QZ << 8);
-		TRACE(_T("i:%d;j:%d:qz:%X:code:%X"), *i, *j, *QZ, *Code);
-		return *Code;
-
+		pCode->code[0] = *i;
+		pCode->code[1] = *j;
+		pCode->code[2] = *qz;
+		TRACE(_T("i:%d;j:%d:qz:%X:code:%X"), *i, *j, *qz, *pCode);
+		break;
 	case JieMa:
-		*QZ = (CPiece::ENUM_QiZi) ((*Code & 0x0F00) >> 8);
-		TRACE(_T("i:%d;j:%d:qz:%X:code:%X"), *i, *j, *QZ, *Code);
-		*i = *Code & 0x000F;
-		*j = (*Code & 0x00F0) >> 4;
-		return 0;
+		*i = pCode->code[0];
+		*j = pCode->code[1];
+		*qz = static_cast<CPiece::ENUM_QiZi>(pCode->code[2]);
+		break;
 	}
 	
 	return 0;
@@ -59,7 +59,7 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, INT32 *Code, E
  */
 int CChessGame::SaveStep(int i, int j, CPiece::ENUM_QiZi qz)
 {
-	int code;
+	strCODE code;
 	QiZiBianMa(&i, &j, &qz, &code);
 
 	// 调整容器大小

@@ -29,20 +29,23 @@ public:
 	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //得到下一步
 
 //int ReStart();                               //重新开始
-//int SaveChess(char* pFileName);          //保存棋局
+	//int SaveChess(char* pFileName);          //保存棋局
 //int LoadChess(char* pFileName);          //装载棋局，并设置为结束状态
 //int LoadChessStart(char* pFileName);     //装载棋局，并设置为开始状态
 
 private:
+	struct strCODE{
+		char code[3];
+	};
 	typedef enum _ENUM_BianMa {
 		BianMa, 
 		JieMa
 	} ENUM_BianMa;
-	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *QZ, INT32 *Code, ENUM_BianMa bianma = BianMa);
+	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
 
 	int m_nIndex;				  //走棋步数
 	bool m_bFuPang;				  //复盘标志
-	std::vector<int> m_ChessGame; //棋局
+	std::vector<strCODE> m_ChessGame; //棋局
 
 };
 
