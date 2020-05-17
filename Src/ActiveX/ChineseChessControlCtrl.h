@@ -59,8 +59,10 @@ protected:
 	ENUM_BoardLayout m_BoardLayout;
 
 	afx_msg void AboutBox();
-	VARIANT_BOOL NextStep();
-	VARIANT_BOOL PreviouStep();
+	VARIANT_BOOL NextStep();    //下一步
+	VARIANT_BOOL PreviouStep(); //上一步
+	VARIANT_BOOL SaveChessGame(CHAR* pszFile);
+	VARIANT_BOOL LoadChessGame(CHAR* pszFile);
 
 // 事件映射
 	DECLARE_EVENT_MAP()
@@ -68,6 +70,8 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
+		dispidLoadChessGame = 7L,
+		dispidSaveChessGame = 6L,
 		dispidPreviouStep = 5L,
 		dispidNextStep = 4L,
 		dispidBoardLayout = 3,

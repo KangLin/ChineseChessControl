@@ -64,6 +64,10 @@ public:
 	int NextStep();	  //下一步
 	int PreviouStep();//上一步
 
+	//保存棋局
+	int SaveChessGame(char* pszFile);
+	int LoadChessGame(char* pszFile);
+
 protected:
 	// 下列虚拟函数由界面实现类完成
 	

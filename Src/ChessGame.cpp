@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ChessGame.h"
+#include <fstream>
 
 CChessGame::CChessGame()
 {
@@ -131,4 +132,56 @@ int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 
 	return 0;
 	
+}
+
+int CChessGame::SaveChessGame(char* szFile)
+{
+	strFile head;
+	strcpy_s(head.head.szAppName, APPNAME);
+	strcpy_s(head.head.szAuthor, AUTHOR);
+	head.head.dwVersion = 1;
+	head.iBuShu = m_ChessGame.size();
+
+	std::ofstream out(szFile, std::ios::app);
+	if (!out.is_open())
+		return -1;
+	out.write((char*)&head, sizeof(strFile));
+	std::vector<strCODE>::iterator it;
+	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
+	{
+		strCODE code = *it;
+		out.write(code.code, sizeof(strCODE));
+	}
+	out.close();
+	return 0;
+}
+
+int CChessGame::LoadChessGame(char* szFile)
+{
+	strFile head;
+	std::ifstream in(szFile);
+	if (!in.is_open())
+		return -1;
+
+	in.read((char*)&head, sizeof(strFile));
+	do{
+		if (strcmp(head.head.szAppName, APPNAME))
+			break;
+
+		if (strcmp(head.head.szAuthor, AUTHOR))
+			break;
+
+		m_ChessGame.clear();
+		m_nIndex = -1;
+
+		while (!in.eof())
+		{
+			strCODE code;
+			in.read((char*)&code, sizeof(strCODE));
+			m_ChessGame.push_back(code);
+			m_nIndex++;
+		}
+	} while (0);
+	in.close();
+	return 0;
 }

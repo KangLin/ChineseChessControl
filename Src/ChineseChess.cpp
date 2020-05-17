@@ -388,3 +388,13 @@ int CChineseChess::PreviouStep()
 
 	return 0;
 }
+
+int CChineseChess::SaveChessGame(char* pszFile)
+{
+	return m_Game.SaveChessGame(pszFile);
+}
+
+int CChineseChess::LoadChessGame(char* pszFile)
+{
+	return m_Game.LoadChessGame(pszFile);
+}
