@@ -111,6 +111,17 @@ bool CChineseChess::IsValidPosition(int i, int j)
 	return true;
 }
 
+int CChineseChess::CleanPrompt(int &i, int &j)
+{
+	if (-1 == i || -1 == j)
+		return 0;
+	int oI = i, oJ = j;
+	i = -1;
+	j = -1;
+	onCleanPrompt(oI, oJ);
+	return 0;
+}
+
 /*******************************************************************************************************
 函数名：GoChess
 功  能：走棋
@@ -123,14 +134,16 @@ bool CChineseChess::IsValidPosition(int i, int j)
 日  期：2004-10-5
 时  间：10:17:56
 *******************************************************************************************************/
-bool CChineseChess::GoChess(int i, int j)
+bool CChineseChess::GoChess(int i, int j, bool bNext)
 {
 	if (IsGoChess(i, j))
 	{ //走棋
 
-		onGoChess(i, j, m_ChessBoard[i][j]); //事件
-
-		m_Game.NextStep(i, j, m_ChessBoard[i][j]);
+		if (!bNext)
+		{
+			onGoChess(i, j, m_ChessBoard[i][j]); //事件
+			m_Game.SaveStep(i, j, m_ChessBoard[i][j]);
+		}
 		
 		// 显示提示框
 		switch (m_WalkState)
@@ -138,15 +151,11 @@ bool CChineseChess::GoChess(int i, int j)
 		case RedReadly:
 			onPromptSound(Select);
 
-			if(IsValidPosition(m_PreviouPositionX, m_PreviouPositionY))
-				onCleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
-			if(IsValidPosition(m_CurrentPositionX, m_CurrentPositionY))
-				onCleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
+			CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
+			CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
 
 			m_PreviouPositionX = i;
 			m_PreviouPositionY = j;
-			m_CurrentPositionX = -1;
-			m_CurrentPositionY = -1;
 
 			onDrawPrompt(i, j);
 
@@ -159,23 +168,19 @@ bool CChineseChess::GoChess(int i, int j)
 			m_ChessBoard[i][j] = m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY];
 			m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY] = CPiece::NoQiZi;
 
-			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
 			onDrawPrompt(m_CurrentPositionX, m_CurrentPositionY);
+			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
 
 			m_WalkState = BlackReadly;
 			break;
 		case BlackReadly:
 			onPromptSound(Select);
 
-			if (IsValidPosition(m_PreviouPositionX, m_PreviouPositionY))
-				onCleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
-			if (IsValidPosition(m_CurrentPositionX, m_CurrentPositionY))
-				onCleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
+			CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
+			CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
 
 			m_PreviouPositionX = i;
 			m_PreviouPositionY = j;
-			m_CurrentPositionX = -1;
-			m_CurrentPositionY = -1;
 			onDrawPrompt(i, j);
 
 			m_WalkState = BlackWalked;
@@ -187,8 +192,8 @@ bool CChineseChess::GoChess(int i, int j)
 			m_ChessBoard[i][j] = m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY];
 			m_ChessBoard[m_PreviouPositionX][m_PreviouPositionY] = CPiece::NoQiZi;
 
-			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
 			onDrawPrompt(m_CurrentPositionX, m_CurrentPositionY);
+			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
 
 			m_WalkState = RedReadly;
 			break;
@@ -197,7 +202,7 @@ bool CChineseChess::GoChess(int i, int j)
 	}
 	else//不能走
 	{
-		onPromptSound(NoGo);
+		onPromptSound();
 		return false;
 	}
 }
@@ -230,6 +235,7 @@ bool CChineseChess::IsGoChess(int i, int j)
 		//本方的棋,重新选取
 		if (CPiece::IsRedQiZi(m_ChessBoard[i][j]))
 		{
+			m_Game.RevokeStep();
 			m_WalkState = RedReadly;
 			return true;
 		}
@@ -260,6 +266,7 @@ bool CChineseChess::IsGoChess(int i, int j)
 		//本方的棋,重新选取
 		if (CPiece::IsBlackQiZi(m_ChessBoard[i][j]))
 		{
+			m_Game.RevokeStep();
 			m_WalkState = BlackReadly;
 			return true;
 		}
@@ -287,4 +294,99 @@ bool CChineseChess::IsGoChess(int i, int j)
 	}
 
 	return false;
+}
+
+/*******************************************************************************************************
+函数名：NextStep
+功  能：下步棋
+参  数：无
+返回值：走棋步数
+作  者：康  林
+版  本：1.0.0.1
+日  期：2004-10-5
+时  间：10:19:33
+*******************************************************************************************************/
+int CChineseChess::NextStep()
+{
+	int i, j;
+	CPiece::ENUM_QiZi qz;
+	if (m_Game.GetNextStep(i, j, qz))
+	{
+		onPromptSound();
+		return -1;
+	}
+	
+	if (GoChess(i, j, true))
+		return 0;
+
+	return -2;
+}
+
+/*******************************************************************************************************
+函数名：PreviouStep
+功  能：上步棋
+参  数：无
+返回值：走棋步数
+作  者：康  林
+版  本：1.0.0.1
+日  期：2004-10-5
+时  间：10:19:51
+*******************************************************************************************************/
+int CChineseChess::PreviouStep()
+{
+	int i, j;
+	CPiece::ENUM_QiZi qz;
+
+	switch (m_WalkState)
+	{
+	case RedWalked:
+	case BlackWalked:
+		CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
+		CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
+		if (m_Game.GetPreviouStep(i, j, qz))
+		{
+			onPromptSound();
+		}
+		break;
+	case RedReadly:
+	case BlackReadly:
+		CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
+		CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
+
+		if (m_Game.GetPreviouStep(i, j, qz))
+		{
+			onPromptSound();
+			return -1;
+		}
+		m_ChessBoard[i][j] = qz;
+		m_CurrentPositionX = i;
+		m_CurrentPositionY = j;
+		CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
+
+		if (m_Game.GetPreviouStep(i, j, qz))
+		{
+			onPromptSound();
+			return -1;
+		}
+		m_ChessBoard[i][j] = qz;
+		m_PreviouPositionX = i;
+		m_PreviouPositionY = j;
+
+		if (IsValidPosition(m_PreviouPositionX, m_PreviouPositionY))
+			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
+
+		switch (m_WalkState)
+		{
+		case RedReadly:
+		case RedWalked:
+			m_WalkState = BlackReadly;
+			break;
+		case BlackReadly:
+		case BlackWalked:
+			m_WalkState = RedReadly;
+		}
+		break;
+	}
+
+	return 0;
 }

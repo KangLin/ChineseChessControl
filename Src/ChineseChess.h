@@ -37,7 +37,10 @@ public:
 	int GetBoardRow();
 	int GetBoardColumn();
 
-	bool GoChess(int i, int j);
+	bool GoChess(int i, int j, bool bNext = false);	//走棋
+
+	int NextStep();	//下一步
+	int PreviouStep();//上一步
 
 protected:
 	enum PROMPT_SOUND {
@@ -47,7 +50,7 @@ protected:
 		NoGo,     // 不能走
 		Select    // 选棋
 	};
-	virtual int onPromptSound(PROMPT_SOUND sound) = 0;
+	virtual int onPromptSound(PROMPT_SOUND sound = NoGo) = 0;
 	virtual int onPromptMessage(char* pMessage, char* pTitle = nullptr) = 0;
 
 	virtual int onCleanPrompt(int i, int j) = 0;
@@ -92,6 +95,7 @@ protected:
 	bool IsValidPosition(int i, int j);
 
 	int Initial();
+	int CleanPrompt(int &i, int &j);
 };
 
 #endif //_CHINESE_CHESS_H_KL_2020_05_13__

@@ -45,7 +45,10 @@ protected:
 	OLE_COLOR m_TiShiBoxColor;
 	void OnBoardLayoutChanged();
 	ENUM_BoardLayout m_BoardLayout;
+
 	afx_msg void AboutBox();
+	SHORT NextStep();	//下一步
+	SHORT PreviouStep();//上一步
 
 // 事件映射
 	DECLARE_EVENT_MAP()
@@ -53,6 +56,8 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
+		dispidPreviouStep = 5L,
+		dispidNextStep = 4L,
 		dispidBoardLayout = 3,
 		dispidTiShiBoxColor = 2,
 		dispidQiPangColor = 1,
@@ -108,8 +113,6 @@ private:
 
 	BOOL SetQiPang(int width, int height);
 	BOOL PromptSound(LPCTSTR ID = NULL);
-
-protected:
-
+	
 };
 

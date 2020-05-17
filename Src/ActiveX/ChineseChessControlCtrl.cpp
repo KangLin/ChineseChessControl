@@ -33,6 +33,8 @@ BEGIN_DISPATCH_MAP(CChineseChessControlCtrl, COleControl)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "QiPangColor", dispidQiPangColor, m_QiPangColor, OnQiPangColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "TiShiBoxColor", dispidTiShiBoxColor, m_TiShiBoxColor, OnTiShiBoxColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "BoardLayout", dispidBoardLayout, m_BoardLayout, OnBoardLayoutChanged, VT_I2)
+	DISP_FUNCTION_ID(CChineseChessControlCtrl, "NextStep", dispidNextStep, NextStep, VT_I2, VTS_NONE)
+	DISP_FUNCTION_ID(CChineseChessControlCtrl, "PreviouStep", dispidPreviouStep, PreviouStep, VT_I2, VTS_NONE)
 END_DISPATCH_MAP()
 
 // 事件映射
@@ -272,6 +274,16 @@ void CChineseChessControlCtrl::AboutBox()
 {
 	CDialogEx dlgAbout(IDD_ABOUTBOX_CHINESECHESSCONTROL);
 	dlgAbout.DoModal();
+}
+
+SHORT CChineseChessControlCtrl::NextStep()
+{
+	return (SHORT)__super::NextStep();
+}
+
+SHORT CChineseChessControlCtrl::PreviouStep()
+{
+	return (SHORT)__super::PreviouStep();
 }
 
 //
@@ -1026,6 +1038,3 @@ void CChineseChessControlCtrl::InvalidateRectage(int i, int j)
 //
 //以上是完成 === 中国象棋界面处理 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
