@@ -35,8 +35,9 @@ BEGIN_DISPATCH_MAP(CChineseChessControlCtrl, COleControl)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "BoardLayout", dispidBoardLayout, m_BoardLayout, OnBoardLayoutChanged, VT_I2)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "NextStep", dispidNextStep, NextStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "PreviouStep", dispidPreviouStep, PreviouStep, VT_BOOL, VTS_NONE)
-	DISP_FUNCTION_ID(CChineseChessControlCtrl, "SaveChessGame", dispidSaveChessGame, SaveChessGame, VT_BOOL, VTS_PI1)
-	DISP_FUNCTION_ID(CChineseChessControlCtrl, "LoadChessGame", dispidLoadChessGame, LoadChessGame, VT_BOOL, VTS_PI1)
+	DISP_FUNCTION_ID(CChineseChessControlCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
+	DISP_FUNCTION_ID(CChineseChessControlCtrl, "SaveChessGame", dispidSaveChessGame, SaveChessGame, VT_BOOL, VTS_BSTR)
+	DISP_FUNCTION_ID(CChineseChessControlCtrl, "LoadChessGame", dispidLoadChessGame, LoadChessGame, VT_BOOL, VTS_BSTR)
 END_DISPATCH_MAP()
 
 // 事件映射
@@ -297,23 +298,33 @@ VARIANT_BOOL CChineseChessControlCtrl::PreviouStep()
 	return VARIANT_TRUE;
 }
 
-VARIANT_BOOL CChineseChessControlCtrl::SaveChessGame(CHAR* pszFile)
+VARIANT_BOOL CChineseChessControlCtrl::GoChess(SHORT i, SHORT j)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	if (__super::SaveChessGame(pszFile))
-		return VARIANT_FALSE;
-	return VARIANT_TRUE;
+	if (__super::GoChess(i, j))
+		return VARIANT_TRUE;
+	return VARIANT_FALSE;
 }
 
-VARIANT_BOOL CChineseChessControlCtrl::LoadChessGame(CHAR* pszFile)
+VARIANT_BOOL CChineseChessControlCtrl::SaveChessGame(LPCTSTR szFile)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if (__super::LoadChessGame(pszFile))
-		return VARIANT_FALSE;
+
+	TRACE(_T("file:%s"), szFile);
+
 	return VARIANT_TRUE;
 }
 
+
+VARIANT_BOOL CChineseChessControlCtrl::LoadChessGame(LPCTSTR szFile)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	TRACE(_T("file:%s"), szFile);
+
+	return VARIANT_TRUE;
+}
 
 //
 //以上是完成 === 调度映射 === 的函数块
@@ -1067,3 +1078,5 @@ void CChineseChessControlCtrl::InvalidateRectage(int i, int j)
 //
 //以上是完成 === 中国象棋界面处理 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+

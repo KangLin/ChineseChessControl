@@ -396,5 +396,11 @@ int CChineseChess::SaveChessGame(char* pszFile)
 
 int CChineseChess::LoadChessGame(char* pszFile)
 {
-	return m_Game.LoadChessGame(pszFile);
+	int nRet = 0;
+	nRet = m_Game.LoadChessGame(pszFile);
+	if (nRet) return nRet;
+	
+	Initial();
+
+	return nRet;
 }
