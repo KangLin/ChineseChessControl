@@ -59,8 +59,8 @@ protected:
 	ENUM_BoardLayout m_BoardLayout;
 
 	afx_msg void AboutBox();
-	SHORT NextStep();	//下一步
-	SHORT PreviouStep();//上一步
+	VARIANT_BOOL NextStep();
+	VARIANT_BOOL PreviouStep();
 
 // 事件映射
 	DECLARE_EVENT_MAP()

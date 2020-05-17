@@ -43,8 +43,8 @@ library ChineseChessControlLib
 	methods:
 
 			[id(DISPID_ABOUTBOX)] void AboutBox();
-			[id(4), helpstring("下一步")] SHORT NextStep();
-			[id(5), helpstring("上一步")] SHORT PreviouStep();
+			[id(4), helpstring("下一步")] VARIANT_BOOL NextStep();
+			[id(5), helpstring("上一步")] VARIANT_BOOL PreviouStep();
 	};
 
 	//  CChineseChessControlCtrl 的事件调度接口
