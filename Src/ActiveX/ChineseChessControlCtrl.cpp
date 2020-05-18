@@ -58,7 +58,7 @@ END_PROPPAGEIDS(CChineseChessControlCtrl)
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessControlCtrl, "ChineseChessControl.1.1.1",
+IMPLEMENT_OLECREATE_EX(CChineseChessControlCtrl, "ChineseChessControl.1.1.2",
 	0x23ac49d1,0xf4fe,0x4ab0,0xb5,0xa3,0xbb,0x3c,0xb2,0x2d,0xfe,0xd0)
 
 // 键入库 ID 和版本

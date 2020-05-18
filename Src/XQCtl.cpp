@@ -74,7 +74,7 @@ END_PROPPAGEIDS(CXQCtrl)
 /////////////////////////////////////////////////////////////////////////////
 // Initialize class factory and guid
 
-IMPLEMENT_OLECREATE_EX(CXQCtrl, "ChineseChessControl.1.1.1",
+IMPLEMENT_OLECREATE_EX(CXQCtrl, "ChineseChessControl.1.1.2",
 	0x71ad322, 0x22ba, 0x45bf, 0x9e, 0x1f, 0x15, 0x4e, 0xfa, 0xf4, 0xe4, 0x2b)
 
 
