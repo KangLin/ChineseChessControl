@@ -39,7 +39,9 @@ library ChineseChessControlLib
 			[id(1), helpstring("棋盘颜色")] OLE_COLOR QiPangColor;
 			[id(2), helpstring("棋盘提示框颜色")] OLE_COLOR TiShiBoxColor;
 			[id(3), helpstring("棋盘布局")] ENUM_BoardLayout BoardLayout;
-			
+			[id(4), helpstring("允许提示消息")] VARIANT_BOOL EnablePromptMessage;
+			[id(5), helpstring("允许提示单")] VARIANT_BOOL EnablePromptSound;
+
 		methods:
 			[id(DISPID_ABOUTBOX)] void AboutBox();
 			[id(6), helpstring("走棋")] VARIANT_BOOL GoChess(SHORT i, SHORT j);

@@ -40,6 +40,8 @@ BEGIN_DISPATCH_MAP(CChineseChessControlCtrl, COleControl)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "SaveChessGame", dispidSaveChessGame, SaveChessGame, VT_BOOL, VTS_BSTR)
 	DISP_FUNCTION_ID(CChineseChessControlCtrl, "LoadChessGame", dispidLoadChessGame, LoadChessGame, VT_BOOL, VTS_BSTR)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "EnablePromptSound", dispidEnablePromptSound, m_EnablePromptSound, OnEnablePromptSoundChanged, VT_BOOL)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessControlCtrl, "EnablePromptMessage", dispidEnablePromptMessage, m_EnablePromptMessage, OnEnablePromptMessageChanged, VT_BOOL)
 END_DISPATCH_MAP()
 
 // 事件映射
@@ -266,6 +268,23 @@ void CChineseChessControlCtrl::OnBoardLayoutChanged()
 	SetModifiedFlag();
 	InvalidateControl();
 }
+
+void CChineseChessControlCtrl::OnEnablePromptSoundChanged()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	__super::EnablePromptSound(dispidEnablePromptSound);
+	SetModifiedFlag();
+}
+
+void CChineseChessControlCtrl::OnEnablePromptMessageChanged()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	__super::EnablePromptMessage(m_EnablePromptMessage);
+	SetModifiedFlag();
+}
+
 
 // CChineseChessControlCtrl::AboutBox - 向用户显示“关于”框
 
@@ -1085,5 +1104,3 @@ void CChineseChessControlCtrl::InvalidateRectage(int i, int j)
 //
 //以上是完成 === 中国象棋界面处理 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
