@@ -161,7 +161,7 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 		switch (m_WalkState)
 		{
 		case RedReadly:
-			onPromptSound(Select);
+			if (m_bPromptSound) onPromptSound(Select);
 
 			CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
 			CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
@@ -186,7 +186,7 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 			m_WalkState = BlackReadly;
 			break;
 		case BlackReadly:
-			onPromptSound(Select);
+			if (m_bPromptSound) onPromptSound(Select);
 
 			CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
 			CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
@@ -214,7 +214,7 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 	}
 	else //不能走
 	{
-		onPromptSound();
+		if (m_bPromptSound) onPromptSound();
 		return false;
 	}
 }
@@ -259,7 +259,9 @@ bool CChineseChess::IsGoChess(int i, int j)
 			return true;
 		case CGoRule::RETURNTRUE://可以走棋
 			if (m_bPromptSound)
+			{
 				m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
+			}
 			return true;
 		case CGoRule::BEIJIANGJUN://被将
 			if(m_bPromptMessage) onPromptMessage(CGoRule::BEIJIANGJUN);
@@ -290,7 +292,10 @@ bool CChineseChess::IsGoChess(int i, int j)
 			if (m_bPromptSound) onPromptSound(JiangJun);
 			return true;
 		case CGoRule::RETURNTRUE://可以走棋
-			if (m_bPromptSound) m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
+			if (m_bPromptSound)
+			{
+				m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
+			}
 			return true;
 		case CGoRule::BEIJIANGJUN://被将
 			if (m_bPromptMessage) onPromptMessage(CGoRule::BEIJIANGJUN);
@@ -325,7 +330,7 @@ int CChineseChess::NextStep()
 	CPiece::ENUM_QiZi qz;
 	if (m_Game.GetNextStep(i, j, qz))
 	{
-		onPromptSound();
+		if (m_bPromptSound) onPromptSound();
 		return -1;
 	}
 	
@@ -358,7 +363,7 @@ int CChineseChess::PreviouStep()
 		CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
 		if (m_Game.GetPreviouStep(i, j, qz))
 		{
-			onPromptSound();
+			if (m_bPromptSound) onPromptSound();
 		}
 		break;
 	case RedReadly:
@@ -368,7 +373,7 @@ int CChineseChess::PreviouStep()
 
 		if (m_Game.GetPreviouStep(i, j, qz))
 		{
-			onPromptSound();
+			if (m_bPromptSound) onPromptSound();
 			return -1;
 		}
 		m_ChessBoard[i][j] = qz;
@@ -378,7 +383,7 @@ int CChineseChess::PreviouStep()
 
 		if (m_Game.GetPreviouStep(i, j, qz))
 		{
-			onPromptSound();
+			if (m_bPromptSound) onPromptSound();
 			return -1;
 		}
 		m_ChessBoard[i][j] = qz;

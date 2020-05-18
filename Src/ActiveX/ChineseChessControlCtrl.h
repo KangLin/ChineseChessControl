@@ -59,8 +59,6 @@ protected:
 	ENUM_BoardLayout m_BoardLayout;
 	void OnEnablePromptSoundChanged();
 	VARIANT_BOOL m_EnablePromptSound;
-	void OnEnablePromptMessageChanged();
-	VARIANT_BOOL m_EnablePromptMessage;
 
 	afx_msg void AboutBox();
 	VARIANT_BOOL NextStep();    //下一步
@@ -75,13 +73,12 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
+		dispidEnablePromptSound = 4,
 		dispidPreviouStep = 10L,
 		dispidNextStep = 9L,
 		dispidLoadChessGame = 8L,
 		dispidSaveChessGame = 7L,
 		dispidGoChess = 6L,
-		dispidEnablePromptSound = 5,
-		dispidEnablePromptMessage = 4,
 		dispidBoardLayout = 3,
 		dispidTiShiBoxColor = 2,
 		dispidQiPangColor = 1,
