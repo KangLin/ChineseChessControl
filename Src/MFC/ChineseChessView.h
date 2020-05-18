@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../ActiveX/framework.h"
+#include "framework.h"
 #include "../ChineseChess.h"
 
 // CChineseChessView

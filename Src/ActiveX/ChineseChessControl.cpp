@@ -1,7 +1,7 @@
 ﻿// ChineseChessControl.cpp: CChineseChessControlApp 和 DLL 注册的实现。
 
 #include "pch.h"
-#include "framework.h"
+#include "../MFC/framework.h"
 #include "ChineseChessControl.h"
 
 #ifdef _DEBUG

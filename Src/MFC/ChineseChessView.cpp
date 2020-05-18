@@ -2,7 +2,7 @@
 //
 
 #include "ChineseChessView.h"
-#include "../ActiveX/Resource.h"       // 主符号
+#include "Resource.h"       // 主符号
 
 //播放音频
 #include <mmsystem.h>

@@ -1,7 +1,7 @@
 ﻿// ChineseChessControlCtrl.cpp : CChineseChessControlCtrl ActiveX 控件类的实现。
 
 #include "pch.h"
-#include "framework.h"
+#include "../MFC/framework.h"
 #include "ChineseChessControl.h"
 #include "ChineseChessControlCtrl.h"
 #include "ChineseChessControlPropPage.h"
