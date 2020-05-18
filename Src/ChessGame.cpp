@@ -142,7 +142,7 @@ int CChessGame::SaveChessGame(const char* szFile)
 	head.head.dwVersion = 1;
 	head.iBuShu = m_ChessGame.size();
 
-	std::ofstream out(szFile, std::ios::app);
+	std::ofstream out(szFile);
 	if (!out.is_open())
 		return -2;
 	out.write((char*)&head, sizeof(strFile));
@@ -179,14 +179,15 @@ int CChessGame::LoadChessGame(const char* szFile)
 		}
 
 		m_ChessGame.clear();
-		m_nIndex = -1;
+		m_nIndex = head.iBuShu;
 
-		while (!in.eof())
+		while (m_nIndex--)
 		{
 			strCODE code;
 			in.read((char*)&code, sizeof(strCODE));
 			m_ChessGame.push_back(code);
 		}
+		m_nIndex = -1;
 	} while (0);
 
 	in.close();

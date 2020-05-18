@@ -22,6 +22,7 @@
 - [项目位置](https://github.com/KangLin/ChineseChessControl)
 
 ##### 功能
+- [ ] 中国象棋 MFC 窗体
 - [x] 中国象棋 ActivX 控件
   - [x] 中国象棋基本规则
   - [ ] 棋局保存和复盘

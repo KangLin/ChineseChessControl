@@ -327,7 +327,7 @@ VARIANT_BOOL CChineseChessControlCtrl::SaveChessGame(LPCTSTR szFile)
 	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	const char* pszFile = NULL;// CT2CA(szFile);
+	const char* pszFile = T2CA(szFile);
 	if (__super::SaveChessGame(pszFile))
 		return VARIANT_FALSE;
 	return VARIANT_TRUE;
@@ -339,9 +339,10 @@ VARIANT_BOOL CChineseChessControlCtrl::LoadChessGame(LPCTSTR szFile)
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	TRACE(_T("file:%s"), szFile);
-	const char *pszFile = NULL;// CT2CA(szFile);
+	const char *pszFile = T2CA(szFile);
 	if (__super::LoadChessGame(pszFile))
 		return VARIANT_FALSE;
+	InvalidateControl();
 	return VARIANT_TRUE;
 }
 
