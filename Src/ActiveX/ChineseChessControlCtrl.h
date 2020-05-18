@@ -73,12 +73,13 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
-		dispidEnablePromptSound = 4,
 		dispidPreviouStep = 10L,
 		dispidNextStep = 9L,
 		dispidLoadChessGame = 8L,
 		dispidSaveChessGame = 7L,
 		dispidGoChess = 6L,
+		dispidEnablePromptMessage = 5,
+		dispidEnablePromptSound = 4,
 		dispidBoardLayout = 3,
 		dispidTiShiBoxColor = 2,
 		dispidQiPangColor = 1,
@@ -135,5 +136,8 @@ private:
 	BOOL SetQiPang(int width, int height);
 	BOOL PromptSound(LPCTSTR ID = NULL);
 
+protected:
+	void OnEnablePromptMessageChanged();
+	VARIANT_BOOL m_EnablePromptMessage;
 };
 

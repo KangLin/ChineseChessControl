@@ -40,6 +40,7 @@ library ChineseChessControlLib
 			[id(2), helpstring("棋盘提示框颜色")] OLE_COLOR TiShiBoxColor;
 			[id(3), helpstring("棋盘布局")] ENUM_BoardLayout BoardLayout;
 			[id(4), helpstring("允许提示音")] VARIANT_BOOL EnablePromptSound;
+			[id(5), helpstring("允许提示消息")] VARIANT_BOOL EnablePromptMessage;
 
 		methods:
 			[id(DISPID_ABOUTBOX)] void AboutBox();
