@@ -365,7 +365,6 @@ int CChineseChess::PreviouStep()
 		{
 			if (m_bPromptSound) onPromptSound();
 		}
-		break;
 	case RedReadly:
 	case BlackReadly:
 		CleanPrompt(m_PreviouPositionX, m_PreviouPositionY);
