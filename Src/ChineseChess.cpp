@@ -12,7 +12,7 @@ CChineseChess::CChineseChess()
 {
 	m_bPromptSound = true;
 	m_bPromptMessage = true;
-	Initial();
+	SetBoardLayout(TopBlackAndBottomRed);
 }
 
 CChineseChess::~CChineseChess()
@@ -20,7 +20,6 @@ CChineseChess::~CChineseChess()
 
 int CChineseChess::Initial()
 {
-	SetBoardLayout(TopBlackAndBottomRed);
 	m_WalkState = RedReadly;
 	m_PreviouPositionX = m_PreviouPositionX = -1;
 	m_CurrentPositionX = m_CurrentPositionY = -1;
@@ -29,6 +28,7 @@ int CChineseChess::Initial()
 
 int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 {
+	Initial();
 	m_BoardLayout = layout;
 
 	//³õÊ¼»¯¿ÕÆå¾Ö
