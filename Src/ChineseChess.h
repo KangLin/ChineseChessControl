@@ -65,8 +65,8 @@ public:
 	int PreviouStep();//上一步
 
 	//保存棋局
-	int SaveChessGame(char* pszFile);
-	int LoadChessGame(char* pszFile);
+	int SaveChessGame(const char* pszFile);
+	int LoadChessGame(const char* pszFile);
 
 protected:
 	// 下列虚拟函数由界面实现类完成
@@ -81,7 +81,7 @@ protected:
 	};
 	virtual int onPromptSound(PROMPT_SOUND sound = NoGo) = 0;
 	// 提示错误消息
-	virtual int onPromptMessage(char* pMessage, char* pTitle = nullptr) = 0;
+	virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val) = 0;
 	// 清除提示框
 	virtual int onCleanPrompt(int i, int j) = 0;
 	// 画提示框

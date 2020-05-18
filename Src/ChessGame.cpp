@@ -133,7 +133,7 @@ int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 	return 0;
 }
 
-int CChessGame::SaveChessGame(char* szFile)
+int CChessGame::SaveChessGame(const char* szFile)
 {
 	strFile head;
 	strcpy_s(head.head.szAppName, APPNAME);
@@ -154,7 +154,7 @@ int CChessGame::SaveChessGame(char* szFile)
 	return 0;
 }
 
-int CChessGame::LoadChessGame(char* szFile)
+int CChessGame::LoadChessGame(const char* szFile)
 {
 	int nRet = 0;
 

@@ -7,6 +7,8 @@
 #include "ChineseChessControlPropPage.h"
 #include "afxdialogex.h"
 
+#include <atlconv.h>
+
 //播放音频
 #include <mmsystem.h>
 #pragma comment(lib, "winmm")
@@ -309,19 +311,24 @@ VARIANT_BOOL CChineseChessControlCtrl::GoChess(SHORT i, SHORT j)
 
 VARIANT_BOOL CChineseChessControlCtrl::SaveChessGame(LPCTSTR szFile)
 {
+	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	TRACE(_T("file:%s"), szFile);
-
+	const char* pszFile = NULL;// CT2CA(szFile);
+	if (__super::SaveChessGame(pszFile))
+		return VARIANT_FALSE;
 	return VARIANT_TRUE;
 }
 
 VARIANT_BOOL CChineseChessControlCtrl::LoadChessGame(LPCTSTR szFile)
 {
+	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	TRACE(_T("file:%s"), szFile);
-
+	const char *pszFile = NULL;// CT2CA(szFile);
+	if (__super::LoadChessGame(pszFile))
+		return VARIANT_FALSE;
 	return VARIANT_TRUE;
 }
 
@@ -339,7 +346,6 @@ void CChineseChessControlCtrl::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	__super::OnKeyUp(nChar, nRepCnt, nFlags);
 }
-
 
 void CChineseChessControlCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 {
@@ -398,9 +404,17 @@ int CChineseChessControlCtrl::onPromptSound(PROMPT_SOUND sound)
 	return 0;
 }
 
-int CChineseChessControlCtrl::onPromptMessage(char * pMessage, char * pTitle)
+int CChineseChessControlCtrl::onPromptMessage(CGoRule::ENUM_ReturnValue val)
 {
-	::MessageBoxA(GetSafeHwnd(), pMessage, pTitle, MB_OK);
+	switch (val)
+	{
+	case CGoRule::BEIJIANGJUN:
+		::MessageBox(GetSafeHwnd(), _T("这步不能走，否则会输棋！"), _T("被将军"), MB_OK);
+		break;
+	case CGoRule::JIANGDUIMIAN:
+		::MessageBox(GetSafeHwnd(), _T("这步不能走，否则会输棋！"), _T("将对面"), MB_OK);
+		break;
+	}
 	return 0;
 }
 

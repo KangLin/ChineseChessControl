@@ -83,7 +83,7 @@ public:
 
 protected:
 	virtual int onPromptSound(PROMPT_SOUND sound);
-	virtual int onPromptMessage(char* pMessage, char* pTitle = nullptr);
+	virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val);
 
 	virtual int onCleanPrompt(int i, int j);
 	virtual int onDrawPrompt(int i, int j);

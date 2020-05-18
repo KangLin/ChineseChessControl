@@ -4,6 +4,7 @@
 --------------------------
 
 ### 编译
+
 - 用 cmake , 建议使用此方法编译
 
       git clone https://github.com/KangLin/ChineseChessControl.git
@@ -18,6 +19,7 @@
 
 ### 调试
 #### VC6.0
+
 - 打开 ActiveX control test container 工具  
 ![打开 ActiveX control test container 工具](Image/OpenActivexControlTestContainer.png)
 - 注册中国象棋控件  
@@ -53,23 +55,25 @@
 - 剩下的调试步骤与上面VC6.0的一样
 
 ### 使用
+
 - [如何：向 Windows 窗体添加 ActiveX 控件](https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/how-to-add-activex-controls-to-windows-forms)
 
 ### 控件
 #### 属性:
+
 - Enabled: 允许或禁止控件
 - QiPangColor: 棋盘颜色
 - TiShiBoxColor: 提示框的颜色
 - QiPangPicture: 棋盘图片
-- QiPangLayout: 棋盘布局。取下列值：
-  + NoQi：无棋子
-  + OnlyTopRed = 1：只有上面红棋子
-  + OnlyBottomBlack = 2：只有下面红棋子
-  + SwapRedBetweenBlack = 4：交换棋子
-  + OnlyTopBlack = OnlyTopRed | SwapRedBetweenBlack：只有上面黑棋子
-  + OnlyBottomRed = OnlyBottomBlack | SwapRedBetweenBlack：只有下面红棋子
-  + TopRedAndBottomBlack = OnlyTopRed |      OnlyBottomBlack：上红下黑
-  + TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed | SwapRedBetweenBlack：上黑下红
+- BoardLayout: 棋盘布局。取下列值：
+  + NoQi = 0,
+  + OnlyTopBlack = 1,
+  + OnlyBottomRed = 2,
+  + SwapRedBetweenBlack = 4,
+  + OnlyTopRed = OnlyTopBlack | SwapRedBetweenBlack,
+  + OnlyBottomBlack = OnlyBottomRed | SwapRedBetweenBlack,
+  + TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,
+  + TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
 
 注意：如果布局不完全，则由用户控制属性（Enabled）以决定是否下棋。
 
@@ -82,20 +86,25 @@
 - CurrentSide：走棋时的状态。取上面的值。
 
 #### 方法:
+
 - NextStep(): 下一步
 - PreviouStep(): 上一步
+- GoChess(): 走棋
 - ReStart(): 重新开始
-- SaveChess(BSTR lpcszFileName): 保存棋局
-- LoadChess(BSTR lpcszFileName): 装载棋局并设置为结束状态
-- LoadChessStart(BSTR lpcszFileName): 装载棋局并设置为开始状态
-- QiPangInterconvert():
+- SaveChessGame(BSTR lpcszFileName): 保存棋局
+- LoadChessGame(BSTR lpcszFileName): 装载棋局并设置为结束状态
 
 #### 事件:
+
 - MoveChess(short x, short y, ENUM_QiZi chess):走棋。此事件在属性 CurrentSide 改变前发生。
 
 ### 开发
 #### 字符编码
-WIndows 中文系统字符编码默认为GB2313。 linux系统下字符编码一般使用 UTF-8 。
-所以本项目字符釆用**多字节编码**，而不使用 UNICODE 编码。
+
+WIndows 中文系统字符编码默认为GB2313。
+linux系统下字符编码一般使用 UTF-8 。
+所以本项目跨平台部分的文件中的字符釆用**多字节编码**，
+而与VC相关的部分文件使用 UNICODE 编码（位于：Src\ActiveX 和 App\MFC）。
+
 **注意:** vs2013默认没安装多字节MFC库，只安装了UNICODE MFC库。
 详见：https://docs.microsoft.com/en-us/cpp/mfc/mfc-mbcs-dll-add-on?view=vs-2019

@@ -247,10 +247,10 @@ bool CChineseChess::IsGoChess(int i, int j)
 			m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			return true;
 		case CGoRule::BEIJIANGJUN://被将
-			onPromptMessage("这步棋不能走，否则你要输了。", "被将军");
+			onPromptMessage(CGoRule::BEIJIANGJUN);
 			return false;
 		case CGoRule::JIANGDUIMIAN://将对面
-			onPromptMessage("这步棋不能走，否则你要输了。", "将对面");
+			onPromptMessage(CGoRule::JIANGDUIMIAN);
 			return false;
 		case CGoRule::RETURNFALSE://非法走棋
 		default:
@@ -278,10 +278,10 @@ bool CChineseChess::IsGoChess(int i, int j)
 			m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			return true;
 		case CGoRule::BEIJIANGJUN://被将
-			onPromptMessage("这步棋不能走，否则你要输了。", "被将军");
+			onPromptMessage(CGoRule::BEIJIANGJUN);
 			return false;
 		case CGoRule::JIANGDUIMIAN://将对面
-			onPromptMessage("这步棋不能走，否则你要输了。", "将对面");
+			onPromptMessage(CGoRule::JIANGDUIMIAN);
 			return false;
 		case CGoRule::RETURNFALSE://非法走棋
 		default:
@@ -389,12 +389,12 @@ int CChineseChess::PreviouStep()
 	return 0;
 }
 
-int CChineseChess::SaveChessGame(char* pszFile)
+int CChineseChess::SaveChessGame(const char* pszFile)
 {
 	return m_Game.SaveChessGame(pszFile);
 }
 
-int CChineseChess::LoadChessGame(char* pszFile)
+int CChineseChess::LoadChessGame(const char* pszFile)
 {
 	int nRet = 0;
 	nRet = m_Game.LoadChessGame(pszFile);

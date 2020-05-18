@@ -54,8 +54,8 @@ public:
 		int iBuShu;                            //步数，在SaveChess中设置
 	};
 
-	int SaveChessGame(char* pFileName);          //保存棋局
-    int LoadChessGame(char* pFileName);          //装载棋局，并设置为结束状态
+	int SaveChessGame(const char* pFileName);          //保存棋局
+    int LoadChessGame(const char* pFileName);          //装载棋局，并设置为结束状态
 //int LoadChessStart(char* pFileName);     //装载棋局，并设置为开始状态
 	//int ReStart();                               //重新开始
 
