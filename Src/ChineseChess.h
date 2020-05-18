@@ -68,6 +68,9 @@ public:
 	int SaveChessGame(const char* pszFile);
 	int LoadChessGame(const char* pszFile);
 
+	int EnablePromptSound(bool sound = TRUE);
+	int EnablePromptMessage(bool bMsg = TRUE);
+
 protected:
 	// 下列虚拟函数由界面实现类完成
 	
@@ -95,6 +98,9 @@ private:
 
 	CGoRule m_GoRule;  //下棋规则
 	CChessGame m_Game; //棋局
+
+	bool m_bPromptSound;
+	bool m_bPromptMessage;
 
 protected:
 	/*

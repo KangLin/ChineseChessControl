@@ -10,6 +10,8 @@ static char THIS_FILE[] = __FILE__;
 
 CChineseChess::CChineseChess()
 {
+	m_bPromptSound = true;
+	m_bPromptMessage = true;
 	Initial();
 }
 
@@ -93,6 +95,18 @@ bool CChineseChess::IsValidPosition(int i, int j)
 		return false;
 	}
 	return true;
+}
+
+int CChineseChess::EnablePromptSound(bool sound)
+{
+	m_bPromptSound = sound;
+	return 0;
+}
+
+int CChineseChess::EnablePromptMessage(bool bMsg)
+{
+	m_bPromptMessage = bMsg;
+	return 0;
 }
 
 /**
@@ -241,16 +255,17 @@ bool CChineseChess::IsGoChess(int i, int j)
 		switch (m_GoRule.GoChess(i, j, m_PreviouPositionX, m_PreviouPositionY, m_ChessBoard))
 		{
 		case CGoRule::JIANGJUN://将军
-			onPromptSound(JiangJun);
+			if(m_bPromptSound) onPromptSound(JiangJun);
 			return true;
 		case CGoRule::RETURNTRUE://可以走棋
-			m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
+			if (m_bPromptSound)
+				m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			return true;
 		case CGoRule::BEIJIANGJUN://被将
-			onPromptMessage(CGoRule::BEIJIANGJUN);
+			if(m_bPromptMessage) onPromptMessage(CGoRule::BEIJIANGJUN);
 			return false;
 		case CGoRule::JIANGDUIMIAN://将对面
-			onPromptMessage(CGoRule::JIANGDUIMIAN);
+			if (m_bPromptMessage) onPromptMessage(CGoRule::JIANGDUIMIAN);
 			return false;
 		case CGoRule::RETURNFALSE://非法走棋
 		default:
@@ -272,16 +287,16 @@ bool CChineseChess::IsGoChess(int i, int j)
 		switch (m_GoRule.GoChess(i, j, m_PreviouPositionX, m_PreviouPositionY, m_ChessBoard))
 		{
 		case CGoRule::JIANGJUN://将军
-			onPromptSound(JiangJun);
+			if (m_bPromptSound) onPromptSound(JiangJun);
 			return true;
 		case CGoRule::RETURNTRUE://可以走棋
-			m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
+			if (m_bPromptSound) m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			return true;
 		case CGoRule::BEIJIANGJUN://被将
-			onPromptMessage(CGoRule::BEIJIANGJUN);
+			if (m_bPromptMessage) onPromptMessage(CGoRule::BEIJIANGJUN);
 			return false;
 		case CGoRule::JIANGDUIMIAN://将对面
-			onPromptMessage(CGoRule::JIANGDUIMIAN);
+			if (m_bPromptMessage) onPromptMessage(CGoRule::JIANGDUIMIAN);
 			return false;
 		case CGoRule::RETURNFALSE://非法走棋
 		default:
