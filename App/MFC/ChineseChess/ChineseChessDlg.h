@@ -3,7 +3,9 @@
 //
 
 #pragma once
-#include "Chess.h"
+
+#include "CDChineseChessControl.h"
+#include "afxwin.h"
 
 
 // CChineseChessDlg 对话框
@@ -21,7 +23,6 @@ public:
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
 
-
 // 实现
 protected:
 	HICON m_hIcon;
@@ -33,7 +34,13 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	CChess m_Chess;
 	DECLARE_EVENTSINK_MAP()
-	void MoveChessChess(short x, short y, long chess);
+	afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg void OnBnClickedPreviou();
+	afx_msg void OnBnClickedNext();
+private:
+	CDChineseChessControl m_Chess;
+	CButton m_btnPreviou;
+	CButton m_btnNext;
+	int ReSize(int x, int y);
 };

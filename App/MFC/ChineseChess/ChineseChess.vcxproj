@@ -185,16 +185,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Chess.h" />
-    <ClInclude Include="ChineseChess.h" />
+    <ClInclude Include="CDChineseChessControl.h" />
+    <ClInclude Include="CDChineseChessControlEvents.h" />
+    <ClInclude Include="ChineseChessApp.h" />
     <ClInclude Include="ChineseChessDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Chess.cpp" />
-    <ClCompile Include="ChineseChess.cpp" />
+    <ClCompile Include="CDChineseChessControl.cpp" />
+    <ClCompile Include="CDChineseChessControlEvents.cpp" />
+    <ClCompile Include="ChineseChessApp.cpp" />
     <ClCompile Include="ChineseChessDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

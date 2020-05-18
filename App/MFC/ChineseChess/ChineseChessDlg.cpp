@@ -3,7 +3,7 @@
 //
 
 #include "stdafx.h"
-#include "ChineseChess.h"
+#include "ChineseChessApp.h"
 #include "ChineseChessDlg.h"
 #include "afxdialogex.h"
 
@@ -44,10 +44,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-
 // CChineseChessDlg 对话框
-
-
 
 CChineseChessDlg::CChineseChessDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CHINESECHESS_DIALOG, pParent)
@@ -59,12 +56,17 @@ void CChineseChessDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_CHESS, m_Chess);
+	DDX_Control(pDX, IDC_PREVIOU, m_btnPreviou);
+	DDX_Control(pDX, IDC_NEXT, m_btnNext);
 }
 
 BEGIN_MESSAGE_MAP(CChineseChessDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_SIZE()
+	ON_BN_CLICKED(IDC_PREVIOU, &CChineseChessDlg::OnBnClickedPreviou)
+	ON_BN_CLICKED(IDC_NEXT, &CChineseChessDlg::OnBnClickedNext)
 END_MESSAGE_MAP()
 
 
@@ -100,6 +102,9 @@ BOOL CChineseChessDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	CRect rect;
+	GetClientRect(&rect);
+	ReSize(rect.Width(), rect.Height());
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -154,11 +159,37 @@ HCURSOR CChineseChessDlg::OnQueryDragIcon()
 }
 
 BEGIN_EVENTSINK_MAP(CChineseChessDlg, CDialogEx)
-	ON_EVENT(CChineseChessDlg, IDC_CHESS, 1, CChineseChessDlg::MoveChessChess, VTS_I2 VTS_I2 VTS_I4)
 END_EVENTSINK_MAP()
 
-
-void CChineseChessDlg::MoveChessChess(short x, short y, long chess)
+void CChineseChessDlg::OnSize(UINT nType, int cx, int cy)
 {
-	TRACE(_T("x:%d;y:%d;chess:%d"), x, y, chess);
+	CDialogEx::OnSize(nType, cx, cy);
+	ReSize(cx, cy);
+}
+
+int CChineseChessDlg::ReSize(int cx, int cy)
+{
+	CRect rect1, rect2;
+	if (NULL == m_Chess.GetSafeHwnd())
+		return -1;
+	m_btnNext.GetWindowRect(&rect1);
+	m_btnPreviou.GetWindowRect(&rect2);
+	int y = cy - max(rect1.Height(), rect2.Height()) - 5;
+	m_Chess.MoveWindow(0, 0, cx, y);
+	
+	m_btnNext.MoveWindow(cx - rect1.Width() - 5, y + 5, rect1.Width(), rect1.Height());
+
+	m_btnPreviou.MoveWindow(cx - rect1.Width() -rect2.Width() - 5, y + 5, rect1.Width(), rect1.Height());
+	return 0;
+}
+
+void CChineseChessDlg::OnBnClickedPreviou()
+{
+	m_Chess.PreviouStep();
+}
+
+
+void CChineseChessDlg::OnBnClickedNext()
+{
+	m_Chess.NextStep();
 }
