@@ -46,18 +46,28 @@ public:
 	};
 	struct strFile {
 		strFileHead head;
-		time_t timeStart;                      //开始下棋的时间,在Restart中设置
-		time_t timeEnd;                        //结束下棋的时间,在Restart中设置
-		char szRedName[MAX_STRING_BUFFER];    //红方用户名
-		char szBlackName[MAX_STRING_BUFFER];  //黑方用户名
-		char GameType;                        //棋局类型
-		int iBuShu;                            //步数，在SaveChess中设置
+		time_t timeStart;					 //开始下棋的时间,在Restart中设置
+		time_t timeEnd;						 //结束下棋的时间,在Restart中设置
+		char szRedName[MAX_STRING_BUFFER];	 //红方用户名
+		char szBlackName[MAX_STRING_BUFFER]; //黑方用户名
+		char GameType;						 //棋局类型
+		int iBuShu;							 //步数，在SaveChess中设置
+		char boardLayout;					 //棋盘布局(CChineseChess::ENUM_BoardLayout)
 	};
 
-	int SaveChessGame(const char* pFileName);          //保存棋局
-    int LoadChessGame(const char* pFileName);          //装载棋局，并设置为结束状态
-//int LoadChessStart(char* pFileName);     //装载棋局，并设置为开始状态
-	//int ReStart();                               //重新开始
+	/**
+	 * Saves the chess game
+	 *
+	 * @author KangLin(kl222@126.com)
+	 * @date 2020/5/19
+	 *
+	 * @param  pFileName Filename of the file.
+	 * @param  layout    棋盘布局(CChineseChess::ENUM_BoardLayout)
+	 *
+	 * @returns An int.
+	 */
+	int SaveChessGame(const char* pFileName, char layout);	//保存棋局
+    int LoadChessGame(const char* pFileName, char &layout);	//装载棋局，并设置为结束状态
 
 private:
 	struct strCODE{
@@ -69,8 +79,8 @@ private:
 	} ENUM_BianMa;
 	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
 
-	int m_nIndex;				  //走棋步数
-	bool m_bFuPang;				  //复盘标志
+	int m_nIndex;					  //走棋步数
+	bool m_bFuPang;					  //复盘标志
 	std::vector<strCODE> m_ChessGame; //棋局
 
 };

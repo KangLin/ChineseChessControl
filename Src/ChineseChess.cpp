@@ -410,16 +410,17 @@ int CChineseChess::PreviouStep()
 
 int CChineseChess::SaveChessGame(const char* pszFile)
 {
-	return m_Game.SaveChessGame(pszFile);
+	return m_Game.SaveChessGame(pszFile, m_BoardLayout);
 }
 
 int CChineseChess::LoadChessGame(const char* pszFile)
 {
 	int nRet = 0;
-	nRet = m_Game.LoadChessGame(pszFile);
+	char layout;
+	nRet = m_Game.LoadChessGame(pszFile, layout);
 	if (nRet) return nRet;
 	
-	Initial();
+	SetBoardLayout((ENUM_BoardLayout)layout);
 
 	return nRet;
 }

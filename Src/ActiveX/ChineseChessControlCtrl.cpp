@@ -258,7 +258,10 @@ VARIANT_BOOL CChineseChessControlCtrl::LoadChessGame(LPCTSTR szFile)
 	const char *pszFile = T2CA(szFile);
 	int nRet = 0;
 	if (m_pChess)
+	{
 		nRet = m_pChess->LoadChessGame(pszFile);
+		m_pChess->Invalidate();
+	}
 	if(nRet)
 		return VARIANT_FALSE;
 	InvalidateControl();

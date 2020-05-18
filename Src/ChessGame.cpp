@@ -133,7 +133,7 @@ int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 	return 0;
 }
 
-int CChessGame::SaveChessGame(const char* szFile)
+int CChessGame::SaveChessGame(const char* szFile, char layout)
 {
 	if (!szFile) return -1;
 	strFile head;
@@ -141,6 +141,7 @@ int CChessGame::SaveChessGame(const char* szFile)
 	strcpy_s(head.head.szAuthor, AUTHOR);
 	head.head.dwVersion = 1;
 	head.iBuShu = m_ChessGame.size();
+	head.boardLayout = layout;
 
 	std::ofstream out(szFile);
 	if (!out.is_open())
@@ -155,7 +156,7 @@ int CChessGame::SaveChessGame(const char* szFile)
 	return 0;
 }
 
-int CChessGame::LoadChessGame(const char* szFile)
+int CChessGame::LoadChessGame(const char* szFile, char &layout)
 {
 	int nRet = 0;
 	if (!szFile) return -1;
@@ -166,6 +167,7 @@ int CChessGame::LoadChessGame(const char* szFile)
 		return -2;
 
 	in.read((char*)&head, sizeof(strFile));
+	layout = head.boardLayout;
 	do{
 		if (strcmp(head.head.szAppName, APPNAME))
 		{
