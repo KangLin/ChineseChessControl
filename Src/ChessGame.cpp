@@ -135,6 +135,7 @@ int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 
 int CChessGame::SaveChessGame(const char* szFile)
 {
+	if (!szFile) return -1;
 	strFile head;
 	strcpy_s(head.head.szAppName, APPNAME);
 	strcpy_s(head.head.szAuthor, AUTHOR);
@@ -143,7 +144,7 @@ int CChessGame::SaveChessGame(const char* szFile)
 
 	std::ofstream out(szFile, std::ios::app);
 	if (!out.is_open())
-		return -1;
+		return -2;
 	out.write((char*)&head, sizeof(strFile));
 	std::vector<strCODE>::iterator it;
 	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
@@ -157,22 +158,23 @@ int CChessGame::SaveChessGame(const char* szFile)
 int CChessGame::LoadChessGame(const char* szFile)
 {
 	int nRet = 0;
+	if (!szFile) return -1;
 
 	strFile head;
 	std::ifstream in(szFile);
 	if (!in.is_open())
-		return -1;
+		return -2;
 
 	in.read((char*)&head, sizeof(strFile));
 	do{
 		if (strcmp(head.head.szAppName, APPNAME))
 		{
-			nRet = -2;
+			nRet = -3;
 			break;
 		}
 		if (strcmp(head.head.szAuthor, AUTHOR))
 		{
-			nRet = -3;
+			nRet = -4;
 			break;
 		}
 

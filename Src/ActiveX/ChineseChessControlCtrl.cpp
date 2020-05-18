@@ -241,7 +241,6 @@ void CChineseChessControlCtrl::OnResetState()
 //以下是完成 === 调度映射 === 的函数块
 //
 
-
 void CChineseChessControlCtrl::OnQiPangColorChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
@@ -255,9 +254,6 @@ void CChineseChessControlCtrl::OnQiPangColorChanged()
 void CChineseChessControlCtrl::OnTiShiBoxColorChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO:  在此添加属性处理程序代码
-	TRACE(_T("CChineseChessControlCtrl::OnTiShiBoxColorChanged()"));
 	SetModifiedFlag();
 	InvalidateControl();
 }
@@ -265,8 +261,6 @@ void CChineseChessControlCtrl::OnTiShiBoxColorChanged()
 void CChineseChessControlCtrl::OnBoardLayoutChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO:  在此添加属性处理程序代码
 	Initial();
 	SetBoardLayout(m_BoardLayout);
 	SetModifiedFlag();

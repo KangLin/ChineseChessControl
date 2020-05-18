@@ -39,15 +39,14 @@ library ChineseChessControlLib
 			[id(1), helpstring("棋盘颜色")] OLE_COLOR QiPangColor;
 			[id(2), helpstring("棋盘提示框颜色")] OLE_COLOR TiShiBoxColor;
 			[id(3), helpstring("棋盘布局")] ENUM_BoardLayout BoardLayout;
-
-	methods:
-
+			
+		methods:
 			[id(DISPID_ABOUTBOX)] void AboutBox();
-			[id(4), helpstring("下一步")] VARIANT_BOOL NextStep();
-			[id(5), helpstring("上一步")] VARIANT_BOOL PreviouStep();
 			[id(6), helpstring("走棋")] VARIANT_BOOL GoChess(SHORT i, SHORT j);
 			[id(7), helpstring("保存棋局")] VARIANT_BOOL SaveChessGame(BSTR szFile);
 			[id(8), helpstring("加载棋局")] VARIANT_BOOL LoadChessGame(BSTR szFile);
+			[id(9), helpstring("下一步")] VARIANT_BOOL NextStep();
+			[id(10), helpstring("上一步")] VARIANT_BOOL PreviouStep();
 	};
 
 	//  CChineseChessControlCtrl 的事件调度接口

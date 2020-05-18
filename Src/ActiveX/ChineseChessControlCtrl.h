@@ -71,11 +71,11 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
+		dispidPreviouStep = 10L,
+		dispidNextStep = 9L,
 		dispidLoadChessGame = 8L,
 		dispidSaveChessGame = 7L,
 		dispidGoChess = 6L,
-		dispidPreviouStep = 5L,
-		dispidNextStep = 4L,
 		dispidBoardLayout = 3,
 		dispidTiShiBoxColor = 2,
 		dispidQiPangColor = 1,
