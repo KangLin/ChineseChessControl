@@ -32,6 +32,12 @@ public:
 #define APPNAME  "Chinese chess control"
 #define AUTHOR "Author: Kang Lin (kl222@126.com)"
 
+	enum GAME_TYPE
+	{
+		NORMAL = 1,
+		CHANGJU = 2
+	};
+
 	//文件头
 	struct strFileHead {
 		char szAppName[MAX_STRING_BUFFER];    //程序名,在Restart中设置
@@ -44,6 +50,7 @@ public:
 		time_t timeEnd;                        //结束下棋的时间,在Restart中设置
 		char szRedName[MAX_STRING_BUFFER];    //红方用户名
 		char szBlackName[MAX_STRING_BUFFER];  //黑方用户名
+		char GameType;                        //棋局类型
 		int iBuShu;                            //步数，在SaveChess中设置
 	};
 

@@ -131,7 +131,6 @@ int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 	QiZiBianMa(&i, &j, &qz, &m_ChessGame[++m_nIndex], JieMa);
 
 	return 0;
-	
 }
 
 int CChessGame::SaveChessGame(char* szFile)
@@ -149,8 +148,7 @@ int CChessGame::SaveChessGame(char* szFile)
 	std::vector<strCODE>::iterator it;
 	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
 	{
-		strCODE code = *it;
-		out.write(code.code, sizeof(strCODE));
+		out.write(it->code, sizeof(strCODE));
 	}
 	out.close();
 	return 0;
@@ -158,6 +156,8 @@ int CChessGame::SaveChessGame(char* szFile)
 
 int CChessGame::LoadChessGame(char* szFile)
 {
+	int nRet = 0;
+
 	strFile head;
 	std::ifstream in(szFile);
 	if (!in.is_open())
@@ -166,10 +166,15 @@ int CChessGame::LoadChessGame(char* szFile)
 	in.read((char*)&head, sizeof(strFile));
 	do{
 		if (strcmp(head.head.szAppName, APPNAME))
+		{
+			nRet = -2;
 			break;
-
+		}
 		if (strcmp(head.head.szAuthor, AUTHOR))
+		{
+			nRet = -3;
 			break;
+		}
 
 		m_ChessGame.clear();
 		m_nIndex = -1;
@@ -179,9 +184,9 @@ int CChessGame::LoadChessGame(char* szFile)
 			strCODE code;
 			in.read((char*)&code, sizeof(strCODE));
 			m_ChessGame.push_back(code);
-			m_nIndex++;
 		}
 	} while (0);
+
 	in.close();
-	return 0;
+	return nRet;;
 }
