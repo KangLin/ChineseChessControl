@@ -19,14 +19,15 @@
 中国象棋控件。
 
 - [项目主页](http://kanglin.github.io/ChineseChessControl/)
-- [项目位置](https://github.com/KangLin/ChineseChessControl)
+- [项目位置](https://github.com/KangLin/ChineseChessControl) https://github.com/KangLin/ChineseChessControl
 
 ##### 功能
-- [ ] 中国象棋 MFC 窗体
-- [x] 中国象棋 ActivX 控件
-  - [x] 中国象棋基本规则
-  - [x] 棋局保存和复盘
-- [ ] Qt 中国象棋控件
+- 控件
+  + [ ] 中国象棋 MFC 窗体
+  + [x] 中国象棋 ActivX 控件
+    - [x] 中国象棋基本规则
+    - [x] 棋局保存和复盘
+  + [ ] Qt 中国象棋控件
 - [ ] 中国象棋博弈引擎与通信协议
 - [x] 中国象棋程序
   + [x] 单机版本

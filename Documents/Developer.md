@@ -13,10 +13,6 @@
       cmake ..
       cmake --build .
 
-- 遗留的编译方法，不再受支持。
-  - 用VC6.0打开 Src/ChineseChessControl.dsw,直接编译。不再支持此方法编译
-  - 用 VC2017 打开 Src/ChineseChessControl.sln ,直接编译。不再支持此方法编译
-
 ### 调试
 #### VC6.0
 
@@ -59,6 +55,9 @@
 - [如何：向 Windows 窗体添加 ActiveX 控件](https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/how-to-add-activex-controls-to-windows-forms)
 
 ### 控件
+
+[接口文件](../Src/ActiveX/ChineseChessControl.idl)
+
 #### 属性:
 
 - Enabled: 允许或禁止控件
@@ -73,26 +72,18 @@
   + OnlyTopRed = OnlyTopBlack | SwapRedBetweenBlack,
   + OnlyBottomBlack = OnlyBottomRed | SwapRedBetweenBlack,
   + TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,
-  + TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
-
-注意：如果布局不完全，则由用户控制属性（Enabled）以决定是否下棋。
-
-- StartSide: 开始走棋时的状态。这个要在 ReStart 前设置。取下列值：
-  + RedReadly：红棋准备走
-  + RedWalked：红棋正在走
-  + BlackReadly：黑棋准备走
-  + BlackWalked：黑棋正在走
-
-- CurrentSide：走棋时的状态。取上面的值。
+  + TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack  
+  **注意**：如果布局不完全，则由用户控制属性（Enabled）以决定是否下棋。
+- EnablePromptSound: 允许提示音
+- EnablePromptMessage: 允许提示消息
 
 #### 方法:
 
 - NextStep(): 下一步
 - PreviouStep(): 上一步
 - GoChess(): 走棋
-- ReStart(): 重新开始
 - SaveChessGame(BSTR lpcszFileName): 保存棋局
-- LoadChessGame(BSTR lpcszFileName): 装载棋局并设置为结束状态
+- LoadChessGame(BSTR lpcszFileName): 装载棋局并设置为初始状态
 
 #### 事件:
 
@@ -105,6 +96,3 @@ WIndows 中文系统字符编码默认为GB2313。
 linux系统下字符编码一般使用 UTF-8 。
 所以本项目跨平台部分的文件中的字符釆用**多字节编码**，
 而与VC相关的部分文件使用 UNICODE 编码（位于：Src\ActiveX 和 App\MFC）。
-
-**注意:** vs2013默认没安装多字节MFC库，只安装了UNICODE MFC库。
-详见：https://docs.microsoft.com/en-us/cpp/mfc/mfc-mbcs-dll-add-on?view=vs-2019
