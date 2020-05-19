@@ -30,8 +30,8 @@ library ChineseChessControlLib
 
 	//  CChineseChessControlCtrl 的主调度接口
 	[ 
-		uuid(7192fb6d-7455-4da8-b3ac-645dd60557f3)
-		//helpstring("中国象棋控件 - 分发接口")
+		uuid(7192fb6d-7455-4da8-b3ac-645dd60557f3),
+		helpstring("中国象棋控件 - 分发接口")
 	]
 	dispinterface _DChineseChessControl
 	{
@@ -54,8 +54,8 @@ library ChineseChessControlLib
 	//  CChineseChessControlCtrl 的事件调度接口
 
 	[ 
-		uuid(0850de98-fc76-4b94-9bbe-e2e59e0fe0ea)
-		//helpstring("中国象棋控件 - 事件接口")
+		uuid(0850de98-fc76-4b94-9bbe-e2e59e0fe0ea),
+		helpstring("中国象棋控件 - 事件接口")
 	]
 	dispinterface _DChineseChessControlEvents
 	{
@@ -67,8 +67,8 @@ library ChineseChessControlLib
 
 	//  CChineseChessControlCtrl 的类信息
 	[
-		uuid(e4e060cb-a3aa-4278-b1ed-ce5020c42ec7)
-		//helpstring("中国象棋控件")
+		uuid(e4e060cb-a3aa-4278-b1ed-ce5020c42ec7),
+		helpstring("中国象棋控件")
 	]
 	coclass ChineseChessControl
 	{
