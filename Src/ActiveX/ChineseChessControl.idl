@@ -1,22 +1,22 @@
-ï»¿// ChineseChessControl.idl: ActiveX æ§ä»¶é¡¹ç›®çš„ç±»å‹åº“æºã€‚
+// ChineseChessControl.idl: ActiveX ¿Ø¼şÏîÄ¿µÄÀàĞÍ¿âÔ´¡£
 
-// æ­¤æ–‡ä»¶å°†ç”± MIDL ç¼–è¯‘å™¨å·¥å…·å¤„ç†ä»¥
-// ç”Ÿæˆç±»å‹åº“(ChineseChessControl.tlb)ï¼Œè¯¥ç±»å‹åº“å°†æˆä¸º
-// ChineseChessControl.ocxã€‚
+// ´ËÎÄ¼ş½«ÓÉ MIDL ±àÒëÆ÷¹¤¾ß´¦ÀíÒÔ
+// Éú³ÉÀàĞÍ¿â(ChineseChessControl.tlb)£¬¸ÃÀàĞÍ¿â½«³ÉÎª
+// ChineseChessControl.ocx¡£
 
 #include <olectl.h>
 #include <idispids.h>
 
-[ uuid(340162b7-44f0-440b-9ad9-94843a2865d0), version(1.0),
-  helpfile("ä¸­å›½è±¡æ£‹æ§ä»¶.hlp"),
-  helpstring("ä¸­å›½è±¡æ£‹æ§ä»¶"),  /*æ˜¾ç¤ºåœ¨å¼•ç”¨åˆ—è¡¨æ¡†ä¸­*/
+[ uuid(80e92be0-a67b-421b-8ef7-8f42414880c0), version(1.0),
+  helpfile("ÖĞ¹úÏóÆå¿Ø¼ş.hlp"),
+  helpstring("ÖĞ¹úÏóÆå¿Ø¼ş"),  /*ÏÔÊ¾ÔÚÒıÓÃÁĞ±í¿òÖĞ*/
   control ]
 library ChineseChessControlLib
 {
 	importlib(STDOLE_TLB);
 	importlib(STDTYPE_TLB);
 
-	//æ£‹ç›˜å¸ƒå±€:è¯¦è§ã€Šè±¡æ£‹ç«èµ›è§„åˆ™(2011)ã€‹ç¬¬ä¸€ç«  ç¬¬1æ¡
+	//ÆåÅÌ²¼¾Ö:Ïê¼û¡¶ÏóÆå¾ºÈü¹æÔò(2011)¡·µÚÒ»ÕÂ µÚ1Ìõ
 	typedef enum  _ENUM_BoardLayout {
 		NoQi = 0,
 		OnlyTopBlack = 1,
@@ -28,47 +28,47 @@ library ChineseChessControlLib
 		TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
 	} ENUM_BoardLayout;
 
-	//  CChineseChessControlCtrl çš„ä¸»è°ƒåº¦æ¥å£
+	//  CChineseChessControlCtrl µÄÖ÷µ÷¶È½Ó¿Ú
 	[ 
-		uuid(c66fbdae-fb51-4fb8-b6bc-cd2cbe461bb7),
-		helpstring("ä¸­å›½è±¡æ£‹æ§ä»¶ - åˆ†å‘æ¥å£")
+		uuid(7192fb6d-7455-4da8-b3ac-645dd60557f3)
+		//helpstring("ÖĞ¹úÏóÆå¿Ø¼ş - ·Ö·¢½Ó¿Ú")
 	]
 	dispinterface _DChineseChessControl
 	{
 		properties:
-			[id(1), helpstring("æ£‹ç›˜é¢œè‰²")] OLE_COLOR QiPangColor;
-			[id(2), helpstring("æ£‹ç›˜æç¤ºæ¡†é¢œè‰²")] OLE_COLOR TiShiBoxColor;
-			[id(3), helpstring("æ£‹ç›˜å¸ƒå±€")] ENUM_BoardLayout BoardLayout;
-			[id(4), helpstring("å…è®¸æç¤ºéŸ³")] VARIANT_BOOL EnablePromptSound;
-			[id(5), helpstring("å…è®¸æç¤ºæ¶ˆæ¯")] VARIANT_BOOL EnablePromptMessage;
+			[id(1), helpstring("ÆåÅÌÑÕÉ«")] OLE_COLOR QiPangColor;
+			[id(2), helpstring("ÆåÅÌÌáÊ¾¿òÑÕÉ«")] OLE_COLOR TiShiBoxColor;
+			[id(3), helpstring("ÆåÅÌ²¼¾Ö")] ENUM_BoardLayout BoardLayout;
+			[id(4), helpstring("ÔÊĞíÌáÊ¾Òô")] VARIANT_BOOL EnablePromptSound;
+			[id(5), helpstring("ÔÊĞíÌáÊ¾ÏûÏ¢")] VARIANT_BOOL EnablePromptMessage;
 
 		methods:
 			[id(DISPID_ABOUTBOX)] void AboutBox();
-			[id(6), helpstring("èµ°æ£‹")] VARIANT_BOOL GoChess(SHORT i, SHORT j);
-			[id(7), helpstring("ä¿å­˜æ£‹å±€")] VARIANT_BOOL SaveChessGame(BSTR szFile);
-			[id(8), helpstring("åŠ è½½æ£‹å±€")] VARIANT_BOOL LoadChessGame(BSTR szFile);
-			[id(9), helpstring("ä¸‹ä¸€æ­¥")] VARIANT_BOOL NextStep();
-			[id(10), helpstring("ä¸Šä¸€æ­¥")] VARIANT_BOOL PreviouStep();
+			[id(6), helpstring("×ßÆå")] VARIANT_BOOL GoChess(SHORT i, SHORT j);
+			[id(7), helpstring("±£´æÆå¾Ö")] VARIANT_BOOL SaveChessGame(BSTR szFile);
+			[id(8), helpstring("¼ÓÔØÆå¾Ö")] VARIANT_BOOL LoadChessGame(BSTR szFile);
+			[id(9), helpstring("ÏÂÒ»²½")] VARIANT_BOOL NextStep();
+			[id(10), helpstring("ÉÏÒ»²½")] VARIANT_BOOL PreviouStep();
 	};
 
-	//  CChineseChessControlCtrl çš„äº‹ä»¶è°ƒåº¦æ¥å£
+	//  CChineseChessControlCtrl µÄÊÂ¼şµ÷¶È½Ó¿Ú
 
 	[ 
-		uuid(6757238f-9836-4b8a-9c13-0acc7d6607b5),
-		helpstring("ä¸­å›½è±¡æ£‹æ§ä»¶ - äº‹ä»¶æ¥å£")
+		uuid(0850de98-fc76-4b94-9bbe-e2e59e0fe0ea)
+		//helpstring("ÖĞ¹úÏóÆå¿Ø¼ş - ÊÂ¼ş½Ó¿Ú")
 	]
 	dispinterface _DChineseChessControlEvents
 	{
 		properties:
-			//  äº‹ä»¶æ¥å£æ²¡æœ‰ä»»ä½•å±æ€§
+			//  ÊÂ¼ş½Ó¿ÚÃ»ÓĞÈÎºÎÊôĞÔ
 
 		methods:
 	};
 
-	//  CChineseChessControlCtrl çš„ç±»ä¿¡æ¯
+	//  CChineseChessControlCtrl µÄÀàĞÅÏ¢
 	[
-		uuid(23ac49d1-f4fe-4ab0-b5a3-bb3cb22dfed0),
-		helpstring("ä¸­å›½è±¡æ£‹æ§ä»¶")
+		uuid(e4e060cb-a3aa-4278-b1ed-ce5020c42ec7)
+		//helpstring("ÖĞ¹úÏóÆå¿Ø¼ş")
 	]
 	coclass ChineseChessControl
 	{

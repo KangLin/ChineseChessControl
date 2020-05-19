@@ -1,7 +1,6 @@
 ﻿// ChineseChessControl.cpp: CChineseChessControlApp 和 DLL 注册的实现。
 
-#include "pch.h"
-#include "../MFC/framework.h"
+#include "stdafx.h"
 #include "ChineseChessControl.h"
 
 #ifdef _DEBUG
@@ -11,7 +10,7 @@
 
 CChineseChessControlApp theApp;
 
-const GUID CDECL _tlid = {0x340162b7,0x44f0,0x440b,{0x9a,0xd9,0x94,0x84,0x3a,0x28,0x65,0xd0}};
+const GUID CDECL _tlid = {0x80e92be0,0xa67b,0x421b,{0x8e,0xf7,0x8f,0x42,0x41,0x48,0x80,0xc0}};
 const WORD _wVerMajor = 1;
 const WORD _wVerMinor = 0;
 

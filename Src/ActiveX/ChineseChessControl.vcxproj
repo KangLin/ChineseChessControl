@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{1670BE26-EDAA-41DC-9B3C-CD583716D168}</ProjectGuid>
+    <ProjectGuid>{F23D34DE-3BD0-40CC-A03C-42354C24BFA2}</ProjectGuid>
     <Keyword>MFCActiveXProj</Keyword>
     <RootNamespace>ChineseChessControl</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -92,22 +92,18 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinimalRebuild>false</MinimalRebuild>
-      <BrowseInformation>false</BrowseInformation>
+      <AdditionalIncludeDirectories>..</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -124,21 +120,18 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalIncludeDirectories>..</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -162,8 +155,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>..</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -172,7 +164,6 @@
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -196,8 +187,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>..</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -206,7 +196,6 @@
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -222,16 +211,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\ChessGame.cpp" />
-    <ClCompile Include="..\ChineseChess.cpp" />
-    <ClCompile Include="..\Common.cpp" />
-    <ClCompile Include="..\GoRule.cpp" />
-    <ClCompile Include="..\MFC\ChineseChessView.cpp" />
-    <ClCompile Include="..\Piece.cpp" />
     <ClCompile Include="ChineseChessControl.cpp" />
     <ClCompile Include="ChineseChessControlCtrl.cpp" />
     <ClCompile Include="ChineseChessControlPropPage.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -239,61 +222,24 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\ChessGame.h" />
-    <ClInclude Include="..\ChineseChess.h" />
-    <ClInclude Include="..\Common.h" />
-    <ClInclude Include="..\GoRule.h" />
-    <ClInclude Include="..\MFC\ChineseChessView.h" />
-    <ClInclude Include="..\MFC\framework.h" />
-    <ClInclude Include="..\MFC\Resource.h" />
-    <ClInclude Include="..\MFC\targetver.h" />
-    <ClInclude Include="..\Piece.h" />
     <ClInclude Include="ChineseChessControl.h" />
     <ClInclude Include="ChineseChessControlCtrl.h" />
     <ClInclude Include="ChineseChessControlPropPage.h" />
-    <ClInclude Include="pch.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ChineseChessControl.def" />
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="ChineseChessControl.rc" />
+  </ItemGroup>
+  <ItemGroup>
     <Midl Include="ChineseChessControl.idl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Res\Picture\BCHE.BMP" />
-    <Image Include="..\Res\Picture\BMA.BMP" />
-    <Image Include="..\Res\Picture\BPAO.BMP" />
-    <Image Include="..\Res\Picture\BSHI.BMP" />
-    <Image Include="..\Res\Picture\BSHUAI.BMP" />
-    <Image Include="..\Res\Picture\BXIANG.BMP" />
-    <Image Include="..\Res\Picture\BZU.BMP" />
-    <Image Include="..\Res\Picture\CHESS.BMP" />
-    <Image Include="..\Res\Picture\Chess.ico" />
-    <Image Include="..\Res\Picture\CHU.BMP" />
-    <Image Include="..\Res\Picture\HAN.bmp" />
-    <Image Include="..\Res\Picture\HE.BMP" />
-    <Image Include="..\Res\Picture\JIE.BMP" />
-    <Image Include="..\Res\Picture\KL.BMP" />
-    <Image Include="..\Res\Picture\QIPANG.BMP" />
-    <Image Include="..\Res\Picture\RBING.BMP" />
-    <Image Include="..\Res\Picture\RCHE.BMP" />
-    <Image Include="..\Res\Picture\RMA.BMP" />
-    <Image Include="..\Res\Picture\RPAO.BMP" />
-    <Image Include="..\Res\Picture\RSHI.BMP" />
-    <Image Include="..\Res\Picture\RSHUAI.BMP" />
-    <Image Include="..\Res\Picture\RXIANG.BMP" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="..\Res\Sound\Begin.wav" />
-    <Media Include="..\Res\Sound\CHECK.wav" />
-    <Media Include="..\Res\Sound\Choose.wav" />
-    <Media Include="..\Res\Sound\dead.wav" />
-    <Media Include="..\Res\Sound\eat.wav" />
-    <Media Include="..\Res\Sound\GO.wav" />
-    <Media Include="..\Res\Sound\Select.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\MFC\ChineseChessControl.rc" />
+    <Image Include="ChineseChessControlCtrl.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

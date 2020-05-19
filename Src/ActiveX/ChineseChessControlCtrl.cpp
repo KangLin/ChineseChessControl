@@ -1,7 +1,6 @@
 ﻿// ChineseChessControlCtrl.cpp : CChineseChessControlCtrl ActiveX 控件类的实现。
 
-#include "pch.h"
-#include "../MFC/framework.h"
+#include "stdafx.h"
 #include "ChineseChessControl.h"
 #include "ChineseChessControlCtrl.h"
 #include "ChineseChessControlPropPage.h"
@@ -55,8 +54,8 @@ END_PROPPAGEIDS(CChineseChessControlCtrl)
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessControlCtrl, "ChineseChessControl.1.1.2",
-	0x23ac49d1,0xf4fe,0x4ab0,0xb5,0xa3,0xbb,0x3c,0xb2,0x2d,0xfe,0xd0)
+IMPLEMENT_OLECREATE_EX(CChineseChessControlCtrl, "ChineseChessControlCtrl.1.0.0",
+	0xe4e060cb,0xa3aa,0x4278,0xb1,0xed,0xce,0x50,0x20,0xc4,0x2e,0xc7)
 
 // 键入库 ID 和版本
 
@@ -64,8 +63,8 @@ IMPLEMENT_OLETYPELIB(CChineseChessControlCtrl, _tlid, _wVerMajor, _wVerMinor)
 
 // 接口 ID
 
-const IID IID_DChineseChessControl = {0xc66fbdae,0xfb51,0x4fb8,{0xb6,0xbc,0xcd,0x2c,0xbe,0x46,0x1b,0xb7}};
-const IID IID_DChineseChessControlEvents = {0x6757238f,0x9836,0x4b8a,{0x9c,0x13,0x0a,0xcc,0x7d,0x66,0x07,0xb5}};
+const IID IID_DChineseChessControl = {0x7192fb6d,0x7455,0x4da8,{0xb3,0xac,0x64,0x5d,0xd6,0x05,0x57,0xf3}};
+const IID IID_DChineseChessControlEvents = {0x0850de98,0xfc76,0x4b94,{0x9b,0xbe,0xe2,0xe5,0x9e,0x0f,0xe0,0xea}};
 
 // 控件类型信息
 
@@ -195,8 +194,8 @@ void CChineseChessControlCtrl::OnEnablePromptMessageChanged()
 
 void CChineseChessControlCtrl::AboutBox()
 {
-	CDialogEx dlgAbout(IDD_ABOUTBOX_CHINESECHESSCONTROL);
-	dlgAbout.DoModal();
+	//CDialogEx dlgAbout(IDD_ABOUTBOX_CHINESECHESSCONTROL);
+	//dlgAbout.DoModal();
 }
 
 VARIANT_BOOL CChineseChessControlCtrl::NextStep()

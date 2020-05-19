@@ -25,7 +25,7 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
-class CChineseChess
+class AFX_EXT_CLASS CChineseChess
 {
 public:
 	CChineseChess();

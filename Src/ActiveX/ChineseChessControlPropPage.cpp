@@ -1,7 +1,6 @@
 ﻿// ChineseChessControlPropPage.cpp : CChineseChessControlPropPage 属性页类的实现。
 
-#include "pch.h"
-#include "../MFC/framework.h"
+#include "stdafx.h"
 #include "ChineseChessControl.h"
 #include "ChineseChessControlPropPage.h"
 
@@ -18,8 +17,8 @@ END_MESSAGE_MAP()
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessControlPropPage, "ChineseChessControlPropPage.1.1.1",
-	0x7f26ea27,0xd2da,0x4300,0xb1,0x72,0x58,0x8b,0x36,0xe0,0x7f,0x17)
+IMPLEMENT_OLECREATE_EX(CChineseChessControlPropPage, "ChineseChessControlPropPage.1.0.0",
+	0x035c7fb0,0x47a0,0x45fb,0xa4,0x5a,0xc2,0x9d,0xcf,0xe9,0xe0,0x01)
 
 // CChineseChessControlPropPage::CChineseChessControlPropPageFactory::UpdateRegistry -
 // 添加或移除 CChineseChessControlPropPage 的系统注册表项

@@ -6,7 +6,7 @@
 #error "在包括此文件之前包括“afxctl.h”"
 #endif
 
-#include "../MFC/Resource.h"       // 主符号
+#include "resource.h"       // 主符号
 
 
 // CChineseChessControlApp: 请参阅 ChineseChessControl.cpp 了解实现。

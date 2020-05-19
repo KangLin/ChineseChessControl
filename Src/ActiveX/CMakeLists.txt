@@ -5,8 +5,9 @@ message(STATUS "== Build chinese chess ActiveX")
 set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessControl.cpp
-	ChineseChessControlCtrl.cpp
 	ChineseChessControlPropPage.cpp
+	ChineseChessControlCtrl.cpp
+	stdafx.cpp
     )
 
 set(INSTALLHEADER_FILES
@@ -16,12 +17,17 @@ set(HEADER_FILES
     ${HEADER_FILES}
     ${INSTALLHEADER_FILES}
 	ChineseChessControl.h
-	ChineseChessControlCtrl.h
 	ChineseChessControlPropPage.h
+	targetver.h
+	ChineseChessControlCtrl.h
+	Resource.h
+	ChineseChessControlidl.h
+	stdafx.h
     )
 
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
+	ChineseChessControl.rc
 	)
 
 # 编译 IDL 文件
@@ -81,4 +87,5 @@ INSTALL(TARGETS ${PROJECT_NAME}
 # 安装图标
 INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../Res/Picture/Chess.ICO
 	DESTINATION .
-	    COMPONENT Runtime)
+	    COMPONENT Runtime
+    )

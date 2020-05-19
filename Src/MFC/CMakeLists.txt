@@ -5,6 +5,8 @@ message(STATUS "== Build chinese chess mfc view")
 set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessView.cpp
+	dllmain.cpp
+	stdafx.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../ChineseChess.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../ChessGame.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../Piece.cpp
@@ -26,6 +28,8 @@ set(HEADER_FILES
     ${HEADER_FILES}
     ${INSTALLHEADER_FILES}
 	Resource.h
+	stdafx.h
+	targetver.h
     )
 
 SET(RCC_FILES
