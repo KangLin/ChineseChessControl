@@ -9,8 +9,8 @@
 ʱ  �䣺21:38:52
 *******************************************************************************************************/
 
-#include "stdafx.h"
 #include "GoRule.h"
+#include <stdlib.h>
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -448,7 +448,6 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		}
 		if (bExit) break;
 	}
-	TRACE("Top shuai:%d-%d;Bootom shuai:%d-%d\n", iTopShuai, jTopShuai, iBottomShuai, jBottomShuai);
 	if (!CPiece::IsShuai(ChessBoard[iTopShuai][jTopShuai])
 		|| !CPiece::IsShuai(ChessBoard[iBottomShuai][jBottomShuai]))
 		return JIANGBEICHI;

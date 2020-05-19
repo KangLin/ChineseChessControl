@@ -1,5 +1,3 @@
-
-#include "stdafx.h"
 #include "ChineseChess.h"
 
 #ifdef _DEBUG
@@ -89,8 +87,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 
 bool CChineseChess::IsValidPosition(int i, int j)
 {
-	if (i < 0 || i > m_BoardColumn - 1 || j < 0 || j > m_BoardRow - 1)
-	//if (i < 0 || i > 9 - 1 || j < 0 || j > 10 - 1)
+	if (i < 0 || i > 9 - 1 || j < 0 || j > 10 - 1)
 	{   //³ö½ç
 		return false;
 	}

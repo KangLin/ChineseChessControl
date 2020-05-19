@@ -10,7 +10,6 @@
 
 #pragma once
 
-#include "EnumAndStructAndConst.h"
 #include "GoRule.h"
 #include "ChessGame.h"
 
@@ -25,7 +24,7 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
-class AFX_EXT_CLASS CChineseChess
+class CChineseChess
 {
 public:
 	CChineseChess();
@@ -68,8 +67,8 @@ public:
 	int SaveChessGame(const char* pszFile);
 	int LoadChessGame(const char* pszFile);
 
-	int EnablePromptSound(bool sound = TRUE);
-	int EnablePromptMessage(bool bMsg = TRUE);
+	int EnablePromptSound(bool sound = true);
+	int EnablePromptMessage(bool bMsg = true);
 
 protected:
 	// 下列虚拟函数由界面实现类完成
@@ -118,10 +117,8 @@ protected:
 	      j 或 y 方向
 
 	*/
-	static const int m_BoardRow = 10;						   // i 或 x
-	static const int m_BoardColumn = 9;						   // j 或 y
-	CPiece::ENUM_QiZi m_ChessBoard[m_BoardColumn][m_BoardRow]; //棋盘 m_ChessBoard[i][j]
-	ENUM_BoardLayout m_BoardLayout;							   //棋盘布局
+	CPiece::ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
+	ENUM_BoardLayout m_BoardLayout;		   //棋盘布局
 
 	//走棋状态
 	typedef enum _ENUM_WalkState {
@@ -129,8 +126,8 @@ protected:
 		RedWalked,
 		BlackReadly,
 		BlackWalked
-	} ENUM_WalkState;
-	ENUM_WalkState m_WalkState;								   //走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）
+	} ENUM_WalkState;			
+	ENUM_WalkState m_WalkState;	//走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）
 
 	// 提示框
 	// 上一步棋的位置

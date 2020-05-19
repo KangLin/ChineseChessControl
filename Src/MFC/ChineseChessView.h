@@ -1,6 +1,5 @@
 #pragma once
 
-#include "framework.h"
 #include "ChineseChess.h"
 // CChineseChessView
 
@@ -38,7 +37,7 @@ private:
 	COLORREF m_TiShiBoxColor;
 	
 	CBitmap m_QiPangPicture;			  //ÆåÅÌ±³¾°Í¼Æ¬
-	CPictureHolder m_QiPangPictureHolder; //ÆåÅÌ±³¾°Í¼Æ¬µÄCPictureHolder¶ÔÏó
+	//CPictureHolder m_QiPangPictureHolder; //ÆåÅÌ±³¾°Í¼Æ¬µÄCPictureHolder¶ÔÏó
 
 	//Æå×ÓÍ¼Æ¬
 	CBitmap m_RedShuai;     //ºìË§

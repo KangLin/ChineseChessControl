@@ -1,7 +1,7 @@
 // common.cpp: implementation of the common class.
 //
 //////////////////////////////////////////////////////////////////////
-#include "StdAfx.h"
+
 #include "common.h"
 
 #ifdef _DEBUG

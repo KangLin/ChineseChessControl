@@ -5,9 +5,9 @@ message(STATUS "== Build chinese chess ActiveX")
 set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessControl.cpp
-	ChineseChessControlPropPage.cpp
-	ChineseChessControlCtrl.cpp
-	stdafx.cpp
+    ChineseChessControlPropPage.cpp
+    ChineseChessControlCtrl.cpp
+    stdafx.cpp
     )
 
 set(INSTALLHEADER_FILES
@@ -21,7 +21,6 @@ set(HEADER_FILES
 	targetver.h
 	ChineseChessControlCtrl.h
 	Resource.h
-	ChineseChessControlidl.h
 	stdafx.h
     )
 

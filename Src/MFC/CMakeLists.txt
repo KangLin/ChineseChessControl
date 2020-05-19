@@ -6,7 +6,6 @@ set(SOURCES_FILES
     ${SOURCES_FILES}
     ChineseChessView.cpp
 	dllmain.cpp
-	stdafx.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../ChineseChess.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../ChessGame.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../Piece.cpp
@@ -21,20 +20,17 @@ set(INSTALLHEADER_FILES
 	${CMAKE_CURRENT_SOURCE_DIR}/../Piece.h
 	${CMAKE_CURRENT_SOURCE_DIR}/../GoRule.h
 	${CMAKE_CURRENT_SOURCE_DIR}/../Common.h
-	framework.h
     )
 
 set(HEADER_FILES
     ${HEADER_FILES}
     ${INSTALLHEADER_FILES}
 	Resource.h
-	stdafx.h
-	targetver.h
     )
 
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
-	ChineseChessControl.rc
+	ChineseChessView.rc
 	)
 
 if(MSVC)

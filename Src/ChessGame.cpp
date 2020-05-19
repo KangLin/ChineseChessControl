@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 #include "ChessGame.h"
 #include <fstream>
 
@@ -40,7 +40,6 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode
 		pCode->code[0] = *i;
 		pCode->code[1] = *j;
 		pCode->code[2] = *qz;
-		TRACE(_T("i:%d;j:%d:qz:%X:code:%X"), *i, *j, *qz, *pCode);
 		break;
 	case JieMa:
 		*i = pCode->code[0];

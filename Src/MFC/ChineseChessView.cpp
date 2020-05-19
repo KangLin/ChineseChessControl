@@ -1,14 +1,21 @@
 ﻿// d:\Source\ChineseChessControl\Src\MFC\ChineseChessWnd.cpp: 实现文件
 //
-#include "stdafx.h"
-
-#include "ChineseChessView.h"
+#include "framework.h"
 
 #include "Resource.h"       // 主符号
+
+#define _AFXEXT
+#include "ChineseChessView.h"
 
 //播放音频
 #include <mmsystem.h>
 #pragma comment(lib, "winmm")
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#define new DEBUG_NEW
+#endif
 
 // CChineseChessView
 

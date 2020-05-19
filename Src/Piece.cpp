@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 #include "Piece.h"
 
 CPiece::CPiece()
