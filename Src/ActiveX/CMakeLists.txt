@@ -7,11 +7,6 @@ set(SOURCES_FILES
     ChineseChessControl.cpp
 	ChineseChessControlCtrl.cpp
 	ChineseChessControlPropPage.cpp
-	${CMAKE_SOURCE_DIR}/Src/ChineseChess.cpp
-	${CMAKE_SOURCE_DIR}/Src/ChessGame.cpp
-	${CMAKE_SOURCE_DIR}/Src/Piece.cpp
-	${CMAKE_SOURCE_DIR}/Src/GoRule.cpp
-	${CMAKE_SOURCE_DIR}/Src/Common.cpp
     )
 
 set(INSTALLHEADER_FILES
@@ -23,18 +18,10 @@ set(HEADER_FILES
 	ChineseChessControl.h
 	ChineseChessControlCtrl.h
 	ChineseChessControlPropPage.h
-	framework.h
-	Resource.h
-	${CMAKE_SOURCE_DIR}/Src/ChineseChess.h
-	${CMAKE_SOURCE_DIR}/Src/ChessGame.h
-	${CMAKE_SOURCE_DIR}/Src/Piece.h
-	${CMAKE_SOURCE_DIR}/Src/GoRule.h
-	${CMAKE_SOURCE_DIR}/Src/Common.h
     )
 
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
-	ChineseChessControl.rc
 	)
 
 # 编译 IDL 文件
@@ -69,11 +56,11 @@ if(MSVC)
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${QT_LIBRARIES} ${LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${QT_LIBRARIES} ${LIBS} ChineseChessView)
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${RabbitCommon_DIR}/Src
     ${CMAKE_BINARY_DIR}
-    ${INCLUDE_DIRS})
+    ${CMAKE_CURRENT_SOURCE_DIR}/../)
 
 # 编译完成后向系统注册中国象棋控件
 add_custom_command(
@@ -92,6 +79,6 @@ INSTALL(TARGETS ${PROJECT_NAME}
     )
 
 # 安装图标
-INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/Chess.ICO
+INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../Res/Picture/Chess.ICO
 	DESTINATION .
 	    COMPONENT Runtime)

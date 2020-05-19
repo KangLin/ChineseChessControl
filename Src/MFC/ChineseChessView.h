@@ -1,11 +1,11 @@
 #pragma once
 
 #include "framework.h"
-#include "../ChineseChess.h"
-
+#include "ChineseChess.h"
+#include "chinesechessview_export.h"
 // CChineseChessView
 
-class CChineseChessView : public CView, public CChineseChess
+class CHINESECHESSVIEW_EXPORT CChineseChessView : public CView, public CChineseChess
 {
 	DECLARE_DYNAMIC(CChineseChessView)
 

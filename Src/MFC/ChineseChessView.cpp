@@ -2,6 +2,7 @@
 //
 
 #include "ChineseChessView.h"
+
 #include "Resource.h"       // 主符号
 
 //播放音频
