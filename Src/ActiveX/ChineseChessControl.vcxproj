@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{F23D34DE-3BD0-40CC-A03C-42354C24BFA2}</ProjectGuid>
+    <ProjectGuid>{1670BE26-EDAA-41DC-9B3C-CD583716D168}</ProjectGuid>
     <Keyword>MFCActiveXProj</Keyword>
     <RootNamespace>ChineseChessControl</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
