@@ -2,10 +2,9 @@
 
 #include "framework.h"
 #include "ChineseChess.h"
-#include "chinesechessview_export.h"
 // CChineseChessView
 
-class CHINESECHESSVIEW_EXPORT CChineseChessView : public CView, public CChineseChess
+class AFX_EXT_CLASS CChineseChessView : public CView, public CChineseChess
 {
 	DECLARE_DYNAMIC(CChineseChessView)
 

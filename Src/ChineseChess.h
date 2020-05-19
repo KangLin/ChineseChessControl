@@ -13,7 +13,6 @@
 #include "EnumAndStructAndConst.h"
 #include "GoRule.h"
 #include "ChessGame.h"
-#include "chinesechessview_export.h"
 
 /**
  * 中国象棋类
@@ -26,7 +25,7 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
-class CHINESECHESSVIEW_EXPORT CChineseChess
+class CChineseChess
 {
 public:
 	CChineseChess();

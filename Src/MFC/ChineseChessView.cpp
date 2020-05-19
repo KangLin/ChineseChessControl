@@ -1,5 +1,6 @@
 ﻿// d:\Source\ChineseChessControl\Src\MFC\ChineseChessWnd.cpp: 实现文件
 //
+#include "stdafx.h"
 
 #include "ChineseChessView.h"
 
