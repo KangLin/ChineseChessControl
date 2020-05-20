@@ -14,7 +14,7 @@ const GUID CDECL _tlid = {0x80e92be0,0xa67b,0x421b,{0x8e,0xf7,0x8f,0x42,0x41,0x4
 const WORD _wVerMajor = 1;
 const WORD _wVerMinor = 0;
 
-extern bool NewDynLinkLibrary();
+extern bool ChineseChessViewNewDynLinkLibrary();
 
 // CChineseChessControlApp::InitInstance - DLL 初始化
 
@@ -25,7 +25,7 @@ BOOL CChineseChessControlApp::InitInstance()
 	if (bInit)
 	{
 		// TODO:  在此添加您自己的模块初始化代码。
-		NewDynLinkLibrary();
+		ChineseChessViewNewDynLinkLibrary();
 	}
 
 	return bInit;

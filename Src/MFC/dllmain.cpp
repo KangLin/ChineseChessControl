@@ -50,7 +50,7 @@ DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 	return 1;   // 确定
 }
 
-AFX_EXT_CLASS bool NewDynLinkLibrary()
+bool AFX_EXT_CLASS ChineseChessViewNewDynLinkLibrary()
 {
 	new CDynLinkLibrary(ChineseChessViewDLL);
 	return TRUE;

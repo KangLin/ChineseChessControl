@@ -106,7 +106,6 @@ BOOL CChineseChessControlCtrl::CChineseChessControlCtrlFactory::UpdateRegistry(B
 
 
 // CChineseChessControlCtrl::CChineseChessControlCtrl - 构造函数
-
 CChineseChessControlCtrl::CChineseChessControlCtrl()
 {
 	InitializeIIDs(&IID_DChineseChessControl, &IID_DChineseChessControlEvents);

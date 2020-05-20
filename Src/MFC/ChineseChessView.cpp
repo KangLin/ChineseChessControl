@@ -353,6 +353,7 @@ BOOL CChineseChessView::PromptSound(LPCTSTR ID)
 	{
 		HINSTANCE hInstance = AfxGetInstanceHandle();
 		HRSRC hr = FindResource(hInstance, ID, _T("WAVE"));
+		if (NULL == hr) return false;
 		HGLOBAL hg = LoadResource(hInstance, hr);
 		LPCTSTR lp = (LPCTSTR)LockResource(hg);
 		::sndPlaySound(lp, SND_MEMORY | SND_ASYNC);
