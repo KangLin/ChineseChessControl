@@ -4,7 +4,6 @@
 
 #include "Resource.h"       // 主符号
 
-#define _AFXEXT
 #include "ChineseChessView.h"
 
 //播放音频

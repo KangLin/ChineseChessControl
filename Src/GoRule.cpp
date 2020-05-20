@@ -12,7 +12,7 @@
 #include "GoRule.h"
 #include <stdlib.h>
 
-#ifdef _DEBUG
+#if defined( _DEBUG) && defined(_MSC_VER)
 #undef THIS_FILE
 static char THIS_FILE[]=__FILE__;
 #define new DEBUG_NEW

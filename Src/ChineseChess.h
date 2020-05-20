@@ -60,8 +60,8 @@ public:
 	bool GoChess(int i, int j, bool bNext = false);	//走棋
 
 	// 复盘操作
-	int NextStep();	  //下一步
-	int PreviouStep();//上一步
+	int NextStep();	   //下一步
+	int PreviouStep(); //上一步
 
 	//保存棋局
 	int SaveChessGame(const char* pszFile);
@@ -89,6 +89,7 @@ protected:
 	// 画提示框
 	virtual int onDrawPrompt(int i, int j) = 0;
 	// 走棋事件
+	// @see 棋盘描述
 	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
 
 private:
@@ -103,7 +104,7 @@ private:
 
 protected:
 	/*
-	    棋盘描述
+	    @brief 棋盘描述
 
 	    [0][0] ------------------> i 或 x 方向
 		      |

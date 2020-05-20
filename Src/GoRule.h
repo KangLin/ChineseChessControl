@@ -35,17 +35,26 @@ public:
 
 private:
 	ENUM_ReturnValue ChessRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]); 
-	
+
+	// 兵规则
 	ENUM_ReturnValue BingRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 炮规则
 	ENUM_ReturnValue PaoRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 帅规则
 	ENUM_ReturnValue ShuaiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 仕规则
 	ENUM_ReturnValue ShiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 相规则
 	ENUM_ReturnValue XiangRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 马规则
 	ENUM_ReturnValue MaRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 车规则
 	ENUM_ReturnValue CheRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
 
+	// 将军
 	ENUM_ReturnValue JiangJun(int ito, int jto, CPiece::ENUM_QiZi ChessBoard[][10]);
 
+	// 马将军
 	bool MaJiangJun(int iShuai, int jShuai, int iMa, int jMa, CPiece::ENUM_QiZi ChessBoard[][10]);
 };
 

@@ -219,6 +219,7 @@
     <ClInclude Include="..\Common.h" />
     <ClInclude Include="..\GoRule.h" />
     <ClInclude Include="..\Piece.h" />
+    <ClInclude Include="ChineseChessView.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
