@@ -37,7 +37,7 @@ DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 		//  规则 DLL 的资源链，并将导致严重的
 		//  问题。
 
-		new CDynLinkLibrary(ChineseChessViewDLL);
+		//new CDynLinkLibrary(ChineseChessViewDLL);
 
 	}
 	else if (dwReason == DLL_PROCESS_DETACH)
@@ -48,4 +48,10 @@ DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 		AfxTermExtensionModule(ChineseChessViewDLL);
 	}
 	return 1;   // 确定
+}
+
+AFX_EXT_CLASS bool NewDynLinkLibrary()
+{
+	new CDynLinkLibrary(ChineseChessViewDLL);
+	return TRUE;
 }

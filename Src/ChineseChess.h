@@ -24,7 +24,11 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
+#ifdef _AFXEXT
+class AFX_EXT_CLASS CChineseChess
+#else
 class CChineseChess
+#endif
 {
 public:
 	CChineseChess();

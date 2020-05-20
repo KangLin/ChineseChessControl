@@ -1,4 +1,6 @@
-
+#ifdef _AFXEXT
+#include "MFC/framework.h"
+#endif
 #include "ChineseChess.h"
 
 #if defined( _DEBUG) && defined(_MSC_VER)

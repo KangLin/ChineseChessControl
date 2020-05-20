@@ -104,6 +104,8 @@
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
+      <LinkStatus>false</LinkStatus>
+      <AdditionalDependencies>D:\Source\ChineseChessControl\Src\ActiveX\Debug\ChineseChessView.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -117,6 +119,9 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -132,6 +137,7 @@
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
+      <LinkStatus>true</LinkStatus>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -164,6 +170,7 @@
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
+      <LinkStatus>true</LinkStatus>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -196,6 +203,7 @@
       <ModuleDefinitionFile>.\ChineseChessControl.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
+      <LinkStatus>true</LinkStatus>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
