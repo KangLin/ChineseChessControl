@@ -80,3 +80,8 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess")
+
+# 安装图标
+INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../Res/Picture/Chess.ico
+	DESTINATION .
+	    COMPONENT Runtime)

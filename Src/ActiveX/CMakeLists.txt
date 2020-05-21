@@ -61,7 +61,7 @@ if(MSVC)
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${QT_LIBRARIES} ${LIBS} ChineseChessView)
+target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessView)
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${RabbitCommon_DIR}/Src
     ${CMAKE_BINARY_DIR}
@@ -84,7 +84,7 @@ INSTALL(TARGETS ${PROJECT_NAME}
     )
 
 # 安装图标
-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../Res/Picture/Chess.ICO
-	DESTINATION .
-	    COMPONENT Runtime
-    )
+#INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../Res/Picture/Chess.ico
+#	DESTINATION .
+#	    COMPONENT Runtime
+#    )
