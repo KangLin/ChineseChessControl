@@ -33,12 +33,12 @@ SET(RCC_FILES
 find_package(IDL)
 if(IDL_FOUND)
 	add_idl(ChineseChessControlIDL ChineseChessControl.idl)
-	set(LIBS ${LIBS} ChineseChessControlIDL)
+	LIST(APPEND LIBS ChineseChessControlIDL)
 endif()
 
 if(MSVC)
 	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-    set(LIBS_DEFINES ${LIBS_DEFINES} "_AFXDLL" "_UNICODE" "UNICODE")
+	LIST(APPEND LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
 	LIST(APPEND RCC_FILES ChineseChessControl.def)
 endif()
 
@@ -61,7 +61,7 @@ if(MSVC)
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessView)
+target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessView ${LIBS})
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${RabbitCommon_DIR}/Src
     ${CMAKE_BINARY_DIR}
@@ -70,8 +70,9 @@ target_include_directories(${PROJECT_NAME}
 # 编译完成后向系统注册中国象棋控件
 add_custom_command(
 	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
+	COMMAND regsvr32.exe  /c "$<TARGET_FILE:${PROJECT_NAME}>"
 	COMMENT "Registering ActiveX Control ......"
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 )
 
 # 安装中国象棋控件
