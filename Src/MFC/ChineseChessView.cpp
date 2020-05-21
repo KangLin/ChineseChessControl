@@ -351,9 +351,16 @@ BOOL CChineseChessView::PromptSound(LPCTSTR ID)
 {
 	if (NULL != ID)
 	{
+		// @see https://docs.microsoft.com/en-us/cpp/build/extension-dlls?view=vs-2019
+#ifdef _AFXEXT  // MFC 扩展动态库
+		HINSTANCE hInstance = AfxFindResourceHandle(ID, _T("WAVE")); //得到资源在哪个模块里，返回这个模块实例句柄
+#else
 		HINSTANCE hInstance = AfxGetInstanceHandle();
+#endif
+
 		HRSRC hr = FindResource(hInstance, ID, _T("WAVE"));
 		if (NULL == hr) return false;
+		
 		HGLOBAL hg = LoadResource(hInstance, hr);
 		LPCTSTR lp = (LPCTSTR)LockResource(hg);
 		::sndPlaySound(lp, SND_MEMORY | SND_ASYNC);

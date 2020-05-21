@@ -50,6 +50,8 @@ DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 	return 1;   // 确定
 }
 
+// @see https://docs.microsoft.com/en-us/cpp/mfc/reference/afx-extension-module-structure?view=vs-2019
+// @see https://docs.microsoft.com/en-us/cpp/build/extension-dlls?view=vs-2019
 bool AFX_EXT_CLASS ChineseChessViewNewDynLinkLibrary()
 {
 	new CDynLinkLibrary(ChineseChessViewDLL);
