@@ -70,9 +70,9 @@ target_include_directories(${PROJECT_NAME}
 # 编译完成后向系统注册中国象棋控件
 add_custom_command(
 	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
+	COMMAND regsvr32.exe  /c "$<TARGET_FILE:${PROJECT_NAME}>"
 	COMMENT "Registering ActiveX Control ......"
-	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+	WORKING_DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
 )
 
 # 安装中国象棋控件
