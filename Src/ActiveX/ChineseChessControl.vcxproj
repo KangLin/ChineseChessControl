@@ -105,7 +105,7 @@
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
       <LinkStatus>false</LinkStatus>
-      <AdditionalDependencies>D:\Source\ChineseChessControl\Src\ActiveX\Debug\ChineseChessView.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(OutDir)ChineseChessView.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -138,6 +138,7 @@
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
       <LinkStatus>true</LinkStatus>
+      <AdditionalDependencies>$(OutDir)ChineseChessView.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -171,6 +172,7 @@
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
       <LinkStatus>true</LinkStatus>
+      <AdditionalDependencies>$(OutDir)ChineseChessView.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -204,6 +206,7 @@
       <OutputFile>$(OutDir)$(ProjectName).ocx</OutputFile>
       <RegisterOutput>true</RegisterOutput>
       <LinkStatus>true</LinkStatus>
+      <AdditionalDependencies>$(OutDir)ChineseChessView.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
