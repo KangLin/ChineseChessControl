@@ -87,7 +87,7 @@ install:
 before_build:
 
 build_script:
-  - if %TOOLCHAIN_VERSION%==15 (call msbuild Src/ChineseChessControl.sln)
+  #- if %TOOLCHAIN_VERSION%==15 (call msbuild Src/ChineseChessControl.sln)
   - mkdir build
   - cd build
   - cmake .. -G"%GENERATORS%" -DCMAKE_INSTALL_PREFIX=install

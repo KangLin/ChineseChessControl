@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include "Piece.h"
 #include <vector>
-
+#include <string>
+#include "Piece.h"
 #include "chinesechess_export.h"
 
 /**
