@@ -1,8 +1,8 @@
-// ChineseChessControl.idl: ActiveX 控件项目的类型库源。
+// ChineseChessActiveX.idl: ActiveX 控件项目的类型库源。
 
 // 此文件将由 MIDL 编译器工具处理以
-// 生成类型库(ChineseChessControl.tlb)，该类型库将成为
-// ChineseChessControl.ocx。
+// 生成类型库(ChineseChessActiveX.tlb)，该类型库将成为
+// ChineseChessActiveX.ocx。
 
 #include <olectl.h>
 #include <idispids.h>
@@ -11,7 +11,7 @@
   helpfile("中国象棋控件.hlp"),
   helpstring("中国象棋控件"),  /*显示在引用列表框中*/
   control ]
-library ChineseChessControlLib
+library ChineseChessActiveXLib
 {
 	importlib(STDOLE_TLB);
 	importlib(STDTYPE_TLB);
@@ -28,12 +28,12 @@ library ChineseChessControlLib
 		TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
 	} ENUM_BoardLayout;
 
-	//  CChineseChessControlCtrl 的主调度接口
+	//  CChineseChessActiveXCtrl 的主调度接口
 	[ 
 		uuid(7192fb6d-7455-4da8-b3ac-645dd60557f3),
 		helpstring("中国象棋控件 - 分发接口")
 	]
-	dispinterface _DChineseChessControl
+	dispinterface _DChineseChessActiveX
 	{
 		properties:
 			[id(1), helpstring("棋盘颜色")] OLE_COLOR QiPangColor;
@@ -51,13 +51,13 @@ library ChineseChessControlLib
 			[id(10), helpstring("上一步")] VARIANT_BOOL PreviouStep();
 	};
 
-	//  CChineseChessControlCtrl 的事件调度接口
+	//  CChineseChessActiveXCtrl 的事件调度接口
 
 	[ 
 		uuid(0850de98-fc76-4b94-9bbe-e2e59e0fe0ea),
 		helpstring("中国象棋控件 - 事件接口")
 	]
-	dispinterface _DChineseChessControlEvents
+	dispinterface _DChineseChessActiveXEvents
 	{
 		properties:
 			//  事件接口没有任何属性
@@ -65,15 +65,15 @@ library ChineseChessControlLib
 		methods:
 	};
 
-	//  CChineseChessControlCtrl 的类信息
+	//  CChineseChessActiveXCtrl 的类信息
 	[
 		uuid(e4e060cb-a3aa-4278-b1ed-ce5020c42ec7),
 		helpstring("中国象棋控件")
 	]
-	coclass ChineseChessControl
+	coclass ChineseChessActiveX
 	{
-		[default] dispinterface _DChineseChessControl;
-		[default, source] dispinterface _DChineseChessControlEvents;
+		[default] dispinterface _DChineseChessActiveX;
+		[default, source] dispinterface _DChineseChessActiveXEvents;
 	};
 
 };

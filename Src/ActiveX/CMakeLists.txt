@@ -1,12 +1,12 @@
-project(ChineseChessControl)
+project(ChineseChessActiveX)
 
 message(STATUS "== Build chinese chess ActiveX")
 
 set(SOURCES_FILES
     ${SOURCES_FILES}
-    ChineseChessControl.cpp
-    ChineseChessControlPropPage.cpp
-    ChineseChessControlCtrl.cpp
+    ChineseChessActiveX.cpp
+    ChineseChessActiveXPropPage.cpp
+    ChineseChessActiveXCtrl.cpp
     stdafx.cpp
     )
 
@@ -16,30 +16,30 @@ set(INSTALLHEADER_FILES
 set(HEADER_FILES
     ${HEADER_FILES}
     ${INSTALLHEADER_FILES}
-	ChineseChessControl.h
-	ChineseChessControlPropPage.h
+	ChineseChessActiveX.h
+	ChineseChessActiveXPropPage.h
 	targetver.h
-	ChineseChessControlCtrl.h
+	ChineseChessActiveXCtrl.h
 	Resource.h
 	stdafx.h
     )
 
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
-	ChineseChessControl.rc
+	ChineseChessActiveX.rc
 	)
 
 # 编译 IDL 文件
 find_package(IDL)
 if(IDL_FOUND)
-	add_idl(ChineseChessControlIDL ChineseChessControl.idl)
-	LIST(APPEND LIBS ChineseChessControlIDL)
+	add_idl(ChineseChessActiveXIDL ChineseChessActiveX.idl)
+	LIST(APPEND LIBS ChineseChessActiveXIDL)
 endif()
 
 if(MSVC)
 	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
 	LIST(APPEND LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
-	LIST(APPEND RCC_FILES ChineseChessControl.def)
+	LIST(APPEND RCC_FILES ChineseChessActiveX.def)
 endif()
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})

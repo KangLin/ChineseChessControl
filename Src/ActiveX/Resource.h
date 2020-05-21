@@ -1,17 +1,17 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by ChineseChessControl.rc
+// Used by ChineseChessActiveX.rc
 //
 
-#define IDS_CHINESECHESSCONTROL               1
-#define IDS_CHINESECHESSCONTROL_PPG           2
+#define IDS_CHINESECHESSACTIVEX               1
+#define IDS_CHINESECHESSACTIVEX_PPG           2
 
-#define IDS_CHINESECHESSCONTROL_PPG_CAPTION   200
+#define IDS_CHINESECHESSACTIVEX_PPG_CAPTION   200
 
-#define IDD_PROPPAGE_CHINESECHESSCONTROL      200
+#define IDD_PROPPAGE_CHINESECHESSACTIVEX      200
 
 
-#define IDB_CHINESECHESSCONTROL               1
+#define IDB_CHINESECHESSACTIVEX               1
 
 #define IDV_CHINESE_CHESS 1001
 

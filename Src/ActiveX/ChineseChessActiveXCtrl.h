@@ -1,15 +1,15 @@
 ﻿/**
- * @file ChineseChessControlCtrl.h.
+ * @file ChineseChessActiveXCtrl.h.
  *
  * 中国象棋 ActiveX 控件的界面实现
  */
  
 #pragma once
 
-// ChineseChessControlCtrl.h : CChineseChessControlCtrl ActiveX 控件类的声明。
+// ChineseChessActiveXCtrl.h : CChineseChessActiveXCtrl ActiveX 控件类的声明。
 
 
-// CChineseChessControlCtrl : 请参阅 ChineseChessControlCtrl.cpp 了解实现。
+// CChineseChessActiveXCtrl : 请参阅 ChineseChessActiveXCtrl.cpp 了解实现。
 
 #include "../MFC/ChineseChessView.h"
 
@@ -19,13 +19,13 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
-class CChineseChessControlCtrl : public COleControl
+class CChineseChessActiveXCtrl : public COleControl
 {
-	DECLARE_DYNCREATE(CChineseChessControlCtrl)
+	DECLARE_DYNCREATE(CChineseChessActiveXCtrl)
 
 // 构造函数
 public:
-	CChineseChessControlCtrl();
+	CChineseChessActiveXCtrl();
 
 // 重写
 public:
@@ -34,12 +34,12 @@ public:
 
 // 实现
 protected:
-	~CChineseChessControlCtrl();
+	~CChineseChessActiveXCtrl();
 
-	DECLARE_OLECREATE_EX(CChineseChessControlCtrl) // 类工厂和 guid
-	DECLARE_OLETYPELIB(CChineseChessControlCtrl)   // GetTypeInfo
-	DECLARE_PROPPAGEIDS(CChineseChessControlCtrl)  // 属性页 ID
-	DECLARE_OLECTLTYPE(CChineseChessControlCtrl)   // 类型名称和杂项状态
+	DECLARE_OLECREATE_EX(CChineseChessActiveXCtrl) // 类工厂和 guid
+	DECLARE_OLETYPELIB(CChineseChessActiveXCtrl)   // GetTypeInfo
+	DECLARE_PROPPAGEIDS(CChineseChessActiveXCtrl)  // 属性页 ID
+	DECLARE_OLECTLTYPE(CChineseChessActiveXCtrl)   // 类型名称和杂项状态
 
 // 消息映射
 	DECLARE_MESSAGE_MAP()

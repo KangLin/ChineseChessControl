@@ -1,4 +1,4 @@
-﻿; ChineseChessControl.def: 声明模块参数。
+﻿; ChineseChessActiveX.def: 声明模块参数。
 
 EXPORTS
 	DllCanUnloadNow     PRIVATE

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChineseChessControl", "ChineseChessControl.vcxproj", "{1670BE26-EDAA-41DC-9B3C-CD583716D168}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChineseChessActiveX", "ChineseChessActiveX.vcxproj", "{1670BE26-EDAA-41DC-9B3C-CD583716D168}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F893CD1D-464B-4016-A992-DA8FDBA04AE3} = {F893CD1D-464B-4016-A992-DA8FDBA04AE3}
 	EndProjectSection

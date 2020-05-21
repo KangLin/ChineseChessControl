@@ -1,14 +1,14 @@
-﻿// ChineseChessControl.cpp: CChineseChessControlApp 和 DLL 注册的实现。
+﻿// ChineseChessActiveX.cpp: CChineseChessActiveXApp 和 DLL 注册的实现。
 
 #include "stdafx.h"
-#include "ChineseChessControl.h"
+#include "ChineseChessActiveX.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-CChineseChessControlApp theApp;
+CChineseChessActiveXApp theApp;
 
 const GUID CDECL _tlid = {0x80e92be0,0xa67b,0x421b,{0x8e,0xf7,0x8f,0x42,0x41,0x48,0x80,0xc0}};
 const WORD _wVerMajor = 1;
@@ -16,9 +16,9 @@ const WORD _wVerMinor = 0;
 
 extern bool ChineseChessViewNewDynLinkLibrary();
 
-// CChineseChessControlApp::InitInstance - DLL 初始化
+// CChineseChessActiveXApp::InitInstance - DLL 初始化
 
-BOOL CChineseChessControlApp::InitInstance()
+BOOL CChineseChessActiveXApp::InitInstance()
 {
 	BOOL bInit = COleControlModule::InitInstance();
 
@@ -33,9 +33,9 @@ BOOL CChineseChessControlApp::InitInstance()
 
 
 
-// CChineseChessControlApp::ExitInstance - DLL 终止
+// CChineseChessActiveXApp::ExitInstance - DLL 终止
 
-int CChineseChessControlApp::ExitInstance()
+int CChineseChessActiveXApp::ExitInstance()
 {
 	// TODO:  在此添加您自己的模块终止代码。
 
