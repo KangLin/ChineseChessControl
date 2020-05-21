@@ -10,6 +10,7 @@ class AFX_EXT_CLASS CChineseChessView : public CView, public CChineseChess
 public:
 	CChineseChessView();
 	virtual ~CChineseChessView();
+	void AboutBox();
 
 protected:
 	DECLARE_MESSAGE_MAP()

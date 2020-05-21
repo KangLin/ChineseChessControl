@@ -193,8 +193,8 @@ void CChineseChessActiveXCtrl::OnEnablePromptMessageChanged()
 
 void CChineseChessActiveXCtrl::AboutBox()
 {
-	//CDialogEx dlgAbout(IDD_ABOUTBOX_CHINESECHESSACTIVEX);
-	//dlgAbout.DoModal();
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->AboutBox();
 }
 
 VARIANT_BOOL CChineseChessActiveXCtrl::NextStep()
@@ -202,7 +202,7 @@ VARIANT_BOOL CChineseChessActiveXCtrl::NextStep()
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	int nRet = 0;
-	if (m_pChess)
+	if (m_pChess && m_pChess->GetSafeHwnd())
 		m_pChess->NextStep();
 	if (nRet)
 		return VARIANT_FALSE;
@@ -214,7 +214,7 @@ VARIANT_BOOL CChineseChessActiveXCtrl::PreviouStep()
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	int nRet = 0;
-	if (m_pChess)
+	if (m_pChess && m_pChess->GetSafeHwnd())
 		nRet = m_pChess->PreviouStep();
 	if(nRet)
 		return VARIANT_FALSE;
@@ -226,8 +226,8 @@ VARIANT_BOOL CChineseChessActiveXCtrl::GoChess(SHORT i, SHORT j)
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	int nRet = 0;
-	if (m_pChess)
-		nRet = GoChess(i, j);
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		nRet = m_pChess->GoChess(i, j);
 	if(nRet)
 		return VARIANT_TRUE;
 	return VARIANT_FALSE;
@@ -240,7 +240,7 @@ VARIANT_BOOL CChineseChessActiveXCtrl::SaveChessGame(LPCTSTR szFile)
 
 	const char* pszFile = T2CA(szFile);
 	int nRet = 0;
-	if (m_pChess)
+	if (m_pChess && m_pChess->GetSafeHwnd())
 		m_pChess->SaveChessGame(pszFile);
 	if(nRet)
 		return VARIANT_FALSE;
@@ -255,7 +255,7 @@ VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 	TRACE(_T("file:%s"), szFile);
 	const char *pszFile = T2CA(szFile);
 	int nRet = 0;
-	if (m_pChess)
+	if (m_pChess && m_pChess->GetSafeHwnd())
 	{
 		nRet = m_pChess->LoadChessGame(pszFile);
 		m_pChess->Invalidate();

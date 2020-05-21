@@ -1,7 +1,7 @@
 ﻿// d:\Source\ChineseChessControl\Src\MFC\ChineseChessWnd.cpp: 实现文件
 //
 #include "framework.h"
-
+#include <afxdialogex.h>
 #include "Resource.h"       // 主符号
 
 #include "ChineseChessView.h"
@@ -153,6 +153,12 @@ void CChineseChessView::OnDraw(CDC* pDC)
 	CRect rect;
 	GetClientRect(&rect);
 	DrawQiPang(pDC, rect);   //画棋盘
+}
+
+void CChineseChessView::AboutBox()
+{
+	CDialogEx dlgAbout(IDD_ABOUTBOX_CHINESECHESSACTIVEX);
+	dlgAbout.DoModal();
 }
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
