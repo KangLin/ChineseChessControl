@@ -7,6 +7,8 @@
 #include "Piece.h"
 #include <vector>
 
+#include "chinesechess_export.h"
+
 /**
  * 棋局
  * 完成棋局的加载、保存、复盘
@@ -14,7 +16,7 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
-class CChessGame
+class CHINESECHESS_EXPORT CChessGame
 {
 public:
 	CChessGame();

@@ -13,8 +13,9 @@
 
 #pragma once
 #include "Common.h"
+#include "chinesechess_export.h"
 
-class CPiece
+class CHINESECHESS_EXPORT CPiece
 {
 public:
 	CPiece();

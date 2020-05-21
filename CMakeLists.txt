@@ -168,6 +168,7 @@ endif()
 #    message(FATAL_ERROR "       cmake -DRabbitCommon_DIR= ")
 #endif()
 
+add_subdirectory(Src)
 if(MSVC)
 	option(BUILD_CHINESE_CHESS_MFC_VIEW "Build MFC chinese chess mfc view" ON)
 	if(BUILD_CHINESE_CHESS_MFC_VIEW)

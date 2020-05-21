@@ -13,6 +13,8 @@
 #include "GoRule.h"
 #include "ChessGame.h"
 
+#include "chinesechess_export.h"
+
 /**
  * 中国象棋类
  * - 实现中国象棋的基本规则
@@ -24,11 +26,7 @@
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
-#ifdef _AFXEXT
-class AFX_EXT_CLASS CChineseChess
-#else
-class CChineseChess
-#endif
+class CHINESECHESS_EXPORT CChineseChess
 {
 public:
 	CChineseChess();

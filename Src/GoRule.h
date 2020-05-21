@@ -17,7 +17,7 @@
 
 #include "Piece.h"
 
-class CGoRule  
+class CHINESECHESS_EXPORT CGoRule
 {
 public:
 	CGoRule();

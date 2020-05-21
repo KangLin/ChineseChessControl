@@ -1,6 +1,6 @@
 project(ChineseChessView)
 
-message(STATUS "== Build chinese chess mfc view")
+message(STATUS "== Build chinese chess mfc view dll")
 
 set(SOURCES_FILES
     ${SOURCES_FILES}
