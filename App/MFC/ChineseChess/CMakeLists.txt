@@ -1,4 +1,4 @@
-project(ChineseChess)
+project(ChineseChessMfcApp)
 
 set(SOURCES_FILES
     CDChineseChessControl.cpp
