@@ -1,6 +1,7 @@
 
 #include "ChessGame.h"
 #include <fstream>
+#include <time.h>
 
 #if defined( _DEBUG) && defined(_MSC_VER)
 #undef THIS_FILE
@@ -148,6 +149,11 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 	head.iBuShu = m_ChessGame.size();
 	head.boardLayout = layout;
 
+	head.timeStart = m_tmStart;
+	head.timeEnd = m_tmEnd;
+	strcpy_s(head.szRedName, m_szRedName.c_str());
+	strcpy_s(head.szBlackName, m_szBlackName.c_str());
+
 	std::ofstream out(szFile);
 	if (!out.is_open())
 		return -2;
@@ -167,12 +173,17 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 	if (!szFile) return -1;
 
 	strFile head;
+	memset(&head, 0, sizeof(strFile));
+
 	std::ifstream in(szFile);
 	if (!in.is_open())
 		return -2;
 
 	in.read((char*)&head, sizeof(strFile));
 	layout = head.boardLayout;
+	m_szRedName = head.szRedName;
+	m_szBlackName = head.szBlackName;
+
 	do{
 		if (strcmp(head.head.szAppName, APPNAME))
 		{
@@ -199,4 +210,48 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 
 	in.close();
 	return nRet;;
+}
+
+time_t CChessGame::GetStartTime()
+{
+	return mktime(&m_tmStart);
+}
+
+int CChessGame::SetStartTime(time_t t)
+{
+	localtime_s(&m_tmStart, &t);
+	return 0;
+}
+
+time_t CChessGame::GetEndTime()
+{
+	return mktime(&m_tmEnd);
+}
+
+int CChessGame::SetEndTime(time_t t)
+{
+	localtime_s(&m_tmEnd, &t);
+	return 0;
+}
+
+std::string CChessGame::GetRedName()
+{
+	return m_szRedName;
+}
+
+int CChessGame::SetRedName(const char* pszName)
+{
+	m_szRedName = pszName;
+	return 0;
+}
+
+std::string CChessGame::GetBlackName()
+{
+	return m_szBlackName;
+}
+
+int CChessGame::SetBlackName(const char* pszName)
+{
+	m_szBlackName = pszName;
+	return 0;
 }
