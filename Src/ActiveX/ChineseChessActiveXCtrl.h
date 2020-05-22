@@ -57,6 +57,16 @@ protected:
 	CChineseChess::ENUM_BoardLayout m_BoardLayout;
 	void OnEnablePromptSoundChanged();
 	VARIANT_BOOL m_EnablePromptSound;
+	void OnEnablePromptMessageChanged();
+	VARIANT_BOOL m_EnablePromptMessage;
+	void OnRedNameChanged();
+	CString m_RedName;
+	void OnBlackNameChanged();
+	CString m_BlackName;
+	void OnStartTimeChanged();
+	ULONG m_StartTime;
+	void OnEndTimeChanged();
+	ULONG m_EndTime;
 
 	afx_msg void AboutBox();
 	VARIANT_BOOL NextStep();    //下一步
@@ -71,6 +81,10 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
+		dispidEndTime = 14,
+		dispidStartTime = 13,
+		dispidBlackName = 12L,
+		dispidRedName = 11L,
 		dispidPreviouStep = 10L,
 		dispidNextStep = 9L,
 		dispidLoadChessGame = 8L,
@@ -85,9 +99,5 @@ public:
 
 private:
 	CChineseChessView* m_pChess;
-
-protected:
-	void OnEnablePromptMessageChanged();
-	VARIANT_BOOL m_EnablePromptMessage;
 };
 

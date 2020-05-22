@@ -424,3 +424,43 @@ int CChineseChess::LoadChessGame(const char* pszFile)
 
 	return nRet;
 }
+
+int CChineseChess::SetRedName(const char* pszName)
+{
+	return m_Game.SetRedName(pszName);
+}
+
+std::string CChineseChess::GetRedName()
+{
+	return m_Game.GetRedName();
+}
+
+int CChineseChess::SetBlackName(const char* pszName)
+{
+	return m_Game.SetBlackName(pszName);
+}
+
+std::string CChineseChess::GetBlackName()
+{
+	return m_Game.GetBlackName();
+}
+
+int CChineseChess::SetStartTime(const time_t& tm)
+{
+	return m_Game.SetStartTime(tm);
+}
+
+time_t CChineseChess::GetStartTime()
+{
+	return m_Game.GetStartTime();
+}
+
+int CChineseChess::SetEndTime(const time_t& tm)
+{
+	return m_Game.SetEndTime(tm);
+}
+
+time_t CChineseChess::GetEndTime()
+{
+	return m_Game.GetEndTime();
+}

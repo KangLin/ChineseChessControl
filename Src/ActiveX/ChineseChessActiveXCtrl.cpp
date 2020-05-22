@@ -31,6 +31,10 @@ BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "QiPangColor", dispidQiPangColor, m_QiPangColor, OnQiPangColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "TiShiBoxColor", dispidTiShiBoxColor, m_TiShiBoxColor, OnTiShiBoxColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "BoardLayout", dispidBoardLayout, m_BoardLayout, OnBoardLayoutChanged, VT_I2)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "RedName", dispidRedName, m_RedName, OnRedNameChanged, VT_BSTR)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "BlackName", dispidBlackName, m_BlackName, OnBlackNameChanged, VT_BSTR)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "StartTime", dispidStartTime, m_StartTime, OnStartTimeChanged, VT_UI4)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EndTime", dispidEndTime, m_EndTime, OnEndTimeChanged, VT_UI4)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "NextStep", dispidNextStep, NextStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "PreviouStep", dispidPreviouStep, PreviouStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
@@ -54,7 +58,7 @@ END_PROPPAGEIDS(CChineseChessActiveXCtrl)
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessActiveXCtrl, "ChineseChessActiveXCtrl.1.0.0",
+IMPLEMENT_OLECREATE_EX(CChineseChessActiveXCtrl, "ChineseChessActiveX.1.0.0",
 	0xe4e060cb,0xa3aa,0x4278,0xb1,0xed,0xce,0x50,0x20,0xc4,0x2e,0xc7)
 
 // 键入库 ID 和版本
@@ -165,7 +169,7 @@ void CChineseChessActiveXCtrl::OnTiShiBoxColorChanged()
 void CChineseChessActiveXCtrl::OnBoardLayoutChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if(m_pChess)
+	if (m_pChess && m_pChess->GetSafeHwnd())
 		m_pChess->SetBoardLayout(m_BoardLayout);
 	SetModifiedFlag();
 }
@@ -174,7 +178,7 @@ void CChineseChessActiveXCtrl::OnEnablePromptSoundChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	if(m_pChess)
+	if (m_pChess && m_pChess->GetSafeHwnd())
 		m_pChess->EnablePromptSound(m_EnablePromptSound);
 	SetModifiedFlag();
 }
@@ -189,10 +193,50 @@ void CChineseChessActiveXCtrl::OnEnablePromptMessageChanged()
 	SetModifiedFlag();
 }
 
+void CChineseChessActiveXCtrl::OnRedNameChanged()
+{
+	USES_CONVERSION;
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetRedName(T2CA(m_RedName));
+	SetModifiedFlag();
+}
+
+void CChineseChessActiveXCtrl::OnBlackNameChanged()
+{
+	USES_CONVERSION;
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetBlackName(T2CA(m_BlackName));
+	SetModifiedFlag();
+}
+
+void CChineseChessActiveXCtrl::OnStartTimeChanged()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetStartTime(m_StartTime);
+
+	SetModifiedFlag();
+}
+
+
+void CChineseChessActiveXCtrl::OnEndTimeChanged()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetEndTime(m_EndTime);
+
+	SetModifiedFlag();
+}
+
 // CChineseChessActiveXCtrl::AboutBox - 向用户显示“关于”框
 
 void CChineseChessActiveXCtrl::AboutBox()
 {
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
 		m_pChess->AboutBox();
 }
@@ -300,3 +344,5 @@ void CChineseChessActiveXCtrl::OnSize(UINT nType, int cx, int cy)
 //
 //以上是完成 === 消息处理程序 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+

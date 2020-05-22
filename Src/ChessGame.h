@@ -31,16 +31,16 @@ public:
 	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //得到下一步
 
 	time_t GetStartTime();
-	int SetStartTime(time_t t);
+	int SetStartTime(const time_t &t);
 	time_t GetEndTime();
-	int SetEndTime(time_t t);
+	int SetEndTime(const time_t &t);
 
 	std::string GetRedName();
 	int SetRedName(const char* pszName);
 	std::string GetBlackName();
 	int SetBlackName(const char* pszName);
 
-#define MAX_STRING_BUFFER 128
+#define MAX_STRING_BUFFER 33
 #define APPNAME  "Chinese chess control"
 #define AUTHOR "Author: Kang Lin (kl222@126.com)"
 
@@ -95,10 +95,10 @@ private:
 	bool m_bFuPang;					  //复盘标志
 	std::vector<strCODE> m_ChessGame; //棋局
 
-	struct tm m_tmStart;		  //开始时间
-	struct tm m_tmEnd;			  //结束时间
-	std::string m_szRedName;  //红方名
-	std::string m_szBlackName;//黑方名
+	struct tm m_tmStart;			  //开始时间
+	struct tm m_tmEnd;				  //结束时间
+	std::string m_szRedName;		  //红方名
+	std::string m_szBlackName;		  //黑方名
 };
 
 #endif //_CHESS_GAME_KL_2020_05_15_

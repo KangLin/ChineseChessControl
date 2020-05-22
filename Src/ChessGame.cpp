@@ -217,7 +217,7 @@ time_t CChessGame::GetStartTime()
 	return mktime(&m_tmStart);
 }
 
-int CChessGame::SetStartTime(time_t t)
+int CChessGame::SetStartTime(const time_t& t)
 {
 	localtime_s(&m_tmStart, &t);
 	return 0;
@@ -228,7 +228,7 @@ time_t CChessGame::GetEndTime()
 	return mktime(&m_tmEnd);
 }
 
-int CChessGame::SetEndTime(time_t t)
+int CChessGame::SetEndTime(const time_t& t)
 {
 	localtime_s(&m_tmEnd, &t);
 	return 0;
