@@ -12,6 +12,11 @@ public:
 	virtual ~CChineseChessView();
 	void AboutBox();
 
+	virtual int SaveChessGame(LPCTSTR pszFile);
+	virtual int LoadChessGame(LPCTSTR pszFile);
+	virtual int SetRedName(LPCTSTR pszName);
+	virtual int SetBlackName(LPCTSTR pszName);
+
 protected:
 	DECLARE_MESSAGE_MAP()
 

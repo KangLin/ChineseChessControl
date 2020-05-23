@@ -195,19 +195,17 @@ void CChineseChessActiveXCtrl::OnEnablePromptMessageChanged()
 
 void CChineseChessActiveXCtrl::OnRedNameChanged()
 {
-	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetRedName(T2CA(m_RedName));
+		m_pChess->SetRedName(m_RedName);
 	SetModifiedFlag();
 }
 
 void CChineseChessActiveXCtrl::OnBlackNameChanged()
 {
-	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetBlackName(T2CA(m_BlackName));
+		m_pChess->SetBlackName(m_BlackName);
 	SetModifiedFlag();
 }
 
@@ -279,13 +277,11 @@ VARIANT_BOOL CChineseChessActiveXCtrl::GoChess(SHORT i, SHORT j)
 
 VARIANT_BOOL CChineseChessActiveXCtrl::SaveChessGame(LPCTSTR szFile)
 {
-	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	const char* pszFile = T2CA(szFile);
 	int nRet = 0;
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SaveChessGame(pszFile);
+		m_pChess->SaveChessGame(szFile);
 	if(nRet)
 		return VARIANT_FALSE;
 	return VARIANT_TRUE;
@@ -293,15 +289,12 @@ VARIANT_BOOL CChineseChessActiveXCtrl::SaveChessGame(LPCTSTR szFile)
 
 VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 {
-	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	TRACE(_T("file:%s"), szFile);
-	const char *pszFile = T2CA(szFile);
 	int nRet = 0;
 	if (m_pChess && m_pChess->GetSafeHwnd())
 	{
-		nRet = m_pChess->LoadChessGame(pszFile);
+		nRet = m_pChess->LoadChessGame(szFile);
 		m_pChess->Invalidate();
 	}
 	if(nRet)

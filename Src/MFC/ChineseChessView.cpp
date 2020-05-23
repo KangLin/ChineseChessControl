@@ -4,6 +4,7 @@
 #include <afxdialogex.h>
 #include "Resource.h"       // 主符号
 
+#include <atlconv.h>
 #include "ChineseChessView.h"
 
 //播放音频
@@ -222,6 +223,30 @@ int CChineseChessView::onDrawPrompt(int i, int j)
 int CChineseChessView::onGoChess(int i, int j, CPiece::ENUM_QiZi chess)
 {
 	return 0;
+}
+
+int CChineseChessView::SaveChessGame(LPCTSTR pszFile)
+{
+	USES_CONVERSION;
+	return __super::SaveChessGame(T2CA(pszFile));
+}
+
+int CChineseChessView::LoadChessGame(LPCTSTR pszFile)
+{
+	USES_CONVERSION;
+	return __super::LoadChessGame(T2CA(pszFile));
+}
+
+int CChineseChessView::SetRedName(LPCTSTR pszName)
+{
+	USES_CONVERSION;
+	return __super::SetRedName(T2CA(pszName));
+}
+
+int CChineseChessView::SetBlackName(LPCTSTR pszName)
+{
+	USES_CONVERSION;
+	return __super::SetBlackName(T2CA(pszName));
 }
 
 //

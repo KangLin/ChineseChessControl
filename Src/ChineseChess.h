@@ -66,16 +66,16 @@ public:
 	int PreviouStep(); //上一步
 
 	//保存棋局
-	int SaveChessGame(const char* pszFile);
-	int LoadChessGame(const char* pszFile);
+	virtual int SaveChessGame(const char* pszFile);
+	virtual int LoadChessGame(const char* pszFile);
 	time_t GetStartTime();
 	int SetStartTime(const time_t &t);
 	time_t GetEndTime();
 	int SetEndTime(const time_t &t);
-	std::string GetRedName();
-	int SetRedName(const char* pszName);
-	std::string GetBlackName();
-	int SetBlackName(const char* pszName);
+	virtual std::string GetRedName();
+	virtual int SetRedName(const char* pszName);
+	virtual std::string GetBlackName();
+	virtual int SetBlackName(const char* pszName);
 
 	int EnablePromptSound(bool sound = true);
 	int EnablePromptMessage(bool bMsg = true);
