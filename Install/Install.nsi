@@ -1,7 +1,7 @@
 ﻿; 注意：程序必须先安装到 install 目录下，本文件与 install 在同级目录下。
 
 ; HM NIS Edit Wizard helper defines
-!define PRODUCT_NAME "ChineseChess"
+!define PRODUCT_NAME "ChineseChessControl"
 !define PRODUCT_VERSION "v1.1.2"
 !define PRODUCT_PUBLISHER "Kang Lin (kl222@126.com)"
 !define PRODUCT_WEB_SITE "https://github.com/KangLin/${PRODUCT_NAME}"
@@ -161,8 +161,8 @@ Section -AdditionalIcons
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
 
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
-  IfFileExists "$INSTDIR\bin\ChineseChess.exe" 0 +2
-    CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\ChineseChess.lnk" "$INSTDIR\bin\ChineseChess.exe"
+  IfFileExists "$INSTDIR\bin\ChineseChessMfcApp.exe" 0 +2
+    CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\ChineseChessMfcApp.lnk" "$INSTDIR\bin\ChineseChessMfcApp.exe"
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
 SectionEnd
