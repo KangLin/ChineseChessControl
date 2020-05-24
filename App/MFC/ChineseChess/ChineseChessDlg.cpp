@@ -59,6 +59,8 @@ void CChineseChessDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_Chess, m_Chess);
 	DDX_Control(pDX, IDC_PREVIOU, m_btnPreviou);
 	DDX_Control(pDX, IDC_NEXT, m_btnNext);
+	DDX_Control(pDX, IDC_LOAD, m_btLoad);
+	DDX_Control(pDX, IDC_SAVE, m_btSave);
 }
 
 BEGIN_MESSAGE_MAP(CChineseChessDlg, CDialogEx)
@@ -68,6 +70,8 @@ BEGIN_MESSAGE_MAP(CChineseChessDlg, CDialogEx)
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDC_PREVIOU, &CChineseChessDlg::OnBnClickedPreviou)
 	ON_BN_CLICKED(IDC_NEXT, &CChineseChessDlg::OnBnClickedNext)
+	ON_BN_CLICKED(IDC_LOAD, &CChineseChessDlg::OnBnClickedLoad)
+	ON_BN_CLICKED(IDC_SAVE, &CChineseChessDlg::OnBnClickedSave)
 END_MESSAGE_MAP()
 
 
@@ -175,8 +179,12 @@ int CChineseChessDlg::ReSize(int cx, int cy)
 	m_Chess.MoveWindow(0, 0, cx, y);
 
 	m_btnNext.MoveWindow(cx - rect1.Width() - 5, y + 5, rect1.Width(), rect1.Height());
-
 	m_btnPreviou.MoveWindow(cx - rect1.Width() - rect2.Width() - 5, y + 5, rect1.Width(), rect1.Height());
+
+	m_btLoad.GetWindowRect(&rect1);
+	m_btLoad.MoveWindow(0, y + 5, rect1.Width(), rect1.Height());
+	m_btSave.GetWindowRect(&rect2);
+	m_btSave.MoveWindow(rect1.Width() + 5, y + 5, rect2.Width(), rect2.Height());
 	return 0;
 }
 
@@ -197,4 +205,28 @@ END_EVENTSINK_MAP()
 void CChineseChessDlg::EventGoChess(short i, short j, long qz)
 {
 	
+}
+
+
+void CChineseChessDlg::OnBnClickedLoad()
+{
+	CString szFile;
+	CFileDialog dlg(TRUE);
+	if (dlg.DoModal() == IDOK)
+	{
+		szFile = dlg.GetPathName();
+		m_Chess.LoadChessGame(szFile);
+	}
+}
+
+
+void CChineseChessDlg::OnBnClickedSave()
+{
+	CString szFile;
+	CFileDialog dlg(FALSE);
+	if (dlg.DoModal() == IDOK)
+	{
+		szFile = dlg.GetPathName();
+		m_Chess.SaveChessGame(szFile);
+	}
 }

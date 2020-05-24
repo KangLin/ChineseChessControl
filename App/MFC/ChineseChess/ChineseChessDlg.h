@@ -46,4 +46,9 @@ private:
 	CButton m_btnPreviou;
 	CButton m_btnNext;
 
+public:
+	afx_msg void OnBnClickedLoad();
+	afx_msg void OnBnClickedSave();
+	CButton m_btLoad;
+	CButton m_btSave;
 };
