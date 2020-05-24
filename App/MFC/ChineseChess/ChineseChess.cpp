@@ -3,7 +3,7 @@
 //
 
 #include "stdafx.h"
-#include "ChineseChessApp.h"
+#include "ChineseChess.h"
 #include "ChineseChessDlg.h"
 
 #ifdef _DEBUG
@@ -25,7 +25,7 @@ CChineseChessApp::CChineseChessApp()
 	// 支持重新启动管理器
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 
-	// TODO: 在此处添加构造代码，
+	// TODO:  在此处添加构造代码，
 	// 将所有重要的初始化放置在 InitInstance 中
 }
 
@@ -51,6 +51,12 @@ BOOL CChineseChessApp::InitInstance()
 
 	CWinApp::InitInstance();
 
+	if (!AfxSocketInit())
+	{
+		AfxMessageBox(IDP_SOCKETS_INIT_FAILED);
+		return FALSE;
+	}
+
 
 	AfxEnableControlContainer();
 
@@ -66,7 +72,7 @@ BOOL CChineseChessApp::InitInstance()
 	// 最终可执行文件的大小，则应移除下列
 	// 不需要的特定初始化例程
 	// 更改用于存储设置的注册表项
-	// TODO: 应适当修改该字符串，
+	// TODO:  应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
 
@@ -75,12 +81,12 @@ BOOL CChineseChessApp::InitInstance()
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
 	{
-		// TODO: 在此放置处理何时用
+		// TODO:  在此放置处理何时用
 		//  “确定”来关闭对话框的代码
 	}
 	else if (nResponse == IDCANCEL)
 	{
-		// TODO: 在此放置处理何时用
+		// TODO:  在此放置处理何时用
 		//  “取消”来关闭对话框的代码
 	}
 	else if (nResponse == -1)
@@ -94,10 +100,6 @@ BOOL CChineseChessApp::InitInstance()
 	{
 		delete pShellManager;
 	}
-
-#ifndef _AFXDLL
-	ControlBarCleanUp();
-#endif
 
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
 	//  而不是启动应用程序的消息泵。

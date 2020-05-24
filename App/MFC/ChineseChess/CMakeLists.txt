@@ -1,9 +1,8 @@
 project(ChineseChessMfcApp)
 
 set(SOURCES_FILES
-    CDChineseChessControl.cpp
-	CDChineseChessControlEvents.cpp
-	ChineseChessApp.cpp
+	Chess.cpp
+	ChineseChess.cpp
 	ChineseChessDlg.cpp
 	stdafx.cpp
     )
@@ -13,9 +12,8 @@ set(INSTALLHEADER_FILES
 
 set(HEADER_FILES
     ${INSTALLHEADER_FILES}
-	CDChineseChessControl.h
-	CDChineseChessControlEvents.h
-	ChineseChessApp.h
+	Chess.h
+	ChineseChess.h
 	ChineseChessDlg.h
 	resource.h
 	stdafx.h

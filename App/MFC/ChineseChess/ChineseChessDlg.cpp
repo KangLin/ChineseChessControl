@@ -3,7 +3,7 @@
 //
 
 #include "stdafx.h"
-#include "ChineseChessApp.h"
+#include "ChineseChess.h"
 #include "ChineseChessDlg.h"
 #include "afxdialogex.h"
 
@@ -20,9 +20,7 @@ public:
 	CAboutDlg();
 
 // 对话框数据
-#ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
-#endif
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
@@ -32,7 +30,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 };
 
-CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
+CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
 {
 }
 
@@ -44,10 +42,13 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
+
 // CChineseChessDlg 对话框
 
+
+
 CChineseChessDlg::CChineseChessDlg(CWnd* pParent /*=NULL*/)
-	: CDialogEx(IDD_CHINESECHESS_DIALOG, pParent)
+	: CDialogEx(CChineseChessDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -55,7 +56,7 @@ CChineseChessDlg::CChineseChessDlg(CWnd* pParent /*=NULL*/)
 void CChineseChessDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_CHESS, m_Chess);
+	DDX_Control(pDX, IDC_Chess, m_Chess);
 	DDX_Control(pDX, IDC_PREVIOU, m_btnPreviou);
 	DDX_Control(pDX, IDC_NEXT, m_btnNext);
 }
@@ -101,7 +102,7 @@ BOOL CChineseChessDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	// TODO: 在此添加额外的初始化代码
+	// TODO:  在此添加额外的初始化代码
 	CRect rect;
 	GetClientRect(&rect);
 	ReSize(rect.Width(), rect.Height());
@@ -113,8 +114,7 @@ void CChineseChessDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
-		CAboutDlg dlgAbout;
-		dlgAbout.DoModal();
+		m_Chess.AboutBox();
 	}
 	else
 	{
@@ -158,9 +158,6 @@ HCURSOR CChineseChessDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-BEGIN_EVENTSINK_MAP(CChineseChessDlg, CDialogEx)
-END_EVENTSINK_MAP()
-
 void CChineseChessDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialogEx::OnSize(nType, cx, cy);
@@ -176,10 +173,10 @@ int CChineseChessDlg::ReSize(int cx, int cy)
 	m_btnPreviou.GetWindowRect(&rect2);
 	int y = cy - max(rect1.Height(), rect2.Height()) - 5;
 	m_Chess.MoveWindow(0, 0, cx, y);
-	
+
 	m_btnNext.MoveWindow(cx - rect1.Width() - 5, y + 5, rect1.Width(), rect1.Height());
 
-	m_btnPreviou.MoveWindow(cx - rect1.Width() -rect2.Width() - 5, y + 5, rect1.Width(), rect1.Height());
+	m_btnPreviou.MoveWindow(cx - rect1.Width() - rect2.Width() - 5, y + 5, rect1.Width(), rect1.Height());
 	return 0;
 }
 
@@ -188,8 +185,16 @@ void CChineseChessDlg::OnBnClickedPreviou()
 	m_Chess.PreviouStep();
 }
 
-
 void CChineseChessDlg::OnBnClickedNext()
 {
 	m_Chess.NextStep();
+}
+BEGIN_EVENTSINK_MAP(CChineseChessDlg, CDialogEx)
+	ON_EVENT(CChineseChessDlg, 1000, 1, CChineseChessDlg::EventGoChess, VTS_I2 VTS_I2 VTS_I4)
+END_EVENTSINK_MAP()
+
+
+void CChineseChessDlg::EventGoChess(short i, short j, long qz)
+{
+	
 }
