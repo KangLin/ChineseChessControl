@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef _CHESS_GAME_KL_2020_05_15_
 #define _CHESS_GAME_KL_2020_05_15_
 
@@ -10,8 +10,8 @@
 #include "chinesechess_export.h"
 
 /**
- * Æå¾Ö
- * Íê³ÉÆå¾ÖµÄ¼ÓÔØ¡¢±£´æ¡¢¸´ÅÌ
+ * æ£‹å±€
+ * å®Œæˆæ£‹å±€çš„åŠ è½½ã€ä¿å­˜ã€å¤ç›˜
  *
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
@@ -22,13 +22,13 @@ public:
 	CChessGame();
 	virtual ~CChessGame();
 
-	// µ÷ÕûÆå¾Ö´æ´¢´óĞ¡
-	int SaveStep(int i, int j, CPiece::ENUM_QiZi qz); //±£´æµ±Ç°²½
-	int RevokeStep();								  //³·»Øµ±Ç°²½
+	// è°ƒæ•´æ£‹å±€å­˜å‚¨å¤§å°
+	int SaveStep(int i, int j, CPiece::ENUM_QiZi qz); //ä¿å­˜å½“å‰æ­¥
+	int RevokeStep();								  //æ’¤å›å½“å‰æ­¥
 
-	// ÒÆ¶¯Ö¸ÕëÎ»ÖÃ
-    int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //µÃµ½ÉÏÒ»²½
-	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //µÃµ½ÏÂÒ»²½
+	// ç§»åŠ¨æŒ‡é’ˆä½ç½®
+    int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //å¾—åˆ°ä¸Šä¸€æ­¥
+	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //å¾—åˆ°ä¸‹ä¸€æ­¥
 
 	time_t GetStartTime();
 	int SetStartTime(const time_t &t);
@@ -50,21 +50,21 @@ public:
 		CHANGJU = 2
 	};
 
-	//ÎÄ¼şÍ·
+	//æ–‡ä»¶å¤´
 	struct strFileHead {
-		char szAppName[MAX_STRING_BUFFER];    //³ÌĞòÃû,ÔÚRestartÖĞÉèÖÃ
-		char szAuthor[MAX_STRING_BUFFER];     //³ÌĞò×÷Õß£º¿µÁÖ,ÔÚRestartÖĞÉèÖÃ
-		char dwVersion;                       //°æ±¾,ÔÚRestartÖĞÉèÖÃ
+		char szAppName[MAX_STRING_BUFFER];    //ç¨‹åºå,åœ¨Restartä¸­è®¾ç½®
+		char szAuthor[MAX_STRING_BUFFER];     //ç¨‹åºä½œè€…ï¼šåº·æ—,åœ¨Restartä¸­è®¾ç½®
+		char dwVersion;                       //ç‰ˆæœ¬,åœ¨Restartä¸­è®¾ç½®
 	};
 	struct strFile {
 		strFileHead head;					 
-		struct tm timeStart;				 //¿ªÊ¼ÏÂÆåµÄÊ±¼ä,ÔÚRestartÖĞÉèÖÃ
-		struct tm timeEnd;					 //½áÊøÏÂÆåµÄÊ±¼ä,ÔÚRestartÖĞÉèÖÃ
-		char szRedName[MAX_STRING_BUFFER];	 //ºì·½ÓÃ»§Ãû
-		char szBlackName[MAX_STRING_BUFFER]; //ºÚ·½ÓÃ»§Ãû
-		char GameType;						 //Æå¾ÖÀàĞÍ
-		int iBuShu;							 //²½Êı£¬ÔÚSaveChessÖĞÉèÖÃ
-		char boardLayout;					 //ÆåÅÌ²¼¾Ö(CChineseChess::ENUM_BoardLayout)
+		struct tm timeStart;				 //å¼€å§‹ä¸‹æ£‹çš„æ—¶é—´,åœ¨Restartä¸­è®¾ç½®
+		struct tm timeEnd;					 //ç»“æŸä¸‹æ£‹çš„æ—¶é—´,åœ¨Restartä¸­è®¾ç½®
+		char szRedName[MAX_STRING_BUFFER];	 //çº¢æ–¹ç”¨æˆ·å
+		char szBlackName[MAX_STRING_BUFFER]; //é»‘æ–¹ç”¨æˆ·å
+		char GameType;						 //æ£‹å±€ç±»å‹
+		int iBuShu;							 //æ­¥æ•°ï¼Œåœ¨SaveChessä¸­è®¾ç½®
+		char boardLayout;					 //æ£‹ç›˜å¸ƒå±€(CChineseChess::ENUM_BoardLayout)
 	};										 
 
 	/**
@@ -74,12 +74,12 @@ public:
 	 * @date 2020/5/19
 	 *
 	 * @param  pFileName Filename of the file.
-	 * @param  layout    ÆåÅÌ²¼¾Ö(CChineseChess::ENUM_BoardLayout)
+	 * @param  layout    æ£‹ç›˜å¸ƒå±€(CChineseChess::ENUM_BoardLayout)
 	 *
 	 * @returns An int.
 	 */
-	int SaveChessGame(const char* pFileName, char layout);	//±£´æÆå¾Ö
-    int LoadChessGame(const char* pFileName, char &layout);	//×°ÔØÆå¾Ö£¬²¢ÉèÖÃÎª½áÊø×´Ì¬
+	int SaveChessGame(const char* pFileName, char layout);	//ä¿å­˜æ£‹å±€
+    int LoadChessGame(const char* pFileName, char &layout);	//è£…è½½æ£‹å±€ï¼Œå¹¶è®¾ç½®ä¸ºç»“æŸçŠ¶æ€
 
 private:
 	struct strCODE{
@@ -91,14 +91,14 @@ private:
 	} ENUM_BianMa;
 	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
 
-	int m_nIndex;					  //×ßÆå²½Êı
-	bool m_bFuPang;					  //¸´ÅÌ±êÖ¾
-	std::vector<strCODE> m_ChessGame; //Æå¾Ö
+	int m_nIndex;					  //èµ°æ£‹æ­¥æ•°
+	bool m_bFuPang;					  //å¤ç›˜æ ‡å¿—
+	std::vector<strCODE> m_ChessGame; //æ£‹å±€
 
-	struct tm m_tmStart;			  //¿ªÊ¼Ê±¼ä
-	struct tm m_tmEnd;				  //½áÊøÊ±¼ä
-	std::string m_szRedName;		  //ºì·½Ãû
-	std::string m_szBlackName;		  //ºÚ·½Ãû
+	struct tm m_tmStart;			  //å¼€å§‹æ—¶é—´
+	struct tm m_tmEnd;				  //ç»“æŸæ—¶é—´
+	std::string m_szRedName;		  //çº¢æ–¹å
+	std::string m_szBlackName;		  //é»‘æ–¹å
 };
 
 #endif //_CHESS_GAME_KL_2020_05_15_

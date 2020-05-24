@@ -1,11 +1,11 @@
-/*******************************************************************************************************
-ÎÄ¼þÃû£ºPiece.h
-¹¦  ÄÜ£ºÆå×ÓÀà
-±àÒëÆ÷£ºVisual C++ 6.0
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2020-05-15
-Ê±  ¼ä£º15:25:10
+ï»¿/*******************************************************************************************************
+æ–‡ä»¶åï¼šPiece.h
+åŠŸ  èƒ½ï¼šæ£‹å­ç±»
+ç¼–è¯‘å™¨ï¼šVisual C++ 6.0
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2020-05-15
+æ—¶  é—´ï¼š15:25:10
 *******************************************************************************************************/
 
 #ifndef __PIECE_H_KL_2020_05_15__
@@ -22,24 +22,24 @@ public:
 	virtual ~CPiece();
 
 	/*
-	ËÄ¸öÎ»±íÊ¾Æå×Ó£¬×î×ó1Î»±íÊ¾ÑÕÉ«	
+	å››ä¸ªä½è¡¨ç¤ºæ£‹å­ï¼Œæœ€å·¦1ä½è¡¨ç¤ºé¢œè‰²	
 	*/
 	typedef enum _ENUM_QiZi {
-		RShuai = 1,             //ºìË§
-		RShi = 2,               //ºìÊË
-		RXiang = 3,             //ºìÏà
-		RMa = 4,                //ºìÂí
-		RChe = 5,               //ºì³µ
-		RPao = 6,               //ºìÅÚ
-		RBing = 7,              //ºì±ø
-		NoQiZi = 0,             //ÎÞ×Ó
-		BShuai = 0x8 | RShuai,  //ºÚË§
-		BShi = 0x08 | RShi,     //ºÚÊË
-		BXiang = 0x08 | RXiang, //ºÚÏà
-		BMa = 0x08 | RMa,       //ºÚÂí
-		BChe = 0x08 | RChe,     //ºÚ³µ
-		BPao = 0x08 | RPao,     //ºÚÅÚ
-		BBing = 0x08 | RBing    //ºÚ±ø
+		RShuai = 1,             //çº¢å¸…
+		RShi = 2,               //çº¢ä»•
+		RXiang = 3,             //çº¢ç›¸
+		RMa = 4,                //çº¢é©¬
+		RChe = 5,               //çº¢è½¦
+		RPao = 6,               //çº¢ç‚®
+		RBing = 7,              //çº¢å…µ
+		NoQiZi = 0,             //æ— å­
+		BShuai = 0x8 | RShuai,  //é»‘å¸…
+		BShi = 0x08 | RShi,     //é»‘ä»•
+		BXiang = 0x08 | RXiang, //é»‘ç›¸
+		BMa = 0x08 | RMa,       //é»‘é©¬
+		BChe = 0x08 | RChe,     //é»‘è½¦
+		BPao = 0x08 | RPao,     //é»‘ç‚®
+		BBing = 0x08 | RBing    //é»‘å…µ
 	} ENUM_QiZi;
 
 	//static ENUM_QiZi GetQiZiSide(ENUM_QiZi qz);

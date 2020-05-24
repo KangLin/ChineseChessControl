@@ -1,4 +1,4 @@
-
+ï»¿
 #include "ChessGame.h"
 #include <fstream>
 #include <time.h>
@@ -19,19 +19,19 @@ CChessGame::~CChessGame()
 {}
 
 /*******************************************************************************************************
-º¯ÊıÃû£ºQiZiBianMa
-¹¦  ÄÜ£ºÆå×Ó±à½âÂë
-²Î  Êı£º
-		 int *i£ºÆåÅÌºá×ø±ê[0-8]
-		 int *j£ºÆåÅÌ×İ×ø±ê[0-9]
-		 CPiece::ENUM_QiZi *qz£ºÆå×Ó
-		 strCODE *pCode£ºÆå×Ó±àÂë
-		 ENUM_BianMa£ºÃ¶¾Ù³£Á¿£¨BianMa:±àÂë(Ä¬ÈÏÖµ)£¬JieMa£º½âÂë£©
-·µ»ØÖµ£º
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-9-2
-Ê±  ¼ä£º7:36:32
+å‡½æ•°åï¼šQiZiBianMa
+åŠŸ  èƒ½ï¼šæ£‹å­ç¼–è§£ç 
+å‚  æ•°ï¼š
+		 int *iï¼šæ£‹ç›˜æ¨ªåæ ‡[0-8]
+		 int *jï¼šæ£‹ç›˜çºµåæ ‡[0-9]
+		 CPiece::ENUM_QiZi *qzï¼šæ£‹å­
+		 strCODE *pCodeï¼šæ£‹å­ç¼–ç 
+		 ENUM_BianMaï¼šæšä¸¾å¸¸é‡ï¼ˆBianMa:ç¼–ç (é»˜è®¤å€¼)ï¼ŒJieMaï¼šè§£ç ï¼‰
+è¿”å›å€¼ï¼š
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-9-2
+æ—¶  é—´ï¼š7:36:32
 *******************************************************************************************************/
 int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma)
 {
@@ -53,41 +53,41 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode
 }
 
 /**
- * ±£´æÒ»²½
+ * ä¿å­˜ä¸€æ­¥
  *
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  *
- * @param  int i£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,ºá×ø±ê[0-8]
- * @param  int j£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,×İ×ø±ê[0-9]
- * @param  qz Æå×Ó
+ * @param  int iï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,æ¨ªåæ ‡[0-8]
+ * @param  int jï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,çºµåæ ‡[0-9]
+ * @param  qz æ£‹å­
  *
- * @returns ³É¹¦·µ»Ø 0 £¬·ñÔò·µ»Ø·ÇÁã
+ * @returns æˆåŠŸè¿”å› 0 ï¼Œå¦åˆ™è¿”å›éé›¶
  */
 int CChessGame::SaveStep(int i, int j, CPiece::ENUM_QiZi qz)
 {
 	strCODE code;
 	QiZiBianMa(&i, &j, &qz, &code);
 
-	// µ÷ÕûÈİÆ÷´óĞ¡
+	// è°ƒæ•´å®¹å™¨å¤§å°
 	if (m_nIndex + 1 < m_ChessGame.size())
 	{
 		m_ChessGame.resize(m_nIndex + 1);
 	}
 
-	m_ChessGame.push_back(code);//±£´æµ½Æå¾ÖÖĞ
+	m_ChessGame.push_back(code);//ä¿å­˜åˆ°æ£‹å±€ä¸­
 	m_nIndex++;
 
 	return 0;
 }
 
 /**
- * ³·ÏúÒ»²½
+ * æ’¤é”€ä¸€æ­¥
  *
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  *
- * @returns ³É¹¦·µ»Ø 0 £¬·ñÔò·µ»Ø·ÇÁã
+ * @returns æˆåŠŸè¿”å› 0 ï¼Œå¦åˆ™è¿”å›éé›¶
  */
 int CChessGame::RevokeStep()
 {
@@ -99,14 +99,14 @@ int CChessGame::RevokeStep()
 }
 
 /*******************************************************************************************************
-º¯ÊıÃû£ºGetPreviouStep
-¹¦  ÄÜ£ºÉÏ²½Æå
-²Î  Êı£ºÎŞ
-·µ»ØÖµ£º×ßÆå²½Êı
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-5
-Ê±  ¼ä£º10:19:51
+å‡½æ•°åï¼šGetPreviouStep
+åŠŸ  èƒ½ï¼šä¸Šæ­¥æ£‹
+å‚  æ•°ï¼šæ— 
+è¿”å›å€¼ï¼šèµ°æ£‹æ­¥æ•°
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-5
+æ—¶  é—´ï¼š10:19:51
 *******************************************************************************************************/
 int CChessGame::GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 {
@@ -124,8 +124,8 @@ int CChessGame::GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  *
- * @param  int i£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,ºá×ø±ê[0-8]
- * @param  int j£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,×İ×ø±ê[0-9]
+ * @param  int iï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,æ¨ªåæ ‡[0-8]
+ * @param  int jï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,çºµåæ ‡[0-9]
  * @param [in,out] qz 
  * @returns The next step.
  */

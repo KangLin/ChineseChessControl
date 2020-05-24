@@ -1,12 +1,12 @@
-/*******************************************************************************************************
-ÎÄ¼þÃû£ºGoRule.cpp
-¹¦  ÄÜ£º×ßÆå¹æÔò
-Ë¼  Â·£ººìÆå·ÅÔÚÆåÅÌÉÏ·½£¬ºÚÆå·ÅÔÚÆåÅÌÏÂ·½¡£
-±àÒëÆ÷£ºVisual C++ 6.0
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º21:38:52
+ï»¿/*******************************************************************************************************
+æ–‡ä»¶åï¼šGoRule.cpp
+åŠŸ  èƒ½ï¼šèµ°æ£‹è§„åˆ™
+æ€  è·¯ï¼šçº¢æ£‹æ”¾åœ¨æ£‹ç›˜ä¸Šæ–¹ï¼Œé»‘æ£‹æ”¾åœ¨æ£‹ç›˜ä¸‹æ–¹ã€‚
+ç¼–è¯‘å™¨ï¼šVisual C++ 6.0
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š21:38:52
 *******************************************************************************************************/
 
 #include "GoRule.h"
@@ -29,20 +29,20 @@ CGoRule::~CGoRule()
 {}
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºGoChess
-¹¦  ÄÜ£ºÅÐ¶ÏÄÜ·ñ´Óµã£¨ifrom, jfrom£©µ½µã£¨ito, jto£©×ßÆå
-²Î  Êý£º
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£º½«¶ÔÃæ¡¢JIANGDUIMIAN,½Ð½«¡¢BEIJIANGJUN,½«¾ü¡¢JIANGJUN,
-        ¿ÉÒÔ×ßÆå¡¢RETURNTRUE£¬²»ÄÜ×ßÆå¡¢RETURNFALSE,    
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º22:34:32
+å‡½æ•°åï¼šGoChess
+åŠŸ  èƒ½ï¼šåˆ¤æ–­èƒ½å¦ä»Žç‚¹ï¼ˆifrom, jfromï¼‰åˆ°ç‚¹ï¼ˆito, jtoï¼‰èµ°æ£‹
+å‚  æ•°ï¼š
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå°†å¯¹é¢ã€JIANGDUIMIAN,å«å°†ã€BEIJIANGJUN,å°†å†›ã€JIANGJUN,
+        å¯ä»¥èµ°æ£‹ã€RETURNTRUEï¼Œä¸èƒ½èµ°æ£‹ã€RETURNFALSE,    
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š22:34:32
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -55,10 +55,10 @@ CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfro
 		for(int i = 0; i < 9; i++)
 			for(int j = 0; j < 10; j++)
 				goneChessBoard[i][j] = ChessBoard[i][j];
-		//¼ÙÉè×ßÆå
+		//å‡è®¾èµ°æ£‹
 		goneChessBoard[ito][jto] = goneChessBoard[ifrom][jfrom];
 		goneChessBoard[ifrom][jfrom] = CPiece::NoQiZi;
-		//ÅÐ¶Ï½«¶ÔÃæ¡¢½Ð½«¡¢½«¾ü
+		//åˆ¤æ–­å°†å¯¹é¢ã€å«å°†ã€å°†å†›
 		m_RV = JiangJun(ito, jto, goneChessBoard);
 	}
 
@@ -66,18 +66,18 @@ CGoRule::ENUM_ReturnValue CGoRule::GoChess(int ito, int jto, int ifrom, int jfro
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºChessRule
-¹¦  ÄÜ£º·Ö±ðÅÐ¶Ï¸÷Æå×Ó×ß·¨
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º23:53:57
+å‡½æ•°åï¼šChessRule
+åŠŸ  èƒ½ï¼šåˆ†åˆ«åˆ¤æ–­å„æ£‹å­èµ°æ³•
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š23:53:57
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -115,19 +115,19 @@ CGoRule::ENUM_ReturnValue CGoRule::ChessRule(int ito, int jto, int ifrom, int jf
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºCheRule
-¹¦  ÄÜ£º³µµÄ×ß·¨
-²Î  Êý£º
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º22:30:51
+å‡½æ•°åï¼šCheRule
+åŠŸ  èƒ½ï¼šè½¦çš„èµ°æ³•
+å‚  æ•°ï¼š
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š22:30:51
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -155,19 +155,19 @@ CGoRule::ENUM_ReturnValue CGoRule::CheRule(int ito, int jto, int ifrom, int jfro
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºMaRule
-¹¦  ÄÜ£ºÂíµÄ×ß·¨
-²Î  Êý£º
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º22:36:05
+å‡½æ•°åï¼šMaRule
+åŠŸ  èƒ½ï¼šé©¬çš„èµ°æ³•
+å‚  æ•°ï¼š
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š22:36:05
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -189,18 +189,18 @@ CGoRule::ENUM_ReturnValue CGoRule::MaRule(int ito, int jto, int ifrom, int jfrom
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºXiangRule
-¹¦  ÄÜ£ºÏóµÄ×ß·¨
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º22:49:54
+å‡½æ•°åï¼šXiangRule
+åŠŸ  èƒ½ï¼šè±¡çš„èµ°æ³•
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š22:49:54
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -218,18 +218,18 @@ CGoRule::ENUM_ReturnValue CGoRule::XiangRule(int ito, int jto, int ifrom, int jf
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºShiRule
-¹¦  ÄÜ£ºÊ¿µÄ×ß·¨
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º23:07:29
+å‡½æ•°åï¼šShiRule
+åŠŸ  èƒ½ï¼šå£«çš„èµ°æ³•
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š23:07:29
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -247,18 +247,18 @@ CGoRule::ENUM_ReturnValue CGoRule::ShiRule(int ito, int jto, int ifrom, int jfro
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºShuaiRule
-¹¦  ÄÜ£º½«µÄ×ß·¨
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º23:15:40
+å‡½æ•°åï¼šShuaiRule
+åŠŸ  èƒ½ï¼šå°†çš„èµ°æ³•
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š23:15:40
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -275,18 +275,18 @@ CGoRule::ENUM_ReturnValue CGoRule::ShuaiRule(int ito, int jto, int ifrom, int jf
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºPaoRule
-¹¦  ÄÜ£ºÅÚµÄ×ß·¨
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º23:24:18
+å‡½æ•°åï¼šPaoRule
+åŠŸ  èƒ½ï¼šç‚®çš„èµ°æ³•
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š23:24:18
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -349,18 +349,18 @@ CGoRule::ENUM_ReturnValue CGoRule::PaoRule(int ito, int jto, int ifrom, int jfro
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºBingRule
-¹¦  ÄÜ£º±øµÄ×ß·¨
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£ºÈç¹û¿É×ß·µ»Ø RETURNTRUE£¬·ñÔò·µ»Ø RETURNFALSE¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-1
-Ê±  ¼ä£º23:38:32
+å‡½æ•°åï¼šBingRule
+åŠŸ  èƒ½ï¼šå…µçš„èµ°æ³•
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šå¦‚æžœå¯èµ°è¿”å›ž RETURNTRUEï¼Œå¦åˆ™è¿”å›ž RETURNFALSEã€‚
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-1
+æ—¶  é—´ï¼š23:38:32
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])
 {
@@ -402,26 +402,26 @@ CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfr
 }
 
 /*******************************************************************************************************
-º¯ÊýÃû£ºJiangJun
-¹¦  ÄÜ£ºÅÐ¶Ï½«¶ÔÃæ¡¢½Ð½«¡¢½«¾ü
-²Î  Êý£º
-         int ito£ºÄ¿±êµãºá×ø±ê[0-8]
-         int jto£ºÄ¿±êµã×Ý×ø±ê[0-9]
-         int ifrom£ºÔ´µãºá×ø±ê[0-8]
-         int jfrom£ºÔ´µã×Ý×ø±ê[0-9]
-         CPiece::ENUM_QiZi ChessBoard[9][10]£ºÆåÅÌÊý×é
-·µ»ØÖµ£º·µ»Ø JIANGDUIMIAN¡¢BEIJIANGJUN¡¢JIANGJUN, RETURNTRUE
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-2
-Ê±  ¼ä£º9:02:54
+å‡½æ•°åï¼šJiangJun
+åŠŸ  èƒ½ï¼šåˆ¤æ–­å°†å¯¹é¢ã€å«å°†ã€å°†å†›
+å‚  æ•°ï¼š
+         int itoï¼šç›®æ ‡ç‚¹æ¨ªåæ ‡[0-8]
+         int jtoï¼šç›®æ ‡ç‚¹çºµåæ ‡[0-9]
+         int ifromï¼šæºç‚¹æ¨ªåæ ‡[0-8]
+         int jfromï¼šæºç‚¹çºµåæ ‡[0-9]
+         CPiece::ENUM_QiZi ChessBoard[9][10]ï¼šæ£‹ç›˜æ•°ç»„
+è¿”å›žå€¼ï¼šè¿”å›ž JIANGDUIMIANã€BEIJIANGJUNã€JIANGJUN, RETURNTRUE
+ä½œ  è€…ï¼šåº·  æž—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-2
+æ—¶  é—´ï¼š9:02:54
 *******************************************************************************************************/
 CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi ChessBoard[][10])
 {
 	int iTopShuai = 0, jTopShuai = 0;
 	int iBottomShuai = 0, jBottomShuai = 0;
 	bool bExit = false;
-	//ÕÒµ×ÏÂµÄË§µÄÎ»ÖÃ
+	//æ‰¾åº•ä¸‹çš„å¸…çš„ä½ç½®
 	for(iBottomShuai = 3; iBottomShuai < 6; iBottomShuai++)
 	{
 		for (jBottomShuai = 7; jBottomShuai < 10; jBottomShuai++)
@@ -435,7 +435,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		if (bExit) break;
 	}
 	bExit = false;
-	//ÕÒÉÏÃæµÄË§µÄÎ»ÖÃ
+	//æ‰¾ä¸Šé¢çš„å¸…çš„ä½ç½®
 	for(iTopShuai = 3; iTopShuai < 6; iTopShuai++)
 	{
 		for(jTopShuai = 0; jTopShuai < 3; jTopShuai++)
@@ -452,7 +452,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		|| !CPiece::IsShuai(ChessBoard[iBottomShuai][jBottomShuai]))
 		return JIANGBEICHI;
 
-	//ÅÐ¶Ï½«¶ÔÃæ
+	//åˆ¤æ–­å°†å¯¹é¢
 	int i = 0, j = 0;
 	if(iBottomShuai == iTopShuai)
 	{
@@ -460,7 +460,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		while(j != jBottomShuai)
 		{
 			j++;
-			//ÅÐ¶ÏÖÐ¼äÊÇ·ñÓÐ×Ó
+			//åˆ¤æ–­ä¸­é—´æ˜¯å¦æœ‰å­
 			if(CPiece::IsExistQiZi(ChessBoard[iTopShuai][j]) && j != jBottomShuai)
 			{
 				i++;
@@ -471,11 +471,11 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 			return JIANGDUIMIAN;
 	}
 
-	// ±ØÐëÊÇÑ¡ÅÐ¶Ï±»½«¾ü£¬ÔÙÅÐ¶Ï½«¾ü
-	// µ±Ç°Æå×ÓÊÇÉÏÃæÕâÒ»±ßµÄ
+	// å¿…é¡»æ˜¯é€‰åˆ¤æ–­è¢«å°†å†›ï¼Œå†åˆ¤æ–­å°†å†›
+	// å½“å‰æ£‹å­æ˜¯ä¸Šé¢è¿™ä¸€è¾¹çš„
 	if (CPiece::IsSameSide(ChessBoard[ito][jto], ChessBoard[iTopShuai][jTopShuai]))
 	{
-		//±»½«
+		//è¢«å°†
 		i = iTopShuai;
 		for (j = 0; j < 10; j++)
 			if (CPiece::IsOtherSide(ChessBoard[iTopShuai][jTopShuai], ChessBoard[i][j]))
@@ -488,7 +488,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 				if (ChessRule(iTopShuai, jTopShuai, i, j, ChessBoard) == RETURNTRUE)
 					return  BEIJIANGJUN;
 
-		//±»Âí½«
+		//è¢«é©¬å°†
 		i = iTopShuai - 1;
 		j = jTopShuai - 2;
 		if (j >= 0 && MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
@@ -529,15 +529,15 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		if (MaJiangJun(iTopShuai, jTopShuai, i, j, ChessBoard))
 			return  BEIJIANGJUN;
 
-		//½«¾ü
+		//å°†å†›
 		if (ChessRule(iBottomShuai, jBottomShuai, ito, jto, ChessBoard) == RETURNTRUE)
 			return  JIANGJUN;
 	}
 
-	//µ±Ç°Æå×ÓÊÇÏÂÃæÕâÒ»±ßµÄ
+	//å½“å‰æ£‹å­æ˜¯ä¸‹é¢è¿™ä¸€è¾¹çš„
 	if (CPiece::IsSameSide(ChessBoard[ito][jto], ChessBoard[iBottomShuai][jBottomShuai]))
 	{
-		//±»½«¾ü
+		//è¢«å°†å†›
 		i = iBottomShuai;
 		for (j = 0; j < 10; j++)
 			if (CPiece::IsOtherSide(ChessBoard[iBottomShuai][jBottomShuai], ChessBoard[i][j]))
@@ -548,7 +548,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 			if (CPiece::IsOtherSide(ChessBoard[iBottomShuai][jBottomShuai], ChessBoard[i][j]))
 				if (ChessRule(iBottomShuai, jBottomShuai, i, j, ChessBoard) == RETURNTRUE)
 					return  BEIJIANGJUN;
-		//Âí
+		//é©¬
 		i = iBottomShuai - 1;
 		j = jBottomShuai - 2;
 		if (MaJiangJun(iBottomShuai, jBottomShuai, i, j, ChessBoard))
@@ -589,7 +589,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		if (j < 10 && MaJiangJun(iTopShuai, jTopShuai, ito, jto, ChessBoard))
 			return  BEIJIANGJUN;
 
-		//½«¾ü
+		//å°†å†›
 		if (ChessRule(iTopShuai, jTopShuai, ito, jto, ChessBoard) == RETURNTRUE)
 			return  JIANGJUN;
 	}

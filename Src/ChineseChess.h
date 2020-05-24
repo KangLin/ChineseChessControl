@@ -1,7 +1,7 @@
-/**
+ï»¿/**
  * @file ChineseChess.h.
  *
- * ÖĞ¹úÏóÆåÀà
+ * ä¸­å›½è±¡æ£‹ç±»
  * 
  */
  
@@ -16,12 +16,12 @@
 #include "chinesechess_export.h"
 
 /**
- * ÖĞ¹úÏóÆåÀà
- * - ÊµÏÖÖĞ¹úÏóÆåµÄ»ù±¾¹æÔò
- * - ÊµÏÖ¸´ÅÌ  
- * - ÊµÏÖ¸´ÅÌÆå¾Ö  
+ * ä¸­å›½è±¡æ£‹ç±»
+ * - å®ç°ä¸­å›½è±¡æ£‹çš„åŸºæœ¬è§„åˆ™
+ * - å®ç°å¤ç›˜  
+ * - å®ç°å¤ç›˜æ£‹å±€  
  * 
- * ½çÃæ²¿·ÖÓÉÏàÓ¦µÄ½çÃæÅÉÉúÀàÊµÏÖÏàÓ¦µÄĞéÄâº¯Êı
+ * ç•Œé¢éƒ¨åˆ†ç”±ç›¸åº”çš„ç•Œé¢æ´¾ç”Ÿç±»å®ç°ç›¸åº”çš„è™šæ‹Ÿå‡½æ•°
  * 
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
@@ -32,7 +32,7 @@ public:
 	CChineseChess();
 	virtual ~CChineseChess();
 
-	//ÆåÅÌ²¼¾Ö:Ïê¼û¡¶ÏóÆå¾ºÈü¹æÔò(2011)¡·µÚÒ»ÕÂ µÚ1Ìõ
+	//æ£‹ç›˜å¸ƒå±€:è¯¦è§ã€Šè±¡æ£‹ç«èµ›è§„åˆ™(2011)ã€‹ç¬¬ä¸€ç«  ç¬¬1æ¡
 	typedef enum  _ENUM_BoardLayout{
 		NoQi = 0,
 		OnlyTopBlack = 1,
@@ -51,21 +51,21 @@ public:
 	 * @author KangLin(kl222@126.com)
 	 * @date 2020/5/17
 	 *
-     * @param  int i£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,ºá×ø±ê[0-8]
-     * @param  int j£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,×İ×ø±ê[0-9]
-	 * @param  bNext (Optional) Ö¸Ê¾ÊÇ·ñÊÇÔÚNextStepÖĞµ÷ÓÃ
-	 * 				 Èç¹ûÊÇÔÚ NextStep ÖĞµ÷ÓÃ£¬ÔòÊÇÔÚ¸´ÅÌ
-	 * 				 Èç¹û²»ÊÇ¡£ÔòÊÇÔÚÕı³£ÏÂÆå
+     * @param  int iï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,æ¨ªåæ ‡[0-8]
+     * @param  int jï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,çºµåæ ‡[0-9]
+	 * @param  bNext (Optional) æŒ‡ç¤ºæ˜¯å¦æ˜¯åœ¨NextStepä¸­è°ƒç”¨
+	 * 				 å¦‚æœæ˜¯åœ¨ NextStep ä¸­è°ƒç”¨ï¼Œåˆ™æ˜¯åœ¨å¤ç›˜
+	 * 				 å¦‚æœä¸æ˜¯ã€‚åˆ™æ˜¯åœ¨æ­£å¸¸ä¸‹æ£‹
 	 *
 	 * @returns True if it succeeds, false if it fails.
 	 */
-	bool GoChess(int i, int j, bool bNext = false);	//×ßÆå
+	bool GoChess(int i, int j, bool bNext = false);	//èµ°æ£‹
 
-	// ¸´ÅÌ²Ù×÷
-	int NextStep();	   //ÏÂÒ»²½
-	int PreviouStep(); //ÉÏÒ»²½
+	// å¤ç›˜æ“ä½œ
+	int NextStep();	   //ä¸‹ä¸€æ­¥
+	int PreviouStep(); //ä¸Šä¸€æ­¥
 
-	//±£´æÆå¾Ö
+	//ä¿å­˜æ£‹å±€
 	virtual int SaveChessGame(const char* pszFile);
 	virtual int LoadChessGame(const char* pszFile);
 	time_t GetStartTime();
@@ -81,42 +81,42 @@ public:
 	int EnablePromptMessage(bool bMsg = true);
 
 protected:
-	// ÏÂÁĞĞéÄâº¯ÊıÓÉ½çÃæÊµÏÖÀàÍê³É
+	// ä¸‹åˆ—è™šæ‹Ÿå‡½æ•°ç”±ç•Œé¢å®ç°ç±»å®Œæˆ
 	
-	// ÌáÊ¾Òô
+	// æç¤ºéŸ³
 	enum PROMPT_SOUND {
-		JiangJun, // ½«¾ü
-		Eat,      // ³Ô×Ó
-		Go,       // ×ßÆå
-		NoGo,     // ²»ÄÜ×ß
-		Select    // Ñ¡Æå
+		JiangJun, // å°†å†›
+		Eat,      // åƒå­
+		Go,       // èµ°æ£‹
+		NoGo,     // ä¸èƒ½èµ°
+		Select    // é€‰æ£‹
 	};
 	virtual int onPromptSound(PROMPT_SOUND sound = NoGo) = 0;
-	// ÌáÊ¾´íÎóÏûÏ¢
+	// æç¤ºé”™è¯¯æ¶ˆæ¯
 	virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val) = 0;
-	// Çå³ıÌáÊ¾¿ò
+	// æ¸…é™¤æç¤ºæ¡†
 	virtual int onCleanPrompt(int i, int j) = 0;
-	// »­ÌáÊ¾¿ò
+	// ç”»æç¤ºæ¡†
 	virtual int onDrawPrompt(int i, int j) = 0;
-	// ×ßÆåÊÂ¼ş
+	// èµ°æ£‹äº‹ä»¶
 	// @see m_ChessBoard
 	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
 
 private:
-	// ÅĞ¶Ïµ±Ç°×Å·¨ÊÇ·ñºÏ·¨
+	// åˆ¤æ–­å½“å‰ç€æ³•æ˜¯å¦åˆæ³•
 	bool IsGoChess(int i, int j);
 
-	CGoRule m_GoRule;  //ÏÂÆå¹æÔò
-	CChessGame m_Game; //Æå¾Ö
+	CGoRule m_GoRule;  //ä¸‹æ£‹è§„åˆ™
+	CChessGame m_Game; //æ£‹å±€
 
 	bool m_bPromptSound;
 	bool m_bPromptMessage;
 
 protected:
 	/*
-	    @brief ÆåÅÌÃèÊö
+	    @brief æ£‹ç›˜æè¿°
 
-	    [0][0] ------------------> i »ò x ·½Ïò
+	    [0][0] ------------------> i æˆ– x æ–¹å‘
 		      |
 			  |
 			  |
@@ -125,28 +125,28 @@ protected:
 			  |
 			 \|/                 [9][10]
 			  
-	      j »ò y ·½Ïò
+	      j æˆ– y æ–¹å‘
 
 	*/
-	CPiece::ENUM_QiZi m_ChessBoard[9][10]; //ÆåÅÌ m_ChessBoard[i][j]
-	ENUM_BoardLayout m_BoardLayout;		   //ÆåÅÌ²¼¾Ö
+	CPiece::ENUM_QiZi m_ChessBoard[9][10]; //æ£‹ç›˜ m_ChessBoard[i][j]
+	ENUM_BoardLayout m_BoardLayout;		   //æ£‹ç›˜å¸ƒå±€
 
-	//×ßÆå×´Ì¬
+	//èµ°æ£‹çŠ¶æ€
 	typedef enum _ENUM_WalkState {
 		RedReadly,
 		RedWalked,
 		BlackReadly,
 		BlackWalked
 	} ENUM_WalkState;			
-	ENUM_WalkState m_WalkState;	//×ßÆå×´Ì¬£¨ºì·½Ñ¡Æå£¬ºì·½×ßÆå£¬ºÚ·½ÏÈÆå£¬ºÚ·½×ßÆå£©
+	ENUM_WalkState m_WalkState;	//èµ°æ£‹çŠ¶æ€ï¼ˆçº¢æ–¹é€‰æ£‹ï¼Œçº¢æ–¹èµ°æ£‹ï¼Œé»‘æ–¹å…ˆæ£‹ï¼Œé»‘æ–¹èµ°æ£‹ï¼‰
 
-	// ÌáÊ¾¿ò
-	// ÉÏÒ»²½ÆåµÄÎ»ÖÃ
+	// æç¤ºæ¡†
+	// ä¸Šä¸€æ­¥æ£‹çš„ä½ç½®
 	int m_PreviouPositionX;
 	int m_PreviouPositionY;
 	int m_CurrentPositionX;
 	int m_CurrentPositionY;
-	int CleanPrompt(int &i, int &j); //ÇåÀíÖ¸¶¨Î»ÖÃµÄÌáÊ¾¿ò
+	int CleanPrompt(int &i, int &j); //æ¸…ç†æŒ‡å®šä½ç½®çš„æç¤ºæ¡†
 
 	bool IsValidPosition(int i, int j);
 

@@ -1,4 +1,4 @@
-#ifdef _AFXEXT
+ï»¿#ifdef _AFXEXT
 #include "MFC/framework.h"
 #endif
 #include "ChineseChess.h"
@@ -32,7 +32,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 	Initial();
 	m_BoardLayout = layout;
 
-	//³õÊ¼»¯¿ÕÆå¾Ö
+	//åˆå§‹åŒ–ç©ºæ£‹å±€
 	int i, j;
 	for (i = 0; i < 9; i++)
 		for (j = 0; j < 10; j++)
@@ -91,7 +91,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 bool CChineseChess::IsValidPosition(int i, int j)
 {
 	if (i < 0 || i > 9 - 1 || j < 0 || j > 10 - 1)
-	{   //³ö½ç
+	{   //å‡ºç•Œ
 		return false;
 	}
 	return true;
@@ -110,15 +110,15 @@ int CChineseChess::EnablePromptMessage(bool bMsg)
 }
 
 /**
- * ÇåÀíÌáÊ¾£¬²¢°ÑÌáÊ¾¿òÎ»ÖÃÉèÖÃ³ÉÎŞĞ§Öµ
+ * æ¸…ç†æç¤ºï¼Œå¹¶æŠŠæç¤ºæ¡†ä½ç½®è®¾ç½®æˆæ— æ•ˆå€¼
  *
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  *
- * @param  int i£ºµ±Ç°ÌáÊ¾¿òµÄÎ»ÖÃ,ºá×ø±ê[0-8]
- * @param  int j£ºµ±Ç°ÌáÊ¾¿òµÄÎ»ÖÃ,×İ×ø±ê[0-9]
+ * @param  int iï¼šå½“å‰æç¤ºæ¡†çš„ä½ç½®,æ¨ªåæ ‡[0-8]
+ * @param  int jï¼šå½“å‰æç¤ºæ¡†çš„ä½ç½®,çºµåæ ‡[0-9]
  *
- * @returns An int. 0£º³É¹¦£»·ÇÁã£ºÊ§°Ü
+ * @returns An int. 0ï¼šæˆåŠŸï¼›éé›¶ï¼šå¤±è´¥
  */
 int CChineseChess::CleanPrompt(int &i, int &j)
 {
@@ -132,32 +132,32 @@ int CChineseChess::CleanPrompt(int &i, int &j)
 }
 
 /*******************************************************************************************************
-º¯ÊıÃû£ºGoChess
-¹¦  ÄÜ£º×ßÆå
-²Î  Êı£º
-		 int i£ºÆåÅÌ¸ñºá×ø±ê[0-8]
-		 int j£ºÆåÅÌ¸ñ×İ×ø±ê[0-9]
-		 bool bNext£º TRUE£º¸´ÅÌ£»FALSE£ºÕı³£ÏÂÆå
-		              Çø±ğÊÇ£ºÕı³£ÏÂÆå£¬±£´æ×Å·¨µ½Æå¾ÖÖĞ¡£
-					          ¸´ÅÌÔò²»±£´æ
-·µ»ØÖµ£º³É¹¦·µ»Øtrue£¬·ñÔò·µ»Øfalse¡£
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-5
-Ê±  ¼ä£º10:17:56
+å‡½æ•°åï¼šGoChess
+åŠŸ  èƒ½ï¼šèµ°æ£‹
+å‚  æ•°ï¼š
+		 int iï¼šæ£‹ç›˜æ ¼æ¨ªåæ ‡[0-8]
+		 int jï¼šæ£‹ç›˜æ ¼çºµåæ ‡[0-9]
+		 bool bNextï¼š TRUEï¼šå¤ç›˜ï¼›FALSEï¼šæ­£å¸¸ä¸‹æ£‹
+		              åŒºåˆ«æ˜¯ï¼šæ­£å¸¸ä¸‹æ£‹ï¼Œä¿å­˜ç€æ³•åˆ°æ£‹å±€ä¸­ã€‚
+					          å¤ç›˜åˆ™ä¸ä¿å­˜
+è¿”å›å€¼ï¼šæˆåŠŸè¿”å›trueï¼Œå¦åˆ™è¿”å›falseã€‚
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-5
+æ—¶  é—´ï¼š10:17:56
 *******************************************************************************************************/
 bool CChineseChess::GoChess(int i, int j, bool bNext)
 {
 	if (IsGoChess(i, j))
-	{ //×ßÆå
+	{ //èµ°æ£‹
 
 		if (!bNext)
 		{
-			onGoChess(i, j, m_ChessBoard[i][j]);	   //ÊÂ¼ş
-			m_Game.SaveStep(i, j, m_ChessBoard[i][j]); //±£´æµ½Æå¾ÖÖĞ
+			onGoChess(i, j, m_ChessBoard[i][j]);	   //äº‹ä»¶
+			m_Game.SaveStep(i, j, m_ChessBoard[i][j]); //ä¿å­˜åˆ°æ£‹å±€ä¸­
 		}
 		
-		// ÏÔÊ¾ÌáÊ¾¿ò
+		// æ˜¾ç¤ºæç¤ºæ¡†
 		switch (m_WalkState)
 		{
 		case RedReadly:
@@ -212,7 +212,7 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 		}
 		return true;
 	}
-	else //²»ÄÜ×ß
+	else //ä¸èƒ½èµ°
 	{
 		if (m_bPromptSound) onPromptSound();
 		return false;
@@ -220,22 +220,22 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 }
 
 /*******************************************************************************************************
-º¯ÊıÃû£ºIsGoChess
-¹¦  ÄÜ£ºÅĞ¶ÏÄÜ·ñ×ßÆå
-²Î  Êı£º
-		 int i£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,ºá×ø±ê[0-8]
-		 int j£ºµ±Ç°ÏÂÆåµÄÎ»ÖÃ,×İ×ø±ê[0-9]
-		 CPiece::ENUM_QiZi qz£ºµ±Ç°Æå×Ó
-·µ»ØÖµ£ºÈç¹û¿ÉÒÔÏÂÆå·µ»Ø true,·ñÔò·µ»Ø false
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-9-26
-Ê±  ¼ä£º10:47:40
+å‡½æ•°åï¼šIsGoChess
+åŠŸ  èƒ½ï¼šåˆ¤æ–­èƒ½å¦èµ°æ£‹
+å‚  æ•°ï¼š
+		 int iï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,æ¨ªåæ ‡[0-8]
+		 int jï¼šå½“å‰ä¸‹æ£‹çš„ä½ç½®,çºµåæ ‡[0-9]
+		 CPiece::ENUM_QiZi qzï¼šå½“å‰æ£‹å­
+è¿”å›å€¼ï¼šå¦‚æœå¯ä»¥ä¸‹æ£‹è¿”å› true,å¦åˆ™è¿”å› false
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-9-26
+æ—¶  é—´ï¼š10:47:40
 *******************************************************************************************************/
 bool CChineseChess::IsGoChess(int i, int j)
 {
 	if(!IsValidPosition(i, j))
-	{   //³ö½ç
+	{   //å‡ºç•Œ
 		return false;
 	}
 
@@ -244,32 +244,32 @@ bool CChineseChess::IsGoChess(int i, int j)
 	case RedReadly:
 		return CPiece::IsRedQiZi(m_ChessBoard[i][j]) ? true : false;
 	case RedWalked:
-		//±¾·½µÄÆå,ÖØĞÂÑ¡È¡
+		//æœ¬æ–¹çš„æ£‹,é‡æ–°é€‰å–
 		if (CPiece::IsRedQiZi(m_ChessBoard[i][j]))
 		{
 			m_Game.RevokeStep();
 			m_WalkState = RedReadly;
 			return true;
 		}
-		//ÅĞ¶ÏÄÜ·ñ×ßÆå
+		//åˆ¤æ–­èƒ½å¦èµ°æ£‹
 		switch (m_GoRule.GoChess(i, j, m_PreviouPositionX, m_PreviouPositionY, m_ChessBoard))
 		{
-		case CGoRule::JIANGJUN://½«¾ü
+		case CGoRule::JIANGJUN://å°†å†›
 			if(m_bPromptSound) onPromptSound(JiangJun);
 			return true;
-		case CGoRule::RETURNTRUE://¿ÉÒÔ×ßÆå
+		case CGoRule::RETURNTRUE://å¯ä»¥èµ°æ£‹
 			if (m_bPromptSound)
 			{
 				m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			}
 			return true;
-		case CGoRule::BEIJIANGJUN://±»½«
+		case CGoRule::BEIJIANGJUN://è¢«å°†
 			if(m_bPromptMessage) onPromptMessage(CGoRule::BEIJIANGJUN);
 			return false;
-		case CGoRule::JIANGDUIMIAN://½«¶ÔÃæ
+		case CGoRule::JIANGDUIMIAN://å°†å¯¹é¢
 			if (m_bPromptMessage) onPromptMessage(CGoRule::JIANGDUIMIAN);
 			return false;
-		case CGoRule::RETURNFALSE://·Ç·¨×ßÆå
+		case CGoRule::RETURNFALSE://éæ³•èµ°æ£‹
 		default:
 			return false;
 		}
@@ -278,32 +278,32 @@ bool CChineseChess::IsGoChess(int i, int j)
 	case BlackReadly:
 		return CPiece::IsBlackQiZi(m_ChessBoard[i][j]) ? true : false;
 	case BlackWalked:
-		//±¾·½µÄÆå,ÖØĞÂÑ¡È¡
+		//æœ¬æ–¹çš„æ£‹,é‡æ–°é€‰å–
 		if (CPiece::IsBlackQiZi(m_ChessBoard[i][j]))
 		{
 			m_Game.RevokeStep();
 			m_WalkState = BlackReadly;
 			return true;
 		}
-		//ÅĞ¶ÏÄÜ·ñ×ßÆå
+		//åˆ¤æ–­èƒ½å¦èµ°æ£‹
 		switch (m_GoRule.GoChess(i, j, m_PreviouPositionX, m_PreviouPositionY, m_ChessBoard))
 		{
-		case CGoRule::JIANGJUN://½«¾ü
+		case CGoRule::JIANGJUN://å°†å†›
 			if (m_bPromptSound) onPromptSound(JiangJun);
 			return true;
-		case CGoRule::RETURNTRUE://¿ÉÒÔ×ßÆå
+		case CGoRule::RETURNTRUE://å¯ä»¥èµ°æ£‹
 			if (m_bPromptSound)
 			{
 				m_ChessBoard[i][j] ? onPromptSound(Eat) : onPromptSound(Go);
 			}
 			return true;
-		case CGoRule::BEIJIANGJUN://±»½«
+		case CGoRule::BEIJIANGJUN://è¢«å°†
 			if (m_bPromptMessage) onPromptMessage(CGoRule::BEIJIANGJUN);
 			return false;
-		case CGoRule::JIANGDUIMIAN://½«¶ÔÃæ
+		case CGoRule::JIANGDUIMIAN://å°†å¯¹é¢
 			if (m_bPromptMessage) onPromptMessage(CGoRule::JIANGDUIMIAN);
 			return false;
-		case CGoRule::RETURNFALSE://·Ç·¨×ßÆå
+		case CGoRule::RETURNFALSE://éæ³•èµ°æ£‹
 		default:
 			return false;
 		}
@@ -315,14 +315,14 @@ bool CChineseChess::IsGoChess(int i, int j)
 }
 
 /*******************************************************************************************************
-º¯ÊıÃû£ºNextStep
-¹¦  ÄÜ£ºÏÂ²½Æå
-²Î  Êı£ºÎŞ
-·µ»ØÖµ£º×ßÆå²½Êı
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-5
-Ê±  ¼ä£º10:19:33
+å‡½æ•°åï¼šNextStep
+åŠŸ  èƒ½ï¼šä¸‹æ­¥æ£‹
+å‚  æ•°ï¼šæ— 
+è¿”å›å€¼ï¼šèµ°æ£‹æ­¥æ•°
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-5
+æ—¶  é—´ï¼š10:19:33
 *******************************************************************************************************/
 int CChineseChess::NextStep()
 {
@@ -341,14 +341,14 @@ int CChineseChess::NextStep()
 }
 
 /*******************************************************************************************************
-º¯ÊıÃû£ºPreviouStep
-¹¦  ÄÜ£ºÉÏ²½Æå
-²Î  Êı£ºÎŞ
-·µ»ØÖµ£º×ßÆå²½Êı
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-5
-Ê±  ¼ä£º10:19:51
+å‡½æ•°åï¼šPreviouStep
+åŠŸ  èƒ½ï¼šä¸Šæ­¥æ£‹
+å‚  æ•°ï¼šæ— 
+è¿”å›å€¼ï¼šèµ°æ£‹æ­¥æ•°
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-5
+æ—¶  é—´ï¼š10:19:51
 *******************************************************************************************************/
 int CChineseChess::PreviouStep()
 {

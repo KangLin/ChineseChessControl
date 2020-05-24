@@ -1,11 +1,11 @@
-/*******************************************************************************************************
-ÎÄ¼şÃû£ºGoRule.h
-¹¦  ÄÜ£º×ßÆå¹æÔò
-±àÒëÆ÷£ºVisual C++ 6.0
-×÷  Õß£º¿µ  ÁÖ
-°æ  ±¾£º1.0.0.1
-ÈÕ  ÆÚ£º2004-10-18
-Ê±  ¼ä£º9:55:40
+ï»¿/*******************************************************************************************************
+æ–‡ä»¶åï¼šGoRule.h
+åŠŸ  èƒ½ï¼šèµ°æ£‹è§„åˆ™
+ç¼–è¯‘å™¨ï¼šVisual C++ 6.0
+ä½œ  è€…ï¼šåº·  æ—
+ç‰ˆ  æœ¬ï¼š1.0.0.1
+æ—¥  æœŸï¼š2004-10-18
+æ—¶  é—´ï¼š9:55:40
 *******************************************************************************************************/
 
 #if !defined(AFX_GORULE_H__D75E7189_0187_471C_8E8D_237321CC4D18__INCLUDED_)
@@ -24,37 +24,37 @@ public:
 	virtual ~CGoRule();
     
 	typedef enum _ENUM_ReturnValue {
-		RETURNFALSE,    //´íÎó£¬²»ÄÜ×ß
-		BEIJIANGJUN,    //±»½«¾ü
-		JIANGDUIMIAN,   //½«¶ÔÃæ
-		JIANGJUN,       //½«¾ü
-		JIANGBEICHI,    //½«ÒÑ±»³Ô
-		RETURNTRUE      //¿ÉÒÔ×ßÆå
+		RETURNFALSE,    //é”™è¯¯ï¼Œä¸èƒ½èµ°
+		BEIJIANGJUN,    //è¢«å°†å†›
+		JIANGDUIMIAN,   //å°†å¯¹é¢
+		JIANGJUN,       //å°†å†›
+		JIANGBEICHI,    //å°†å·²è¢«åƒ
+		RETURNTRUE      //å¯ä»¥èµ°æ£‹
 	} ENUM_ReturnValue;
 	ENUM_ReturnValue GoChess(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
 
 private:
 	ENUM_ReturnValue ChessRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]); 
 
-	// ±ø¹æÔò
+	// å…µè§„åˆ™
 	ENUM_ReturnValue BingRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-	// ÅÚ¹æÔò
+	// ç‚®è§„åˆ™
 	ENUM_ReturnValue PaoRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-	// Ë§¹æÔò
+	// å¸…è§„åˆ™
 	ENUM_ReturnValue ShuaiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-	// ÊË¹æÔò
+	// ä»•è§„åˆ™
 	ENUM_ReturnValue ShiRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-	// Ïà¹æÔò
+	// ç›¸è§„åˆ™
 	ENUM_ReturnValue XiangRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-	// Âí¹æÔò
+	// é©¬è§„åˆ™
 	ENUM_ReturnValue MaRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-	// ³µ¹æÔò
+	// è½¦è§„åˆ™
 	ENUM_ReturnValue CheRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
 
-	// ½«¾ü
+	// å°†å†›
 	ENUM_ReturnValue JiangJun(int ito, int jto, CPiece::ENUM_QiZi ChessBoard[][10]);
 
-	// Âí½«¾ü
+	// é©¬å°†å†›
 	bool MaJiangJun(int iShuai, int jShuai, int iMa, int jMa, CPiece::ENUM_QiZi ChessBoard[][10]);
 };
 

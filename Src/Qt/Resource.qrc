@@ -1,0 +1,24 @@
+<RCC>
+<qresource prefix="/image">
+<file alias="BCHE">../Res/Picture/BCHE.BMP</file>
+<file alias="BMA">../Res/Picture/BMA.BMP</file>
+<file alias="BPAO">../Res/Picture/bpao.bmp</file>
+<file alias="BSHI">../Res/Picture/Bshi.BMP</file>
+<file alias="BSHUAI">../Res/Picture/BShuai.bmp</file>
+<file alias="BXIANG">../Res/Picture/BXIANG.BMP</file>
+<file alias="BZU">../Res/Picture/BZU.BMP</file>
+<file alias="CHU">../Res/Picture/CHU.BMP</file>
+<file alias="HE">../Res/Picture/HE.BMP</file>
+<file alias="HAN">../Res/Picture/HAN.BMP</file>
+<file alias="JIE">../Res/Picture/JIE.BMP</file>
+<file alias="KL">../Res/Picture/KL.BMP</file>
+<file alias="QIPANG">../Res/Picture/QIPANG.BMP</file>
+<file alias="RBING">../Res/Picture/RBING.BMP</file>
+<file alias="RCHE">../Res/Picture/RCHE.BMP</file>
+<file alias="RMA">../Res/Picture/RMA.BMP</file>
+<file alias="RPAO">../Res/Picture/RPAO.BMP</file>
+<file alias="RSHI">../Res/Picture/RSHI.BMP</file>
+<file alias="RSHUAI">../Res/Picture/RSHUAI.BMP</file>
+<file alias="RXIANG">../Res/Picture/RXIANG.BMP</file>
+</qresource>
+</RCC>
