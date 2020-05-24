@@ -99,7 +99,7 @@ protected:
 	// 画提示框
 	virtual int onDrawPrompt(int i, int j) = 0;
 	// 走棋事件
-	// @see 棋盘描述
+	// @see m_ChessBoard
 	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
 
 private:

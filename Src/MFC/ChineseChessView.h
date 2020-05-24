@@ -9,7 +9,21 @@ class AFX_EXT_CLASS CChineseChessHandler
 public:
 	CChineseChessHandler() {}
 	~CChineseChessHandler() {}
-
+	
+	/**
+	 * Executes the go chess action
+	 *
+	 * @author KangLin(kl222@126.com)
+	 * @date 2020/5/24
+	 *
+	 * @param  int i：当前下棋的位置,横坐标[0-8]
+     * @param  int j：当前下棋的位置,纵坐标[0-9]
+	 * @param  CPiece::ENUM_QiZi chess：棋子
+	 *
+	 * @returns An int.
+	 *
+	 * @see CPiece::ENUM_QiZi
+	 */
 	virtual int OnGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
 };
 
