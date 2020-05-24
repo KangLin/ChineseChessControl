@@ -37,28 +37,26 @@ DEBIAN_VERSION=`echo ${VERSION}|cut -d "v" -f 2`
 sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/README*.md
 MSVC_VERSION="`echo ${DEBIAN_VERSION} | sed "s/\./,/g"`,0"
 
-sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControl.rc
-sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControl.rc
-sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControl.rc
-sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControl.rc
-sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControl.rc
+sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
+sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
+sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
+sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
 
-sed -i "s/\"ChineseChessControl.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessControl.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControlCtrl.cpp
-sed -i "s/\"ChineseChessControl.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessControl.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessControlPropPage.cpp
+sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
+sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
+sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
+sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
 
-sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
-sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
-sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
-sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
-sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/ChineseChessControl.rc
+sed -i "s/\"ChineseChessActiveX.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveX.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveXCtrl.cpp
+sed -i "s/\"ChineseChessActiveXPropPage.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveXPropPage.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveXPropPage.cpp
 
 sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
 sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
 sed -i "s/VALUE \"FileVersion\",.*/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
 sed -i "s/VALUE \"ProductVersion\",.*/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
 sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
-
-sed -i "s/\"ChineseChessControl.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessControl.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/XQCtl.cpp
 
 if [ -n "$1" ]; then
     git add .
