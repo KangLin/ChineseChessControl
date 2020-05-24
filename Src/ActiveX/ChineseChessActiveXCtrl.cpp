@@ -59,7 +59,7 @@ END_PROPPAGEIDS(CChineseChessActiveXCtrl)
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessActiveXCtrl, "ChineseChessActiveX.1.0.0",
+IMPLEMENT_OLECREATE_EX(CChineseChessActiveXCtrl, "ChineseChessActiveX.1.2.0",
 	0xe4e060cb,0xa3aa,0x4278,0xb1,0xed,0xce,0x50,0x20,0xc4,0x2e,0xc7)
 
 // 键入库 ID 和版本
