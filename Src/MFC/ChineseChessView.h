@@ -3,6 +3,16 @@
 #include "ChineseChess.h"
 // CChineseChessView
 
+
+class AFX_EXT_CLASS CChineseChessHandler
+{
+public:
+	CChineseChessHandler() {}
+	~CChineseChessHandler() {}
+
+	virtual int OnGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
+};
+
 class AFX_EXT_CLASS CChineseChessView : public CView, public CChineseChess
 {
 	DECLARE_DYNAMIC(CChineseChessView)
@@ -16,6 +26,8 @@ public:
 	virtual int LoadChessGame(LPCTSTR pszFile);
 	virtual int SetRedName(LPCTSTR pszName);
 	virtual int SetBlackName(LPCTSTR pszName);
+
+	int SetChineseChessHandler(CChineseChessHandler* handler);
 
 protected:
 	DECLARE_MESSAGE_MAP()
@@ -79,6 +91,8 @@ private:
 
 	BOOL SetQiPang(int width, int height);
 	BOOL PromptSound(LPCTSTR ID = NULL);
+
+	CChineseChessHandler* m_pGoChessHandler;
 };
 
 

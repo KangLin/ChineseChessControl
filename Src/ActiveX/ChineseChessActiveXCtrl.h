@@ -12,6 +12,19 @@
 // CChineseChessActiveXCtrl : 请参阅 ChineseChessActiveXCtrl.cpp 了解实现。
 
 #include "../MFC/ChineseChessView.h"
+class CChineseChessActiveXCtrl;
+class CChineseChessActiveXHandler : public CChineseChessHandler
+{
+public:
+	CChineseChessActiveXHandler(CChineseChessActiveXCtrl* pAcitveX)
+	{
+		m_pActiveX = pAcitveX;
+	}
+	virtual int OnGoChess(int i, int j, CPiece::ENUM_QiZi chess);
+
+private:
+	CChineseChessActiveXCtrl* m_pActiveX;
+};
 
 /**
  * 中国象棋 ActiveX 控件的界面实现类
@@ -78,9 +91,16 @@ protected:
 // 事件映射
 	DECLARE_EVENT_MAP()
 
+public:
+	void EventGoChess(SHORT i, SHORT j, LONG qz)
+	{
+		FireEvent(eventidEventGoChess, EVENT_PARAM(VTS_I2 VTS_I2 VTS_I4), i, j, qz);
+	}
+
 // 调度和事件 ID
 public:
 	enum {
+		eventidEventGoChess = 1L,
 		dispidEndTime = 14,
 		dispidStartTime = 13,
 		dispidBlackName = 12L,
@@ -99,5 +119,7 @@ public:
 
 private:
 	CChineseChessView* m_pChess;
+
+	CChineseChessActiveXHandler* m_pHandler;
 };
 

@@ -47,6 +47,7 @@ END_DISPATCH_MAP()
 // 事件映射
 
 BEGIN_EVENT_MAP(CChineseChessActiveXCtrl, COleControl)
+	EVENT_CUSTOM_ID("EventGoChess", eventidEventGoChess, EventGoChess, VTS_I2 VTS_I2 VTS_I4)
 END_EVENT_MAP()
 
 // 属性页
@@ -108,20 +109,21 @@ BOOL CChineseChessActiveXCtrl::CChineseChessActiveXCtrlFactory::UpdateRegistry(B
 		return AfxOleUnregisterClass(m_clsid, m_lpszProgID);
 }
 
-
 // CChineseChessActiveXCtrl::CChineseChessActiveXCtrl - 构造函数
 CChineseChessActiveXCtrl::CChineseChessActiveXCtrl()
 {
 	InitializeIIDs(&IID_DChineseChessActiveX, &IID_DChineseChessActiveXEvents);
 
 	m_pChess = NULL;
+	m_pHandler = new CChineseChessActiveXHandler(this);
 }
 
 // CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl - 析构函数
 
 CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl()
 {
-	// TODO:  在此清理控件的实例数据。
+	if (m_pHandler)
+		delete m_pHandler;
 }
 
 // CChineseChessActiveXCtrl::DoPropExchange - 持久性支持
@@ -322,6 +324,8 @@ int CChineseChessActiveXCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	GetClientRect(rect);
 	m_pChess->Create(NULL, _T("Chinese chess"), WS_CHILD, rect, this, IDV_CHINESE_CHESS);
 	m_pChess->ShowWindow(SW_SHOW);
+
+	m_pChess->SetChineseChessHandler(m_pHandler);
 	return 0;
 }
 
@@ -339,3 +343,9 @@ void CChineseChessActiveXCtrl::OnSize(UINT nType, int cx, int cy)
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
+int CChineseChessActiveXHandler::OnGoChess(int i, int j, CPiece::ENUM_QiZi chess)
+{
+	if(m_pActiveX)
+		m_pActiveX->EventGoChess(i, j, chess);
+	return 0;
+}

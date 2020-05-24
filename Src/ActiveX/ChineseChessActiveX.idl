@@ -85,6 +85,7 @@ library ChineseChessActiveXLib
 			//  事件接口没有任何属性
 
 		methods:
+			[id(1)] void EventGoChess(SHORT i, SHORT j, LONG qz);
 	};
 
 	//  CChineseChessActiveXCtrl 的类信息

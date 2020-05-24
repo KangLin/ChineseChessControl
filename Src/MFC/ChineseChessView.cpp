@@ -23,6 +23,8 @@ IMPLEMENT_DYNAMIC(CChineseChessView, CView)
 
 CChineseChessView::CChineseChessView()
 {
+	m_pGoChessHandler = nullptr;
+
 	m_QiPangColor = RGB(0, 0, 0);
 	m_TiShiBoxColor = RGB(0, 255, 0);
 
@@ -107,8 +109,7 @@ CChineseChessView::CChineseChessView()
 }
 
 CChineseChessView::~CChineseChessView()
-{
-}
+{}
 
 BEGIN_MESSAGE_MAP(CChineseChessView, CView)
 	ON_WM_LBUTTONUP()
@@ -222,6 +223,14 @@ int CChineseChessView::onDrawPrompt(int i, int j)
 
 int CChineseChessView::onGoChess(int i, int j, CPiece::ENUM_QiZi chess)
 {
+	if (m_pGoChessHandler)
+		m_pGoChessHandler->OnGoChess(i, j, chess);
+	return 0;
+}
+
+int CChineseChessView::SetChineseChessHandler(CChineseChessHandler* handler)
+{
+	m_pGoChessHandler = handler;
 	return 0;
 }
 
