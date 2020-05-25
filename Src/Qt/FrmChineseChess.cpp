@@ -1,5 +1,7 @@
 #include "FrmChineseChess.h"
 #include "ui_FrmChineseChess.h"
+#include "DlgAbout/DlgAbout.h"
+
 #include <QResizeEvent>
 #include <QMouseEvent>
 #include <QPoint>
@@ -91,8 +93,6 @@ int CFrmChineseChess::onPromptSound(PROMPT_SOUND sound)
 	case Select:
 		QSound::play(":/sound/SELECT");
 		break;
-	default:
-		break;
 	}
 
 	return 0;
@@ -104,12 +104,12 @@ int CFrmChineseChess::onPromptMessage(CGoRule::ENUM_ReturnValue val)
     switch (val)
 	{
 	case CGoRule::BEIJIANGJUN:
-		msg.setText("这步不能走，否则会输棋！");
-        msg.setWindowTitle("被将军");
+		msg.setText(tr("This step cannot be taken, otherwise you will lose"));
+        msg.setWindowTitle(tr("checked"));
 		break;
 	case CGoRule::JIANGDUIMIAN:
-		msg.setText("这步不能走，否则会输棋！");
-        msg.setWindowTitle("将对面");
+		msg.setText(tr("This step cannot be taken, otherwise you will lose"));
+        msg.setWindowTitle(tr("Opposite"));
 		break;
 	}
     msg.exec();
@@ -118,6 +118,8 @@ int CFrmChineseChess::onPromptMessage(CGoRule::ENUM_ReturnValue val)
 
 int CFrmChineseChess::onCleanPrompt(int i, int j)
 {
+    Q_UNUSED(i)
+    Q_UNUSED(j)
 	int nRet = 0;
     this->update();
 	return nRet;
@@ -125,6 +127,8 @@ int CFrmChineseChess::onCleanPrompt(int i, int j)
 
 int CFrmChineseChess::onDrawPrompt(int i, int j)
 {
+    Q_UNUSED(i)
+    Q_UNUSED(j)
 	int nRet = 0;
     this->update();
 	return nRet;
@@ -134,6 +138,12 @@ int CFrmChineseChess::onGoChess(int i, int j, CPiece::ENUM_QiZi chess)
 {
     emit sigGoChess(i, j, chess);
 	return 0;
+}
+
+void CFrmChineseChess::AboutBox()
+{
+    CDlgAbout about(this);
+    about.exec();
 }
 
 QDateTime CFrmChineseChess::GetStartTime()

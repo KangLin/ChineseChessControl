@@ -7,6 +7,7 @@
 #include <QDateTime>
 
 #include "ChineseChess.h"
+//#include "chinesechessqt_export.h"
 
 namespace Ui {
 class CFrmChineseChess;
@@ -22,7 +23,7 @@ class CFrmChineseChess : public QWidget, public CChineseChess
     
 public:
     explicit CFrmChineseChess(QWidget *parent = nullptr);
-    virtual ~CFrmChineseChess();
+    virtual ~CFrmChineseChess() override;
     
     QDateTime GetStartTime();
 	int SetStartTime(const QDateTime &t);
@@ -33,18 +34,20 @@ public:
     QString GetBlackName();
     int SetBlackName(const QString &name);
     
+    void AboutBox();
+    
 protected:
 	virtual void mouseReleaseEvent(QMouseEvent *event) override;
 	virtual void paintEvent(QPaintEvent *event) override;
 	virtual void resizeEvent(QResizeEvent *event) override;
 
 protected:
-	virtual int onPromptSound(PROMPT_SOUND sound);
-	virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val);
+	virtual int onPromptSound(PROMPT_SOUND sound) override;
+	virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val) override;
 
-	virtual int onCleanPrompt(int i, int j);
-	virtual int onDrawPrompt(int i, int j);
-	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess);
+	virtual int onCleanPrompt(int i, int j) override;
+	virtual int onDrawPrompt(int i, int j) override;
+	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) override;
 
 Q_SIGNALS:
     void sigGoChess(int i, int j, CPiece::ENUM_QiZi chess);
