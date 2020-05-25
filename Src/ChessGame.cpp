@@ -2,6 +2,7 @@
 #include "ChessGame.h"
 #include <fstream>
 #include <time.h>
+#include <string.h>
 
 #if defined( _DEBUG) && defined(_MSC_VER)
 #undef THIS_FILE
@@ -143,16 +144,16 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 {
 	if (!szFile) return -1;
 	strFile head;
-	strcpy_s(head.head.szAppName, APPNAME);
-	strcpy_s(head.head.szAuthor, AUTHOR);
+	strncpy(head.head.szAppName, APPNAME, MAX_STRING_BUFFER);
+	strncpy(head.head.szAuthor, AUTHOR, MAX_STRING_BUFFER);
 	head.head.dwVersion = 1;
 	head.iBuShu = m_ChessGame.size();
 	head.boardLayout = layout;
 
 	head.timeStart = m_tmStart;
 	head.timeEnd = m_tmEnd;
-	strcpy_s(head.szRedName, m_szRedName.c_str());
-	strcpy_s(head.szBlackName, m_szBlackName.c_str());
+	strncpy(head.szRedName, m_szRedName.c_str(), MAX_STRING_BUFFER);
+	strncpy(head.szBlackName, m_szBlackName.c_str(), MAX_STRING_BUFFER);
 
 	std::ofstream out(szFile);
 	if (!out.is_open())
@@ -219,7 +220,11 @@ time_t CChessGame::GetStartTime()
 
 int CChessGame::SetStartTime(const time_t& t)
 {
+#ifdef WIN32
 	localtime_s(&m_tmStart, &t);
+#else
+    m_tmStart = *localtime(&t);
+#endif
 	return 0;
 }
 
@@ -230,7 +235,11 @@ time_t CChessGame::GetEndTime()
 
 int CChessGame::SetEndTime(const time_t& t)
 {
+#ifdef WIN32
 	localtime_s(&m_tmEnd, &t);
+#else
+    m_tmEnd = *localtime(&t);
+#endif
 	return 0;
 }
 

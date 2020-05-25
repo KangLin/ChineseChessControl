@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#include "common.h"
+#include "Common.h"
 
 #if defined( _DEBUG) && defined(_MSC_VER)
 #undef THIS_FILE
