@@ -3,6 +3,8 @@
 #include <QResizeEvent>
 #include <QMouseEvent>
 #include <QPoint>
+#include <QMessageBox>
+#include <QSound>
 
 CFrmChineseChess::CFrmChineseChess(QWidget *parent) :
     QWidget(parent),
@@ -56,7 +58,6 @@ void CFrmChineseChess::mouseReleaseEvent(QMouseEvent *event)
 	{
 
 	}
-	this->update();
 }
 
 void CFrmChineseChess::paintEvent(QPaintEvent *event)
@@ -73,32 +74,111 @@ void CFrmChineseChess::resizeEvent(QResizeEvent *event)
 
 int CFrmChineseChess::onPromptSound(PROMPT_SOUND sound)
 {
+	switch (sound)
+	{
+	case JiangJun:
+		QSound::play(":/sound/CHECK");
+		break;
+	case Eat:
+		QSound::play(":/sound/EAT");
+		break;
+	case Go:
+		QSound::play(":/sound/GO");
+		break;
+	case NoGo:
+		QSound::play(":/sound/DEAD");
+		break;
+	case Select:
+		QSound::play(":/sound/SELECT");
+		break;
+	default:
+		break;
+	}
+
 	return 0;
 }
 
 int CFrmChineseChess::onPromptMessage(CGoRule::ENUM_ReturnValue val)
 {
-    
+    QMessageBox msg(this);
+    switch (val)
+	{
+	case CGoRule::BEIJIANGJUN:
+		msg.setText("这步不能走，否则会输棋！");
+        msg.setWindowTitle("被将军");
+		break;
+	case CGoRule::JIANGDUIMIAN:
+		msg.setText("这步不能走，否则会输棋！");
+        msg.setWindowTitle("将对面");
+		break;
+	}
+    msg.exec();
 	return 0;
 }
 
 int CFrmChineseChess::onCleanPrompt(int i, int j)
 {
 	int nRet = 0;
-
+    this->update();
 	return nRet;
 }
 
 int CFrmChineseChess::onDrawPrompt(int i, int j)
 {
 	int nRet = 0;
-
+    this->update();
 	return nRet;
 }
 
 int CFrmChineseChess::onGoChess(int i, int j, CPiece::ENUM_QiZi chess)
 {
+    emit sigGoChess(i, j, chess);
 	return 0;
+}
+
+QDateTime CFrmChineseChess::GetStartTime()
+{
+    time_t t = CChineseChess::GetStartTime();
+    QDateTime time;
+    time.setMSecsSinceEpoch(t);
+    return time;
+}
+
+int CFrmChineseChess::SetStartTime(const QDateTime &t)
+{
+    return CChineseChess::SetStartTime(t.toMSecsSinceEpoch());
+}
+
+QDateTime CFrmChineseChess::GetEndTime()
+{
+    QDateTime t;
+    t.setMSecsSinceEpoch(CChineseChess::GetEndTime());
+    return t;
+}
+
+int CFrmChineseChess::SetEndTime(const QDateTime &t)
+{
+    return CChineseChess::SetEndTime(t.toMSecsSinceEpoch());
+}
+
+QString CFrmChineseChess::GetRedName()
+{
+    return CChineseChess::GetRedName().c_str();
+}
+
+int CFrmChineseChess::SetRedName(const QString &name)
+{
+    return CChineseChess::SetRedName(name.toStdString().c_str());
+}
+
+QString CFrmChineseChess::GetBlackName()
+{
+    return CChineseChess::GetBlackName().c_str();
+}
+
+int CFrmChineseChess::SetBlackName(const QString &name)
+{
+    return CChineseChess::SetBlackName(name.toStdString().c_str());
 }
 
 /*******************************************************************************************************

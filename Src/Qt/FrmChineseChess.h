@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QImage>
 #include <QPainter>
+#include <QDateTime>
 
 #include "ChineseChess.h"
 
@@ -14,10 +15,23 @@ class CFrmChineseChess;
 class CFrmChineseChess : public QWidget, public CChineseChess
 {
     Q_OBJECT
+    Q_PROPERTY(QString RedName READ GetRedName WRITE SetRedName)
+    Q_PROPERTY(QString BlackName READ GetBlackName WRITE SetBlackName)
+    Q_PROPERTY(QDateTime StartTime READ GetStartTime WRITE SetStartTime)
+    Q_PROPERTY(QDateTime EndTime READ GetEndTime WRITE SetEndTime)
     
 public:
     explicit CFrmChineseChess(QWidget *parent = nullptr);
     virtual ~CFrmChineseChess();
+    
+    QDateTime GetStartTime();
+	int SetStartTime(const QDateTime &t);
+	QDateTime GetEndTime();
+	int SetEndTime(const QDateTime &t);
+    QString GetRedName();
+    int SetRedName(const QString &name);
+    QString GetBlackName();
+    int SetBlackName(const QString &name);
     
 protected:
 	virtual void mouseReleaseEvent(QMouseEvent *event) override;
@@ -32,6 +46,9 @@ protected:
 	virtual int onDrawPrompt(int i, int j);
 	virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess);
 
+Q_SIGNALS:
+    void sigGoChess(int i, int j, CPiece::ENUM_QiZi chess);
+    
 private:
     Ui::CFrmChineseChess *ui;
     

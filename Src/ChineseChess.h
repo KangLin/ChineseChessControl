@@ -72,10 +72,10 @@ public:
 	int SetStartTime(const time_t &t);
 	time_t GetEndTime();
 	int SetEndTime(const time_t &t);
-	virtual std::string GetRedName();
-	virtual int SetRedName(const char* pszName);
-	virtual std::string GetBlackName();
-	virtual int SetBlackName(const char* pszName);
+	std::string GetRedName();
+	int SetRedName(const char* pszName);
+	std::string GetBlackName();
+	int SetBlackName(const char* pszName);
 
 	int EnablePromptSound(bool sound = true);
 	int EnablePromptMessage(bool bMsg = true);
