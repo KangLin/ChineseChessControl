@@ -4,10 +4,12 @@ message(STATUS "== Build chinese chess qt dll")
 
 LIST(APPEND SOURCES_FILES
     FrmChineseChess.cpp
+    FrmChineseChessPlugin.cpp
     )
 
 LIST(APPEND INSTALLHEADER_FILES
     FrmChineseChess.h
+    FrmChineseChessPlugin.h
     )
 
 LIST(APPEND HEADER_FILES

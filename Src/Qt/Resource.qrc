@@ -20,6 +20,7 @@
         <file alias="RSHI">../Res/Picture/RSHI.BMP</file>
         <file alias="RSHUAI">../Res/Picture/RSHUAI.BMP</file>
         <file alias="RXIANG">../Res/Picture/RXIANG.BMP</file>
+        <file alias="Chess">../Res/Picture/Chess.ico</file>
     </qresource>
     <qresource prefix="/sound">
         <file alias="CHECK">../Res/Sound/CHECK.WAV</file>
