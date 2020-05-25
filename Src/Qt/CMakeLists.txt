@@ -38,8 +38,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 if(BUILD_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
 endif()
-
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
+
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+endif()
+
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess RabbitCommon ${QT_LIBRARIES})
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}
