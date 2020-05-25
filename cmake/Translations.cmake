@@ -14,7 +14,7 @@
 #      add_executable(${PROJECT_NAME} ${TRANSLATIONS_RESOURCE_FILES})
 #      add_dependencies(${TRANSLATIONS_NAME} translations_${TRANSLATIONS_NAME})
 #
-# 2. 在源码 main 函数中加入, 如果是 DEBUG，需要加入宏定义 _DEBUG
+# 2. 在源码 main 函数中加入, 如果是 DEBUG，需要加入宏定义 _DEBUG . 必须使用 -DCMAKE_BUILD_TYPE=Debug
 #     QTranslator translator;
 #     translator.load(RabbitCommon::CDir::Instance()->GetDirTranslations()
 #                   + "/" + qApp->applicationName() + "_" + QLocale::system().name() + ".qm");
