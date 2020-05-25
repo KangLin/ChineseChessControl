@@ -188,6 +188,11 @@ if(Qt5_FOUND)
 		endif()
 
 		add_subdirectory(Src/Qt)
+        
+        option(BUILD_CHINESE_CHESS_QT_APP "Build MFC chinese chess qt application" ON)
+        if(BUILD_CHINESE_CHESS_QT_APP)
+            add_subdirectory(App/Qt/ChineseChess)
+        endif()
 	endif()
 endif()
 
