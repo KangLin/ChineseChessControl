@@ -7,13 +7,13 @@
 #include <QDateTime>
 
 #include "ChineseChess.h"
-//#include "chinesechessqt_export.h"
+#include "chinesechessqt_export.h"
 
 namespace Ui {
 class CFrmChineseChess;
 }
 
-class CFrmChineseChess : public QWidget, public CChineseChess
+class CHINESECHESSQT_EXPORT CFrmChineseChess : public QWidget, public CChineseChess
 {
     Q_OBJECT
     Q_PROPERTY(QString RedName READ GetRedName WRITE SetRedName)
