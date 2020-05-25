@@ -75,7 +75,7 @@ private:
     
     //棋盘星位
     enum ENUM_XINWEI { XinWei, Left_XinWei, Right_XinWei };
-    void DrawXinWei(QPainter *pPaint, int i, int j, ENUM_XINWEI xinwei = XinWei);
+    void DrawXinWei(QPainter *pPainter, int i, int j, ENUM_XINWEI xinwei = XinWei);
     bool DrawTiShiBox(QPainter *pPainter, int i, int j);
     bool DrawPicture(QPainter *pPainter, int i, int j, QImage pbmp, bool CHHJKL = false);
     bool DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_QiZi eQiZi);

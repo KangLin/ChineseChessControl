@@ -44,7 +44,6 @@ CFrmChineseChess::~CFrmChineseChess()
     delete ui;
 }
 
-
 void CFrmChineseChess::mouseReleaseEvent(QMouseEvent *event)
 {
 	int i = 0, j = 0;
@@ -79,6 +78,7 @@ int CFrmChineseChess::onPromptSound(PROMPT_SOUND sound)
 
 int CFrmChineseChess::onPromptMessage(CGoRule::ENUM_ReturnValue val)
 {
+    
 	return 0;
 }
 
@@ -239,7 +239,7 @@ void CFrmChineseChess::DrawQiPang(QPainter *pPainter, QRect rect)
     QPen pen;
     pen.setColor(m_QiPangColor);
     pen.setWidth(1);
-    
+    pPainter->setPen(pen);
     pPainter->drawLine(m_QiPangStartX + 3 * m_QiPangDistance,
                        m_QiPangStartY,
                        m_QiPangStartX + 5 * m_QiPangDistance,
@@ -322,7 +322,7 @@ void CFrmChineseChess::DrawQiPang(QPainter *pPainter, QRect rect)
 日  期：2004-8-18
 时  间：17:56:58
 *******************************************************************************************************/
-void CFrmChineseChess::DrawXinWei(QPainter *pPaint, int i, int j, ENUM_XINWEI xinwei)
+void CFrmChineseChess::DrawXinWei(QPainter *pPainter, int i, int j, ENUM_XINWEI xinwei)
 {
 	int d, ds;
 	long x, y;
@@ -335,26 +335,27 @@ void CFrmChineseChess::DrawXinWei(QPainter *pPaint, int i, int j, ENUM_XINWEI xi
     QPen pen;
     pen.setColor(m_QiPangColor);
     pen.setWidth(1);
+    pPainter->setPen(pen);
     
     if (xinwei != Left_XinWei)
     {
-		pPaint->drawLine(x + ds, y + ds, x + d, y + ds);
-        pPaint->drawLine(x + ds, y - ds, x + d, y - ds);
+		pPainter->drawLine(x + ds, y + ds, x + d, y + ds);
+        pPainter->drawLine(x + ds, y - ds, x + d, y - ds);
         
-        pPaint->drawLine(x + ds, y + ds, x + ds, y + d);
+        pPainter->drawLine(x + ds, y + ds, x + ds, y + d);
         
-        pPaint->drawLine(x + ds, y - ds, x + ds, y - d);
+        pPainter->drawLine(x + ds, y - ds, x + ds, y - d);
     }
     
     if (xinwei != Right_XinWei)
     {
-        pPaint->drawLine(x - ds, y - ds, x - ds, y - d);
+        pPainter->drawLine(x - ds, y - ds, x - ds, y - d);
         
-        pPaint->drawLine(x - ds, y + ds, x - ds, y + d);
+        pPainter->drawLine(x - ds, y + ds, x - ds, y + d);
         
-        pPaint->drawLine(x - ds, y + ds, x - d, y + ds);
+        pPainter->drawLine(x - ds, y + ds, x - d, y + ds);
         
-        pPaint->drawLine(x - ds, y - ds, x - d, y - ds);
+        pPainter->drawLine(x - ds, y - ds, x - d, y - ds);
     }
 }
 
@@ -379,6 +380,7 @@ bool CFrmChineseChess::DrawTiShiBox(QPainter *pPainter, int i, int j)
     QPen pen;
     pen.setColor(m_TiShiBoxColor);
     pen.setWidth(1);
+    pPainter->setPen(pen);
     
 	ConvertCoordinate(&m_X, &m_Y, &i, &j, IJToXY);
 	pPainter->drawLine(m_X - m_L, m_Y - m_L, m_X - m_L, m_Y - m_L / 2);
@@ -500,7 +502,7 @@ bool CFrmChineseChess::DrawPicture(QPainter *pPainter, int i, int j, QImage bmp,
 	long m_X, m_Y;
 
 	ConvertCoordinate(&m_X, &m_Y, &i, &j, IJToXY);
-	if (CHHJKL)//画楚河汉界
+	if (CHHJKL) //画楚河汉界
 	{
 		m_X -= m_QiPangDistance / 2;
 	}
