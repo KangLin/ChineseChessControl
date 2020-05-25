@@ -45,12 +45,12 @@ if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 endif()
 
-if(MINGW)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE "-mwindows")
-elseif(MSVC)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE
-        "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
-endif()
+#if(MINGW)
+#    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE "-mwindows")
+#elseif(MSVC)
+#    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE
+#        "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+#endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess RabbitCommon ${QT_LIBRARIES})
 target_include_directories(${PROJECT_NAME}
