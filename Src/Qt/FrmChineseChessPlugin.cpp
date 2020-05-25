@@ -42,7 +42,7 @@ QString CFrmChineseChessPlugin::group() const
 
 QIcon CFrmChineseChessPlugin::icon() const
 {
-    return QIcon(QLatin1String(":/Chess"));
+    return QIcon(QLatin1String(":/image/Chess"));
 }
 
 QString CFrmChineseChessPlugin::toolTip() const

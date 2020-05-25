@@ -20,4 +20,11 @@
         <translation>被將軍</translation>
     </message>
 </context>
+<context>
+    <name>CFrmChineseChessPlugin</name>
+    <message>
+        <source>Chinese chess</source>
+        <translation>中國象棋</translation>
+    </message>
+</context>
 </TS>
