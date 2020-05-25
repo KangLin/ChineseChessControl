@@ -1,5 +1,4 @@
-﻿
-#include "Piece.h"
+﻿#include "Piece.h"
 
 CPiece::CPiece()
 {}

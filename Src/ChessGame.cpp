@@ -4,12 +4,6 @@
 #include <time.h>
 #include <string.h>
 
-#if defined( _DEBUG) && defined(_MSC_VER)
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#define new DEBUG_NEW
-#endif
-
 CChessGame::CChessGame()
 {
 	m_nIndex = -1;
@@ -144,16 +138,27 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 {
 	if (!szFile) return -1;
 	strFile head;
+#ifdef WIN32
+	strncpy_s(head.head.szAppName, APPNAME, MAX_STRING_BUFFER);
+	strncpy_s(head.head.szAuthor, AUTHOR, MAX_STRING_BUFFER);
+#else
 	strncpy(head.head.szAppName, APPNAME, MAX_STRING_BUFFER);
 	strncpy(head.head.szAuthor, AUTHOR, MAX_STRING_BUFFER);
+#endif
+
 	head.head.dwVersion = 1;
 	head.iBuShu = m_ChessGame.size();
 	head.boardLayout = layout;
 
 	head.timeStart = m_tmStart;
 	head.timeEnd = m_tmEnd;
+#ifdef WIN32
+	strncpy_s(head.szRedName, m_szRedName.c_str(), MAX_STRING_BUFFER);
+	strncpy_s(head.szBlackName, m_szBlackName.c_str(), MAX_STRING_BUFFER);
+#else
 	strncpy(head.szRedName, m_szRedName.c_str(), MAX_STRING_BUFFER);
 	strncpy(head.szBlackName, m_szBlackName.c_str(), MAX_STRING_BUFFER);
+#endif
 
 	std::ofstream out(szFile);
 	if (!out.is_open())

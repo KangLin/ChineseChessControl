@@ -38,5 +38,6 @@
       git clone https://github.com/KangLin/ChineseChessControl.git
       mkdir build
       cd build
-      cmake ..
-      cmake --build .
+      cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/install      #配置
+      cmake --build . --config=Release                   #编译
+      cmake --build . --config=Release --target install  #安装

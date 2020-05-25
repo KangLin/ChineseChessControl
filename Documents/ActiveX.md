@@ -1,71 +1,72 @@
-## ÖĞ¹úÏóÆå ActiveX ¿Ø¼ş
+## ä¸­å›½è±¡æ£‹ ActiveX æ§ä»¶
 
-×÷Õß£º ¿µÁÖ(kl222@126.com)
+ä½œè€…ï¼š åº·æ—(kl222@126.com)
 
 ---------------------------------------
 
-### ±àÒë
+### ç¼–è¯‘
 
-- ÓÃ cmake , ½¨ÒéÊ¹ÓÃ´Ë·½·¨±àÒë
+- ç”¨ cmake , å»ºè®®ä½¿ç”¨æ­¤æ–¹æ³•ç¼–è¯‘
 
-      git clone https://github.com/KangLin/ChineseChessControl.git
-      mkdir build
-      cd build
-      cmake ..
-      cmake --build .
+    git clone https://github.com/KangLin/ChineseChessControl.git
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/install      #é…ç½®
+    cmake --build . --config=Release                   #ç¼–è¯‘
+    cmake --build . --config=Release --target install  #å®‰è£…
 
-### µ÷ÊÔ
+### è°ƒè¯•
 #### VC6.0
 
-- ´ò¿ª ActiveX control test container ¹¤¾ß  
-![´ò¿ª ActiveX control test container ¹¤¾ß](Image/OpenActivexControlTestContainer.png)
-- ×¢²áÖĞ¹úÏóÆå¿Ø¼ş  
-  ÕâÒ»²½ÔÚ±àÒë»ò°²×°Ê±£¬»á×Ô¶¯Íê³É¡£Èç¹ûÃ»ÓĞ³É¹¦£¬¿ÉÒÔ°´ÏÂÃæ·½·¨Ö®Ò»×¢²á£º  
-  **×¢Òâ**:ĞèÒª¹ÜÀíÔ±È¨ÏŞ
-  + ÊÖ¹¤×¢²á£¬Ê¹ÓÃ regsvr32 ÃüÁî
+- æ‰“å¼€ ActiveX control test container å·¥å…·  
+![æ‰“å¼€ ActiveX control test container å·¥å…·](Image/OpenActivexControlTestContainer.png)
+- æ³¨å†Œä¸­å›½è±¡æ£‹æ§ä»¶  
+  è¿™ä¸€æ­¥åœ¨ç¼–è¯‘æˆ–å®‰è£…æ—¶ï¼Œä¼šè‡ªåŠ¨å®Œæˆã€‚å¦‚æœæ²¡æœ‰æˆåŠŸï¼Œå¯ä»¥æŒ‰ä¸‹é¢æ–¹æ³•ä¹‹ä¸€æ³¨å†Œï¼š  
+  **æ³¨æ„**:éœ€è¦ç®¡ç†å‘˜æƒé™
+  + æ‰‹å·¥æ³¨å†Œï¼Œä½¿ç”¨ regsvr32 å‘½ä»¤
 
         regsvr32 /s /c "D:\Source\ChineseChessControl\Src\.\DebugU\ChineseChessControl.ocx" 
 
-  + ÓÃ ActiveX control test container ×¢²á
-    - ´ò¿ª×¢²á¿Ø¼ş  
-![´ò¿ª×¢²á¿Ø¼ş](Image/OpenRegisterControl.png)
-    - ×¢²áÖĞ¹úÏóÆå¿Ø¼ş  
+  + ç”¨ ActiveX control test container æ³¨å†Œ
+    - æ‰“å¼€æ³¨å†Œæ§ä»¶  
+![æ‰“å¼€æ³¨å†Œæ§ä»¶](Image/OpenRegisterControl.png)
+    - æ³¨å†Œä¸­å›½è±¡æ£‹æ§ä»¶  
       + ![](Image/RegisterControl.PNG)
       + ![](Image/RegisterChineseChessControl.PNG)
       + ![](Image/RegisteredChineseChessControl.PNG)
-- ²åÈëÖĞ¹úÏóÆå¿Ø¼ş  
+- æ’å…¥ä¸­å›½è±¡æ£‹æ§ä»¶  
 ![](Image/InsertChineseChessControl.PNG)
-- µ÷ÊÔ  
+- è°ƒè¯•  
 ![](Image/Debug.PNG)
 
 #### VS 2017
 
-- ´Ó VS 2010 Ã»ÓĞ×Ô´ø ActivX control test container ¹¤¾ß£¬¶øÊÇÒÔÀı×Ó³ÌĞòµÄ·½Ê½Ìá¹©¡£ËùÒÔÄã¿ÉÒÔ´Ó vc6.0 ÖĞ¸´ÖÆ¹ıÀ´£¬»òÕß£¬´Ó VS 2017 °²×°µÄÀı×Ó³ÌĞòÖĞ±àÒëµÃµ½¡£
+- ä» VS 2010 æ²¡æœ‰è‡ªå¸¦ ActivX control test container å·¥å…·ï¼Œè€Œæ˜¯ä»¥ä¾‹å­ç¨‹åºçš„æ–¹å¼æä¾›ã€‚æ‰€ä»¥ä½ å¯ä»¥ä» vc6.0 ä¸­å¤åˆ¶è¿‡æ¥ï¼Œæˆ–è€…ï¼Œä» VS 2017 å®‰è£…çš„ä¾‹å­ç¨‹åºä¸­ç¼–è¯‘å¾—åˆ°ã€‚
 
 [Testing Properties and Events with Test Container](https://docs.microsoft.com/en-us/cpp/mfc/testing-properties-and-events-with-test-container)
 
-Èç¹ûÃ»°²×°£¬Ôò¿É´Ó github ÉÏÏÂÔØ[Ô´Âë](https://github.com/microsoft/VCSamples/tree/master/VC2010Samples/MFC/ole/TstCon)
+å¦‚æœæ²¡å®‰è£…ï¼Œåˆ™å¯ä» github ä¸Šä¸‹è½½[æºç ](https://github.com/microsoft/VCSamples/tree/master/VC2010Samples/MFC/ole/TstCon)
 
-- ¹¤¾ß->Íâ²¿¹¤¾ß->Ìí¼Ó
+- å·¥å…·->å¤–éƒ¨å·¥å…·->æ·»åŠ 
   + ![](Image/OpenActivexControlTestContainerVC2013.png)
   + ![](Image/AddActivexControlTestContainer.PNG)
-- Ê£ÏÂµÄµ÷ÊÔ²½ÖèÓëÉÏÃæVC6.0µÄÒ»Ñù
+- å‰©ä¸‹çš„è°ƒè¯•æ­¥éª¤ä¸ä¸Šé¢VC6.0çš„ä¸€æ ·
 
-### Ê¹ÓÃ
+### ä½¿ç”¨
 
-- [ÈçºÎ£ºÏò Windows ´°ÌåÌí¼Ó ActiveX ¿Ø¼ş](https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/how-to-add-activex-controls-to-windows-forms)
+- [å¦‚ä½•ï¼šå‘ Windows çª—ä½“æ·»åŠ  ActiveX æ§ä»¶](https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/how-to-add-activex-controls-to-windows-forms)
 
-### ¿Ø¼ş
+### æ§ä»¶
 
-[½Ó¿ÚÎÄ¼ş](../Src/ActiveX/ChineseChessActiveX.idl)
+[æ¥å£æ–‡ä»¶](../Src/ActiveX/ChineseChessActiveX.idl)
 
-#### ÊôĞÔ:
+#### å±æ€§:
 
-- Enabled: ÔÊĞí»ò½ûÖ¹¿Ø¼ş
-- QiPangColor: ÆåÅÌÑÕÉ«
-- TiShiBoxColor: ÌáÊ¾¿òµÄÑÕÉ«
-- QiPangPicture: ÆåÅÌÍ¼Æ¬
-- BoardLayout: ÆåÅÌ²¼¾Ö¡£È¡ÏÂÁĞÖµ£º
+- Enabled: å…è®¸æˆ–ç¦æ­¢æ§ä»¶
+- QiPangColor: æ£‹ç›˜é¢œè‰²
+- TiShiBoxColor: æç¤ºæ¡†çš„é¢œè‰²
+- QiPangPicture: æ£‹ç›˜å›¾ç‰‡
+- BoardLayout: æ£‹ç›˜å¸ƒå±€ã€‚å–ä¸‹åˆ—å€¼ï¼š
   + NoQi = 0,
   + OnlyTopBlack = 1,
   + OnlyBottomRed = 2,
@@ -74,26 +75,26 @@
   + OnlyBottomBlack = OnlyBottomRed | SwapRedBetweenBlack,
   + TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,
   + TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack  
-  **×¢Òâ**£ºÈç¹û²¼¾Ö²»ÍêÈ«£¬ÔòÓÉÓÃ»§¿ØÖÆÊôĞÔ£¨Enabled£©ÒÔ¾ö¶¨ÊÇ·ñÏÂÆå¡£
-- EnablePromptSound: ÔÊĞíÌáÊ¾Òô
-- EnablePromptMessage: ÔÊĞíÌáÊ¾ÏûÏ¢
+  **æ³¨æ„**ï¼šå¦‚æœå¸ƒå±€ä¸å®Œå…¨ï¼Œåˆ™ç”±ç”¨æˆ·æ§åˆ¶å±æ€§ï¼ˆEnabledï¼‰ä»¥å†³å®šæ˜¯å¦ä¸‹æ£‹ã€‚
+- EnablePromptSound: å…è®¸æç¤ºéŸ³
+- EnablePromptMessage: å…è®¸æç¤ºæ¶ˆæ¯
 
-#### ·½·¨:
+#### æ–¹æ³•:
 
-- NextStep(): ÏÂÒ»²½
-- PreviouStep(): ÉÏÒ»²½
-- GoChess(SHORT i, SHORT j): ×ßÆå
-- SaveChessGame(BSTR szFile): ±£´æÆå¾Ö
-- LoadChessGame(BSTR szFile): ×°ÔØÆå¾Ö²¢ÉèÖÃÎª³õÊ¼×´Ì¬
+- NextStep(): ä¸‹ä¸€æ­¥
+- PreviouStep(): ä¸Šä¸€æ­¥
+- GoChess(SHORT i, SHORT j): èµ°æ£‹
+- SaveChessGame(BSTR szFile): ä¿å­˜æ£‹å±€
+- LoadChessGame(BSTR szFile): è£…è½½æ£‹å±€å¹¶è®¾ç½®ä¸ºåˆå§‹çŠ¶æ€
 
-#### ÊÂ¼ş:
+#### äº‹ä»¶:
 
-- EventGoChess(short x, short y, ENUM_QiZi chess):×ßÆå¡£
+- EventGoChess(short x, short y, ENUM_QiZi chess):èµ°æ£‹ã€‚
 
-### ¿ª·¢
-#### ×Ö·û±àÂë
+### å¼€å‘
+#### å­—ç¬¦ç¼–ç 
 
-WIndows ÖĞÎÄÏµÍ³×Ö·û±àÂëÄ¬ÈÏÎªGB2313¡£
-linuxÏµÍ³ÏÂ×Ö·û±àÂëÒ»°ãÊ¹ÓÃ UTF-8 ¡£
-ËùÒÔ±¾ÏîÄ¿¿çÆ½Ì¨²¿·ÖµÄÎÄ¼şÖĞµÄ×Ö·ûáŠÓÃ**¶à×Ö½Ú±àÂë**£¬
-¶øÓëVCÏà¹ØµÄ²¿·ÖÎÄ¼şÊ¹ÓÃ UNICODE ±àÂë£¨Î»ÓÚ£ºSrc\ActiveX ºÍ App\MFC£©¡£
+WIndows ä¸­æ–‡ç³»ç»Ÿå­—ç¬¦ç¼–ç é»˜è®¤ä¸ºGB2313ã€‚
+linuxç³»ç»Ÿä¸‹å­—ç¬¦ç¼–ç ä¸€èˆ¬ä½¿ç”¨ UTF-8 ã€‚
+æ‰€ä»¥æœ¬é¡¹ç›®è·¨å¹³å°éƒ¨åˆ†çš„æ–‡ä»¶ä¸­çš„å­—ç¬¦é‡†ç”¨**å¤šå­—èŠ‚ç¼–ç **ï¼Œ
+è€Œä¸VCç›¸å…³çš„éƒ¨åˆ†æ–‡ä»¶ä½¿ç”¨ UNICODE ç¼–ç ï¼ˆä½äºï¼šSrc\ActiveX å’Œ App\MFCï¼‰ã€‚

@@ -2,7 +2,6 @@
 #define FRMCHINESECHESSPLUGIN_H
 
 #include <QDesignerCustomWidgetInterface>
-
 class CFrmChineseChessPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT

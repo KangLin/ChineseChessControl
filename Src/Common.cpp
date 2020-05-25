@@ -4,12 +4,6 @@
 
 #include "Common.h"
 
-#if defined( _DEBUG) && defined(_MSC_VER)
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
-
 /*******************************************************************************************************
 函数名：sig
 功  能：符号函数
