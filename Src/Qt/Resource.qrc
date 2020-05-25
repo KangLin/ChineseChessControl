@@ -2,9 +2,9 @@
 <qresource prefix="/image">
 <file alias="BCHE">../Res/Picture/BCHE.BMP</file>
 <file alias="BMA">../Res/Picture/BMA.BMP</file>
-<file alias="BPAO">../Res/Picture/bpao.bmp</file>
-<file alias="BSHI">../Res/Picture/Bshi.BMP</file>
-<file alias="BSHUAI">../Res/Picture/BShuai.bmp</file>
+<file alias="BPAO">../Res/Picture/BPAO.BMP</file>
+<file alias="BSHI">../Res/Picture/BSHI.BMP</file>
+<file alias="BSHUAI">../Res/Picture/BSHUAI.BMP</file>
 <file alias="BXIANG">../Res/Picture/BXIANG.BMP</file>
 <file alias="BZU">../Res/Picture/BZU.BMP</file>
 <file alias="CHU">../Res/Picture/CHU.BMP</file>
