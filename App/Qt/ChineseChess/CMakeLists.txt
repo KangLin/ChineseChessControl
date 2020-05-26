@@ -19,6 +19,7 @@ LIST(APPEND SOURCE_UI_FILES
 include(Translations)
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
+    Resource/Resource.qrc
 	)
 
 add_definitions(-DBUILD_VERSION="${BUILD_VERSION}")

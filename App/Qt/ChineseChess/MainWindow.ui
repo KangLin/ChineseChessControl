@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Chinese chess</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resource/Resource.qrc">
+    <normaloff>:/image/Chess</normaloff>:/image/Chess</iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
@@ -20,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -68,26 +72,46 @@
    <addaction name="separator"/>
   </widget>
   <action name="actionOpen_O">
+   <property name="icon">
+    <iconset resource="Resource/Resource.qrc">
+     <normaloff>:/image/Open</normaloff>:/image/Open</iconset>
+   </property>
    <property name="text">
     <string>Open(&amp;O)</string>
    </property>
   </action>
   <action name="actionSave_S">
+   <property name="icon">
+    <iconset resource="Resource/Resource.qrc">
+     <normaloff>:/image/Save</normaloff>:/image/Save</iconset>
+   </property>
    <property name="text">
     <string>Save(&amp;S)</string>
    </property>
   </action>
   <action name="actionPreviou_P">
+   <property name="icon">
+    <iconset resource="Resource/Resource.qrc">
+     <normaloff>:/image/Previou</normaloff>:/image/Previou</iconset>
+   </property>
    <property name="text">
     <string>Previou(&amp;P)</string>
    </property>
   </action>
   <action name="actionNext_N">
+   <property name="icon">
+    <iconset resource="Resource/Resource.qrc">
+     <normaloff>:/image/Next</normaloff>:/image/Next</iconset>
+   </property>
    <property name="text">
     <string>Next(&amp;N)</string>
    </property>
   </action>
   <action name="actionAbout_A">
+   <property name="icon">
+    <iconset resource="Resource/Resource.qrc">
+     <normaloff>:/image/Chess</normaloff>:/image/Chess</iconset>
+   </property>
    <property name="text">
     <string>About(&amp;A)</string>
    </property>
@@ -98,11 +122,17 @@
    </property>
   </action>
   <action name="actionExit_E">
+   <property name="icon">
+    <iconset resource="Resource/Resource.qrc">
+     <normaloff>:/image/Exit</normaloff>:/image/Exit</iconset>
+   </property>
    <property name="text">
     <string>Exit(&amp;E)</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resource/Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

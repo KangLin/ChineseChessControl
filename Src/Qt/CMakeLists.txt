@@ -23,7 +23,7 @@ include(Translations)
 
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
-    Resource.qrc
+    ResourceChineseChess.qrc
     )
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES} ${SOURCE_UI_FILES})

@@ -1,6 +1,7 @@
 #include "FrmChineseChess.h"
 #include "ui_FrmChineseChess.h"
 #include "DlgAbout/DlgAbout.h"
+#include "RabbitCommonDir.h"
 
 #include <QResizeEvent>
 #include <QMouseEvent>
@@ -17,10 +18,10 @@ CFrmChineseChess::CFrmChineseChess(QWidget *parent) :
     m_TiShiBoxColor(0, 255, 0)
 {
     ui->setupUi(this);
-        
+
     m_QiPangStartX = m_QiPangStartY = 0;
     m_QiPangDistance = 0;
-    
+
     m_QiPangPicture.load(":/image/QIPANG");
     SetTransparentImage(m_QiPangPicture);
     m_RedShuai.load(":/image/RSHUAI");
@@ -66,6 +67,31 @@ CFrmChineseChess::CFrmChineseChess(QWidget *parent) :
 CFrmChineseChess::~CFrmChineseChess()
 {
     delete ui;
+}
+
+static QTranslator g_Translator;
+int CFrmChineseChess::InitResource(const QString szLanguage)
+{
+    Q_INIT_RESOURCE(ResourceChineseChess);
+#if _DEBUG
+    Q_INIT_RESOURCE(translations_ChineseChessQt);
+#endif
+    
+    g_Translator.load(RabbitCommon::CDir::Instance()->GetDirTranslations()
+                      + "/ChineseChessQt_" + szLanguage + ".qm");
+    qApp->installTranslator(&g_Translator);
+    return 0;
+}
+
+int CFrmChineseChess::CleanResource()
+{
+    qApp->removeTranslator(&g_Translator);
+    
+    Q_CLEANUP_RESOURCE(ResourceChineseChess);
+#if _DEBUG
+    Q_CLEANUP_RESOURCE(translations_ChineseChessQt);
+#endif
+    return 0;
 }
 
 void CFrmChineseChess::mouseReleaseEvent(QMouseEvent *event)

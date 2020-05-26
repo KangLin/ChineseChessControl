@@ -5,6 +5,7 @@
 #include <QImage>
 #include <QPainter>
 #include <QDateTime>
+#include <QTranslator>
 
 #include "ChineseChess.h"
 #include "chinesechessqt_export.h"
@@ -24,7 +25,12 @@ class CHINESECHESSQT_EXPORT CFrmChineseChess : public QWidget, public CChineseCh
 public:
     explicit CFrmChineseChess(QWidget *parent = nullptr);
     virtual ~CFrmChineseChess() override;
-    
+
+    // 初始化资源，在程序开始时调用一次
+    static int InitResource(const QString szLanguage);
+    // 清理资源，在程序结束时调用一次
+    static int CleanResource();
+
     QDateTime GetStartTime();
 	int SetStartTime(const QDateTime &t);
 	QDateTime GetEndTime();
@@ -33,9 +39,9 @@ public:
     int SetRedName(const QString &name);
     QString GetBlackName();
     int SetBlackName(const QString &name);
-    
+
     void AboutBox();
-    
+
 protected:
 	virtual void mouseReleaseEvent(QMouseEvent *event) override;
 	virtual void paintEvent(QPaintEvent *event) override;
@@ -51,20 +57,20 @@ protected:
 
 Q_SIGNALS:
     void sigGoChess(int i, int j, CPiece::ENUM_QiZi chess);
-    
+
 private:
     Ui::CFrmChineseChess *ui;
     
     int m_QiPangStartX;   //棋盘的开始横坐标
     int m_QiPangStartY;   //棋盘的开始横坐标
     int m_QiPangDistance; //棋盘格的距离
-    
+
     QColor m_QiPangColor;
     QColor m_TiShiBoxColor;
-    
+
     QImage m_QiPangPicture;			  //棋盘背景图片
     //CPictureHolder m_QiPangPictureHolder; //棋盘背景图片的CPictureHolder对象
-    
+
     //棋子图片
     QImage m_RedShuai;     //红帅
     QImage m_RedShi;       //红仕
@@ -73,7 +79,7 @@ private:
     QImage m_RedChe;       //红车
     QImage m_RedBing;      //红兵
     QImage m_RedPao;       //红炮
-    
+
     QImage m_BlackShuai;   //黑帅
     QImage m_BlackShi;     //黑仕
     QImage m_BlackXiang;   //黑相
@@ -81,18 +87,18 @@ private:
     QImage m_BlackChe;     //黑车
     QImage m_BlackBing;    //黑兵
     QImage m_BlackPao;     //黑炮
-    
+
 	QImage m_Chu;
 	QImage m_He;
 	QImage m_Han;
 	QImage m_Jie;
 	QImage m_KL;
-    
+
     //坐标转换
     enum ENUM_ConvertCoordinate { XYToIJ, IJToXY };
     bool ConvertCoordinate(long *x, long *y, int *i, int *j, ENUM_ConvertCoordinate eCC = XYToIJ);
     bool SetQiPang(int width, int height);
-    
+
     //棋盘星位
     enum ENUM_XINWEI { XinWei, Left_XinWei, Right_XinWei };
     void DrawXinWei(QPainter *pPainter, int i, int j, ENUM_XINWEI xinwei = XinWei);

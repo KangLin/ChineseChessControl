@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/image">
+        <file alias="Chess">../../../../Src/Res/Picture/Chess.ico</file>
+        <file alias="Open">Image/file.png</file>
+        <file alias="Next">Image/next.png</file>
+        <file alias="Previou">Image/previous.png</file>
+        <file alias="Save">Image/save.png</file>
+        <file alias="Exit">Image/exit.png</file>
+    </qresource>
+</RCC>
