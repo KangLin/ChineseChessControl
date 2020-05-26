@@ -7,6 +7,7 @@
 #include <QPoint>
 #include <QMessageBox>
 #include <QSound>
+#include <QBitmap>
 
 CFrmChineseChess::CFrmChineseChess(QWidget *parent) :
     QWidget(parent),
@@ -65,6 +66,10 @@ void CFrmChineseChess::mouseReleaseEvent(QMouseEvent *event)
 void CFrmChineseChess::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
+    
+    // 设置平滑模式
+    painter.setRenderHint(QPainter::SmoothPixmapTransform);
+    
     DrawQiPang(&painter, rect());
 }
 
@@ -272,7 +277,7 @@ void CFrmChineseChess::DrawQiPang(QPainter *pPainter, QRect rect)
 
     pPainter->save();
     
-    pPainter->drawImage(this->rect(), m_QiPangPicture, m_QiPangPicture.rect());
+    DrawImage(pPainter, rect, m_QiPangPicture);
     
 	int i, j;
 	for (i = 0; i < 9; i++) //纵格
@@ -499,13 +504,13 @@ bool CFrmChineseChess::DrawTiShiBox(QPainter *pPainter, int i, int j)
 		 int i：棋子横坐标[0-8]
 		 int j：棋子纵坐标[0-9]
 		 CPiece::ENUM_QiZi eQiZi：棋子
-返回值：如果成功返回 true,否则返回 false
+返回值：如果成功返回 0,否则返回 非零
 作  者：康  林
 版  本：1.0.0.1
 日  期：2004-9-1
 时  间：19:47:24
 *******************************************************************************************************/
-bool CFrmChineseChess::DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_QiZi eQiZi)
+int CFrmChineseChess::DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_QiZi eQiZi)
 {
 
 	QImage qz;
@@ -562,13 +567,9 @@ bool CFrmChineseChess::DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_Q
 #pragma warning( default : 4806 )
 
 	if (!qz.isNull())
-	{
 		return DrawPicture(pPainter, i, j, qz);
-	}
-	else
-	{
-		return false;
-	}
+	
+    return -1;
 }
 
 
@@ -587,7 +588,7 @@ bool CFrmChineseChess::DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_Q
 日  期：2004-10-1
 时  间：18:59:53
 *******************************************************************************************************/
-bool CFrmChineseChess::DrawPicture(QPainter *pPainter, int i, int j, QImage bmp, bool CHHJKL)
+int CFrmChineseChess::DrawPicture(QPainter *pPainter, int i, int j, QImage image, bool CHHJKL)
 {
 	long m_X, m_Y;
 
@@ -603,7 +604,55 @@ bool CFrmChineseChess::DrawPicture(QPainter *pPainter, int i, int j, QImage bmp,
 	}
 
     QRect r(m_X, m_Y, m_QiPangDistance, m_QiPangDistance);
-    pPainter->drawImage(r, bmp, bmp.rect());
-	
-	return true;
+    //设置位图透明
+    SetTransparentImage(image);
+	return DrawImage(pPainter, r, image);
+}
+
+/**
+ * @brief 在指定位置绘图
+ * @param pPainter
+ * @param rect
+ * @param image
+ * @return 
+ */
+int CFrmChineseChess::DrawImage(QPainter *pPainter, QRect rect, QImage image)
+{
+    pPainter->drawImage(rect, image);
+    
+    ////设置平滑缩放图片，也可以用 QPainter::setRenderHint 设置 Qpainter
+    //QImage bmp = image.scaled(rect.size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    //pPainter->drawImage(rect, bmp, bmp.rect());
+    
+    //QPixmap p = QPixmap::fromImage(image);
+    //p = p.scaled(r.size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    //pPainter->drawPixmap(r, p, p.rect());
+    return 0;
+}
+
+/**
+ * @brief 设置 QImage 透明
+ * @param image
+ * @param col 透明颜色
+ * @return 
+ */
+int CFrmChineseChess::SetTransparentImage(QImage &image, const QColor &col)
+{
+    //设置位图透明
+    QImage mask = image.createMaskFromColor(col.rgb(), Qt::MaskOutColor);
+    image.setAlphaChannel(mask);
+    return 0;
+}
+
+/**
+ * @brief 设置 Pixmap 透明
+ * @param pixmap
+ * @param col 透明颜色
+ * @return 
+ */
+int CFrmChineseChess::SetTransparentPixmap(QPixmap &pixmap, const QColor &col)
+{
+    QBitmap bmp = pixmap.createMaskFromColor(col, Qt::MaskOutColor);
+    pixmap.setMask(bmp);
+    return 0;
 }

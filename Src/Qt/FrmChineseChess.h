@@ -97,14 +97,31 @@ private:
     enum ENUM_XINWEI { XinWei, Left_XinWei, Right_XinWei };
     void DrawXinWei(QPainter *pPainter, int i, int j, ENUM_XINWEI xinwei = XinWei);
     bool DrawTiShiBox(QPainter *pPainter, int i, int j);
-    bool DrawPicture(QPainter *pPainter, int i, int j, QImage pbmp, bool CHHJKL = false);
-    bool DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_QiZi eQiZi);
+    int DrawQiZi(QPainter *pPainter, int i, int j, CPiece::ENUM_QiZi eQiZi);
     void DrawQiPang(QPainter *pPainter, QRect rect);
-    
-//    void InvalidateRectage(int i, int j);
-    
-//    bool PromptSound(LPCTSTR ID = NULL);
-    
+    int DrawPicture(QPainter *pPainter, int i, int j, QImage image, bool CHHJKL = false);
+    /**
+     * @brief 在指定位置绘图
+     * @param pPainter
+     * @param rect
+     * @param image
+     * @return 
+     */
+    int DrawImage(QPainter *pPainter, QRect rect, QImage image);
+    /**
+     * @brief 设置 QImage 透明
+     * @param image
+     * @param col 透明颜色
+     * @return 
+     */
+    int SetTransparentImage(QImage &image, const QColor& col = QColor(255, 255, 255));
+    /**
+     * @brief 设置 Pixmap 透明
+     * @param pixmap
+     * @param col 透明颜色
+     * @return 
+     */
+    int SetTransparentPixmap(QPixmap &pixmap, const QColor &col = QColor(255, 255, 255));    
 };
 
 #endif // FRMCHINESECHESS_H
