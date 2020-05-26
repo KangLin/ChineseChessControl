@@ -22,25 +22,44 @@ CFrmChineseChess::CFrmChineseChess(QWidget *parent) :
     m_QiPangDistance = 0;
     
     m_QiPangPicture.load(":/image/QIPANG");
+    SetTransparentImage(m_QiPangPicture);
     m_RedShuai.load(":/image/RSHUAI");
+    SetTransparentImage(m_RedShuai);
     m_RedShi.load(":/image/RSHI");
+    SetTransparentImage(m_RedShi);
     m_RedXiang.load(":/image/RXIANG");
+    SetTransparentImage(m_RedXiang);
     m_RedMa.load(":/image/RMA");
+    SetTransparentImage(m_RedMa);
     m_RedChe.load(":/image/RCHE");
+    SetTransparentImage(m_RedChe);
     m_RedBing.load(":/image/RBING");
+    SetTransparentImage(m_RedBing);
     m_RedPao.load(":/image/RPAO");
+    SetTransparentImage(m_RedPao);
     m_BlackShuai.load(":/image/BSHUAI");
+    SetTransparentImage(m_BlackShuai);
     m_BlackShi.load(":/image/BSHI");
+    SetTransparentImage(m_BlackShi);
     m_BlackXiang.load(":/image/BXIANG");
+    SetTransparentImage(m_BlackXiang);
     m_BlackMa.load(":/image/BMA");
+    SetTransparentImage(m_BlackMa);
     m_BlackChe.load(":/image/BCHE");
+    SetTransparentImage(m_BlackChe);
     m_BlackBing.load(":/image/BZU");
+    SetTransparentImage(m_BlackBing);
     m_BlackPao.load(":/image/BPAO");
+    SetTransparentImage(m_BlackPao);
 
 	m_Chu.load(":/image/CHU");
+    SetTransparentImage(m_Chu);
 	m_He.load(":/image/HE");
+    SetTransparentImage(m_He);
 	m_Han.load(":/image/HAN");
+    SetTransparentImage(m_Han);
 	m_Jie.load(":/image/JIE");
+    SetTransparentImage(m_Jie);
 	m_KL.load(":/image/KL");
 }
 
@@ -604,8 +623,6 @@ int CFrmChineseChess::DrawPicture(QPainter *pPainter, int i, int j, QImage image
 	}
 
     QRect r(m_X, m_Y, m_QiPangDistance, m_QiPangDistance);
-    //设置位图透明
-    SetTransparentImage(image);
 	return DrawImage(pPainter, r, image);
 }
 
