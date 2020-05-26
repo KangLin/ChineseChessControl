@@ -2,6 +2,7 @@
 #include "./ui_MainWindow.h"
 
 #include "RabbitCommonDir.h"
+#include "DlgAbout/DlgAbout.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -49,4 +50,12 @@ void MainWindow::on_actionNext_N_triggered()
 void MainWindow::on_actionExit_E_triggered()
 {
     qApp->exit();
+}
+
+void MainWindow::on_actionAbout_A_triggered()
+{
+    CDlgAbout about(this);
+    about.m_szAppName = tr("Chinese chess");
+    about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
+    about.exec();
 }
