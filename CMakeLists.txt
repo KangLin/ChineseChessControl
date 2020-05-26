@@ -158,7 +158,7 @@ if(Qt5_FOUND)
         message(FATAL_ERROR "Qt must great 5.10.0")
     endif()
     FOREACH(_COMPONENT ${QT_COMPONENTS})
-    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt5::${_COMPONENT})
+	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt5::${_COMPONENT})
     ENDFOREACH()
     get_filename_component(QT_INSTALL_DIR "${Qt5_DIR}/../../.." ABSOLUTE)
     

@@ -65,12 +65,17 @@ set(INSTALLHEADER_FILES ${INSTALLHEADER_FILES}
 file(COPY ${CMAKE_CURRENT_BINARY_DIR}/${LOWER_PROJECT_NAME}_export.h
     DESTINATION ${CMAKE_BINARY_DIR})
 
+SET(INSTALL_LIBRARY "${CMAKE_INSTALL_LIBDIR}")
+if(WIN32)
+	SET(INSTALL_LIBRARY "${CMAKE_INSTALL_BINDIR}")
+endif()
+
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}Config
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
         COMPONENT Runtime
-    LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
+    LIBRARY DESTINATION "${INSTALL_LIBRARY}"
         COMPONENT Runtime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChess
@@ -90,3 +95,27 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess")
+
+IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
+    OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
+    AND WIN32 AND BUILD_SHARED_LIBS )
+    IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
+        OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
+        AND MINGW )
+        #windeployqt 分发时，是根据是否 strip 来判断是否是 DEBUG 版本,而用mingw编译时,qt没有自动 strip
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND strip "$<TARGET_FILE:${PROJECT_NAME}>"
+            )
+    ENDIF()
+
+    #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中  
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
+        --compiler-runtime
+        --verbose 7
+        "$<TARGET_FILE:${PROJECT_NAME}>"
+        )
+    INSTALL(DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>/"
+        DESTINATION "${CMAKE_INSTALL_BINDIR}"
+        COMPONENT Runtime)
+ENDIF()
