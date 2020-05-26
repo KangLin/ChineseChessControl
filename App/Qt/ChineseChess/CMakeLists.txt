@@ -16,6 +16,7 @@ set(HEADER_FILES
 LIST(APPEND SOURCE_UI_FILES
     MainWindow.ui)
 
+include(Translations)
 SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
 	)
@@ -45,7 +46,7 @@ elseif(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-        "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+        "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 endif()
 
 if(BUILD_VERSION)

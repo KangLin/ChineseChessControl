@@ -21,7 +21,6 @@ set(HEADER_FILES
     )
 
 SET(RCC_FILES
-    ${TRANSLATIONS_RESOURCE_FILES}
 	ChineseChess.rc
 	res/ChineseChess.rc2
 	)
@@ -43,17 +42,15 @@ if(MINGW)
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
 elseif(MSVC)
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-        "/SUBSYSTEM:WINDOWS")
-     #target_compile_options(${PROJECT_NAME} PRIVATE "/nologo")
+	    "/SUBSYSTEM:WINDOWS")
 endif()
 
 if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+	    -DBUILD_VERSION="${BUILD_VERSION}")
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${QT_LIBRARIES} ${LIBS})
+target_compile_definitions(${PROJECT_NAME} PRIVATE ${LIBS_DEFINES})
 
 # 安装中国象棋
 INSTALL(TARGETS ${PROJECT_NAME}

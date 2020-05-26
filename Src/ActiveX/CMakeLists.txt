@@ -3,19 +3,13 @@ project(ChineseChessActiveX)
 message(STATUS "== Build chinese chess ActiveX")
 
 set(SOURCES_FILES
-    ${SOURCES_FILES}
     ChineseChessActiveX.cpp
     ChineseChessActiveXPropPage.cpp
     ChineseChessActiveXCtrl.cpp
     stdafx.cpp
     )
 
-set(INSTALLHEADER_FILES
-    )
-
 set(HEADER_FILES
-    ${HEADER_FILES}
-    ${INSTALLHEADER_FILES}
 	ChineseChessActiveX.h
 	ChineseChessActiveXPropPage.h
 	targetver.h
@@ -25,7 +19,6 @@ set(HEADER_FILES
     )
 
 SET(RCC_FILES
-    ${TRANSLATIONS_RESOURCE_FILES}
 	ChineseChessActiveX.rc
 	)
 
@@ -33,12 +26,12 @@ SET(RCC_FILES
 find_package(IDL)
 if(IDL_FOUND)
 	add_idl(ChineseChessActiveXIDL ChineseChessActiveX.idl)
-	LIST(APPEND LIBS ChineseChessActiveXIDL)
+	SET(LIBS ChineseChessActiveXIDL)
 endif()
 
 if(MSVC)
 	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-	LIST(APPEND LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
+	SET(LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
 	LIST(APPEND RCC_FILES ChineseChessActiveX.def)
 endif()
 
@@ -83,9 +76,3 @@ INSTALL(TARGETS ${PROJECT_NAME}
     #    COMPONENT Runtime
     #ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     )
-
-# 安装图标
-#INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../Res/Picture/Chess.ico
-#	DESTINATION .
-#	    COMPONENT Runtime
-#    )
