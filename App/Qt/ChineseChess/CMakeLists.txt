@@ -21,6 +21,9 @@ SET(RCC_FILES
     ${TRANSLATIONS_RESOURCE_FILES}
     Resource/Resource.qrc
 	)
+if(WIN32)
+    SET(RCC_FILES ${RCC_FILES} Resource/AppIcon.rc)
+endif()
 
 add_definitions(-DBUILD_VERSION="${BUILD_VERSION}")
 add_definitions(-DBUILD_ARCH="${BUILD_ARCH}")
