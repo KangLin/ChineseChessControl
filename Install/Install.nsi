@@ -161,6 +161,8 @@ Section -AdditionalIcons
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
 
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  IfFileExists "$INSTDIR\bin\ChineseChessApp.exe" 0 +2
+    CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\ChineseChess.lnk" "$INSTDIR\bin\ChineseChessApp.exe"
   IfFileExists "$INSTDIR\bin\ChineseChessMfcApp.exe" 0 +2
     CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\ChineseChessMfcApp.lnk" "$INSTDIR\bin\ChineseChessMfcApp.exe"
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
