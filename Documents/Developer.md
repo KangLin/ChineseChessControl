@@ -4,10 +4,12 @@
 --------------------------
 
 - [设计思想](#设计思想)
-  + [中国象棋基本规则算法与结构](#中国象棋基本规则算法与结构)
-  + [MFC 扩展动态库](#MFC-扩展动态库)
-  + [中国象棋 ActiveX 控件](ActiveX.md)
-
+  + [中国象棋库](#中国象棋库)
+  + 界面适配
+    - [中国象棋 MFC 扩展动态库](#中国象棋-MFC-扩展动态库)
+    - [中国象棋 ActiveX 控件](ActiveX.md)
+    - [中国象棋 Qt 插件](#中国象棋-Qt-插件)
+  
 ### 设计思想
 
 本项目建立一个 C++ 中国象棋组件。方便集成到应用程序中。
@@ -15,25 +17,45 @@
 而中国象棋算法与结构与界面相对独立，所以本项目把它单独做为一部分。
 针对不同的界面开发框架，本项目提供相应的适配。
 
-- [中国象棋基本规则算法与结构](#中国象棋基本规则算法与结构)，代码位于 Src 下
+- [中国象棋库](#中国象棋库)，代码位于 [Src](../Src) 下
+  + 中国象棋基本规则
+  + 棋局保存和复盘
 - 界面适配
-  + 中国象棋 MFC 扩展动态库，代码位于 Src/MFC 下
-  + [中国象棋 ActiveX 控件](ActiveX.md)，代码位于 Src/ActiveX 下
-  + 中国象棋 Qt 插件，代码位于 Src/Qt 下
+  + [中国象棋 MFC 扩展动态库](#中国象棋-MFC-扩展动态库)，代码位于 [Src/MFC](../Src/MFC) 下
+  + [中国象棋 ActiveX 控件](ActiveX.md)，代码位于 [Src/ActiveX](../Src/ActiveX) 下
+  + [中国象棋 Qt 插件](#中国象棋-Qt-插件)，代码位于 [Src/Qt](../Src/Qt)  下
 
-### 中国象棋基本规则算法与结构
+### 中国象棋库
 
-代码位于源码树中的 Src 目录下。
+代码位于源码树中的 [Src](../Src) 目录下。
 它提供中国象棋的基本规则算法与结构。
 
-### MFC 扩展动态库
++ 中国象棋流程控制
++ 中国象棋基本规则
++ 棋局保存和复盘
 
-它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。
+### 界面适配
+#### 中国象棋 MFC 扩展动态库
+
+它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [Src/MFC](../Src/MFC) 下
 **注意**:在使用时，必须在程序初始化时（一般在 main 函数开始时)，必须先调用 ChineseChessViewNewDynLinkLibrary() 初始化资源。
 
+#### 中国象棋 Qt 插件
+
+它实现了中国象棋 Qt 插件，代码位于 [Src/Qt](../Src/Qt) 下。
+
 ### 编译
+
 - 依赖
-  + RabbitCommon: https://github.com/KangLin/RabbitCommon
+  + 工具
+    - Microsoft Visual studio c++
+    - GNU c++
+    - android sdk and ndk
+    - [CMake](https://www.cmake.org)
+    - Automake and autoconfig
+  + 库
+    - [可选] Qt: https://www.qt.io/
+    - [可选] RabbitCommon: https://github.com/KangLin/RabbitCommon
 - 用 cmake , 建议使用此方法编译
 
       git clone https://github.com/KangLin/RabbitCommon.git

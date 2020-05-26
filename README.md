@@ -23,11 +23,12 @@
 
 ##### 功能
 - 控件
-  + [x] 中国象棋 MFC 扩展动态库
-  + [x] 中国象棋 ActivX 控件
+  + [x] [中国象棋库](Documents/Developer.md#中国象棋库)
     - [x] 中国象棋基本规则
     - [x] 棋局保存和复盘
-  + [x] Qt 中国象棋控件
+  + [x] [中国象棋 MFC 扩展动态库](Documents/Developer.md#中国象棋-MFC-扩展动态库)
+  + [x] [中国象棋 ActiveX 控件](ActiveX.md)
+  + [x] [中国象棋 Qt 插件](Documents/Developer.md#中国象棋-Qt-插件)
 - [ ] 中国象棋博弈引擎与通信协议
 - [x] 中国象棋程序
   + [x] 单机版本
