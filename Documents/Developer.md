@@ -5,10 +5,13 @@
 
 - [设计思想](#设计思想)
   + [中国象棋库](#中国象棋库)
-  + 界面适配
+  + [界面适配](界面适配)
     - [中国象棋 MFC 扩展动态库](#中国象棋-MFC-扩展动态库)
     - [中国象棋 ActiveX 控件](ActiveX.md)
     - [中国象棋 Qt 插件](#中国象棋-Qt-插件)
+- [编译](#编译)
+
+--------------------------
 
 ### 设计思想
 
@@ -37,16 +40,20 @@
 ### 界面适配
 #### 中国象棋 MFC 扩展动态库
 
-它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [Src/MFC](../Src/MFC) 下，详见：[ChineseChessView.h](../Src/MFC/ChineseChessView.h)
+它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [Src/MFC](../Src/MFC) 下，详见：[ChineseChessView.h](../Src/MFC/ChineseChessView.h)。
+其使用方式与使用普通的 MFC 类一样。  
 **注意**:在使用时，必须在程序初始化时（一般在 main 函数开始时)，必须先调用 ChineseChessViewNewDynLinkLibrary() 初始化资源。
 
 #### 中国象棋 Qt 插件
 
-它实现了中国象棋 Qt 插件，代码位于 [Src/Qt](../Src/Qt) 下。详见：[FrmChineseChess.h](../Src/Qt/FrmChineseChess.h)
-
+它实现了中国象棋 Qt 插件，代码位于 [Src/Qt](../Src/Qt) 下。详见：[FrmChineseChess.h](../Src/Qt/FrmChineseChess.h)。
+其使用方式与使用普通Qt控件类一样。它还能在 Qt 设计器中使用。
 使用：
 - 在程序开始时调用一次 InitResource() 函数，初始化资源。
 - 在程序结束时调用一次 CleanResource() 函数，释放资源;
+- Qt 设计器中使用
+  + 复制安装目录（bin、lib）下的所有动态库文件到 ${Qt_Install_Root}/plugins/designer 下。
+  就可以在 qt 设计器的控件窗口中看到此插件。然后就与使用普通Qt控件一样。
 
 ### 编译
 

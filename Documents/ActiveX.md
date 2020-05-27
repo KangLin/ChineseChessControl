@@ -8,12 +8,12 @@
 
 - 用 cmake , 建议使用此方法编译
 
-    git clone https://github.com/KangLin/ChineseChessControl.git
-    mkdir build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/install      #配置
-    cmake --build . --config=Release                   #编译
-    cmake --build . --config=Release --target install  #安装
+      git clone https://github.com/KangLin/ChineseChessControl.git
+      mkdir build
+      cd build
+      cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/install -DCMAKE_BUILD_TYPE=Release  #配置
+      cmake --build . --config=Release                   #编译
+      cmake --build . --config=Release --target install  #安装
 
 ### 调试
 #### VC6.0
