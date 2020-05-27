@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     m_pChess = new CFrmChineseChess(this);
     this->setCentralWidget(m_pChess);
+    ui->actionPrompt_sound_S->setChecked(m_pChess->getEnablePromptSound());
+    ui->actionPrompt_message_M->setChecked(m_pChess->getEnablePromptMessage());
 }
 
 MainWindow::~MainWindow()
@@ -59,4 +61,16 @@ void MainWindow::on_actionAbout_A_triggered()
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
     about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
     about.exec();
+}
+
+void MainWindow::on_actionPrompt_sound_S_triggered(bool checked)
+{
+    if(m_pChess)
+        m_pChess->EnablePromptSound(checked);
+}
+
+void MainWindow::on_actionPrompt_message_M_triggered(bool checked)
+{
+    if(m_pChess)
+        m_pChess->EnablePromptMessage(checked);
 }

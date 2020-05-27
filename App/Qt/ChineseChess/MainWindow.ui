@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -41,6 +41,8 @@
     </property>
     <addaction name="actionPreviou_P"/>
     <addaction name="actionNext_N"/>
+    <addaction name="actionPrompt_message_M"/>
+    <addaction name="actionPrompt_sound_S"/>
    </widget>
    <widget class="QMenu" name="menuHelp_H">
     <property name="title">
@@ -128,6 +130,22 @@
    </property>
    <property name="text">
     <string>Exit(&amp;E)</string>
+   </property>
+  </action>
+  <action name="actionPrompt_message_M">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Prompt message(&amp;M)</string>
+   </property>
+  </action>
+  <action name="actionPrompt_sound_S">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Prompt sound(&amp;S)</string>
    </property>
   </action>
  </widget>

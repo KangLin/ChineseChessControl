@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 #endif
     QString qmFile = RabbitCommon::CDir::Instance()->GetDirTranslations()
             + QDir::separator() + "ChineseChessApp_" + szLoacleName + ".qm";
-    
+
     QTranslator translator;
     translator.load(qmFile);
     qApp->installTranslator(&translator);

@@ -18,16 +18,13 @@ public:
     
 private slots:
     void on_actionOpen_O_triggered();
-    
     void on_actionSave_S_triggered();
-    
     void on_actionPreviou_P_triggered();
-    
     void on_actionNext_N_triggered();
-    
     void on_actionExit_E_triggered();
-    
     void on_actionAbout_A_triggered();
+    void on_actionPrompt_sound_S_triggered(bool checked);
+    void on_actionPrompt_message_M_triggered(bool checked);
     
 private:
     Ui::MainWindow *ui;

@@ -78,8 +78,10 @@ public:
 	int SetBlackName(const char* pszName);
 
 	int EnablePromptSound(bool sound = true);
+    bool getEnablePromptSound();
 	int EnablePromptMessage(bool bMsg = true);
-
+    bool getEnablePromptMessage();
+    
 protected:
 	// 下列虚拟函数由界面实现类完成
 	

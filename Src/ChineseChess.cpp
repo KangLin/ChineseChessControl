@@ -97,10 +97,20 @@ int CChineseChess::EnablePromptSound(bool sound)
 	return 0;
 }
 
+bool CChineseChess::getEnablePromptSound()
+{
+    return m_bPromptSound;
+}
+
 int CChineseChess::EnablePromptMessage(bool bMsg)
 {
 	m_bPromptMessage = bMsg;
 	return 0;
+}
+
+bool CChineseChess::getEnablePromptMessage()
+{
+    return m_bPromptMessage;
 }
 
 /**
