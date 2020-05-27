@@ -1,7 +1,7 @@
 project(ChineseChessApp)
 
 set(SOURCES_FILES
-	main.cpp
+    main.cpp
     MainWindow.cpp
     )
 
@@ -13,16 +13,18 @@ set(HEADER_FILES
 	MainWindow.h
     )
 
-LIST(APPEND SOURCE_UI_FILES
+set(SOURCE_UI_FILES
     MainWindow.ui)
 
-include(Translations)
-SET(RCC_FILES
-    ${TRANSLATIONS_RESOURCE_FILES}
-    Resource/Resource.qrc
-	)
 if(WIN32)
     SET(RCC_FILES ${RCC_FILES} Resource/AppIcon.rc)
+endif()
+LIST(APPEND RCC_FILES Resource/Resource.qrc)
+#翻译
+include(${RabbitCommon_DIR}/cmake/Translations.cmake)
+GENERATED_QT_TRANSLATIONS(UPDATE SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES})
+if("Debug" STREQUAL CMAKE_BUILD_TYPE)
+    LIST(APPEND RCC_FILES ${TRANSLATIONS_RESOURCE_FILES})
 endif()
 
 add_definitions(-DBUILD_VERSION="${BUILD_VERSION}")

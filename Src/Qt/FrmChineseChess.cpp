@@ -86,11 +86,11 @@ int CFrmChineseChess::InitResource(const QString szLanguage)
 int CFrmChineseChess::CleanResource()
 {
     qApp->removeTranslator(&g_Translator);
-    
-    Q_CLEANUP_RESOURCE(ResourceChineseChess);
+
 #if _DEBUG
     Q_CLEANUP_RESOURCE(translations_ChineseChessQt);
 #endif
+    Q_CLEANUP_RESOURCE(ResourceChineseChess);
     return 0;
 }
 

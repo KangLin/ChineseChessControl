@@ -57,5 +57,6 @@ void MainWindow::on_actionAbout_A_triggered()
     CDlgAbout about(this);
     about.m_szAppName = tr("Chinese chess");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
+    about.m_szCopyrightTime = "1994-" + QString::number(QDate::currentDate().year());
     about.exec();
 }

@@ -10,6 +10,7 @@
     - [中国象棋 ActiveX 控件](ActiveX.md)
     - [中国象棋 Qt 插件](#中国象棋-Qt-插件)
 - [编译](#编译)
+- [使用](#使用)
 
 --------------------------
 
@@ -82,3 +83,6 @@
 
     RabbitCommonTools.obj : error LNK2019: 无法解析的外部符号 "int __cdecl qInitResources_translations_RabbitCommon(void)" (?qInitResources_translations_RabbitCommon@@YAHXZ)，该符号在函数 "void __cdecl g_RabbitCommon_InitResource(void)" (?g_RabbitCommon_InitResource@@YAXXZ) 中被引用
     RabbitCommonTools.obj : error LNK2019: 无法解析的外部符号 "int __cdecl qCleanupResources_translations_RabbitCommon(void)" (?qCleanupResources_translations_RabbitCommon@@YAHXZ)，该符号在函数 "void __cdecl g_RabbitCommon_CleanResource(void)" (?g_RabbitCommon_CleanResource@@YAXXZ) 中被引用
+
+### 使用
+

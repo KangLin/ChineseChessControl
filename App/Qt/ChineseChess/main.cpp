@@ -13,6 +13,10 @@ int main(int argc, char *argv[])
     QString szLoacleName = QLocale::system().name();
     RabbitCommon::CTools::Instance()->Init(szLoacleName);
     CFrmChineseChess::InitResource(szLoacleName);
+
+#if _DEBUG
+    Q_INIT_RESOURCE(translations_ChineseChessApp);
+#endif
     QTranslator translator;
     translator.load(RabbitCommon::CDir::Instance()->GetDirTranslations()
                       + "/ChineseChessApp_" + szLoacleName + ".qm");

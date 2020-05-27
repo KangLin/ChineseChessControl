@@ -19,12 +19,18 @@ LIST(APPEND HEADER_FILES
 LIST(APPEND SOURCE_UI_FILES
     FrmChineseChess.ui)
 
-include(Translations)
-
 SET(RCC_FILES
-    ${TRANSLATIONS_RESOURCE_FILES}
     ResourceChineseChess.qrc
     )
+
+#翻译
+include(${RabbitCommon_DIR}/cmake/Translations.cmake)
+GENERATED_QT_TRANSLATIONS(UPDATE SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES})
+if("Debug" STREQUAL CMAKE_BUILD_TYPE)
+    LIST(APPEND RCC_FILES
+        ${TRANSLATIONS_RESOURCE_FILES}
+        )
+endif()
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES} ${SOURCE_UI_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
