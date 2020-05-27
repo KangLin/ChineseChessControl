@@ -4,6 +4,8 @@
 #include "RabbitCommonTools.h"
 
 #include <QApplication>
+#include <QDebug>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -13,13 +15,14 @@ int main(int argc, char *argv[])
     QString szLoacleName = QLocale::system().name();
     RabbitCommon::CTools::Instance()->Init(szLoacleName);
     CFrmChineseChess::InitResource(szLoacleName);
-
-#if _DEBUG
+#ifdef _DEBUG
     Q_INIT_RESOURCE(translations_ChineseChessApp);
 #endif
+    QString qmFile = RabbitCommon::CDir::Instance()->GetDirTranslations()
+            + QDir::separator() + "ChineseChessApp_" + szLoacleName + ".qm";
+    
     QTranslator translator;
-    translator.load(RabbitCommon::CDir::Instance()->GetDirTranslations()
-                      + "/ChineseChessApp_" + szLoacleName + ".qm");
+    translator.load(qmFile);
     qApp->installTranslator(&translator);
 
     MainWindow w;

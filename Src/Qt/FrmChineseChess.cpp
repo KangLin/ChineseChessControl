@@ -78,7 +78,7 @@ int CFrmChineseChess::InitResource(const QString szLanguage)
 #endif
     
     g_Translator.load(RabbitCommon::CDir::Instance()->GetDirTranslations()
-                      + "/ChineseChessQt_" + szLanguage + ".qm");
+                      + QDir::separator() + "ChineseChessQt_" + szLanguage + ".qm");
     qApp->installTranslator(&g_Translator);
     return 0;
 }
@@ -193,6 +193,9 @@ int CFrmChineseChess::onGoChess(int i, int j, CPiece::ENUM_QiZi chess)
 void CFrmChineseChess::AboutBox()
 {
     CDlgAbout about(this);
+    about.m_szAppName = tr("Chinese chess control");
+    about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
+    about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
     about.exec();
 }
 
