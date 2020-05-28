@@ -90,7 +90,6 @@ before_build:
   - set RabbitCommon_DIR=%APPVEYOR_BUILD_FOLDER%/RabbitCommon
   
 build_script:
-  #- if %TOOLCHAIN_VERSION%==15 (call msbuild Src/ChineseChessControl.sln)
   - mkdir build
   - cd build
   - echo "cmake .. -G"%GENERATORS%" -DCMAKE_INSTALL_PREFIX=install -DQt5_DIR=%QT_ROOT%\lib\cmake\Qt5"

@@ -4,18 +4,18 @@ message(STATUS "== Build chinese chess dll")
 
 set(SOURCES_FILES
     ChineseChess.cpp
-	ChessGame.cpp
-	Piece.cpp
+    ChessGame.cpp
+    Piece.cpp
     Common.cpp
-	GoRule.cpp
+    GoRule.cpp
     )
 
 set(HEADER_FILES
     ChineseChess.h
-	ChessGame.h
-	Piece.h
-	Common.h
-	GoRule.h
+    ChessGame.h
+    Piece.h
+    Common.h
+    GoRule.h
     )
 
 SET(RCC_FILES
