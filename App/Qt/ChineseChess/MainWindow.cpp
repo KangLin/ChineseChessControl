@@ -3,6 +3,7 @@
 
 #include "RabbitCommonDir.h"
 #include "DlgAbout/DlgAbout.h"
+#include "FrmUpdater/FrmUpdater.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,6 +14,11 @@ MainWindow::MainWindow(QWidget *parent)
     this->setCentralWidget(m_pChess);
     ui->actionPrompt_sound_S->setChecked(m_pChess->getEnablePromptSound());
     ui->actionPrompt_message_M->setChecked(m_pChess->getEnablePromptMessage());
+#ifdef RABBITCOMMON  
+    CFrmUpdater updater;
+    ui->actionUpdate_U->setIcon(updater.windowIcon());
+#endif
+    
 }
 
 MainWindow::~MainWindow()
@@ -57,6 +63,7 @@ void MainWindow::on_actionExit_E_triggered()
 void MainWindow::on_actionAbout_A_triggered()
 {
     CDlgAbout about(this);
+    about.m_AppIcon = QImage(":/image/Chess");
     about.m_szAppName = tr("Chinese chess");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
     about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
@@ -73,4 +80,17 @@ void MainWindow::on_actionPrompt_message_M_triggered(bool checked)
 {
     if(m_pChess)
         m_pChess->EnablePromptMessage(checked);
+}
+
+void MainWindow::on_actionUpdate_U_triggered()
+{
+#ifdef RABBITCOMMON
+    CFrmUpdater* m_pfrmUpdater = new CFrmUpdater();
+    m_pfrmUpdater->SetTitle(QImage(":/image/Chess"));
+    #if defined (Q_OS_ANDROID)
+        m_pfrmUpdater->showMaximized();
+    #else
+        m_pfrmUpdater->show();
+    #endif
+#endif
 }

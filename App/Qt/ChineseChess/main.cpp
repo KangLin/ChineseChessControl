@@ -2,6 +2,7 @@
 #include "FrmChineseChess.h"
 #include "RabbitCommonDir.h"
 #include "RabbitCommonTools.h"
+#include "FrmUpdater/FrmUpdater.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -15,9 +16,7 @@ int main(int argc, char *argv[])
     QString szLoacleName = QLocale::system().name();
     RabbitCommon::CTools::Instance()->Init(szLoacleName);
     CFrmChineseChess::InitResource(szLoacleName);
-#ifdef _DEBUG
-    Q_INIT_RESOURCE(translations_ChineseChessApp);
-#endif
+
     QString qmFile = RabbitCommon::CDir::Instance()->GetDirTranslations()
             + QDir::separator() + "ChineseChessApp_" + szLoacleName + ".qm";
 
@@ -25,6 +24,14 @@ int main(int argc, char *argv[])
     translator.load(qmFile);
     qApp->installTranslator(&translator);
 
+#ifdef RABBITCOMMON 
+    CFrmUpdater *pUpdate = new CFrmUpdater();
+    pUpdate->SetTitle(QImage(":/image/Chess"));
+    pUpdate->SetInstallAutoStartup();
+    if(!pUpdate->GenerateUpdateXml())
+        return 0;
+#endif
+    
     MainWindow w;
     w.show();
     

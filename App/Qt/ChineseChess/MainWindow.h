@@ -26,6 +26,8 @@ private slots:
     void on_actionPrompt_sound_S_triggered(bool checked);
     void on_actionPrompt_message_M_triggered(bool checked);
     
+    void on_actionUpdate_U_triggered();
+    
 private:
     Ui::MainWindow *ui;
     

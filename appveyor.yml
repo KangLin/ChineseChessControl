@@ -13,15 +13,34 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-
+  BUILD_VERSION: v2.0.0
+  
   matrix:
-  ##### msvc 2019 ########
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    GENERATORS: "Visual Studio 16 2019"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 16
-    #QT_ROOT: C:\Qt\5.12\msvc2019
+  ##### msvc 2013 ########
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 12 2013"
+    TOOLCHAIN_VERSION: 12
+    QT_ROOT: C:\Qt\5.6\msvc2013
     BUILD_ARCH: x86
+    
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 12 2013 Win64"
+    TOOLCHAIN_VERSION: 12
+    QT_ROOT: C:\Qt\5.6\msvc2013_64
+    BUILD_ARCH: x64
+  
+  ##### msvc 2015 ########
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 14 2015"
+    TOOLCHAIN_VERSION: 14
+    QT_ROOT: C:\Qt\5.6\msvc2015
+    BUILD_ARCH: x86
+
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 14 2015 Win64"
+    TOOLCHAIN_VERSION: 14
+    QT_ROOT: C:\Qt\5.10\msvc2015_64
+    BUILD_ARCH: x64
 
   ##### msvc 2017 ########
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
@@ -37,32 +56,14 @@ environment:
     TOOLCHAIN_VERSION: 15
     QT_ROOT: C:\Qt\5.12\msvc2017_64
     BUILD_ARCH: x64
-
-  ##### msvc 2015 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 14 2015"
-    TOOLCHAIN_VERSION: 14
-    QT_ROOT: C:\Qt\5.6\msvc2015
-    BUILD_ARCH: x86
-
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 14 2015 Win64"
-    TOOLCHAIN_VERSION: 14
-    QT_ROOT: C:\Qt\5.10\msvc2015_64
-    BUILD_ARCH: x64
-
-  ##### msvc 2013 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 12 2013"
-    TOOLCHAIN_VERSION: 12
-    QT_ROOT: C:\Qt\5.6\msvc2013
-    BUILD_ARCH: x86
     
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 12 2013 Win64"
-    TOOLCHAIN_VERSION: 12
-    QT_ROOT: C:\Qt\5.6\msvc2013_64
-    BUILD_ARCH: x64
+  ##### msvc 2019 ########
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    GENERATORS: "Visual Studio 16 2019"
+    BUILD_TARGERT: windows_msvc
+    TOOLCHAIN_VERSION: 16
+    #QT_ROOT: C:\Qt\5.12\msvc2019
+    BUILD_ARCH: x86
 
 matrix:
   fast_finish: false
@@ -96,11 +97,12 @@ build_script:
   - cmake .. -G"%GENERATORS%" -DCMAKE_INSTALL_PREFIX=install -DQt5_DIR="%QT_ROOT%\lib\cmake\Qt5"
   - cmake --build . --config Release --target install
   - call "C:\Program Files (x86)\NSIS\makensis.exe" "Install.nsi"
-
+  - if exist install/bin/ChineseChessApp.exe (call "%cd%/install/bin/ChineseChessApp.exe" -f "update_windows.xml" --pf "%cd%/install/bin/ChineseChessControl-Setup-%BUILD_VERSION%.exe")
+  
 artifacts:
-  - path: build/ChineseChessControl-Setup-*.exe
-    name: ChineseChessControl_$(appveyor_build_version)
-
+  - path: build/ChineseChessControl-Setup-$(BUILD_VERSION).exe  
+  - path: build/update_windows.xml
+  
 test: off
 
 #See: https://www.appveyor.com/docs/deployment/github/

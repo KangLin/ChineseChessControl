@@ -59,7 +59,9 @@ elseif(MSVC)
 endif()
 
 if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DBUILD_VERSION="${BUILD_VERSION}"
+        RABBITCOMMON)
 endif()
 
 target_include_directories(${PROJECT_NAME}

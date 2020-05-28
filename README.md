@@ -41,6 +41,12 @@
 + [x] 表示已完成的功能
 + [ ] 表示尚未完成的功能
 
+- 支持平台：
+  + [x] Windows
+  + [x] Linux
+  + [x] Android
+  + [x] IOS
+
 [![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
 
 #### 屏幕截图
