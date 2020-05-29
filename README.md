@@ -2,6 +2,8 @@
 
 作者：康林 (kl222@126.com)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
+
 -------------------------
 
 - [简介](#简介)
@@ -45,9 +47,7 @@
   + [x] Windows
   + [x] Linux
   + [x] Android
-  + [x] IOS
-
-[![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
+  + [ ] mac、IOS 本人无此设备，请你自行编译、测试
 
 #### 屏幕截图
 

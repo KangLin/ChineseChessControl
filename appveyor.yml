@@ -16,26 +16,6 @@ environment:
   BUILD_VERSION: v2.0.0
   
   matrix:
-  ##### msvc 2013 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 12 2013"
-    TOOLCHAIN_VERSION: 12
-    QT_ROOT: C:\Qt\5.6\msvc2013
-    BUILD_ARCH: x86
-    
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 12 2013 Win64"
-    TOOLCHAIN_VERSION: 12
-    QT_ROOT: C:\Qt\5.6\msvc2013_64
-    BUILD_ARCH: x64
-
-  ##### msvc 2019 ########
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    GENERATORS: "Visual Studio 16 2019"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 16
-    #QT_ROOT: C:\Qt\5.12\msvc2019
-  
   ##### msvc 2017 ########
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     GENERATORS: "Visual Studio 15 2017"
@@ -63,7 +43,20 @@ environment:
     TOOLCHAIN_VERSION: 14
     QT_ROOT: C:\Qt\5.10\msvc2015_64
     BUILD_ARCH: x64
-   
+
+  ##### msvc 2013 ########
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 12 2013"
+    TOOLCHAIN_VERSION: 12
+    QT_ROOT: C:\Qt\5.6\msvc2013
+    BUILD_ARCH: x86
+    
+  - BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 12 2013 Win64"
+    TOOLCHAIN_VERSION: 12
+    QT_ROOT: C:\Qt\5.6\msvc2013_64
+    BUILD_ARCH: x64
+    
   ##### mingw ########
   - BUILD_TARGERT: windows_mingw
     GENERATORS: "MSYS Makefiles"
