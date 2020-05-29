@@ -10,7 +10,7 @@ set(INSTALLHEADER_FILES
 
 set(HEADER_FILES
     ${INSTALLHEADER_FILES}
-	MainWindow.h
+    MainWindow.h
     )
 
 set(SOURCE_UI_FILES

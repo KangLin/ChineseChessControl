@@ -260,7 +260,7 @@ fi
 
 if [ "${BUILD_TARGERT}" = "android" ]; then
     ${QT_ROOT}/bin/androiddeployqt \
-        --input `pwd`/App/android_deployment_settings.json \
+        --input `pwd`/App/Qt/ChineseChess/android_deployment_settings.json \
         --output `pwd`/android-build \
         --android-platform ${ANDROID_API} \
         --gradle \

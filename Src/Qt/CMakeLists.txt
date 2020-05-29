@@ -4,13 +4,21 @@ message(STATUS "== Build chinese chess qt dll")
 
 LIST(APPEND SOURCES_FILES
     FrmChineseChess.cpp
-    FrmChineseChessPlugin.cpp
     )
 
 LIST(APPEND INSTALLHEADER_FILES
     FrmChineseChess.h
-    FrmChineseChessPlugin.h
     )
+
+IF(NOT ANDROID)
+    LIST(APPEND SOURCES_FILES
+        FrmChineseChessPlugin.cpp
+        )
+    
+    LIST(APPEND INSTALLHEADER_FILES
+        FrmChineseChessPlugin.h
+        )
+ENDIF()
 
 LIST(APPEND HEADER_FILES
     ${INSTALLHEADER_FILES}

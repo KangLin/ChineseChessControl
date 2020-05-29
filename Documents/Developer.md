@@ -9,7 +9,7 @@
     - [中国象棋 MFC 扩展动态库](#中国象棋-MFC-扩展动态库)
     - [中国象棋 ActiveX 控件](ActiveX.md)
     - [中国象棋 Qt 插件](#中国象棋-Qt-插件)
-- [编译](#编译)
+- [编译](Build.md)
 - [使用](#使用)
 
 --------------------------
@@ -56,33 +56,7 @@
   + 复制安装目录（bin、lib）下的所有动态库文件到 ${Qt_Install_Root}/plugins/designer 下。
   就可以在 qt 设计器的控件窗口中看到此插件。然后就与使用普通Qt控件一样。
 
-### 编译
-
-- 依赖
-  + 工具
-    - Microsoft Visual studio c++
-    - GNU c++
-    - android sdk and ndk
-    - [CMake](https://www.cmake.org)
-    - Automake and autoconfig
-  + 库
-    - [可选] Qt: https://www.qt.io/
-    - [可选] RabbitCommon: https://github.com/KangLin/RabbitCommon
-- 用 cmake , 建议使用此方法编译
-
-      git clone https://github.com/KangLin/RabbitCommon.git
-      git clone https://github.com/KangLin/ChineseChessControl.git
-      mkdir build
-      cd build
-      cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/install -DCMAKE_BUILD_TYPE=Release     #配置
-      cmake --build . --config=Release                   #编译
-      cmake --build . --config=Release --target install  #安装
-
-
-**注意**：如果使用 MSVC ,则需要加上 -DCMAKE_BUILD_TYPE=Debug ，否则当编译 Debug 时会出现下面错误：
-
-    RabbitCommonTools.obj : error LNK2019: 无法解析的外部符号 "int __cdecl qInitResources_translations_RabbitCommon(void)" (?qInitResources_translations_RabbitCommon@@YAHXZ)，该符号在函数 "void __cdecl g_RabbitCommon_InitResource(void)" (?g_RabbitCommon_InitResource@@YAXXZ) 中被引用
-    RabbitCommonTools.obj : error LNK2019: 无法解析的外部符号 "int __cdecl qCleanupResources_translations_RabbitCommon(void)" (?qCleanupResources_translations_RabbitCommon@@YAHXZ)，该符号在函数 "void __cdecl g_RabbitCommon_CleanResource(void)" (?g_RabbitCommon_CleanResource@@YAXXZ) 中被引用
+### [编译](Build.md)
 
 ### 使用
 
