@@ -10,4 +10,4 @@ Icon=ChineseChess
 Exec=/opt/ChineseChess/bin/ChineseChessApp
 Terminal=false
 StartupNotify=true
-Categories=Application;Development;Game
+Categories=Application;Development;Game;

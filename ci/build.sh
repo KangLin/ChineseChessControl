@@ -159,20 +159,20 @@ if [ "${BUILD_TARGERT}" = "unix" ]; then
     
     bash build_debpackage.sh ${QT_ROOT} ${ThirdLibs_DIR} ${RabbitCommon_DIR} ON
 
-    sudo dpkg -i ../ChineseChessControl_*_amd64.deb
+    sudo dpkg -i ../chinesechess_*_amd64.deb
     echo "test ......"
     ./test/test_linux.sh
 
     #因为上面 dpgk 已安装好了，所以不需要设置下面的环境变量
     #export LD_LIBRARY_PATH=${SeetaFace_DIR}/bin:${SeetaFace_DIR}/lib:${QT_ROOT}/bin:${QT_ROOT}/lib:$LD_LIBRARY_PATH
     
-    cd debian/ChineseChessControl/opt
+    cd debian/chinesechess/opt
     
     URL_LINUXDEPLOYQT=https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
     wget -c -nv ${URL_LINUXDEPLOYQT} -O linuxdeployqt.AppImage
     chmod a+x linuxdeployqt.AppImage
 
-    cd ChineseChessControl
+    cd ChineseChess
     ../linuxdeployqt.AppImage share/applications/*.desktop \
         -qmake=${QT_ROOT}/bin/qmake -appimage -no-copy-copyright-files -verbose
 
@@ -180,33 +180,33 @@ if [ "${BUILD_TARGERT}" = "unix" ]; then
     #cp ../ChineseChessControl-${VERSION}-x86_64.AppImage .
     cp $SOURCE_DIR/Install/install.sh .
     cp $RabbitCommon_DIR/Install/install1.sh .    
-    ln -s ChineseChessControl-${VERSION}-x86_64.AppImage ChineseChessControl-x86_64.AppImage
+    ln -s ChineseChess-${VERSION}-x86_64.AppImage ChineseChess-x86_64.AppImage
     tar -czf ChineseChessControl_${VERSION}.tar.gz \
-        ChineseChessControl-${VERSION}-x86_64.AppImage \
-        ChineseChessControl-x86_64.AppImage \
+        ChineseChess-${VERSION}-x86_64.AppImage \
+        ChineseChess-x86_64.AppImage \
         share \
         install.sh \
         install1.sh
 
     # Create update.xml
-    MD5=`md5sum $SOURCE_DIR/../ChineseChessControl_*_amd64.deb|awk '{print $1}'`
+    MD5=`md5sum $SOURCE_DIR/../chinesechess_*_amd64.deb|awk '{print $1}'`
     echo "MD5:${MD5}"
-    ./bin/ChineseChessControlApp \
+    ./bin/ChineseChessApp \
         -f "`pwd`/update_linux.xml" \
         --md5 ${MD5}
     
-    MD5=`md5sum ChineseChessControl_${VERSION}.tar.gz|awk '{print $1}'`
-    ./ChineseChessControl-x86_64.AppImage \
+    MD5=`md5sum ChineseChess_${VERSION}.tar.gz|awk '{print $1}'`
+    ./ChineseChess-x86_64.AppImage \
         -f "`pwd`/update_linux_appimage.xml" \
         --md5 ${MD5} \
-        --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/ChineseChessControl_${VERSION}.tar.gz"
+        --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/ChineseChess_${VERSION}.tar.gz"
     
     if [ "$TRAVIS_TAG" != "" -a "${QT_VERSION}" = "5.12.3" ]; then
         wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
         chmod u+x upload.sh
-        ./upload.sh $SOURCE_DIR/../ChineseChessControl_*_amd64.deb
+        ./upload.sh $SOURCE_DIR/../chinesechess_*_amd64.deb
         ./upload.sh update_linux.xml update_linux_appimage.xml
-        ./upload.sh ChineseChessControl_${VERSION}.tar.gz
+        ./upload.sh ChineseChess_${VERSION}.tar.gz
     fi
     exit 0
 fi

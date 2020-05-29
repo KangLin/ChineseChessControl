@@ -1,6 +1,6 @@
 #TODO: Change version
 
-version: 'v2.0.0.{build}'
+version: 'v2.0..{build}'
 
 cache:
   - model
@@ -13,7 +13,7 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-  BUILD_VERSION: v2.0.0
+  BUILD_VERSION: "v2.0.1"
   
   matrix:
   ##### msvc 2017 ########
@@ -137,7 +137,7 @@ deploy:
     #token : https://github.com/settings/tokens
     #password encrypt: https://ci.appveyor.com/tools/encrypt
     auth_token:
-      secure: d6yIXuiId5YbQneorJtC35vuLCEK0iWZUOuXf0MeVA7oqPS78sdCcuv0TgPV2+9t
+      secure: 43H2qtl+UKweMvnOUVCGuNkAElipdJJcCIzQcyE+Idb/Jo4Nm1fta2zsNwYiaQP/
     #artifact: ChineseChessControl$(BUILD_TARGERT)$(TOOLCHAIN_VERSION)_$(BUILD_ARCH)_$(QT_VERSION)_$(appveyor_build_version)
     #draft: true
     prerelease: true

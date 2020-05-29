@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ChineseChessControl"
-!define PRODUCT_VERSION "v2.0.0"
+!define PRODUCT_VERSION "v2.0.1"
 !define PRODUCT_PUBLISHER "Kang Lin (kl222@126.com)"
 !define PRODUCT_WEB_SITE "https://github.com/KangLin/${PRODUCT_NAME}"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME}.exe"
