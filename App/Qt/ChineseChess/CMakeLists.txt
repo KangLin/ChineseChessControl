@@ -98,6 +98,16 @@ else()
         )        
 endif()
 
+if(UNIX AND NOT ANDROID)
+    INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop
+        DESTINATION "share/applications"
+            COMPONENT Runtime)
+    INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Qt/Resource/image/b_j.png
+        RENAME ChineseChess.png
+        DESTINATION "share/pixmaps"
+            COMPONENT Runtime)
+endif()
+
 IF(ANDROID)
     Set(JSON_FILE ${CMAKE_CURRENT_BINARY_DIR}/android_deployment_settings.json)
     GENERATED_DEPLOYMENT_SETTINGS(NAME ${JSON_FILE}

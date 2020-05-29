@@ -1,0 +1,15 @@
+Source: chinesechess
+Section: main
+Priority: optional
+Maintainer: Kang Lin <kl222@126.com>
+Build-Depends: debhelper (>= 6)
+Standards-Version:"v1.0.0"
+Homepage: https://github.com/KangLin/ChineseChessControl
+Vcs-Git: https://github.com/KangLin/ChineseChessControl.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/ChineseChessControl.git
+
+Package: chinesechess
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: ChineseChess

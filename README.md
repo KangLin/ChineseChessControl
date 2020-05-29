@@ -68,6 +68,32 @@
 
   Windows安装包，支持 Windows xp 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
+- android
+    + [ChineseChess_armeabi-v7a_v0.0.4.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v0.0.4/ChineseChess_armeabi-v7a_v0.0.4.apk)
+
+- linux
+    - [ChineseChess_v0.0.4.tar.gz](https://github.com/KangLin/ChineseChessControl/releases/download/v0.0.4/ChineseChess_v0.0.4.tar.gz)  
+      AppImage格式的执行程序，可直接运行在linux系统，详见：https://appimage.org/  
+      使用:    
+      1. 解压。复制ChineseChess_v0.0.4.tar.gz到安装目录，然后解压：
+
+              mkdir ChineseChess
+              cd ChineseChess
+              cp $DOWNLOAD/ChineseChess_v0.0.4.tar.gz .
+              tar xvfz ChineseChess_v0.0.4.tar.gz
+
+      2. 安装
+        
+              ./install1.sh install ChineseChess
+        
+      3. 如果需要，卸载
+        
+              ./install1.sh remove ChineseChess
+
+- ubuntu
+    - [ChineseChess_0.0.4_amd64.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v0.0.4/chinesechess_0.0.4_amd64.deb)  
+  deb 安装包,可用于 Ubuntu
+
 #### 贡献
 - 欢迎大家参与本项目开发，共同完成[功能](#功能)列表中未完成的功能。
   + [问题与讨论](https://github.com/KangLin/ChineseChessControl/issues)
