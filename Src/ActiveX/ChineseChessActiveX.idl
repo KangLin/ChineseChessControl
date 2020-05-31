@@ -63,6 +63,7 @@ library ChineseChessActiveXLib
 			[id(12), helpstring("设置黑方名字")] BSTR BlackName;
 			[id(13), helpstring("设置开始时间")] ULONG StartTime;
 			[id(14), helpstring("设置结束时间")] ULONG EndTime;
+			[id(15), helpstring("设置棋局标签")] BSTR GameTags;
 
 		methods:
 			[id(DISPID_ABOUTBOX)] void AboutBox();

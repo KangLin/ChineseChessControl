@@ -72,15 +72,18 @@ protected:
 	VARIANT_BOOL m_EnablePromptSound;
 	void OnEnablePromptMessageChanged();
 	VARIANT_BOOL m_EnablePromptMessage;
+
 	void OnRedNameChanged();
 	CString m_RedName;
 	void OnBlackNameChanged();
 	CString m_BlackName;
+	void OnGameTagsChanged();
+	CString m_GameTags;
 	void OnStartTimeChanged();
 	ULONG m_StartTime;
 	void OnEndTimeChanged();
 	ULONG m_EndTime;
-
+	
 	afx_msg void AboutBox();
 	VARIANT_BOOL NextStep();    //下一步
 	VARIANT_BOOL PreviouStep(); //上一步
@@ -101,6 +104,7 @@ public:
 public:
 	enum {
 		eventidEventGoChess = 1L,
+		dispidGameTags = 15L,
 		dispidEndTime = 14,
 		dispidStartTime = 13,
 		dispidBlackName = 12L,

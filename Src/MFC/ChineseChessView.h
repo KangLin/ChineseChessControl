@@ -40,6 +40,7 @@ public:
 	virtual int LoadChessGame(LPCTSTR pszFile);
 	virtual int SetRedName(LPCTSTR pszName);
 	virtual int SetBlackName(LPCTSTR pszName);
+	virtual int SetGameTags(LPCTSTR pszTags);
 
 	int SetChineseChessHandler(CChineseChessHandler* handler);
 

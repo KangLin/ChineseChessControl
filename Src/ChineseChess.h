@@ -76,6 +76,8 @@ public:
 	int SetRedName(const char* pszName);
 	std::string GetBlackName();
 	int SetBlackName(const char* pszName);
+	std::string GetGameTags();
+	int SetGameTags(const char* pTags);
 
 	int EnablePromptSound(bool sound = true);
     bool getEnablePromptSound();

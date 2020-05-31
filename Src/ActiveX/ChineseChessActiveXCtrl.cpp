@@ -33,6 +33,7 @@ BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "BoardLayout", dispidBoardLayout, m_BoardLayout, OnBoardLayoutChanged, VT_I2)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "RedName", dispidRedName, m_RedName, OnRedNameChanged, VT_BSTR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "BlackName", dispidBlackName, m_BlackName, OnBlackNameChanged, VT_BSTR)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "GameTags", dispidGameTags, m_GameTags, OnGameTagsChanged, VT_BSTR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "StartTime", dispidStartTime, m_StartTime, OnStartTimeChanged, VT_UI4)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EndTime", dispidEndTime, m_EndTime, OnEndTimeChanged, VT_UI4)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "NextStep", dispidNextStep, NextStep, VT_BOOL, VTS_NONE)
@@ -211,6 +212,14 @@ void CChineseChessActiveXCtrl::OnBlackNameChanged()
 	SetModifiedFlag();
 }
 
+void CChineseChessActiveXCtrl::OnGameTagsChanged()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetGameTags(m_GameTags);
+	SetModifiedFlag();
+}
+
 void CChineseChessActiveXCtrl::OnStartTimeChanged()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
@@ -297,6 +306,14 @@ VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 	if (m_pChess && m_pChess->GetSafeHwnd())
 	{
 		nRet = m_pChess->LoadChessGame(szFile);
+		
+		// 初始化属性
+		m_RedName = m_pChess->GetRedName().c_str();
+		m_BlackName = m_pChess->GetBlackName().c_str();
+		m_GameTags = m_pChess->GetGameTags().c_str();
+		m_StartTime = m_pChess->GetStartTime();
+		m_EndTime = m_pChess->GetEndTime();
+
 		m_pChess->Invalidate();
 	}
 	if(nRet)

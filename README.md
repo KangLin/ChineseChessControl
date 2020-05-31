@@ -3,6 +3,7 @@
 作者：康林 (kl222@126.com)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
+[![Build Status](https://travis-ci.org/KangLin/ChineseChessControl.svg)](https://travis-ci.org/KangLin/ChineseChessControl)
 
 -------------------------
 

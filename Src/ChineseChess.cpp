@@ -1,6 +1,4 @@
-﻿#ifdef _AFXEXT
-#include "MFC/framework.h"
-#endif
+﻿
 #include "ChineseChess.h"
 
 CChineseChess::CChineseChess()
@@ -467,4 +465,14 @@ int CChineseChess::SetEndTime(const time_t& tm)
 time_t CChineseChess::GetEndTime()
 {
 	return m_Game.GetEndTime();
+}
+
+int CChineseChess::SetGameTags(const char* pTags)
+{
+	return m_Game.SetTags(pTags);
+}
+
+std::string CChineseChess::GetGameTags()
+{
+	return m_Game.GetTags();
 }

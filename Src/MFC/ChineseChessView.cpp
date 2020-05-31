@@ -258,6 +258,12 @@ int CChineseChessView::SetBlackName(LPCTSTR pszName)
     return __super::SetBlackName(T2CA(pszName));
 }
 
+int CChineseChessView::SetGameTags(LPCTSTR pszTags)
+{
+	USES_CONVERSION;
+	return __super::SetGameTags(T2CA(pszTags));
+}
+
 //
 //以上是完成 === 虚拟函数实现 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

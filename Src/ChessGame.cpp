@@ -4,6 +4,11 @@
 #include <time.h>
 #include <string.h>
 
+#ifdef WIN32
+#include <WinSock2.h>
+#pragma comment(lib, "Ws2_32")
+#endif
+
 CChessGame::CChessGame()
 {
 	m_nIndex = -1;
@@ -53,24 +58,26 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  *
- * @param  int i：当前下棋的位置,横坐标[0-8]
- * @param  int j：当前下棋的位置,纵坐标[0-9]
- * @param  qz 棋子
+ * @param int i：当前下棋的位置,横坐标[0-8]
+ * @param int j：当前下棋的位置,纵坐标[0-9]
+ * @param qz 棋子
+ * @param const char* pDescript： 这一步的描述
  *
  * @returns 成功返回 0 ，否则返回非零
  */
-int CChessGame::SaveStep(int i, int j, CPiece::ENUM_QiZi qz)
+int CChessGame::SaveStep(int i, int j, CPiece::ENUM_QiZi qz, const char* pDescript)
 {
-	strCODE code;
-	QiZiBianMa(&i, &j, &qz, &code);
-
+	strStep step;
+	QiZiBianMa(&i, &j, &qz, &step.code);
+	if (pDescript)
+		step.szDescript = pDescript;
 	// 调整容器大小
 	if (m_nIndex + 1 < m_ChessGame.size())
 	{
 		m_ChessGame.resize(m_nIndex + 1);
 	}
 
-	m_ChessGame.push_back(code);//保存到棋局中
+	m_ChessGame.push_back(step);//保存到棋局中
 	m_nIndex++;
 
 	return 0;
@@ -108,7 +115,7 @@ int CChessGame::GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 	if (m_nIndex < 0)
 		return -1;
 
-	QiZiBianMa(&i, &j, &qz, &m_ChessGame[m_nIndex], JieMa);
+	QiZiBianMa(&i, &j, &qz, &m_ChessGame[m_nIndex].code, JieMa);
 	m_nIndex--;
 	return 0;
 }
@@ -129,7 +136,7 @@ int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 	if (m_ChessGame.size() <= m_nIndex + 1)
 		return -1;
 
-	QiZiBianMa(&i, &j, &qz, &m_ChessGame[++m_nIndex], JieMa);
+	QiZiBianMa(&i, &j, &qz, &m_ChessGame[++m_nIndex].code, JieMa);
 
 	return 0;
 }
@@ -146,7 +153,7 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 	strncpy(head.head.szAuthor, AUTHOR, MAX_STRING_BUFFER);
 #endif
 
-	head.head.dwVersion = 1;
+	head.head.dwVersion = 2;
 	head.iBuShu = m_ChessGame.size();
 	head.boardLayout = layout;
 
@@ -164,10 +171,12 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 	if (!out.is_open())
 		return -2;
 	out.write((char*)&head, sizeof(strFile));
-	std::vector<strCODE>::iterator it;
+	WriteStringToFile(out, m_szTags);
+	std::vector<strStep>::iterator it;
 	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
 	{
-		out.write(it->code, sizeof(strCODE));
+		out.write(it->code.code, sizeof(strCODE));
+		WriteStringToFile(out, it->szDescript);
 	}
 	out.close();
 	return 0;
@@ -201,21 +210,57 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 			nRet = -4;
 			break;
 		}
+		if (head.head.dwVersion > 2)
+		{
+			nRet = -5;
+			break;
+		}
+
+		ReadStringFromFile(in, m_szTags);
 
 		m_ChessGame.clear();
 		m_nIndex = head.iBuShu;
 
 		while (m_nIndex--)
 		{
-			strCODE code;
-			in.read((char*)&code, sizeof(strCODE));
-			m_ChessGame.push_back(code);
+			strStep step;
+			in.read((char*)&step.code, sizeof(strCODE));
+			ReadStringFromFile(in, step.szDescript);
+			m_ChessGame.push_back(step);
 		}
 		m_nIndex = -1;
 	} while (0);
 
 	in.close();
 	return nRet;;
+}
+
+int CChessGame::WriteStringToFile(std::ofstream &o, std::string &s)
+{
+	short nLen = s.size();
+	short n = htons(nLen);
+	o.write((char*)&n, sizeof(short));
+	if (nLen > 0)
+	{
+		o.write(s.c_str(), nLen);
+	}
+	return 0;
+}
+
+int CChessGame::ReadStringFromFile(std::ifstream &i, std::string &s)
+{
+	short nLen = 0;
+	i.read((char*)&nLen, sizeof(short));
+	nLen = ntohs(nLen);
+	if (nLen > 0)
+	{
+		char* pBuf = new char[nLen + 1];
+		memset(pBuf, 0, nLen + 1);
+		i.read(pBuf, nLen);
+		s = pBuf;
+		delete []pBuf;
+	}
+	return 0;
 }
 
 time_t CChessGame::GetStartTime()
@@ -267,5 +312,16 @@ std::string CChessGame::GetBlackName()
 int CChessGame::SetBlackName(const char* pszName)
 {
 	m_szBlackName = pszName;
+	return 0;
+}
+
+std::string CChessGame::GetTags()
+{
+	return m_szTags;
+}
+
+int CChessGame::SetTags(const char* pTags)
+{
+	m_szTags = pTags;
 	return 0;
 }
