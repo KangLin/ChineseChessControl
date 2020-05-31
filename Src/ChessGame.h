@@ -26,7 +26,7 @@ public:
 	int SaveStep(int i, int j, CPiece::ENUM_QiZi qz); //保存当前步
 	int RevokeStep();								  //撤回当前步
 
-	// 移动指针位置
+	// 只移动指针位置，不改变棋局存储大小
     int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //得到上一步
 	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //得到下一步
 
@@ -46,8 +46,8 @@ public:
 
 	enum GAME_TYPE
 	{
-		NORMAL = 1,
-		CHANGJU = 2
+		NORMAL = 1, //正常开局
+		CHANGJU = 2 //残局
 	};
 
 	//文件头
