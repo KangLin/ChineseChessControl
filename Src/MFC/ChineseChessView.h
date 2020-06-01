@@ -36,6 +36,10 @@ public:
 	virtual ~CChineseChessView();
 	void AboutBox();
 
+	int SetQiPangColor(COLORREF col);
+	COLORREF GetQiPangColor();
+	int SetTiShiBoxColor(COLORREF col);
+	COLORREF GetTiShiBoxColor();
 	virtual int SaveChessGame(LPCTSTR pszFile);
 	virtual int LoadChessGame(LPCTSTR pszFile);
 	virtual int SetRedName(LPCTSTR pszName);

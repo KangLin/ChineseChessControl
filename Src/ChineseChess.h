@@ -44,6 +44,7 @@ public:
 		TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
 	} ENUM_BoardLayout;
 	int SetBoardLayout(ENUM_BoardLayout layout);
+	ENUM_BoardLayout GetBoardLayout();
 
 	/**
 	 * Go chess

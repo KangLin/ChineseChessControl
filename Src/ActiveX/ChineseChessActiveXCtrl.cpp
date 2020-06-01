@@ -28,14 +28,15 @@ END_MESSAGE_MAP()
 
 BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "AboutBox", DISPID_ABOUTBOX, AboutBox, VT_EMPTY, VTS_NONE)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "QiPangColor", dispidQiPangColor, m_QiPangColor, OnQiPangColorChanged, VT_COLOR)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "TiShiBoxColor", dispidTiShiBoxColor, m_TiShiBoxColor, OnTiShiBoxColorChanged, VT_COLOR)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "BoardLayout", dispidBoardLayout, m_BoardLayout, OnBoardLayoutChanged, VT_I2)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "RedName", dispidRedName, m_RedName, OnRedNameChanged, VT_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "BlackName", dispidBlackName, m_BlackName, OnBlackNameChanged, VT_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "GameTags", dispidGameTags, m_GameTags, OnGameTagsChanged, VT_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "StartTime", dispidStartTime, m_StartTime, OnStartTimeChanged, VT_UI4)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EndTime", dispidEndTime, m_EndTime, OnEndTimeChanged, VT_UI4)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "QiPangColor", dispidQiPangColor, GetQiPangColor, SetQiPangColor, VT_COLOR)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "TiShiBoxColor", dispidTiShiBoxColor, GetTiShiBoxColor, SetTiShiBoxColor, VT_COLOR)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "BoardLayout", dispidBoardLayout, GetBoardLayout, SetBoardLayout, VT_I2)
+
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "RedName", dispidRedName, GetRedName, SetRedName, VT_BSTR)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "BlackName", dispidBlackName, GetBlackName, SetBlackName, VT_BSTR)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "GameTags", dispidGameTags, GetGameTags, SetGameTags, VT_BSTR)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "StartTime", dispidStartTime, GetStartTime, SetStartTime, VT_I4)
+	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "EndTime", dispidEndTime, GetEndTime, SetEndTime, VT_I4)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "NextStep", dispidNextStep, NextStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "PreviouStep", dispidPreviouStep, PreviouStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
@@ -125,6 +126,7 @@ CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl()
 {
 	if (m_pHandler)
 		delete m_pHandler;
+
 }
 
 // CChineseChessActiveXCtrl::DoPropExchange - 持久性支持
@@ -135,9 +137,6 @@ void CChineseChessActiveXCtrl::DoPropExchange(CPropExchange* pPX)
 	COleControl::DoPropExchange(pPX);
 
 	// TODO: 为每个持久的自定义属性调用 PX_ 函数。
-	PX_Color(pPX, _T("QiPangColor"), m_QiPangColor, RGB(0, 0, 0));
-	PX_Color(pPX, _T("TiShiBoxColor"), m_TiShiBoxColor, RGB(0, 255, 0));
-	PX_UShort(pPX, _T("BoardLayout"), (USHORT&)m_BoardLayout, (USHORT)CChineseChess::TopBlackAndBottomRed);
 }
 
 
@@ -154,27 +153,57 @@ void CChineseChessActiveXCtrl::OnResetState()
 //以下是完成 === 调度映射 === 的函数块
 //
 
-void CChineseChessActiveXCtrl::OnQiPangColorChanged()
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO:  在此添加属性处理程序代码
-	TRACE(_T("CChineseChessActiveXCtrl::OnQiPangColorChanged()"));
-	SetModifiedFlag();
-}
-
-void CChineseChessActiveXCtrl::OnTiShiBoxColorChanged()
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	SetModifiedFlag();
-}
-
-void CChineseChessActiveXCtrl::OnBoardLayoutChanged()
+void CChineseChessActiveXCtrl::SetQiPangColor(OLE_COLOR val)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetBoardLayout(m_BoardLayout);
+	{
+		m_pChess->SetQiPangColor(val);
+	}
 	SetModifiedFlag();
+}
+
+OLE_COLOR CChineseChessActiveXCtrl::GetQiPangColor()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		return m_pChess->GetQiPangColor();
+	return 0;
+}
+
+void CChineseChessActiveXCtrl::SetTiShiBoxColor(OLE_COLOR val)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetTiShiBoxColor(val);
+	SetModifiedFlag();
+}
+
+OLE_COLOR CChineseChessActiveXCtrl::GetTiShiBoxColor()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		return m_pChess->GetTiShiBoxColor();
+	return 0;
+}
+
+SHORT CChineseChessActiveXCtrl::GetBoardLayout()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		return m_pChess->GetBoardLayout();
+	return 0;
+}
+void CChineseChessActiveXCtrl::SetBoardLayout(SHORT val)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	if (m_pChess && m_pChess->GetSafeHwnd())
+	{
+		m_pChess->SetBoardLayout((CChineseChess::ENUM_BoardLayout) val);
+		m_pChess->Invalidate();
+	}
+	SetModifiedFlag();
+	InvalidateControl();
 }
 
 void CChineseChessActiveXCtrl::OnEnablePromptSoundChanged()
@@ -196,47 +225,102 @@ void CChineseChessActiveXCtrl::OnEnablePromptMessageChanged()
 	SetModifiedFlag();
 }
 
-void CChineseChessActiveXCtrl::OnRedNameChanged()
+BSTR CChineseChessActiveXCtrl::GetRedName()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	CString strResult;
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		strResult = m_pChess->GetRedName().c_str();
+
+	return strResult.AllocSysString();
+}
+
+void CChineseChessActiveXCtrl::SetRedName(LPCTSTR newVal)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetRedName(m_RedName);
+		m_pChess->SetRedName(newVal);
 	SetModifiedFlag();
 }
 
-void CChineseChessActiveXCtrl::OnBlackNameChanged()
+BSTR CChineseChessActiveXCtrl::GetBlackName()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	CString strResult;
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		strResult = m_pChess->GetBlackName().c_str();
+
+	return strResult.AllocSysString();
+}
+
+void CChineseChessActiveXCtrl::SetBlackName(LPCTSTR val)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetBlackName(m_BlackName);
+		m_pChess->SetBlackName(val);
 	SetModifiedFlag();
 }
 
-void CChineseChessActiveXCtrl::OnGameTagsChanged()
+BSTR CChineseChessActiveXCtrl::GetGameTags()
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	CString strResult;
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		strResult = m_pChess->GetGameTags().c_str();
+
+	return strResult.AllocSysString();
+}
+
+void CChineseChessActiveXCtrl::SetGameTags(LPCTSTR val)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetGameTags(m_GameTags);
+		m_pChess->SetGameTags(val);
 	SetModifiedFlag();
 }
 
-void CChineseChessActiveXCtrl::OnStartTimeChanged()
+LONG CChineseChessActiveXCtrl::GetStartTime()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetStartTime(m_StartTime);
+		return m_pChess->GetStartTime();
+
+	return 0;
+}
+
+void CChineseChessActiveXCtrl::SetStartTime(LONG val)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetStartTime(val);
 
 	SetModifiedFlag();
 }
 
-
-void CChineseChessActiveXCtrl::OnEndTimeChanged()
+LONG CChineseChessActiveXCtrl::GetEndTime()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetEndTime(m_EndTime);
+		return m_pChess->GetEndTime();
+
+	return 0;	
+}
+
+void CChineseChessActiveXCtrl::SetEndTime(LONG val)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		m_pChess->SetEndTime(val);
 
 	SetModifiedFlag();
 }
@@ -306,13 +390,6 @@ VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 	if (m_pChess && m_pChess->GetSafeHwnd())
 	{
 		nRet = m_pChess->LoadChessGame(szFile);
-		
-		// 初始化属性
-		m_RedName = m_pChess->GetRedName().c_str();
-		m_BlackName = m_pChess->GetBlackName().c_str();
-		m_GameTags = m_pChess->GetGameTags().c_str();
-		m_StartTime = m_pChess->GetStartTime();
-		m_EndTime = m_pChess->GetEndTime();
 
 		m_pChess->Invalidate();
 	}

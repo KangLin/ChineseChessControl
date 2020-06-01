@@ -16,7 +16,13 @@ int CChineseChess::Initial()
 	m_WalkState = RedReadly;
 	m_PreviouPositionX = m_PreviouPositionX = -1;
 	m_CurrentPositionX = m_CurrentPositionY = -1;
+
 	return 0;
+}
+
+CChineseChess::ENUM_BoardLayout CChineseChess::GetBoardLayout()
+{
+	return m_BoardLayout;
 }
 
 int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
@@ -75,7 +81,6 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 			m_ChessBoard[0][6] = m_ChessBoard[2][6] = m_ChessBoard[4][6] = m_ChessBoard[6][6] = m_ChessBoard[8][6] = CPiece::RBing;
 		}
 	}
-
 
 	return 0;
 }

@@ -62,27 +62,27 @@ protected:
 // 调度映射
 	DECLARE_DISPATCH_MAP()
 
-	void OnQiPangColorChanged();
-	OLE_COLOR m_QiPangColor;
-	void OnTiShiBoxColorChanged();
-	OLE_COLOR m_TiShiBoxColor;
-	void OnBoardLayoutChanged();
-	CChineseChess::ENUM_BoardLayout m_BoardLayout;
+	OLE_COLOR GetQiPangColor();
+	void SetQiPangColor(OLE_COLOR val);
+	void SetTiShiBoxColor(OLE_COLOR val);
+	OLE_COLOR GetTiShiBoxColor();
+	void SetBoardLayout(SHORT layout);
+	SHORT GetBoardLayout();
 	void OnEnablePromptSoundChanged();
 	VARIANT_BOOL m_EnablePromptSound;
 	void OnEnablePromptMessageChanged();
 	VARIANT_BOOL m_EnablePromptMessage;
 
-	void OnRedNameChanged();
-	CString m_RedName;
-	void OnBlackNameChanged();
-	CString m_BlackName;
-	void OnGameTagsChanged();
-	CString m_GameTags;
-	void OnStartTimeChanged();
-	ULONG m_StartTime;
-	void OnEndTimeChanged();
-	ULONG m_EndTime;
+	BSTR GetRedName();
+	void SetRedName(LPCTSTR newVal);
+	BSTR GetBlackName();
+	void SetBlackName(LPCTSTR newVal);
+	BSTR GetGameTags();
+	void SetGameTags(LPCTSTR val);
+	LONG GetStartTime();
+	void SetStartTime(LONG val);
+	LONG GetEndTime();
+	void SetEndTime(LONG val);
 	
 	afx_msg void AboutBox();
 	VARIANT_BOOL NextStep();    //下一步

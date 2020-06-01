@@ -268,6 +268,29 @@ int CChineseChessView::SetGameTags(LPCTSTR pszTags)
 //以上是完成 === 虚拟函数实现 === 的函数块
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+int CChineseChessView::SetQiPangColor(COLORREF col)
+{
+	m_QiPangColor = col;
+	Invalidate();
+	return 0;
+}
+
+COLORREF CChineseChessView::GetQiPangColor()
+{
+	return m_QiPangColor;
+}
+
+int CChineseChessView::SetTiShiBoxColor(COLORREF col)
+{
+	m_TiShiBoxColor = col;
+	Invalidate();
+	return 0;
+}
+
+COLORREF CChineseChessView::GetTiShiBoxColor()
+{
+	return m_TiShiBoxColor;
+}
 
 /*******************************************************************************************************
 函数名：SetQiPang
