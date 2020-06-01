@@ -5,8 +5,10 @@
 #include <string.h>
 
 #ifdef WIN32
-#include <WinSock2.h>
-#pragma comment(lib, "Ws2_32")
+    #include <WinSock2.h>
+    #pragma comment(lib, "Ws2_32")
+#else
+    #include <arpa/inet.h>
 #endif
 
 CChessGame::CChessGame()

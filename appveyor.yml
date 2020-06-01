@@ -126,7 +126,9 @@ build_script:
 artifacts:
   - path: build_$(BUILD_TARGERT)\ChineseChessControl-Setup-*.exe  
   - path: build_$(BUILD_TARGERT)\update_windows.xml
-  
+  - path: build_$(BUILD_TARGERT)\update_android.xml
+  - path: build_$(BUILD_TARGERT)\ChineseChess_*.apk
+
 test: off
 
 #See: https://www.appveyor.com/docs/deployment/github/

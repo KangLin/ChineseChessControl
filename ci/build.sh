@@ -267,7 +267,7 @@ if [ "${BUILD_TARGERT}" = "android" ]; then
         --sign ${RabbitCommon_DIR}/RabbitCommon.keystore rabbitcommon \
         --storepass ${STOREPASS}
     APK_FILE=`find . -name "android-build-release-signed.apk"`
-    APK_NAME=ChineseChessControl_${BUILD_ARCH}_${VERSION}.apk
+    APK_NAME=ChineseChess_${BUILD_ARCH}_${VERSION}.apk
     mv -f ${APK_FILE} $SOURCE_DIR/${APK_NAME}
     APK_FILE=$SOURCE_DIR/${APK_NAME}
     if [ "$TRAVIS_TAG" != "" \
@@ -290,6 +290,9 @@ if [ "${BUILD_TARGERT}" = "android" ]; then
         ./upload.sh ${APK_FILE}
         ./upload.sh update_android.xml
     fi
+    
+    cp ${APK_FILE} $SOURCE_DIR/${BUILD_TARGERT}/.
+    cp update_android.xml $SOURCE_DIR/${BUILD_TARGERT}/.
 fi
 
 if [ "${BUILD_TARGERT}" = "windows_msvc" ]; then
