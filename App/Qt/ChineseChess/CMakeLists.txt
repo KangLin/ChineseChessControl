@@ -97,6 +97,7 @@ else()
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )        
 endif()
+INSTALL_TARGETS(TARGETS ChineseChessQt ChineseChess)
 
 if(UNIX AND NOT ANDROID)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop
