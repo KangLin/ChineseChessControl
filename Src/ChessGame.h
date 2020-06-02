@@ -59,14 +59,15 @@ public:
 		char szAuthor[MAX_STRING_BUFFER];     //程序作者：康林,在Restart中设置
 		char dwVersion;                       //版本,在Restart中设置
 	};
+    //注意：为网络字节序
 	struct strFile {
 		strFileHead head;					 
-		struct tm timeStart;				 //开始下棋的时间,在Restart中设置
-		struct tm timeEnd;					 //结束下棋的时间,在Restart中设置
+		time_t timeStart;				     //开始下棋的时间,在Restart中设置，注意：为网络字节序
+		time_t timeEnd;					     //结束下棋的时间,在Restart中设置，注意：为网络字节序
 		char szRedName[MAX_STRING_BUFFER];	 //红方用户名
 		char szBlackName[MAX_STRING_BUFFER]; //黑方用户名
 		char GameType;						 //棋局类型
-		int iBuShu;							 //步数，在SaveChess中设置
+		int iBuShu;							 //步数，在SaveChess中设置，注意：为网络字节序
 		char boardLayout;					 //棋盘布局(CChineseChess::ENUM_BoardLayout)
 	};										 
 
@@ -105,8 +106,8 @@ private:
 	bool m_bFuPang;					  //复盘标志
 	std::vector<strStep> m_ChessGame; //棋局
 
-	struct tm m_tmStart;			  //开始时间
-	struct tm m_tmEnd;				  //结束时间
+	time_t m_tmStart;			  //开始时间
+	time_t m_tmEnd;				  //结束时间
 	std::string m_szRedName;		  //红方名
 	std::string m_szBlackName;		  //黑方名
 	std::string m_szTags;             //保存棋局的标签部分，标签用来描述此局的信息

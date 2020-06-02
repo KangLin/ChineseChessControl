@@ -156,11 +156,11 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 #endif
 
 	head.head.dwVersion = 2;
-	head.iBuShu = m_ChessGame.size();
+	head.iBuShu = htons(m_ChessGame.size());
 	head.boardLayout = layout;
 
-	head.timeStart = m_tmStart;
-	head.timeEnd = m_tmEnd;
+	head.timeStart = htonl(m_tmStart);
+	head.timeEnd = htonl(m_tmEnd);
 #ifdef WIN32
 	strncpy_s(head.szRedName, m_szRedName.c_str(), MAX_STRING_BUFFER);
 	strncpy_s(head.szBlackName, m_szBlackName.c_str(), MAX_STRING_BUFFER);
@@ -200,7 +200,9 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 	layout = head.boardLayout;
 	m_szRedName = head.szRedName;
 	m_szBlackName = head.szBlackName;
-
+    m_tmStart = ntohl(head.timeStart);
+    m_tmEnd = ntohl(head.timeEnd);
+    
 	do{
 		if (strcmp(head.head.szAppName, APPNAME))
 		{
@@ -221,7 +223,7 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 		ReadStringFromFile(in, m_szTags);
 
 		m_ChessGame.clear();
-		m_nIndex = head.iBuShu;
+		m_nIndex = ntohs(head.iBuShu);
 
 		while (m_nIndex--)
 		{
@@ -267,31 +269,23 @@ int CChessGame::ReadStringFromFile(std::ifstream &i, std::string &s)
 
 time_t CChessGame::GetStartTime()
 {
-	return mktime(&m_tmStart);
+	return m_tmStart;
 }
 
 int CChessGame::SetStartTime(const time_t& t)
 {
-#ifdef WIN32
-	localtime_s(&m_tmStart, &t);
-#else
-    m_tmStart = *localtime(&t);
-#endif
+    m_tmStart = t;
 	return 0;
 }
 
 time_t CChessGame::GetEndTime()
 {
-	return mktime(&m_tmEnd);
+	return m_tmEnd;
 }
 
 int CChessGame::SetEndTime(const time_t& t)
 {
-#ifdef WIN32
-	localtime_s(&m_tmEnd, &t);
-#else
-    m_tmEnd = *localtime(&t);
-#endif
+    m_tmEnd = t;
 	return 0;
 }
 

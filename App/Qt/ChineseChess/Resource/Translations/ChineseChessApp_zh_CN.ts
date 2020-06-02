@@ -70,13 +70,13 @@
     </message>
     <message>
         <location filename="../../MainWindow.cpp" line="34"/>
-        <location filename="../../MainWindow.cpp" line="42"/>
+        <location filename="../../MainWindow.cpp" line="43"/>
         <source>Open chess game</source>
         <translation>打开棋局</translation>
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="67"/>
+        <location filename="../../MainWindow.cpp" line="68"/>
         <source>Chinese chess</source>
         <translation>中国象棋</translation>
     </message>

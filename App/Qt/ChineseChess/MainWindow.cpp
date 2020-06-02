@@ -33,6 +33,7 @@ void MainWindow::on_actionOpen_O_triggered()
     QString szFile = RabbitCommon::CDir::GetOpenFileName(this,
                                                          tr("Open chess game"));
     m_pChess->LoadChessGame(szFile.toStdString().c_str());
+    m_pChess->update();
 }
 
 void MainWindow::on_actionSave_S_triggered()
