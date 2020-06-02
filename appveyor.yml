@@ -126,8 +126,8 @@ build_script:
 artifacts:
   - path: build_$(BUILD_TARGERT)\ChineseChessControl-Setup-*.exe  
   - path: build_$(BUILD_TARGERT)\update_windows.xml
-  - path: build_$(BUILD_TARGERT)\update_android.xml
-  - path: build_$(BUILD_TARGERT)\ChineseChess_*.apk
+  - path: update_android.xml
+  - path: ChineseChess_*.apk
 
 test: off
 

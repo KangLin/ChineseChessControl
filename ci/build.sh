@@ -289,10 +289,9 @@ if [ "${BUILD_TARGERT}" = "android" ]; then
         chmod u+x upload.sh
         ./upload.sh ${APK_FILE}
         ./upload.sh update_android.xml
+        
+        cp update_android.xml $SOURCE_DIR/.
     fi
-    
-    cp ${APK_FILE} $SOURCE_DIR/build_${BUILD_TARGERT}/.
-    cp update_android.xml $SOURCE_DIR/build_${BUILD_TARGERT}/.
 fi
 
 if [ "${BUILD_TARGERT}" = "windows_msvc" ]; then
