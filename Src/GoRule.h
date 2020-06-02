@@ -56,6 +56,8 @@ private:
 
 	// 马将军
 	bool MaJiangJun(int iShuai, int jShuai, int iMa, int jMa, CPiece::ENUM_QiZi ChessBoard[][10]);
+	// 判断被马将军
+	bool MaJiangJun(int iShuai, int jShuai, CPiece::ENUM_QiZi ChessBoard[][10]);
 };
 
 #endif // !defined(AFX_GORULE_H__D75E7189_0187_471C_8E8D_237321CC4D18__INCLUDED_)
