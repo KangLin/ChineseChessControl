@@ -1,6 +1,6 @@
 #TODO: Change version
 
-version: 'v2.0.1.{build}'
+version: 'v2.0.2.{build}'
 
 cache:
   - model
@@ -13,7 +13,7 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-  BUILD_VERSION: "v2.0.1"
+  BUILD_VERSION: "v2.0.2"
   
   matrix:
   ##### msvc 2017 ########
