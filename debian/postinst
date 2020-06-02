@@ -23,13 +23,6 @@ case "$1" in
         if [ ! -f /usr/share/applications/ChineseChess.desktop ]; then
             ln -s /opt/ChineseChess/share/applications/ChineseChess.desktop /usr/share/applications/ChineseChess.desktop
         fi
-        if [ ! -d ~/.config/autostart ]; then
-            mkdir -p ~/.config/autostart
-        fi
-        if [ ! -f  ~/.config/autostart/ChineseChess.desktop ]; then
-            chmod a+wr ~/.config/autostart
-            ln -s /opt/ChineseChess/share/applications/ChineseChess.desktop ~/.config/autostart/ChineseChess.desktop
-        fi
         if [ ! -f /usr/share/pixmaps/ChineseChess.png ]; then
             if [ ! -d /usr/share/pixmaps ]; then
                 mkdir -p /usr/share/pixmaps
@@ -46,7 +39,6 @@ case "$1" in
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
-        rm -fr ~/.config/autostart/ChineseChess.desktop
         rm -fr /usr/share/applications/ChineseChess.desktop
         rm -fr /etc/ld.so.conf.d/ChineseChess.conf
         rm -fr /usr/share/pixmaps/ChineseChess.png
