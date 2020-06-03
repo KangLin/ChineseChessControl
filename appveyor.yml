@@ -3,7 +3,6 @@
 version: 'v2.0.2.{build}'
 
 cache:
-  - model
   - Package
   
 environment:
