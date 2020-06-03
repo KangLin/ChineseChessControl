@@ -103,7 +103,7 @@ if(UNIX AND NOT ANDROID)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop
         DESTINATION "share/applications"
             COMPONENT Runtime)
-    INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/CHESS.BMP
+    INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/69/bjiang.png
         RENAME ChineseChess.png
         DESTINATION "share/pixmaps"
             COMPONENT Runtime)

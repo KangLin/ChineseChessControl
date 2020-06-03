@@ -1,5 +1,28 @@
 <RCC>
     <qresource prefix="/image">
+        <file alias="BCHE">../Res/Picture/69/bche.png</file>
+        <file alias="BMA">../Res/Picture/69/bma.png</file>
+        <file alias="BPAO">../Res/Picture/69/bpao.png</file>
+        <file alias="BSHI">../Res/Picture/69/bshi.png</file>
+        <file alias="BSHUAI">../Res/Picture/69/bjiang.png</file>
+        <file alias="BXIANG">../Res/Picture/69/bxiang.png</file>
+        <file alias="BZU">../Res/Picture/69/bbing.png</file>
+        <file alias="CHU">../Res/Picture/CHU.BMP</file>
+        <file alias="HE">../Res/Picture/HE.BMP</file>
+        <file alias="HAN">../Res/Picture/HAN.BMP</file>
+        <file alias="JIE">../Res/Picture/JIE.BMP</file>
+        <file alias="KL">../Res/Picture/KL.BMP</file>
+        <file alias="QIPANG">../Res/Picture/QIPANG.BMP</file>
+        <file alias="RBING">../Res/Picture/69/rbing.png</file>
+        <file alias="RCHE">../Res/Picture/69/rche.png</file>
+        <file alias="RMA">../Res/Picture/69/rma.png</file>
+        <file alias="RPAO">../Res/Picture/69/rpao.png</file>
+        <file alias="RSHI">../Res/Picture/69/rshi.png</file>
+        <file alias="RSHUAI">../Res/Picture/69/rjiang.png</file>
+        <file alias="RXIANG">../Res/Picture/69/rxiang.png</file>
+        <file alias="Chess">../Res/Picture/69/bjiang.png</file>
+    </qresource>
+    <qresource prefix="/image/bmp">
         <file alias="BCHE">../Res/Picture/BCHE.BMP</file>
         <file alias="BMA">../Res/Picture/BMA.BMP</file>
         <file alias="BPAO">../Res/Picture/BPAO.BMP</file>
