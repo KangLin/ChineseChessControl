@@ -333,7 +333,7 @@ bool CChineseChess::IsGoChess(int i, int j)
 *******************************************************************************************************/
 int CChineseChess::NextStep()
 {
-	int i, j;
+	char i, j;
 	CPiece::ENUM_QiZi qz;
 	if (m_Game.GetNextStep(i, j, qz))
 	{
@@ -359,7 +359,7 @@ int CChineseChess::NextStep()
 *******************************************************************************************************/
 int CChineseChess::PreviouStep()
 {
-	int i, j;
+	char i, j;
 	CPiece::ENUM_QiZi qz;
 
 	switch (m_WalkState)

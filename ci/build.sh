@@ -140,12 +140,12 @@ case ${BUILD_TARGERT} in
 esac
 
 if [ -n "$appveyor_build_version" -a -z "$VERSION" ]; then
-    export VERSION="v2.0.2"
+    export VERSION="v2.0.3"
 fi
 if [ -z "$VERSION" ]; then
-    export VERSION="v2.0.2"
+    export VERSION="v2.0.3"
 fi
-export UPLOADTOOL_BODY="Release ChineseChessControl ${VERSION}.<br/> The change see [ChangeLog.md](ChangeLog.md) or [ChangeLog_zh_CN.md](ChangeLog_zh_CN.md)"
+export UPLOADTOOL_BODY="Release ChineseChess ${VERSION}.<br/> The change see [ChangeLog.md](ChangeLog.md)"
 #export UPLOADTOOL_PR_BODY=
         
 if [ "${BUILD_TARGERT}" = "unix" ]; then
@@ -181,7 +181,7 @@ if [ "${BUILD_TARGERT}" = "unix" ]; then
     cp $SOURCE_DIR/Install/install.sh .
     cp $RabbitCommon_DIR/Install/install1.sh .    
     ln -s ChineseChess-${VERSION}-x86_64.AppImage ChineseChess-x86_64.AppImage
-    tar -czf ChineseChessControl_${VERSION}.tar.gz \
+    tar -czf ChineseChess_${VERSION}.tar.gz \
         ChineseChess-${VERSION}-x86_64.AppImage \
         ChineseChess-x86_64.AppImage \
         share \
@@ -270,7 +270,7 @@ if [ "${BUILD_TARGERT}" = "android" ]; then
     APK_NAME=ChineseChess_${BUILD_ARCH}_${VERSION}.apk
     mv -f ${APK_FILE} $SOURCE_DIR/${APK_NAME}
     APK_FILE=$SOURCE_DIR/${APK_NAME}
-    if [ "$TRAVIS_TAG" != "" \
+    if [ "$APPVEYOR_REPO_TAG" = "true"  \
          -a "$BUILD_ARCH" = "armeabi-v7a" \
          -a "$QT_VERSION" = "5.12.6" ]; then
 

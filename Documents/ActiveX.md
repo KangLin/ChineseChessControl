@@ -78,6 +78,11 @@
   **注意**：如果布局不完全，则由用户控制属性（Enabled）以决定是否下棋。
 - EnablePromptSound: 允许提示音
 - EnablePromptMessage: 允许提示消息
+- RedName: 设置红方名
+- BlackName: 设置黑方名
+- StartTime: 设置开始时间
+- EndTime: 设置结束时间
+- GameTags: 设置标签
 
 #### 方法:
 
@@ -89,8 +94,21 @@
 
 #### 事件:
 
-- EventGoChess(short x, short y, ENUM_QiZi chess):走棋。
+- EventGoChess(short i, short i, ENUM_QiZi chess): 走棋。
 
+棋盘描述
+
+       [0][0] ------------------> i 或 x 方向
+              |
+              |
+              |
+              |
+              |
+              |
+             \|/                 [9][10]
+              
+         j 或 y 方向
+ 
 ### 开发
 #### 字符编码
 

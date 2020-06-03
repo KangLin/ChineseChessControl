@@ -1,7 +1,7 @@
 ﻿/**
  * @file ChineseChess.h.
  *
- * 中国象棋类
+ * 中国象棋类，实现象棋的接口，各界面框架派生此类，然后实现其虚拟重载函数，实现其平台界面功能。
  * 
  */
  
@@ -47,7 +47,7 @@ public:
 	ENUM_BoardLayout GetBoardLayout();
 
 	/**
-	 * Go chess
+	 * 走棋
 	 *
 	 * @author KangLin(kl222@126.com)
 	 * @date 2020/5/17

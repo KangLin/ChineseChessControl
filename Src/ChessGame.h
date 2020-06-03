@@ -1,4 +1,7 @@
-﻿
+﻿/**
+ * 棋局类
+ */
+ 
 #ifndef _CHESS_GAME_KL_2020_05_15_
 #define _CHESS_GAME_KL_2020_05_15_
 
@@ -23,12 +26,13 @@ public:
 	virtual ~CChessGame();
 
 	// 调整棋局存储大小，用于保存棋局
-	int SaveStep(int i, int j, CPiece::ENUM_QiZi qz, const char* pDescript = nullptr); //保存当前步
-	int RevokeStep();								  //撤回当前步
+	int SaveStep(char i, char j, CPiece::ENUM_QiZi qz,
+                 const char* pDescript = nullptr); //保存当前步
+	int RevokeStep();							   //撤回当前步
 
 	// 只移动指针位置，不改变棋局存储大小。用于复盘
-    int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //得到上一步
-	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);	   //得到下一步
+    int GetPreviouStep(char &i, char &j, CPiece::ENUM_QiZi &qz); //得到上一步
+	int GetNextStep(char &i, char &j, CPiece::ENUM_QiZi &qz);    //得到下一步
 
 	time_t GetStartTime();
 	int SetStartTime(const time_t &t);
@@ -87,17 +91,17 @@ public:
 
 private:
 	struct strCODE{
-		char code[3]; //棋子和相应的位置
+		char code[3];           //棋子和相应的位置 @see QiZiBianMa
 	};
 	struct strStep {
 		strCODE code;
-		std::string szDescript;//这一步的描述信息
+		std::string szDescript; //这一步的描述信息
 	};
 	typedef enum _ENUM_BianMa {
 		BianMa, 
 		JieMa
 	} ENUM_BianMa;
-	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
+	int QiZiBianMa(char *i, char *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
 
 	int WriteStringToFile(std::ofstream &o, std::string &s);
 	int ReadStringFromFile(std::ifstream &i, std::string &s);
@@ -106,8 +110,8 @@ private:
 	bool m_bFuPang;					  //复盘标志
 	std::vector<strStep> m_ChessGame; //棋局
 
-	time_t m_tmStart;			  //开始时间
-	time_t m_tmEnd;				  //结束时间
+	time_t m_tmStart;			      //开始时间
+	time_t m_tmEnd;				      //结束时间
 	std::string m_szRedName;		  //红方名
 	std::string m_szBlackName;		  //黑方名
 	std::string m_szTags;             //保存棋局的标签部分，标签用来描述此局的信息
