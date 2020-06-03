@@ -5,9 +5,9 @@
 #include <string.h>
 
 #ifdef WIN32
-    #include <WinSock2.h>
+#include <WinSock2.h>
 #else
-    #include <arpa/inet.h>
+#include <arpa/inet.h>
 #endif
 
 CChessGame::CChessGame()
@@ -49,7 +49,7 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode
 		*qz = static_cast<CPiece::ENUM_QiZi>(pCode->code[2]);
 		break;
 	}
-	
+
 	return 0;
 }
 
@@ -129,7 +129,7 @@ int CChessGame::GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
  *
  * @param  int i：当前下棋的位置,横坐标[0-8]
  * @param  int j：当前下棋的位置,纵坐标[0-9]
- * @param [in,out] qz 
+ * @param [in,out] qz
  * @returns The next step.
  */
 int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
@@ -147,8 +147,13 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 	if (!szFile) return -1;
 	strFile head;
 #ifdef WIN32
+#ifdef MINGW
+	strncpy_s(head.head.szAppName, MAX_STRING_BUFFER, APPNAME, MAX_STRING_BUFFER);
+	strncpy_s(head.head.szAuthor, MAX_STRING_BUFFER, AUTHOR, MAX_STRING_BUFFER);
+#else
 	strncpy_s(head.head.szAppName, APPNAME, MAX_STRING_BUFFER);
 	strncpy_s(head.head.szAuthor, AUTHOR, MAX_STRING_BUFFER);
+#endif
 #else
 	strncpy(head.head.szAppName, APPNAME, MAX_STRING_BUFFER);
 	strncpy(head.head.szAuthor, AUTHOR, MAX_STRING_BUFFER);
@@ -161,8 +166,13 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 	head.timeStart = htonl(m_tmStart);
 	head.timeEnd = htonl(m_tmEnd);
 #ifdef WIN32
+#ifdef MINGW
+	strncpy_s(head.szRedName, MAX_STRING_BUFFER, m_szRedName.c_str(), MAX_STRING_BUFFER);
+	strncpy_s(head.szBlackName, MAX_STRING_BUFFER, m_szBlackName.c_str(), MAX_STRING_BUFFER);
+#else
 	strncpy_s(head.szRedName, m_szRedName.c_str(), MAX_STRING_BUFFER);
 	strncpy_s(head.szBlackName, m_szBlackName.c_str(), MAX_STRING_BUFFER);
+#endif
 #else
 	strncpy(head.szRedName, m_szRedName.c_str(), MAX_STRING_BUFFER);
 	strncpy(head.szBlackName, m_szBlackName.c_str(), MAX_STRING_BUFFER);
@@ -199,10 +209,10 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 	layout = head.boardLayout;
 	m_szRedName = head.szRedName;
 	m_szBlackName = head.szBlackName;
-    m_tmStart = ntohl(head.timeStart);
-    m_tmEnd = ntohl(head.timeEnd);
-    
-	do{
+	m_tmStart = ntohl(head.timeStart);
+	m_tmEnd = ntohl(head.timeEnd);
+
+	do {
 		if (strcmp(head.head.szAppName, APPNAME))
 		{
 			nRet = -3;
@@ -261,7 +271,7 @@ int CChessGame::ReadStringFromFile(std::ifstream &i, std::string &s)
 		memset(pBuf, 0, nLen + 1);
 		i.read(pBuf, nLen);
 		s = pBuf;
-		delete []pBuf;
+		delete[]pBuf;
 	}
 	return 0;
 }
@@ -273,7 +283,7 @@ time_t CChessGame::GetStartTime()
 
 int CChessGame::SetStartTime(const time_t& t)
 {
-    m_tmStart = t;
+	m_tmStart = t;
 	return 0;
 }
 
@@ -284,7 +294,7 @@ time_t CChessGame::GetEndTime()
 
 int CChessGame::SetEndTime(const time_t& t)
 {
-    m_tmEnd = t;
+	m_tmEnd = t;
 	return 0;
 }
 

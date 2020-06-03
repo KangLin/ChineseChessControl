@@ -39,7 +39,7 @@ if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
     target_link_libraries(${PROJECT_NAME} PUBLIC Ws2_32)
 elseif(MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DWIN32)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE -DWIN32 -DMINGW)
     target_link_libraries(${PROJECT_NAME} PUBLIC wsock32)
 endif()
 
