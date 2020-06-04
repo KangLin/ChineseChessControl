@@ -62,7 +62,6 @@
     - [MSVC 2013 x86 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1800-x86-v2.0.3.exe)
 
 - windows x86_64
-    - [MSVC 2019 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1925-x86_64-v2.0.3.exe)
     - [MSVC 2017 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1916-x86_64-v2.0.3.exe)
     - [MSVC 2015 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1900-x86_64-v2.0.3.exe)
     - [MSVC 2013 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1800-x86_64-v2.0.3.exe)
@@ -70,6 +69,7 @@
   Windows安装包，支持 Windows xp 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
 - android
+    + [ChineseChess_arm64-v8a_v2.0.3.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChess_arm64-v8a_v2.0.3.apk)
     + [ChineseChess_armeabi-v7a_v2.0.3.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChess_armeabi-v7a_v2.0.3.apk)
 
 - linux
