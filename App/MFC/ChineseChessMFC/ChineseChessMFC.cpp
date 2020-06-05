@@ -28,8 +28,6 @@ CChineseChessMFCApp::CChineseChessMFCApp()
 
 	// TODO: 在此处添加构造代码，
 	// 将所有重要的初始化放置在 InitInstance 中
-    
-	ChineseChessViewNewDynLinkLibrary();
 }
 
 
@@ -60,6 +58,7 @@ BOOL CChineseChessMFCApp::InitInstance()
 		return FALSE;
 	}
 
+	ChineseChessViewNewDynLinkLibrary();
 
 	// 创建 shell 管理器，以防对话框包含
 	// 任何 shell 树视图控件或 shell 列表视图控件。

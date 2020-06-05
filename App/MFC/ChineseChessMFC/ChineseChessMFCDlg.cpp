@@ -17,7 +17,7 @@ CChineseChessMFCDlg::CChineseChessMFCDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_CHINESECHESSMFC_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-	m_pChess = new CChineseChessView();
+	m_pChess = NULL;
 }
 
 void CChineseChessMFCDlg::DoDataExchange(CDataExchange* pDX)
@@ -76,7 +76,7 @@ BOOL CChineseChessMFCDlg::OnInitDialog()
 
 	CRect rect;
 	this->GetClientRect(rect);
-
+	m_pChess = new CChineseChessView();
 	m_pChess->Create(NULL, _T("Chinese chess"), WS_CHILD, rect, this, IDW_CHESS);
 	m_pChess->ShowWindow(SW_SHOW);
 	ReSize(rect.Width(), rect.Height());

@@ -3,6 +3,9 @@
 #include "ChineseChess.h"
 // CChineseChessView
 
+#ifdef USE_PNG
+#include<atlimage.h>
+#endif
 
 class AFX_EXT_CLASS CChineseChessHandler
 {
@@ -74,9 +77,31 @@ private:
 	COLORREF m_TiShiBoxColor;
 	
 	CBitmap m_QiPangPicture;			  //ÆåÅÌ±³¾°Í¼Æ¬
-	//CPictureHolder m_QiPangPictureHolder; //ÆåÅÌ±³¾°Í¼Æ¬µÄCPictureHolder¶ÔÏó
+	//³þºÓºº½ç
+	CBitmap m_Chu;
+	CBitmap m_He;
+	CBitmap m_Han;
+	CBitmap m_Jie;
+	CBitmap m_Copyright;
 
 	//Æå×ÓÍ¼Æ¬
+#ifdef USE_PNG
+	CImage m_RedShuai;     //ºìË§
+	CImage m_RedShi;       //ºìÊË
+	CImage m_RedXiang;     //ºìÏà
+	CImage m_RedMa;        //ºìÂí
+	CImage m_RedChe;       //ºì³µ
+	CImage m_RedBing;      //ºì±ø
+	CImage m_RedPao;       //ºìÅÚ
+
+	CImage m_BlackShuai;   //ºÚË§
+	CImage m_BlackShi;     //ºÚÊË
+	CImage m_BlackXiang;   //ºÚÏà
+	CImage m_BlackMa;      //ºÚÂí
+	CImage m_BlackChe;     //ºÚ³µ
+	CImage m_BlackBing;    //ºÚ±ø
+	CImage m_BlackPao;     //ºÚÅÚ
+#else
 	CBitmap m_RedShuai;     //ºìË§
 	CBitmap m_RedShi;       //ºìÊË
 	CBitmap m_RedXiang;     //ºìÏà
@@ -92,7 +117,13 @@ private:
 	CBitmap m_BlackChe;     //ºÚ³µ
 	CBitmap m_BlackBing;    //ºÚ±ø
 	CBitmap m_BlackPao;     //ºÚÅÚ
+#endif
 
+#ifdef USE_PNG
+	// ´Ó×ÊÔ´ÖÐ¼ÓÔØÍ¼Æ¬µ½ CImage
+	BOOL LoadImageFromResource(CImage *pImage, UINT ID, LPCTSTR pType = _T("PNG"));
+	BOOL LoadImageFromResource(CImage *pImage, LPCTSTR pID, LPCTSTR pType = _T("PNG"));
+#endif
 
 	//×ø±ê×ª»»
 	enum ENUM_ConvertCoordinate { XYToIJ, IJToXY };
@@ -102,9 +133,12 @@ private:
 	enum ENUM_XINWEI { XinWei, Left_XinWei, Right_XinWei };
 	void DrawXinWei(CDC *pdc, int i, int j, ENUM_XINWEI xinwei = XinWei);
 	BOOL DrawTiShiBox(CDC *pdc, int i, int j);
-	BOOL DrawPicture(CDC *pdc, int i, int j, CBitmap* pbmp, BOOL CHHJKL = false);
 	BOOL DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi);
 	void DrawQiPang(CDC *pdc, CRect rcBounds);
+#ifdef USE_PNG
+	BOOL DrawImage(CDC *pdc, int i, int j, CImage* pImage);
+#endif
+	BOOL DrawPicture(CDC *pdc, int i, int j, CBitmap* pbmp, BOOL CHHJKL = false);
 
 	void InvalidateRectage(int i, int j);
 
@@ -113,5 +147,3 @@ private:
 
 	CChineseChessHandler* m_pGoChessHandler;
 };
-
-

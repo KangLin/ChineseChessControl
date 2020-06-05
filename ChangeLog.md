@@ -1,4 +1,8 @@
 ## 修改日志
+- v2.0.4
+  + 用 CChineseChessView 修改 MFC 应用程序
+  + 修改 MFC 中国象棋资源图片
+
 - v2.0.3
   + 修改ci
   + 修改 tag.sh

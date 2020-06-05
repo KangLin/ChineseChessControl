@@ -33,7 +33,7 @@ if(BUILD_VERSION)
 endif()
 
 set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
-target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_UNICODE" "UNICODE")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_UNICODE" "UNICODE")# USE_PNG)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess)
 target_include_directories(${PROJECT_NAME}

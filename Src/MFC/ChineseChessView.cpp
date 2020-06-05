@@ -1,4 +1,4 @@
-﻿// d:\Source\ChineseChessControl\Src\MFC\ChineseChessWnd.cpp: 实现文件
+﻿// 实现文件
 //
 #include "framework.h"
 #include <afxdialogex.h>
@@ -30,12 +30,36 @@ CChineseChessView::CChineseChessView()
     
     m_QiPangStartX = m_QiPangStartY = 0;
     m_QiPangDistance = 0;
-    
-    if (m_QiPangPicture.GetSafeHandle() == NULL)
-    {
-        m_QiPangPicture.LoadBitmap(IDB_QIPANG);
-    }
-    
+
+	if (m_QiPangPicture.GetSafeHandle() == NULL)
+		m_QiPangPicture.LoadBitmap(IDB_QIPANG);
+
+	if(m_Chu.GetSafeHandle() == NULL)
+		m_Chu.LoadBitmap(IDB_CHU);  //楚
+	if (m_He.GetSafeHandle() == NULL)
+		m_He.LoadBitmap(IDB_HE);   //河
+	if (m_Han.GetSafeHandle() == NULL)
+		m_Han.LoadBitmap(IDB_HAN);  //汉
+	if (m_Jie.GetSafeHandle() == NULL)
+		m_Jie.LoadBitmap(IDB_JIE);  //界
+	if (m_Copyright.GetSafeHandle() == NULL)
+		m_Copyright.LoadBitmap(IDB_KL);   //KL
+		
+#ifdef USE_PNG
+	LoadImageFromResource(&m_BlackShuai, IDP_RSHUAI);
+	LoadImageFromResource(&m_BlackShi, IDP_RSHI);
+	LoadImageFromResource(&m_BlackXiang, IDP_RXIANG);
+	LoadImageFromResource(&m_BlackMa, IDP_RMA);
+	LoadImageFromResource(&m_BlackChe, IDP_RJU);
+	LoadImageFromResource(&m_BlackBing, IDP_RBING);
+
+	LoadImageFromResource(&m_BlackShuai, IDP_BJIANG);
+	LoadImageFromResource(&m_BlackShi, IDP_BSHI);
+	LoadImageFromResource(&m_BlackXiang, IDP_BXIANG);
+	LoadImageFromResource(&m_BlackMa, IDP_BMA);
+	LoadImageFromResource(&m_BlackChe, IDP_BJU);
+	LoadImageFromResource(&m_BlackBing, IDP_BBING);
+#else
     if (m_RedShuai.GetSafeHandle() == NULL)
     {
         m_RedShuai.LoadBitmap(IDB_RSHUAI);
@@ -106,6 +130,7 @@ CChineseChessView::CChineseChessView()
     {
         m_BlackBing.LoadBitmap(IDB_BBING);
     }
+#endif
 }
 
 CChineseChessView::~CChineseChessView()
@@ -300,8 +325,8 @@ COLORREF CChineseChessView::GetTiShiBoxColor()
 函数名：SetQiPang
 功  能：设置棋盘位置
 参  数：
-                 int width：控件窗口宽度
-                 int height：控件窗口高度
+        int width：控件窗口宽度
+        int height：控件窗口高度
 返回值：无
 作  者：康  林
 版  本：1.0.0.1
@@ -333,17 +358,17 @@ BOOL CChineseChessView::SetQiPang(int width, int height)
 函数名：TransparentBlt2
 功  能：画透明图
 参  数：
-                 HDC hdcDest：       目标DC
-                 int nXOriginDest：目标X偏移
-                 int nYOriginDest：目标Y偏移
-                 int nWidthDest：目标宽度
-                 int nHeightDest：目标高度
-                 HDC hdcSrc：源DC
-                 int nXOriginSrc：源X起点
-                 int nYOriginSrc：源Y起点
-                 int nWidthSrc：源宽度
-                 int nHeightSrc：源高度
-                 UINT crTransparent：透明色,COLORREF类型
+       HDC hdcDest：       目标DC
+       int nXOriginDest：目标X偏移
+       int nYOriginDest：目标Y偏移
+       int nWidthDest：目标宽度
+       int nHeightDest：目标高度
+       HDC hdcSrc：源DC
+       int nXOriginSrc：源X起点
+       int nYOriginSrc：源Y起点
+       int nWidthSrc：源宽度
+       int nHeightSrc：源高度
+       UINT crTransparent：透明色,COLORREF类型
 返回值：无
 备  注：此函数可用于 WINDOWS 98 及以上的 WINDOWS 系统。
                 如果能确定是 WINDOWS2000 及以上的 WINDOWS 系统，可以使用 TransparentBlt 函数
@@ -403,17 +428,90 @@ void TransparentBlt2(HDC hdcDest,      // 目标DC
     SelectObject(hMaskDC, hOldMaskBMP);
     DeleteDC(hMaskDC);
     DeleteObject(hImageBMP);
-    DeleteObject(hMaskBMP);
-    
+    DeleteObject(hMaskBMP);   
 }
+
+#ifdef USE_PNG
+BOOL CChineseChessView::LoadImageFromResource(CImage *pImage, UINT ID, LPCTSTR pType)
+{
+	return LoadImageFromResource(pImage, MAKEINTRESOURCE(ID), pType);
+}
+
+/**
+ * Loads image from resource.
+ *
+ * @author KangLin(kl222@126.com)
+ * @date 2020/6/5
+ *
+ * @param [in,out] pImage If non-null, the image.
+ * @param 		   ID	  The resource identifier.
+ * @param 		   lpTyp  The resource type.
+ *
+ * @returns True if it succeeds, false if it fails.
+ */
+
+BOOL CChineseChessView::LoadImageFromResource(CImage* pImage, LPCTSTR pID, LPCTSTR lpType)
+{
+	if (pImage == NULL) return false;
+
+	pImage->Destroy();
+
+#ifdef _AFXEXT  // MFC 扩展动态库
+	HINSTANCE hInstance = AfxFindResourceHandle(pID, lpType); //得到资源在哪个模块里，返回这个模块实例句柄
+#else
+	HINSTANCE hInstance = AfxGetInstanceHandle();
+#endif
+
+	// 查找资源
+	HRSRC hRsrc = ::FindResource(hInstance, pID, lpType);
+	if (hRsrc == NULL) return false;
+
+	// 加载资源
+	HGLOBAL hImgData = ::LoadResource(hInstance, hRsrc);
+	if (hImgData == NULL)
+	{
+		::FreeResource(hImgData);
+		return false;
+	}
+
+	// 锁定内存中的指定资源
+	LPVOID lpVoid = ::LockResource(hImgData);
+
+	LPSTREAM pStream = NULL;
+	DWORD dwSize = ::SizeofResource(hInstance, hRsrc);
+	HGLOBAL hNew = ::GlobalAlloc(GHND, dwSize);
+	LPBYTE lpByte = (LPBYTE)::GlobalLock(hNew);
+	::memcpy(lpByte, lpVoid, dwSize);
+
+	// 解除内存中的指定资源
+	::GlobalUnlock(hNew);
+
+	// 从指定内存创建流对象
+	HRESULT ht = ::CreateStreamOnHGlobal(hNew, TRUE, &pStream);
+	if (ht != S_OK)
+	{
+		GlobalFree(hNew);
+	}
+	else
+	{
+		// 加载图片
+		pImage->Load(pStream);
+
+		GlobalFree(hNew);
+	}
+	// 释放资源
+	::FreeResource(hImgData);
+	return true;
+}
+#endif
 
 /*******************************************************************************************************
 函数名：PromptSound
 功  能：播放声音
 说  明：1、在“工程->设置->link->对象/库”中加入winmm.lib
-                2、加入头文件 #include <mmsystem.h>
+				2、加入头文件 #include <mmsystem.h>
 参  数：
-                 LPCTSTR ID：声音的字符标志
+				 LPCTSTR ID：声音的字符标志
 返回值：如果成功返回 true,否则返回 false
 作  者：康  林
 版  本：1.0.0.1
@@ -422,28 +520,28 @@ void TransparentBlt2(HDC hdcDest,      // 目标DC
 *******************************************************************************************************/
 BOOL CChineseChessView::PromptSound(LPCTSTR ID)
 {
-    if (NULL != ID)
-    {
-        // @see https://docs.microsoft.com/en-us/cpp/build/extension-dlls?view=vs-2019
+	if (NULL != ID)
+	{
+		// @see https://docs.microsoft.com/en-us/cpp/build/extension-dlls?view=vs-2019
 #ifdef _AFXEXT  // MFC 扩展动态库
-        HINSTANCE hInstance = AfxFindResourceHandle(ID, _T("WAVE")); //得到资源在哪个模块里，返回这个模块实例句柄
+		HINSTANCE hInstance = AfxFindResourceHandle(ID, _T("WAVE")); //得到资源在哪个模块里，返回这个模块实例句柄
 #else
-        HINSTANCE hInstance = AfxGetInstanceHandle();
+		HINSTANCE hInstance = AfxGetInstanceHandle();
 #endif
-        
-        HRSRC hr = FindResource(hInstance, ID, _T("WAVE"));
-        if (NULL == hr) return false;
-        
-        HGLOBAL hg = LoadResource(hInstance, hr);
-        LPCTSTR lp = (LPCTSTR)LockResource(hg);
-        ::sndPlaySound(lp, SND_MEMORY | SND_ASYNC);
-        FreeResource(hg);
-    }
-    else
-    {
-        Beep(1000, 20);
-    }
-    return true;
+
+		HRSRC hr = FindResource(hInstance, ID, _T("WAVE"));
+		if (NULL == hr) return false;
+
+		HGLOBAL hg = LoadResource(hInstance, hr);
+		LPCTSTR lp = (LPCTSTR)LockResource(hg);
+		::sndPlaySound(lp, SND_MEMORY | SND_ASYNC);
+		FreeResource(hg);
+	}
+	else
+	{
+		Beep(1000, 20);
+	}
+	return true;
 }
 
 /*******************************************************************************************************
@@ -620,21 +718,11 @@ void CChineseChessView::DrawQiPang(CDC *pdc, CRect rcBounds)
     DrawXinWei(pdc, 8, 6, Left_XinWei);
     
     //楚河汉界
-    CBitmap bmp;
-    bmp.LoadBitmap(IDB_CHU);  //楚
-    DrawPicture(pdc, 7, 4, &bmp, true);
-    bmp.Detach();
-    bmp.LoadBitmap(IDB_HE);   //河
-    DrawPicture(pdc, 6, 4, &bmp, true);
-    bmp.Detach();
-    bmp.LoadBitmap(IDB_HAN);  //汉
-    DrawPicture(pdc, 1, 4, &bmp, true);
-    bmp.Detach();
-    bmp.LoadBitmap(IDB_JIE);  //界
-    DrawPicture(pdc, 2, 4, &bmp, true);
-    bmp.Detach();
-    bmp.LoadBitmap(IDB_KL);   //KL
-    DrawPicture(pdc, 4, 4, &bmp, true);
+    DrawPicture(pdc, 7, 4, &m_Chu, true);
+    DrawPicture(pdc, 6, 4, &m_He, true);
+    DrawPicture(pdc, 1, 4, &m_Han, true);
+    DrawPicture(pdc, 2, 4, &m_Jie, true);
+    DrawPicture(pdc, 4, 4, &m_Copyright, true);
     
     //画棋子
     for (i = 0; i < 9; i++)
@@ -648,7 +736,6 @@ void CChineseChessView::DrawQiPang(CDC *pdc, CRect rcBounds)
         DrawTiShiBox(pdc, m_PreviouPositionX, m_PreviouPositionY);
     if (IsValidPosition(m_CurrentPositionX, m_CurrentPositionY))
         DrawTiShiBox(pdc, m_CurrentPositionX, m_CurrentPositionY);
-    
 }
 
 /*******************************************************************************************************
@@ -800,9 +887,12 @@ BOOL CChineseChessView::DrawTiShiBox(CDC *pdc, int i, int j)
 BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi)
 {
     ASSERT(pdc != NULL);
-    
+#ifdef USE_PNG
+	CImage *m_QiZi = NULL;
+#else
     CBitmap *m_QiZi = NULL;
-    
+#endif
+
 #pragma warning( disable : 4806 )
     
     switch (eQiZi)
@@ -857,7 +947,11 @@ BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi
     
     if (NULL != m_QiZi)
     {
+#ifdef USE_PNG
+		return DrawImage(pdc, i, j, m_QiZi);
+#else
         return DrawPicture(pdc, i, j, m_QiZi);
+#endif
     }
     else
     {
@@ -865,6 +959,19 @@ BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi
     }
 }
 
+#ifdef USE_PNG
+BOOL CChineseChessView::DrawImage(CDC *pdc, int i, int j, CImage* pImage)
+{
+	ASSERT(pdc != NULL && pImage != NULL);
+
+	long x, y;
+
+	ConvertCoordinate(&x, &y, &i, &j, IJToXY);
+	x -= m_QiPangDistance / 2;
+	y -= m_QiPangDistance / 2;
+	return pImage->Draw(pdc->m_hDC, x, y, m_QiPangDistance, m_QiPangDistance);
+}
+#endif
 
 /*******************************************************************************************************
 函数名：DrawPicture
@@ -884,18 +991,20 @@ BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi
 BOOL CChineseChessView::DrawPicture(CDC *pdc, int i, int j, CBitmap *pbmp, BOOL CHHJKL)
 {
     ASSERT(pdc != NULL && pbmp != NULL);
+	if (pbmp->GetSafeHandle() == NULL)
+		return false;
+
+    long x, y;
     
-    long m_X, m_Y;
-    
-    ConvertCoordinate(&m_X, &m_Y, &i, &j, IJToXY);
+    ConvertCoordinate(&x, &y, &i, &j, IJToXY);
     if (CHHJKL)//画楚河汉界
     {
-        m_X -= m_QiPangDistance / 2;
+        x -= m_QiPangDistance / 2;
     }
     else
     {
-        m_X -= m_QiPangDistance / 2;
-        m_Y -= m_QiPangDistance / 2;
+        x -= m_QiPangDistance / 2;
+        y -= m_QiPangDistance / 2;
     }
     
     //棋盘图片
@@ -906,7 +1015,7 @@ BOOL CChineseChessView::DrawPicture(CDC *pdc, int i, int j, CBitmap *pbmp, BOOL 
     psdc.CreateCompatibleDC(pdc);
     psdc.SelectObject(pbmp);
     
-    TransparentBlt2(pdc->GetSafeHdc(), m_X, m_Y, m_QiPangDistance, m_QiPangDistance,
+    TransparentBlt2(pdc->GetSafeHdc(), x, y, m_QiPangDistance, m_QiPangDistance,
                     psdc.GetSafeHdc(), 0, 0, bitmap.bmWidth, bitmap.bmHeight, RGB(255, 255, 255));
     
     
