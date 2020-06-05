@@ -243,7 +243,11 @@ int CChineseChessView::SaveChessGame(LPCTSTR pszFile)
 int CChineseChessView::LoadChessGame(LPCTSTR pszFile)
 {
     USES_CONVERSION;
-    return __super::LoadChessGame(T2CA(pszFile));
+	int nRet = 0;
+	nRet = __super::LoadChessGame(T2CA(pszFile));
+	if (nRet) return nRet;
+	Invalidate();
+	return nRet;
 }
 
 int CChineseChessView::SetRedName(LPCTSTR pszName)

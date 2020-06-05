@@ -1,32 +1,26 @@
 project(ChineseChessMfcApp)
+message(STATUS "== Build chinese chess mfc application")
 
 set(SOURCES_FILES
-	ChineseChess.cpp
-	ChineseChessDlg.cpp
+	ChineseChessMFC.cpp
+	ChineseChessMFCDlg.cpp
 	stdafx.cpp
     )
 
-set(INSTALLHEADER_FILES
-    )
-
 set(HEADER_FILES
-    ${INSTALLHEADER_FILES}
-	ChineseChess.h
-	ChineseChessDlg.h
+	ChineseChessMFC.h
+	ChineseChessMFCDlg.h
 	resource.h
 	stdafx.h
 	targetver.h
     )
 
 SET(RCC_FILES
-	ChineseChess.rc
-	res/ChineseChess.rc2
+	ChineseChessMFC.rc
+	res/ChineseChessMFC.rc2
 	)
 
-if(MSVC)
-	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-    set(LIBS_DEFINES ${LIBS_DEFINES} "_AFXDLL" "_UNICODE" "UNICODE")
-endif()
+set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
 
 add_executable(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -48,7 +42,13 @@ if(BUILD_VERSION)
 	    -DBUILD_VERSION="${BUILD_VERSION}")
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE ${LIBS_DEFINES})
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_UNICODE" "UNICODE")
+target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView)
+target_include_directories(${PROJECT_NAME}
+    PRIVATE
+    ${CMAKE_BINARY_DIR}
+    ${CMAKE_SOURCE_DIR}/Src
+	${CMAKE_SOURCE_DIR}/Src/MFC)
 
 # 安装中国象棋
 INSTALL(TARGETS ${PROJECT_NAME}

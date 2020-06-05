@@ -133,7 +133,7 @@ if(MSVC)
     
     option(BUILD_CHINESE_CHESS_APP_MFC "Build MFC chinese chess applaction" ON)
     if(BUILD_CHINESE_CHESS_APP_MFC AND MSVC)
-        add_subdirectory(App/MFC/ChineseChess)
+        add_subdirectory(App/MFC/ChineseChessMFC)
     endif()
 endif()
 

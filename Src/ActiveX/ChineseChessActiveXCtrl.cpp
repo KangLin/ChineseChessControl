@@ -390,12 +390,10 @@ VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 	if (m_pChess && m_pChess->GetSafeHwnd())
 	{
 		nRet = m_pChess->LoadChessGame(szFile);
-
-		m_pChess->Invalidate();
 	}
 	if(nRet)
 		return VARIANT_FALSE;
-	InvalidateControl();
+
 	return VARIANT_TRUE;
 }
 
