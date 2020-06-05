@@ -30,8 +30,8 @@ if(IDL_FOUND)
 endif()
 
 if(MSVC)
-	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-	SET(LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
+	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL "_AFXDLL"
+	SET(LIBS_DEFINES "_UNICODE" "UNICODE")
 	LIST(APPEND RCC_FILES ChineseChessActiveX.def)
 endif()
 
@@ -58,7 +58,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessView ${LIBS})
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${RabbitCommon_DIR}/Src
     ${CMAKE_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../)
+    ${CMAKE_CURRENT_SOURCE_DIR}/../
+	${CMAKE_CURRENT_SOURCE_DIR}/../MFC)
 
 # 编译完成后向系统注册中国象棋控件
 add_custom_command(

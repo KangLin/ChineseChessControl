@@ -3,9 +3,8 @@
 //
 
 #pragma once
-#include "chess.h"
-#include "afxwin.h"
 
+#include "afxwin.h"
 
 // CChineseChessDlg 对话框
 class CChineseChessDlg : public CDialogEx
@@ -19,7 +18,6 @@ public:
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
-
 
 // 实现
 protected:
@@ -40,7 +38,6 @@ protected:
 	void EventGoChess(short i, short j, long qz);
 
 private:
-	CChess m_Chess;
 	int ReSize(int cx, int cy);
 
 	CButton m_btnPreviou;

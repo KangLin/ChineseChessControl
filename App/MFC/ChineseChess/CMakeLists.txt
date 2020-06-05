@@ -1,7 +1,6 @@
 project(ChineseChessMfcApp)
 
 set(SOURCES_FILES
-	Chess.cpp
 	ChineseChess.cpp
 	ChineseChessDlg.cpp
 	stdafx.cpp
@@ -12,7 +11,6 @@ set(INSTALLHEADER_FILES
 
 set(HEADER_FILES
     ${INSTALLHEADER_FILES}
-	Chess.h
 	ChineseChess.h
 	ChineseChessDlg.h
 	resource.h

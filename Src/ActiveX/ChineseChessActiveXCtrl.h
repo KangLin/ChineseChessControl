@@ -11,7 +11,7 @@
 
 // CChineseChessActiveXCtrl : 请参阅 ChineseChessActiveXCtrl.cpp 了解实现。
 
-#include "../MFC/ChineseChessView.h"
+#include "ChineseChessView.h"
 class CChineseChessActiveXCtrl;
 class CChineseChessActiveXHandler : public CChineseChessHandler
 {

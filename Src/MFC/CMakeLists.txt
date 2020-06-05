@@ -12,17 +12,13 @@ set(INSTALLHEADER_FILES
     )
 
 set(HEADER_FILES
+	${INSTALLHEADER_FILES}
 	Resource.h
     )
 
 SET(RCC_FILES
 	ChineseChessView.rc
 	)
-
-if(MSVC)
-	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-    set(LIBS_DEFINES ${LIBS_DEFINES} "_AFXEXT" "_UNICODE" "UNICODE")
-endif()
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -34,10 +30,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 if(BUILD_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
+set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_UNICODE" "UNICODE")
+
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess)
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}

@@ -56,7 +56,6 @@ CChineseChessDlg::CChineseChessDlg(CWnd* pParent /*=NULL*/)
 void CChineseChessDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_Chess, m_Chess);
 	DDX_Control(pDX, IDC_PREVIOU, m_btnPreviou);
 	DDX_Control(pDX, IDC_NEXT, m_btnNext);
 	DDX_Control(pDX, IDC_LOAD, m_btLoad);
@@ -118,7 +117,7 @@ void CChineseChessDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
-		m_Chess.AboutBox();
+		//m_Chess.AboutBox();
 	}
 	else
 	{
@@ -165,18 +164,23 @@ HCURSOR CChineseChessDlg::OnQueryDragIcon()
 void CChineseChessDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialogEx::OnSize(nType, cx, cy);
-	ReSize(cx, cy);
+	if(this->GetSafeHwnd())
+		ReSize(cx, cy);
 }
 
 int CChineseChessDlg::ReSize(int cx, int cy)
 {
 	CRect rect1, rect2;
-	if (NULL == m_Chess.GetSafeHwnd())
+	/*if (NULL == m_Chess.GetSafeHwnd())
+		return -1;*/
+	
+	if (!m_btnNext.GetSafeHwnd())
 		return -1;
+
 	m_btnNext.GetWindowRect(&rect1);
 	m_btnPreviou.GetWindowRect(&rect2);
 	int y = cy - max(rect1.Height(), rect2.Height()) - 5;
-	m_Chess.MoveWindow(0, 0, cx, y);
+	//m_Chess.MoveWindow(0, 0, cx, y);
 
 	m_btnNext.MoveWindow(cx - rect1.Width() - 5, y + 5, rect1.Width(), rect1.Height());
 	m_btnPreviou.MoveWindow(cx - rect1.Width() - rect2.Width() - 5, y + 5, rect1.Width(), rect1.Height());
@@ -190,12 +194,12 @@ int CChineseChessDlg::ReSize(int cx, int cy)
 
 void CChineseChessDlg::OnBnClickedPreviou()
 {
-	m_Chess.PreviouStep();
+	//m_Chess.PreviouStep();
 }
 
 void CChineseChessDlg::OnBnClickedNext()
 {
-	m_Chess.NextStep();
+	//m_Chess.NextStep();
 }
 BEGIN_EVENTSINK_MAP(CChineseChessDlg, CDialogEx)
 	ON_EVENT(CChineseChessDlg, 1000, 1, CChineseChessDlg::EventGoChess, VTS_I2 VTS_I2 VTS_I4)
@@ -215,7 +219,7 @@ void CChineseChessDlg::OnBnClickedLoad()
 	if (dlg.DoModal() == IDOK)
 	{
 		szFile = dlg.GetPathName();
-		m_Chess.LoadChessGame(szFile);
+		//m_Chess.LoadChessGame(szFile);
 	}
 }
 
@@ -227,6 +231,6 @@ void CChineseChessDlg::OnBnClickedSave()
 	if (dlg.DoModal() == IDOK)
 	{
 		szFile = dlg.GetPathName();
-		m_Chess.SaveChessGame(szFile);
+		//m_Chess.SaveChessGame(szFile);
 	}
 }
