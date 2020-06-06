@@ -145,6 +145,7 @@ fi
 if [ -z "$VERSION" ]; then
     export VERSION="v2.0.3"
 fi
+export DEBIAN_VERSION=2.0.3
 export UPLOADTOOL_BODY="Release ChineseChess ${VERSION}.<br/> The change see [ChangeLog.md](ChangeLog.md)"
 #export UPLOADTOOL_PR_BODY=
         
@@ -193,12 +194,15 @@ if [ "${BUILD_TARGERT}" = "unix" ]; then
     echo "MD5:${MD5}"
     ./bin/ChineseChessApp \
         -f "`pwd`/update_linux.xml" \
-        --md5 ${MD5}
+        --md5 ${MD5} \
+        --home "https://github.com/KangLin/ChineseChessControl" \
+        --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/chinesechess_${DEBIAN_VERSION}_amd64.deb"
     
     MD5=`md5sum ChineseChess_${VERSION}.tar.gz|awk '{print $1}'`
     ./ChineseChess-x86_64.AppImage \
         -f "`pwd`/update_linux_appimage.xml" \
         --md5 ${MD5} \
+        --home "https://github.com/KangLin/ChineseChessControl" \
         --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/ChineseChess_${VERSION}.tar.gz"
     
     if [ "$TRAVIS_TAG" != "" -a "${QT_VERSION}" = "5.12.3" ]; then
@@ -307,6 +311,9 @@ if [ "${BUILD_TARGERT}" = "windows_msvc" ]; then
         "/C/Program Files (x86)/NSIS/makensis.exe" "Install.nsi"
         MD5=`md5sum ChineseChessControl-Setup-*.exe|awk '{print $1}'`
         echo "MD5:${MD5}"
-        install/bin/ChineseChessApp.exe -f "`pwd`/update_windows.xml" --md5 ${MD5}
+        install/bin/ChineseChessApp.exe -f "`pwd`/update_windows.xml" \
+            --md5 ${MD5} \
+            --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/`ls ChineseChessControl-Setup-*-${VERSION}.exe`"
+            --home "https://github.com/KangLin/ChineseChessControl"
     fi
 fi

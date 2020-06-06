@@ -137,7 +137,6 @@ deploy:
     #password encrypt: https://ci.appveyor.com/tools/encrypt
     auth_token:
       secure: 43H2qtl+UKweMvnOUVCGuNkAElipdJJcCIzQcyE+Idb/Jo4Nm1fta2zsNwYiaQP/
-    #artifact: ChineseChessControl$(BUILD_TARGERT)$(TOOLCHAIN_VERSION)_$(BUILD_ARCH)_$(QT_VERSION)_$(appveyor_build_version)
     #draft: true
     prerelease: true
     force_update: true
@@ -155,7 +154,6 @@ deploy:
     #password encrypt: https://ci.appveyor.com/tools/encrypt
     auth_token:
       secure: 43H2qtl+UKweMvnOUVCGuNkAElipdJJcCIzQcyE+Idb/Jo4Nm1fta2zsNwYiaQP/
-    #artifact: ChineseChessControl$(BUILD_TARGERT)$(TOOLCHAIN_VERSION)_$(BUILD_ARCH)_$(QT_VERSION)_$(appveyor_build_version)
     #draft: true
     prerelease: true
     force_update: true
