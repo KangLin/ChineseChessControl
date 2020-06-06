@@ -3,8 +3,8 @@
 #include "ChineseChess.h"
 // CChineseChessView
 
-#ifdef USE_PNG
-#include<atlimage.h>
+#ifdef CHINESE_CHESS_USE_PNG
+	#include<atlimage.h>
 #endif
 
 class AFX_EXT_CLASS CChineseChessHandler
@@ -53,11 +53,10 @@ public:
 
 protected:
 	DECLARE_MESSAGE_MAP()
-
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
-
 	virtual void OnDraw(CDC* pDC);
 
 protected:
@@ -76,7 +75,7 @@ private:
 	COLORREF m_QiPangColor;
 	COLORREF m_TiShiBoxColor;
 	
-	CBitmap m_QiPangPicture;			  //ÆåÅÌ±³¾°Í¼Æ¬
+	CBitmap m_QiPangPicture; //ÆåÅÌ±³¾°Í¼Æ¬
 	//³þºÓºº½ç
 	CBitmap m_Chu;
 	CBitmap m_He;
@@ -84,9 +83,9 @@ private:
 	CBitmap m_Jie;
 	CBitmap m_Copyright;
 
+
 	//Æå×ÓÍ¼Æ¬
-#ifdef USE_PNG
-	CImage m_RedShuai;     //ºìË§
+	CImage m_RedShuai;    //ºìË§
 	CImage m_RedShi;       //ºìÊË
 	CImage m_RedXiang;     //ºìÏà
 	CImage m_RedMa;        //ºìÂí
@@ -101,25 +100,26 @@ private:
 	CImage m_BlackChe;     //ºÚ³µ
 	CImage m_BlackBing;    //ºÚ±ø
 	CImage m_BlackPao;     //ºÚÅÚ
-#else
-	CBitmap m_RedShuai;     //ºìË§
-	CBitmap m_RedShi;       //ºìÊË
-	CBitmap m_RedXiang;     //ºìÏà
-	CBitmap m_RedMa;        //ºìÂí
-	CBitmap m_RedChe;       //ºì³µ
-	CBitmap m_RedBing;      //ºì±ø
-	CBitmap m_RedPao;       //ºìÅÚ
 
-	CBitmap m_BlackShuai;   //ºÚË§
-	CBitmap m_BlackShi;     //ºÚÊË
-	CBitmap m_BlackXiang;   //ºÚÏà
-	CBitmap m_BlackMa;      //ºÚÂí
-	CBitmap m_BlackChe;     //ºÚ³µ
-	CBitmap m_BlackBing;    //ºÚ±ø
-	CBitmap m_BlackPao;     //ºÚÅÚ
-#endif
+//#else
+//	CBitmap m_RedShuai;     //ºìË§
+//	CBitmap m_RedShi;       //ºìÊË
+//	CBitmap m_RedXiang;     //ºìÏà
+//	CBitmap m_RedMa;        //ºìÂí
+//	CBitmap m_RedChe;       //ºì³µ
+//	CBitmap m_RedBing;      //ºì±ø
+//	CBitmap m_RedPao;       //ºìÅÚ
+//
+//	CBitmap m_BlackShuai;   //ºÚË§
+//	CBitmap m_BlackShi;     //ºÚÊË
+//	CBitmap m_BlackXiang;   //ºÚÏà
+//	CBitmap m_BlackMa;      //ºÚÂí
+//	CBitmap m_BlackChe;     //ºÚ³µ
+//	CBitmap m_BlackBing;    //ºÚ±ø
+//	CBitmap m_BlackPao;     //ºÚÅÚ
 
-#ifdef USE_PNG
+
+#ifdef CHINESE_CHESS_USE_PNG
 	// ´Ó×ÊÔ´ÖÐ¼ÓÔØÍ¼Æ¬µ½ CImage
 	BOOL LoadImageFromResource(CImage *pImage, UINT ID, LPCTSTR pType = _T("PNG"));
 	BOOL LoadImageFromResource(CImage *pImage, LPCTSTR pID, LPCTSTR pType = _T("PNG"));
@@ -135,7 +135,7 @@ private:
 	BOOL DrawTiShiBox(CDC *pdc, int i, int j);
 	BOOL DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi);
 	void DrawQiPang(CDC *pdc, CRect rcBounds);
-#ifdef USE_PNG
+#ifdef CHINESE_CHESS_USE_PNG
 	BOOL DrawImage(CDC *pdc, int i, int j, CImage* pImage);
 #endif
 	BOOL DrawPicture(CDC *pdc, int i, int j, CBitmap* pbmp, BOOL CHHJKL = false);
@@ -146,4 +146,7 @@ private:
 	BOOL PromptSound(LPCTSTR ID = NULL);
 
 	CChineseChessHandler* m_pGoChessHandler;
+
+
+
 };

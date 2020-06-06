@@ -313,7 +313,7 @@ if [ "${BUILD_TARGERT}" = "windows_msvc" ]; then
         echo "MD5:${MD5}"
         install/bin/ChineseChessApp.exe -f "`pwd`/update_windows.xml" \
             --md5 ${MD5} \
+            --home "https://github.com/KangLin/ChineseChessControl" \
             --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/`ls ChineseChessControl-Setup-*-${VERSION}.exe`"
-            --home "https://github.com/KangLin/ChineseChessControl"
     fi
 fi

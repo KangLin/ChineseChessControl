@@ -34,7 +34,7 @@ CChineseChessView::CChineseChessView()
 	if (m_QiPangPicture.GetSafeHandle() == NULL)
 		m_QiPangPicture.LoadBitmap(IDB_QIPANG);
 
-	if(m_Chu.GetSafeHandle() == NULL)
+	if (m_Chu.GetSafeHandle() == NULL)
 		m_Chu.LoadBitmap(IDB_CHU);  //楚
 	if (m_He.GetSafeHandle() == NULL)
 		m_He.LoadBitmap(IDB_HE);   //河
@@ -44,93 +44,96 @@ CChineseChessView::CChineseChessView()
 		m_Jie.LoadBitmap(IDB_JIE);  //界
 	if (m_Copyright.GetSafeHandle() == NULL)
 		m_Copyright.LoadBitmap(IDB_KL);   //KL
-		
-#ifdef USE_PNG
-	LoadImageFromResource(&m_BlackShuai, IDP_RSHUAI);
-	LoadImageFromResource(&m_BlackShi, IDP_RSHI);
-	LoadImageFromResource(&m_BlackXiang, IDP_RXIANG);
-	LoadImageFromResource(&m_BlackMa, IDP_RMA);
-	LoadImageFromResource(&m_BlackChe, IDP_RJU);
-	LoadImageFromResource(&m_BlackBing, IDP_RBING);
+
+#ifdef CHINESE_CHESS_USE_PNG
+	LoadImageFromResource(&m_RedShuai, IDP_RSHUAI);
+	LoadImageFromResource(&m_RedShi, IDP_RSHI);
+	LoadImageFromResource(&m_RedXiang, IDP_RXIANG);
+	LoadImageFromResource(&m_RedMa, IDP_RMA);
+	LoadImageFromResource(&m_RedChe, IDP_RJU);
+	LoadImageFromResource(&m_RedPao, IDP_RPAO);
+	LoadImageFromResource(&m_RedBing, IDP_RBING);
 
 	LoadImageFromResource(&m_BlackShuai, IDP_BJIANG);
 	LoadImageFromResource(&m_BlackShi, IDP_BSHI);
 	LoadImageFromResource(&m_BlackXiang, IDP_BXIANG);
 	LoadImageFromResource(&m_BlackMa, IDP_BMA);
 	LoadImageFromResource(&m_BlackChe, IDP_BJU);
+	LoadImageFromResource(&m_BlackPao, IDP_BPAO);
 	LoadImageFromResource(&m_BlackBing, IDP_BBING);
 #else
-    if (m_RedShuai.GetSafeHandle() == NULL)
-    {
-        m_RedShuai.LoadBitmap(IDB_RSHUAI);
-    }
-    
-    if (m_RedShi.GetSafeHandle() == NULL)
-    {
-        m_RedShi.LoadBitmap(IDB_RSHI);
-    }
-    
-    if (m_RedXiang.GetSafeHandle() == NULL)
-    {
-        m_RedXiang.LoadBitmap(IDB_RXIANG);
-    }
-    
-    if (m_RedMa.GetSafeHandle() == NULL)
-    {
-        m_RedMa.LoadBitmap(IDB_RMA);
-    }
-    
-    if (m_RedChe.GetSafeHandle() == NULL)
-    {
-        m_RedChe.LoadBitmap(IDB_RCHE);
-    }
-    
-    if (m_RedPao.GetSafeHandle() == NULL)
-    {
-        m_RedPao.LoadBitmap(IDB_RPAO);
-    }
-    
-    if (m_RedBing.GetSafeHandle() == NULL)
-    {
-        m_RedBing.LoadBitmap(IDB_RBING);
-    }
-    
-    
-    if (m_BlackShuai.GetSafeHandle() == NULL)
-    {
-        m_BlackShuai.LoadBitmap(IDB_BSHUAI);
-    }
-    
-    if (m_BlackShi.GetSafeHandle() == NULL)
-    {
-        m_BlackShi.LoadBitmap(IDB_BSHI);
-    }
-    
-    if (m_BlackXiang.GetSafeHandle() == NULL)
-    {
-        m_BlackXiang.LoadBitmap(IDB_BXIANG);
-    }
-    
-    if (m_BlackMa.GetSafeHandle() == NULL)
-    {
-        m_BlackMa.LoadBitmap(IDB_BMA);
-    }
-    
-    if (m_BlackChe.GetSafeHandle() == NULL)
-    {
-        m_BlackChe.LoadBitmap(IDB_BCHE);
-    }
-    
-    if (m_BlackPao.GetSafeHandle() == NULL)
-    {
-        m_BlackPao.LoadBitmap(IDB_BPAO);
-    }
-    
-    if (m_BlackBing.GetSafeHandle() == NULL)
-    {
-        m_BlackBing.LoadBitmap(IDB_BBING);
-    }
+	if (m_RedShuai.GetSafeHandle() == NULL)
+	{
+		m_RedShuai.LoadBitmap(IDB_RSHUAI);
+	}
+
+	if (m_RedShi.GetSafeHandle() == NULL)
+	{
+		m_RedShi.LoadBitmap(IDB_RSHI);
+	}
+
+	if (m_RedXiang.GetSafeHandle() == NULL)
+	{
+		m_RedXiang.LoadBitmap(IDB_RXIANG);
+	}
+
+	if (m_RedMa.GetSafeHandle() == NULL)
+	{
+		m_RedMa.LoadBitmap(IDB_RMA);
+	}
+
+	if (m_RedChe.GetSafeHandle() == NULL)
+	{
+		m_RedChe.LoadBitmap(IDB_RCHE);
+	}
+
+	if (m_RedPao.GetSafeHandle() == NULL)
+	{
+		m_RedPao.LoadBitmap(IDB_RPAO);
+	}
+
+	if (m_RedBing.GetSafeHandle() == NULL)
+	{
+		m_RedBing.LoadBitmap(IDB_RBING);
+	}
+
+
+	if (m_BlackShuai.GetSafeHandle() == NULL)
+	{
+		m_BlackShuai.LoadBitmap(IDB_BSHUAI);
+	}
+
+	if (m_BlackShi.GetSafeHandle() == NULL)
+	{
+		m_BlackShi.LoadBitmap(IDB_BSHI);
+	}
+
+	if (m_BlackXiang.GetSafeHandle() == NULL)
+	{
+		m_BlackXiang.LoadBitmap(IDB_BXIANG);
+	}
+
+	if (m_BlackMa.GetSafeHandle() == NULL)
+	{
+		m_BlackMa.LoadBitmap(IDB_BMA);
+	}
+
+	if (m_BlackChe.GetSafeHandle() == NULL)
+	{
+		m_BlackChe.LoadBitmap(IDB_BCHE);
+	}
+
+	if (m_BlackPao.GetSafeHandle() == NULL)
+	{
+		m_BlackPao.LoadBitmap(IDB_BPAO);
+	}
+
+	if (m_BlackBing.GetSafeHandle() == NULL)
+	{
+		m_BlackBing.LoadBitmap(IDB_BBING);
+	}
 #endif
+
 }
 
 CChineseChessView::~CChineseChessView()
@@ -140,9 +143,18 @@ BEGIN_MESSAGE_MAP(CChineseChessView, CView)
 ON_WM_LBUTTONUP()
 ON_WM_KEYUP()
 ON_WM_SIZE()
+ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // CChineseChessView 消息处理程序
+int CChineseChessView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (__super::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	
+	return 0;
+}
 
 void CChineseChessView::OnLButtonUp(UINT nFlags, CPoint point)
 {
@@ -431,7 +443,7 @@ void TransparentBlt2(HDC hdcDest,      // 目标DC
     DeleteObject(hMaskBMP);   
 }
 
-#ifdef USE_PNG
+#ifdef CHINESE_CHESS_USE_PNG
 BOOL CChineseChessView::LoadImageFromResource(CImage *pImage, UINT ID, LPCTSTR pType)
 {
 	return LoadImageFromResource(pImage, MAKEINTRESOURCE(ID), pType);
@@ -601,7 +613,7 @@ BOOL CChineseChessView::ConvertCoordinate(long *x, long *y, int *i, int *j, ENUM
 void CChineseChessView::DrawQiPang(CDC *pdc, CRect rcBounds)
 {
     ASSERT(pdc != NULL);
-    
+	
     //棋盘图片
     BITMAP bitmap;
     m_QiPangPicture.GetBitmap(&bitmap);
@@ -736,6 +748,7 @@ void CChineseChessView::DrawQiPang(CDC *pdc, CRect rcBounds)
         DrawTiShiBox(pdc, m_PreviouPositionX, m_PreviouPositionY);
     if (IsValidPosition(m_CurrentPositionX, m_CurrentPositionY))
         DrawTiShiBox(pdc, m_CurrentPositionX, m_CurrentPositionY);
+
 }
 
 /*******************************************************************************************************
@@ -887,10 +900,10 @@ BOOL CChineseChessView::DrawTiShiBox(CDC *pdc, int i, int j)
 BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi)
 {
     ASSERT(pdc != NULL);
-#ifdef USE_PNG
-	CImage *m_QiZi = NULL;
+#ifdef CHINESE_CHESS_USE_PNG
+	CImage *pQiZi = NULL;
 #else
-    CBitmap *m_QiZi = NULL;
+    CBitmap *pQiZi = NULL;
 #endif
 
 #pragma warning( disable : 4806 )
@@ -900,66 +913,65 @@ BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi
     case CPiece::NoQiZi:
         return false;
     case CPiece::RShuai:
-        m_QiZi = &m_RedShuai;
+        pQiZi = &m_RedShuai;
         break;
     case CPiece::RShi:
-        m_QiZi = &m_RedShi;
+        pQiZi = &m_RedShi;
         break;
     case CPiece::RXiang:
-        m_QiZi = &m_RedXiang;
+        pQiZi = &m_RedXiang;
         break;
     case CPiece::RMa:
-        m_QiZi = &m_RedMa;
+        pQiZi = &m_RedMa;
         break;
     case CPiece::RChe:
-        m_QiZi = &m_RedChe;
+        pQiZi = &m_RedChe;
         break;
     case CPiece::RPao:
-        m_QiZi = &m_RedPao;
+        pQiZi = &m_RedPao;
         break;
     case CPiece::RBing:
-        m_QiZi = &m_RedBing;
+        pQiZi = &m_RedBing;
         break;
     case CPiece::BShuai:
-        m_QiZi = &m_BlackShuai;
+        pQiZi = &m_BlackShuai;
         break;
     case CPiece::BShi:
-        m_QiZi = &m_BlackShi;
+        pQiZi = &m_BlackShi;
         break;
     case CPiece::BXiang:
-        m_QiZi = &m_BlackXiang;
+        pQiZi = &m_BlackXiang;
         break;
     case CPiece::BMa:
-        m_QiZi = &m_BlackMa;
+        pQiZi = &m_BlackMa;
         break;
     case CPiece::BChe:
-        m_QiZi = &m_BlackChe;
+        pQiZi = &m_BlackChe;
         break;
     case CPiece::BPao:
-        m_QiZi = &m_BlackPao;
+        pQiZi = &m_BlackPao;
         break;
     case CPiece::BBing:
-        m_QiZi = &m_BlackBing;
+        pQiZi = &m_BlackBing;
         break;
     }
     
 #pragma warning( default : 4806 )
     
-    if (NULL != m_QiZi)
+    if (NULL != pQiZi)
     {
-#ifdef USE_PNG
-		return DrawImage(pdc, i, j, m_QiZi);
+#ifdef CHINESE_CHESS_USE_PNG
+		return DrawImage(pdc, i, j, pQiZi);
 #else
-        return DrawPicture(pdc, i, j, m_QiZi);
+        return DrawPicture(pdc, i, j, pQiZi);
 #endif
     }
-    else
-    {
-        return false;
-    }
+
+       return false;
+   
 }
 
-#ifdef USE_PNG
+#ifdef CHINESE_CHESS_USE_PNG
 BOOL CChineseChessView::DrawImage(CDC *pdc, int i, int j, CImage* pImage)
 {
 	ASSERT(pdc != NULL && pImage != NULL);
