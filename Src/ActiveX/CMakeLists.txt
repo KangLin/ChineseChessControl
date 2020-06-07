@@ -53,8 +53,8 @@ if(MSVC)
 	set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX .ocx)
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessView ${LIBS})
+target_compile_definitions(${PROJECT_NAME} PRIVATE ${LIBS_DEFINES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView ${LIBS})
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${RabbitCommon_DIR}/Src
     ${CMAKE_BINARY_DIR}

@@ -1,17 +1,18 @@
-ï»¿/**
+/**
  * @file ChineseChessActiveXCtrl.h.
  *
- * ä¸­å›½è±¡æ£‹ ActiveX æ§ä»¶çš„ç•Œé¢å®ç°
+ * ÖĞ¹úÏóÆå ActiveX ¿Ø¼şµÄ½çÃæÊµÏÖ
  */
  
 #pragma once
 
-// ChineseChessActiveXCtrl.h : CChineseChessActiveXCtrl ActiveX æ§ä»¶ç±»çš„å£°æ˜ã€‚
+// ChineseChessActiveXCtrl.h : CChineseChessActiveXCtrl ActiveX ¿Ø¼şÀàµÄÉùÃ÷¡£
 
 
-// CChineseChessActiveXCtrl : è¯·å‚é˜… ChineseChessActiveXCtrl.cpp äº†è§£å®ç°ã€‚
+// CChineseChessActiveXCtrl : Çë²ÎÔÄ ChineseChessActiveXCtrl.cpp ÁË½âÊµÏÖ¡£
 
 #include "ChineseChessView.h"
+
 class CChineseChessActiveXCtrl;
 class CChineseChessActiveXHandler : public CChineseChessHandler
 {
@@ -27,7 +28,7 @@ private:
 };
 
 /**
- * ä¸­å›½è±¡æ£‹ ActiveX æ§ä»¶çš„ç•Œé¢å®ç°ç±»
+ * ÖĞ¹úÏóÆå ActiveX ¿Ø¼şµÄ½çÃæÊµÏÖÀà
  *
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
@@ -36,30 +37,30 @@ class CChineseChessActiveXCtrl : public COleControl
 {
 	DECLARE_DYNCREATE(CChineseChessActiveXCtrl)
 
-// æ„é€ å‡½æ•°
+// ¹¹Ôìº¯Êı
 public:
 	CChineseChessActiveXCtrl();
 
-// é‡å†™
+// ÖØĞ´
 public:
 	virtual void DoPropExchange(CPropExchange* pPX);
 	virtual void OnResetState();
 
-// å®ç°
+// ÊµÏÖ
 protected:
 	~CChineseChessActiveXCtrl();
 
-	DECLARE_OLECREATE_EX(CChineseChessActiveXCtrl) // ç±»å·¥å‚å’Œ guid
+	DECLARE_OLECREATE_EX(CChineseChessActiveXCtrl) // Àà¹¤³§ºÍ guid
 	DECLARE_OLETYPELIB(CChineseChessActiveXCtrl)   // GetTypeInfo
-	DECLARE_PROPPAGEIDS(CChineseChessActiveXCtrl)  // å±æ€§é¡µ ID
-	DECLARE_OLECTLTYPE(CChineseChessActiveXCtrl)   // ç±»å‹åç§°å’Œæ‚é¡¹çŠ¶æ€
+	DECLARE_PROPPAGEIDS(CChineseChessActiveXCtrl)  // ÊôĞÔÒ³ ID
+	DECLARE_OLECTLTYPE(CChineseChessActiveXCtrl)   // ÀàĞÍÃû³ÆºÍÔÓÏî×´Ì¬
 
-// æ¶ˆæ¯æ˜ å°„
+// ÏûÏ¢Ó³Éä
 	DECLARE_MESSAGE_MAP()
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 
-// è°ƒåº¦æ˜ å°„
+// µ÷¶ÈÓ³Éä
 	DECLARE_DISPATCH_MAP()
 
 	OLE_COLOR GetQiPangColor();
@@ -85,13 +86,13 @@ protected:
 	void SetEndTime(LONG val);
 	
 	afx_msg void AboutBox();
-	VARIANT_BOOL NextStep();    //ä¸‹ä¸€æ­¥
-	VARIANT_BOOL PreviouStep(); //ä¸Šä¸€æ­¥
+	VARIANT_BOOL NextStep();    //ÏÂÒ»²½
+	VARIANT_BOOL PreviouStep(); //ÉÏÒ»²½
 	VARIANT_BOOL GoChess(SHORT i, SHORT j);
 	VARIANT_BOOL SaveChessGame(LPCTSTR szFile);
 	VARIANT_BOOL LoadChessGame(LPCTSTR szFile);
 
-// äº‹ä»¶æ˜ å°„
+// ÊÂ¼şÓ³Éä
 	DECLARE_EVENT_MAP()
 
 public:
@@ -100,7 +101,7 @@ public:
 		FireEvent(eventidEventGoChess, EVENT_PARAM(VTS_I2 VTS_I2 VTS_I4), i, j, qz);
 	}
 
-// è°ƒåº¦å’Œäº‹ä»¶ ID
+// µ÷¶ÈºÍÊÂ¼ş ID
 public:
 	enum {
 		eventidEventGoChess = 1L,

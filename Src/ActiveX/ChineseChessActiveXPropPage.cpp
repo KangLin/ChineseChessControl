@@ -1,4 +1,4 @@
-ï»¿// ChineseChessActiveXPropPage.cpp : CChineseChessActiveXPropPage å±æ€§é¡µç±»çš„å®ç°ã€‚
+// ChineseChessActiveXPropPage.cpp : CChineseChessActiveXPropPage ÊôĞÔÒ³ÀàµÄÊµÏÖ¡£
 
 #include "stdafx.h"
 #include "ChineseChessActiveX.h"
@@ -10,18 +10,18 @@
 
 IMPLEMENT_DYNCREATE(CChineseChessActiveXPropPage, COlePropertyPage)
 
-// æ¶ˆæ¯æ˜ å°„
+// ÏûÏ¢Ó³Éä
 
 BEGIN_MESSAGE_MAP(CChineseChessActiveXPropPage, COlePropertyPage)
 END_MESSAGE_MAP()
 
-// åˆå§‹åŒ–ç±»å·¥å‚å’Œ guid
+// ³õÊ¼»¯Àà¹¤³§ºÍ guid
 
 IMPLEMENT_OLECREATE_EX(CChineseChessActiveXPropPage, "ChineseChessActiveXPropPage.2.0.3",
 	0x035c7fb0,0x47a0,0x45fb,0xa4,0x5a,0xc2,0x9d,0xcf,0xe9,0xe0,0x01)
 
 // CChineseChessActiveXPropPage::CChineseChessActiveXPropPageFactory::UpdateRegistry -
-// æ·»åŠ æˆ–ç§»é™¤ CChineseChessActiveXPropPage çš„ç³»ç»Ÿæ³¨å†Œè¡¨é¡¹
+// Ìí¼Ó»òÒÆ³ı CChineseChessActiveXPropPage µÄÏµÍ³×¢²á±íÏî
 
 BOOL CChineseChessActiveXPropPage::CChineseChessActiveXPropPageFactory::UpdateRegistry(BOOL bRegister)
 {
@@ -32,18 +32,18 @@ BOOL CChineseChessActiveXPropPage::CChineseChessActiveXPropPageFactory::UpdateRe
 		return AfxOleUnregisterClass(m_clsid, nullptr);
 }
 
-// CChineseChessActiveXPropPage::CChineseChessActiveXPropPage - æ„é€ å‡½æ•°
+// CChineseChessActiveXPropPage::CChineseChessActiveXPropPage - ¹¹Ôìº¯Êı
 
 CChineseChessActiveXPropPage::CChineseChessActiveXPropPage() :
 	COlePropertyPage(IDD, IDS_CHINESECHESSACTIVEX_PPG_CAPTION)
 {
 }
 
-// CChineseChessActiveXPropPage::DoDataExchange - åœ¨é¡µå’Œå±æ€§é—´ç§»åŠ¨æ•°æ®
+// CChineseChessActiveXPropPage::DoDataExchange - ÔÚÒ³ºÍÊôĞÔ¼äÒÆ¶¯Êı¾İ
 
 void CChineseChessActiveXPropPage::DoDataExchange(CDataExchange* pDX)
 {
 	DDP_PostProcessing(pDX);
 }
 
-// CChineseChessActiveXPropPage æ¶ˆæ¯å¤„ç†ç¨‹åº
+// CChineseChessActiveXPropPage ÏûÏ¢´¦Àí³ÌĞò

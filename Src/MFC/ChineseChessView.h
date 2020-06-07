@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ChineseChess.h"
-// CChineseChessView
 
 #ifdef CHINESE_CHESS_USE_PNG
 	#include<atlimage.h>
@@ -83,9 +82,9 @@ private:
 	CBitmap m_Jie;
 	CBitmap m_Copyright;
 
-
+#ifdef CHINESE_CHESS_USE_PNG
 	//棋子图片
-	CImage m_RedShuai;    //红帅
+	CImage m_RedShuai;     //红帅
 	CImage m_RedShi;       //红仕
 	CImage m_RedXiang;     //红相
 	CImage m_RedMa;        //红马
@@ -100,24 +99,23 @@ private:
 	CImage m_BlackChe;     //黑车
 	CImage m_BlackBing;    //黑兵
 	CImage m_BlackPao;     //黑炮
+#else
+	CBitmap m_RedShuai;     //红帅
+	CBitmap m_RedShi;       //红仕
+	CBitmap m_RedXiang;     //红相
+	CBitmap m_RedMa;        //红马
+	CBitmap m_RedChe;       //红车
+	CBitmap m_RedBing;      //红兵
+	CBitmap m_RedPao;       //红炮
 
-//#else
-//	CBitmap m_RedShuai;     //红帅
-//	CBitmap m_RedShi;       //红仕
-//	CBitmap m_RedXiang;     //红相
-//	CBitmap m_RedMa;        //红马
-//	CBitmap m_RedChe;       //红车
-//	CBitmap m_RedBing;      //红兵
-//	CBitmap m_RedPao;       //红炮
-//
-//	CBitmap m_BlackShuai;   //黑帅
-//	CBitmap m_BlackShi;     //黑仕
-//	CBitmap m_BlackXiang;   //黑相
-//	CBitmap m_BlackMa;      //黑马
-//	CBitmap m_BlackChe;     //黑车
-//	CBitmap m_BlackBing;    //黑兵
-//	CBitmap m_BlackPao;     //黑炮
-
+	CBitmap m_BlackShuai;   //黑帅
+	CBitmap m_BlackShi;     //黑仕
+	CBitmap m_BlackXiang;   //黑相
+	CBitmap m_BlackMa;      //黑马
+	CBitmap m_BlackChe;     //黑车
+	CBitmap m_BlackBing;    //黑兵
+	CBitmap m_BlackPao;     //黑炮
+#endif
 
 #ifdef CHINESE_CHESS_USE_PNG
 	// 从资源中加载图片到 CImage
@@ -146,7 +144,4 @@ private:
 	BOOL PromptSound(LPCTSTR ID = NULL);
 
 	CChineseChessHandler* m_pGoChessHandler;
-
-
-
 };

@@ -1,15 +1,15 @@
-ï»¿#pragma once
+#pragma once
 
-// ChineseChessActiveX.h: ChineseChessActiveX.DLL çš„ä¸»æ ‡å¤´æ–‡ä»¶
+// ChineseChessActiveX.h: ChineseChessActiveX.DLL µÄÖ÷±êÍ·ÎÄ¼ş
 
 #if !defined( __AFXCTL_H__ )
-#error "åœ¨åŒ…æ‹¬æ­¤æ–‡ä»¶ä¹‹å‰åŒ…æ‹¬â€œafxctl.hâ€"
+#error "ÔÚ°üÀ¨´ËÎÄ¼şÖ®Ç°°üÀ¨¡°afxctl.h¡±"
 #endif
 
-#include "resource.h"       // ä¸»ç¬¦å·
+#include "resource.h"       // Ö÷·ûºÅ
 
 
-// CChineseChessActiveXApp: è¯·å‚é˜… ChineseChessActiveX.cpp äº†è§£å®ç°ã€‚
+// CChineseChessActiveXApp: Çë²ÎÔÄ ChineseChessActiveX.cpp ÁË½âÊµÏÖ¡£
 
 class CChineseChessActiveXApp : public COleControlModule
 {

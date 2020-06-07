@@ -1,4 +1,4 @@
-ï»¿; ChineseChessActiveX.def: å£°æ˜æ¨¡å—å‚æ•°ã€‚
+; ChineseChessActiveX.def: ÉùÃ÷Ä£¿é²ÎÊı¡£
 
 EXPORTS
 	DllCanUnloadNow     PRIVATE

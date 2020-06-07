@@ -1,4 +1,4 @@
-ï»¿// ChineseChessActiveX.cpp: CChineseChessActiveXApp å’Œ DLL æ³¨å†Œçš„å®ç°ã€‚
+// ChineseChessActiveX.cpp: CChineseChessActiveXApp ºÍ DLL ×¢²áµÄÊµÏÖ¡£
 
 #include "stdafx.h"
 #include "ChineseChessActiveX.h"
@@ -16,7 +16,7 @@ const WORD _wVerMinor = 0;
 
 extern bool ChineseChessViewNewDynLinkLibrary();
 
-// CChineseChessActiveXApp::InitInstance - DLL åˆå§‹åŒ–
+// CChineseChessActiveXApp::InitInstance - DLL ³õÊ¼»¯
 
 BOOL CChineseChessActiveXApp::InitInstance()
 {
@@ -24,7 +24,6 @@ BOOL CChineseChessActiveXApp::InitInstance()
 
 	if (bInit)
 	{
-		// TODO:  åœ¨æ­¤æ·»åŠ æ‚¨è‡ªå·±çš„æ¨¡å—åˆå§‹åŒ–ä»£ç ã€‚
 		ChineseChessViewNewDynLinkLibrary();
 	}
 
@@ -33,18 +32,18 @@ BOOL CChineseChessActiveXApp::InitInstance()
 
 
 
-// CChineseChessActiveXApp::ExitInstance - DLL ç»ˆæ­¢
+// CChineseChessActiveXApp::ExitInstance - DLL ÖÕÖ¹
 
 int CChineseChessActiveXApp::ExitInstance()
 {
-	// TODO:  åœ¨æ­¤æ·»åŠ æ‚¨è‡ªå·±çš„æ¨¡å—ç»ˆæ­¢ä»£ç ã€‚
+	// TODO:  ÔÚ´ËÌí¼ÓÄú×Ô¼ºµÄÄ£¿éÖÕÖ¹´úÂë¡£
 
 	return COleControlModule::ExitInstance();
 }
 
 
 
-// DllRegisterServer - å°†é¡¹æ·»åŠ åˆ°ç³»ç»Ÿæ³¨å†Œè¡¨
+// DllRegisterServer - ½«ÏîÌí¼Óµ½ÏµÍ³×¢²á±í
 
 STDAPI DllRegisterServer(void)
 {
@@ -61,7 +60,7 @@ STDAPI DllRegisterServer(void)
 
 
 
-// DllUnregisterServer - å°†é¡¹ä»ç³»ç»Ÿæ³¨å†Œè¡¨ä¸­ç§»é™¤
+// DllUnregisterServer - ½«Ïî´ÓÏµÍ³×¢²á±íÖĞÒÆ³ı
 
 STDAPI DllUnregisterServer(void)
 {

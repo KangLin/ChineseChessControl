@@ -1,4 +1,4 @@
-ï»¿// ChineseChessActiveXCtrl.cpp : CChineseChessActiveXCtrl ActiveX æ§ä»¶ç±»çš„å®ç°ã€‚
+// ChineseChessActiveXCtrl.cpp : CChineseChessActiveXCtrl ActiveX ¿Ø¼şÀàµÄÊµÏÖ¡£
 
 #include "stdafx.h"
 #include "ChineseChessActiveX.h"
@@ -14,7 +14,7 @@
 
 IMPLEMENT_DYNCREATE(CChineseChessActiveXCtrl, COleControl)
 
-// æ¶ˆæ¯æ˜ å°„
+// ÏûÏ¢Ó³Éä
 
 BEGIN_MESSAGE_MAP(CChineseChessActiveXCtrl, COleControl)
 	ON_OLEVERB(AFX_IDS_VERB_PROPERTIES, OnProperties)
@@ -24,7 +24,7 @@ BEGIN_MESSAGE_MAP(CChineseChessActiveXCtrl, COleControl)
 	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
-// è°ƒåº¦æ˜ å°„
+// µ÷¶ÈÓ³Éä
 
 BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "AboutBox", DISPID_ABOUTBOX, AboutBox, VT_EMPTY, VTS_NONE)
@@ -46,34 +46,34 @@ BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptMessage", dispidEnablePromptMessage, m_EnablePromptMessage, OnEnablePromptMessageChanged, VT_BOOL)
 END_DISPATCH_MAP()
 
-// äº‹ä»¶æ˜ å°„
+// ÊÂ¼şÓ³Éä
 
 BEGIN_EVENT_MAP(CChineseChessActiveXCtrl, COleControl)
 	EVENT_CUSTOM_ID("EventGoChess", eventidEventGoChess, EventGoChess, VTS_I2 VTS_I2 VTS_I4)
 END_EVENT_MAP()
 
-// å±æ€§é¡µ
+// ÊôĞÔÒ³
 
-// TODO: æ ¹æ®éœ€è¦æ·»åŠ æ›´å¤šå±æ€§é¡µã€‚è¯·è®°ä½å¢åŠ è®¡æ•°!
+// TODO: ¸ù¾İĞèÒªÌí¼Ó¸ü¶àÊôĞÔÒ³¡£Çë¼Ç×¡Ôö¼Ó¼ÆÊı!
 BEGIN_PROPPAGEIDS(CChineseChessActiveXCtrl, 1)
 	PROPPAGEID(CChineseChessActiveXPropPage::guid)
 END_PROPPAGEIDS(CChineseChessActiveXCtrl)
 
-// åˆå§‹åŒ–ç±»å·¥å‚å’Œ guid
+// ³õÊ¼»¯Àà¹¤³§ºÍ guid
 
 IMPLEMENT_OLECREATE_EX(CChineseChessActiveXCtrl, "ChineseChessActiveX.2.0.3",
 	0xe4e060cb,0xa3aa,0x4278,0xb1,0xed,0xce,0x50,0x20,0xc4,0x2e,0xc7)
 
-// é”®å…¥åº“ ID å’Œç‰ˆæœ¬
+// ¼üÈë¿â ID ºÍ°æ±¾
 
 IMPLEMENT_OLETYPELIB(CChineseChessActiveXCtrl, _tlid, _wVerMajor, _wVerMinor)
 
-// æ¥å£ ID
+// ½Ó¿Ú ID
 
 const IID IID_DChineseChessActiveX = {0x7192fb6d,0x7455,0x4da8,{0xb3,0xac,0x64,0x5d,0xd6,0x05,0x57,0xf3}};
 const IID IID_DChineseChessActiveXEvents = {0x0850de98,0xfc76,0x4b94,{0x9b,0xbe,0xe2,0xe5,0x9e,0x0f,0xe0,0xea}};
 
-// æ§ä»¶ç±»å‹ä¿¡æ¯
+// ¿Ø¼şÀàĞÍĞÅÏ¢
 
 static const DWORD _dwChineseChessActiveXOleMisc =
 	OLEMISC_ACTIVATEWHENVISIBLE |
@@ -85,15 +85,15 @@ static const DWORD _dwChineseChessActiveXOleMisc =
 IMPLEMENT_OLECTLTYPE(CChineseChessActiveXCtrl, IDS_CHINESECHESSACTIVEX, _dwChineseChessActiveXOleMisc)
 
 // CChineseChessActiveXCtrl::CChineseChessActiveXCtrlFactory::UpdateRegistry -
-// æ·»åŠ æˆ–ç§»é™¤ CChineseChessActiveXCtrl çš„ç³»ç»Ÿæ³¨å†Œè¡¨é¡¹
+// Ìí¼Ó»òÒÆ³ı CChineseChessActiveXCtrl µÄÏµÍ³×¢²á±íÏî
 
 BOOL CChineseChessActiveXCtrl::CChineseChessActiveXCtrlFactory::UpdateRegistry(BOOL bRegister)
 {
-	// TODO:  éªŒè¯æ‚¨çš„æ§ä»¶æ˜¯å¦ç¬¦åˆå•å…ƒæ¨¡å‹çº¿ç¨‹å¤„ç†è§„åˆ™ã€‚
-	// æœ‰å…³æ›´å¤šä¿¡æ¯ï¼Œè¯·å‚è€ƒ MFC æŠ€æœ¯è¯´æ˜ 64ã€‚
-	// å¦‚æœæ‚¨çš„æ§ä»¶ä¸ç¬¦åˆå•å…ƒæ¨¡å‹è§„åˆ™ï¼Œåˆ™
-	// å¿…é¡»ä¿®æ”¹å¦‚ä¸‹ä»£ç ï¼Œå°†ç¬¬å…­ä¸ªå‚æ•°ä»
-	// afxRegApartmentThreading æ”¹ä¸º 0ã€‚
+	// TODO:  ÑéÖ¤ÄúµÄ¿Ø¼şÊÇ·ñ·ûºÏµ¥ÔªÄ£ĞÍÏß³Ì´¦Àí¹æÔò¡£
+	// ÓĞ¹Ø¸ü¶àĞÅÏ¢£¬Çë²Î¿¼ MFC ¼¼ÊõËµÃ÷ 64¡£
+	// Èç¹ûÄúµÄ¿Ø¼ş²»·ûºÏµ¥ÔªÄ£ĞÍ¹æÔò£¬Ôò
+	// ±ØĞëĞŞ¸ÄÈçÏÂ´úÂë£¬½«µÚÁù¸ö²ÎÊı´Ó
+	// afxRegApartmentThreading ¸ÄÎª 0¡£
 
 	if (bRegister)
 		return AfxOleRegisterControlClass(
@@ -111,7 +111,7 @@ BOOL CChineseChessActiveXCtrl::CChineseChessActiveXCtrlFactory::UpdateRegistry(B
 		return AfxOleUnregisterClass(m_clsid, m_lpszProgID);
 }
 
-// CChineseChessActiveXCtrl::CChineseChessActiveXCtrl - æ„é€ å‡½æ•°
+// CChineseChessActiveXCtrl::CChineseChessActiveXCtrl - ¹¹Ôìº¯Êı
 CChineseChessActiveXCtrl::CChineseChessActiveXCtrl()
 {
 	InitializeIIDs(&IID_DChineseChessActiveX, &IID_DChineseChessActiveXEvents);
@@ -120,7 +120,7 @@ CChineseChessActiveXCtrl::CChineseChessActiveXCtrl()
 	m_pHandler = new CChineseChessActiveXHandler(this);
 }
 
-// CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl - ææ„å‡½æ•°
+// CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl - Îö¹¹º¯Êı
 
 CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl()
 {
@@ -129,28 +129,28 @@ CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl()
 
 }
 
-// CChineseChessActiveXCtrl::DoPropExchange - æŒä¹…æ€§æ”¯æŒ
+// CChineseChessActiveXCtrl::DoPropExchange - ³Ö¾ÃĞÔÖ§³Ö
 
 void CChineseChessActiveXCtrl::DoPropExchange(CPropExchange* pPX)
 {
 	ExchangeVersion(pPX, MAKELONG(_wVerMinor, _wVerMajor));
 	COleControl::DoPropExchange(pPX);
 
-	// TODO: ä¸ºæ¯ä¸ªæŒä¹…çš„è‡ªå®šä¹‰å±æ€§è°ƒç”¨ PX_ å‡½æ•°ã€‚
+	// TODO: ÎªÃ¿¸ö³Ö¾ÃµÄ×Ô¶¨ÒåÊôĞÔµ÷ÓÃ PX_ º¯Êı¡£
 }
 
 
-// CChineseChessActiveXCtrl::OnResetState - å°†æ§ä»¶é‡ç½®ä¸ºé»˜è®¤çŠ¶æ€
+// CChineseChessActiveXCtrl::OnResetState - ½«¿Ø¼şÖØÖÃÎªÄ¬ÈÏ×´Ì¬
 
 void CChineseChessActiveXCtrl::OnResetState()
 {
-	COleControl::OnResetState();  // é‡ç½® DoPropExchange ä¸­æ‰¾åˆ°çš„é»˜è®¤å€¼
+	COleControl::OnResetState();  // ÖØÖÃ DoPropExchange ÖĞÕÒµ½µÄÄ¬ÈÏÖµ
 
-	// TODO:  åœ¨æ­¤é‡ç½®ä»»æ„å…¶ä»–æ§ä»¶çŠ¶æ€ã€‚
+	// TODO:  ÔÚ´ËÖØÖÃÈÎÒâÆäËû¿Ø¼ş×´Ì¬¡£
 }
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//ä»¥ä¸‹æ˜¯å®Œæˆ === è°ƒåº¦æ˜ å°„ === çš„å‡½æ•°å—
+//ÒÔÏÂÊÇÍê³É === µ÷¶ÈÓ³Éä === µÄº¯Êı¿é
 //
 
 void CChineseChessActiveXCtrl::SetQiPangColor(OLE_COLOR val)
@@ -325,7 +325,7 @@ void CChineseChessActiveXCtrl::SetEndTime(LONG val)
 	SetModifiedFlag();
 }
 
-// CChineseChessActiveXCtrl::AboutBox - å‘ç”¨æˆ·æ˜¾ç¤ºâ€œå…³äºâ€æ¡†
+// CChineseChessActiveXCtrl::AboutBox - ÏòÓÃ»§ÏÔÊ¾¡°¹ØÓÚ¡±¿ò
 
 void CChineseChessActiveXCtrl::AboutBox()
 {
@@ -398,11 +398,11 @@ VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 }
 
 //
-//ä»¥ä¸Šæ˜¯å®Œæˆ === è°ƒåº¦æ˜ å°„ === çš„å‡½æ•°å—
+//ÒÔÉÏÊÇÍê³É === µ÷¶ÈÓ³Éä === µÄº¯Êı¿é
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//ä»¥ä¸‹æ˜¯å®Œæˆ === æ¶ˆæ¯å¤„ç†ç¨‹åº === çš„å‡½æ•°å—
+//ÒÔÏÂÊÇÍê³É === ÏûÏ¢´¦Àí³ÌĞò === µÄº¯Êı¿é
 //
 
 int CChineseChessActiveXCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -410,7 +410,7 @@ int CChineseChessActiveXCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (COleControl::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	// TODO:  åœ¨æ­¤æ·»åŠ æ‚¨ä¸“ç”¨çš„åˆ›å»ºä»£ç 
+	// TODO:  ÔÚ´ËÌí¼ÓÄú×¨ÓÃµÄ´´½¨´úÂë
 	m_pChess = new CChineseChessView();
 	CRect rect;
 	GetClientRect(rect);
@@ -431,7 +431,7 @@ void CChineseChessActiveXCtrl::OnSize(UINT nType, int cx, int cy)
 }
 
 //
-//ä»¥ä¸Šæ˜¯å®Œæˆ === æ¶ˆæ¯å¤„ç†ç¨‹åº === çš„å‡½æ•°å—
+//ÒÔÉÏÊÇÍê³É === ÏûÏ¢´¦Àí³ÌĞò === µÄº¯Êı¿é
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
