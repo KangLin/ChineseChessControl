@@ -960,19 +960,14 @@ BOOL CChineseChessView::DrawQiZi(CDC *pdc, int i, int j, CPiece::ENUM_QiZi eQiZi
     
     if (NULL != pQiZi)
     {
-#ifdef CHINESE_CHESS_USE_PNG
-		return DrawImage(pdc, i, j, pQiZi);
-#else
         return DrawPicture(pdc, i, j, pQiZi);
-#endif
     }
 
-       return false;
-   
+    return false;
 }
 
 #ifdef CHINESE_CHESS_USE_PNG
-BOOL CChineseChessView::DrawImage(CDC *pdc, int i, int j, CImage* pImage)
+BOOL CChineseChessView::DrawPicture(CDC *pdc, int i, int j, CImage* pImage)
 {
 	ASSERT(pdc != NULL && pImage != NULL);
 
