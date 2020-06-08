@@ -62,11 +62,11 @@ sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/Activ
 sed -i "s/\"ChineseChessActiveX.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveX.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveXCtrl.cpp
 sed -i "s/\"ChineseChessActiveXPropPage.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveXPropPage.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveXPropPage.cpp
 
-sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
-sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
-sed -i "s/VALUE \"FileVersion\",.*/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
-sed -i "s/VALUE \"ProductVersion\",.*/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
-sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChess/ChineseChess.rc
+sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
+sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
+sed -i "s/VALUE \"FileVersion\",.*/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
+sed -i "s/VALUE \"ProductVersion\",.*/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
 
 if [ -n "$1" ]; then
     git add .

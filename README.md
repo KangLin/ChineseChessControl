@@ -57,31 +57,31 @@
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
 
 - windows x86
-    - [MSVC 2017 x86 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1916-x86-v2.0.3.exe)
-    - [MSVC 2015 x86 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1900-x86-v2.0.3.exe)
-    - [MSVC 2013 x86 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1800-x86-v2.0.3.exe)
+    - [MSVC 2017 x86 v2.0.4](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChessControl-Setup-msvc1916-x86-v2.0.4.exe)
+    - [MSVC 2015 x86 v2.0.4](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChessControl-Setup-msvc1900-x86-v2.0.4.exe)
+    - [MSVC 2013 x86 v2.0.4](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChessControl-Setup-msvc1800-x86-v2.0.4.exe)
 
 - windows x86_64
-    - [MSVC 2017 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1916-x86_64-v2.0.3.exe)
-    - [MSVC 2015 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1900-x86_64-v2.0.3.exe)
-    - [MSVC 2013 x86_64 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChessControl-Setup-msvc1800-x86_64-v2.0.3.exe)
+    - [MSVC 2017 x86_64 v2.0.4](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChessControl-Setup-msvc1916-x86_64-v2.0.4.exe)
+    - [MSVC 2015 x86_64 v2.0.4](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChessControl-Setup-msvc1900-x86_64-v2.0.4.exe)
+    - [MSVC 2013 x86_64 v2.0.4](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChessControl-Setup-msvc1800-x86_64-v2.0.4.exe)
 
   Windows安装包，支持 Windows xp 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
 - android
-    + [ChineseChess_arm64-v8a_v2.0.3.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChess_arm64-v8a_v2.0.3.apk)
-    + [ChineseChess_armeabi-v7a_v2.0.3.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChess_armeabi-v7a_v2.0.3.apk)
+    + [ChineseChess_arm64-v8a_v2.0.4.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChess_arm64-v8a_v2.0.4.apk)
+    + [ChineseChess_armeabi-v7a_v2.0.4.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChess_armeabi-v7a_v2.0.4.apk)
 
 - linux
-    - [ChineseChess_v2.0.3.tar.gz](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/ChineseChess_v2.0.3.tar.gz)  
+    - [ChineseChess_v2.0.4.tar.gz](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/ChineseChess_v2.0.4.tar.gz)  
       AppImage格式的执行程序，可直接运行在linux系统，详见：https://appimage.org/  
       使用:    
-      1. 解压。复制ChineseChess_v2.0.3.tar.gz到安装目录，然后解压：
+      1. 解压。复制ChineseChess_v2.0.4.tar.gz到安装目录，然后解压：
 
               mkdir ChineseChess
               cd ChineseChess
-              cp $DOWNLOAD/ChineseChess_v2.0.3.tar.gz .
-              tar xvfz ChineseChess_v2.0.3.tar.gz
+              cp $DOWNLOAD/ChineseChess_v2.0.4.tar.gz .
+              tar xvfz ChineseChess_v2.0.4.tar.gz
 
       2. 安装
         
@@ -92,7 +92,7 @@
               ./install1.sh remove ChineseChess
 
 - ubuntu
-    - [ChineseChess_2.0.3_amd64.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.3/chinesechess_2.0.3_amd64.deb)  
+    - [ChineseChess_2.0.4_amd64.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.4/chinesechess_2.0.4_amd64.deb)  
   deb 安装包,可用于 Ubuntu
 
 #### 贡献

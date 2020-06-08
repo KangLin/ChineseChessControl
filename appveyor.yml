@@ -1,4 +1,4 @@
-version: 'v2.0.3.{build}'
+version: 'v.0.4.{build}'
 
 cache:
   - Package
@@ -10,7 +10,7 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-  BUILD_VERSION: "v2.0.3"
+  BUILD_VERSION: "v2.0.4"
   
   matrix:
   ##### msvc 2017 ########
