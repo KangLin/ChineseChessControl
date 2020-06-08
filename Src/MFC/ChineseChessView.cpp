@@ -191,6 +191,7 @@ void CChineseChessView::OnDraw(CDC* pDC)
 {
     CRect rect;
     GetClientRect(&rect);
+	pDC->SetStretchBltMode(HALFTONE);
     DrawQiPang(pDC, rect);   //画棋盘
 }
 
@@ -972,7 +973,7 @@ BOOL CChineseChessView::DrawPicture(CDC *pdc, int i, int j, CImage* pImage)
 	ASSERT(pdc != NULL && pImage != NULL);
 
 	long x, y;
-
+	
 	ConvertCoordinate(&x, &y, &i, &j, IJToXY);
 	x -= m_QiPangDistance / 2;
 	y -= m_QiPangDistance / 2;
