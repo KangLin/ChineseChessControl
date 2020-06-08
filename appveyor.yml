@@ -1,4 +1,4 @@
-version: 'v.0.4.{build}'
+version: 'v2.0.4.{build}'
 
 cache:
   - Package
