@@ -1,106 +1,70 @@
 sudo: required
 dist: bionic
+
 language:
-  - cpp
-#  - android
-
-addons:
-  apt:
-    sources:
-      github-git-lfs-bionic
-    packages:
-      git-lfs
-      
-cache:
-  - apt
-  - directories:
-    - Package
-
-compiler:
-  - g++
-
-os:
-  - unix
-
-#jdk:
-  #- oraclejdk8
-  #- oraclejdk9
-  #- openjdk8
-
-#android:
-#  components:
-#    - platform-tools
-#    - build-tools-28.0.3
-#    - android-24
-#    - ndk-bundle
-#    - platforms-24
+- cpp
 
 addons:
   ssh_known_hosts:
-    - github.com
-    - frs.sourceforge.net
+  - github.com
+  - frs.sourceforge.net
+  
+cache:
+- apt
+- directories:
+  - Package
+  
+compiler:
+- g++
+
+os:
+- unix
 
 env:
   global:
-    - SOURCE_DIR=$TRAVIS_BUILD_DIR
-    - RABBIT_BUILD_THIRDLIBRARY="TRUE"
-    - QMAKE=qmake
-
-  matrix: 
-    # BUILD_ARCH qt 大于等于 5.14.0 可选（arm64-v8a armeabi-v7a x86_64 x86）组合
-    #- BUILD_TARGERT="android" BUILD_ARCH="armeabi-v7a x86" ANDROID_ARM_NEON=ON QT_VERSION_DIR=5.14 QT_VERSION=5.14.0 ANDROID_API=android-24 DOWNLOAD_QT=TRUE  GENERATORS="Unix Makefiles"
-    - BUILD_TARGERT="android" BUILD_ARCH="armeabi-v7a" ANDROID_ARM_NEON=ON QT_VERSION_DIR=5.13 QT_VERSION=5.13.2 ANDROID_API=android-24 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/android_arm_v0.2.9_in_linux.tar.gz
-    - BUILD_TARGERT="android" BUILD_ARCH="arm64-v8a" ANDROID_ARM_NEON=ON QT_VERSION_DIR=5.12 QT_VERSION=5.12.3 ANDROID_API=android-24 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/android_arm64_v0.2.9_in_linux.tar.gz
-    - BUILD_TARGERT="android" BUILD_ARCH="x86" QT_VERSION_DIR=5.12 QT_VERSION=5.12.3 ANDROID_API=android-24 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/android_x86_v0.2.9_in_linux.tar.gz
-  
-    # DOWNLOAD_QT:
-    #     APT: Use apt to install from ubuntu source;
-    #     TRUE: download from download.qt.io
-    #     FALSE: install from https://launchpad.net/~beineri
-    - BUILD_TARGERT="unix" DOWNLOAD_QT=APT GENERATORS="Unix Makefiles"
-    
-    - BUILD_TARGERT="unix" QT_VERSION_DIR=512 QT_VERSION=5.12.3 DOWNLOAD_QT=FALSE GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/unix_x86_64_v0.2.9.tar.gz
-    - BUILD_TARGERT="unix" QT_VERSION_DIR=511 QT_VERSION=5.11.3 DOWNLOAD_QT=FALSE STATIC=ON GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/unix_x86_64_v0.2.9.tar.gz
-
-    - BUILD_TARGERT="unix" BUILD_ARCH="unix" QT_VERSION_DIR=5.12 QT_VERSION=5.12.6 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/unix_x86_64_v0.2.9.tar.gz
+  - SOURCE_DIR=$TRAVIS_BUILD_DIR
+  - RABBIT_BUILD_THIRDLIBRARY="TRUE"
+  - QMAKE=qmake
+  - secure: VyAxvG9UJNp08btB+FKRXrgVZDut3pAYHYwpnjoFZwfCl2W6QPIYS5mJyhsgoGRL86KxLjV8gNcdaIuTFsinrjipDH8QcTpSePe4z3VpBMGly58Q0ZI84WrryAtjeU2Ou86EVJVhawHyhbDSEpJoItBVwzI+3AntL6SjqWUmMv/4G1pC4ApaNkFlOjXAeP6K+Sj2Eag+5YmxjnukhLCBEJhlZOCfXZoY5ygDLnN72ShJkROj+uQfcg9Ky9L1I1UU8sWTHRKjb7z20yRy2Quwrz9NdofE8CUNz4eabg5NlXERnsCPFbyzi0x4ebjOwmpR8Jd8H1f9D24Kr9QFulGo61OEOdHILbXI7H7GgPuvijgUg/H9ROpgn5GOgNm80dmhhj1zZxEwvqE5XO1s1pUcTSlAG4NF2pGTob/j5q3V4VuYj+Nn8QcE7VfXaij4ISGksmJEY5D5uxrtXugRu1kdy1YKjUHKuhmc5TFQxAwK/mFMo9S1ex6HCHEABHJyCCa9+Qh2x5u4gnV6628BRVZrtnebSAj0LqGmVjJvc4HpyHesmt8VcsvHAt3u0ACAnCkgKcBCInkSnljIGEFnlLY+/3det7fdKhV/Sl9LgUwNjkaD6Le/TYae/bR/WLvFhwT+T/T5VBYkmiU8n7fU4YwXg3rEHhiLt7V+B47IfeCkj/0=
+  - secure: wvGznTHUuLDH/GUcCvmVpy5QExNWely4gYj49phiBmtldvEo+GwtUG4SCXPqEs+GZYH8rGxc0nnO4D4XiM7nQPGT0whgDwfUo4LQqrrrioSBVo3ou+hv/s8yElGJS2PXuHmRcnikbC9oErC35XvAMgG3OqEH9sJpRHysMgPU6z8LPs19/avieZTF6b0SAWTfL+IL58evnY9mzBP9v2f/gwjYbYIQGLYeyLRmgYlHb1IBhIvz0q7VANuIBC4XI/So5Q1iYJyqrXzwDNAu7Qy/xwMXQ1Qd28b9Y0016FqT3c1YKKSfzKqAQv83HWMbDCO+2Cfdlf1FhElOKZHDRJwv3cxvEGT2Vf8WVhnoqc3uorTy1qq06jSdSQcY1UmEQDLLFygS0tvM0SvRhdS0JjrQ4RruTqYcjdNkn2LrYeO8hzY5cAVComYOaHCINHB2TCjDRusLKxz3RCej+gChE4hDplXO2vpCclpt/A+Kz2icWljQ80yKUrPsoy9WAl/lD+qM2d0iSHc7Kb79XtCExLHYbk/OMwgh5PMvfoOVgQozQmNQBkje7wc5CWlo+7I8Yg0kkIvpLWmNoJwYvjqywNuUsYE+HuuF/Hqk8p7aX9um9N/JquK9G/vDfE5BNGvTNlY9LLI3Z8MaZPXmwg4sypW+4Rl4VogMSG7becFNNuMjLNg=
+  - secure: OfnZ7HdCCS5Q20z1aaS52B8E96ArCDQDNClg9+iah7bOBfDUov5m9eWUfwXN07BpPHsUiQKAy+gmAI80iKHmPXqeUE7NB4ev6iCPKXpV6Riq8flOPz3JMULdgk4b2YuJbBw0BOY3iWJp2H6/K0PlfUS/TX1Zs9YujFnOB2ny+pWDGy7NDS1o3mmmFWp2nuf0F1tToPkbeU/Uxh1yst6vfpBCy1e89kdI7D+68mElJaWns6UDzNl0tqZhGaK6CWwFYMoj5tI2b1Ze6h9FSAn0Y5kIh0prSx86D5W6A+99b5aE04IQLx8fgjzFrXoMmc1avWnKu4XFsUuwtMcv3D0ebkOMDGEYM7HEGVQwlP+cW0goMnT9Y4KspEww7EFE6q66b0ripflO5VsjvZXNS85GXdsa3uHOOahG2gJ68YtC8vTFnvip6vUUsRhJYwFNQoIOneOaff6x2Ck0VOgVCfUxqvhVufZAeIGVb3dZZ2QeP9tEUVSAwV7YVcP6qqpSSict8DQm8p9F2zgEtiKfqp0WM1J1V81Brbmk9KCNm/sVKf+RvwAvF0APJSwlDRJecAy1iUql9Sk3oN+yeS0OVyWjj21fUhWLGOgnHNsrXmfbpMu/fI6GfsuMVZpv3Pp2siAxvXaFjnsUcYMq0l+pal6F21uUZbGzg8ezjQphQGqEtns=
+ 
+  matrix:
+  - BUILD_TARGERT="android" BUILD_ARCH="armeabi-v7a" ANDROID_ARM_NEON=ON QT_VERSION_DIR=5.13
+    QT_VERSION=5.13.2 ANDROID_API=android-24 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles"
+  - BUILD_TARGERT="android" BUILD_ARCH="arm64-v8a" ANDROID_ARM_NEON=ON QT_VERSION_DIR=5.12
+    QT_VERSION=5.12.3 ANDROID_API=android-24 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles"
+  - BUILD_TARGERT="android" BUILD_ARCH="x86" QT_VERSION_DIR=5.12 QT_VERSION=5.12.3
+    ANDROID_API=android-24 DOWNLOAD_QT=TRUE GENERATORS="Unix Makefiles"
+  - BUILD_TARGERT="unix" DOWNLOAD_QT=APT GENERATORS="Unix Makefiles"
+  - BUILD_TARGERT="unix" QT_VERSION_DIR=512 QT_VERSION=5.12.3 DOWNLOAD_QT=FALSE GENERATORS="Unix
+    Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/unix_x86_64_v0.2.9.tar.gz
+  - BUILD_TARGERT="unix" QT_VERSION_DIR=511 QT_VERSION=5.11.3 DOWNLOAD_QT=FALSE STATIC=ON
+    GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/unix_x86_64_v0.2.9.tar.gz
+  - BUILD_TARGERT="unix" BUILD_ARCH="unix" QT_VERSION_DIR=5.12 QT_VERSION=5.12.6 DOWNLOAD_QT=TRUE
+    GENERATORS="Unix Makefiles" DOWNLOAD_THIRDLIBS_URL=https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.2.9/unix_x86_64_v0.2.9.tar.gz
 
 before_install:
-  #- sudo apt-get update -y -qq
-  - echo "TRAVIS_OS_NAME=${TRAVIS_OS_NAME}"
-  - sudo apt-get install -y -qq xvfb xpra
-  - sudo Xvfb :99 -ac &
-  - export DISPLAY=:99.0
-  - mkdir ${SOURCE_DIR}/Tools
-  - export VERSION="v2.0.3"
+- echo "TRAVIS_OS_NAME=${TRAVIS_OS_NAME}"
+- sudo apt-get install -y -qq xvfb xpra
+- sudo Xvfb :99 -ac &
+- export DISPLAY=:99.0
+- mkdir ${SOURCE_DIR}/Tools
+- export VERSION="v2.0.3"
 
 install:
-  - cd ${SOURCE_DIR}
-  #- /bin/bash ci/backgroud_echo.sh &
-  - git clone https://github.com/KangLin/RabbitCommon.git
-  - export RabbitCommon_DIR="`pwd`/RabbitCommon"
-  - bash ci/build-install-tools.sh #> /dev/null
-#  - |
-#    if [ "$BUILD_TARGERT"="unix" -a -z "$RABBIT_ARCH" ]; then
-#        source /opt/qt511/bin/qt511-env.sh
-#    fi
+- cd ${SOURCE_DIR}
+- git clone https://github.com/KangLin/RabbitCommon.git
+- export RabbitCommon_DIR="`pwd`/RabbitCommon"
+- bash ci/build-install-tools.sh
 
 before_script:
-  - cd ${SOURCE_DIR}
+- cd ${SOURCE_DIR}
 
 script:
-  - bash ${SOURCE_DIR}/ci/build.sh ${SOURCE_DIR}
+- bash ${SOURCE_DIR}/ci/build.sh ${SOURCE_DIR}
 
 notifications:
   email: kl222@126.com
-  on_success: never  # [always|never|change]
+  on_success: never
   on_failure: always
-
-#deploy:
-#  - provider: releases
-#    api_key:
-#      secure: ALZWWdQlmi0gJ5Gs9gjX4waV4JYvZAFogN6oUCJayWYkCvME/z1QSxMERuZhRM0F4K2Kt8LWK2ozp18OEtonNQJ81ZELbZRYMQwl4C3Cmfhnywyn4UgiU3CLEQ3Dn25iLqHy7QhaS6BWyISxVQxrsEhFkc0tLDODwk45tibiniIpTtBtTB9Tx85p8FEfdOHUCNxhVtW9zF0LjdWxD569HEzpKDi8c4naNCDVvbBA9r2voQqt3NkNsCNz10vxyV+xO8uJIs1/K5Mj6Gnd+UaUtSDnVTUKCZatcge5OGpu9TcYbH5yLuhlTifVtYmhmK3YeAmte6uNlD6WYIdpSTMJLQ8Lgc2WE+2mj0G16afWtY9ajTqVUlJEa1R078gCnFG4YeYjUYIZhFq/u0U16Ga95RvHAZlQNVcyDLb/Mwt6QyJJdWRNHzsm1sY6mwhXKRwAMGvPl9RTWl6JJdFT5wcPYIzPL9+Y6k6ZhkdI6kWEzA7HYUbA1mLiF6Q8h+ezKnb10KiPEAFU4NNUmf3RKMwolRSTN/TkiZCRIVsPKnkLgS5LzTf6s0rGBZ2g5vWo1fDsigDPBJRE27742pPDXXMt82CySThq3lKJFwQsGObLg1z2H8XbvDkImVIVOK98oW2a/7aXX28/0LjWE2tdV83p1ho5DvyTlGZio+fqk0qmfsw=
-#    file: "$TRAVIS_BUILD_DIR/../tasks_${VERSION}_amd64.deb "
-#    skip_cleanup: true
-#    on:
-#      tags: true
-#      condition: "$BUILD_TARGERT=unix && $QT_VERSION_DIR=512 && $DOWNLOAD_QT=FALSE"
