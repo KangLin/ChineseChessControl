@@ -1,5 +1,5 @@
-ï»¿// stdafx.cpp : åªåŒ…æ‹¬æ ‡å‡†åŒ…å«æ–‡ä»¶çš„æºæ–‡ä»¶
-//  ChineseChessActiveX.pch å°†ä½œä¸ºé¢„ç¼–è¯‘æ ‡å¤´
-//  stdafx.obj å°†åŒ…å«é¢„ç¼–è¯‘ç±»å‹ä¿¡æ¯
+// stdafx.cpp : Ö»°üÀ¨±ê×¼°üº¬ÎÄ¼şµÄÔ´ÎÄ¼ş
+//  ChineseChessActiveX.pch ½«×÷ÎªÔ¤±àÒë±êÍ·
+//  stdafx.obj ½«°üº¬Ô¤±àÒëÀàĞÍĞÅÏ¢
 
 #include "stdafx.h"

@@ -1,27 +1,27 @@
-ï»¿#pragma once
+#pragma once
 
-// ChineseChessActiveXPropPage.h: CChineseChessActiveXPropPage å±æ€§é¡µç±»çš„å£°æ˜ã€‚
+// ChineseChessActiveXPropPage.h: CChineseChessActiveXPropPage ÊôĞÔÒ³ÀàµÄÉùÃ÷¡£
 
 
-// CChineseChessActiveXPropPage : è¯·å‚é˜… ChineseChessActiveXPropPage.cpp äº†è§£å®ç°ã€‚
+// CChineseChessActiveXPropPage : Çë²ÎÔÄ ChineseChessActiveXPropPage.cpp ÁË½âÊµÏÖ¡£
 
 class CChineseChessActiveXPropPage : public COlePropertyPage
 {
 	DECLARE_DYNCREATE(CChineseChessActiveXPropPage)
 	DECLARE_OLECREATE_EX(CChineseChessActiveXPropPage)
 
-// æ„é€ å‡½æ•°
+// ¹¹Ôìº¯Êı
 public:
 	CChineseChessActiveXPropPage();
 
-// å¯¹è¯æ¡†æ•°æ®
+// ¶Ô»°¿òÊı¾İ
 	enum { IDD = IDD_PROPPAGE_CHINESECHESSACTIVEX };
 
-// å®ç°
+// ÊµÏÖ
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
 
-// æ¶ˆæ¯æ˜ å°„
+// ÏûÏ¢Ó³Éä
 protected:
 	DECLARE_MESSAGE_MAP()
 };
