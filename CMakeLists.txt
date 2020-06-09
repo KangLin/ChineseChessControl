@@ -13,6 +13,10 @@ if(POLICY CMP0020)
     cmake_policy(SET CMP0020 NEW)
 endif()
 
+if(POLICY CMP0021)
+    cmake_policy(SET CMP0021 NEW)
+endif()
+
 # 建立要删除的文件
 CONFIGURE_FILE(
     "${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"

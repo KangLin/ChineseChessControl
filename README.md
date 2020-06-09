@@ -1,4 +1,4 @@
-## 中国象棋控件
+## [<img src="Src/Res/Picture/69/bjiang.png" title="中国象棋控件" width="32" height="32"/>中国象棋控件](https://github.com/KangLin/ChineseChessControl)
 
 作者：康林 (kl222@126.com)
 
@@ -52,7 +52,10 @@
 
 #### 屏幕截图
 
-![屏幕截图](Documents/Image/ShotScreen.png)
+![屏幕截图](Documents/Image/ShotScreen.png "屏幕截图")
+![Windows 屏幕截图](Documents/Image/windowsShotScreen.png "Windows 屏幕截图")
+![Qt 屏幕截图](Documents/Image/QtShotScreen.png "Qt 屏幕截图")
+![Android 屏幕截图](Documents/Image/androidShotScreen.jpg "Android 屏幕截图")
 
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
 
