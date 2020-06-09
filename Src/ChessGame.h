@@ -9,13 +9,30 @@
 
 #include <vector>
 #include <string>
+#include <time.h>
 #include "Piece.h"
 #include "chinesechess_export.h"
 
 /**
  * 棋局
  * 完成棋局的加载、保存、复盘
- *
+ * 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
+ *      红棋在下，黑棋在下，
+ * 	
+        棋盘位置
+
+	    [0][0] ------------------> i 或 x 方向
+		      |
+			  |
+			  |
+			  |
+			  |
+			  |
+			 \|/                 [9][10]
+			  
+	      j 或 y 方向
+
+	
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
@@ -26,9 +43,11 @@ public:
 	virtual ~CChessGame();
 
 	// 调整棋局存储大小，用于保存棋局
-	int SaveStep(char i, char j, CPiece::ENUM_QiZi qz,
-                 const char* pDescript = nullptr); //保存当前步
-	int RevokeStep();							   //撤回当前步
+	int SaveStep(char i, char j,
+                 CPiece::ENUM_QiZi qz,
+                 const char* pDescript = nullptr,
+                 time_t tm = time(nullptr)); //保存当前步
+	int RevokeStep();						 //撤回当前步
 
 	// 只移动指针位置，不改变棋局存储大小。用于复盘
     int GetPreviouStep(char &i, char &j, CPiece::ENUM_QiZi &qz); //得到上一步
@@ -95,6 +114,7 @@ private:
 	};
 	struct strStep {
 		strCODE code;
+        time_t tm;
 		std::string szDescript; //这一步的描述信息
 	};
 	typedef enum _ENUM_BianMa {

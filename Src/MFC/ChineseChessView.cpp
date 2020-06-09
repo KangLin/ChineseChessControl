@@ -31,9 +31,6 @@ CChineseChessView::CChineseChessView()
     m_QiPangStartX = m_QiPangStartY = 0;
     m_QiPangDistance = 0;
 
-	if (m_QiPangPicture.GetSafeHandle() == NULL)
-		m_QiPangPicture.LoadBitmap(IDB_QIPANG);
-
 	if (m_Chu.GetSafeHandle() == NULL)
 		m_Chu.LoadBitmap(IDB_CHU);  //楚
 	if (m_He.GetSafeHandle() == NULL)
@@ -46,6 +43,7 @@ CChineseChessView::CChineseChessView()
 		m_Copyright.LoadBitmap(IDB_KL);   //KL
 
 #ifdef CHINESE_CHESS_USE_PNG
+	LoadImageFromResource(&m_QiPangPicture, _T("IDJ_QIPANG"), _T("JPG"));
 	LoadImageFromResource(&m_RedShuai, IDP_RSHUAI);
 	LoadImageFromResource(&m_RedShi, IDP_RSHI);
 	LoadImageFromResource(&m_RedXiang, IDP_RXIANG);
@@ -62,6 +60,9 @@ CChineseChessView::CChineseChessView()
 	LoadImageFromResource(&m_BlackPao, IDP_BPAO);
 	LoadImageFromResource(&m_BlackBing, IDP_BBING);
 #else
+	if (m_QiPangPicture.GetSafeHandle() == NULL)
+		m_QiPangPicture.LoadBitmap(IDB_QIPANG);
+
 	if (m_RedShuai.GetSafeHandle() == NULL)
 	{
 		m_RedShuai.LoadBitmap(IDB_RSHUAI);
@@ -616,6 +617,9 @@ void CChineseChessView::DrawQiPang(CDC *pdc, CRect rcBounds)
     ASSERT(pdc != NULL);
 	
     //棋盘图片
+#ifdef CHINESE_CHESS_USE_PNG
+	m_QiPangPicture.Draw(pdc->m_hDC, rcBounds);
+#else
     BITMAP bitmap;
     m_QiPangPicture.GetBitmap(&bitmap);
     
@@ -627,6 +631,7 @@ void CChineseChessView::DrawQiPang(CDC *pdc, CRect rcBounds)
                     &psdc, 0, 0, bitmap.bmWidth, bitmap.bmHeight, SRCCOPY);
     
     psdc.DeleteDC();
+#endif
     
     int i, j;
     for (i = 0; i < 9; i++) //纵格

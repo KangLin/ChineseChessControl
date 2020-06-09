@@ -74,7 +74,7 @@ private:
 	COLORREF m_QiPangColor;
 	COLORREF m_TiShiBoxColor;
 	
-	CBitmap m_QiPangPicture; //∆Â≈Ã±≥æ∞Õº∆¨
+	
 	//≥˛∫”∫∫ΩÁ
 	CBitmap m_Chu;
 	CBitmap m_He;
@@ -83,6 +83,8 @@ private:
 	CBitmap m_Copyright;
 
 #ifdef CHINESE_CHESS_USE_PNG
+	ATL::CImage m_QiPangPicture; //∆Â≈Ã±≥æ∞Õº∆¨
+
 	//∆Â◊”Õº∆¨
 	ATL::CImage m_RedShuai;     //∫ÏÀß
 	ATL::CImage m_RedShi;       //∫Ï À
@@ -100,6 +102,9 @@ private:
 	ATL::CImage m_BlackBing;    //∫⁄±¯
 	ATL::CImage m_BlackPao;     //∫⁄≈⁄
 #else
+	CBitmap m_QiPangPicture; //∆Â≈Ã±≥æ∞Õº∆¨
+
+	//∆Â◊”Õº∆¨
 	CBitmap m_RedShuai;     //∫ÏÀß
 	CBitmap m_RedShi;       //∫Ï À
 	CBitmap m_RedXiang;     //∫Ïœ‡
@@ -137,7 +142,7 @@ private:
 	BOOL DrawPicture(CDC *pdc, int i, int j, ATL::CImage* pImage);
 #endif
 	BOOL DrawPicture(CDC *pdc, int i, int j, CBitmap* pbmp, BOOL CHHJKL = false);
-
+	
 	void InvalidateRectage(int i, int j);
 
 	BOOL SetQiPang(int width, int height);

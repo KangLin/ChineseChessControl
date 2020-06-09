@@ -66,12 +66,16 @@ int CChessGame::QiZiBianMa(char *i, char *j, CPiece::ENUM_QiZi *qz, strCODE *pCo
  *
  * @returns 成功返回 0 ，否则返回非零
  */
-int CChessGame::SaveStep(char i, char j, CPiece::ENUM_QiZi qz, const char* pDescript)
+int CChessGame::SaveStep(char i, char j, CPiece::ENUM_QiZi qz,
+                         const char* pDescript, time_t tm)
 {
 	strStep step;
 	QiZiBianMa(&i, &j, &qz, &step.code);
 	if (pDescript)
 		step.szDescript = pDescript;
+    
+    step.tm = tm;
+    
 	// 调整容器大小
 	if (m_nIndex + 1 < m_ChessGame.size())
 	{
