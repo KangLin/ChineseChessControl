@@ -161,7 +161,9 @@ bool CChineseChess::GoChess(int i, int j, bool bNext)
 		if (!bNext)
 		{
 			onGoChess(i, j, m_ChessBoard[i][j]);	   //事件
-			m_Game.SaveStep(i, j, m_ChessBoard[i][j]); //保存到棋局中
+            int x, y;
+            ConvertQiPang(i, j, x, y);
+			m_Game.SaveStep(x, y, m_ChessBoard[i][j]); //保存到棋局中
 		}
 		
 		// 显示提示框
@@ -281,7 +283,6 @@ bool CChineseChess::IsGoChess(int i, int j)
 			return false;
 		}
 
-		break;
 	case BlackReadly:
 		return CPiece::IsBlackQiZi(m_ChessBoard[i][j]) ? true : false;
 	case BlackWalked:
@@ -315,7 +316,6 @@ bool CChineseChess::IsGoChess(int i, int j)
 			return false;
 		}
 
-		break;
 	}
 
 	return false;
@@ -333,15 +333,16 @@ bool CChineseChess::IsGoChess(int i, int j)
 *******************************************************************************************************/
 int CChineseChess::NextStep()
 {
-	char i, j;
+	int i, j;
 	CPiece::ENUM_QiZi qz;
 	if (m_Game.GetNextStep(i, j, qz))
 	{
 		if (m_bPromptSound) onPromptSound();
 		return -1;
 	}
-	
-	if (GoChess(i, j, true))
+    int x, y;
+    ConvertQiPang(i, j, x, y);
+	if (GoChess(x, y, true))
 		return 0;
 
 	return -2;
@@ -359,7 +360,7 @@ int CChineseChess::NextStep()
 *******************************************************************************************************/
 int CChineseChess::PreviouStep()
 {
-	char i, j;
+	int i, j;
 	CPiece::ENUM_QiZi qz;
 
 	switch (m_WalkState)
@@ -382,9 +383,12 @@ int CChineseChess::PreviouStep()
 			if (m_bPromptSound) onPromptSound();
 			return -1;
 		}
-		m_ChessBoard[i][j] = qz;
-		m_CurrentPositionX = i;
-		m_CurrentPositionY = j;
+        
+        int x, y;
+        ConvertQiPang(i, j, x, y);
+		m_ChessBoard[x][y] = qz;
+		m_CurrentPositionX = x;
+		m_CurrentPositionY = y;
 		CleanPrompt(m_CurrentPositionX, m_CurrentPositionY);
 
 		if (m_Game.GetPreviouStep(i, j, qz))
@@ -392,9 +396,10 @@ int CChineseChess::PreviouStep()
 			if (m_bPromptSound) onPromptSound();
 			return -1;
 		}
-		m_ChessBoard[i][j] = qz;
-		m_PreviouPositionX = i;
-		m_PreviouPositionY = j;
+        ConvertQiPang(i, j, x, y);
+		m_ChessBoard[x][y] = qz;
+		m_PreviouPositionX = x;
+		m_PreviouPositionY = y;
 
 		if (IsValidPosition(m_PreviouPositionX, m_PreviouPositionY))
 			onDrawPrompt(m_PreviouPositionX, m_PreviouPositionY);
@@ -417,18 +422,17 @@ int CChineseChess::PreviouStep()
 
 int CChineseChess::SaveChessGame(const char* pszFile)
 {
-	return m_Game.SaveChessGame(pszFile, m_BoardLayout);
+	return m_Game.SaveChessGame(pszFile);
 }
 
 int CChineseChess::LoadChessGame(const char* pszFile)
 {
 	int nRet = 0;
-	char layout;
-	nRet = m_Game.LoadChessGame(pszFile, layout);
-	if (nRet) return nRet;
-	
-	SetBoardLayout((ENUM_BoardLayout)layout);
 
+	nRet = m_Game.LoadChessGame(pszFile);
+	if (nRet) return nRet;
+
+    SetBoardLayout(m_BoardLayout);
 	return nRet;
 }
 
@@ -480,4 +484,17 @@ int CChineseChess::SetGameTags(const char* pTags)
 std::string CChineseChess::GetGameTags()
 {
 	return m_Game.GetTags();
+}
+
+int CChineseChess::ConvertQiPang(const int &i, const int &j, int &x, int &y)
+{
+    if(m_BoardLayout & SwapRedBetweenBlack)
+    {
+        x = 9 - i - 1;
+        y = 10 - j - 1;
+        return 0;
+    }
+    x = i;
+    y = j;
+    return 0;   
 }

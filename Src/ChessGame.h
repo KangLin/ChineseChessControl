@@ -2,8 +2,8 @@
  * 棋局类
  */
  
-#ifndef _CHESS_GAME_KL_2020_05_15_
-#define _CHESS_GAME_KL_2020_05_15_
+#ifndef CHESS_GAME_KL_2020_05_15_
+#define CHESS_GAME_KL_2020_05_15_
 
 #pragma once
 
@@ -17,7 +17,7 @@
  * 棋局
  * 完成棋局的加载、保存、复盘
  * 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
- *      红棋在下，黑棋在下，
+ *      红棋在下，黑棋在上，
  * 	
         棋盘位置
 
@@ -43,15 +43,15 @@ public:
 	virtual ~CChessGame();
 
 	// 调整棋局存储大小，用于保存棋局
-	int SaveStep(char i, char j,
+	int SaveStep(int i, int j,
                  CPiece::ENUM_QiZi qz,
                  const char* pDescript = nullptr,
                  time_t tm = time(nullptr)); //保存当前步
 	int RevokeStep();						 //撤回当前步
 
 	// 只移动指针位置，不改变棋局存储大小。用于复盘
-    int GetPreviouStep(char &i, char &j, CPiece::ENUM_QiZi &qz); //得到上一步
-	int GetNextStep(char &i, char &j, CPiece::ENUM_QiZi &qz);    //得到下一步
+    int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //得到上一步
+	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);    //得到下一步
 
 	time_t GetStartTime();
 	int SetStartTime(const time_t &t);
@@ -91,7 +91,6 @@ public:
 		char szBlackName[MAX_STRING_BUFFER]; //黑方用户名
 		char GameType;						 //棋局类型
 		int iBuShu;							 //步数，在SaveChess中设置，注意：为网络字节序
-		char boardLayout;					 //棋盘布局(CChineseChess::ENUM_BoardLayout)
 	};										 
 
 	/**
@@ -105,8 +104,8 @@ public:
 	 *
 	 * @returns An int.
 	 */
-	int SaveChessGame(const char* pFileName, char layout);	//保存棋局
-    int LoadChessGame(const char* pFileName, char &layout);	//装载棋局，并设置为结束状态
+	int SaveChessGame(const char* pFileName);	//保存棋局
+    int LoadChessGame(const char* pFileName);	//装载棋局，并设置为结束状态
 
 private:
 	struct strCODE{
@@ -121,7 +120,7 @@ private:
 		BianMa, 
 		JieMa
 	} ENUM_BianMa;
-	int QiZiBianMa(char *i, char *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
+	int QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma = BianMa);
 
 	int WriteStringToFile(std::ofstream &o, std::string &s);
 	int ReadStringFromFile(std::ifstream &i, std::string &s);
@@ -137,4 +136,4 @@ private:
 	std::string m_szTags;             //保存棋局的标签部分，标签用来描述此局的信息
 };
 
-#endif //_CHESS_GAME_KL_2020_05_15_
+#endif //CHESS_GAME_KL_2020_05_15_

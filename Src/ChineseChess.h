@@ -118,7 +118,7 @@ private:
 	bool m_bPromptMessage;
 
 protected:
-	/*
+	/**
 	    @brief 棋盘描述
 
 	    [0][0] ------------------> i 或 x 方向
@@ -156,7 +156,8 @@ protected:
 	bool IsValidPosition(int i, int j);
 
 	int Initial();
-	
+
+    int ConvertQiPang(const int &i, const int &j, int &x, int &y);
 };
 
 #endif //_CHINESE_CHESS_H_KL_2020_05_13__
