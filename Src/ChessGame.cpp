@@ -34,7 +34,7 @@ CChessGame::~CChessGame()
 日  期：2004-9-2
 时  间：7:36:32
 *******************************************************************************************************/
-int CChessGame::QiZiBianMa(char *i, char *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma)
+int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma)
 {
 	switch (bianma)
 	{
@@ -66,7 +66,7 @@ int CChessGame::QiZiBianMa(char *i, char *j, CPiece::ENUM_QiZi *qz, strCODE *pCo
  *
  * @returns 成功返回 0 ，否则返回非零
  */
-int CChessGame::SaveStep(char i, char j, CPiece::ENUM_QiZi qz,
+int CChessGame::SaveStep(int i, int j, CPiece::ENUM_QiZi qz,
                          const char* pDescript, time_t tm)
 {
 	strStep step;
@@ -115,7 +115,7 @@ int CChessGame::RevokeStep()
 日  期：2004-10-5
 时  间：10:19:51
 *******************************************************************************************************/
-int CChessGame::GetPreviouStep(char &i, char &j, CPiece::ENUM_QiZi &qz)
+int CChessGame::GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 {
 	if (m_nIndex < 0)
 		return -1;
@@ -136,7 +136,7 @@ int CChessGame::GetPreviouStep(char &i, char &j, CPiece::ENUM_QiZi &qz)
  * @param [in,out] qz
  * @returns The next step.
  */
-int CChessGame::GetNextStep(char &i, char &j, CPiece::ENUM_QiZi &qz)
+int CChessGame::GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz)
 {
 	if (m_ChessGame.size() <= m_nIndex + 1)
 		return -1;
@@ -146,7 +146,7 @@ int CChessGame::GetNextStep(char &i, char &j, CPiece::ENUM_QiZi &qz)
 	return 0;
 }
 
-int CChessGame::SaveChessGame(const char* szFile, char layout)
+int CChessGame::SaveChessGame(const char* szFile)
 {
 	if (!szFile) return -1;
 	strFile head;
@@ -165,7 +165,6 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 
 	head.head.dwVersion = 2;
 	head.iBuShu = htons(m_ChessGame.size());
-	head.boardLayout = layout;
 
 	head.timeStart = htonl(m_tmStart);
 	head.timeEnd = htonl(m_tmEnd);
@@ -197,7 +196,7 @@ int CChessGame::SaveChessGame(const char* szFile, char layout)
 	return 0;
 }
 
-int CChessGame::LoadChessGame(const char* szFile, char &layout)
+int CChessGame::LoadChessGame(const char* szFile)
 {
 	int nRet = 0;
 	if (!szFile) return -1;
@@ -210,7 +209,6 @@ int CChessGame::LoadChessGame(const char* szFile, char &layout)
 		return -2;
 
 	in.read((char*)&head, sizeof(strFile));
-	layout = head.boardLayout;
 	m_szRedName = head.szRedName;
 	m_szBlackName = head.szBlackName;
 	m_tmStart = ntohl(head.timeStart);
