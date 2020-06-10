@@ -5,8 +5,8 @@
  * 
  */
  
-#ifndef _CHINESE_CHESS_H_KL_2020_05_13__
-#define _CHINESE_CHESS_H_KL_2020_05_13__
+#ifndef CHINESE_CHESS_H_KL_2020_05_13__
+#define CHINESE_CHESS_H_KL_2020_05_13__
 
 #pragma once
 
@@ -160,4 +160,4 @@ protected:
     int ConvertQiPang(const int &i, const int &j, int &x, int &y);
 };
 
-#endif //_CHINESE_CHESS_H_KL_2020_05_13__
+#endif //CHINESE_CHESS_H_KL_2020_05_13__

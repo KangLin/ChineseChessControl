@@ -1,5 +1,4 @@
-﻿
-#include "ChessGame.h"
+﻿#include "ChessGame.h"
 #include <fstream>
 #include <time.h>
 #include <string.h>
@@ -14,6 +13,45 @@ CChessGame::CChessGame()
 {
 	m_nIndex = -1;
 	m_bFuPang = false;
+    /*    
+    m_StartGame.push_back({0, 0, CPiece::BChe});
+    m_StartGame.push_back({1, 0, CPiece::BMa});
+    m_StartGame.push_back({2, 0, CPiece::BXiang});
+    m_StartGame.push_back({3, 0, CPiece::BShi});
+    m_StartGame.push_back({4, 0, CPiece::BShuai});
+    m_StartGame.push_back({5, 0, CPiece::BShi});
+    m_StartGame.push_back({6, 0, CPiece::BXiang});
+    m_StartGame.push_back({7, 0, CPiece::BMa});
+    m_StartGame.push_back({8, 0, CPiece::BChe});
+
+    m_StartGame.push_back({1, 2, CPiece::BPao});
+    m_StartGame.push_back({7, 2, CPiece::BPao});
+
+    m_StartGame.push_back({0, 3, CPiece::BBing});
+    m_StartGame.push_back({2, 3, CPiece::BBing});
+    m_StartGame.push_back({4, 3, CPiece::BBing});
+    m_StartGame.push_back({6, 3, CPiece::BBing});
+    m_StartGame.push_back({8, 3, CPiece::BBing});
+
+    m_StartGame.push_back({0, 9, CPiece::RChe});
+    m_StartGame.push_back({1, 9, CPiece::RMa});
+    m_StartGame.push_back({2, 9, CPiece::RXiang});
+    m_StartGame.push_back({3, 9, CPiece::RShi});
+    m_StartGame.push_back({4, 9, CPiece::RShuai});
+    m_StartGame.push_back({5, 9, CPiece::RShi});
+    m_StartGame.push_back({6, 9, CPiece::RXiang});
+    m_StartGame.push_back({7, 9, CPiece::RMa});
+    m_StartGame.push_back({8, 9, CPiece::RChe});
+
+    m_StartGame.push_back({1, 7, CPiece::RPao});
+    m_StartGame.push_back({7, 7, CPiece::RPao});
+
+    m_StartGame.push_back({0, 6, CPiece::RBing});
+    m_StartGame.push_back({2, 6, CPiece::RBing});
+    m_StartGame.push_back({4, 6, CPiece::RBing});
+    m_StartGame.push_back({6, 6, CPiece::RBing});
+    m_StartGame.push_back({8, 6, CPiece::RBing});
+    //*/
 }
 
 CChessGame::~CChessGame()
@@ -369,4 +407,117 @@ int CChessGame::SetTags(const char* pTags)
 {
 	m_szTags = pTags;
 	return 0;
+}
+
+//检测布局是否合法, 使用标准棋盘布局，红下黑上
+int CChessGame::CheckGame(CPiece::ENUM_QiZi ChessBoard[][10])
+{
+    int nRet = 0;
+    
+    int nRChe = 0;
+    int nRMa = 0;
+    int nRXiang = 0;
+    int nRShi = 0;
+    int nRShuai = 0;
+    int nRPao = 0;
+    int nRBing = 0;
+    
+    int nBChe = 0;
+    int nBMa = 0;
+    int nBXiang = 0;
+    int nBShi = 0;
+    int nBShuai = 0;
+    int nBPao = 0;
+    int nBBing = 0;
+    
+    //检查各种棋子个数
+    for(int i = 0; i < 9; i++)
+        for(int j = 0; j < 10; j++)
+        {
+            switch(ChessBoard[i][j])
+            {
+            case CPiece::RChe:
+                nRChe++;
+                break;
+            case CPiece::RMa:
+                nRMa++;
+                break;
+            case CPiece::RXiang:
+                nRXiang++;
+                if(!((2 == i && 9 == j) || (6 == i && 9 == j)
+                     || (0 == i && 7 == j) || (8 == i && 7 == j)
+                     || (2 == i && 5 == j) || (6 == i && 5 == j)
+                     ))
+                    return -1;
+                break;
+            case CPiece::RShi:
+                nRShi++;
+                if(i < 3 || i > 5 || j < 7)
+                    return -2;
+                if((i == 3 ||  5 == i) && j == 8)
+                    return -3;
+                if(i == 4 && (j == 9 || j == 7))
+                    return -4;
+                break;
+            case CPiece::RShuai:
+                nRShuai++;
+                if(i < 3 || i > 5 || j < 7)
+                    return -5;
+                break;
+            case CPiece::RPao:
+                nRPao++;
+                break;
+            case CPiece::RBing:
+                nRBing++;
+                if(j > 6) return -6;
+                break;
+            case CPiece::BBing:
+                nBBing++;
+                if(j < 3) return -7;                
+                break;
+            case CPiece::BPao:
+                nBPao++;
+                break;
+            case CPiece::BChe:
+                nBChe++;
+                break;
+            case CPiece::BMa:
+                nBMa++;
+                break;
+            case CPiece::BXiang:
+                nBXiang++;
+                if(!((2 == i && 0 == j) || (6 == i && 0 == j)
+                     || (0 == i && 2 == j) || (8 == i && 2 == j)
+                     || (2 == i && 4 == j) || (6 == i && 4 == j)
+                     ))
+                    return -8;
+                break;
+            case CPiece::BShi:
+                nBShi++;
+                if(i < 3 || i > 5 || j > 2)
+                    return -9;
+                if((i == 3 ||  5 == i) && j == 1)
+                    return -10;
+                if(i == 4 && (j == 0 || j == 2))
+                    return -11;
+                break;
+            case CPiece::BShuai:
+                nBShuai++;
+                if(i < 3 || i > 5 || j > 2)
+                    return -12;
+                break;
+            default:
+                break;
+            }
+        }
+    if(nBChe > 2 || nRChe > 2
+            || nBMa > 2 || nRMa > 2
+            || nBXiang > 2 || nRXiang > 2
+            || nBShi > 2 || nBShi > 2
+            || nBShuai > 1 || nRShuai > 1
+            || nBPao > 2 || nRPao > 2
+            || nBBing > 5 || nRBing > 5)
+        return -13;
+    
+    return nRet;
 }

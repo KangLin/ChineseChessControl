@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     m_pChess = new CFrmChineseChess(this);
+    //m_pChess->SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
     this->setCentralWidget(m_pChess);
     ui->actionPrompt_sound_S->setChecked(m_pChess->getEnablePromptSound());
     ui->actionPrompt_message_M->setChecked(m_pChess->getEnablePromptMessage());

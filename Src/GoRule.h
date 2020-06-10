@@ -32,9 +32,6 @@ public:
 		RETURNTRUE      //可以走棋
 	} ENUM_ReturnValue;
 	ENUM_ReturnValue GoChess(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
-
-    // TODO: 检测布局是否合法
-    int CheckGame(CPiece::ENUM_QiZi ChessBoard[][10]);
     
 private:
 	ENUM_ReturnValue ChessRule(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]); 
