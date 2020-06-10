@@ -190,6 +190,8 @@ int CChessGame::SaveChessGame(const char* szFile)
 	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
 	{
 		out.write(it->code.code, sizeof(strCODE));
+        long t = htonl(it->tm);
+        out.write((char*)&t, sizeof(long));
 		WriteStringToFile(out, it->szDescript);
 	}
 	out.close();
@@ -240,6 +242,9 @@ int CChessGame::LoadChessGame(const char* szFile)
 		{
 			strStep step;
 			in.read((char*)&step.code, sizeof(strCODE));
+            long tm;
+            in.read((char*)&tm, sizeof(long));
+            step.tm = ntohl(tm);
 			ReadStringFromFile(in, step.szDescript);
 			m_ChessGame.push_back(step);
 		}
