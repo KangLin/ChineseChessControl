@@ -17,22 +17,21 @@
  * 棋局
  * 完成棋局的加载、保存、复盘
  * 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
- *      红棋在下，黑棋在上，
- * 	
+ *      红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]
+
         棋盘位置
 
 	    [0][0] ------------------> i 或 x 方向
 		      |
 			  |
 			  |
-			  |
+			  |       [i][j]
 			  |
 			  |
 			 \|/                 [9][10]
-			  
+			  |
 	      j 或 y 方向
 
-	
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
@@ -67,14 +66,8 @@ public:
 	int SetTags(const char* pTags);
 
 #define MAX_STRING_BUFFER 33
-#define APPNAME  "Chinese chess control"
+#define APPNAME "Chinese chess control"
 #define AUTHOR "Author: Kang Lin (kl222@126.com)"
-
-	enum GAME_TYPE
-	{
-		NORMAL = 1, //正常开局
-		CHANGJU = 2 //残局
-	};
 
 	//文件头
 	struct strFileHead {
@@ -89,7 +82,6 @@ public:
 		time_t timeEnd;					     //结束下棋的时间,在Restart中设置，注意：为网络字节序
 		char szRedName[MAX_STRING_BUFFER];	 //红方用户名
 		char szBlackName[MAX_STRING_BUFFER]; //黑方用户名
-		char GameType;						 //棋局类型
 		int iBuShu;							 //步数，在SaveChess中设置，注意：为网络字节序
 	};										 
 
@@ -107,13 +99,22 @@ public:
 	int SaveChessGame(const char* pFileName);	//保存棋局
     int LoadChessGame(const char* pFileName);	//装载棋局，并设置为结束状态
 
+    //开局
+    struct strStartGame
+    {
+        int i;
+        int j;
+        CPiece::ENUM_QiZi qz;
+    };
+    std::vector<strStartGame> m_StartGame;
+
 private:
 	struct strCODE{
 		char code[3];           //棋子和相应的位置 @see QiZiBianMa
 	};
 	struct strStep {
 		strCODE code;
-        time_t tm;
+        time_t tm;              //走棋时间
 		std::string szDescript; //这一步的描述信息
 	};
 	typedef enum _ENUM_BianMa {

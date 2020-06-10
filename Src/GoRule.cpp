@@ -599,3 +599,8 @@ bool CGoRule::MaJiangJun(int iShuai, int jShuai, CPiece::ENUM_QiZi ChessBoard[][
 
 	return false;
 }
+
+int CGoRule::CheckGame(CPiece::ENUM_QiZi [][10])
+{
+    return 0;
+}

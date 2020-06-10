@@ -185,8 +185,26 @@ int CChessGame::SaveChessGame(const char* szFile)
 	if (!out.is_open())
 		return -2;
 	out.write((char*)&head, sizeof(strFile));
-	WriteStringToFile(out, m_szTags);
-	std::vector<strStep>::iterator it;
+	
+    WriteStringToFile(out, m_szTags);
+    
+    //保存开局
+    char nLen = 0; //开局最多30子
+    nLen = m_StartGame.size();
+    out.write(&nLen, sizeof (char));
+    if(nLen > 0)
+    {
+        std::vector<strStartGame>::iterator it;
+        for(it = m_StartGame.begin(); it != m_StartGame.end(); it++)
+        {
+            strCODE code;
+            QiZiBianMa(&it->i, &it->j, &it->qz, &code);
+            out.write(code.code, sizeof(strCODE));
+        }
+    }
+
+    //保存着法
+    std::vector<strStep>::iterator it;
 	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
 	{
 		out.write(it->code.code, sizeof(strCODE));
@@ -227,7 +245,7 @@ int CChessGame::LoadChessGame(const char* szFile)
 			nRet = -4;
 			break;
 		}
-		if (head.head.dwVersion > 2)
+		if (head.head.dwVersion != 2)
 		{
 			nRet = -5;
 			break;
@@ -235,9 +253,24 @@ int CChessGame::LoadChessGame(const char* szFile)
 
 		ReadStringFromFile(in, m_szTags);
 
+        //加载开局
+        m_StartGame.clear();
+        char nLen = 0;
+        in.read(&nLen, sizeof (char));
+        if(nLen > 0)
+        {
+            while (nLen--) {
+                strCODE code;
+                in.read(code.code, sizeof(strCODE));
+                strStartGame g;
+                QiZiBianMa(&g.i, &g.j, &g.qz, &code, JieMa);
+                m_StartGame.push_back(g);
+            }
+        }
+
+        //加载着法
 		m_ChessGame.clear();
 		m_nIndex = ntohs(head.iBuShu);
-
 		while (m_nIndex--)
 		{
 			strStep step;
@@ -252,7 +285,7 @@ int CChessGame::LoadChessGame(const char* szFile)
 	} while (0);
 
 	in.close();
-	return nRet;;
+	return nRet;
 }
 
 int CChessGame::WriteStringToFile(std::ofstream &o, std::string &s)
