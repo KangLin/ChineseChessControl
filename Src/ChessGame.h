@@ -31,7 +31,7 @@
 			 \|/                 [9][10]
 			  |
 	      j 或 y 方向
-
+          
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
@@ -108,6 +108,9 @@ public:
     };
     std::vector<strStartGame> m_StartGame;
 
+    // TODO: 检测布局是否合法, 使用标准棋盘布局，红下黑上
+    int CheckGame(CPiece::ENUM_QiZi ChessBoard[][10]);
+    
 private:
 	struct strCODE{
 		char code[3];           //棋子和相应的位置 @see QiZiBianMa

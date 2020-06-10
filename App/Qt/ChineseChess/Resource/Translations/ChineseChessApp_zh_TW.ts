@@ -69,14 +69,14 @@
         <translation>提示音(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="34"/>
-        <location filename="../../MainWindow.cpp" line="43"/>
+        <location filename="../../MainWindow.cpp" line="35"/>
+        <location filename="../../MainWindow.cpp" line="44"/>
         <source>Open chess game</source>
         <translation>打開棋局</translation>
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="68"/>
+        <location filename="../../MainWindow.cpp" line="69"/>
         <source>Chinese chess</source>
         <translation>中國象棋</translation>
     </message>

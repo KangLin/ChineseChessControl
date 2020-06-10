@@ -516,7 +516,7 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		for (i = 0; i < 9; i++)
 			if (CPiece::IsOtherSide(ChessBoard[iBottomShuai][jBottomShuai], ChessBoard[i][j]))
 				if (ChessRule(iBottomShuai, jBottomShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  BEIJIANGJUN;
+					return BEIJIANGJUN;
 		//被马将
 		if (MaJiangJun(iBottomShuai, jBottomShuai, ChessBoard))
 			return BEIJIANGJUN;
@@ -526,13 +526,13 @@ CGoRule::ENUM_ReturnValue CGoRule::JiangJun(int ito, int jto, CPiece::ENUM_QiZi 
 		for (j = 0; j < 10; j++)
 			if (CPiece::IsOtherSide(ChessBoard[iTopShuai][jTopShuai], ChessBoard[i][j]))
 				if (ChessRule(iTopShuai, jTopShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  JIANGJUN;
+					return JIANGJUN;
 
 		j = jTopShuai;
 		for (i = 0; i < 9; i++)
 			if (CPiece::IsOtherSide(ChessBoard[iTopShuai][jTopShuai], ChessBoard[i][j]))
 				if (ChessRule(iTopShuai, jTopShuai, i, j, ChessBoard) == RETURNTRUE)
-					return  JIANGJUN;
+					return JIANGJUN;
 
 		//马将
 		if (MaJiangJun(iTopShuai, jTopShuai, ChessBoard))
@@ -598,9 +598,4 @@ bool CGoRule::MaJiangJun(int iShuai, int jShuai, CPiece::ENUM_QiZi ChessBoard[][
 		return true;
 
 	return false;
-}
-
-int CGoRule::CheckGame(CPiece::ENUM_QiZi [][10])
-{
-    return 0;
 }
