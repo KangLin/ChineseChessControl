@@ -106,9 +106,8 @@ public:
         int j;
         CPiece::ENUM_QiZi qz;
     };
-    std::vector<strStartGame> m_StartGame;
-
-    // TODO: 检测布局是否合法, 使用标准棋盘布局，红下黑上
+    std::vector<strStartGame> m_StartGame; // 棋盘开局
+    // 检测布局是否合法, 使用标准棋盘布局，红下黑上
     int CheckGame(CPiece::ENUM_QiZi ChessBoard[][10]);
     
 private:

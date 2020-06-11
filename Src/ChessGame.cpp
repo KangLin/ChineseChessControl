@@ -13,7 +13,7 @@ CChessGame::CChessGame()
 {
 	m_nIndex = -1;
 	m_bFuPang = false;
-    /*    
+    /*
     m_StartGame.push_back({0, 0, CPiece::BChe});
     m_StartGame.push_back({1, 0, CPiece::BMa});
     m_StartGame.push_back({2, 0, CPiece::BXiang});
