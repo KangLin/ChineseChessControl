@@ -18,14 +18,14 @@ library ChineseChessActiveXLib
 
 	//棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
 	typedef enum  _ENUM_BoardLayout {
-		NoQi = 0,
-		OnlyTopBlack = 1,
-		OnlyBottomRed = 2,
-		SwapRedBetweenBlack = 4,
-		OnlyTopRed = OnlyTopBlack | SwapRedBetweenBlack,
-		OnlyBottomBlack = OnlyBottomRed | SwapRedBetweenBlack,
-		TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,
-		TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
+            NoQi = 0,
+            OnlyTopBlack = 1,
+            OnlyBottomRed = 2,
+            SwapRedBetweenBlack = 4,
+            OnlyTopRed = OnlyBottomRed | SwapRedBetweenBlack,
+            OnlyBottomBlack = OnlyTopBlack | SwapRedBetweenBlack,
+            TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,
+            TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
 	} ENUM_BoardLayout;
 
 	typedef enum _ENUM_QiZi {

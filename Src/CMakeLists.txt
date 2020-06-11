@@ -9,6 +9,7 @@ set(SOURCES_FILES
     Common.cpp
     GoRule.cpp
     Fen.cpp
+    Pgn.cpp
     )
 
 set(HEADER_FILES
@@ -18,6 +19,7 @@ set(HEADER_FILES
     Common.h
     GoRule.h
     Fen.h
+    Pgn.h
     )
 
 SET(RCC_FILES

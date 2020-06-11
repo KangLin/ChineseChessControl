@@ -9,6 +9,8 @@
 #include <arpa/inet.h>
 #endif
 
+#include "Pgn.h"
+
 CChessGame::CChessGame()
 {
 	m_nIndex = -1;
@@ -52,6 +54,7 @@ CChessGame::CChessGame()
     m_StartGame.push_back({6, 6, CPiece::RBing});
     m_StartGame.push_back({8, 6, CPiece::RBing});
     //*/
+    
 }
 
 CChessGame::~CChessGame()

@@ -3,8 +3,8 @@
   
   */
 
-#ifndef CFEN_H
-#define CFEN_H
+#ifndef CFEN_H_KL_2020_06_11_
+#define CFEN_H_KL_2020_06_11_
 
 #pragma once
 
@@ -22,4 +22,4 @@ public:
                    char &side, int &nStep);
 };
 
-#endif // CFEN_H
+#endif // CFEN_H_KL_2020_06_11_

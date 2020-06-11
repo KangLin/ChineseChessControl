@@ -38,8 +38,8 @@ public:
 		OnlyTopBlack = 1,
 		OnlyBottomRed = 2,
 		SwapRedBetweenBlack = 4,
-		OnlyTopRed = OnlyTopBlack | SwapRedBetweenBlack,
-		OnlyBottomBlack = OnlyBottomRed | SwapRedBetweenBlack,
+		OnlyTopRed = OnlyBottomRed | SwapRedBetweenBlack,
+		OnlyBottomBlack = OnlyTopBlack | SwapRedBetweenBlack,
 		TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,
 		TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack
 	} ENUM_BoardLayout;
