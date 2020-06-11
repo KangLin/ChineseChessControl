@@ -1,6 +1,7 @@
 ## 修改日志
 - v2.0.5
   + 增加残局支持
+  + 增加 FEN 支持
 
 - v2.0.4
   + 用 CChineseChessView 修改 MFC 应用程序

@@ -1,6 +1,7 @@
 ﻿
 #include "ChineseChess.h"
 #include <iostream>
+#include "Fen.h"
 
 CChineseChess::CChineseChess()
 {
@@ -40,7 +41,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
             m_ChessBoard[i][j] = CPiece::NoQiZi;
             board[i][j] = CPiece::NoQiZi;
         }
-
+    
     if(m_Game.m_StartGame.size())
     {
         std::vector<CChessGame::strStartGame>::iterator it;
@@ -50,6 +51,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
         }
         int nRet = m_Game.CheckGame(board);
         if(nRet) return nRet;
+        
         for(i = 0; i < 9; i++)
             for(j = 0; j < 10; j++)
             {
