@@ -13,6 +13,8 @@
 #include "Piece.h"
 #include "chinesechess_export.h"
 
+class CPGN;
+
 /**
  * 棋局
  * 完成棋局的加载、保存、复盘
@@ -137,6 +139,8 @@ private:
 	std::string m_szRedName;		  //红方名
 	std::string m_szBlackName;		  //黑方名
 	std::string m_szTags;             //保存棋局的标签部分，标签用来描述此局的信息
+    
+    friend CPGN;
 };
 
 #endif //CHESS_GAME_KL_2020_05_15_
