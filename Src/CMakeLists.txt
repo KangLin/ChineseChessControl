@@ -5,6 +5,7 @@ message(STATUS "== Build chinese chess dll")
 set(SOURCES_FILES
     ChineseChess.cpp
     ChessGame.cpp
+    ChessSteps.cpp
     Piece.cpp
     Common.cpp
     GoRule.cpp
@@ -15,6 +16,7 @@ set(SOURCES_FILES
 set(HEADER_FILES
     ChineseChess.h
     ChessGame.h
+    ChessSteps.h
     Piece.h
     Common.h
     GoRule.h

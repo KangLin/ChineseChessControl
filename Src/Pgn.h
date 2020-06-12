@@ -7,6 +7,7 @@
 #include <map>
 #include <time.h>
 #include "ChessGame.h"
+#include "ChessSteps.h"
 
 /**
  * @brief Class to hold all information for the Portable Game Notation (PGN) of a
@@ -41,7 +42,6 @@ public:
      */
     const std::string& GetSite() const;
     int SetSite(const char* pSite);
-
 
     /** \brief Gets the date of the event.
      *
@@ -87,7 +87,7 @@ public:
     const std::string& GetFormat() const;
     int SetFormat(const char* pFormat);
     
-    int SetSteps(const std::vector<CChessGame::strStep> &steps);
+    int SetSteps(CChessSteps* steps);
     
 private:
     std::string m_Game; //游戏类型，国际象棋没有这个标签，中国象棋的PGN文件中这个标签必须放在第一位，其值必须为“Chinese Chess”
@@ -102,7 +102,7 @@ private:
     std::string m_Format;//表示记谱方法，可以是Chinese(中文纵线格式)、WXF(WXF纵线格式)和ICCS(ICCS坐标格式)，默认为Chinese。
     std::map<std::string, std::string> m_Tags;
     
-    std::string m_Steps;
+    CChessSteps* m_pSteps;
 };
 
 #endif // CPGN_H_KL_2020_06_11_
