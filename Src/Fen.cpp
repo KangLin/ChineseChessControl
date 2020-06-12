@@ -206,3 +206,26 @@ int CFen::FenToBoard(const std::string &szFen, CPiece::ENUM_QiZi (*board)[10],
     nStep = atoi(n.c_str());
     return 0;
 }
+
+int CFen::FenFromStartGame(std::string &szFen,
+                           std::vector<CChessGame::strStartGame> startGame,
+                           char side,
+                           int nStep)
+{
+    CPiece::ENUM_QiZi board[9][10];
+    int i, j;
+	for (i = 0; i < 9; i++)
+		for (j = 0; j < 10; j++)
+        {
+            board[i][j] = CPiece::NoQiZi;
+        }
+    
+    for(auto &it: startGame)
+    {
+        board[it.i][it.j] = it.qz;
+    }
+
+    int nRet = CChessGame::CheckGame(board);
+    if(nRet) return nRet;
+    return FenToBoard(szFen, board, side, nStep);
+}

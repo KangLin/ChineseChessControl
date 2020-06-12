@@ -2,6 +2,8 @@
 #include <fstream>
 #include <time.h>
 #include <string.h>
+#include "Pgn.h"
+#include "Fen.h"
 
 #ifdef WIN32
 #include <WinSock2.h>
@@ -227,7 +229,16 @@ int CChessGame::SaveChessGame(const char* szFile)
 		return -2;
 	out.write((char*)&head, sizeof(strFile));
 	
-    WriteStringToFile(out, m_szTags);
+    // 保存标签
+    short nTag = htons(m_Tags.size());
+    out.write((char*)&nTag, sizeof (short));
+    for(const auto& item: m_Tags)
+    {
+        std::string key = item.first;
+        std::string val = item.second;
+        WriteStringToFile(out, key);
+        WriteStringToFile(out, val);
+    }    
     
     //保存开局
     char nLen = 0; //开局最多30子
@@ -292,8 +303,19 @@ int CChessGame::LoadChessGame(const char* szFile)
 			break;
 		}
 
-		ReadStringFromFile(in, m_szTags);
-
+        //加载标签
+        short nTags = 0;
+        in.read((char*)&nTags, sizeof (short));
+        nTags = ntohs(nTags);
+        if(nTags) m_Tags.clear();
+        while(nTags-- > 0)
+        {
+            std::string key, val;
+            ReadStringFromFile(in, key);
+            ReadStringFromFile(in, val);
+            m_Tags[key] = val;
+        }
+        
         //加载开局
         m_StartGame.clear();
         char nLen = 0;
@@ -327,6 +349,57 @@ int CChessGame::LoadChessGame(const char* szFile)
 
 	in.close();
 	return nRet;
+}
+
+int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
+{
+    int nRet = 0;
+	if (!pFileName) return -1;
+    
+    CPGN pgn;
+    
+    //设置 Tag
+    pgn.SetRed(m_szRedName.c_str());
+    pgn.SetBlack(m_szBlackName.c_str());
+    
+    std::string szFen;
+    CFen fen;
+    nRet = fen.FenFromStartGame(szFen, m_StartGame);
+    if(0 == nRet)
+        pgn.SetFen(szFen.c_str());
+    
+    switch (f) {
+    case ICCS:
+        pgn.SetFormat("ICCS");
+        break;
+    case WXF:
+        pgn.SetFormat("WXF");
+        break;
+    case Chinese:
+        pgn.SetFormat("Chinese");
+        break;
+    }
+    
+    //TODO:生成步数
+    
+    
+    std::ofstream out(pFileName);
+	if (!out.is_open())
+		return -2;
+    out << pgn.toString();
+    out.close();
+    
+    return nRet;
+}
+
+int CChessGame::LoadChessGamePgn(const char *pFileName, _SavePgnFormat f)
+{
+    int nRet = 0;
+	if (!pFileName) return -1;
+    
+    //TODO:
+    
+    return nRet;
 }
 
 int CChessGame::WriteStringToFile(std::ofstream &o, std::string &s)
@@ -401,15 +474,30 @@ int CChessGame::SetBlackName(const char* pszName)
 	return 0;
 }
 
+//TODO: 删除
 std::string CChessGame::GetTags()
 {
-	return m_szTags;
+	return std::string();
 }
 
 int CChessGame::SetTags(const char* pTags)
 {
-	m_szTags = pTags;
 	return 0;
+}
+
+std::string CChessGame::GetTag(const std::string &szpTag)
+{
+    std::map<std::string, std::string>::iterator it;
+    it = m_Tags.find(szpTag);
+    if(m_Tags.end() != it)
+        return it->second;
+    return std::string();
+}
+
+int CChessGame::AddTag(const std::string &szTag, const std::string &szVal)
+{
+    m_Tags[szTag] = szVal;
+    return 0;
 }
 
 //检测布局是否合法, 使用标准棋盘布局，红下黑上

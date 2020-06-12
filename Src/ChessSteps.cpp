@@ -3,9 +3,12 @@
 CChessSteps::CChessSteps()
 {}
 
+CChessSteps::~CChessSteps()
+{}
+
 std::string CChessSteps::toString()
 {
-    std::string szRet;
-    
-    return szRet;
+    return m_Steps;
 }
+
+

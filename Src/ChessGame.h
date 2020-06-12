@@ -9,11 +9,10 @@
 
 #include <vector>
 #include <string>
+#include <map>
 #include <time.h>
 #include "Piece.h"
 #include "chinesechess_export.h"
-
-class CPGN;
 
 /**
  * 棋局
@@ -66,6 +65,9 @@ public:
 
 	std::string GetTags();
 	int SetTags(const char* pTags);
+    
+    std::string GetTag(const std::string &szpTag);
+    int AddTag(const std::string &szTag, const std::string &szVal);
 
 #define MAX_STRING_BUFFER 33
 #define APPNAME "Chinese chess control"
@@ -101,6 +103,15 @@ public:
 	int SaveChessGame(const char* pFileName);	//保存棋局
     int LoadChessGame(const char* pFileName);	//装载棋局，并设置为结束状态
 
+    enum _SavePgnFormat
+    {
+        ICCS,
+        Chinese,
+        WXF
+    };
+    int SaveChessGamePgn(const char* pFileName, _SavePgnFormat f = Chinese);
+    int LoadChessGamePgn(const char* pFileName, _SavePgnFormat f = Chinese);
+    
     //开局
     struct strStartGame
     {
@@ -110,7 +121,7 @@ public:
     };
     std::vector<strStartGame> m_StartGame; // 棋盘开局
     // 检测布局是否合法, 使用标准棋盘布局，红下黑上
-    int CheckGame(CPiece::ENUM_QiZi ChessBoard[][10]);
+    static int CheckGame(CPiece::ENUM_QiZi ChessBoard[][10]);
     
 private:
 	struct strCODE{
@@ -138,9 +149,8 @@ private:
 	time_t m_tmEnd;				      //结束时间
 	std::string m_szRedName;		  //红方名
 	std::string m_szBlackName;		  //黑方名
-	std::string m_szTags;             //保存棋局的标签部分，标签用来描述此局的信息
-    
-    friend CPGN;
+	std::map<std::string, std::string> m_Tags; //保存棋局的标签部分，标签用来描述此局的信息
+
 };
 
 #endif //CHESS_GAME_KL_2020_05_15_
