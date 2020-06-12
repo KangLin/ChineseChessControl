@@ -1,4 +1,5 @@
 #include "Pgn.h"
+#include <memory.h>
 
 CPGN::CPGN()
     : m_Game("Chinese Chess"),
@@ -9,7 +10,8 @@ CPGN::CPGN()
       m_Red("?"),
       m_Black("?"),
       m_Result("*"),
-      m_Format("Chinese")
+      m_Format("Chinese"),
+      m_pSteps(nullptr)
 {}
 
 std::string CPGN::GetTag(const std::string &szTag)
@@ -91,7 +93,7 @@ std::string CPGN::toString() const
     pgn += "[" + item.first + " \"" + item.second + "\"]\n";
   } // for
   pgn += "\n";
-  pgn += m_Steps;
+  pgn += m_pSteps->toString();
   pgn += " " + GetResult();
   return pgn;
 }
@@ -125,6 +127,16 @@ const time_t& CPGN::GetDate() const
 
 int CPGN::parseDate(const std::string &dateText)
 {
+    struct tm tm;
+    
+    memset(&tm, 0, sizeof (struct tm));
+    sscanf(dateText.c_str(), "%d.%d.%d" ,    
+           &(tm.tm_year),
+           &(tm.tm_mon),
+           &(tm.tm_mday));
+    tm.tm_year -= 1900;
+    tm.tm_mon --;
+    m_Date = mktime(&tm);
     return 0;
 }
 
@@ -208,7 +220,8 @@ int CPGN::SetFormat(const char *pFormat)
     return 0;
 }
 
-int CPGN::SetSteps(const std::vector<CChessGame::strStep> &steps)
+int CPGN::SetSteps(CChessSteps *steps)
 {
+    m_pSteps = steps;
     return 0;
 }
