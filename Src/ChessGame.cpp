@@ -2,6 +2,7 @@
 #include <fstream>
 #include <time.h>
 #include <string.h>
+#include <memory>
 #include "Pgn.h"
 #include "Fen.h"
 
@@ -357,6 +358,7 @@ int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
 	if (!pFileName) return -1;
     
     CPGN pgn;
+    std::shared_ptr<CChessSteps> Steps;
     
     //设置 Tag
     pgn.SetRed(m_szRedName.c_str());
@@ -377,6 +379,7 @@ int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
         break;
     case Chinese:
         pgn.SetFormat("Chinese");
+        Steps = std::shared_ptr<CChessStepsChinese>(new CChessStepsChinese());
         break;
     }
     
