@@ -507,14 +507,14 @@ time_t CChineseChess::GetEndTime()
 	return m_Game.GetEndTime();
 }
 
-int CChineseChess::SetGameTags(const char* pTags)
+std::string CChineseChess::GetGameTag(const std::string &tag)
 {
-	return m_Game.SetTags(pTags);
+	return m_Game.GetTag(tag);
 }
 
-std::string CChineseChess::GetGameTags()
+int CChineseChess::AddGameTag(const std::string &tag, const std::string &val)
 {
-	return m_Game.GetTags();
+	return m_Game.AddTag(tag, val);
 }
 
 int CChineseChess::ConvertQiPang(const int &i, const int &j, int &x, int &y)

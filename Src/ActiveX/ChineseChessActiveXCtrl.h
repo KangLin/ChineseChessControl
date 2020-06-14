@@ -91,6 +91,8 @@ protected:
 	VARIANT_BOOL GoChess(SHORT i, SHORT j);
 	VARIANT_BOOL SaveChessGame(LPCTSTR szFile);
 	VARIANT_BOOL LoadChessGame(LPCTSTR szFile);
+	VARIANT_BOOL AddGameTag(LPCTSTR szTag, LPCTSTR szVal);
+	BSTR GetgameTag(LPCTSTR szTag);
 
 // ÊÂ¼þÓ³Éä
 	DECLARE_EVENT_MAP()
@@ -105,7 +107,8 @@ public:
 public:
 	enum {
 		eventidEventGoChess = 1L,
-		dispidGameTags = 15L,
+		dispidGetgameTag = 16L,
+		dispidAddGameTag = 15L,
 		dispidEndTime = 14,
 		dispidStartTime = 13,
 		dispidBlackName = 12L,
