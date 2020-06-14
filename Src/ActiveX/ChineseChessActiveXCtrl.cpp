@@ -34,7 +34,6 @@ BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "RedName", dispidRedName, GetRedName, SetRedName, VT_BSTR)
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "BlackName", dispidBlackName, GetBlackName, SetBlackName, VT_BSTR)
-	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "GameTags", dispidGameTags, GetGameTags, SetGameTags, VT_BSTR)
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "StartTime", dispidStartTime, GetStartTime, SetStartTime, VT_I4)
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "EndTime", dispidEndTime, GetEndTime, SetEndTime, VT_I4)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "NextStep", dispidNextStep, NextStep, VT_BOOL, VTS_NONE)
@@ -42,6 +41,8 @@ BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "SaveChessGame", dispidSaveChessGame, SaveChessGame, VT_BOOL, VTS_BSTR)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "LoadChessGame", dispidLoadChessGame, LoadChessGame, VT_BOOL, VTS_BSTR)
+	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "AddGameTag", dispidAddGameTag, AddGameTag, VT_BOOL, VTS_BSTR VTS_BSTR)
+	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GetgameTag", dispidGetgameTag, GetgameTag, VT_BOOL, VTS_BSTR VTS_BSTR)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptSound", dispidEnablePromptSound, m_EnablePromptSound, OnEnablePromptSoundChanged, VT_BOOL)
 	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptMessage", dispidEnablePromptMessage, m_EnablePromptMessage, OnEnablePromptMessageChanged, VT_BOOL)
 END_DISPATCH_MAP()
@@ -227,12 +228,13 @@ void CChineseChessActiveXCtrl::OnEnablePromptMessageChanged()
 
 BSTR CChineseChessActiveXCtrl::GetRedName()
 {
+	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	CString strResult;
 
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		strResult = m_pChess->GetRedName().c_str();
+		strResult = A2CT(m_pChess->GetRedName().c_str());
 
 	return strResult.AllocSysString();
 }
@@ -247,12 +249,13 @@ void CChineseChessActiveXCtrl::SetRedName(LPCTSTR newVal)
 
 BSTR CChineseChessActiveXCtrl::GetBlackName()
 {
+	USES_CONVERSION;
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	CString strResult;
 
 	if (m_pChess && m_pChess->GetSafeHwnd())
-		strResult = m_pChess->GetBlackName().c_str();
+		strResult = A2CT(m_pChess->GetBlackName().c_str());
 
 	return strResult.AllocSysString();
 }
@@ -262,26 +265,6 @@ void CChineseChessActiveXCtrl::SetBlackName(LPCTSTR val)
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	if (m_pChess && m_pChess->GetSafeHwnd())
 		m_pChess->SetBlackName(val);
-	SetModifiedFlag();
-}
-
-BSTR CChineseChessActiveXCtrl::GetGameTags()
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	CString strResult;
-
-	if (m_pChess && m_pChess->GetSafeHwnd())
-		strResult = m_pChess->GetGameTags().c_str();
-
-	return strResult.AllocSysString();
-}
-
-void CChineseChessActiveXCtrl::SetGameTags(LPCTSTR val)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if (m_pChess && m_pChess->GetSafeHwnd())
-		m_pChess->SetGameTags(val);
 	SetModifiedFlag();
 }
 
@@ -395,6 +378,34 @@ VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame(LPCTSTR szFile)
 		return VARIANT_FALSE;
 
 	return VARIANT_TRUE;
+}
+
+VARIANT_BOOL CChineseChessActiveXCtrl::AddGameTag(LPCTSTR szTag, LPCTSTR szVal)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	int nRet = 0;
+	if (m_pChess && m_pChess->GetSafeHwnd())
+	{
+		nRet = m_pChess->AddGameTag(szTag, szVal);
+	}
+	if (nRet)
+		return VARIANT_FALSE;
+
+	return VARIANT_TRUE;
+}
+
+BSTR CChineseChessActiveXCtrl::GetgameTag(LPCTSTR szTag)
+{
+	USES_CONVERSION;
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	CString strResult;
+
+	if (m_pChess && m_pChess->GetSafeHwnd())
+		strResult = m_pChess->GetGameTag(szTag);
+
+	return strResult.AllocSysString();
 }
 
 //

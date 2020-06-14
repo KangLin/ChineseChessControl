@@ -301,10 +301,16 @@ int CChineseChessView::SetBlackName(LPCTSTR pszName)
     return __super::SetBlackName(T2CA(pszName));
 }
 
-int CChineseChessView::SetGameTags(LPCTSTR pszTags)
+int CChineseChessView::AddGameTag(LPCTSTR pszTag, LPCTSTR pszVal)
 {
 	USES_CONVERSION;
-	return __super::SetGameTags(T2CA(pszTags));
+	return __super::AddGameTag(T2CA(pszTag), T2CA(pszVal));
+}
+
+CString CChineseChessView::GetGameTag(LPCTSTR pszTag)
+{
+	USES_CONVERSION;
+	return A2CT(__super::GetGameTag(T2CA(pszTag)).c_str());
 }
 
 //

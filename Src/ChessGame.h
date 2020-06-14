@@ -62,9 +62,6 @@ public:
 	int SetRedName(const char* pszName);
 	std::string GetBlackName();
 	int SetBlackName(const char* pszName);
-
-	std::string GetTags();
-	int SetTags(const char* pTags);
     
     std::string GetTag(const std::string &szpTag);
     int AddTag(const std::string &szTag, const std::string &szVal);

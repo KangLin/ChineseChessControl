@@ -63,7 +63,6 @@ library ChineseChessActiveXLib
 			[id(12), helpstring("设置黑方名字")] BSTR BlackName;
 			[id(13), helpstring("设置开始时间")] LONG StartTime;
 			[id(14), helpstring("设置结束时间")] LONG EndTime;
-			[id(15), helpstring("设置棋局标签")] BSTR GameTags;
 
 		methods:
 			[id(DISPID_ABOUTBOX)] void AboutBox();
@@ -72,6 +71,8 @@ library ChineseChessActiveXLib
 			[id(8), helpstring("加载棋局")] VARIANT_BOOL LoadChessGame(BSTR szFile);
 			[id(9), helpstring("下一步")] VARIANT_BOOL NextStep();
 			[id(10), helpstring("上一步")] VARIANT_BOOL PreviouStep();
+			[id(15), helpstring("增加棋局指定的标签")] VARIANT_BOOL AddGameTag(BSTR szTag, BSTR szVal);
+			[id(16), helpstring("得到棋局指定的标签")] BSTR GetgameTag([in] BSTR szTag);
 	};
 
 	//  CChineseChessActiveXCtrl 的事件调度接口

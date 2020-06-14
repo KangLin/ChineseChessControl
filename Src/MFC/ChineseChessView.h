@@ -46,7 +46,8 @@ public:
 	virtual int LoadChessGame(LPCTSTR pszFile);
 	virtual int SetRedName(LPCTSTR pszName);
 	virtual int SetBlackName(LPCTSTR pszName);
-	virtual int SetGameTags(LPCTSTR pszTags);
+	virtual int AddGameTag(LPCTSTR pszTag, LPCTSTR szVal);
+	CString GetGameTag(LPCTSTR szTag);
 
 	int SetChineseChessHandler(CChineseChessHandler* handler);
 

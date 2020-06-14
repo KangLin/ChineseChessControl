@@ -477,17 +477,6 @@ int CChessGame::SetBlackName(const char* pszName)
 	return 0;
 }
 
-//TODO: 删除
-std::string CChessGame::GetTags()
-{
-	return std::string();
-}
-
-int CChessGame::SetTags(const char* pTags)
-{
-	return 0;
-}
-
 std::string CChessGame::GetTag(const std::string &szpTag)
 {
     std::map<std::string, std::string>::iterator it;
