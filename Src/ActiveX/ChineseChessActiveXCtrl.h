@@ -78,8 +78,6 @@ protected:
 	void SetRedName(LPCTSTR newVal);
 	BSTR GetBlackName();
 	void SetBlackName(LPCTSTR newVal);
-	BSTR GetGameTags();
-	void SetGameTags(LPCTSTR val);
 	LONG GetStartTime();
 	void SetStartTime(LONG val);
 	LONG GetEndTime();

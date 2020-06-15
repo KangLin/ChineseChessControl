@@ -36,15 +36,17 @@ BEGIN_DISPATCH_MAP(CChineseChessActiveXCtrl, COleControl)
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "BlackName", dispidBlackName, GetBlackName, SetBlackName, VT_BSTR)
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "StartTime", dispidStartTime, GetStartTime, SetStartTime, VT_I4)
 	DISP_PROPERTY_EX_ID(CChineseChessActiveXCtrl, "EndTime", dispidEndTime, GetEndTime, SetEndTime, VT_I4)
+
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptSound", dispidEnablePromptSound, m_EnablePromptSound, OnEnablePromptSoundChanged, VT_BOOL)
+	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptMessage", dispidEnablePromptMessage, m_EnablePromptMessage, OnEnablePromptMessageChanged, VT_BOOL)
+
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "NextStep", dispidNextStep, NextStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "PreviouStep", dispidPreviouStep, PreviouStep, VT_BOOL, VTS_NONE)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GoChess", dispidGoChess, GoChess, VT_BOOL, VTS_I2 VTS_I2)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "SaveChessGame", dispidSaveChessGame, SaveChessGame, VT_BOOL, VTS_BSTR)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "LoadChessGame", dispidLoadChessGame, LoadChessGame, VT_BOOL, VTS_BSTR)
 	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "AddGameTag", dispidAddGameTag, AddGameTag, VT_BOOL, VTS_BSTR VTS_BSTR)
-	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GetgameTag", dispidGetgameTag, GetgameTag, VT_BOOL, VTS_BSTR VTS_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptSound", dispidEnablePromptSound, m_EnablePromptSound, OnEnablePromptSoundChanged, VT_BOOL)
-	DISP_PROPERTY_NOTIFY_ID(CChineseChessActiveXCtrl, "EnablePromptMessage", dispidEnablePromptMessage, m_EnablePromptMessage, OnEnablePromptMessageChanged, VT_BOOL)
+	DISP_FUNCTION_ID(CChineseChessActiveXCtrl, "GetgameTag", dispidGetgameTag, GetgameTag, VT_BSTR, VTS_BSTR)
 END_DISPATCH_MAP()
 
 // ÊÂ¼þÓ³Éä
