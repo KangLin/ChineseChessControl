@@ -90,17 +90,17 @@ public:
     int SetSteps(CChessSteps* steps);
     
 private:
-    std::string m_Game; //游戏类型，国际象棋没有这个标签，中国象棋的PGN文件中这个标签必须放在第一位，其值必须为“Chinese Chess”
-    std::string m_Event; //比赛名
-    std::string m_Site; //比赛地点
-    time_t m_Date;//比赛日期，格式统一为“yyyy.mm.dd”
-    std::string m_Round; //比赛轮次
-    std::string m_Red; //红方棋手，不同与国际象棋的White
-    std::string m_Black; //黑方棋手
-    std::string m_Result; //比赛结果，“红先胜”用“1-0”表示，“黑先胜”用“0-1”表示，和棋用“1/2-1/2”表示，未知用“*”表示。
-    std::string m_szFEN; //开始局面，中局、残局和排局等摆出来的局面，作棋谱记录时通常要规定这个选项
-    std::string m_Format;//表示记谱方法，可以是Chinese(中文纵线格式)、WXF(WXF纵线格式)和ICCS(ICCS坐标格式)，默认为Chinese。
-    std::map<std::string, std::string> m_Tags;
+    std::string m_Game;						   //游戏类型，国际象棋没有这个标签，中国象棋的PGN文件中这个标签必须放在第一位，其值必须为“Chinese Chess”
+    std::string m_Event;					   //比赛名
+    std::string m_Site;						   //比赛地点
+    time_t m_Date;							   //比赛日期，格式统一为“yyyy.mm.dd”
+    std::string m_Round;					   //比赛轮次
+    std::string m_Red;						   //红方棋手，不同与国际象棋的White
+    std::string m_Black;					   //黑方棋手
+    std::string m_Result;					   //比赛结果，“红先胜”用“1-0”表示，“黑先胜”用“0-1”表示，和棋用“1/2-1/2”表示，未知用“*”表示。
+    std::string m_szFEN;					   //开始局面，中局、残局和排局等摆出来的局面，作棋谱记录时通常要规定这个选项
+    std::string m_Format;					   //表示记谱方法，可以是Chinese(中文纵线格式)、WXF(WXF纵线格式)和ICCS(ICCS坐标格式)，默认为Chinese。
+    std::map<std::string, std::string> m_Tags; 
     
     CChessSteps* m_pSteps;
 };

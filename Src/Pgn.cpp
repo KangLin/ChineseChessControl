@@ -40,7 +40,7 @@ std::string CPGN::GetTag(const std::string &szTag)
          return GetFen();
      if(szTag == "Format")
          return GetFormat();
-     
+
      // Tag was not found.
      return std::string();
 }
@@ -72,30 +72,30 @@ int CPGN::SetTag(const std::string &szTag, const std::string &szValue)
 
 std::string CPGN::toString() const
 {
-  std::string pgn;
-  
-  pgn = "[Game \"" + m_Game + "\"]\n"
-      + "[Event \"" + GetEvent() + "\"]\n"
-      + "[Site \"" + GetSite() + "\"]\n";
-  
-  pgn += "[Date \"";
-  pgn += dateToString(GetDate());
-  pgn += "\"]\n";
-  
-  pgn += "[Round \"" + GetRound() + "\"]\n"
-      + "[Red \"" + GetRed() + "\"]\n"
-      + "[Black \"" + GetBlack() + "\"]\n"
-      + "[Result \"" + GetResult() + "\"]\n";
-      + "[Fen \"" + GetFen() + "\"]\n";
-      + "[Format \"" + GetFormat() + "\"]\n";
-  for(const auto& item : m_Tags)
-  {
-    pgn += "[" + item.first + " \"" + item.second + "\"]\n";
-  } // for
-  pgn += "\n";
-  pgn += m_pSteps->toString();
-  pgn += " " + GetResult();
-  return pgn;
+    std::string pgn;
+    
+    pgn = "[Game \"" + m_Game + "\"]\n"
+            + "[Event \"" + GetEvent() + "\"]\n"
+            + "[Site \"" + GetSite() + "\"]\n";
+    
+    pgn += "[Date \"";
+    pgn += dateToString(GetDate());
+    pgn += "\"]\n";
+    
+    pgn += "[Round \"" + GetRound() + "\"]\n"
+            + "[Red \"" + GetRed() + "\"]\n"
+            + "[Black \"" + GetBlack() + "\"]\n"
+            + "[Result \"" + GetResult() + "\"]\n";
+    + "[Fen \"" + GetFen() + "\"]\n";
+    + "[Format \"" + GetFormat() + "\"]\n";
+    for(const auto& item : m_Tags)
+    {
+        pgn += "[" + item.first + " \"" + item.second + "\"]\n";
+    } // for
+    pgn += "\n";
+    pgn += m_pSteps->toString();
+    pgn += " " + GetResult();
+    return pgn;
 }
 
 const std::string &CPGN::GetEvent() const
