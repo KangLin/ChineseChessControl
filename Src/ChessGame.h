@@ -99,7 +99,7 @@ public:
 	 */
 	int SaveChessGame(const char* pFileName);	//保存棋局
     int LoadChessGame(const char* pFileName);	//装载棋局，并设置为结束状态
-
+    
     enum _SavePgnFormat
     {
         ICCS,
@@ -122,7 +122,7 @@ public:
     
 private:
 	struct strCODE{
-		char code[3];           //棋子和相应的位置 @see QiZiBianMa
+		char step[3];           //棋子和相应的位置 @see QiZiBianMa
 	};
 	struct strStep {
 		strCODE code;

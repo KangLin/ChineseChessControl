@@ -260,6 +260,8 @@ int CFen::FenFromStartGame(std::string &szFen,
                            char side,
                            int nStep)
 {
+    if(startGame.empty()) return -1;
+    
     CPiece::ENUM_QiZi board[9][10];
     int i, j;
 	for (i = 0; i < 9; i++)
@@ -275,5 +277,5 @@ int CFen::FenFromStartGame(std::string &szFen,
 
     int nRet = CChessGame::CheckGame(board);
     if(nRet) return nRet;
-    return FenToBoard(szFen, board, side, nStep);
+    return FenFromBoard(szFen, board, side, nStep);
 }

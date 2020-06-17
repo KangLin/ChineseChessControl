@@ -85,9 +85,9 @@ std::string CPGN::toString() const
     pgn += "[Round \"" + GetRound() + "\"]\n"
             + "[Red \"" + GetRed() + "\"]\n"
             + "[Black \"" + GetBlack() + "\"]\n"
-            + "[Result \"" + GetResult() + "\"]\n";
-    + "[Fen \"" + GetFen() + "\"]\n";
-    + "[Format \"" + GetFormat() + "\"]\n";
+            + "[Result \"" + GetResult() + "\"]\n"
+            + "[Fen \"" + GetFen() + "\"]\n"
+            + "[Format \"" + GetFormat() + "\"]\n";
     for(const auto& item : m_Tags)
     {
         pgn += "[" + item.first + " \"" + item.second + "\"]\n";
@@ -96,6 +96,11 @@ std::string CPGN::toString() const
     pgn += m_pSteps->toString();
     pgn += " " + GetResult();
     return pgn;
+}
+
+int CPGN::ParseString(const std::string szPgn)
+{
+    return 0;
 }
 
 const std::string &CPGN::GetEvent() const
@@ -172,7 +177,10 @@ const std::string& CPGN::GetRed() const
 
 int CPGN::SetRed(const char *pRed)
 {
-    m_Red = pRed;
+    if(nullptr == pRed)
+        m_Red = "?";
+    else
+        m_Red = pRed;
     return 0;
 }
 
@@ -183,7 +191,10 @@ const std::string& CPGN::GetBlack() const
 
 int CPGN::SetBlack(const char *pBlack)
 {
-    m_Black = pBlack;
+    if(nullptr == pBlack)
+        m_Black = "?";
+    else
+        m_Black = pBlack;
     return 0;
 }
 
@@ -216,11 +227,14 @@ const std::string& CPGN::GetFormat() const
 
 int CPGN::SetFormat(const char *pFormat)
 {
-    m_Format = pFormat;
+    if(nullptr == pFormat)
+        m_Format = "Chinese";
+    else
+        m_Format = pFormat;
     return 0;
 }
 
-int CPGN::SetSteps(CChessSteps *steps)
+int CPGN::SetSteps(std::shared_ptr<CChessSteps> steps)
 {
     m_pSteps = steps;
     return 0;

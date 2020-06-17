@@ -83,14 +83,14 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode
 	switch (bianma)
 	{
 	case BianMa:
-		pCode->code[0] = *i;
-		pCode->code[1] = *j;
-		pCode->code[2] = *qz;
+		pCode->step[0] = *i;
+		pCode->step[1] = *j;
+		pCode->step[2] = *qz;
 		break;
 	case JieMa:
-		*i = pCode->code[0];
-		*j = pCode->code[1];
-		*qz = static_cast<CPiece::ENUM_QiZi>(pCode->code[2]);
+		*i = pCode->step[0];
+		*j = pCode->step[1];
+		*qz = static_cast<CPiece::ENUM_QiZi>(pCode->step[2]);
 		break;
 	}
 
@@ -252,7 +252,7 @@ int CChessGame::SaveChessGame(const char* szFile)
         {
             strCODE code;
             QiZiBianMa(&it->i, &it->j, &it->qz, &code);
-            out.write(code.code, sizeof(strCODE));
+            out.write(code.step, sizeof(strCODE));
         }
     }
 
@@ -260,7 +260,7 @@ int CChessGame::SaveChessGame(const char* szFile)
     std::vector<strStep>::iterator it;
 	for (it = m_ChessGame.begin(); it != m_ChessGame.end(); it++)
 	{
-		out.write(it->code.code, sizeof(strCODE));
+		out.write(it->code.step, sizeof(strCODE));
         long t = htonl(it->tm);
         out.write((char*)&t, sizeof(long));
 		WriteStringToFile(out, it->szDescript);
@@ -325,7 +325,7 @@ int CChessGame::LoadChessGame(const char* szFile)
         {
             while (nLen--) {
                 strCODE code;
-                in.read(code.code, sizeof(strCODE));
+                in.read(code.step, sizeof(strCODE));
                 strStartGame g;
                 QiZiBianMa(&g.i, &g.j, &g.qz, &code, JieMa);
                 m_StartGame.push_back(g);
@@ -361,18 +361,31 @@ int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
     std::shared_ptr<CChessSteps> Steps;
     
     //设置 Tag
-    pgn.SetRed(m_szRedName.c_str());
-    pgn.SetBlack(m_szBlackName.c_str());
-    
-    std::string szFen;
-    CFen fen;
-    nRet = fen.FenFromStartGame(szFen, m_StartGame);
-    if(0 == nRet)
-        pgn.SetFen(szFen.c_str());
-    
+    if(!m_szRedName.empty())
+        pgn.SetRed(m_szRedName.c_str());
+    if(!m_szBlackName.empty())
+        pgn.SetBlack(m_szBlackName.c_str());
+
+    if(!m_StartGame.empty())
+    {
+        std::string szFen;
+        CFen fen;
+        nRet = fen.FenFromStartGame(szFen, m_StartGame);
+        if(0 == nRet)
+            pgn.SetFen(szFen.c_str());
+    }
+
+    for(const auto& item: m_Tags)
+    {
+        std::string key = item.first;
+        std::string val = item.second;
+        pgn.SetTag(key, val);
+    }
+
     switch (f) {
     case ICCS:
         pgn.SetFormat("ICCS");
+        Steps = std::shared_ptr<CChessStepsIccs>(new CChessStepsIccs());
         break;
     case WXF:
         pgn.SetFormat("WXF");
@@ -382,13 +395,19 @@ int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
         Steps = std::shared_ptr<CChessStepsChinese>(new CChessStepsChinese());
         break;
     }
-    
-    //TODO:生成步数
-    
+
+    for(auto& item: m_ChessGame)
+    {
+        int i = 0, j = 0;
+        CPiece::ENUM_QiZi qz = CPiece::NoQiZi;
+        QiZiBianMa(&i, &j, &qz, &item.code, JieMa);
+        Steps->AddStep(i, j, qz, item.szDescript);
+    }
     
     std::ofstream out(pFileName);
 	if (!out.is_open())
 		return -2;
+    pgn.SetSteps(Steps);
     out << pgn.toString();
     out.close();
     
@@ -401,7 +420,12 @@ int CChessGame::LoadChessGamePgn(const char *pFileName, _SavePgnFormat f)
 	if (!pFileName) return -1;
     
     //TODO:
+    std::ifstream in(pFileName);
+	if (!in.is_open())
+		return -2;
     
+    
+    in.close();
     return nRet;
 }
 

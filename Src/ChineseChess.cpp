@@ -1,6 +1,7 @@
 ﻿
 #include "ChineseChess.h"
 #include <iostream>
+#include <algorithm>
 
 CChineseChess::CChineseChess()
 {
@@ -453,6 +454,15 @@ int CChineseChess::PreviouStep()
 
 int CChineseChess::SaveChessGame(const char* pszFile)
 {
+    std::string szFile(pszFile);
+    size_t pos = szFile.rfind('.');
+    if(szFile.npos != pos)
+    {
+        std::string szExt = szFile.substr(pos + 1);
+        std::transform(szExt.begin(), szExt.end(), szExt.begin(), ::tolower);
+        if("pgn" == szExt)
+            return m_Game.SaveChessGamePgn(pszFile);
+    }
 	return m_Game.SaveChessGame(pszFile);
 }
 
@@ -460,8 +470,25 @@ int CChineseChess::LoadChessGame(const char* pszFile)
 {
 	int nRet = 0;
 
-	nRet = m_Game.LoadChessGame(pszFile);
-	if (nRet) return nRet;
+    std::string szFile(pszFile);
+    size_t pos = szFile.rfind('.');
+    if(szFile.npos != pos)
+    {
+        std::string szExt = szFile.substr(pos + 1);
+        std::transform(szExt.begin(), szExt.end(), szExt.begin(), ::tolower);
+        if("pgn" == szExt)
+            return m_Game.LoadChessGamePgn(pszFile);
+        else
+        {
+            nRet = m_Game.LoadChessGame(pszFile);
+            if (nRet) return nRet;
+        }
+    }
+    else
+    {
+        nRet = m_Game.LoadChessGame(pszFile);
+        if (nRet) return nRet;
+    }
 
     SetBoardLayout(m_BoardLayout);
 	return nRet;
@@ -527,5 +554,5 @@ int CChineseChess::ConvertQiPang(const int &i, const int &j, int &x, int &y)
     }
     x = i;
     y = j;
-    return 0;   
+    return 0;
 }
