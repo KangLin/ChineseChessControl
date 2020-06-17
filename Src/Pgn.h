@@ -6,6 +6,8 @@
 #include <string>
 #include <map>
 #include <time.h>
+#include <memory>
+
 #include "ChessGame.h"
 #include "ChessSteps.h"
 
@@ -28,6 +30,12 @@ public:
      * \return Returns the complete PNG notation for the game.
      */
     std::string toString() const;
+    /**
+     * @brief 解析 PGN
+     * @param szPgn
+     * @return 
+     */
+    int ParseString(const std::string szPgn);
 
     /** \brief Gets the name of the tournament or match event.
      *
@@ -87,7 +95,7 @@ public:
     const std::string& GetFormat() const;
     int SetFormat(const char* pFormat);
     
-    int SetSteps(CChessSteps* steps);
+    int SetSteps(std::shared_ptr<CChessSteps> steps);
     
 private:
     std::string m_Game;						   //游戏类型，国际象棋没有这个标签，中国象棋的PGN文件中这个标签必须放在第一位，其值必须为“Chinese Chess”
@@ -102,7 +110,7 @@ private:
     std::string m_Format;					   //表示记谱方法，可以是Chinese(中文纵线格式)、WXF(WXF纵线格式)和ICCS(ICCS坐标格式)，默认为Chinese。
     std::map<std::string, std::string> m_Tags; 
     
-    CChessSteps* m_pSteps;
+    std::shared_ptr<CChessSteps> m_pSteps;
 };
 
 #endif // CPGN_H_KL_2020_06_11_
