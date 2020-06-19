@@ -118,8 +118,9 @@ public:
     };
     std::vector<strStartGame> m_StartGame; // 棋盘开局
     // 检测布局是否合法, 使用标准棋盘布局，红下黑上
-    static int CheckGame(CPiece::ENUM_QiZi ChessBoard[][10]);
-    
+    static int CheckGame(CPiece::ENUM_QiZi board[][10]);
+    int GetStartGameBoard(CPiece::ENUM_QiZi board[][10]);
+
 private:
 	struct strCODE{
 		char step[3];           //棋子和相应的位置 @see QiZiBianMa

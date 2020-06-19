@@ -8,8 +8,7 @@
 #include <time.h>
 #include <memory>
 
-#include "ChessGame.h"
-#include "ChessSteps.h"
+#include "ChessStepsChinese.h"
 
 /**
  * @brief Class to hold all information for the Portable Game Notation (PGN) of a
