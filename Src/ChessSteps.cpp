@@ -2,7 +2,7 @@
 
 CChessSteps::CChessSteps()
 {
-    m_nStep = 0;
+    m_nSteps = 0;
 }
 
 CChessSteps::~CChessSteps()
@@ -10,56 +10,19 @@ CChessSteps::~CChessSteps()
 
 std::string CChessSteps::toString()
 {
-    return m_Steps;
+    return m_szSteps;
 }
 
-CChessStepsChinese::CChessStepsChinese() : CChessSteps()
-{}
-
-CChessStepsChinese::~CChessStepsChinese()
-{}
-
-int CChessStepsChinese::AddStep(int i, int j, CPiece::ENUM_QiZi qz, const std::string &szDescript)
+int CChessSteps::AddStep(strStep step)
 {
-    char col = 'A' + i;
-    std::string row = std::to_string(9 - j);
-    switch (m_nStep % 4) {
-    case 0:
-        m_Steps += std::to_string(m_nStep / 4 + 1) + ". ";
-        m_Steps += col + row;
-        break;
-    case 1:
-        m_Steps += "-";
-        m_Steps += col + row;
-        if(!szDescript.empty())
-        {
-            m_Steps += " {";
-            m_Steps += szDescript;
-            m_Steps += "}";
-        }
-        break;
-    case 2:
-        m_Steps += " ";
-        m_Steps += col + row;
-        break;
-    case 3:
-        m_Steps += "-";
-        m_Steps += col + row;
-        if(!szDescript.empty())
-        {
-            m_Steps += " {";
-            m_Steps += szDescript;
-            m_Steps += "}";
-        }
-        m_Steps += "\n";
-        break;
-    }
-    m_nStep++;
+    m_Steps.push_back(step);
     return 0;
 }
 
-int CChessStepsChinese::GetStep(int &i, int &j, CPiece::ENUM_QiZi &qz, std::string &szDescript)
+int CChessSteps::AddStep(int i, int j, CPiece::ENUM_QiZi qz, const std::string &szDescript)
 {
+    strStep step = {i, j, qz, szDescript};
+    m_Steps.push_back(step);
     return 0;
 }
 
@@ -73,38 +36,38 @@ int CChessStepsIccs::AddStep(int i, int j, CPiece::ENUM_QiZi qz, const std::stri
 {
     char col = 'A' + i;
     std::string row = std::to_string(9 - j);
-    switch (m_nStep % 4) {
+    switch (m_nSteps % 4) {
     case 0:
-        m_Steps += std::to_string(m_nStep / 4 + 1) + ". ";
-        m_Steps += col + row;
+        m_szSteps += std::to_string(m_nSteps / 4 + 1) + ". ";
+        m_szSteps += col + row;
         break;
     case 1:
-        m_Steps += "-";
-        m_Steps += col + row;
+        m_szSteps += "-";
+        m_szSteps += col + row;
         if(!szDescript.empty())
         {
-            m_Steps += " {";
-            m_Steps += szDescript;
-            m_Steps += "}";
+            m_szSteps += " {";
+            m_szSteps += szDescript;
+            m_szSteps += "}";
         }
         break;
     case 2:
-        m_Steps += " ";
-        m_Steps += col + row;
+        m_szSteps += " ";
+        m_szSteps += col + row;
         break;
     case 3:
-        m_Steps += "-";
-        m_Steps += col + row;
+        m_szSteps += "-";
+        m_szSteps += col + row;
         if(!szDescript.empty())
         {
-            m_Steps += " {";
-            m_Steps += szDescript;
-            m_Steps += "}";
+            m_szSteps += " {";
+            m_szSteps += szDescript;
+            m_szSteps += "}";
         }
-        m_Steps += "\n";
+        m_szSteps += "\n";
         break;
     }
-    m_nStep++;
+    m_nSteps++;
     return 0;
 }
 

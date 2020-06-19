@@ -6,6 +6,7 @@ set(SOURCES_FILES
     ChineseChess.cpp
     ChessGame.cpp
     ChessSteps.cpp
+    ChessStepsChinese.cpp
     Piece.cpp
     Common.cpp
     GoRule.cpp
@@ -17,6 +18,7 @@ set(HEADER_FILES
     ChineseChess.h
     ChessGame.h
     ChessSteps.h
+    ChessStepsChinese.h
     Piece.h
     Common.h
     GoRule.h

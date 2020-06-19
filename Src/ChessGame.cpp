@@ -396,6 +396,7 @@ int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
         break;
     }
 
+    GetStartGameBoard(Steps->m_Board);
     for(auto& item: m_ChessGame)
     {
         int i = 0, j = 0;
@@ -517,7 +518,7 @@ int CChessGame::AddTag(const std::string &szTag, const std::string &szVal)
 }
 
 //检测布局是否合法, 使用标准棋盘布局，红下黑上
-int CChessGame::CheckGame(CPiece::ENUM_QiZi ChessBoard[][10])
+int CChessGame::CheckGame(CPiece::ENUM_QiZi board[][10])
 {
     int nRet = 0;
     
@@ -541,7 +542,7 @@ int CChessGame::CheckGame(CPiece::ENUM_QiZi ChessBoard[][10])
     for(int i = 0; i < 9; i++)
         for(int j = 0; j < 10; j++)
         {
-            switch(ChessBoard[i][j])
+            switch(board[i][j])
             {
             case CPiece::RChe:
                 nRChe++;
@@ -627,4 +628,44 @@ int CChessGame::CheckGame(CPiece::ENUM_QiZi ChessBoard[][10])
         return -13;
     
     return nRet;
+}
+
+int CChessGame::GetStartGameBoard(CPiece::ENUM_QiZi board[][10])
+{
+	//初始化空棋局
+	int i, j;
+	for (i = 0; i < 9; i++)
+		for (j = 0; j < 10; j++)
+        {
+            board[i][j] = CPiece::NoQiZi;
+        }
+
+    if(m_StartGame.size())
+    {
+        std::vector<CChessGame::strStartGame>::iterator it;
+        for(it = m_StartGame.begin(); it != m_StartGame.end(); it++)
+        {
+            board[it->i][it->j] = it->qz;
+        }
+        return CheckGame(board);
+    }
+    else
+    {
+        board[0][0] = board[8][0] = CPiece::BChe;
+        board[1][0] = board[7][0] = CPiece::BMa;
+        board[2][0] = board[6][0] = CPiece::BXiang;
+        board[3][0] = board[5][0] = CPiece::BShi;
+        board[4][0] = CPiece::BShuai;
+        board[1][2] = board[7][2] = CPiece::BPao;
+        board[0][3] = board[2][3] = board[4][3] = board[6][3] = board[8][3] = CPiece::BBing;
+        
+        board[0][9] = board[8][9] = CPiece::RChe;
+        board[1][9] = board[7][9] = CPiece::RMa;
+        board[2][9] = board[6][9] = CPiece::RXiang;
+        board[3][9] = board[5][9] = CPiece::RShi;
+        board[4][9] = CPiece::RShuai;
+        board[1][7] = board[7][7] = CPiece::RPao;
+        board[0][6] = board[2][6] = board[4][6] = board[6][6] = board[8][6] = CPiece::RBing;
+    }
+    return 0;
 }
