@@ -9,18 +9,18 @@
 - [安装目录](#安装目录)
 
 ### 依赖
-+ 编译工具
-  + [Qt](http://qt.io/)
++ 工具
   + 编译器
     - For linux or android
         + GNU GCC
         + Clang
     - For windows
-        + [- Microsoft Visual studio c++](http://msdn.microsoft.com/zh-cn/vstudio)
+        + [Microsoft Visual studio c++](http://msdn.microsoft.com/zh-cn/vstudio)
         + [MSYS2/MinGW](http://sourceforge.net/projects/msys2/)
   + [CMake](http://www.cmake.org/)
-  + Automake and autoconfig
-  + android sdk and ndk  
+  + [可选，linux平台] Automake and autoconfig
+  + [可选，编译ChineseChessQt时] [Qt](http://qt.io/)
+  + [可选，编译Android时] android sdk and ndk  
 + 依赖库
   - [可选] 玉兔公共库: https://github.com/KangLin/RabbitCommon
  
