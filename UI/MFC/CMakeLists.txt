@@ -37,9 +37,9 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_UNICODE" "UNICODE
 target_compile_definitions(${PROJECT_NAME} PUBLIC "CHINESE_CHESS_USE_PNG")
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess)
-target_include_directories(${PROJECT_NAME}
-    PRIVATE ${CMAKE_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/..)
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    )
 
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}

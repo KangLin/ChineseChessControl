@@ -67,8 +67,6 @@ endif()
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}
     ${RabbitCommon_DIR}/Src
-    ${CMAKE_SOURCE_DIR}/Src/Qt
-    ${CMAKE_SOURCE_DIR}/Src
     )
 
 # Install target

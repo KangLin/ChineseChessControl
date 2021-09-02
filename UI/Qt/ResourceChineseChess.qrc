@@ -1,0 +1,55 @@
+<RCC>
+    <qresource prefix="/image">
+        <file alias="BCHE">../../Src/Res/Picture/69/bche.png</file>
+        <file alias="BMA">../../Src/Res/Picture/69/bma.png</file>
+        <file alias="BPAO">../../Src/Res/Picture/69/bpao.png</file>
+        <file alias="BSHI">../../Src/Res/Picture/69/bshi.png</file>
+        <file alias="BSHUAI">../../Src/Res/Picture/69/bjiang.png</file>
+        <file alias="BXIANG">../../Src/Res/Picture/69/bxiang.png</file>
+        <file alias="BZU">../../Src/Res/Picture/69/bbing.png</file>
+        <file alias="CHU">../../Src/Res/Picture/CHU.BMP</file>
+        <file alias="HE">../../Src/Res/Picture/HE.BMP</file>
+        <file alias="HAN">../../Src/Res/Picture/HAN.BMP</file>
+        <file alias="JIE">../../Src/Res/Picture/JIE.BMP</file>
+        <file alias="KL">../../Src/Res/Picture/KL.BMP</file>
+        <file alias="QIPANG">../../Src/Res/Picture/QIPANG.jpg</file>
+        <file alias="RBING">../../Src/Res/Picture/69/rbing.png</file>
+        <file alias="RCHE">../../Src/Res/Picture/69/rche.png</file>
+        <file alias="RMA">../../Src/Res/Picture/69/rma.png</file>
+        <file alias="RPAO">../../Src/Res/Picture/69/rpao.png</file>
+        <file alias="RSHI">../../Src/Res/Picture/69/rshi.png</file>
+        <file alias="RSHUAI">../../Src/Res/Picture/69/rjiang.png</file>
+        <file alias="RXIANG">../../Src/Res/Picture/69/rxiang.png</file>
+        <file alias="Chess">../../Src/Res/Picture/69/bjiang.png</file>
+    </qresource>
+    <qresource prefix="/image/bmp">
+        <file alias="BCHE">../../Src/Res/Picture/BCHE.BMP</file>
+        <file alias="BMA">../../Src/Res/Picture/BMA.BMP</file>
+        <file alias="BPAO">../../Src/Res/Picture/BPAO.BMP</file>
+        <file alias="BSHI">../../Src/Res/Picture/BSHI.BMP</file>
+        <file alias="BSHUAI">../../Src/Res/Picture/BSHUAI.BMP</file>
+        <file alias="BXIANG">../../Src/Res/Picture/BXIANG.BMP</file>
+        <file alias="BZU">../../Src/Res/Picture/BZU.BMP</file>
+        <file alias="CHU">../../Src/Res/Picture/CHU.BMP</file>
+        <file alias="HE">../../Src/Res/Picture/HE.BMP</file>
+        <file alias="HAN">../../Src/Res/Picture/HAN.BMP</file>
+        <file alias="JIE">../../Src/Res/Picture/JIE.BMP</file>
+        <file alias="KL">../../Src/Res/Picture/KL.BMP</file>
+        <file alias="QIPANG">../../Src/Res/Picture/QIPANG.BMP</file>
+        <file alias="RBING">../../Src/Res/Picture/RBING.BMP</file>
+        <file alias="RCHE">../../Src/Res/Picture/RCHE.BMP</file>
+        <file alias="RMA">../../Src/Res/Picture/RMA.BMP</file>
+        <file alias="RPAO">../../Src/Res/Picture/RPAO.BMP</file>
+        <file alias="RSHI">../../Src/Res/Picture/RSHI.BMP</file>
+        <file alias="RSHUAI">../../Src/Res/Picture/RSHUAI.BMP</file>
+        <file alias="RXIANG">../../Src/Res/Picture/RXIANG.BMP</file>
+        <file alias="Chess">../../Src/Res/Picture/Chess.ico</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file alias="CHECK">../../Src/Res/Sound/CHECK.WAV</file>
+        <file alias="EAT">../../Src/Res/Sound/EAT.WAV</file>
+        <file alias="GO">../../Src/Res/Sound/GO.WAV</file>
+        <file alias="DEAD">../../Src/Res/Sound/DEAD.WAV</file>
+        <file alias="SELECT">../../Src/Res/Sound/SELECT.WAV</file>
+    </qresource>
+</RCC>
