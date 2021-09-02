@@ -36,6 +36,7 @@ include(${RabbitCommon_DIR}/cmake/Translations.cmake)
 GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
 if("Debug" STREQUAL CMAKE_BUILD_TYPE)
+    list(APPEND PRIVATE_DEFINITIONS DEBUG)
     LIST(APPEND RCC_FILES
         ${TRANSLATIONS_QRC_FILES}
         )
@@ -58,7 +59,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${BUILD_VERSION})
 
 if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DBUILD_VERSION="${BUILD_VERSION}" ${PRIVATE_DEFINITIONS})
 endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
 
