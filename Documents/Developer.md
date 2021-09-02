@@ -25,9 +25,9 @@
   + 中国象棋基本规则
   + 棋局保存和复盘
 - 界面适配
-  + [中国象棋 MFC 扩展动态库](#中国象棋-MFC-扩展动态库)，代码位于 [Src/MFC](../Src/MFC) 下
-  + [中国象棋 ActiveX 控件](ActiveX.md)，代码位于 [Src/ActiveX](../Src/ActiveX) 下
-  + [中国象棋 Qt 插件](#中国象棋-Qt-插件)，代码位于 [Src/Qt](../Src/Qt) 下
+  + [中国象棋 MFC 扩展动态库](#中国象棋-MFC-扩展动态库)，代码位于 [UI/MFC](../UI/MFC) 下
+  + [中国象棋 ActiveX 控件](ActiveX.md)，代码位于 [UI/ActiveX](../UI/ActiveX) 下
+  + [中国象棋 Qt 插件](#中国象棋-Qt-插件)，代码位于 [UI/Qt](../UI/Qt) 下
 
 ### 中国象棋库
 
@@ -41,13 +41,13 @@
 ### 界面适配
 #### 中国象棋 MFC 扩展动态库
 
-它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [Src/MFC](../Src/MFC) 下，接口详见：[ChineseChessView.h](../Src/MFC/ChineseChessView.h)。
+它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [UI/MFC](../UI/MFC) 下，接口详见：[ChineseChessView.h](../UI/MFC/ChineseChessView.h)。
 其使用方式与使用普通的 MFC 类一样。  
 **注意**:在使用时，必须在程序初始化时（一般在 main 函数开始时)，必须先调用 ChineseChessViewNewDynLinkLibrary() 初始化资源。
 
 #### 中国象棋 Qt 插件
 
-它实现了中国象棋 Qt 插件，代码位于 [Src/Qt](../Src/Qt) 下。接口详见：[FrmChineseChess.h](../Src/Qt/FrmChineseChess.h)。
+它实现了中国象棋 Qt 插件，代码位于 [UI/Qt](../UI/Qt) 下。接口详见：[FrmChineseChess.h](../UI/Qt/FrmChineseChess.h)。
 其使用方式与使用普通Qt控件类一样。它还能在 Qt 设计器中使用。
 使用：
 - 在程序开始时调用一次 InitResource() 函数，初始化资源。
