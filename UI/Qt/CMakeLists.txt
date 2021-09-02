@@ -68,10 +68,8 @@ if(MSVC)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess RabbitCommon ${QT_LIBRARIES})
-target_include_directories(${PROJECT_NAME}
-    PRIVATE ${CMAKE_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
-    ${RabbitCommon_DIR}/Src
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     )
 
 SET(INSTALL_LIBRARY "${CMAKE_INSTALL_LIBDIR}")

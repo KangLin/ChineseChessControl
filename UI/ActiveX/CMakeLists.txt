@@ -55,11 +55,11 @@ endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE ${LIBS_DEFINES})
 target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView ${LIBS})
-target_include_directories(${PROJECT_NAME}
-    PRIVATE ${RabbitCommon_DIR}/Src
-    ${CMAKE_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../
-	${CMAKE_CURRENT_SOURCE_DIR}/../MFC)
+#target_include_directories(${PROJECT_NAME}
+#    PRIVATE ${RabbitCommon_DIR}/Src
+#    ${CMAKE_BINARY_DIR}
+#    ${CMAKE_CURRENT_SOURCE_DIR}/../
+#	${CMAKE_CURRENT_SOURCE_DIR}/../MFC)
 
 # 编译完成后向系统注册中国象棋控件
 add_custom_command(

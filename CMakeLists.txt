@@ -123,11 +123,11 @@ add_subdirectory(Src)
 if(MSVC)
     option(BUILD_CHINESE_CHESS_MFC_VIEW "Build MFC chinese chess mfc view" ON)
     if(BUILD_CHINESE_CHESS_MFC_VIEW)
-        add_subdirectory(Src/MFC)
+        add_subdirectory(UI/MFC)
         
         option(BUILD_CHINESE_CHESS_ACTIVEX "Build MFC chinese chess activex" ON)
         if(BUILD_CHINESE_CHESS_ACTIVEX)
-            add_subdirectory(Src/ActiveX)
+            add_subdirectory(UI/ActiveX)
         endif()
     endif()
     
@@ -188,7 +188,7 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
             message(FATAL_ERROR "       cmake -DRabbitCommon_DIR= ")
         endif()
         
-        add_subdirectory(Src/Qt)
+        add_subdirectory(UI/Qt)
         
         option(BUILD_CHINESE_CHESS_QT_APP "Build MFC chinese chess qt application" ON)
         if(BUILD_CHINESE_CHESS_QT_APP)
