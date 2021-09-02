@@ -115,4 +115,4 @@
 WIndows 中文系统字符编码默认为GB2313。
 linux系统下字符编码一般使用 UTF-8 。
 所以本项目跨平台部分的文件中的字符釆用**多字节编码**，
-而与VC相关的部分文件使用 UNICODE 编码（位于：Src\ActiveX 和 App\MFC）。
+而与VC相关的部分文件使用 UNICODE 编码（位于：UI/ActiveX 和 App/MFC）。
