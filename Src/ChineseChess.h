@@ -33,7 +33,7 @@ public:
     CChineseChess();
     virtual ~CChineseChess();
     
-    //棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
+    /// 棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
     typedef enum  _ENUM_BoardLayout{
         NoQi = 0,
         OnlyTopBlack = 1,
@@ -67,13 +67,14 @@ public:
     int NextStep();	   //下一步
     int PreviouStep();     //上一步
     
-    /*
+    /**
      * 保存棋局。
      * 根据文件扩展名来保存为相应的格式。
      * 当前支持自定义格式、PGN格式
      */
     virtual int SaveChessGame(const char* pszFile);
-    /* 加载棋局。
+    /**
+     *  加载棋局。
      * 根据文件扩展名来解析文件的格式。
      * 当前支持自定义格式、PGN格式
      */
@@ -97,22 +98,22 @@ public:
 protected:
     // 下列虚拟函数由界面实现类完成
     
-    // 提示音
+    /// 提示音
     enum PROMPT_SOUND {
-        JiangJun, // 将军
-        Eat,      // 吃子
-        Go,       // 走棋
-        NoGo,     // 不能走
-        Select    // 选棋
+        JiangJun, //< 将军
+        Eat,      //< 吃子
+        Go,       //< 走棋
+        NoGo,     //< 不能走
+        Select    //< 选棋
     };
     virtual int onPromptSound(PROMPT_SOUND sound = NoGo) = 0;
-    // 提示错误消息
+    /// 提示错误消息
     virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val) = 0;
-    // 清除提示框
+    /// 清除提示框
     virtual int onCleanPrompt(int i, int j) = 0;
-    // 画提示框
+    /// 画提示框
     virtual int onDrawPrompt(int i, int j) = 0;
-    // 走棋事件
+    /// 走棋事件
     // @see m_ChessBoard
     virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
     
@@ -129,7 +130,7 @@ private:
 protected:
     /**
             @brief 棋盘描述
-            @see CChessGame
+            
             @details 
             @code
             
@@ -145,6 +146,8 @@ protected:
               j 或 y 方向
               
             @endcode
+            
+            @see CChessGame
     */
     CPiece::ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
     ENUM_BoardLayout m_BoardLayout;		   //棋盘布局
