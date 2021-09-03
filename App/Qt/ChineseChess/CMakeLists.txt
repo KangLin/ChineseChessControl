@@ -38,7 +38,7 @@ if(ANDROID)
 else()
     add_executable(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
 endif()
-target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessQt ${QT_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessQt RabbitCommon ${QT_LIBRARIES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
@@ -66,7 +66,6 @@ endif()
 
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}
-    ${RabbitCommon_DIR}/Src
     )
 
 # Install target
