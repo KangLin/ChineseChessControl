@@ -3,7 +3,9 @@
   + 增加残局支持
   + 增加 FEN 支持
   + 增加 PGN 支持
-
+  + 界面框架从 Src 移到 UI 目录下
+  + 增加 CMake 导出配置文件
+  
 - v2.0.4
   + 用 CChineseChessView 修改 MFC 应用程序
   + 修改 MFC 中国象棋资源图片
