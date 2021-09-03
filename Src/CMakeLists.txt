@@ -71,7 +71,7 @@ if(WIN32)
         LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
         COMPONENT Runtime
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChess
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 else()
@@ -82,24 +82,27 @@ else()
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         COMPONENT Runtime
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChess
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 endif()
 
 export(TARGETS ${PROJECT_NAME}
        APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+       NAMESPACE ChineseChessControl::
 )
 # Install cmake configure files
 install(EXPORT ${PROJECT_NAME}Config
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess"
-        )
+    NAMESPACE ChineseChessControl::
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+    )
+# Install cmake configure version file
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     VERSION ${BUILD_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess")
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl")
 
 # 安装图标
 INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Res/Picture/Chess.ico

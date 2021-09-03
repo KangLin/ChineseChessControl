@@ -88,27 +88,29 @@ INSTALL(TARGETS ${PROJECT_NAME}
     LIBRARY DESTINATION "${INSTALL_LIBRARY}"
         COMPONENT Runtime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChess
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
 
 export(TARGETS ${PROJECT_NAME}
     APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    NAMESPACE ChineseChessControl::
     )
 
 # 因为编译树中已有 export(ChineseChessQtConfig.cmake)
 configure_package_config_file(
       ${CMAKE_SOURCE_DIR}/cmake/ChineseChessQtConfig.cmake.in
       ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
-      INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess"
+      INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
       )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
-      DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl
       RENAME ChineseChessQtConfig.cmake)
 
 # Install cmake configure files
 install(EXPORT ${PROJECT_NAME}Targets
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess"
+    NAMESPACE ChineseChessControl::
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
     )
 
 write_basic_package_version_file(
@@ -116,7 +118,7 @@ write_basic_package_version_file(
     VERSION ${BUILD_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess")
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl")
 
 IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
     OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
