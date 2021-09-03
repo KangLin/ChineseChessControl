@@ -14,6 +14,12 @@ namespace Ui {
 class CFrmChineseChess;
 }
 
+/**
+ * @brief 中国象棋窗体，完成中国象棋的界面
+ * @note
+ *   @li 在程序开始时，仅调用一次 InitResource
+ *   @li 在程序结束时，仅调用一次 CleanResource
+ */
 class CHINESECHESSQT_EXPORT CFrmChineseChess : public QWidget, public CChineseChess
 {
     Q_OBJECT
@@ -26,9 +32,13 @@ public:
     explicit CFrmChineseChess(QWidget *parent = nullptr);
     virtual ~CFrmChineseChess() override;
 
-    // 初始化资源，在程序开始时调用一次
+    /**
+     * @brief 初始化资源，仅在程序开始时调用一次
+     * @param szLanguage: 使用语言
+     * @return 
+     */
     static int InitResource(const QString szLanguage);
-    // 清理资源，在程序结束时调用一次
+    /// 清理资源，仅在程序结束时调用一次
     static int CleanResource();
 
     QDateTime GetStartTime();
