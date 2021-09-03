@@ -16,7 +16,7 @@
 
 /**
  * 棋局
- * 完成棋局的加载、保存、复盘
+ * 完成棋局的加载、保存、复盘等对棋局的操作
  * 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
  *      红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]
 
@@ -42,6 +42,7 @@ public:
 	CChessGame();
 	virtual ~CChessGame();
 
+    // 保存一步
 	// 调整棋局存储大小，用于保存棋局
 	int SaveStep(int i, int j,
                  CPiece::ENUM_QiZi qz,
@@ -93,7 +94,6 @@ public:
 	 * @date 2020/5/19
 	 *
 	 * @param  pFileName Filename of the file.
-	 * @param  layout    棋盘布局(CChineseChess::ENUM_BoardLayout)
 	 *
 	 * @returns An int.
 	 */
@@ -117,8 +117,9 @@ public:
         CPiece::ENUM_QiZi qz;
     };
     std::vector<strStartGame> m_StartGame; // 棋盘开局
-    // 检测布局是否合法, 使用标准棋盘布局，红下黑上
+    /// 检测布局是否合法, 使用标准棋盘布局，红下黑上
     static int CheckGame(CPiece::ENUM_QiZi board[][10]);
+    /// 得到开局棋盘布局
     int GetStartGameBoard(CPiece::ENUM_QiZi board[][10]);
 
 private:

@@ -15,6 +15,9 @@
 #include "Common.h"
 #include "chinesechess_export.h"
 
+/**
+ * @brief 棋子类，用于描述棋子。对棋子做判断操作
+ */
 class CHINESECHESS_EXPORT CPiece
 {
 public:

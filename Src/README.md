@@ -9,7 +9,15 @@
 不同界面平台开发框架只需要从 CChineseChess 类派生，
 并实现其平台相关的虚拟函数。
 
-它实现的功能：
+## 它实现的功能：
 
 - [x] 中国象棋基本规则
 - [x] 棋局保存和复盘
+
+## 使用 ChineseChess
++ 使用 find_package 查找你需要的库。例如,你需要从 ChineseChess 为一个新的界面框架实现中国象棋：
+
+      find_package(ChineseChess)  #查找 ChineseChess 库
+      if(ChineseChess_FOUND)
+          target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChess)  # 应用链接 ChineseChess 库
+      endif()
