@@ -69,7 +69,8 @@ if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 endif()
 
-target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess RabbitCommon ${QT_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess ${QT_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE RabbitCommon)
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     )
@@ -81,7 +82,7 @@ endif()
 
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}
-    EXPORT ${PROJECT_NAME}Config
+    EXPORT ${PROJECT_NAME}Targets
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
         COMPONENT Runtime
     LIBRARY DESTINATION "${INSTALL_LIBRARY}"
@@ -94,10 +95,22 @@ INSTALL(TARGETS ${PROJECT_NAME}
 export(TARGETS ${PROJECT_NAME}
     APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     )
+
+# 因为编译树中已有 export(ChineseChessQtConfig.cmake)
+configure_package_config_file(
+      ${CMAKE_SOURCE_DIR}/cmake/ChineseChessQtConfig.cmake.in
+      ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
+      INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess"
+      )
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess
+      RENAME ChineseChessQtConfig.cmake)
+
 # Install cmake configure files
-install(EXPORT ${PROJECT_NAME}Config
+install(EXPORT ${PROJECT_NAME}Targets
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess"
     )
+
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     VERSION ${BUILD_VERSION}
