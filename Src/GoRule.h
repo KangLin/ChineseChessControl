@@ -17,6 +17,9 @@
 
 #include "Piece.h"
 
+/**
+ * @brief 走棋规则。
+ */
 class CHINESECHESS_EXPORT CGoRule
 {
 public:

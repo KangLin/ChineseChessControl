@@ -65,14 +65,14 @@
 
         find_package(ChineseChess)  #查找 ChineseChess 库
         if(ChineseChess_FOUND)
-            target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess)  # 应用链接 ChineseChess 库
+            target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChess)  # 应用链接 ChineseChess 库
         endif()
       
 - 使用 ChineseChessView ，只能由 MFC 程序使用
 
       find_package(ChineseChessView)  #查找 ChineseChessView 库
       if(ChineseChessView_FOUND)
-          target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessView)  # 应用链接 ChineseChessView 库
+          target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChessView)  # 应用链接 ChineseChessView 库
       endif()
 
 - 使用 ChineseChessActiveX ，只能由 WINDOWS 程序使用。参见：[ActiveX](ActiveX.md#使用)
@@ -81,7 +81,7 @@
 
       find_package(ChineseChessQt)  #查找 ChineseChessQt 库
       if(ChineseChessQt_FOUND)
-          target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessQt)  # 应用链接 ChineseChessQt 库
+          target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChessQt)  # 应用链接 ChineseChessQt 库
       endif()
 
 #### 使用其它项目管理工具

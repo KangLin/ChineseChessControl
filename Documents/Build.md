@@ -80,7 +80,7 @@
   + 执行安装目录 bin 目录下的程序
 
         cd build/install/bin
-        ./ChineseChess
+        ./ChineseChessApp  #Qt 程序
 
 #### windows 平台编译说明
   - 使用 cmake-gui.exe 工具编译。打开 cmake-gui.exe 配置
@@ -115,7 +115,7 @@
 
               cd ChineseChessControl
               cd build/install/bin
-              ChineseChess.exe
+              ChineseChessApp.exe
               或者：
               ChineseChessMfcApp.exe
 
@@ -260,7 +260,7 @@ ROOT
   |------- bin    ：存放应用程序
   |------- lib    ：存放库文件
   |         |-- cmake
-  |               |---- ChineseChess：存放 CMAKE 配置文件
+  |               |---- ChineseChessControl： 存放 CMAKE 配置文件
   |------- include
-              |--- ChineseChess： 存放头文件
+              |--- ChineseChessControl： 存放头文件
 ```

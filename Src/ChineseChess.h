@@ -23,6 +23,7 @@
  * 
  * 界面部分由相应的界面派生类实现相应的虚拟函数
  * 
+ * @see CPiece CGoRule CChessGame
  * @author KangLin(kl222@126.com)
  * @date 2020/5/17
  */
@@ -47,27 +48,35 @@ public:
     ENUM_BoardLayout GetBoardLayout();
     
     /**
-         * 走棋
-         *
-         * @author KangLin(kl222@126.com)
-         * @date 2020/5/17
-         *
+     * 走棋
+     *
+     * @author KangLin(kl222@126.com)
+     * @date 2020/5/17
+     *
      * @param  int i：当前下棋的位置,横坐标[0-8]
      * @param  int j：当前下棋的位置,纵坐标[0-9]
-         * @param  bNext (Optional) 指示是否是在NextStep中调用
-         * 				 如果是在 NextStep 中调用，则是在复盘
-         * 				 如果不是。则是在正常下棋
-         *
-         * @returns True if it succeeds, false if it fails.
-         */
+     * @param  bNext (Optional) 指示是否是在NextStep中调用
+     * 				 如果是在 NextStep 中调用，则是在复盘
+     * 				 如果不是。则是在正常下棋
+     *
+     * @returns True if it succeeds, false if it fails.
+     */
     bool GoChess(int i, int j, bool bNext = false);	//走棋
     
     // 复盘操作
     int NextStep();	   //下一步
     int PreviouStep();     //上一步
     
-    //保存棋局
+    /*
+     * 保存棋局。
+     * 根据文件扩展名来保存为相应的格式。
+     * 当前支持自定义格式、PGN格式
+     */
     virtual int SaveChessGame(const char* pszFile);
+    /* 加载棋局。
+     * 根据文件扩展名来解析文件的格式。
+     * 当前支持自定义格式、PGN格式
+     */
     virtual int LoadChessGame(const char* pszFile);
     time_t GetStartTime();
     int SetStartTime(const time_t &t);
@@ -120,6 +129,9 @@ private:
 protected:
     /**
             @brief 棋盘描述
+            @see CChessGame
+            @details 
+            @code
             
             [0][0] ------------------> i 或 x 方向
                    |
@@ -131,6 +143,8 @@ protected:
                   \|/                 [9][10]
                    |
               j 或 y 方向
+              
+            @endcode
     */
     CPiece::ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
     ENUM_BoardLayout m_BoardLayout;		   //棋盘布局
@@ -156,6 +170,7 @@ protected:
     
     int Initial();
     
+    // 是交换布局时，需要转换
     int ConvertQiPang(const int &i, const int &j, int &x, int &y);
 };
 

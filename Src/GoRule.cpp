@@ -1,7 +1,6 @@
 ﻿/*******************************************************************************************************
 文件名：GoRule.cpp
 功  能：走棋规则
-思  路：红棋放在棋盘上方，黑棋放在棋盘下方。
 编译器：Visual C++ 6.0
 作  者：康  林
 版  本：1.0.0.1
@@ -360,6 +359,7 @@ CGoRule::ENUM_ReturnValue CGoRule::BingRule(int ito, int jto, int ifrom, int jfr
 {
 	bool bTopSide = false;
 	bool bExit = false;
+    // 判断是否与上面的士、帅是同一边的
 	for (int i = 3; i < 6; i++)
 	{
 		for (int j = 0; j < 3; j++)
