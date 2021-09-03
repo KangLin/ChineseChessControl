@@ -41,55 +41,15 @@ jobs:
         # architectures to pass to dpkg --add-architecture
         #architectures: # optional
         # apt packages to install
-        packages: cmake build-essential liblog4cxx-dev freerdp2-dev libvncserver-dev libpixman-1-dev libssh-dev libtelnet-dev libqxmpp-dev debhelper dh-systemd fakeroot doxygen qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools qtmultimedia5-dev qtlocation5-dev libqt5svg5-dev libutf8proc-dev libqtermwidget5-0-dev libpam0g-dev libxkbcommon-dev libxkbcommon-x11-dev libx11-xcb-dev libx11-dev libxfixes-dev
+        packages: cmake build-essential debhelper fakeroot doxygen qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools qtmultimedia5-dev
 
-    - name: build tigervnc
-      working-directory: ${{env.SOURCE_DIR}}
-      run: |
-        git clone https://github.com/KangLin/tigervnc.git 
-        cd ${{env.SOURCE_DIR}}/tigervnc
-        cmake -E make_directory build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.INSTALL_DIR }} -DBUILD_TESTS=OFF -DBUILD_VIEWER=OFF
-        cmake --build . --config ${{ matrix.BUILD_TYPE }}
-        cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
-    
-    - name: build libdatachannel
-      working-directory: ${{env.SOURCE_DIR}}
-      run: |
-        git clone https://github.com/paullouisageneau/libdatachannel.git
-        cd libdatachannel
-        git submodule update --init --recursive
-        cmake -E make_directory build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.INSTALL_DIR }}
-        cmake --build . --config ${{ matrix.BUILD_TYPE }}
-        cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
-    
-    - name: build QtService
-      working-directory: ${{env.SOURCE_DIR}}
-      env:
-        QT_ROOT: /usr/lib/`uname -m`-linux-gnu/qt5
-      run: |
-        git clone https://github.com/KangLin/qt-solutions.git
-        cd qt-solutions/qtservice
-        git submodule update --init --recursive
-        cmake -E make_directory build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.INSTALL_DIR }} -DQT_DIR=%QT_ROOT%/lib/cmake/Qt5 -DQt5_DIR=%QT_ROOT%/lib/cmake/Qt5
-        cmake --build . --config ${{ matrix.BUILD_TYPE }}
-        cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
-        
     - name: build_debpackage.sh
       working-directory: ${{github.workspace}}
       env:
         RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
-        tigervnc_DIR: ${{ env.INSTALL_DIR }}/lib/cmake
-        LibDataChannel_DIR: ${{ env.INSTALL_DIR }}/share/cmake/libdatachannel
-        QtService_DIR: ${{ env.INSTALL_DIR }}/share/cmake/QtService
       run: |
         ./build_debpackage.sh /usr/lib/`uname -m`-linux-gnu/qt5
-        cp ../rabbitremotecontrol* .
+        cp ../chinesechess* .
         
 #    - name: update xml file
 #      run: |
@@ -103,10 +63,9 @@ jobs:
     - name: update 
       uses: actions/upload-artifact@v2
       with:
-          name: rabbitremotecontrol_${{ matrix.os }}
+          name: chinesechess${{ matrix.os }}
           path: |
-            rabbitremotecontrol*
-            update_linux.xml
+            chinesechess*
       if: ${{ matrix.BUILD_TYPE == 'Release' }} 
      
     #- name: Release

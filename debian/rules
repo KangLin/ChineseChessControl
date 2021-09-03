@@ -26,4 +26,4 @@ override_dh_auto_build:
 	dh_auto_build -- $(if "`cat /proc/cpuinfo |grep 'cpu cores' |wc -l`" = "0",, -j`cat /proc/cpuinfo |grep 'cpu cores' |wc -l`)
 
 override_dh_shlibdeps:
-	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info -l`pwd`/debian/chinesechess/opt/ChineseChess/lib
+	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info -l`pwd`/debian/chinesechess/opt/ChineseChess/lib:`pwd`/debian/chinesechess/opt/ChineseChess/lib/`uname -m`-linux-gnu
