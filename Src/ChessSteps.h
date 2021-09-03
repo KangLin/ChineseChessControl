@@ -1,8 +1,3 @@
-/**
- @brief 着法 
- @see http://www.xqbase.com/protocol/cchess_move.htm
- */
-
 #ifndef CCHESSSTEPS_H_KL_2020_06_12_
 #define CCHESSSTEPS_H_KL_2020_06_12_
 
@@ -12,6 +7,10 @@
 #include <vector>
 #include "Piece.h"
 
+/**
+ @brief 着法 
+ @see http://www.xqbase.com/protocol/cchess_move.htm
+ */
 class CChessSteps
 {
 public:

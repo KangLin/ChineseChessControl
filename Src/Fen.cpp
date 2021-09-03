@@ -11,7 +11,8 @@
 
 红方用大写字母，黑方用小写字母
 
-@see http://www.xqbase.com/protocol/pgnfen2.htm
+@see https://www.xqbase.com/protocol/cchess_fen.htm
+     http://www.xqbase.com/protocol/pgnfen2.htm
 
     FEN就是“福斯夫-爱德华兹记号法”(Forsyth-Edwards Notation)，
 这是一种使用ASCII码字符描述国际象棋局面的标准。
