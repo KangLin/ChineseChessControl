@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/")
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(ChineseChess)
+
+include("${CMAKE_CURRENT_LIST_DIR}/ChineseChessViewTargets.cmake")
