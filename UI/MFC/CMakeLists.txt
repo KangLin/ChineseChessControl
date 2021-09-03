@@ -43,23 +43,34 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}
-	EXPORT ${PROJECT_NAME}Config
+	EXPORT ${PROJECT_NAME}Targets
 		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 	COMPONENT Runtime
         LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
     COMPONENT Runtime
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChess
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
-
+# Install cmake configure files
+install(EXPORT ${PROJECT_NAME}Targets
+    NAMESPACE ChineseChessControl::
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+    )
+# 因为编译树中已有 export(${PROJECT_NAME}Config.cmake)
+configure_package_config_file(
+      ${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in
+      ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in
+      INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+      )
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl
+      RENAME ${PROJECT_NAME}Config.cmake)
 export(TARGETS ${PROJECT_NAME}
+    NAMESPACE ChineseChessControl::
     APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
 )
-# Install cmake configure files
-install(EXPORT ${PROJECT_NAME}Config
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChess"
-        )
+
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     VERSION ${BUILD_VERSION}
