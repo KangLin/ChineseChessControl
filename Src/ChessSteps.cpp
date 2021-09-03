@@ -73,5 +73,7 @@ int CChessStepsIccs::AddStep(int i, int j, CPiece::ENUM_QiZi qz, const std::stri
 
 int CChessStepsIccs::GetStep(int &i, int &j, CPiece::ENUM_QiZi &qz, std::string &szDescript)
 {
+    //TODO: 解码着法
+    
     return 0;
 }

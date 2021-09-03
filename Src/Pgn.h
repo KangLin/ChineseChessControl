@@ -15,6 +15,7 @@
  *        single game. 
  * 
  * @see   http://www.xqbase.com/protocol/cchess_pgn.htm
+ *        https://www.xqbase.com/protocol/pgnfen1.htm
  */
 class CPGN
 {
