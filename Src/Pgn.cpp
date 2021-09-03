@@ -94,7 +94,7 @@ std::string CPGN::toString() const
     } // for
     pgn += "\n";
     pgn += m_pSteps->toString();
-    pgn += " " + GetResult();
+    pgn += "\n" + GetResult();
     return pgn;
 }
 
