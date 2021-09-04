@@ -161,6 +161,8 @@ int CFrmChineseChess::onPromptMessage(CGoRule::ENUM_ReturnValue val)
 		msg.setText(tr("This step cannot be taken, otherwise you will lose"));
         msg.setWindowTitle(tr("Opposite"));
 		break;
+    default:
+        return 0;
 	}
     msg.exec();
 	return 0;
