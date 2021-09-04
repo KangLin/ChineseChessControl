@@ -36,6 +36,11 @@ elseif(MSVC)
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
 	    "/SUBSYSTEM:WINDOWS")
 endif()
+if(MSVC)
+	target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
+elseif(MINGW)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE _WIN32_WINNT=0x0501)
+endif()
 
 if(BUILD_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
