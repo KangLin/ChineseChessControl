@@ -1,4 +1,6 @@
-﻿#include "Piece.h"
+﻿// 作者：康林 <kl222@126.com>
+
+#include "Piece.h"
 
 CPiece::CPiece()
 {}

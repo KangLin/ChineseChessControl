@@ -1,4 +1,6 @@
-﻿#include "ChessGame.h"
+﻿// 作者：康林 <kl222@126.com>
+
+#include "ChessGame.h"
 #include <fstream>
 #include <time.h>
 #include <string.h>
@@ -105,7 +107,7 @@ int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode
  *
  * @param char i：当前下棋的位置,横坐标[0-8]
  * @param char j：当前下棋的位置,纵坐标[0-9]
- * @param qz 棋子
+ * @param qz: 棋子
  * @param const char* pDescript： 这一步的描述
  *
  * @returns 成功返回 0 ，否则返回非零
@@ -366,14 +368,17 @@ int CChessGame::SaveChessGamePgn(const char *pFileName, _SavePgnFormat f)
     if(!m_szBlackName.empty())
         pgn.SetBlack(m_szBlackName.c_str());
 
-    if(!m_StartGame.empty())
+    CPiece::ENUM_QiZi board[9][10];
+    if(m_StartGame.empty())
     {
-        std::string szFen;
-        CFen fen;
-        nRet = fen.FenFromStartGame(szFen, m_StartGame);
-        if(0 == nRet)
-            pgn.SetFen(szFen.c_str());
+        GetStartGameBoard(board);
     }
+    
+    std::string szFen;
+    CFen fen;
+    nRet = fen.FenFromBoard(szFen, board);
+    if(0 == nRet)
+        pgn.SetFen(szFen.c_str());
 
     for(const auto& item: m_Tags)
     {
@@ -518,7 +523,7 @@ int CChessGame::AddTag(const std::string &szTag, const std::string &szVal)
 }
 
 //检测布局是否合法, 使用标准棋盘布局，红下黑上
-int CChessGame::CheckGame(CPiece::ENUM_QiZi board[][10])
+int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
 {
     int nRet = 0;
     
@@ -630,7 +635,7 @@ int CChessGame::CheckGame(CPiece::ENUM_QiZi board[][10])
     return nRet;
 }
 
-int CChessGame::GetStartGameBoard(CPiece::ENUM_QiZi board[][10])
+int CChessGame::GetStartGameBoard(/*[out]*/CPiece::ENUM_QiZi board[][10])
 {
 	//初始化空棋局
 	int i, j;

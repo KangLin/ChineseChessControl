@@ -1,3 +1,5 @@
+// 作者：康林 <kl222@126.com>
+
 #ifndef CCHESSSTEPS_H_KL_2020_06_12_
 #define CCHESSSTEPS_H_KL_2020_06_12_
 
