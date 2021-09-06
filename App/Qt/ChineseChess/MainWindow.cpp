@@ -41,7 +41,9 @@ void MainWindow::on_actionSave_S_triggered()
 {
     if(!m_pChess) return;
     QString szFile = RabbitCommon::CDir::GetSaveFileName(this,
-                                                         tr("Open chess game"));
+                                                         tr("Open chess game"),
+                                                         QString(),
+        tr("Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)"));
     m_pChess->SaveChessGame(szFile.toStdString().c_str());
 }
 
