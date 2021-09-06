@@ -1,3 +1,5 @@
+// 作者：康林 <kl222@126.com>
+
 #ifndef CPGN_H_KL_2020_06_11_
 #define CPGN_H_KL_2020_06_11_
 

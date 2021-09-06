@@ -1,7 +1,4 @@
-﻿/**
- * 棋局类
- */
- 
+﻿ 
 #ifndef CHESS_GAME_KL_2020_05_15_
 #define CHESS_GAME_KL_2020_05_15_
 
@@ -15,12 +12,13 @@
 #include "chinesechess_export.h"
 
 /**
- * 棋局
+ * 棋局类
  * 完成棋局的加载、保存、复盘等对棋局的操作
  * 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
  *      红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]
 
         棋盘位置
+        @code
 
 	    [0][0] ------------------> i 或 x 方向
 		      |
@@ -32,8 +30,11 @@
 			 \|/                 [9][10]
 			  |
 	      j 或 y 方向
-          
- * @author KangLin(kl222@126.com)
+
+       @endcode
+
+   行棋，红方先行：详见《象棋竞赛规则(2011)》第一章 第2条
+ * @author 康林 <kl222@126.com>
  * @date 2020/5/17
  */
 class CHINESECHESS_EXPORT CChessGame
@@ -118,9 +119,13 @@ public:
     };
     std::vector<strStartGame> m_StartGame; // 棋盘开局
     /// 检测布局是否合法, 使用标准棋盘布局，红下黑上
-    static int CheckGame(CPiece::ENUM_QiZi board[][10]);
-    /// 得到开局棋盘布局
-    int GetStartGameBoard(CPiece::ENUM_QiZi board[][10]);
+    static int CheckGame(const CPiece::ENUM_QiZi board[][10]);
+    /**
+     * @brief 得到开局棋盘布局
+     * @param board 返回开局棋盘布局
+     * @return 成功，返回0，失败，返回非0
+     */
+    int GetStartGameBoard(/*[out]*/CPiece::ENUM_QiZi board[][10]);
 
 private:
 	struct strCODE{

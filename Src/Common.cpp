@@ -1,4 +1,5 @@
-﻿// common.cpp: implementation of the common class.
+﻿// 作者：康林 <kl222@126.com>
+// common.cpp: implementation of the common class.
 //
 //////////////////////////////////////////////////////////////////////
 

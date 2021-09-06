@@ -1,4 +1,5 @@
-﻿// common.h: interface for the common class.
+﻿// 作者：康林 <kl222@126.com>
+// common.h: interface for the common class.
 //
 //////////////////////////////////////////////////////////////////////
 

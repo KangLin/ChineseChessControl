@@ -24,7 +24,7 @@
  * 界面部分由相应的界面派生类实现相应的虚拟函数
  * 
  * @see CPiece CGoRule CChessGame
- * @author KangLin(kl222@126.com)
+ * @author 康林 <kl222@126.com>
  * @date 2020/5/17
  */
 class CHINESECHESS_EXPORT CChineseChess
@@ -33,7 +33,9 @@ public:
     CChineseChess();
     virtual ~CChineseChess();
     
-    /// 棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条
+    /// 标准棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条。红棋在下，黑棋在上。
+    /// 界面可以支持非标准棋盘布局（红在上，黑在下）
+    /// @see CChessGame
     typedef enum  _ENUM_BoardLayout{
         NoQi = 0,
         OnlyTopBlack = 1,
@@ -152,7 +154,7 @@ protected:
     CPiece::ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
     ENUM_BoardLayout m_BoardLayout;		   //棋盘布局
     
-    //走棋状态
+    //走棋状态，行棋，红方先行：详见《象棋竞赛规则(2011)》第一章 第2条
     typedef enum _ENUM_WalkState {
         RedReadly,
         RedWalked,
@@ -173,7 +175,8 @@ protected:
     
     int Initial();
     
-    // 是交换布局时，需要转换
+    // 因为棋局是用的标准棋盘布局（红下黑上），而界面可以是非标准布局
+    // 所以是交换布局时，需要转换
     int ConvertQiPang(const int &i, const int &j, int &x, int &y);
 };
 

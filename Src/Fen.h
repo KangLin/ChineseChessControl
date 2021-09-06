@@ -5,6 +5,8 @@
 #pragma once
 
 #include <vector>
+// 作者：康林 <kl222@126.com>
+
 #include <string>
 #include "Piece.h"
 #include "ChessGame.h"
