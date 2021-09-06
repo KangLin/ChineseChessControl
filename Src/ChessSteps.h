@@ -40,6 +40,9 @@ protected:
     std::vector<strStep> m_Steps;
 };
 
+/**
+ * @brief The CChessStepsIccs class
+ */
 class CChessStepsIccs : public CChessSteps
 {
 public:
