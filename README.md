@@ -2,6 +2,9 @@
 
 作者：康林 (kl222@126.com)
 
+------------------------
+
+[![Gitter](https://badges.gitter.im/ChineseChessControl/community.svg)](https://gitter.im/ChineseChessControl/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
 [![Build Status](https://travis-ci.org/KangLin/ChineseChessControl.svg)](https://travis-ci.org/KangLin/ChineseChessControl)
 
