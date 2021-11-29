@@ -73,7 +73,7 @@ static QTranslator g_Translator;
 int CFrmChineseChess::InitResource(const QString szLanguage)
 {
     Q_INIT_RESOURCE(ResourceChineseChess);
-#if DEBUG
+#if (defined(DEBUG) || defined(_DEBUG)) && !defined (BUILD_SHARED_LIBS)
     Q_INIT_RESOURCE(translations_ChineseChessQt);
 #endif
     
@@ -87,7 +87,7 @@ int CFrmChineseChess::CleanResource()
 {
     qApp->removeTranslator(&g_Translator);
 
-#if DEBUG
+#if (defined(DEBUG) || defined(_DEBUG)) && !defined (BUILD_SHARED_LIBS)
     Q_CLEANUP_RESOURCE(translations_ChineseChessQt);
 #endif
     Q_CLEANUP_RESOURCE(ResourceChineseChess);
