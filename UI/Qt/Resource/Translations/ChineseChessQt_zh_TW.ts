@@ -25,7 +25,7 @@
         <translation>將對面</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="196"/>
+        <location filename="../../FrmChineseChess.cpp" line="198"/>
         <source>Chinese chess control</source>
         <translation>中國象棋控件</translation>
     </message>

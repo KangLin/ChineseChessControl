@@ -75,8 +75,13 @@
         <translation>打开棋局</translation>
     </message>
     <message>
+        <location filename="../../MainWindow.cpp" line="46"/>
+        <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="69"/>
+        <location filename="../../MainWindow.cpp" line="71"/>
         <source>Chinese chess</source>
         <translation>中国象棋</translation>
     </message>
