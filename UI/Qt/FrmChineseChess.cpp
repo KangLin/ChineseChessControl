@@ -7,7 +7,11 @@
 #include <QMouseEvent>
 #include <QPoint>
 #include <QMessageBox>
-#include <QSound>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    #include <QSoundEffect>
+#else
+    #include <QSound>
+#endif
 #include <QBitmap>
 
 CFrmChineseChess::CFrmChineseChess(QWidget *parent) :
@@ -126,25 +130,36 @@ void CFrmChineseChess::resizeEvent(QResizeEvent *event)
 
 int CFrmChineseChess::onPromptSound(PROMPT_SOUND sound)
 {
+    QString szFile;
 	switch (sound)
 	{
 	case JiangJun:
-		QSound::play(":/sound/CHECK");
+		szFile = ":/sound/CHECK";
 		break;
 	case Eat:
-		QSound::play(":/sound/EAT");
+		szFile = ":/sound/EAT";
 		break;
 	case Go:
-		QSound::play(":/sound/GO");
+		szFile = ":/sound/GO";
 		break;
 	case NoGo:
-		QSound::play(":/sound/DEAD");
+		szFile = ":/sound/DEAD";
 		break;
 	case Select:
-		QSound::play(":/sound/SELECT");
+		szFile = ":/sound/SELECT";
 		break;
+    default:
+        return 0;
 	}
-
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    QSoundEffect effect;
+    effect.setSource(QUrl::fromLocalFile(szFile));
+//    effect.setLoopCount(1);
+//    effect.setVolume(1);
+    effect.play();
+#else
+    QSound::play(szFile);
+#endif
 	return 0;
 }
 
