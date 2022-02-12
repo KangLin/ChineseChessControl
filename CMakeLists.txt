@@ -66,6 +66,8 @@ IF(MSVC)
         #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
         add_compile_options(/MP)
     ENDIF(WIN32_USE_MP)
+    add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 ENDIF(MSVC)
 IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
