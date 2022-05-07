@@ -90,7 +90,9 @@ INSTALL(TARGETS ${PROJECT_NAME}
     LIBRARY DESTINATION "${INSTALL_LIBRARY}"
         COMPONENT Runtime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        COMPONENT Development
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
+        COMPONENT Development
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
 
@@ -107,6 +109,7 @@ configure_package_config_file(
       )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
       DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl
+          COMPONENT Development
       RENAME ChineseChessQtConfig.cmake)
 
 # Install cmake configure files
@@ -120,7 +123,8 @@ write_basic_package_version_file(
     VERSION ${BUILD_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl")
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+        COMPONENT Development)
 
 IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
     OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
@@ -143,5 +147,5 @@ IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
         )
     INSTALL(DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>/"
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime)
+            COMPONENT Runtime)
 ENDIF()
