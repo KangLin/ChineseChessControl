@@ -195,18 +195,6 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     endif()
 endif()
 
-# Create install runtime target
-add_custom_target(install-runtime
-  COMMAND
-     "${CMAKE_COMMAND}" -DCMAKE_INSTALL_COMPONENT=Runtime 
-     -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_install.cmake"
-)
-# Create uninstall runtime target
-add_custom_target(uninstall-runtime
-  COMMAND
-     "${CMAKE_COMMAND}" -DCMAKE_INSTALL_COMPONENT=Runtime 
-     -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-)
 # Create will be delete files
 CONFIGURE_FILE(
     "${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
@@ -215,14 +203,15 @@ CONFIGURE_FILE(
 # Create unistall target
 ADD_CUSTOM_TARGET(uninstall
     "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake"
-    DEPENDS uninstall-runtime)
+    )
 
 IF(WIN32)
     # 替换 Install.nsi 中的 MSVC_VERSION
     configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
-    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh DESTINATION "${CMAKE_BINARY_DIR}"
+    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
+        DESTINATION ..
         COMPONENT Runtime)
-endif()
+ENDIF()
 # Install other files
 set(OTHER_FILES
     License.md
@@ -234,6 +223,8 @@ if(ANDROID)
 else()
     INSTALL(FILES ${OTHER_FILES} DESTINATION "." COMPONENT Runtime)
 endif()
+
+include(cmake/CMakeCPack.cmake)
 
 option(BUILD_DOCS "Generating API documentation" OFF)
 if(BUILD_DOCS)
