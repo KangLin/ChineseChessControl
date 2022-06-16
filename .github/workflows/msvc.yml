@@ -1,39 +1,36 @@
-name: msvc
+ame: msvc
 
 on: [push]
 
 jobs:
   use_install_qt:
-    name: ${{ matrix.os }}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+    name: ${{matrix.os}}-vc-${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
-        qt_version: [6.2.2, 5.15.2, 5.12.12]
+        os: [windows-latest]
+        CMAKE_GENERATOR: [Visual Studio 17 2022]
+        CMAKE_GENERATOR_PLATFORM: [x64, Win32]
+        # VCPKG_PLATFORM_TOOLSET: [v142, v141, v140]
         include:
-          - os: windows-2019
-            triplet: x64-windows
+          - triplet: x64-windows
             VCPKG_PLATFORM_TOOLSET: v142
             qt_version: 6.2.2
             qt_arch: win64_msvc2019_64
-            CMAKE_GENERATOR: "Visual Studio 16 2019"
             CMAKE_GENERATOR_PLATFORM: x64
             qt_modules: qtscxml qtpositioning
 
-          - os: windows-2019
-            triplet: x64-windows
+          - triplet: x64-windows
             VCPKG_PLATFORM_TOOLSET: v142
             qt_version: 5.15.2
             qt_arch: win64_msvc2019_64
-            CMAKE_GENERATOR: "Visual Studio 16 2019"
             CMAKE_GENERATOR_PLATFORM: x64
 
-          - os: windows-2016
-            triplet: x86-windows
+          - triplet: x86-windows
             VCPKG_PLATFORM_TOOLSET: v141
             qt_version: 5.12.12
             qt_arch: win32_msvc2017
-            CMAKE_GENERATOR: "Visual Studio 15 2017"
             CMAKE_GENERATOR_PLATFORM: Win32
 
     runs-on: ${{ matrix.os }}
@@ -42,9 +39,9 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
       INSTALL_DIR: ${{github.workspace}}\.cache\install_msvc_${{matrix.triplet}}_${{matrix.BUILD_TYPE}}_2022_02_14
+      CMAKE_GENERATOR: ${{matrix.CMAKE_GENERATOR}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
-      CMAKE_GENERATOR: ${{matrix.CMAKE_GENERATOR}}
       ChineseChessControl_VERSION: v0.0.18
       VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1
       qt_modules: qtwebengine ${{matrix.qt_modules}}
@@ -70,7 +67,7 @@ jobs:
       with:
         path: |
           ${{env.INSTALL_DIR}}
-        key: ChineseChessControl-cache-installed-${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+        key: ChineseChessControl_msvc_cache-installed-${{matrix.os}}-vc${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     - name: git clone RabbitCommon
       working-directory: ${{env.SOURCE_DIR}}
@@ -81,7 +78,7 @@ jobs:
       uses: actions/cache@v1  # not v2!
       with:
         path: ${{env.TOOSL_DIR}}/qt
-        key: ChineseChessControl-${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-QtCache-2021-11-03
+        key: ChineseChessControl_msvc_qt-vc${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     - name: Install Qt
       # You may pin to the exact commit or the version.
@@ -118,7 +115,7 @@ jobs:
         #py7zrversion: # optional, default is ==0.11.0
         # Any extra arguments to append to the back
         #extra: # optional
-
+        
     - name: build ChineseChessControl
       env:
         RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
@@ -126,6 +123,8 @@ jobs:
         cmake -E make_directory ${{github.workspace}}/build
         cd ${{github.workspace}}/build
         cmake ${{github.workspace}} ^
+            -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
+            -T ${{matrix.VCPKG_PLATFORM_TOOLSET}} ^
             -DCMARK_SHARED=OFF ^
             -DCMARK_TESTS=OFF ^
             -DCMARK_STATIC=ON ^
@@ -137,8 +136,7 @@ jobs:
       if: ${{ matrix.BUILD_TYPE == 'Release' }}
       working-directory: ${{github.workspace}}\build
       run: |
-        7z a coturn_windows_msvc.zip ${{github.workspace}}\build\install\*
-        cmake --build . --config ${{matrix.BUILD_TYPE}} --target package
+        cmake --build . --config ${{matrix.BUILD_TYPE}} --target install-runtime
         7z a ChineseChessControl_windows_${{env.ChineseChessControl_VERSION}}.zip .\install\*
         makensis Install.nsi
         if "5.12.12" == "${{matrix.qt_version}}" (
@@ -154,19 +152,17 @@ jobs:
         name: ChineseChessControl_${{ matrix.os }}_qt${{matrix.qt_version}}
         path: |
           ${{github.workspace}}\build\ChineseChessControl*.exe
-          ${{github.workspace}}\build\ChineseChessControl*.exe
       if: ${{ matrix.BUILD_TYPE == 'Release' }}
 
-    - name: Upload To Github Release
-      if: ${{ matrix.BUILD_TYPE == 'Release' && '5.12.12' == matrix.qt_version && startsWith(github.ref, 'refs/tags/') }}
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        prerelease: true
-        body: |
-          [:cn: 修改日志](ChangeLog_zh_CN.md) [:us: Change log](ChangeLog.md)
-        files: |
-          ${{github.workspace}}\build\ChineseChessControl*.exe
-          ${{github.workspace}}\build\ChineseChessControl*.exe
-          ${{github.workspace}}\build\update_windows.xml
+#    - name: Upload To Github Release
+#      if: ${{ matrix.BUILD_TYPE == 'Release' && '5.12.12' == matrix.qt_version && startsWith(github.ref, 'refs/tags/') }}
+#      uses: softprops/action-gh-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        prerelease: true
+#        body: |
+#          [:cn: 修改日志](ChangeLog_zh_CN.md) [:us: Change log](ChangeLog.md)
+#        files: |
+#          ${{github.workspace}}\build\ChineseChessControl*.exe
+#          ${{github.workspace}}\build\update_windows.xml
