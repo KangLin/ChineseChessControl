@@ -33,8 +33,9 @@ if(ChineseChessControl_VERSION)
 endif()
 
 set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
-target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_UNICODE" "UNICODE")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXDLL" "_AFXEXT" "_UNICODE" "UNICODE")
 target_compile_definitions(${PROJECT_NAME} PUBLIC "CHINESE_CHESS_USE_PNG")
+# 支持 WindowsXP
 if(MSVC)
 	target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
 elseif(MINGW)

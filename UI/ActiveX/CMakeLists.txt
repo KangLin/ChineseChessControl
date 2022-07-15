@@ -31,7 +31,7 @@ endif()
 
 if(MSVC)
 	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL "_AFXDLL"
-	SET(LIBS_DEFINES "_UNICODE" "UNICODE")
+	SET(LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
 	LIST(APPEND RCC_FILES ChineseChessActiveX.def)
 endif()
 

@@ -20,9 +20,8 @@ SET(RCC_FILES
 	res/ChineseChessMFC.rc2
 	)
 
-set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-
-add_executable(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
+set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
+add_executable(${PROJECT_NAME} WIN32 ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
@@ -47,7 +46,7 @@ if(ChineseChessControl_VERSION)
 	    -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE "_UNICODE" "UNICODE")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXDLL" "_UNICODE" "UNICODE")
 target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView)
 target_include_directories(${PROJECT_NAME}
     PRIVATE
