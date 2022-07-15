@@ -26,10 +26,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
+if(ChineseChessControl_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
 set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
@@ -80,7 +80,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in
 
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${BUILD_VERSION}
+    VERSION ${ChineseChessControl_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"

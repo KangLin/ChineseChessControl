@@ -58,11 +58,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
-if(BUILD_VERSION)
+if(ChineseChessControl_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
-        -DBUILD_VERSION="${BUILD_VERSION}" ${PRIVATE_DEFINITIONS})
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}" ${PRIVATE_DEFINITIONS})
 endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
 
@@ -120,7 +120,7 @@ install(EXPORT ${PROJECT_NAME}Targets
 
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${BUILD_VERSION}
+    VERSION ${ChineseChessControl_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"

@@ -28,7 +28,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
 if(MINGW)
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
@@ -42,9 +42,9 @@ elseif(MINGW)
     target_compile_definitions(${PROJECT_NAME} PRIVATE _WIN32_WINNT=0x0501)
 endif()
 
-if(BUILD_VERSION)
+if(ChineseChessControl_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
-	    -DBUILD_VERSION="${BUILD_VERSION}")
+	    -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE "_UNICODE" "UNICODE")

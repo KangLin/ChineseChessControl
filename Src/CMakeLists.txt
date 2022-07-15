@@ -44,14 +44,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${HEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
     )
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
+if(ChineseChessControl_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
+    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${ChineseChessControl_VERSION})
 endif()
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
@@ -93,7 +93,7 @@ install(EXPORT ${PROJECT_NAME}Config
 # Install cmake configure version file
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${BUILD_VERSION}
+    VERSION ${ChineseChessControl_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"

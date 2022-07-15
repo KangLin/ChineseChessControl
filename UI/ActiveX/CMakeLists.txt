@@ -41,11 +41,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
+if(ChineseChessControl_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
+    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${ChineseChessControl_VERSION})
 endif()
 
 if(MSVC)

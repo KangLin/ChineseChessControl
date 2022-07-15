@@ -33,7 +33,7 @@ if("debug" STREQUAL CHINESE_CHESS_CONTROL_QT_APP_BUILD_TYPE)
     LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
 endif()
 
-add_definitions(-DBUILD_VERSION="${BUILD_VERSION}")
+add_definitions(-DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 add_definitions(-DBUILD_ARCH="${BUILD_ARCH}")
 add_definitions(-DBUILD_PLATFORM="${BUILD_PLATFORM}")
 if(ANDROID)
@@ -47,7 +47,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 if(UNIX AND NOT ANDROID)
     set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
 endif()
@@ -61,9 +61,9 @@ elseif(MSVC)
         "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 endif()
 
-if(BUILD_VERSION)
+if(ChineseChessControl_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
-        -DBUILD_VERSION="${BUILD_VERSION}"
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
         RABBITCOMMON)
 endif()
 
