@@ -47,20 +47,20 @@ sed -i "s/android:versionCode=.*android/android:versionCode=\"${MAJOR_VERSION}\"
 
 MSVC_VERSION="`echo ${DEBIAN_VERSION} | sed "s/\./,/g"`,0"
 
-sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
-sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
-sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
-sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
-sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/MFC/ChineseChessView.rc
+sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/UI/MFC/ChineseChessView.rc
+sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/UI/MFC/ChineseChessView.rc
+sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/UI/MFC/ChineseChessView.rc
+sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/UI/MFC/ChineseChessView.rc
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/UI/MFC/ChineseChessView.rc
 
-sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
-sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
-sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
-sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
-sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveX.rc
+sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveX.rc
+sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveX.rc
+sed -i "s/VALUE \"FileVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"FileVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveX.rc
+sed -i "s/VALUE \"ProductVersion\", *\"[0-9]*, *[0-9]*, *[0-9]*, *[0-9]*\"/VALUE \"ProductVersion\", \"${MSVC_VERSION}\"/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveX.rc
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveX.rc
 
-sed -i "s/\"ChineseChessActiveX.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveX.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveXCtrl.cpp
-sed -i "s/\"ChineseChessActiveXPropPage.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveXPropPage.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/Src/ActiveX/ChineseChessActiveXPropPage.cpp
+sed -i "s/\"ChineseChessActiveX.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveX.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveXCtrl.cpp
+sed -i "s/\"ChineseChessActiveXPropPage.[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"ChineseChessActiveXPropPage.${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/UI/ActiveX/ChineseChessActiveXPropPage.cpp
 
 sed -i "s/FILEVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
 sed -i "s/PRODUCTVERSION \+[0-9]*,[0-9]*,[0-9]*,[0-9]*/FILEVERSION ${MSVC_VERSION}/g" ${SOURCE_DIR}/App/MFC/ChineseChessMFC/ChineseChessMFC.rc
