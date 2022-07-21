@@ -37,7 +37,8 @@ GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
 LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
 
-add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES} ${SOURCE_UI_FILES})
+add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES}
+    ${RCC_FILES} ${SOURCE_UI_FILES})
 
 GENERATE_EXPORT_HEADER(${PROJECT_NAME})
 string(TOLOWER ${PROJECT_NAME} LOWER_PROJECT_NAME)
@@ -55,15 +56,17 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 if(ChineseChessControl_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
-        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}" ${PRIVATE_DEFINITIONS})
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
     )
 
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess ${QT_LIBRARIES})
@@ -136,7 +139,7 @@ IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
     #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中  
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
-        --compiler-runtime
+        --no-compiler-runtime
         --verbose 7
         "$<TARGET_FILE:${PROJECT_NAME}>"
         )

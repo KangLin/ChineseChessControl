@@ -177,7 +177,7 @@ IF(WIN32)
     configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
     INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
         DESTINATION ..
-        COMPONENT Runtime)
+            COMPONENT Runtime)
 ENDIF()
 # Install other files
 set(OTHER_FILES
@@ -192,11 +192,6 @@ else()
 endif()
 
 include(cmake/CMakeCPack.cmake)
-if(CMAKE_MFC_FLAG)
-    set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
-endif()
-set(CMAKE_INSTALL_DEBUG_LIBRARIES $<$<CONFIG:Debug>: TRUE>)
-include(InstallRequiredSystemLibraries)
 
 option(BUILD_DOCS "Generating API documentation" OFF)
 if(BUILD_DOCS)

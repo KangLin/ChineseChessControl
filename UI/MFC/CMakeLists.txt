@@ -29,7 +29,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${ChineseChessControl_VERSION})
 
 if(ChineseChessControl_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
 set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"

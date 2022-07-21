@@ -115,9 +115,16 @@ IF(ANDROID)
         )
 ENDIF(ANDROID)
 
+if(NOT DEFINED CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
 IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
     OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
     AND WIN32 AND BUILD_SHARED_LIBS )
+
+    set(CMAKE_INSTALL_DEBUG_LIBRARIES $<$<CONFIG:Debug>: TRUE>)
+    include(InstallRequiredSystemLibraries)
+
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
         OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
         AND MINGW )
@@ -130,7 +137,7 @@ IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
     #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中  
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
-        --compiler-runtime
+        --no-compiler-runtime
         --verbose 7
         "$<TARGET_FILE:${PROJECT_NAME}>"
         )

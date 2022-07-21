@@ -43,6 +43,11 @@ target_include_directories(${PROJECT_NAME}
     ${CMAKE_SOURCE_DIR}/Src
 	${CMAKE_SOURCE_DIR}/Src/MFC)
 
+# 安装系统运行库
+set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
+set(CMAKE_INSTALL_DEBUG_LIBRARIES $<$<CONFIG:Debug>: TRUE>)
+include(InstallRequiredSystemLibraries)
+
 # 安装中国象棋
 INSTALL(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"

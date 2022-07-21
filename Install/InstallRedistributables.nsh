@@ -155,7 +155,7 @@ FunctionEnd
 
 Function InstallRedistributables
 
-	;MSVC_VERSION ȡֵ��
+	;MSVC_VERSION 取值：
     ;1200      = VS  6.0
     ;1300      = VS  7.0
     ;1310      = VS  7.1
