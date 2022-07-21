@@ -48,15 +48,6 @@ IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     ENDIF()
 ENDIF()
 message("ChineseChessControl_VERSION:${ChineseChessControl_VERSION}")
-set(VERSION ${ChineseChessControl_VERSION})
-
-if(NOT DEFINED CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release")
-endif(NOT DEFINED CMAKE_BUILD_TYPE)
-string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_BUILD_TYPE)
-if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
-    add_definitions(-D_DEBUG -DDEBUG)
-endif()
 
 IF(MSVC)
     # This option is to enable the /MP switch for Visual Studio 2005 and above compilers
@@ -69,12 +60,7 @@ IF(MSVC)
 ENDIF(MSVC)
 IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-
-    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)    
-        add_compile_options(-g -ggdb)
-    else()
-        add_compile_options(-O3)
-    endif()
+    add_compile_options($<IF:$<CONFIG:Debug>, -g -ggdb, -O3>)
 ENDIF()
 SET(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libs")
 if (BUILD_SHARED_LIBS)
@@ -94,26 +80,9 @@ include(GenerateExportHeader)
 include(CheckIncludeFile)
 include(CheckIncludeFileCXX)
 include(CheckFunctionExists)
-include(${CMAKE_SOURCE_DIR}/cmake/Utils.cmake)
-
-#CHECK_INCLUDE_FILE_CXX("string" HAVE_STRING_H)
-#check_include_file("math.h" HAVE_MATH_H)
-
-#check_function_exists("fabs" HAVE_FABS)
+#include(${CMAKE_SOURCE_DIR}/cmake/Utils.cmake)
 
 set(BUILD_PLATFORM "${CMAKE_SYSTEM_NAME}")
-# ----------------------------------------------------------------------------
-# Detect compiler and target platform architecture
-# ----------------------------------------------------------------------------
-if(NOT ANDROID)
-    if(X86_64 OR CMAKE_SIZEOF_VOID_P EQUAL 8)
-        set(BUILD_ARCH x86_64)
-    elseif(X86 OR CMAKE_SIZEOF_VOID_P EQUAL 4)
-        set(BUILD_ARCH x86)
-    endif()
-else()
-    set(BUILD_ARCH ${CMAKE_SYSTEM_PROCESSOR})
-endif()
 
 add_subdirectory(Src)
 if(MSVC)
@@ -223,12 +192,17 @@ else()
 endif()
 
 include(cmake/CMakeCPack.cmake)
+if(CMAKE_MFC_FLAG)
+    set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
+endif()
+set(CMAKE_INSTALL_DEBUG_LIBRARIES $<$<CONFIG:Debug>: TRUE>)
+include(InstallRequiredSystemLibraries)
 
 option(BUILD_DOCS "Generating API documentation" OFF)
 if(BUILD_DOCS)
     find_package(Doxygen)
     if(DOXYGEN_FOUND)
-        file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/Doxygen)     
+        file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/Doxygen)
         configure_file(${CMAKE_SOURCE_DIR}/Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
         add_custom_target(doc ALL
             ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile # &> doxygen.log

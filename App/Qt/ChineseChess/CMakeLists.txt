@@ -25,20 +25,17 @@ LIST(APPEND RCC_FILES Resource/Resource.qrc)
 include(${RabbitCommon_DIR}/cmake/Translations.cmake)
 GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
-if(NOT DEFINED CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release")
-endif(NOT DEFINED CMAKE_BUILD_TYPE)
-string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_QT_APP_BUILD_TYPE)
-if("debug" STREQUAL CHINESE_CHESS_CONTROL_QT_APP_BUILD_TYPE)
-    LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
-endif()
+LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
 
 if(ANDROID)
-    add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+    add_library(${PROJECT_NAME} ${SOURCES_FILES}
+        ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
 else()
-    add_executable(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+    add_executable(${PROJECT_NAME} ${SOURCES_FILES}
+        ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
 endif()
-target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessQt RabbitCommon ${QT_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ChineseChessQt RabbitCommon ${QT_LIBRARIES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
@@ -46,25 +43,21 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     VERSION ${ChineseChessControl_VERSION})
 if(UNIX AND NOT ANDROID)
-    set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
 endif()
-if(MINGW)
-    # 支持 WindowsXP   
-    target_compile_definitions(${PROJECT_NAME} PRIVATE _WIN32_WINNT=0x0501)
-elseif(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-    # 支持 WindowsXP
-    target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
-    -DBUILD_ARCH="${BUILD_ARCH}"
-    -DBUILD_PLATFORM="${BUILD_PLATFORM}"
+    $<$<CONFIG:Debug>:_DEBUG DEBUG>
     RABBITCOMMON
     )
-
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}
     )
@@ -95,7 +88,7 @@ else()
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )        
 endif()
-INSTALL_TARGETS_FILES(TARGETS ChineseChessQt ChineseChess)
+#INSTALL_TARGETS_FILES(TARGETS ChineseChessQt ChineseChess)
 
 if(UNIX AND NOT ANDROID)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop

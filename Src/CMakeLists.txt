@@ -50,16 +50,16 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
     )
 if(ChineseChessControl_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${ChineseChessControl_VERSION})
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
     target_link_libraries(${PROJECT_NAME} PRIVATE Ws2_32)
-	target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
 elseif(MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DWIN32 -DMINGW _WIN32_WINNT=0x0501)
     target_link_libraries(${PROJECT_NAME} PRIVATE wsock32)
 endif()
 

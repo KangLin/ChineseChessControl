@@ -35,14 +35,7 @@ SET(RCC_FILES
 include(${RabbitCommon_DIR}/cmake/Translations.cmake)
 GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
-if(NOT DEFINED CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release")
-endif(NOT DEFINED CMAKE_BUILD_TYPE)
-string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_QT_BUILD_TYPE)
-if("debug" STREQUAL CHINESE_CHESS_CONTROL_QT_BUILD_TYPE)
-    add_definitions(-D_DEBUG -DDEBUG)
-    LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
-endif()
+LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
 
 add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES} ${SOURCE_UI_FILES})
 
@@ -64,7 +57,9 @@ if(ChineseChessControl_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
         -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}" ${PRIVATE_DEFINITIONS})
 endif()
-target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIBS_DEFINES})
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    $<$<CONFIG:Debug>:_DEBUG DEBUG>
+    )
 
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")

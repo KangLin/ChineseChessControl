@@ -45,7 +45,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 if(ChineseChessControl_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${ChineseChessControl_VERSION})
 endif()
 
 if(MSVC)
