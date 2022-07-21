@@ -62,12 +62,15 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView ${LIBS})
 #	${CMAKE_CURRENT_SOURCE_DIR}/../MFC)
 
 # 编译完成后向系统注册中国象棋控件
-add_custom_command(
-	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
-	COMMENT "Registering ActiveX Control ......"
-	WORKING_DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
-)
+option(REGISTER_ACTIVEX_CONTROL "Registering ActiveX Control" OFF)
+if(REGISTER_ACTIVEX_CONTROL)
+	add_custom_command(
+		TARGET ${PROJECT_NAME} POST_BUILD
+		COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
+		COMMENT "Registering ActiveX Control ......"
+		WORKING_DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+	)
+endif()
 
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}

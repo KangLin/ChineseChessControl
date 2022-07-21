@@ -33,9 +33,6 @@ if("debug" STREQUAL CHINESE_CHESS_CONTROL_QT_APP_BUILD_TYPE)
     LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
 endif()
 
-add_definitions(-DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
-add_definitions(-DBUILD_ARCH="${BUILD_ARCH}")
-add_definitions(-DBUILD_PLATFORM="${BUILD_PLATFORM}")
 if(ANDROID)
     add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
 else()
@@ -52,20 +49,21 @@ if(UNIX AND NOT ANDROID)
     set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
 endif()
 if(MINGW)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
+    # 支持 WindowsXP   
+    target_compile_definitions(${PROJECT_NAME} PRIVATE _WIN32_WINNT=0x0501)
 elseif(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
     target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-        "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+    # 支持 WindowsXP
+    target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
 endif()
 
-if(ChineseChessControl_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
-        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
-        RABBITCOMMON)
-endif()
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
+    -DBUILD_ARCH="${BUILD_ARCH}"
+    -DBUILD_PLATFORM="${BUILD_PLATFORM}"
+    RABBITCOMMON
+    )
 
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}

@@ -24,8 +24,14 @@
 #### 简介
 中国象棋控件。
 
-- [项目主页](http://kanglin.github.io/ChineseChessControl/)
-- [项目位置](https://github.com/KangLin/ChineseChessControl) https://github.com/KangLin/ChineseChessControl
+- 项目主页: http://kanglin.github.io/ChineseChessControl/
+- 项目位置：
+  + 主库: https://github.com/KangLin/ChineseChessControl
+  + 镜像:
+    - https://gitee.com/kl222/ChineseChessControl
+    - https://sourceforge.net/projects/chinesechesscontrol/
+    - https://gitlab.com/kl222/ChineseChessControl
+    - https://launchpad.net/chinesechesscontrol
 
 ##### 功能
 - 控件
