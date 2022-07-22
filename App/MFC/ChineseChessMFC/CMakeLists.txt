@@ -45,7 +45,9 @@ target_include_directories(${PROJECT_NAME}
 
 # 安装系统运行库
 set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
-set(CMAKE_INSTALL_DEBUG_LIBRARIES $<$<CONFIG:Debug>: TRUE>)
+if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+    set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
+endif()
 include(InstallRequiredSystemLibraries)
 
 # 安装中国象棋

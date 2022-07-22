@@ -73,20 +73,13 @@ set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
 
 include(CPack)
 
-cpack_add_component(Qt
-    DISPLAY_NAME  "Qt"
-    DESCRIPTION   "Qt"
+cpack_add_component(Development
+    DISPLAY_NAME  "Development"
+    DESCRIPTION   "Development"
     DEPENDS Runtime
     )
 
-cpack_add_component(MFC
-    DISPLAY_NAME  "MFC"
-    DESCRIPTION   "MFC"
-    DEPENDS Runtime
-    )
-
-cpack_add_component(ActiveX
-    DISPLAY_NAME  "ActiveX"
-    DESCRIPTION   "ActiveX"
-    DEPENDS Runtime
+cpack_add_component(Runtime
+    DISPLAY_NAME  "Runtime"
+    DESCRIPTION   "Runtime"
     )

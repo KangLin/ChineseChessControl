@@ -20,7 +20,8 @@ class CFrmChineseChess;
  *   @li 在程序开始时，仅调用一次 InitResource
  *   @li 在程序结束时，仅调用一次 CleanResource
  */
-class CHINESECHESSQT_EXPORT CFrmChineseChess : public QWidget, public CChineseChess
+class CHINESECHESSQT_EXPORT CFrmChineseChess
+        : public QWidget, public CChineseChess
 {
     Q_OBJECT
     Q_PROPERTY(QString RedName READ GetRedName WRITE SetRedName)

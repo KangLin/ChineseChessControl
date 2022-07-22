@@ -49,6 +49,11 @@ IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
 ENDIF()
 message("ChineseChessControl_VERSION:${ChineseChessControl_VERSION}")
 
+if(NOT DEFINED CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
+string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_BUILD_TYPE)
+
 IF(MSVC)
     # This option is to enable the /MP switch for Visual Studio 2005 and above compilers
     OPTION(WIN32_USE_MP "Set to ON to build with the /MP option (Visual Studio 2005 and above)." ON)
@@ -58,10 +63,15 @@ IF(MSVC)
         add_compile_options(/MP)
     ENDIF(WIN32_USE_MP)
 ENDIF(MSVC)
-#IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
-#    OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-#    add_compile_options($<IF:$<CONFIG:Debug>, -g -ggdb, -O3>)
-#ENDIF()
+IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+    OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+        add_compile_options(-g -ggdb)
+    else()
+        add_compile_options(-O3)
+    endif()
+ENDIF()
+#add_custom_target(genexdebug COMMAND ${CMAKE_COMMAND} -E echo "$<IF:$<CONFIG:Debug>, -g -ggdb, -O3>")
 SET(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libs")
 if (BUILD_SHARED_LIBS)
     add_definitions(-DBUILD_SHARED_LIBS)
@@ -80,9 +90,20 @@ include(GenerateExportHeader)
 include(CheckIncludeFile)
 include(CheckIncludeFileCXX)
 include(CheckFunctionExists)
-#include(${CMAKE_SOURCE_DIR}/cmake/Utils.cmake)
 
 set(BUILD_PLATFORM "${CMAKE_SYSTEM_NAME}")
+# ----------------------------------------------------------------------------
+# Detect compiler and target platform architecture
+# ----------------------------------------------------------------------------
+if(NOT ANDROID)
+    if(X86_64 OR CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(BUILD_ARCH x86_64)
+    elseif(X86 OR CMAKE_SIZEOF_VOID_P EQUAL 4)
+        set(BUILD_ARCH x86)
+    endif()
+else()
+    set(BUILD_ARCH ${CMAKE_SYSTEM_PROCESSOR})
+endif()
 
 add_subdirectory(Src)
 if(MSVC)
@@ -103,12 +124,7 @@ if(MSVC)
 endif()
 
 #需要的QT组件
-SET(QT_COMPONENTS Core Gui Widgets Multimedia)
-if(ANDROID)
-    SET(QT_COMPONENTS ${QT_COMPONENTS} AndroidExtras)
-ELSE()
-    LIST(APPEND QT_COMPONENTS Designer)
-endif()
+SET(QT_COMPONENTS Core)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS})
 if(Qt${QT_VERSION_MAJOR}_FOUND)
@@ -122,9 +138,6 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     if(Qt5_VERSION VERSION_LESS 5.10.0 AND ANDROID)
         message(FATAL_ERROR "Qt must great 5.10.0")
     endif()
-    FOREACH(_COMPONENT ${QT_COMPONENTS})
-	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt${QT_VERSION_MAJOR}::${_COMPONENT})
-    ENDFOREACH()
     get_filename_component(QT_INSTALL_DIR "${Qt${QT_VERSION_MAJOR}_DIR}/../../.." ABSOLUTE)
     
     #打开 qt 编译工具
@@ -173,7 +186,7 @@ ADD_CUSTOM_TARGET(uninstall
     )
 
 IF(WIN32)
-    # 替换 Install.nsi 中的 MSVC_VERSION
+    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
     configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
     INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
         DESTINATION ..
@@ -211,8 +224,10 @@ if(BUILD_DOCS)
 endif(BUILD_DOCS)
 
 message(STATUS "== Build shared library: ${BUILD_SHARED_LIBS}")
-message(STATUS "== Build arch: ${BUILD_ARCH}")
 message(STATUS "== Build MFC chinese chess mfc view: ${BUILD_CHINESE_CHESS_MFC_VIEW}")
 message(STATUS "== Build MFC chinese chess activex: ${BUILD_CHINESE_CHESS_ACTIVEX}")
 message(STATUS "== Build MFC chinese chess applaction: ${BUILD_CHINESE_CHESS_APP_MFC}")
+message(STATUS "== Build chinese chess qt: ${BUILD_CHINESE_CHESS_QT}")
+message(STATUS "== Build MFC chinese chess qt application: ${BUILD_CHINESE_CHESS_QT_APP}")
+message(STATUS "== Generating API documentation: ${BUILD_DOCS}")
 message(STATUS "== With QT: ${Qt5_VERSION}")

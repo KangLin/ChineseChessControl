@@ -42,7 +42,7 @@ jobs:
       CMAKE_GENERATOR: ${{matrix.CMAKE_GENERATOR}}
       CMAKE_PLATFORM_TOOLSET: ${{matrix.CMAKE_PLATFORM_TOOLSET}}
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
-      ChineseChessControl_VERSION: v0.0.18
+      ChineseChessControl_VERSION: v2.0.5
       VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1
       qt_modules: qtwebengine ${{matrix.qt_modules}}
 
@@ -163,7 +163,7 @@ jobs:
         7z a ChineseChessControl_windows_${{env.ChineseChessControl_VERSION}}.zip .\install\*
         makensis Install.nsi
         if "5.12.12" == "${{matrix.qt_version}}" (
-            ${{github.workspace}}\build\install\bin\ChineseChessControlApp.exe ^
+            ${{github.workspace}}\build\install\bin\ChineseChessApp.exe ^
                 -f "update_windows.xml" ^
                 --pf ChineseChessControl_setup_${{env.ChineseChessControl_VERSION}}.exe ^
                 -m "${{env.ChineseChessControl_VERSION}}"
@@ -174,7 +174,7 @@ jobs:
       with:
         name: ChineseChessControl_${{ matrix.os }}_qt${{matrix.qt_version}}
         path: |
-          ${{github.workspace}}\build\ChineseChessControl*.exe
+          ${{github.workspace}}\build\ChineseChessControl_Setup*.exe
       if: ${{ matrix.BUILD_TYPE == 'Release' }}
 
 #    - name: Upload To Github Release

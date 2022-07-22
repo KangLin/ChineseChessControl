@@ -22,7 +22,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
       INSTALL_DIR: ${{github.workspace}}\.cache\install_mingw_2022_02_15
-      ChineseChessControl_VERSION: v0.0.18
+      ChineseChessControl_VERSION: v2.0.5
 
     steps:
     - uses: actions/checkout@v2

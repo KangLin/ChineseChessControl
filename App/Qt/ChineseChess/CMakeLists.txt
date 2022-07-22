@@ -1,5 +1,32 @@
 project(ChineseChessApp)
 
+#需要的QT组件
+SET(QT_LIBRARIES)
+SET(QT_COMPONENTS Core Gui Widgets)
+if(ANDROID)
+    SET(QT_COMPONENTS ${QT_COMPONENTS} AndroidExtras)
+ELSE()
+    LIST(APPEND QT_COMPONENTS Designer)
+endif()
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS})
+if(Qt${QT_VERSION_MAJOR}_FOUND)
+    message("QT_VERSION:${Qt${QT_VERSION_MAJOR}_VERSION}")
+    
+    if (NOT BUILD_SHARED_LIBS)
+        # Qt 静态插件
+        add_definitions(-DQT_STATICPLUGIN)
+    endif()
+    
+    if(Qt5_VERSION VERSION_LESS 5.10.0 AND ANDROID)
+        message(FATAL_ERROR "Qt must great 5.10.0")
+    endif()
+    FOREACH(_COMPONENT ${QT_COMPONENTS})
+	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt${QT_VERSION_MAJOR}::${_COMPONENT})
+    ENDFOREACH()
+    get_filename_component(QT_INSTALL_DIR "${Qt${QT_VERSION_MAJOR}_DIR}/../../.." ABSOLUTE)
+endif()
+
 set(SOURCES_FILES
     main.cpp
     MainWindow.cpp
@@ -25,7 +52,10 @@ LIST(APPEND RCC_FILES Resource/Resource.qrc)
 include(${RabbitCommon_DIR}/cmake/Translations.cmake)
 GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
-LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
+#LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
+if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+    LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
+endif()
 
 if(ANDROID)
     add_library(${PROJECT_NAME} ${SOURCES_FILES}
@@ -115,14 +145,10 @@ IF(ANDROID)
         )
 ENDIF(ANDROID)
 
-if(NOT DEFINED CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
-endif()
-IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
-    OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
-    AND WIN32 AND BUILD_SHARED_LIBS )
-
-    set(CMAKE_INSTALL_DEBUG_LIBRARIES $<$<CONFIG:Debug>: TRUE>)
+IF( WIN32 AND BUILD_SHARED_LIBS )
+    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+        set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
+    endif()
     include(InstallRequiredSystemLibraries)
 
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)

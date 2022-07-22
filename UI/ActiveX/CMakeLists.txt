@@ -1,7 +1,5 @@
 project(ChineseChessActiveX)
 
-message(STATUS "== Build chinese chess ActiveX")
-
 set(SOURCES_FILES
     ChineseChessActiveX.cpp
     ChineseChessActiveXPropPage.cpp
@@ -44,7 +42,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${ChineseChessControl_VERSION})
 
 if(ChineseChessControl_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
 if(MSVC)

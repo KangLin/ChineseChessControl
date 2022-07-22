@@ -1,7 +1,5 @@
 project(ChineseChessView)
 
-message(STATUS "== Build chinese chess mfc view dll")
-
 set(SOURCES_FILES
     ChineseChessView.cpp
 	dllmain.cpp
@@ -55,7 +53,7 @@ INSTALL(TARGETS ${PROJECT_NAME}
         COMPONENT Development
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
         COMPONENT Development
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     )
 export(TARGETS ${PROJECT_NAME}
     NAMESPACE ChineseChessControl::

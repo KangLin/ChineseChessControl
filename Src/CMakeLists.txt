@@ -1,7 +1,5 @@
 project(ChineseChess)
 
-message(STATUS "== Build chinese chess dll")
-
 set(SOURCES_FILES
     ChineseChess.cpp
     ChessGame.cpp
@@ -78,7 +76,7 @@ INSTALL(TARGETS ${PROJECT_NAME}
         COMPONENT Development
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
         COMPONENT Development
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     )
 
 export(TARGETS ${PROJECT_NAME}

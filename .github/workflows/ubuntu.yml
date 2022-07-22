@@ -19,7 +19,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu_2022_02_14
-      ChineseChessControl_VERSION: 0.0.18
+      ChineseChessControl_VERSION: 2.0.5
       
     steps:
     - uses: actions/checkout@v2
@@ -83,7 +83,7 @@ jobs:
             export tigervnc_DIR=${{ env.INSTALL_DIR }}/lib/cmake/tigervnc
         fi
         ./build_debpackage.sh /usr/lib/`uname -m`-linux-gnu/qt5
-        cp ../rabbitremotecontrol_${{env.ChineseChessControl_VERSION}}_amd64.deb rabbitremotecontrol_${{env.ChineseChessControl_VERSION}}_amd64_${{matrix.os}}.deb
+        cp ../chinesechess_${{env.ChineseChessControl_VERSION}}_amd64.deb chinesechess_${{env.ChineseChessControl_VERSION}}_amd64_${{matrix.os}}.deb
 
 #    - name: update xml file
 #      if: ${{ matrix.BUILD_TYPE == 'Release' }}
@@ -94,16 +94,16 @@ jobs:
 #        sudo Xvfb :999 -ac &
 #        export DISPLAY=:999.0
 #        echo "Install rabbit remote control ......"
-#        sudo dpkg -i rabbitremotecontrol_${{env.ChineseChessControl_VERSION}}_amd64_${{ matrix.os }}.deb
+#        sudo dpkg -i chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_amd64_${{ matrix.os }}.deb
 #        echo "Update update_linux.xml ......"
-#        /opt/RabbitRemoteControl/bin/RabbitRemoteControlApp -f "`pwd`/update_linux.xml" --pf rabbitremotecontrol_${{env.ChineseChessControl_VERSION}}_amd64_${{ matrix.os }}.deb -m "v${{env.ChineseChessControl_VERSION}}"
+#        /opt/chinesechesscontrol/bin/ChineseChessApp -f "`pwd`/update_linux.xml" --pf chinesechess_${{env.ChineseChessControl_VERSION}}_amd64_${{ matrix.os }}.deb -m "v${{env.ChineseChessControl_VERSION}}"
 
     - name: update 
       uses: actions/upload-artifact@v2
       with:
-          name: rabbitremotecontrol_${{ matrix.os }}
+          name: chinesechesscontrol_${{ matrix.os }}
           path: |
-            rabbitremotecontrol_*.deb
+            chinesechess_*.deb
       if: ${{ matrix.BUILD_TYPE == 'Release' }} 
 
     - name: Upload To Github Release
@@ -116,14 +116,14 @@ jobs:
         body: |
            [:cn: 修改日志](ChangeLog_zh_CN.md) [:us: Change log](ChangeLog.md)
         files: |
-            ${{github.workspace}}/rabbitremotecontrol_*.deb
+            ${{github.workspace}}/chinesechess_*.deb
 
 #- name: Release
 #  uses: fnkr/github-action-ghr@v1
 #  if: startsWith(github.ref, 'refs/tags/')
 #  env:
 #    GHR_COMPRESS: xz
-#    GHR_PATH: ${{github.workspace}}/rabbitremotecontrol_*.deb
+#    GHR_PATH: ${{github.workspace}}/chinesechess_*.deb
 #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
@@ -135,7 +135,7 @@ jobs:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #      with:
 #        # The files or file patterns to upload. You can upload multiple files by split them by semicolon. You can use the glob pattern to find the files.
-#        file: ${{github.workspace}}/rabbitremotecontrol_*.deb;${{github.workspace}}/update_linux.xml # default is 
+#        file: ${{github.workspace}}/chinesechess_*.deb;${{github.workspace}}/update_linux.xml # default is 
 #        # The files or file patterns to delete before uploading new files. You can delete multiple files by split them by semicolon. You can use the glob pattern to find the files.
 #        #delete_file: # optional, default is 
 #        # If you need to overwrite existing files, add overwrite: true to the with.
