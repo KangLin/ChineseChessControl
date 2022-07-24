@@ -22,7 +22,7 @@ if(POLICY CMP0021)
     cmake_policy(SET CMP0021 NEW)
 endif()
 
-SET(BUILD_VERSION "v2.0.4")
+SET(ChineseChessControl_VERSION "v2.0.5")
 # Find Git Version Patch
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)
@@ -44,19 +44,15 @@ IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
                 OUTPUT_VARIABLE GIT_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE
             )
         endif()
-        SET(BUILD_VERSION ${GIT_VERSION})
+        SET(ChineseChessControl_VERSION ${GIT_VERSION})
     ENDIF()
 ENDIF()
-message("BUILD_VERSION:${BUILD_VERSION}")
-set(VERSION ${BUILD_VERSION})
+message("ChineseChessControl_VERSION:${ChineseChessControl_VERSION}")
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
-endif(NOT DEFINED CMAKE_BUILD_TYPE)
-string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_BUILD_TYPE)
-if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
-    add_definitions(-D_DEBUG -DDEBUG)
 endif()
+string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_BUILD_TYPE)
 
 IF(MSVC)
     # This option is to enable the /MP switch for Visual Studio 2005 and above compilers
@@ -71,13 +67,13 @@ IF(MSVC)
 ENDIF(MSVC)
 IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-
-    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)    
+    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
         add_compile_options(-g -ggdb)
     else()
         add_compile_options(-O3)
     endif()
 ENDIF()
+#add_custom_target(genexdebug COMMAND ${CMAKE_COMMAND} -E echo "$<IF:$<CONFIG:Debug>, -g -ggdb, -O3>")
 SET(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libs")
 if (BUILD_SHARED_LIBS)
     add_definitions(-DBUILD_SHARED_LIBS)
@@ -96,12 +92,6 @@ include(GenerateExportHeader)
 include(CheckIncludeFile)
 include(CheckIncludeFileCXX)
 include(CheckFunctionExists)
-include(${CMAKE_SOURCE_DIR}/cmake/Utils.cmake)
-
-#CHECK_INCLUDE_FILE_CXX("string" HAVE_STRING_H)
-#check_include_file("math.h" HAVE_MATH_H)
-
-#check_function_exists("fabs" HAVE_FABS)
 
 set(BUILD_PLATFORM "${CMAKE_SYSTEM_NAME}")
 # ----------------------------------------------------------------------------
@@ -136,12 +126,7 @@ if(MSVC)
 endif()
 
 #需要的QT组件
-SET(QT_COMPONENTS Core Gui Widgets Multimedia)
-if(ANDROID)
-    SET(QT_COMPONENTS ${QT_COMPONENTS} AndroidExtras)
-ELSE()
-    LIST(APPEND QT_COMPONENTS Designer)
-endif()
+SET(QT_COMPONENTS Core)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS})
 if(Qt${QT_VERSION_MAJOR}_FOUND)
@@ -155,9 +140,6 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     if(Qt5_VERSION VERSION_LESS 5.10.0 AND ANDROID)
         message(FATAL_ERROR "Qt must great 5.10.0")
     endif()
-    FOREACH(_COMPONENT ${QT_COMPONENTS})
-	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt${QT_VERSION_MAJOR}::${_COMPONENT})
-    ENDFOREACH()
     get_filename_component(QT_INSTALL_DIR "${Qt${QT_VERSION_MAJOR}_DIR}/../../.." ABSOLUTE)
     
     #打开 qt 编译工具
@@ -195,18 +177,6 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     endif()
 endif()
 
-# Create install runtime target
-add_custom_target(install-runtime
-  COMMAND
-     "${CMAKE_COMMAND}" -DCMAKE_INSTALL_COMPONENT=Runtime 
-     -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_install.cmake"
-)
-# Create uninstall runtime target
-add_custom_target(uninstall-runtime
-  COMMAND
-     "${CMAKE_COMMAND}" -DCMAKE_INSTALL_COMPONENT=Runtime 
-     -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-)
 # Create will be delete files
 CONFIGURE_FILE(
     "${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
@@ -215,14 +185,15 @@ CONFIGURE_FILE(
 # Create unistall target
 ADD_CUSTOM_TARGET(uninstall
     "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake"
-    DEPENDS uninstall-runtime)
+    )
 
 IF(WIN32)
-    # 替换 Install.nsi 中的 MSVC_VERSION
+    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
     configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
-    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh DESTINATION "${CMAKE_BINARY_DIR}"
-        COMPONENT Runtime)
-endif()
+    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
+        DESTINATION ..
+            COMPONENT Runtime)
+ENDIF()
 # Install other files
 set(OTHER_FILES
     License.md
@@ -235,11 +206,13 @@ else()
     INSTALL(FILES ${OTHER_FILES} DESTINATION "." COMPONENT Runtime)
 endif()
 
+include(cmake/CMakeCPack.cmake)
+
 option(BUILD_DOCS "Generating API documentation" OFF)
 if(BUILD_DOCS)
     find_package(Doxygen)
     if(DOXYGEN_FOUND)
-        file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/Doxygen)     
+        file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/Doxygen)
         configure_file(${CMAKE_SOURCE_DIR}/Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
         add_custom_target(doc ALL
             ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile # &> doxygen.log
@@ -253,8 +226,10 @@ if(BUILD_DOCS)
 endif(BUILD_DOCS)
 
 message(STATUS "== Build shared library: ${BUILD_SHARED_LIBS}")
-message(STATUS "== Build arch: ${BUILD_ARCH}")
 message(STATUS "== Build MFC chinese chess mfc view: ${BUILD_CHINESE_CHESS_MFC_VIEW}")
 message(STATUS "== Build MFC chinese chess activex: ${BUILD_CHINESE_CHESS_ACTIVEX}")
 message(STATUS "== Build MFC chinese chess applaction: ${BUILD_CHINESE_CHESS_APP_MFC}")
+message(STATUS "== Build chinese chess qt: ${BUILD_CHINESE_CHESS_QT}")
+message(STATUS "== Build MFC chinese chess qt application: ${BUILD_CHINESE_CHESS_QT_APP}")
+message(STATUS "== Generating API documentation: ${BUILD_DOCS}")
 message(STATUS "== With QT: ${Qt5_VERSION}")

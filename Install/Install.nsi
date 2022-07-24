@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ChineseChessControl"
-!define PRODUCT_VERSION "v2.0.4"
+!define PRODUCT_VERSION "v2.0.5"
 !define PRODUCT_PUBLISHER "Kang Lin (kl222@126.com)"
 !define PRODUCT_WEB_SITE "https://github.com/KangLin/${PRODUCT_NAME}"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME}.exe"
@@ -70,7 +70,7 @@ LangString LANG_DIRECTORY_PERMISSION ${LANG_SIMPCHINESE} "无目录访问权限"
 
 Name "$(LANG_PRODUCT_NAME) ${PRODUCT_VERSION}"
 Caption "$(LANG_PRODUCT_NAME) ${PRODUCT_VERSION}"
-OutFile "${PRODUCT_NAME}-Setup-msvc@MSVC_VERSION@-@BUILD_ARCH@-${PRODUCT_VERSION}.exe"
+OutFile "${PRODUCT_NAME}_Setup_msvc@MSVC_VERSION@_@BUILD_ARCH@_${PRODUCT_VERSION}.exe"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 ;InstallDirRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_DIR_REGKEY}" ""
 

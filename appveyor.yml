@@ -1,4 +1,4 @@
-version: 'v2.0.4.{build}'
+version: 'v2.0.5.{build}'
 
 cache:
   - Package
@@ -10,7 +10,7 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-  BUILD_VERSION: "v2.0.4"
+  ChineseChessControl_VERSION: "v2.0.5"
   
   matrix:
   ##### msvc 2017 ########
@@ -27,6 +27,13 @@ environment:
     TOOLCHAIN_VERSION: 15
     QT_ROOT: C:\Qt\5.12\msvc2017_64
     BUILD_ARCH: x64
+
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    GENERATORS: "Visual Studio 15 2017"
+    BUILD_TARGERT: windows_msvc
+    TOOLCHAIN_VERSION: 15
+    QT_ROOT: C:\Qt\5.6\msvc2017
+    BUILD_ARCH: x86
     
   ##### msvc 2015 ########
   - BUILD_TARGERT: windows_msvc
@@ -114,7 +121,7 @@ before_build:
   - git clone https://github.com/KangLin/RabbitCommon.git
   - set RabbitCommon_DIR=%APPVEYOR_BUILD_FOLDER%/RabbitCommon
   - cd %APPVEYOR_BUILD_FOLDER%
-  - C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build-install-tools-windows.sh
+  #- C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build-install-tools-windows.sh
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%

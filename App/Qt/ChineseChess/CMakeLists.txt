@@ -1,5 +1,32 @@
 project(ChineseChessApp)
 
+#需要的QT组件
+SET(QT_LIBRARIES)
+SET(QT_COMPONENTS Core Gui Widgets)
+if(ANDROID)
+    SET(QT_COMPONENTS ${QT_COMPONENTS} AndroidExtras)
+ELSE()
+    LIST(APPEND QT_COMPONENTS Designer)
+endif()
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS})
+if(Qt${QT_VERSION_MAJOR}_FOUND)
+    message("QT_VERSION:${Qt${QT_VERSION_MAJOR}_VERSION}")
+    
+    if (NOT BUILD_SHARED_LIBS)
+        # Qt 静态插件
+        add_definitions(-DQT_STATICPLUGIN)
+    endif()
+    
+    if(Qt5_VERSION VERSION_LESS 5.10.0 AND ANDROID)
+        message(FATAL_ERROR "Qt must great 5.10.0")
+    endif()
+    FOREACH(_COMPONENT ${QT_COMPONENTS})
+	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt${QT_VERSION_MAJOR}::${_COMPONENT})
+    ENDFOREACH()
+    get_filename_component(QT_INSTALL_DIR "${Qt${QT_VERSION_MAJOR}_DIR}/../../.." ABSOLUTE)
+endif()
+
 set(SOURCES_FILES
     main.cpp
     MainWindow.cpp
@@ -25,48 +52,42 @@ LIST(APPEND RCC_FILES Resource/Resource.qrc)
 include(${RabbitCommon_DIR}/cmake/Translations.cmake)
 GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
-if(NOT DEFINED CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release")
-endif(NOT DEFINED CMAKE_BUILD_TYPE)
-string(TOLOWER "${CMAKE_BUILD_TYPE}" CHINESE_CHESS_CONTROL_QT_APP_BUILD_TYPE)
-if("debug" STREQUAL CHINESE_CHESS_CONTROL_QT_APP_BUILD_TYPE)
+#LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
+if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
     LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
 endif()
 
-add_definitions(-DBUILD_VERSION="${BUILD_VERSION}")
-add_definitions(-DBUILD_ARCH="${BUILD_ARCH}")
-add_definitions(-DBUILD_PLATFORM="${BUILD_PLATFORM}")
 if(ANDROID)
-    add_library(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+    add_library(${PROJECT_NAME} ${SOURCES_FILES}
+        ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
 else()
-    add_executable(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+    add_executable(${PROJECT_NAME} ${SOURCES_FILES}
+        ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
 endif()
-target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessQt RabbitCommon ${QT_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ChineseChessQt RabbitCommon ${QT_LIBRARIES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 if(UNIX AND NOT ANDROID)
-    set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
 endif()
-if(MINGW)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
-elseif(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-        "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 endif()
 
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
-        -DBUILD_VERSION="${BUILD_VERSION}"
-        RABBITCOMMON)
-endif()
-
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
+    $<$<CONFIG:Debug>:_DEBUG DEBUG>
+    RABBITCOMMON
+    )
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}
     )
@@ -97,7 +118,7 @@ else()
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )        
 endif()
-INSTALL_TARGETS_FILES(TARGETS ChineseChessQt ChineseChess)
+#INSTALL_TARGETS_FILES(TARGETS ChineseChessQt ChineseChess)
 
 if(UNIX AND NOT ANDROID)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop
@@ -124,9 +145,12 @@ IF(ANDROID)
         )
 ENDIF(ANDROID)
 
-IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
-    OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
-    AND WIN32 AND BUILD_SHARED_LIBS )
+IF( WIN32 AND BUILD_SHARED_LIBS )
+    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+        set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
+    endif()
+    include(InstallRequiredSystemLibraries)
+
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
         OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
         AND MINGW )
@@ -139,11 +163,11 @@ IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
     #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中  
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
-        --compiler-runtime
+        --no-compiler-runtime
         --verbose 7
         "$<TARGET_FILE:${PROJECT_NAME}>"
         )
     INSTALL(DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>/"
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime)
+            COMPONENT Runtime)
 ENDIF()

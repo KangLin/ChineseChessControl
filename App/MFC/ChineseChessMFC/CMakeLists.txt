@@ -20,40 +20,35 @@ SET(RCC_FILES
 	res/ChineseChessMFC.rc2
 	)
 
-set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL 
-
-add_executable(${PROJECT_NAME} ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
+add_executable(${PROJECT_NAME} WIN32 ${SOURCES_FILES} ${HEADER_FILES} ${RCC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
-if(MINGW)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
-elseif(MSVC)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-	    "/SUBSYSTEM:WINDOWS")
-endif()
-if(MSVC)
-	target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
-elseif(MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE _WIN32_WINNT=0x0501)
-endif()
-
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
-	    -DBUILD_VERSION="${BUILD_VERSION}")
-endif()
-
-target_compile_definitions(${PROJECT_NAME} PRIVATE "_UNICODE" "UNICODE")
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
+    )
+set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXDLL"
+    "_UNICODE" "UNICODE"
+    $<$<CONFIG:Debug>:_DEBUG DEBUG>
+    )
 target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView)
 target_include_directories(${PROJECT_NAME}
     PRIVATE
     ${CMAKE_BINARY_DIR}
     ${CMAKE_SOURCE_DIR}/Src
 	${CMAKE_SOURCE_DIR}/Src/MFC)
+
+# 安装系统运行库
+set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
+if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+    set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
+endif()
+include(InstallRequiredSystemLibraries)
 
 # 安装中国象棋
 INSTALL(TARGETS ${PROJECT_NAME}

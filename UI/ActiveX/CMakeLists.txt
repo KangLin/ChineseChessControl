@@ -1,7 +1,5 @@
 project(ChineseChessActiveX)
 
-message(STATUS "== Build chinese chess ActiveX")
-
 set(SOURCES_FILES
     ChineseChessActiveX.cpp
     ChineseChessActiveXPropPage.cpp
@@ -31,7 +29,7 @@ endif()
 
 if(MSVC)
 	set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL "_AFXDLL"
-	SET(LIBS_DEFINES "_UNICODE" "UNICODE")
+	SET(LIBS_DEFINES "_AFXDLL" "_UNICODE" "UNICODE")
 	LIST(APPEND RCC_FILES ChineseChessActiveX.def)
 endif()
 
@@ -41,11 +39,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
+if(ChineseChessControl_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
 if(MSVC)
@@ -62,18 +60,18 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView ${LIBS})
 #	${CMAKE_CURRENT_SOURCE_DIR}/../MFC)
 
 # 编译完成后向系统注册中国象棋控件
-add_custom_command(
-	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
-	COMMENT "Registering ActiveX Control ......"
-	WORKING_DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
-)
+option(REGISTER_ACTIVEX_CONTROL "Registering ActiveX Control" OFF)
+if(REGISTER_ACTIVEX_CONTROL)
+	add_custom_command(
+		TARGET ${PROJECT_NAME} POST_BUILD
+		COMMAND regsvr32.exe /s /c "$<TARGET_FILE:${PROJECT_NAME}>"
+		COMMENT "Registering ActiveX Control ......"
+		WORKING_DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+	)
+endif()
 
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
         COMPONENT Runtime
-    #LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-    #    COMPONENT Runtime
-    #ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     )

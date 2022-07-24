@@ -1,7 +1,5 @@
 project(ChineseChessView)
 
-message(STATUS "== Build chinese chess mfc view dll")
-
 set(SOURCES_FILES
     ChineseChessView.cpp
 	dllmain.cpp
@@ -26,20 +24,19 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${INSTALLHEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
+if(ChineseChessControl_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
 set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  "_AFXDLL"
-target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_UNICODE" "UNICODE")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXDLL" "_AFXEXT"
+    "_UNICODE" "UNICODE"
+    $<$<CONFIG:Debug>:_DEBUG DEBUG>
+    )
 target_compile_definitions(${PROJECT_NAME} PUBLIC "CHINESE_CHESS_USE_PNG")
-if(MSVC)
-	target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
-elseif(MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE _WIN32_WINNT=0x0501)
-endif()
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess)
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
@@ -48,14 +45,20 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}
 	EXPORT ${PROJECT_NAME}Targets
-		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-	COMPONENT Runtime
-        LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-    COMPONENT Runtime
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+	    COMPONENT Runtime
+    LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
+        COMPONENT Runtime
+    ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        COMPONENT Development
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
-        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        COMPONENT Development
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     )
+export(TARGETS ${PROJECT_NAME}
+    NAMESPACE ChineseChessControl::
+    APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+)
 # Install cmake configure files
 install(EXPORT ${PROJECT_NAME}Targets
     NAMESPACE ChineseChessControl::
@@ -69,15 +72,13 @@ configure_package_config_file(
       )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in
       DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl
+          COMPONENT Development
       RENAME ${PROJECT_NAME}Config.cmake)
-export(TARGETS ${PROJECT_NAME}
-    NAMESPACE ChineseChessControl::
-    APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-)
 
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${BUILD_VERSION}
+    VERSION ${ChineseChessControl_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl")
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+        COMPONENT Development)

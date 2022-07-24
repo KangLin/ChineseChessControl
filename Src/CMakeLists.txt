@@ -1,7 +1,5 @@
 project(ChineseChess)
 
-message(STATUS "== Build chinese chess dll")
-
 set(SOURCES_FILES
     ChineseChess.cpp
     ChessGame.cpp
@@ -44,49 +42,42 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${HEADER_FILES}" # Install head files
-    VERSION ${BUILD_VERSION})
+    VERSION ${ChineseChessControl_VERSION})
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
     )
-if(BUILD_VERSION)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DBUILD_VERSION="${BUILD_VERSION}")
-    #set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${BUILD_VERSION})
+if(ChineseChessControl_VERSION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
     target_link_libraries(${PROJECT_NAME} PRIVATE Ws2_32)
-	target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:WINDOWS,5.1")
 elseif(MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE -DWIN32 -DMINGW _WIN32_WINNT=0x0501)
     target_link_libraries(${PROJECT_NAME} PRIVATE wsock32)
 endif()
 
 # 安装
+SET(INSTALL_LIBRARY "${CMAKE_INSTALL_LIBDIR}")
 if(WIN32)
-    INSTALL(TARGETS ${PROJECT_NAME}
-        EXPORT ${PROJECT_NAME}Config
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
-        LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
-        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
-else()
-    INSTALL(TARGETS ${PROJECT_NAME}
-        EXPORT ${PROJECT_NAME}Config
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
-        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        COMPONENT Runtime
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
-        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
+	SET(INSTALL_LIBRARY "${CMAKE_INSTALL_BINDIR}")
 endif()
+INSTALL(TARGETS ${PROJECT_NAME}
+    EXPORT ${PROJECT_NAME}Config
+    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+        COMPONENT Runtime
+    LIBRARY DESTINATION "${INSTALL_LIBRARY}"
+        COMPONENT Runtime
+    ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        COMPONENT Development
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
+        COMPONENT Development
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
+    )
 
 export(TARGETS ${PROJECT_NAME}
        APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
@@ -100,10 +91,11 @@ install(EXPORT ${PROJECT_NAME}Config
 # Install cmake configure version file
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${BUILD_VERSION}
+    VERSION ${ChineseChessControl_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl")
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+        COMPONENT Development)
 
 # 安装图标
 INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Res/Picture/Chess.ico
