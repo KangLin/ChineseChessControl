@@ -59,6 +59,7 @@ if(MSVC)
     target_link_libraries(${PROJECT_NAME} PRIVATE Ws2_32)
 elseif(MINGW)
     target_link_libraries(${PROJECT_NAME} PRIVATE wsock32)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE MINGW)
 endif()
 
 # 安装
