@@ -253,7 +253,8 @@ else
         -DCMAKE_INSTALL_PREFIX=`pwd`/install \
         -DCMAKE_VERBOSE_MAKEFILE=${ENABLE_DOWNLOAD} \
         -DCMAKE_BUILD_TYPE=Release \
-        -DQt5_DIR=${QT_ROOT}/lib/cmake/Qt5 
+        -DQT_DIR=${QT_ROOT}/lib/cmake/Qt5 \
+        -DQt5_DIR=${QT_ROOT}/lib/cmake/Qt5
         
     cmake --build . --config Release -- ${RABBIT_MAKE_JOB_PARA}
     if [ "$TRAVIS_TAG" != "" ]; then
@@ -310,7 +311,7 @@ if [ "${BUILD_TARGERT}" = "windows_msvc" ]; then
     
     if [ -z "${STATIC}" ]; then
         "/C/Program Files (x86)/NSIS/makensis.exe" "Install.nsi"
-        MD5=`md5sum ChineseChessControl-Setup-*.exe|awk '{print $1}'`
+        MD5=`md5sum ChineseChessControl_Setup_*.exe|awk '{print $1}'`
         echo "MD5:${MD5}"
         install/bin/ChineseChessApp.exe -f "`pwd`/update_windows.xml" \
             --md5 ${MD5} \

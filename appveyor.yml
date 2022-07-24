@@ -121,7 +121,7 @@ build_script:
   - C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build.sh
   
 artifacts:
-  - path: build_$(BUILD_TARGERT)\ChineseChessControl-Setup-*.exe  
+  - path: build_$(BUILD_TARGERT)\ChineseChessControl_Setup_*.exe
   - path: build_$(BUILD_TARGERT)\update_windows.xml
   - path: update_android.xml
   - path: ChineseChess_*.apk
