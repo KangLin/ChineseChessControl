@@ -2,6 +2,12 @@ cmake_minimum_required(VERSION 2.8)
 
 project(ChineseChessControl)
 
+if(MSVC)
+    if(MSVC_TOOLSET_VERSION VERSION_LESS 140)
+        message(FATAL_ERROR "MSVC must be MSVC2015 and later")
+    endif()
+endif()
+
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_CXX_STANDARD 11)
