@@ -8,6 +8,12 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
 [![Build Status](https://travis-ci.org/KangLin/ChineseChessControl.svg)](https://travis-ci.org/KangLin/ChineseChessControl)
 
+[![ubuntu master](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml)
+[![ubuntu develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml)
+
+[![msvc master](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml)
+[![msvc develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml)
+
 -------------------------
 
 - [简介](#简介)
@@ -70,14 +76,12 @@
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
   - windows x86
-      - [MSVC 2017 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl-Setup-msvc1916-x86-v2.0.5.exe)
-      - [MSVC 2015 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl-Setup-msvc1900-x86-v2.0.5.exe)
-      - [MSVC 2013 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl-Setup-msvc1800-x86-v2.0.5.exe)
+      - [MSVC 2017 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1916_x86_v2.0.5.exe)
+      - [MSVC 2015 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1900_x86_v2.0.5.exe)
 
   - windows x86_64
-      - [MSVC 2017 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl-Setup-msvc1916-x86_64-v2.0.5.exe)
-      - [MSVC 2015 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl-Setup-msvc1900-x86_64-v2.0.5.exe)
-      - [MSVC 2013 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl-Setup-msvc1800-x86_64-v2.0.5.exe)
+      - [MSVC 2017 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1916_x86_64_v2.0.5.exe)
+      - [MSVC 2015 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1900_x86_64_v2.0.5.exe)
 
   Windows安装包，支持 Windows xp 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
