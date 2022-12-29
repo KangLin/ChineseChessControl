@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -43,6 +43,7 @@
     <addaction name="actionNext_N"/>
     <addaction name="actionPrompt_message_M"/>
     <addaction name="actionPrompt_sound_S"/>
+    <addaction name="actionStyle_T"/>
    </widget>
    <widget class="QMenu" name="menuHelp_H">
     <property name="title">
@@ -75,8 +76,8 @@
   </widget>
   <action name="actionOpen_O">
    <property name="icon">
-    <iconset resource="Resource/Resource.qrc">
-     <normaloff>:/image/Open</normaloff>:/image/Open</iconset>
+    <iconset theme="document-open">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Open(&amp;O)</string>
@@ -84,8 +85,8 @@
   </action>
   <action name="actionSave_S">
    <property name="icon">
-    <iconset resource="Resource/Resource.qrc">
-     <normaloff>:/image/Save</normaloff>:/image/Save</iconset>
+    <iconset theme="document-save">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Save(&amp;S)</string>
@@ -93,8 +94,8 @@
   </action>
   <action name="actionPreviou_P">
    <property name="icon">
-    <iconset resource="Resource/Resource.qrc">
-     <normaloff>:/image/Previou</normaloff>:/image/Previou</iconset>
+    <iconset theme="go-previous">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Previou(&amp;P)</string>
@@ -102,8 +103,8 @@
   </action>
   <action name="actionNext_N">
    <property name="icon">
-    <iconset resource="Resource/Resource.qrc">
-     <normaloff>:/image/Next</normaloff>:/image/Next</iconset>
+    <iconset theme="go-next">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Next(&amp;N)</string>
@@ -125,8 +126,8 @@
   </action>
   <action name="actionExit_E">
    <property name="icon">
-    <iconset resource="Resource/Resource.qrc">
-     <normaloff>:/image/Exit</normaloff>:/image/Exit</iconset>
+    <iconset theme="application-exit">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Exit(&amp;E)</string>
@@ -146,6 +147,15 @@
    </property>
    <property name="text">
     <string>Prompt sound(&amp;S)</string>
+   </property>
+  </action>
+  <action name="actionStyle_T">
+  <property name="icon">
+   <iconset theme="style">
+   <normaloff>.</normaloff>.</iconset>
+    </property>
+   <property name="text">
+    <string>Style(&amp;T)</string>
    </property>
   </action>
  </widget>

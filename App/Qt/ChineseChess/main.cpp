@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
     int nRet = 0;
     QApplication a(argc, argv);
-    
+
     QString szLoacleName = QLocale::system().name();
     RabbitCommon::CTools::Instance()->Init(szLoacleName);
     CFrmChineseChess::InitResource(szLoacleName);
@@ -21,25 +21,26 @@ int main(int argc, char *argv[])
             + QDir::separator() + "ChineseChessApp_" + szLoacleName + ".qm";
 
     QTranslator translator;
-    translator.load(qmFile);
-    qApp->installTranslator(&translator);
+    bool bTranslator = translator.load(qmFile);
+    if(bTranslator)
+        qApp->installTranslator(&translator);
 
 #ifdef RABBITCOMMON 
     CFrmUpdater *pUpdate = new CFrmUpdater();
     pUpdate->SetTitle(QImage(":/image/Chess"));
-    pUpdate->SetInstallAutoStartup();
     if(!pUpdate->GenerateUpdateXml())
         return 0;
 #endif
-    
+
     MainWindow w;
     w.show();
-    
+
     nRet = a.exec();
-    
-    qApp->removeTranslator(&translator);
+
+    if(bTranslator)
+        qApp->removeTranslator(&translator);
     CFrmChineseChess::CleanResource();
     RabbitCommon::CTools::Instance()->Clean();
-    
+
     return nRet;
 }

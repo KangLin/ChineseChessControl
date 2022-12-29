@@ -4,6 +4,7 @@
 #include "RabbitCommonDir.h"
 #include "DlgAbout/DlgAbout.h"
 #include "FrmUpdater/FrmUpdater.h"
+#include "FrmStyle/FrmStyle.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -101,4 +102,10 @@ void MainWindow::on_actionUpdate_U_triggered()
         m_pfrmUpdater->show();
     #endif
 #endif
+}
+
+void MainWindow::on_actionStyle_T_triggered()
+{
+    CFrmStyle* s = new CFrmStyle();
+    s->show();
 }
