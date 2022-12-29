@@ -5,7 +5,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="71"/>
+        <location filename="../../MainWindow.cpp" line="72"/>
         <source>Chinese chess</source>
         <translation type="unfinished"></translation>
     </message>
@@ -20,68 +20,73 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="49"/>
+        <location filename="../../MainWindow.ui" line="50"/>
         <source>Help(&amp;H)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="61"/>
+        <location filename="../../MainWindow.ui" line="62"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="82"/>
+        <location filename="../../MainWindow.ui" line="83"/>
         <source>Open(&amp;O)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="91"/>
+        <location filename="../../MainWindow.ui" line="92"/>
         <source>Save(&amp;S)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="100"/>
+        <location filename="../../MainWindow.ui" line="101"/>
         <source>Previou(&amp;P)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="109"/>
+        <location filename="../../MainWindow.ui" line="110"/>
         <source>Next(&amp;N)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="118"/>
+        <location filename="../../MainWindow.ui" line="119"/>
         <source>About(&amp;A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="123"/>
+        <location filename="../../MainWindow.ui" line="124"/>
         <source>Update(&amp;U)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="132"/>
+        <location filename="../../MainWindow.ui" line="133"/>
         <source>Exit(&amp;E)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="140"/>
+        <location filename="../../MainWindow.ui" line="141"/>
         <source>Prompt message(&amp;M)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="148"/>
+        <location filename="../../MainWindow.ui" line="149"/>
         <source>Prompt sound(&amp;S)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="35"/>
-        <location filename="../../MainWindow.cpp" line="44"/>
+        <location filename="../../MainWindow.ui" line="158"/>
+        <source>Style(&amp;T)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../MainWindow.cpp" line="36"/>
+        <location filename="../../MainWindow.cpp" line="45"/>
         <source>Open chess game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="46"/>
+        <location filename="../../MainWindow.cpp" line="47"/>
         <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
         <translation type="unfinished"></translation>
     </message>
