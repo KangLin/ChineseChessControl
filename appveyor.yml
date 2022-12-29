@@ -85,27 +85,6 @@ environment:
     TOOLCHAIN_VERSION: 530_32
     QT_ROOT: C:\Qt\5.10\mingw53_32
     BUILD_ARCH: x86
-    
-  ##### android ########
-  - BUILD_TARGERT: android
-    GENERATORS: "MSYS Makefiles"
-    BUILD_ARCH: "armeabi-v7a"
-    ANDROID_ARM_NEON: ON
-    DOWNLOAD_QT: TRUE
-    QT_VERSION_DIR: 5.12
-    QT_VERSION: 5.12.6
-    ANDROID_API: android-24
-    TOOLCHAIN_VERSION: 4.9
-
-  - BUILD_TARGERT: android
-    GENERATORS: "MSYS Makefiles"
-    BUILD_ARCH: "arm64-v8a"
-    ANDROID_ARM_NEON: ON
-    DOWNLOAD_QT: TRUE
-    QT_VERSION_DIR: 5.12
-    QT_VERSION: 5.12.6
-    ANDROID_API: android-24
-    TOOLCHAIN_VERSION: 4.9
 
 matrix:
   fast_finish: false
