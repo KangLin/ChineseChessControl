@@ -10,6 +10,8 @@
 
 [![ubuntu master](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml)
 [![ubuntu develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml)
+[![mingw](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml/badge.svg)](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml)
+[![mingw develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml)
 
 [![msvc master](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml)
 [![msvc develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml)
