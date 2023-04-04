@@ -197,3 +197,50 @@ function(INSTALL_TARGET)
             DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PARA_NAME}")  
     endif()
 endfunction()
+
+# 得到 GIT 库的版本
+# 输入参数：
+#   SOURCE_DIR: 库的根目录。默认：${CMAKE_SOURCE_DIR}
+# 输出参数：
+#   OUT_VERSION：版本号
+#   OUT_REVISION: 版本修正号
+function(GET_VERSION)
+    cmake_parse_arguments(PARA "" "SOURCE_DIR;OUT_VERSION;OUT_REVISION" "" ${ARGN})
+    # Find Git Version Patch
+
+    if(NOT DEFINED PARA_SOURCE_DIR)
+        set(PARA_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
+    endif()
+
+    IF(EXISTS "${PARA_SOURCE_DIR}/.git")
+        if(NOT GIT)
+            SET(GIT $ENV{GIT})
+        endif()
+        if(NOT GIT)
+            FIND_PROGRAM(GIT NAMES git git.exe git.cmd)
+        endif()
+        IF(GIT)
+            EXECUTE_PROCESS(
+                WORKING_DIRECTORY ${PARA_SOURCE_DIR}
+                COMMAND ${GIT} describe --tags
+                OUTPUT_VARIABLE _OUT_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE
+            )
+            EXECUTE_PROCESS(
+                WORKING_DIRECTORY ${PARA_SOURCE_DIR}
+                COMMAND ${GIT} rev-parse --short HEAD
+                OUTPUT_VARIABLE _OUT_REVISION OUTPUT_STRIP_TRAILING_WHITESPACE
+            )
+            IF(NOT _OUT_VERSION)
+                SET(_OUT_VERSION ${_OUT_REVISION})
+            ENDIF()
+            IF(DEFINED PARA_OUT_VERSION)
+                SET(${PARA_OUT_VERSION} ${_OUT_VERSION} PARENT_SCOPE)
+            ENDIF()
+            IF(DEFINED PARA_OUT_REVISION)
+                SET(${PARA_OUT_REVISION} ${_OUT_REVISION} PARENT_SCOPE)
+            ENDIF()
+        ELSE()
+            message("Git is not exist. please set the value GIT to git")
+        ENDIF()
+    ENDIF()
+endfunction()

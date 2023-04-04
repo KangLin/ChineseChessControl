@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.8)
 
 project(ChineseChessControl)
 
@@ -73,12 +73,9 @@ IF(MSVC)
 ENDIF(MSVC)
 IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
-        add_compile_options(-g -ggdb)
-    else()
-        add_compile_options(-O3)
-    endif()
+        add_compile_options("$<IF:$<CONFIG:Debug>, -g -ggdb, -O3>")
 ENDIF()
+
 #add_custom_target(genexdebug COMMAND ${CMAKE_COMMAND} -E echo "$<IF:$<CONFIG:Debug>, -g -ggdb, -O3>")
 SET(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libs")
 if (BUILD_SHARED_LIBS)

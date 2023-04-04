@@ -29,7 +29,8 @@ if [ -z "$VERSION" ]; then
 fi
 
 sed -i "s/^\!define PRODUCT_VERSION.*/\!define PRODUCT_VERSION \"${VERSION}\"/g" ${SOURCE_DIR}/Install/Install.nsi
-sed -i "s/^\SET(ChineseChessControl_VERSION.*/\SET(ChineseChessControl_VERSION \"${VERSION}\")/g" ${SOURCE_DIR}/CMakeLists.txt
+sed -i "s/^\SET(ChineseChessControl_VERSION.*/SET(ChineseChessControl_VERSION \"${VERSION}\")/g" ${SOURCE_DIR}/CMakeLists.txt
+sed -i "s/    SET(${PROJECT_NAME}_VERSION.*/    SET(${PROJECT_NAME}_VERSION \"${VERSION}\")/g" ${SOURCE_DIR}/Src/CMakeLists.txt
 sed -i "s/export VERSION=.*/export VERSION=\"${VERSION}\"/g" ${SOURCE_DIR}/ci/build.sh
 sed -i "s/^version: '.*{build}'/version: '${VERSION}.{build}'/g" ${SOURCE_DIR}/appveyor.yml
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/appveyor.yml
