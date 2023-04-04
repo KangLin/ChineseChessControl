@@ -10,6 +10,7 @@
 
 #include "GoRule.h"
 #include <stdlib.h>
+#include "Common.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

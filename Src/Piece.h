@@ -12,7 +12,7 @@
 #define __PIECE_H_KL_2020_05_15__
 
 #pragma once
-#include "Common.h"
+
 #include "chinesechess_export.h"
 
 /**
