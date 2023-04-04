@@ -1,5 +1,9 @@
 project(ChineseChess)
 
+include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
+include(GenerateExportHeader)
+
 # Find Git Version Patch
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)
@@ -102,11 +106,11 @@ if(${PROJECT_NAME}_VERSION)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
         -D${PROJECT_NAME}_VERSION="${${PROJECT_NAME}_VERSION}")
 endif()
+target_compile_options(${PROJECT_NAME} PRIVATE
+    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<CXX_COMPILER_ID:GNU,Clang>:$<IF:$<CONFIG:Debug>, -g -ggdb, -O3>>")
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE
-        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE
-        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
     target_link_libraries(${PROJECT_NAME} PRIVATE Ws2_32)
 elseif(MINGW)
     target_link_libraries(${PROJECT_NAME} PRIVATE wsock32)
