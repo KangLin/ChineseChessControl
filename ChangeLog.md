@@ -3,6 +3,7 @@
 - v2.0.6
   + 修改 CI: 使用 github action
   + Qt: 使用图标主题
+  + 重构 CMakeLists.txt
 
 - v2.0.5
   + 增加残局支持
