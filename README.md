@@ -42,7 +42,7 @@
     - https://launchpad.net/chinesechesscontrol
 
 ##### 功能
-- 控件
+- [x] 控件
   + [x] [中国象棋库](Documents/Developer.md#中国象棋库)
     - [x] 中国象棋基本规则
     - [x] 棋局保存和复盘
