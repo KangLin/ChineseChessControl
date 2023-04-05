@@ -125,14 +125,14 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     )
 if(MSVC)
     if(NOT DEFINED CMAKE_WINDOWS_VERSION)
-        set(CMAKE_WINDOWS_VERSION "WIN7")
+        set(CMAKE_WINDOWS_VERSION "WINXP")
     endif()
     # WINDOWS 版本号详见： SDKDDKVer.h
     if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
         list(APPEND CHINESE_CHESS_DEFINITIONS 
             WINVER=0x0501 _WIN32_WINNT=0x0501)
         set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-            "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+            "/SUBSYSTEM:WINDOWS\",5.01\"")
     elseif(CMAKE_WINDOWS_VERSION STREQUAL "WIN7")
         list(APPEND CHINESE_CHESS_DEFINITIONS
             WINVER=0x0601 _WIN32_WINNT=0x0601)
@@ -152,7 +152,13 @@ endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
     )
+if(NOT MINGW)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
+    )
+endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${CHINESE_CHESS_DEFINITIONS})
 
 # 安装

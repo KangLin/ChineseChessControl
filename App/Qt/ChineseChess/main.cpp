@@ -25,12 +25,10 @@ int main(int argc, char *argv[])
     if(bTranslator)
         qApp->installTranslator(&translator);
 
-#ifdef RABBITCOMMON 
     CFrmUpdater *pUpdate = new CFrmUpdater();
     pUpdate->SetTitle(QImage(":/image/Chess"));
     if(!pUpdate->GenerateUpdateXml())
         return 0;
-#endif
 
     MainWindow w;
     w.show();

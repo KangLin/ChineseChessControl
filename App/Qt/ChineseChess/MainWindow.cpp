@@ -16,18 +16,15 @@ MainWindow::MainWindow(QWidget *parent)
     this->setCentralWidget(m_pChess);
     ui->actionPrompt_sound_S->setChecked(m_pChess->getEnablePromptSound());
     ui->actionPrompt_message_M->setChecked(m_pChess->getEnablePromptMessage());
-#ifdef RABBITCOMMON  
+
     CFrmUpdater updater;
     ui->actionUpdate_U->setIcon(updater.windowIcon());
-#endif
-    
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_actionOpen_O_triggered()
 {
@@ -93,7 +90,6 @@ void MainWindow::on_actionPrompt_message_M_triggered(bool checked)
 
 void MainWindow::on_actionUpdate_U_triggered()
 {
-#ifdef RABBITCOMMON
     CFrmUpdater* m_pfrmUpdater = new CFrmUpdater();
     m_pfrmUpdater->SetTitle(QImage(":/image/Chess"));
     #if defined (Q_OS_ANDROID)
@@ -101,7 +97,6 @@ void MainWindow::on_actionUpdate_U_triggered()
     #else
         m_pfrmUpdater->show();
     #endif
-#endif
 }
 
 void MainWindow::on_actionStyle_T_triggered()

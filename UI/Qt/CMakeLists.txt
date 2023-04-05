@@ -1,16 +1,5 @@
 project(ChineseChessQt)
 
-SET(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-if(CMAKE_VERSION VERSION_LESS "3.7.0")
-    set(CMAKE_INCLUDE_CURRENT_DIR ON)
-endif()
-
-include(CMakePackageConfigHelpers)
-include(GNUInstallDirs)
-include(GenerateExportHeader)
-
 # Find Git Version Patch
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)
@@ -157,6 +146,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
     )
+if(NOT MINGW)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
+    )
+endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<CONFIG:Debug>:_DEBUG DEBUG>)
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${CHINESE_CHESS_QT_DEFINITIONS})
 target_compile_options(${PROJECT_NAME} PRIVATE
@@ -169,7 +163,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess ${QT_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} PRIVATE RabbitCommon)
 if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\"")
 endif()
 
 # 安装中国象棋控件

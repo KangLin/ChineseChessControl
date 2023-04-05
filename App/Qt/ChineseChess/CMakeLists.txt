@@ -52,7 +52,6 @@ LIST(APPEND RCC_FILES Resource/Resource.qrc)
 include(${RabbitCommon_DIR}/cmake/Translations.cmake)
 GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
-#LIST(APPEND RCC_FILES $<$<CONFIG:Debug>:${TRANSLATIONS_QRC_FILES}>)
 if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
     LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
 endif()
@@ -66,27 +65,33 @@ else()
 endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ChineseChessQt RabbitCommon ${QT_LIBRARIES})
-
 set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     VERSION ${ChineseChessControl_VERSION})
+if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+endif()
 if(UNIX AND NOT ANDROID)
     set_target_properties(${PROJECT_NAME} PROPERTIES
         RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
 endif()
-if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE
-        "$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    target_compile_options(${PROJECT_NAME} PRIVATE
-        "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-endif()
+target_compile_options(${PROJECT_NAME} PRIVATE
+    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+    $<$<CXX_COMPILER_ID:GNU,Clang>:$<IF:$<CONFIG:Debug>, -g -ggdb, -O3>>
+    )
 
+if(NOT MINGW)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
+    )
+endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
-    RABBITCOMMON
     )
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_BINARY_DIR}
