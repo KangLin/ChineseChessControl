@@ -41,7 +41,7 @@ jobs:
     env:
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
-      INSTALL_DIR: ${{github.workspace}}\.cache\install_msvc_${{matrix.triplet}}_${{matrix.BUILD_TYPE}}_2022_02_14
+      INSTALL_DIR: ${{github.workspace}}\.cache\install_msvc_${{matrix.triplet}}_${{matrix.BUILD_TYPE}}
       CMAKE_GENERATOR: ${{matrix.CMAKE_GENERATOR}}
       CMAKE_PLATFORM_TOOLSET: ${{matrix.CMAKE_PLATFORM_TOOLSET}}
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
@@ -73,15 +73,15 @@ jobs:
         key: ChineseChessControl_msvc_cache-installed-${{matrix.os}}-vc${{matrix.CMAKE_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     - name: run-vcpkg
-          uses: lukka/run-vcpkg@v7
-          with:
-            vcpkgGitCommitId: ${{env.VCPKGGITCOMMITID}}
-            vcpkgDirectory: ${{runner.workspace}}/vcpkg/
-            # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
-            # compute its hash and append this to the computed cache's key.
-            appendedCacheKey: cache-vcpkg-msvc-${{matrix.os}}-vc${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
-            vcpkgTriplet: '${{matrix.triplet}}'
-            vcpkgArguments: 'zlib openssl'
+      uses: lukka/run-vcpkg@v7
+      with:
+        vcpkgGitCommitId: ${{env.VCPKGGITCOMMITID}}
+        vcpkgDirectory: ${{runner.workspace}}/vcpkg/
+        # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
+        # compute its hash and append this to the computed cache's key.
+        appendedCacheKey: cache-vcpkg-msvc-${{matrix.os}}-vc${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
+        vcpkgTriplet: '${{matrix.triplet}}'
+        vcpkgArguments: 'zlib openssl'
 
     - name: git clone RabbitCommon
       working-directory: ${{env.SOURCE_DIR}}
@@ -131,6 +131,7 @@ jobs:
         #extra: # optional
 
     - name: build log4qt
+      if: false
       working-directory: ${{env.SOURCE_DIR}}
       run: |
         IF NOT EXIST ${{env.INSTALL_DIR}}\lib\cmake\Log4Qt (
@@ -168,9 +169,9 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install
         cmake --build . --config ${{matrix.BUILD_TYPE}}
         IF "${{matrix.BUILD_TYPE}}" == "Release" (
-            cmake --install . --config ${{matrix.BUILD_TYPE}} --component Runtime --strip
+            cmake --install . --config ${{matrix.BUILD_TYPE}}
         ) else (
-            cmake --install . --config ${{matrix.BUILD_TYPE}} --component Runtime
+            cmake --install . --config ${{matrix.BUILD_TYPE}}
         )
 
     - name: Package

@@ -313,9 +313,9 @@ if [ "${BUILD_TARGERT}" = "windows_msvc" ]; then
         "/C/Program Files (x86)/NSIS/makensis.exe" "Install.nsi"
         MD5=`md5sum ChineseChessControl_Setup_*.exe|awk '{print $1}'`
         echo "MD5:${MD5}"
-        install/bin/ChineseChessApp.exe -f "`pwd`/update_windows.xml" \
-            --md5 ${MD5} \
-            --home "https://github.com/KangLin/ChineseChessControl" \
-            --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/`ls ChineseChessControl_Setup_*_${VERSION}.exe`"
+        #install/bin/ChineseChessApp.exe -f "`pwd`/update_windows.xml" \
+        #   --md5 ${MD5} \
+        #    --home "https://github.com/KangLin/ChineseChessControl" \
+        #    --url "https://github.com/KangLin/ChineseChessControl/releases/download/${VERSION}/`ls ChineseChessControl_Setup_*_${VERSION}.exe`"
     fi
 fi

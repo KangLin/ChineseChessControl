@@ -61,6 +61,7 @@ jobs:
       run: git clone https://github.com/KangLin/RabbitCommon.git
 
     - name: build log4qt
+      if: false
       working-directory: ${{env.SOURCE_DIR}}
       env:
         MSYSTEM: MINGW64
@@ -96,7 +97,6 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install ^
             -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}}
         cmake --build . --config ${{ matrix.BUILD_TYPE }}
-        cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install-runtime
 
     - name: Package
       working-directory: ${{github.workspace}}/build

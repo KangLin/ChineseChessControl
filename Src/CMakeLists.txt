@@ -125,7 +125,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     )
 if(MSVC)
     if(NOT DEFINED CMAKE_WINDOWS_VERSION)
-        set(CMAKE_WINDOWS_VERSION "WIN7")
+        set(CMAKE_WINDOWS_VERSION "WINXP")
     endif()
     # WINDOWS 版本号详见： SDKDDKVer.h
     if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
