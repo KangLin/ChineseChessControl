@@ -125,12 +125,14 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     )
 if(MSVC)
     if(NOT DEFINED CMAKE_WINDOWS_VERSION)
-        set(CMAKE_WINDOWS_VERSION "WINXP")
+        set(CMAKE_WINDOWS_VERSION "WIN7")
     endif()
     # WINDOWS 版本号详见： SDKDDKVer.h
     if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
         list(APPEND CHINESE_CHESS_DEFINITIONS 
             WINVER=0x0501 _WIN32_WINNT=0x0501)
+        set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
+            "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
     elseif(CMAKE_WINDOWS_VERSION STREQUAL "WIN7")
         list(APPEND CHINESE_CHESS_DEFINITIONS
             WINVER=0x0601 _WIN32_WINNT=0x0601)
@@ -148,6 +150,9 @@ elseif(MINGW)
     target_compile_definitions(${PROJECT_NAME} PRIVATE MINGW)
 endif()
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    $<$<CONFIG:Debug>:_DEBUG DEBUG>
+    )
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${CHINESE_CHESS_DEFINITIONS})
 
 # 安装
@@ -163,9 +168,9 @@ INSTALL(TARGETS ${PROJECT_NAME}
         COMPONENT Runtime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         COMPONENT Development
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl/${PROJECT_NAME}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
         COMPONENT Development
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl/${PROJECT_NAME}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     )
 
 export(TARGETS ${PROJECT_NAME}
@@ -187,18 +192,18 @@ install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
         COMPONENT Development)
 
 # Install pkg-config file
-if(UNIX OR MINGW)
+#if(UNIX OR MINGW)
     foreach(d ${CHINESE_CHESS_DEFINITIONS})
         SET(CHINESE_CHESS_DEFINITIONS_PC "${CHINESE_CHESS_DEFINITIONS_PC} -D${d}")
     endforeach()
     
     # Install pc files
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/ChineseChess.pc.in
-        ${CMAKE_BINARY_DIR}/ChineseChess.pc @ONLY)
-    install(FILES ${CMAKE_BINARY_DIR}/ChineseChess.pc
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/${PROJECT_NAME}.pc.in
+        ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc @ONLY)
+    install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
         COMPONENT Development)
-endif()
+#endif()
 
 # 安装图标
 INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Res/Picture/Chess.ico

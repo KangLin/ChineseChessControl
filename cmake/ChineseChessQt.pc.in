@@ -3,8 +3,7 @@ libdir=${prefix}/lib
 includedir=${prefix}/include/ChineseChessControl
 
 Name: @PROJECT_NAME@
-Description: Chinese chess C++ library
-Version: @ChineseChess_VERSION@
+Description: Chinese chess for qt library
+Version: @ChineseChessQt_VERSION@
 Libs: -L${libdir} -l@PROJECT_NAME@
-Cflags: -I${includedir} @CHINESE_CHESS_DEFINITIONS_PC@
-
+Cflags: -I${includedir} @CHINESE_CHESS_QT_DEFINITIONS_PC@
