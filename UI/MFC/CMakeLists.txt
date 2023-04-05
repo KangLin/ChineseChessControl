@@ -41,6 +41,10 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess)
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     )
+target_compile_options(${PROJECT_NAME} PRIVATE
+    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+    )
 
 # 安装中国象棋控件
 INSTALL(TARGETS ${PROJECT_NAME}

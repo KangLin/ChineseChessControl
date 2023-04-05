@@ -51,6 +51,11 @@ target_include_directories(${PROJECT_NAME}
     ${CMAKE_SOURCE_DIR}/Src
 	${CMAKE_SOURCE_DIR}/Src/MFC)
 
+target_compile_options(${PROJECT_NAME} PRIVATE
+    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+    )
+
 # 安装系统运行库
 set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
 if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)

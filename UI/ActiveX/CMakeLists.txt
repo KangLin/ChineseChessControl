@@ -59,6 +59,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView ${LIBS})
 #    ${CMAKE_CURRENT_SOURCE_DIR}/../
 #	${CMAKE_CURRENT_SOURCE_DIR}/../MFC)
 
+target_compile_options(${PROJECT_NAME} PRIVATE
+    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+    )
+
 # 编译完成后向系统注册中国象棋控件
 option(REGISTER_ACTIVEX_CONTROL "Registering ActiveX Control" OFF)
 if(REGISTER_ACTIVEX_CONTROL)
