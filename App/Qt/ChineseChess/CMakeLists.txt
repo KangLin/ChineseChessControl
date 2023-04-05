@@ -70,9 +70,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     VERSION ${ChineseChessControl_VERSION})
+# 程序以windows方式启动，不出现控制台窗口
 if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+else()
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 endif()
 if(UNIX AND NOT ANDROID)
     set_target_properties(${PROJECT_NAME} PROPERTIES

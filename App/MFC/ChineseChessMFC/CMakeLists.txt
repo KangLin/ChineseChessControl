@@ -37,6 +37,14 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXDLL"
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
     )
 target_link_libraries(${PROJECT_NAME} PRIVATE ChineseChessView)
+# 程序以windows方式启动，不出现控制台窗口
+if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+else()
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+endif()
 target_include_directories(${PROJECT_NAME}
     PRIVATE
     ${CMAKE_BINARY_DIR}
