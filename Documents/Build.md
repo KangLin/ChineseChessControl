@@ -257,10 +257,12 @@
 
 ```
 ROOT
-  |------- bin    ：存放应用程序
-  |------- lib    ：存放库文件
+  |------- bin    存放应用程序
+  |------- lib    存放库文件
   |         |-- cmake
-  |               |---- ChineseChessControl： 存放 CMAKE 配置文件
+  |               |---- ChineseChessControl  存放 CMAKE 配置文件
+  |         |-- pkgconfig                    存放 pkg-config 配置文件
+  |        
   |------- include
-              |--- ChineseChessControl： 存放头文件
+              |--- ChineseChessControl 存放头文件
 ```
