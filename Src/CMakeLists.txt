@@ -187,6 +187,7 @@ export(TARGETS ${PROJECT_NAME}
 install(EXPORT ${PROJECT_NAME}Config
     NAMESPACE ChineseChessControl::
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+        COMPONENT Development
     )
 # Install cmake configure version file
 write_basic_package_version_file(

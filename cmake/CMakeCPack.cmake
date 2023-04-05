@@ -25,8 +25,8 @@ set(CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME_lower}_${ChineseChessControl_V
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}")
 #set(CPACK_PACKAGE_DIRECTORY ${CMAKE_BINARY_DIR}/package)
 
-#set(CPACK_PACKAGE_NAME "ChineseChessControl")
-set(CPACK_PACKAGE_VENDOR "Kang Lin <kl222@126.com>")
+set(CPACK_PACKAGE_NAME "ChineseChessControl")
+set(CPACK_PACKAGE_VENDOR "KangLinStudio")
 set(CPACK_PACKAGE_VERSION ${ChineseChessControl_VERSION})
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "中国象棋控件")
 #set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
@@ -66,9 +66,24 @@ endif()
 #set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA")
 set(CPACK_NSIS_MODIFY_PATH ON)
 set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
-set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\CHESS.BMP")
-set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\CHESS.BMP")
-set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\CHESS.BMP")
+set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+#set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\CHESS.BMP")
+#set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\CHESS.BMP")
+set(CPACK_NSIS_INSTALLED_ICON_NAME "bin/ChineseChessApp.exe")
+set(CPACK_NSIS_PACKAGE_NAME "中国象棋控件")
+set(CPACK_NSIS_DISPLAY_NAME "ChineseChessControl")
+set(CPACK_NSIS_HELP_LINK "https://github.com/KangLin/ChineseChessControl/issues")
+set(CPACK_NSIS_URL_INFO_ABOUT "https://github.com/KangLin/ChineseChessControl")
+set(CPACK_NSIS_CONTACT "Kang Lin <kl222@126.com>")
+set(CPACK_NSIS_MENU_LINKS
+    "bin/ChineseChessApp.exe" "Chinese chess application"
+    "https://github.com/KangLin/ChineseChessControl" "Web home site"
+   )
+set(CPACK_NSIS_MUI_FINISHPAGE_RUN ChineseChessApp.exe)
+#set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut \"$SMPROGRAMS\\$STARTMENU_FOLDER\\Chinese chess.lnk\" \"$INSTDIR\\bin\\ChineseChessApp.exe\""")
+#set(CPACK_NSIS_DELETE_ICONS_EXTRA )
 ############### NSIS ###################
 
 include(CPack)
@@ -82,4 +97,10 @@ cpack_add_component(Development
 cpack_add_component(Runtime
     DISPLAY_NAME  "Runtime"
     DESCRIPTION   "Runtime"
+    )
+
+cpack_add_component(Application
+    DISPLAY_NAME  "Application"
+    DESCRIPTION   "Application"
+    DEPENDS Runtime
     )

@@ -101,25 +101,25 @@ target_include_directories(${PROJECT_NAME}
 if(ANDROID)
     INSTALL(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION "libs/${ANDROID_ABI}"
-            COMPONENT Runtime
+            COMPONENT Application
         LIBRARY DESTINATION "libs/${ANDROID_ABI}"
-            COMPONENT Runtime
+            COMPONENT Application
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )
 elseif(WIN32)
     INSTALL(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Runtime
+            COMPONENT Application
         LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Runtime
+            COMPONENT Application
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )
 else()
     INSTALL(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Runtime
+            COMPONENT Application
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-            COMPONENT Runtime
+            COMPONENT Application
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )        
 endif()
@@ -128,11 +128,11 @@ endif()
 if(UNIX AND NOT ANDROID)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop
         DESTINATION "share/applications"
-            COMPONENT Runtime)
+            COMPONENT Application)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/69/bjiang.png
         RENAME ChineseChess.png
         DESTINATION "share/pixmaps"
-            COMPONENT Runtime)
+            COMPONENT Application)
 endif()
 
 IF(ANDROID)
@@ -154,6 +154,7 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
     if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
         set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
     endif()
+    set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT Runtime)
     include(InstallRequiredSystemLibraries)
 
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)

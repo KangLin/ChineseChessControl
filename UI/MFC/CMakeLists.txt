@@ -63,6 +63,7 @@ export(TARGETS ${PROJECT_NAME}
 install(EXPORT ${PROJECT_NAME}Targets
     NAMESPACE ChineseChessControl::
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+        COMPONENT Development
     )
 # 因为编译树中已有 export(${PROJECT_NAME}Config.cmake)
 configure_package_config_file(

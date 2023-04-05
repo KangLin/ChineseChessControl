@@ -53,8 +53,8 @@ include(InstallRequiredSystemLibraries)
 # 安装中国象棋
 INSTALL(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
+        COMPONENT Application
     LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
+        COMPONENT Application
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     )

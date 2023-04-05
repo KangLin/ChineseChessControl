@@ -204,6 +204,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
 install(EXPORT ${PROJECT_NAME}Targets
     NAMESPACE ChineseChessControl::
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
+        COMPONENT Development
     )
 
 write_basic_package_version_file(
