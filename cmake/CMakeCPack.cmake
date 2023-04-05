@@ -66,9 +66,9 @@ endif()
 #set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA")
 set(CPACK_NSIS_MODIFY_PATH ON)
 set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
-#set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/resources\\\\coturn_Install.bmp")
-#set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/resources\\\\coturn_Icon_96px.ico")
-#set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}/resource\\\\coturn_Icon_96px.ico")
+set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\CHESS.BMP")
+set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\CHESS.BMP")
+set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\CHESS.BMP")
 ############### NSIS ###################
 
 include(CPack)

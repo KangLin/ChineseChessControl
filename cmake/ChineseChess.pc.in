@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${prefix}/lib
+includedir=${prefix}/include/ChineseChessControl/ChineseChess
+
+Name: @PROJECT_NAME@
+Description: Chinese chess C++ library
+Version: @ChineseChess_VERSION@
+Libs: -L${libdir} -lChineseChess
+Cflags: -I${includedir} @CHINESE_CHESS_DEFINITIONS_PC@
+
