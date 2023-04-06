@@ -147,7 +147,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
     )
 if(NOT MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
+    target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
     )
 endif()

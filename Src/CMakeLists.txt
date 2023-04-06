@@ -152,10 +152,9 @@ endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
-    $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
     )
 if(NOT MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
+    target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
     )
 endif()

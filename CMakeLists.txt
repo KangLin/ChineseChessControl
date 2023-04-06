@@ -79,7 +79,7 @@ if (BUILD_SHARED_LIBS)
        # Just setting CMAKE_POSITION_INDEPENDENT_CODE should be enough to set
        # -fPIC for GCC but sometimes it still doesn't get set, so make sure it
        # does.
-       add_definitions("-fPIC")
+       add_compile_options("-fPIC")
     endif()
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()

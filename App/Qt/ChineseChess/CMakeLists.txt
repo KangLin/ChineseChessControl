@@ -71,12 +71,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     VERSION ${ChineseChessControl_VERSION})
 # 程序以windows方式启动，不出现控制台窗口
-if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
-else()
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+if(WIN32)
+    if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" /ENTRY:mainCRTStartup")
+    else()
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+    endif()
 endif()
 if(UNIX AND NOT ANDROID)
     set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -89,7 +91,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     )
 
 if(NOT MINGW)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
+    target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<CXX_COMPILER_ID:GNU,Clang>:-fPIC>
     )
 endif()
