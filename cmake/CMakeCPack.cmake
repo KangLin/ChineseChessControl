@@ -45,6 +45,9 @@ set(CPACK_PACKAGE_HOMEPAGE_URL "https://github.com/KangLin/ChineseChessControl")
 set(CPACK_PACKAGE_CONTACT "康 林 <kl222@126.com>")
 
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "ChineseChessControl")
+# 设置注册表健。仅用于 WINDOWS
+set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "ChineseChessControl")
+
 set(CPACK_PACKAGE_CHECKSUM "MD5")
 
 ############### Debian ###################
@@ -72,12 +75,13 @@ endif()
 # 设置开始菜单快捷方式。格式： "程序文件名" "菜单名"
 # 仅在 NSIS, WIX 中有效。
 # 与 CPACK_NSIS_MENU_LINKS 功能类似
-set(CPACK_PACKAGE_EXECUTABLES "ChineseChessApp" "中国象棋test")
-#set(CPACK_CREATE_DESKTOP_LINKS )
+#set(CPACK_PACKAGE_EXECUTABLES "ChineseChessApp" "中国象棋")
+#set(CPACK_CREATE_DESKTOP_LINKS "中国象棋")
 
 ############### NSIS ###################
 if(WIN32)
     
+    #NSIS 安装程序提供给最终用户的默认安装目录位于此根目录下。提供给最终用户的完整目录是：${CPACK_NSIS_INSTALL_ROOT}/${CPACK_PACKAGE_INSTALL_DIRECTORY}
     #set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA")
     set(CPACK_NSIS_MODIFY_PATH ON)
     set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
@@ -114,8 +118,14 @@ if(WIN32)
         "https://github.com/KangLin/ChineseChessControl" "项目主页"
     )
     set(CPACK_NSIS_MUI_FINISHPAGE_RUN ChineseChessApp.exe)
-    #set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut \"$SMPROGRAMS\\$STARTMENU_FOLDER\\Chinese chess.lnk\" \"$INSTDIR\\bin\\ChineseChessApp.exe\""")
-    #set(CPACK_NSIS_DELETE_ICONS_EXTRA )
+    # 建立桌面快捷方式
+    set(CPACK_NSIS_CREATE_ICONS_EXTRA "
+         CreateShortCut '$DESKTOP\\中国象棋.lnk\' '$INSTDIR\\bin\\ChineseChessApp.exe\'
+         ")
+    # Delete the Startup menu link after uninstallation
+    set(CPACK_NSIS_DELETE_ICONS_EXTRA "
+        Delete '$DESKTOP\\中国象棋.lnk\'
+    ")
 endif()
 ############### NSIS ###################
 
