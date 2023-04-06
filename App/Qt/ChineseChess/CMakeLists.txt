@@ -1,5 +1,13 @@
 project(ChineseChessApp)
 
+GET_VERSION(OUT_VERSION ChineseChessApp_VERSION
+    OUT_REVISION ChineseChessApp_REVISION
+)
+if(NOT ChineseChessApp_VERSION)
+    set(ChineseChessApp_VERSION ${ChineseChessControl_VERSION})
+endif()
+message("ChineseChessApp_VERSION:${ChineseChessApp_VERSION};ChineseChessApp_REVISION:${ChineseChessApp_REVISION}")
+
 #需要的QT组件
 SET(QT_LIBRARIES)
 SET(QT_COMPONENTS Core Gui Widgets)
@@ -69,7 +77,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-    VERSION ${ChineseChessControl_VERSION})
+    VERSION ${ChineseChessApp_VERSION})
 # 程序以windows方式启动，不出现控制台窗口
 if(WIN32)
     if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
@@ -96,7 +104,8 @@ if(NOT MINGW)
     )
 endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE
-    -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
+    ChineseChessApp_VERSION="${ChineseChessApp_VERSION}"
+    ChineseChessApp_REVISION="${ChineseChessApp_REVISION}"
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
     )
 target_include_directories(${PROJECT_NAME}

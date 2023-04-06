@@ -69,6 +69,8 @@ void MainWindow::on_actionAbout_A_triggered()
     about.m_szAppName = tr("Chinese chess");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
     about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
+    about.m_szVersion = ChineseChessApp_VERSION;
+    about.m_szVersionRevision = ChineseChessApp_REVISION;
     if(about.isHidden())
 #if defined (Q_OS_ANDROID)
         about.showMaximized();
