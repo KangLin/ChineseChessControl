@@ -1,5 +1,7 @@
 # Author: Kang Lin <kl222@126.com>
 
+#参考： https://github.com/medInria/medinria-superproject/blob/master/packaging/Packaging.cmake
+
 # 设置传递给 CPack 的配置文件
 configure_file("${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in"
 	"${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake" @ONLY)
@@ -31,11 +33,19 @@ set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME_lower}_${ChineseChessCo
 #包名。建议用英文。在NSIS 安装选项中不能正确解码
 set(CPACK_PACKAGE_NAME "ChineseChessControl")
 set(CPACK_PACKAGE_VENDOR "康林工作室")
-set(CPACK_PACKAGE_VERSION ${ChineseChessControl_VERSION})
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "中国象棋控件")
 
+#set(CPACK_PACKAGE_VERSION_MAJOR ${${PROJECT_NAME}_VERSION_MAJOR})
+#set(CPACK_PACKAGE_VERSION_MINOR ${${PROJECT_NAME}_VERSION_MINOR})
+#set(CPACK_PACKAGE_VERSION_PATCH ${${PROJECT_NAME}_VERSION_PATCH})
+set(CPACK_PACKAGE_VERSION ${${PROJECT_NAME}_VERSION})
+
 # 将在安装程序（由 GUI 安装程序使用）中显示的图标。
-set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+if(WIN32)
+    set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+else()
+    set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/Src/Res/Picture/Chess.ico")
+endif()
 
 #set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
 #set(CPACK_RESOURCE_FILE_WELCOME )
@@ -52,6 +62,7 @@ set(CPACK_PACKAGE_CHECKSUM "MD5")
 
 ############### Debian ###################
 if(UNIX)
+    set(CPACK_GENERATOR DEB)
     set(CPACK_DEBIAN_PACKAGE_DEBUG ON)
     
     set(CPACK_DEBIAN_PACKAGE_SOURCE ChineseChessControl)
@@ -71,6 +82,28 @@ if(UNIX)
     
 endif()
 ############### Debian ###################
+
+############### RPM ###################
+execute_process(COMMAND lsb_release -a
+                COMMAND grep "^Distributor ID:" 
+                COMMAND sed -e "s/Distributor ID:[ \t]*//ig"
+                OUTPUT_VARIABLE DISTRIBUTOR_ID
+                OUTPUT_STRIP_TRAILING_WHITESPACE)
+  
+execute_process(COMMAND lsb_release -a
+                COMMAND grep "^Release:"
+                COMMAND sed -e "s/Release:[ \t]*//ig"
+                OUTPUT_VARIABLE RELEASE
+                OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+execute_process(COMMAND arch 
+                OUTPUT_VARIABLE ARCH 
+                OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+if(${DISTRIBUTOR_ID} MATCHES fc|fedora|Fedora|Centos|centos|SUSE|Suse|suse)
+    set(CPACK_GENERATOR RPM)
+endif()
+############### RPM ###################
 
 # 设置开始菜单快捷方式。格式： "程序文件名" "菜单名"
 # 仅在 NSIS, WIX 中有效。

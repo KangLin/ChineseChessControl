@@ -3,7 +3,7 @@
 [Desktop Entry]
 Type=Application
 Icon=org.Rabbit.ChineseChess
-Exec=/opt/ChineseChess/bin/ChineseChess.sh
+Exec=@CPACK_PACKAGING_INSTALL_PREFIX@/ChineseChess.sh
 Terminal=false
 StartupNotify=true
 Categories=Application;Development;Game;

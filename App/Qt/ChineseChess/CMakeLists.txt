@@ -143,7 +143,10 @@ if(UNIX AND NOT ANDROID)
     INSTALL(PROGRAMS ${CMAKE_SOURCE_DIR}/share/applications/ChineseChess.sh
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT Application)
-    INSTALL(FILES ${CMAKE_SOURCE_DIR}/share/applications/org.Rabbit.ChineseChess.desktop
+    CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/share/applications/org.Rabbit.ChineseChess.desktop.in
+        ${CMAKE_CURRENT_BINARY_DIR}/org.Rabbit.ChineseChess.desktop
+        @ONLY)
+    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.Rabbit.ChineseChess.desktop
         DESTINATION "share/applications"
             COMPONENT Application)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/69/bjiang.png
