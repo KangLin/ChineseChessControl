@@ -100,17 +100,15 @@ jobs:
 
     - name: Package
       working-directory: ${{github.workspace}}/build
-      run: |
-        cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install-runtime
-        makensis ${{github.workspace}}/build/Install.nsi
-        cmake --build . --config ${{matrix.BUILD_TYPE}} --target package
       if: ${{ matrix.BUILD_TYPE == 'Release' }}
-
+      run: |
+        cmake --build . --target package
+      
     - name: update 
       uses: actions/upload-artifact@v2
+      if: ${{ matrix.BUILD_TYPE == 'Release' }}
       with:
         name: rabbitremotecontrol_${{ matrix.os }}
         path: |
-          ${{github.workspace}}\build\ChineseChessControl*.exe
-          ${{github.workspace}}\build\ChineseChessControl*.exe
-      if: ${{ matrix.BUILD_TYPE == 'Release' }}
+          ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
+      
