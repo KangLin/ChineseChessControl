@@ -184,13 +184,13 @@ ADD_CUSTOM_TARGET(uninstall
     "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake"
     )
 
-IF(WIN32)
-    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
-    configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
-    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
-        DESTINATION ..
-            COMPONENT Runtime)
-ENDIF()
+#IF(WIN32)
+#    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
+#    configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
+#    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
+#        DESTINATION ..
+#            COMPONENT Runtime)
+#ENDIF()
 # Install other files
 set(OTHER_FILES
     License.md

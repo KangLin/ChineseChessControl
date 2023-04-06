@@ -138,14 +138,16 @@ else()
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         )        
 endif()
-#INSTALL_TARGETS_FILES(TARGETS ChineseChessQt ChineseChess)
 
 if(UNIX AND NOT ANDROID)
-    INSTALL(FILES ${CMAKE_SOURCE_DIR}/debian/ChineseChess.desktop
+    INSTALL(PROGRAMS ${CMAKE_SOURCE_DIR}/share/applications/ChineseChess.sh
+        DESTINATION "${CMAKE_INSTALL_BINDIR}"
+            COMPONENT Application)
+    INSTALL(FILES ${CMAKE_SOURCE_DIR}/share/applications/org.Rabbit.ChineseChess.desktop
         DESTINATION "share/applications"
             COMPONENT Application)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/69/bjiang.png
-        RENAME ChineseChess.png
+        RENAME org.Rabbit.ChineseChess.png
         DESTINATION "share/pixmaps"
             COMPONENT Application)
 endif()

@@ -20,28 +20,26 @@ set -e
 
 case "$1" in
     configure)
-        if [ ! -f /usr/share/applications/ChineseChess.desktop ]; then
-            ln -s /opt/ChineseChess/share/applications/ChineseChess.desktop /usr/share/applications/ChineseChess.desktop
+        if [ ! -f /usr/share/applications/org.Rabbit.ChineseChess.desktop ]; then
+            ln -s /opt/ChineseChess/share/applications/org.Rabbit.ChineseChess.desktop /usr/share/applications/org.Rabbit.ChineseChess.desktop
         fi
-        if [ ! -f /usr/share/pixmaps/ChineseChess.png ]; then
+        if [ ! -f /usr/share/pixmaps/org.Rabbit.ChineseChess.png ]; then
             if [ ! -d /usr/share/pixmaps ]; then
                 mkdir -p /usr/share/pixmaps
             fi
-            ln -s /opt/ChineseChess/share/pixmaps/ChineseChess.png /usr/share/pixmaps/ChineseChess.png
+            ln -s /opt/ChineseChess/share/pixmaps/org.Rabbit.ChineseChess.png /usr/share/pixmaps/org.Rabbit.ChineseChess.png
         fi
-        echo "/opt/ChineseChess/lib" > /etc/ld.so.conf.d/ChineseChess.conf
-        echo "/opt/ChineseChess/bin" >> /etc/ld.so.conf.d/ChineseChess.conf
         export QT_VERSION_DIR=
         if [ -n "${QT_VERSION_DIR}" ]; then
-            echo "/opt/qt${QT_VERSION_DIR}/lib" >> /etc/ld.so.conf.d/FaceRecognizer.conf
+            echo "/opt/qt${QT_VERSION_DIR}/lib" >> /etc/ld.so.conf.d/ChineseChess.conf
         fi
         ldconfig
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
-        rm -fr /usr/share/applications/ChineseChess.desktop
+        rm -fr /usr/share/applications/org.Rabbit.ChineseChess.desktop
         rm -fr /etc/ld.so.conf.d/ChineseChess.conf
-        rm -fr /usr/share/pixmaps/ChineseChess.png
+        rm -fr /usr/share/pixmaps/org.Rabbit.ChineseChess.png
     ;;
 
     *)

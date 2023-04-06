@@ -1,13 +1,12 @@
 # Author: Kang Lin <kl222@126.com>
 
+# 设置传递给 CPack 的配置文件
 configure_file("${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in"
 	"${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake" @ONLY)
 set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake")
 
 # Generate .txt license file for CPack (PackageMaker requires a file extension)
 configure_file(${CMAKE_SOURCE_DIR}/License.md ${CMAKE_BINARY_DIR}/LICENSE.txt @ONLY)
-
-SET(CPACK_BINARY_ZIP "ON")
 
 set(CPACK_SOURCE_IGNORE_FILES
     ${CMAKE_SOURCE_DIR}/build
@@ -34,6 +33,10 @@ set(CPACK_PACKAGE_NAME "ChineseChessControl")
 set(CPACK_PACKAGE_VENDOR "康林工作室")
 set(CPACK_PACKAGE_VERSION ${ChineseChessControl_VERSION})
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "中国象棋控件")
+
+# 将在安装程序（由 GUI 安装程序使用）中显示的图标。
+set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+
 #set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
 #set(CPACK_RESOURCE_FILE_WELCOME )
 set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
@@ -46,7 +49,6 @@ set(CPACK_PACKAGE_CHECKSUM "MD5")
 
 ############### Debian ###################
 if(UNIX)
-    set(CPACK_BINARY_DEB ON)
     set(CPACK_DEBIAN_PACKAGE_DEBUG ON)
     
     set(CPACK_DEBIAN_PACKAGE_SOURCE ChineseChessControl)
@@ -67,16 +69,18 @@ if(UNIX)
 endif()
 ############### Debian ###################
 
-#set(CPACK_PACKAGE_EXECUTABLES )
+# 设置开始菜单快捷方式。格式： "程序文件名" "菜单名"
+# 仅在 NSIS, WIX 中有效。
+# 与 CPACK_NSIS_MENU_LINKS 功能类似
+set(CPACK_PACKAGE_EXECUTABLES "ChineseChessApp" "中国象棋test")
 #set(CPACK_CREATE_DESKTOP_LINKS )
 
 ############### NSIS ###################
 if(WIN32)
-    set(CPACK_BINARY_NSIS ON)
+    
     #set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA")
     set(CPACK_NSIS_MODIFY_PATH ON)
     set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
-    set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
     set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
     set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
     #set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\CHESS.BMP")
@@ -103,7 +107,8 @@ if(WIN32)
     set(CPACK_NSIS_URL_INFO_ABOUT "https://github.com/KangLin/ChineseChessControl")
     set(CPACK_NSIS_CONTACT "康 林 <kl222@126.com>")
     
-    #增加开始菜单条目。格式： "程序位置（相对于安装根目录）" "菜单名"
+    # 设置开始菜单快捷方式。格式： "程序位置（相对于安装根目录）" "菜单名"
+    # 与 CPACK_PACKAGE_EXECUTABLES 功能类似
     set(CPACK_NSIS_MENU_LINKS
         "bin/ChineseChessApp.exe" "中国象棋"
         "https://github.com/KangLin/ChineseChessControl" "项目主页"
