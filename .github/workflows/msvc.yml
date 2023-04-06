@@ -168,25 +168,19 @@ jobs:
             -DLog4Qt_DIR=${{env.INSTALL_DIR}}/lib/cmake/Log4Qt ^
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install
         cmake --build . --config ${{matrix.BUILD_TYPE}}
-        IF "${{matrix.BUILD_TYPE}}" == "Release" (
-            cmake --install . --config ${{matrix.BUILD_TYPE}}
-        ) else (
-            cmake --install . --config ${{matrix.BUILD_TYPE}}
-        )
 
     - name: Package
       # if: ${{ matrix.BUILD_TYPE == 'Release' }}
       working-directory: ${{github.workspace}}\build
       run: |
-        7z a ChineseChessControl_windows_${{env.ChineseChessControl_VERSION}}.zip .\install\*
-        makensis Install.nsi
+        cmake --build . --target package
 
     - name: update 
       uses: actions/upload-artifact@v2
       with:
         name: ChineseChessControl_${{ matrix.os }}_qt${{matrix.qt_version}}
         path: |
-          ${{github.workspace}}\build\ChineseChessControl_Setup*.exe
+          ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
       if: ${{ matrix.BUILD_TYPE == 'Release' }}
 
     - name: Upload To Github Release
@@ -199,4 +193,4 @@ jobs:
         body: |
           [:cn: 修改日志](ChangeLog.md)
         files: |
-          ${{github.workspace}}\build\ChineseChessControl*.exe
+          ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
