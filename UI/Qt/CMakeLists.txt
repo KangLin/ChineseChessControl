@@ -246,9 +246,12 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
         COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
         --no-compiler-runtime
         --verbose 7
+        --dir "${CMAKE_BINARY_DIR}/DependLibraries"
+        --libdir "${CMAKE_BINARY_DIR}/DependLibraries"
+        --plugindir "${CMAKE_BINARY_DIR}/DependLibraries"
         "$<TARGET_FILE:${PROJECT_NAME}>"
         )
-    INSTALL(DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>/"
+    INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Runtime)
+            COMPONENT DependLibraries)
 ENDIF()

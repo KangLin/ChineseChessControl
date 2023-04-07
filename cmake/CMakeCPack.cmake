@@ -1,8 +1,10 @@
 # Author: Kang Lin <kl222@126.com>
 
-# 更改 CPACK 包的默认安装路径前缀。
-# 或者在 cpack 时传递参数 -DCPACK_PACKAGING_INSTALL_PREFIX=/opt
-set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ChineseChessControl")
+if(LINUX)
+    # 更改 CPACK 包的默认安装路径前缀。
+    # 或者在 cpack 时传递参数 -DCPACK_PACKAGING_INSTALL_PREFIX=/opt
+    set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ChineseChessControl")
+endif()
 
 # Generate .txt license file for CPack (PackageMaker requires a file extension)
 configure_file(${CMAKE_SOURCE_DIR}/License.md ${CMAKE_BINARY_DIR}/LICENSE.txt)

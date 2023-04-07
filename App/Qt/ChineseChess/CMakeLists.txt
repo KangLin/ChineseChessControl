@@ -171,7 +171,7 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
     if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
         set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
     endif()
-    set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT Runtime)
+    set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT DependLibraries)
     include(InstallRequiredSystemLibraries)
 
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
@@ -183,14 +183,18 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
             )
     ENDIF()
 
-    #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中  
+    #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
         --no-compiler-runtime
         --verbose 7
+        --dir "${CMAKE_BINARY_DIR}/DependLibraries"
+        --libdir "${CMAKE_BINARY_DIR}/DependLibraries"
+        --plugindir "${CMAKE_BINARY_DIR}/DependLibraries"
         "$<TARGET_FILE:${PROJECT_NAME}>"
         )
-    INSTALL(DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>/"
+    INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Runtime)
+            COMPONENT DependLibraries)
+        
 ENDIF()
