@@ -162,6 +162,8 @@ endif()
 
 ############### NSIS ###################
 if(WIN32)
+
+    #set(CPACK_GENERATOR "NSIS;NSIS64;ZIP")
     
     #NSIS 安装程序提供给最终用户的默认安装目录位于此根目录下。提供给最终用户的完整目录是：${CPACK_NSIS_INSTALL_ROOT}/${CPACK_PACKAGE_INSTALL_DIRECTORY}
     #set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA")
