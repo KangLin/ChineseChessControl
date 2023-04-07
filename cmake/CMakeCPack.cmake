@@ -1,6 +1,6 @@
 # Author: Kang Lin <kl222@126.com>
 
-if(LINUX)
+if(UNIX)
     # 更改 CPACK 包的默认安装路径前缀。
     # 或者在 cpack 时传递参数 -DCPACK_PACKAGING_INSTALL_PREFIX=/opt
     set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ChineseChessControl")
