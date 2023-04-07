@@ -1,11 +1,5 @@
 # Author: Kang Lin <kl222@126.com>
 
-if(UNIX)
-    # 更改 CPACK 包的默认安装路径前缀。
-    # 或者在 cpack 时传递参数 -DCPACK_PACKAGING_INSTALL_PREFIX=/opt
-    set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ChineseChessControl")
-endif()
-
 # Generate .txt license file for CPack (PackageMaker requires a file extension)
 configure_file(${CMAKE_SOURCE_DIR}/License.md ${CMAKE_BINARY_DIR}/LICENSE.txt)
 
@@ -21,17 +15,17 @@ set(CPACK_SOURCE_IGNORE_FILES
 set(CPACK_SYSTEM_NAME "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
 set(CPACK_TOPLEVEL_TAG "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
 
-# 设置安装包的文件名
-string(TOLOWER ${CMAKE_PROJECT_NAME} CMAKE_PROJECT_NAME_lower)
-# 设置二进制安装包的文件名
-set(CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}_setup")
-# 设置源码安装包的文件名
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}_source")
-#set(CPACK_PACKAGE_DIRECTORY ${CMAKE_BINARY_DIR}/package)
-
-#包名。建议用英文。在NSIS 安装选项中不能正确解码
+#包名。建议用英文。
 set(CPACK_PACKAGE_NAME "ChineseChessControl")
 set(CPACK_PACKAGE_VENDOR "康林工作室")
+
+# 设置安装包的文件名
+string(TOLOWER ${CPACK_PACKAGE_NAME} CPACK_PACKAGE_NAME_lower)
+# 设置二进制安装包的文件名
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}_setup")
+# 设置源码安装包的文件名
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}_source")
+#set(CPACK_PACKAGE_DIRECTORY ${CMAKE_BINARY_DIR}/package)
 
 #set(CPACK_PACKAGE_VERSION_MAJOR ${${PROJECT_NAME}_VERSION_MAJOR})
 #set(CPACK_PACKAGE_VERSION_MINOR ${${PROJECT_NAME}_VERSION_MINOR})
@@ -75,7 +69,11 @@ if(UNIX)
     ##### 产生 control 文件 #####
 
     # 设置 Package 字段（自动转换成小写）。 默认使用 CPACK_PACKAGE_NAME
-    #set(CPACK_DEBIAN_PACKAGE_NAME ChineseChessControl)
+    #set(CPACK_DEBIAN_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
+
+    # 更改 CPACK 包的默认安装路径前缀。
+    # 或者在 cpack 时传递参数 -DCPACK_PACKAGING_INSTALL_PREFIX=/opt
+    set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/${CPACK_PACKAGE_NAME}")
 
     # 设置包文件名。默认使用 CPACK_PACKAGE_FILE_NAME
     # 也能设置为 DEB-DEFAULT，允许由DEB产生者产生它自己的 deb 格式：
@@ -107,7 +105,7 @@ if(UNIX)
     # set(CPACK_DEBIAN_PACKAGE_DEPENDS)
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     # May be set to a list of directories that will be given to dpkg-shlibdeps via its -l option. These will be searched by dpkg-shlibdeps in order to find private shared library dependencies.
-    #set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS)
+    set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS `pwd`/debian/${CPACK_PACKAGE_NAME_lower}${CPACK_PACKAGING_INSTALL_PREFIX}/lib:`pwd`/debian/${CPACK_PACKAGE_NAME_lower}${CPACK_PACKAGING_INSTALL_PREFIX}/lib/`uname -m`-linux-gnu)
     set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS ON)
     #set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS_POLICY ">=")
 
