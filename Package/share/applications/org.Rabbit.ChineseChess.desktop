@@ -3,7 +3,7 @@
 [Desktop Entry]
 Type=Application
 Icon=org.Rabbit.ChineseChess
-Exec=@CPACK_PACKAGING_INSTALL_PREFIX@/ChineseChess.sh
+Exec=../../bin/ChineseChess.sh
 Terminal=false
 StartupNotify=true
 Categories=Application;Development;Game;
@@ -15,3 +15,7 @@ Comment=ChineseChess
 Name[zh_CN]=中国象棋
 GenericName[zh_CN]=中国象棋
 Comment[zh_CN]=中国象棋
+
+Name[zh_TW]=中國象棋
+GenericName[zh_TW]=中國象棋
+Comment[zh_TW]=中國象棋

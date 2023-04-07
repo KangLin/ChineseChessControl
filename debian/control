@@ -1,5 +1,5 @@
 Source: chinesechess
-Section: main
+Section: games
 Priority: optional
 Maintainer: Kang Lin <kl222@126.com>
 Build-Depends: debhelper (>= 6)

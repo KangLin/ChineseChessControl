@@ -165,12 +165,11 @@ jobs:
             -DCMARK_TESTS=OFF ^
             -DCMARK_STATIC=ON ^
             -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} ^
-            -DLog4Qt_DIR=${{env.INSTALL_DIR}}/lib/cmake/Log4Qt ^
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install
         cmake --build . --config ${{matrix.BUILD_TYPE}}
 
     - name: Package
-      # if: ${{ matrix.BUILD_TYPE == 'Release' }}
+      if: ${{ matrix.BUILD_TYPE == 'Release' }}
       working-directory: ${{github.workspace}}\build
       run: |
         cmake --build . --target package

@@ -31,6 +31,7 @@ jobs:
         cmake -E make_directory ${{env.SOURCE_DIR}}
         cmake -E make_directory ${{env.TOOSL_DIR}}
         cmake -E make_directory ${{env.INSTALL_DIR}}
+        cmake -E make_directory ${{github.workspace}}/build
   
     - name: git clone RabbitCommon
       working-directory: ${{env.SOURCE_DIR}}
@@ -53,6 +54,7 @@ jobs:
         key: cache-installed-ubuntu-${{matrix.os}}-${{matrix.BUILD_TYPE}}
 
     - name: build log4qt
+      if: false
       working-directory: ${{env.SOURCE_DIR}}
       env:
         QT_ROOT: /usr/lib/`uname -m`-linux-gnu/qt5
@@ -71,39 +73,26 @@ jobs:
             cmake --build . --config ${{matrix.BUILD_TYPE}} --target install/strip
         fi
 
-    - name: build_debpackage.sh
-      working-directory: ${{github.workspace}}
+    - name: build ChineseChessControl
+      working-directory: ${{github.workspace}}/build
       env:
         RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
-        Log4Qt_DIR: ${{env.INSTALL_DIR}}/lib/cmake/Log4Qt
       run: |
-        if [ ${{matrix.BUILD_TYPE}} == 'Release' ]; then
-            export BUILD_TERMINAL=OFF
-        else
-            export tigervnc_DIR=${{ env.INSTALL_DIR }}/lib/cmake/tigervnc
-        fi
-        ./build_debpackage.sh /usr/lib/`uname -m`-linux-gnu/qt5
-        cp ../chinesechess_${{env.ChineseChessControl_VERSION}}_amd64.deb chinesechess_${{env.ChineseChessControl_VERSION}}_amd64_${{matrix.os}}.deb
-
-#    - name: update xml file
-#      if: ${{ matrix.BUILD_TYPE == 'Release' }}
-#      working-directory: ${{github.workspace}}
-#      run: |
-#        #sudo apt update -y -qq
-#        #sudo apt-get install -y -qq xvfb xpra
-#        sudo Xvfb :999 -ac &
-#        export DISPLAY=:999.0
-#        echo "Install rabbit remote control ......"
-#        sudo dpkg -i chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_amd64_${{ matrix.os }}.deb
-#        echo "Update update_linux.xml ......"
-#        /opt/chinesechesscontrol/bin/ChineseChessApp -f "`pwd`/update_linux.xml" --pf chinesechess_${{env.ChineseChessControl_VERSION}}_amd64_${{ matrix.os }}.deb -m "v${{env.ChineseChessControl_VERSION}}"
+        cmake ${{github.workspace}} \
+            -DCMARK_SHARED=OFF \
+            -DCMARK_TESTS=OFF \
+            -DCMARK_STATIC=ON \
+            -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} \
+            -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install
+        cmake --build . --config ${{matrix.BUILD_TYPE}}
+        cmake --build . --target package
 
     - name: update 
       uses: actions/upload-artifact@v2
       with:
           name: chinesechesscontrol_${{ matrix.os }}
           path: |
-            chinesechess_*.deb
+            ${{github.workspace}}/build/chinesechesscontrol_*.deb
       if: ${{ matrix.BUILD_TYPE == 'Release' }} 
 
     - name: Upload To Github Release
@@ -114,44 +103,6 @@ jobs:
       with:
         prerelease: true
         body: |
-           [:cn: 修改日志](ChangeLog_zh_CN.md) [:us: Change log](ChangeLog.md)
+          [:cn: 修改日志](ChangeLog.md)
         files: |
-            ${{github.workspace}}/chinesechess_*.deb
-
-#- name: Release
-#  uses: fnkr/github-action-ghr@v1
-#  if: startsWith(github.ref, 'refs/tags/')
-#  env:
-#    GHR_COMPRESS: xz
-#    GHR_PATH: ${{github.workspace}}/chinesechess_*.deb
-#    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-#    - name: Upload To Github Release
-#      # You may pin to the exact commit or the version.
-#      # uses: xresloader/upload-to-github-release@3ad14478ee4fb9bd65e84c6d496a7d6862892f43
-#      uses: xresloader/upload-to-github-release@v1.3.2
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        # The files or file patterns to upload. You can upload multiple files by split them by semicolon. You can use the glob pattern to find the files.
-#        file: ${{github.workspace}}/chinesechess_*.deb;${{github.workspace}}/update_linux.xml # default is 
-#        # The files or file patterns to delete before uploading new files. You can delete multiple files by split them by semicolon. You can use the glob pattern to find the files.
-#        #delete_file: # optional, default is 
-#        # If you need to overwrite existing files, add overwrite: true to the with.
-#        overwrite: true # optional, default is false
-#        # The resultant deployment is a draft Release that only repository collaborators can see. This gives you an opportunity to examine and edit the draft release.
-#        draft: true # optional, default is true
-#        # The resultant deployment is a Prerelease. This gives you an opportunity to examine and edit the prerelease.
-#        prerelease: true # optional, default is false
-#        # With tags: true, your Releases deployment will trigger if and only if the build is a tagged build.
-#        tags: true # optional, default is false
-#        # Only work on these branches(splited by semicolon), set to nothing to accept all branches.
-#        branches: master # optional, default is 
-#        # With verbose: true, be verbose.
-#        verbose: true # optional, default is false
-#        # Set custom tag name.
-#        #tag_name: 'v${{env.ChineseChessControl_VERSION}}'
-#        # If try to update latest release.
-#        #update_latest_release: true # optional, default is false
-#      if: ${{ matrix.BUILD_TYPE == 'Release' && startsWith(github.ref, 'refs/tags/') }} 
+          ${{github.workspace}}/build/chinesechesscontrol_*.deb

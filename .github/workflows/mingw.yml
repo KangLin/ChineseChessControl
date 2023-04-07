@@ -93,7 +93,6 @@ jobs:
             -DCMARK_TESTS=OFF ^
             -DCMARK_STATIC=ON ^
             -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} ^
-            -DLog4Qt_DIR=/lib/cmake/Log4Qt ^
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install ^
             -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}}
         cmake --build . --config ${{ matrix.BUILD_TYPE }}

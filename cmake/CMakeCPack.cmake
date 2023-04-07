@@ -1,14 +1,11 @@
 # Author: Kang Lin <kl222@126.com>
 
-#参考： https://github.com/medInria/medinria-superproject/blob/master/packaging/Packaging.cmake
-
-# 设置传递给 CPack 的配置文件
-configure_file("${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in"
-	"${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake" @ONLY)
-set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake")
+# 更改 CPACK 包的默认安装路径前缀。
+# 或者在 cpack 时传递参数 -DCPACK_PACKAGING_INSTALL_PREFIX=/opt
+set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ChineseChessControl")
 
 # Generate .txt license file for CPack (PackageMaker requires a file extension)
-configure_file(${CMAKE_SOURCE_DIR}/License.md ${CMAKE_BINARY_DIR}/LICENSE.txt @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/License.md ${CMAKE_BINARY_DIR}/LICENSE.txt)
 
 set(CPACK_SOURCE_IGNORE_FILES
     ${CMAKE_SOURCE_DIR}/build
@@ -33,7 +30,6 @@ set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME_lower}_${ChineseChessCo
 #包名。建议用英文。在NSIS 安装选项中不能正确解码
 set(CPACK_PACKAGE_NAME "ChineseChessControl")
 set(CPACK_PACKAGE_VENDOR "康林工作室")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "中国象棋控件")
 
 #set(CPACK_PACKAGE_VERSION_MAJOR ${${PROJECT_NAME}_VERSION_MAJOR})
 #set(CPACK_PACKAGE_VERSION_MINOR ${${PROJECT_NAME}_VERSION_MINOR})
@@ -47,7 +43,14 @@ else()
     set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/Src/Res/Picture/Chess.ico")
 endif()
 
+# 项目描述，用于 CPack 生成的 Windows 安装程序的介绍屏幕等位置。如果未设置，则从 CPACK_PACKAGE_DESCRIPTION_FILE 命名的文件填充此变量的值。
+set(CPACK_PACKAGE_DESCRIPTION "中国象棋控件")
 #set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
+# 设置简短的描述摘要。
+# 如果 CMAKE_PROJECT_DESCRIPTION 设置，用于默认值，
+# 否则默认值由 CMAKE 基于 CMAKE_PROJECT_NAME 产生.
+#SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "中国象棋控件")
+
 #set(CPACK_RESOURCE_FILE_WELCOME )
 set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_BINARY_DIR}/LICENSE.txt")
@@ -62,24 +65,68 @@ set(CPACK_PACKAGE_CHECKSUM "MD5")
 
 ############### Debian ###################
 if(UNIX)
-    set(CPACK_GENERATOR DEB)
+    set(CPACK_GENERATOR "DEB;STGZ;TGZ;TZ")
     set(CPACK_DEBIAN_PACKAGE_DEBUG ON)
-    
-    set(CPACK_DEBIAN_PACKAGE_SOURCE ChineseChessControl)
-    set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Kang Lin <kl222@126.com>")
-    #set(CPACK_DEBIAN_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
-    set(CPACK_DEBIAN_PACKAGE_SECTION "main")
-    set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "debhelper (>= 6), cmake (>= 2.8.0), dh-systemd (>= 1.5)")
+
+    #set(CPACK_DEB_COMPONENT_INSTALL ON)
+
+    ##### 产生 control 文件 #####
+
+    # 设置 Package 字段（自动转换成小写）。 默认使用 CPACK_PACKAGE_NAME
+    #set(CPACK_DEBIAN_PACKAGE_NAME ChineseChessControl)
+
+    # 设置包文件名。默认使用 CPACK_PACKAGE_FILE_NAME
+    # 也能设置为 DEB-DEFAULT，允许由DEB产生者产生它自己的 deb 格式：
+    # <PackageName>_<VersionNumber>-<DebianRevisionNumber>_<DebianArchitecture>.deb
+    #set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+
+    # 默认： CPACK_PACKAGE_CONTACT
+    # set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Kang Lin <kl222@126.com>")
+
+    # 默认：
+    # - 如果设置 CPACK_PACKAGE_DESCRIPTION。则用于默认值。
+    # - 如果设置  CPACK_PACKAGE_DESCRIPTION_FILE 。则默认值是此文件的内容。
+    # set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "中国象棋控件")
+
+    # 默认： CMAKE_PROJECT_HOMEPAGE_URL
+    set(CPACK_DEBIAN_PACKAGE_HOMEPAGE ${CPACK_PACKAGE_HOMEPAGE_URL})
+
+    # Default : Output of dpkg --print-architecture (or i386 if dpkg is not found)
+    set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
+
+    # 默认值： CPACK_PACKAGE_VERSION
+    string(REPLACE "v" "" _DEBIAN_VERSION ${CPACK_PACKAGE_VERSION})
+    set(CPACK_DEBIAN_PACKAGE_VERSION ${_DEBIAN_VERSION})
+    #set(CPACK_DEBIAN_PACKAGE_RELEASE ${CPACK_PACKAGE_VERSION})
+    #set(CPACK_DEBIAN_PACKAGE_EPOCH)
+
     #set(CMAKE_INSTALL_RPATH )
+    # 设置包的依赖
+    # set(CPACK_DEBIAN_PACKAGE_DEPENDS)
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
-    set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS)
+    # May be set to a list of directories that will be given to dpkg-shlibdeps via its -l option. These will be searched by dpkg-shlibdeps in order to find private shared library dependencies.
+    #set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS)
     set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS ON)
     #set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS_POLICY ">=")
+
+    set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "debhelper (>= 6), cmake (>= 2.8.0)")
+
+    # See: https://www.debian.org/doc/debian-policy/ch-relationships.html#s-binarydeps
+    #set(CPACK_DEBIAN_PACKAGE_ENHANCES)
+
+    # 设置 Source 字段
+    set(CPACK_DEBIAN_PACKAGE_SOURCE ChineseChessControl)
+    set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+    set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+
+    ##### 产生自定义脚本 #####
+    # 增加自定义脚本到 control.tar.gz. Typical usage is for conffiles, postinst, postrm, prerm.
+    # 看 ${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in 中脚本设置
     set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
-        "${CMAKE_SOURCE_DIR}/debian/postinst;${CMAKE_SOURCE_DIR}/debian/postrm"
-        "${CMAKE_SOURCE_DIR}/debian/preinst;${CMAKE_SOURCE_DIR}/debian/prerm"
-    )
-    
+        "${CMAKE_BINARY_DIR}/postinst;${CMAKE_BINARY_DIR}/postrm"
+        "${CMAKE_BINARY_DIR}/preinst;${CMAKE_BINARY_DIR}/prerm"
+        )
+
 endif()
 ############### Debian ###################
 
@@ -101,7 +148,7 @@ execute_process(COMMAND arch
                 OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 if(${DISTRIBUTOR_ID} MATCHES fc|fedora|Fedora|Centos|centos|SUSE|Suse|suse)
-    set(CPACK_GENERATOR RPM)
+    set(CPACK_GENERATOR "RPM;STGZ;TGZ;TZ")
 endif()
 ############### RPM ###################
 
@@ -162,7 +209,20 @@ if(WIN32)
 endif()
 ############### NSIS ###################
 
+#参考： https://zhuanlan.zhihu.com/p/377131996
+#      https://github.com/medInria/medinria-superproject/blob/master/packaging/Packaging.cmake
+
+# 设置传递给 CPack 的配置文件。主要作用是把 CMAKE_* 变量传递到 CPACK 中
+configure_file("${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in"
+	"${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake" @ONLY)
+set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake")
+
 include(CPack)
+
+cpack_add_component(DependLibraries
+    DISPLAY_NAME  "DependLibraries"
+    DESCRIPTION   "依赖库"
+    )
 
 cpack_add_component(Development
     DISPLAY_NAME  "Development"
@@ -173,6 +233,7 @@ cpack_add_component(Development
 cpack_add_component(Runtime
     DISPLAY_NAME  "Runtime"
     DESCRIPTION   "运行库"
+    DEPENDS DependLibraries
     )
 
 cpack_add_component(Application

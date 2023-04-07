@@ -2,27 +2,15 @@
 
 # 此文件在运行 cmake 时配置，在运行 cpack 时加载。
 # 要从 cmake 传递变量到 cpack 中，则需要在此文件中配置。
-
-if("${CPACK_GENERATOR}" STREQUAL "PackageMaker")
-	if(CMAKE_PACKAGE_QTGUI)
-		set(CPACK_PACKAGE_DEFAULT_LOCATION "/Applications")
-	else()
-		set(CPACK_PACKAGE_DEFAULT_LOCATION "/usr")
-	endif()
-endif()
+# 主要作用是把 CMAKE_* 变量传递到 CPACK 中
 
 if("${CPACK_GENERATOR}" STREQUAL "DEB")
-    set(CPACK_BINARY_DEB ON)
-endif()
-
-if("${CPACK_GENERATOR}" STREQUAL "ZIP")
-    SET(CPACK_BINARY_ZIP "ON")
-endif()
-
-if("${CPACK_GENERATOR}" STREQUAL "NSIS")
-    set(CPACK_BINARY_NSIS ON)
-endif()
-
-if("${CPACK_GENERATOR}" STREQUAL "NSIS64")
-    set(CPACK_BINARY_NSIS64 ON)
+    configure_file("@CMAKE_SOURCE_DIR@/Package/deb/postinst.in"
+    	"@CMAKE_BINARY_DIR@/postinst" @ONLY)
+    configure_file("@CMAKE_SOURCE_DIR@/Package/deb/postrm.in"
+    	"@CMAKE_BINARY_DIR@/postrm" @ONLY)
+    configure_file("@CMAKE_SOURCE_DIR@/Package/deb/preinst.in"
+    	"@CMAKE_BINARY_DIR@/preinst" @ONLY)
+    configure_file("@CMAKE_SOURCE_DIR@/Package/deb/prerm.in"
+    	"@CMAKE_BINARY_DIR@/prerm" @ONLY)
 endif()
