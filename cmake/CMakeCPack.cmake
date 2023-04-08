@@ -1,5 +1,8 @@
 # Author: Kang Lin <kl222@126.com>
 
+#参考： https://zhuanlan.zhihu.com/p/377131996
+#      https://github.com/medInria/medinria-superproject/blob/master/packaging/Packaging.cmake
+
 # Generate .txt license file for CPack (PackageMaker requires a file extension)
 configure_file(${CMAKE_SOURCE_DIR}/License.md ${CMAKE_BINARY_DIR}/LICENSE.txt)
 
@@ -15,7 +18,7 @@ set(CPACK_SOURCE_IGNORE_FILES
 set(CPACK_SYSTEM_NAME "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
 set(CPACK_TOPLEVEL_TAG "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
 
-#包名。建议用英文。
+# 包名。建议用英文。
 set(CPACK_PACKAGE_NAME "ChineseChessControl")
 set(CPACK_PACKAGE_VENDOR "康林工作室")
 
@@ -105,7 +108,7 @@ if(UNIX)
     # set(CPACK_DEBIAN_PACKAGE_DEPENDS)
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     # May be set to a list of directories that will be given to dpkg-shlibdeps via its -l option. These will be searched by dpkg-shlibdeps in order to find private shared library dependencies.
-    set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS `pwd`/debian/${CPACK_PACKAGE_NAME_lower}${CPACK_PACKAGING_INSTALL_PREFIX}/lib:`pwd`/debian/${CPACK_PACKAGE_NAME_lower}${CPACK_PACKAGING_INSTALL_PREFIX}/lib/`uname -m`-linux-gnu)
+    #set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS /data/build-ChineseChessControl-Desktop_Qt_5_12_12_GCC_64bit-Debug/_CPack_Packages/Linux_x86_64/DEB/chinesechesscontrol_v2.0.5-53-g3d6d37a_Linux_x86_64_setup/opt/ChineseChessControl/lib)
     set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS ON)
     #set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS_POLICY ">=")
 
@@ -210,9 +213,6 @@ if(WIN32)
     ")
 endif()
 ############### NSIS ###################
-
-#参考： https://zhuanlan.zhihu.com/p/377131996
-#      https://github.com/medInria/medinria-superproject/blob/master/packaging/Packaging.cmake
 
 # 设置传递给 CPack 的配置文件。主要作用是把 CMAKE_* 变量传递到 CPACK 中
 configure_file("${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in"

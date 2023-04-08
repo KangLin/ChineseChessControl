@@ -120,6 +120,7 @@ if(ANDROID)
         LIBRARY DESTINATION "libs/${ANDROID_ABI}"
             COMPONENT Application
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+            COMPONENT Development
         )
 elseif(WIN32)
     INSTALL(TARGETS ${PROJECT_NAME}
@@ -128,6 +129,7 @@ elseif(WIN32)
         LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT Application
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+            COMPONENT Development
         )
 else()
     INSTALL(TARGETS ${PROJECT_NAME}
@@ -136,6 +138,7 @@ else()
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
             COMPONENT Application
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+            COMPONENT Development
         )        
 endif()
 

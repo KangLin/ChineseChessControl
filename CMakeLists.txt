@@ -84,6 +84,7 @@ if (BUILD_SHARED_LIBS)
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()
 
+include(CMakeDependentOption)
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 include(GenerateExportHeader)
@@ -107,21 +108,20 @@ endif()
 
 add_subdirectory(Src)
 
-if(MSVC)
-    option(BUILD_CHINESE_CHESS_MFC_VIEW "Build MFC chinese chess mfc view" ON)
-    if(BUILD_CHINESE_CHESS_MFC_VIEW)
-        add_subdirectory(UI/MFC)
-        
-        option(BUILD_CHINESE_CHESS_ACTIVEX "Build MFC chinese chess activex" ON)
-        if(BUILD_CHINESE_CHESS_ACTIVEX)
-            add_subdirectory(UI/ActiveX)
-        endif()
-    endif()
-    
-    option(BUILD_CHINESE_CHESS_APP_MFC "Build MFC chinese chess applaction" ON)
-    if(BUILD_CHINESE_CHESS_APP_MFC AND MSVC)
-        add_subdirectory(App/MFC/ChineseChessMFC)
-    endif()
+cmake_dependent_option(BUILD_CHINESE_CHESS_MFC_VIEW "Build MFC chinese chess mfc view" ON
+        MSVC OFF)
+if(BUILD_CHINESE_CHESS_MFC_VIEW)
+    add_subdirectory(UI/MFC)
+ endif()
+cmake_dependent_option(BUILD_CHINESE_CHESS_ACTIVEX "Build MFC chinese chess activex" ON
+        BUILD_CHINESE_CHESS_MFC_VIEW OFF)
+if(BUILD_CHINESE_CHESS_ACTIVEX)
+   add_subdirectory(UI/ActiveX)
+endif()
+cmake_dependent_option(BUILD_CHINESE_CHESS_APP_MFC "Build MFC chinese chess applaction" ON
+    BUILD_CHINESE_CHESS_MFC_VIEW OFF)
+if(BUILD_CHINESE_CHESS_APP_MFC AND MSVC)
+    add_subdirectory(App/MFC/ChineseChessMFC)
 endif()
 
 #需要的QT组件
