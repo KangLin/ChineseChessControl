@@ -66,9 +66,9 @@
 
         cmake --build . --config Release --target install    # --target install/strip stip 目标
     
-  + 仅安装程序
+- 打包
 
-        cmake --build . --config Release --target install-runtime
+    cmake --build . --target package
 
 - 运行例子
   + 把生成库的目录加入到变量 LD_LIBRARY_PATH 中
@@ -106,9 +106,9 @@
         
               cmake --build . --config Release --target install
         
-        + 仅安装程序
-        
-              cmake --build . --config Release --target install-runtime
+      - 打包
+	  
+	      cmake --build . --target package
 
       - 运行例子
         + 执行安装目录 bin 目录下的程序
