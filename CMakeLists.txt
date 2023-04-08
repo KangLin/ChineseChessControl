@@ -203,7 +203,7 @@ else()
     INSTALL(FILES ${OTHER_FILES} DESTINATION "." COMPONENT Runtime)
 endif()
 
-include(cmake/CMakeCPack.cmake)
+include(Package/CMakeCPack.cmake)
 
 option(BUILD_DOCS "Generating API documentation" OFF)
 if(BUILD_DOCS)

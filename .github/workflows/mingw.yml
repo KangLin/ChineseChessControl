@@ -3,7 +3,7 @@ name: mingw
 on: [push]
 
 jobs:
-  build:
+  build_mingw:
     name: build
 
     strategy:
@@ -25,9 +25,10 @@ jobs:
       ChineseChessControl_VERSION: v2.0.5
 
     steps:
-    - uses: actions/checkout@v2
-      #with:
-        #fetch-depth: 0
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        submodules: true
             
     - name: pacman
       env:

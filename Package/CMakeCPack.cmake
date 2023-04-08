@@ -218,7 +218,7 @@ endif()
 ############### NSIS ###################
 
 # 设置传递给 CPack 的配置文件。主要作用是把 CMAKE_* 变量传递到 CPACK 中
-configure_file("${CMAKE_SOURCE_DIR}/cmake/CMakeCPackOptions.cmake.in"
+configure_file("${CMAKE_SOURCE_DIR}/Package/CMakeCPackOptions.cmake.in"
 	"${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake" @ONLY)
 set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake")
 

@@ -25,14 +25,15 @@
   - [可选] 玉兔公共库: https://github.com/KangLin/RabbitCommon
  
 ### CMake 配置参数
-  - [可选] Qt5_DIR: qt 安装位置(指向Qt5Config.cmake的目录，默认为 安装目录/lib/cmake/Qt5)。
+  
+- [可选] Qt5_DIR: qt 安装位置(指向Qt5Config.cmake的目录，默认为 安装目录/lib/cmake/Qt5)。
                    详见：https://doc.qt.io/qt-5/cmake-get-started.html
-  - [可选] RabbitCommon_DIR: RabbitCommon 源码位置
-  - [可选] BUILD_CHINESE_CHESS_MFC_VIEW：编译中国象棋 MFC 扩展动态库
-  - [可选] BUILD_CHINESE_CHESS_ACTIVEX：编译中国象棋 ActiveX
-  - [可选] BUILD_CHINESE_CHESS_APP_MFC：编译中国象棋 MFC 程序
-  - [可选] BUILD_CHINESE_CHESS_QT：编译中国象棋 QT 插件
-  - [可选] BUILD_CHINESE_CHESS_QT_APP：编译中国象棋 QT 应用程序
+- [可选] RabbitCommon_DIR: RabbitCommon 源码位置
+- [可选] BUILD_CHINESE_CHESS_MFC_VIEW：编译中国象棋 MFC 扩展动态库
+- [可选] BUILD_CHINESE_CHESS_ACTIVEX：编译中国象棋 ActiveX
+- [可选] BUILD_CHINESE_CHESS_APP_MFC：编译中国象棋 MFC 程序
+- [可选] BUILD_CHINESE_CHESS_QT：编译中国象棋 QT 插件
+- [可选] BUILD_CHINESE_CHESS_QT_APP：编译中国象棋 QT 应用程序
 
 ### 各平台编译
 #### 下载源码
@@ -68,7 +69,7 @@
     
 - 打包
 
-    cmake --build . --target package
+      cmake --build . --target package
 
 - 运行例子
   + 把生成库的目录加入到变量 LD_LIBRARY_PATH 中
@@ -83,43 +84,45 @@
         ./ChineseChessApp  #Qt 程序
 
 #### windows 平台编译说明
-  - 使用 cmake-gui.exe 工具编译。打开 cmake-gui.exe 配置
-  - 命令行编译
-    + 把 cmake 命令所在目录加入到环境变量 PATH 中
-    + 从开始菜单打开 “VS2015开发人员命令提示”，进入命令行
-      - 编译
 
-            git clone https://github.com/KangLin/RabbitCommon.git
-            git clone https://github.com/KangLin/ChineseChessControl.git
-            cd ChineseChessControl
-            mkdir build
-            cd build
-            cmake .. -DCMAKE_INSTALL_PREFIX=install ^
-                 -DCMAKE_BUILD_TYPE=Release ^
-                 -DQt5_DIR= ^
-                 -DRabbitCommon_DIR= ^
-                 [其它可选 CMake 配置参数]
-            cmake --build . --config Release
+- 使用 cmake-gui.exe 工具编译。打开 cmake-gui.exe 配置
+- 命令行编译
+  + 把 cmake 命令所在目录加入到环境变量 PATH 中
+  + 从开始菜单打开 “VS2015开发人员命令提示”，进入命令行
+    - 编译
 
-      - 安装
-        + 安装库和程序
+          git clone https://github.com/KangLin/RabbitCommon.git
+          git clone https://github.com/KangLin/ChineseChessControl.git
+          cd ChineseChessControl
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_INSTALL_PREFIX=install ^
+               -DCMAKE_BUILD_TYPE=Release ^
+               -DQt5_DIR= ^
+               -DRabbitCommon_DIR= ^
+               [其它可选 CMake 配置参数]
+          cmake --build . --config Release
+
+    - 安装
+      + 安装库和程序
         
-              cmake --build . --config Release --target install
+            cmake --build . --config Release --target install
         
-      - 打包
+    - 打包
 	  
-	      cmake --build . --target package
+            cmake --build . --target package
 
-      - 运行例子
-        + 执行安装目录 bin 目录下的程序
+    - 运行例子
+      + 执行安装目录 bin 目录下的程序
 
-              cd ChineseChessControl
-              cd build/install/bin
-              ChineseChessApp.exe
-              或者：
-              ChineseChessMfcApp.exe
+            cd ChineseChessControl
+            cd build/install/bin
+            ChineseChessApp.exe
+            或者：
+            ChineseChessMfcApp.exe
 
 #### Android 平台编译说明
+
 + 安装 ndk 编译工具
   - 从 https://developer.android.com/ndk/downloads 下载 ndk，并安装到：/home/android-ndk
   - 设置环境变量：

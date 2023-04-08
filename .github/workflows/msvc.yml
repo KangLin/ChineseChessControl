@@ -3,7 +3,7 @@ name: msvc
 on: [push]
 
 jobs:
-  use_install_qt:
+  build_msvc:
     name: ${{matrix.os}}-vc-${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     strategy:
@@ -54,9 +54,10 @@ jobs:
         shell: cmd
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        submodules: true
 
     - name: make directory
       run: |

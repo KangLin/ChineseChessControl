@@ -6,7 +6,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
 jobs:
-  build:
+  build_ubuntu:
     strategy:
       matrix:
         os: [Ubuntu-20.04, Ubuntu-22.04]
@@ -22,9 +22,10 @@ jobs:
       ChineseChessControl_VERSION: 2.0.5
       
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        submodules: true
     
     - name: make_directory
       run: |
