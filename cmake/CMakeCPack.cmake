@@ -108,7 +108,8 @@ if(UNIX)
     # set(CPACK_DEBIAN_PACKAGE_DEPENDS)
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     # May be set to a list of directories that will be given to dpkg-shlibdeps via its -l option. These will be searched by dpkg-shlibdeps in order to find private shared library dependencies.
-    #set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS /data/build-ChineseChessControl-Desktop_Qt_5_12_12_GCC_64bit-Debug/_CPack_Packages/Linux_x86_64/DEB/chinesechesscontrol_v2.0.5-53-g3d6d37a_Linux_x86_64_setup/opt/ChineseChessControl/lib)
+    set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS ${QT_INSTALL_DIR}/lib;${CMAKE_BINARY_DIR}/_CPack_Packages/${CPACK_SYSTEM_NAME}/DEB/${CPACK_PACKAGE_FILE_NAME}${CPACK_PACKAGING_INSTALL_PREFIX}/lib)
+    message("CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS:${CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS}")
     set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS ON)
     #set(CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS_POLICY ">=")
 
