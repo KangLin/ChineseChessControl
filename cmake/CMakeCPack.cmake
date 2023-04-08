@@ -95,7 +95,8 @@ if(UNIX)
     set(CPACK_DEBIAN_PACKAGE_HOMEPAGE ${CPACK_PACKAGE_HOMEPAGE_URL})
 
     # Default : Output of dpkg --print-architecture (or i386 if dpkg is not found)
-    set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
+    # 注意：要用默认的才会得到正确的目标架构
+    #set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
 
     # 默认值： CPACK_PACKAGE_VERSION
     string(REPLACE "v" "" _DEBIAN_VERSION ${CPACK_PACKAGE_VERSION})
