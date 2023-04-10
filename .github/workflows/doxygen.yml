@@ -17,7 +17,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
-      RabbitRemoteControl_VERSION: v0.0.27
+      ChineseChessControl_VERSION: v0.0.27
       DOXYGEN_VERSION: 1.9.5
 
     steps:
@@ -82,12 +82,12 @@ jobs:
             -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install \
             -DBUILD_DOCS=ON
-        cmake --build . --target doc_Chinese doc_English
+        cmake --build . --target doc
 
     - name: update 
       uses: actions/upload-artifact@v2
       with:
-          name: rabbitremotecontrol_doxygen_${{ matrix.os }}
+          name: ChineseChessControl_doxygen_${{ matrix.os }}
           path: |
             build/Doxygen
       
@@ -99,11 +99,3 @@ jobs:
       with:
         target_branch: gh-pages
         build_dir: build/Doxygen
-        
-#    - name: Upload Documentation to Wiki
-#      if: startsWith(github.ref, 'refs/tags/')
-#      uses: SwiftDocOrg/github-wiki-publish-action@v1
-#      with:
-#        path: build/Doxygen
-#      env:
-#        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}

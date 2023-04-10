@@ -105,6 +105,9 @@ jobs:
           name: ${{ env.artifact_name }}
           path: |
             ${{github.workspace}}/build/chinesechesscontrol_*.deb
+            ${{github.workspace}}/build/chinesechesscontrol_*.deb.md5
+            ${{github.workspace}}/build/chinesechesscontrol_*.sh
+            ${{github.workspace}}/build/chinesechesscontrol_*.sh.md5
       
 #      - name: Upload To Github Release
 #        if: ${{ matrix.BUILD_TYPE == 'Release' && startsWith(github.ref, 'refs/tags/') }}
