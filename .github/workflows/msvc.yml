@@ -1,6 +1,11 @@
-name: msvc
+name: build_msvc
 
-on: [push]
+on:
+  workflow_call:
+    outputs:
+      name:
+        description: "The artifact name"
+        value: ${{ jobs.build_ubuntu.outputs.name }}
 
 jobs:
   build_msvc:
@@ -48,7 +53,12 @@ jobs:
       ChineseChessControl_VERSION: v2.0.5
       VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1
       qt_modules: qtwebengine ${{matrix.qt_modules}}
-
+      artifact_name: build_msvc
+      
+    # Map the job outputs to step outputs
+    outputs:
+      name: ${{ env.artifact_name }}
+  
     defaults:
       run:
         shell: cmd
@@ -176,21 +186,21 @@ jobs:
         cmake --build . --target package
 
     - name: update 
+      if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
       uses: actions/upload-artifact@v2
       with:
-        name: ChineseChessControl_${{ matrix.os }}_qt${{matrix.qt_version}}
+        name: ${{ env.artifact_name }}
         path: |
           ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
-      if: ${{ matrix.BUILD_TYPE == 'Release' }}
 
-    - name: Upload To Github Release
-      if: ${{ matrix.BUILD_TYPE == 'Release' && '6.2.4' == matrix.qt_version && startsWith(github.ref, 'refs/tags/') }}
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        prerelease: true
-        body: |
-          [:cn: 修改日志](ChangeLog.md)
-        files: |
-          ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
+#    - name: Upload To Github Release
+#      if: ${{ matrix.BUILD_TYPE == 'Release' && '5.12.12' == matrix.qt_version && startsWith(github.ref, 'refs/tags/') }}
+#      uses: softprops/action-gh-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        prerelease: true
+#        body: |
+#          [:cn: 修改日志](ChangeLog.md)
+#        files: |
+#          ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
