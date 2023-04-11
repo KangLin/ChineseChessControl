@@ -9,47 +9,40 @@ on:
 
 jobs:
   build_msvc:
-    name: ${{matrix.os}}-vc${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+    name: ${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
+        triplet: [x64-windows, x86-windows]
         os: [windows-latest]
-        CMAKE_GENERATOR: [Visual Studio 17 2022]
-        #CMAKE_GENERATOR_PLATFORM: [x64, Win32]
-        #VCPKG_PLATFORM_TOOLSET: [v142, v141, v140]
-        #qt_version: [6.2.4, 5.15.2, 5.12.12]
+
         include:
           #- triplet: x64-windows
-          #  VCPKG_PLATFORM_TOOLSET: v142
           #  qt_version: 6.2.4
           #  qt_arch: win64_msvc2019_64
           #  CMAKE_GENERATOR_PLATFORM: x64
           #  qt_modules: 'qtwebengine qtscxml qtmultimedia qtwebview qtimageformats'
 
           - triplet: x64-windows
-            VCPKG_PLATFORM_TOOLSET: v142
             qt_version: 5.15.2
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
             qt_modules: 'qtwebengine'
 
           - triplet: x86-windows
-            VCPKG_PLATFORM_TOOLSET: v141
             qt_version: 5.12.12
             qt_arch: win32_msvc2017
             CMAKE_GENERATOR_PLATFORM: Win32
             qt_modules: 'qtwebengine'
 
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
 
     env:
       artifact_name: build_msvc
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
       INSTALL_DIR: ${{github.workspace}}\.cache\install_msvc_${{matrix.triplet}}_${{matrix.BUILD_TYPE}}
-      CMAKE_GENERATOR: ${{matrix.CMAKE_GENERATOR}}
-      CMAKE_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       ChineseChessControl_VERSION: v2.0.5
       VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1
@@ -82,7 +75,7 @@ jobs:
         with:
           path: |
             ${{env.INSTALL_DIR}}
-          key: ChineseChessControl_msvc_cache-installed-${{matrix.os}}-vc${{env.CMAKE_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+          key: ChineseChessControl_msvc_cache-installed-${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
       - name: run-vcpkg
         uses: lukka/run-vcpkg@v7
@@ -91,7 +84,7 @@ jobs:
           vcpkgDirectory: ${{runner.workspace}}/vcpkg/
           # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
           # compute its hash and append this to the computed cache's key.
-          appendedCacheKey: cache-vcpkg-msvc-${{matrix.os}}-vc${{matrix.VCPKG_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
+          appendedCacheKey: cache-vcpkg-msvc-${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
           vcpkgTriplet: '${{matrix.triplet}}'
           vcpkgArguments: 'zlib openssl'
 
@@ -104,7 +97,7 @@ jobs:
         uses: actions/cache@v1  # not v2!
         with:
           path: ${{env.TOOSL_DIR}}/qt
-          key: ChineseChessControl-vc${{env.CMAKE_PLATFORM_TOOLSET}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+          key: ChineseChessControl-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
       - name: Install Qt
         # You may pin to the exact commit or the version.
@@ -154,7 +147,6 @@ jobs:
               cd build
               cmake .. ^
                   -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
-                  -T ${{env.CMAKE_PLATFORM_TOOLSET}} ^
                   -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} ^
                   -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_DIR}} ^
                   -DLOG4QT_ENABLE_EXAMPLES=OFF ^
@@ -172,7 +164,6 @@ jobs:
           cd ${{github.workspace}}/build
           cmake ${{github.workspace}} ^
               -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
-              -T ${{env.CMAKE_PLATFORM_TOOLSET}} ^
               -DCMARK_SHARED=OFF ^
               -DCMARK_TESTS=OFF ^
               -DCMARK_STATIC=ON ^

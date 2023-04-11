@@ -161,10 +161,10 @@ target_compile_options(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChess ${QT_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} PRIVATE RabbitCommon)
-if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\"")
-endif()
+#if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
+#    set_target_properties(${PROJECT_NAME} PROPERTIES
+#        LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\"")
+#endif()
 
 # 安装中国象棋控件
 SET(INSTALL_LIBRARY "${CMAKE_INSTALL_LIBDIR}")
