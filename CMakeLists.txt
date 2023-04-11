@@ -108,8 +108,9 @@ endif()
 
 add_subdirectory(Src)
 
+find_package(MFC)
 cmake_dependent_option(BUILD_CHINESE_CHESS_MFC_VIEW "Build MFC chinese chess mfc view" ON
-        MSVC OFF)
+        "MSVC;MFC_FOUND" OFF)
 if(BUILD_CHINESE_CHESS_MFC_VIEW)
     add_subdirectory(UI/MFC)
  endif()
@@ -203,6 +204,16 @@ else()
     INSTALL(FILES ${OTHER_FILES} DESTINATION "." COMPONENT Runtime)
 endif()
 
+# 安装系统运行库
+if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
+    set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
+endif()
+set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT DependLibraries)
+if(MFC_FOUND)
+    set(CMAKE_INSTALL_MFC_LIBRARIES ON)
+endif()
+include(InstallRequiredSystemLibraries)
+# CPack 制作包
 include(Package/CMakeCPack.cmake)
 
 option(BUILD_DOCS "Generating API documentation" OFF)

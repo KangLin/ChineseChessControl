@@ -116,43 +116,30 @@ target_include_directories(${PROJECT_NAME}
 if(ANDROID)
     INSTALL(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION "libs/${ANDROID_ABI}"
-            COMPONENT Application
+            COMPONENT QtApplications
         LIBRARY DESTINATION "libs/${ANDROID_ABI}"
-            COMPONENT Application
+            COMPONENT QtApplications
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-            COMPONENT Development
-        )
-elseif(WIN32)
-    INSTALL(TARGETS ${PROJECT_NAME}
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Application
-        LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Application
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-            COMPONENT Development
+            COMPONENT QtDevelopment
         )
 else()
     INSTALL(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Application
-        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-            COMPONENT Application
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-            COMPONENT Development
+            COMPONENT QtApplications
         )        
 endif()
 
 if(UNIX AND NOT ANDROID)
     INSTALL(PROGRAMS ${CMAKE_SOURCE_DIR}/Package/share/applications/ChineseChess.sh
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT Application)
+            COMPONENT QtApplications)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/Package/share/applications/org.Rabbit.ChineseChess.desktop
         DESTINATION "share/applications"
-            COMPONENT Application)
+            COMPONENT QtApplications)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/69/bjiang.png
         RENAME org.Rabbit.ChineseChess.png
         DESTINATION "share/pixmaps"
-            COMPONENT Application)
+            COMPONENT QtApplications)
 endif()
 
 IF(ANDROID)
@@ -171,11 +158,6 @@ IF(ANDROID)
 ENDIF(ANDROID)
 
 IF( WIN32 AND BUILD_SHARED_LIBS )
-    if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
-        set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
-    endif()
-    set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT DependLibraries)
-    include(InstallRequiredSystemLibraries)
 
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
         OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)

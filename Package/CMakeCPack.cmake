@@ -224,25 +224,115 @@ set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/CMakeCPackOptions.cmake")
 
 include(CPack)
 
+cpack_add_install_type(All
+    DISPLAY_NAME "全部")
+
+cpack_add_install_type(Developer
+    DISPLAY_NAME "开发者")
+
+cpack_add_install_type(EndUser
+    DISPLAY_NAME "应用程序")
+
+cpack_add_component_group(Runtimes
+    DISPLAY_NAME "运行库"
+	DESCRIPTION "运行库"
+	EXPANDED
+	)
+
+cpack_add_component_group(Developments
+    DISPLAY_NAME "开发库"
+	DESCRIPTION "开发库"
+	EXPANDED
+	)
+
+cpack_add_component_group(Applications
+    DISPLAY_NAME "应用程序"
+	DESCRIPTION "应用程序"
+	EXPANDED
+	)
+
 cpack_add_component(DependLibraries
-    DISPLAY_NAME  "DependLibraries"
+    DISPLAY_NAME  "依赖库"
     DESCRIPTION   "依赖库"
+    GROUP Runtimes
     )
 
 cpack_add_component(Development
-    DISPLAY_NAME  "Development"
+    DISPLAY_NAME  "开发库"
     DESCRIPTION   "开发库"
+	GROUP Developments
+	INSTALL_TYPES Developer
     DEPENDS Runtime
     )
 
 cpack_add_component(Runtime
-    DISPLAY_NAME  "Runtime"
+    DISPLAY_NAME  "运行库"
     DESCRIPTION   "运行库"
+    GROUP Runtimes
     DEPENDS DependLibraries
+	REQUIRED
     )
 
-cpack_add_component(Application
-    DISPLAY_NAME  "Application"
-    DESCRIPTION   "应用程序"
-    DEPENDS Runtime
-    )
+####### QT #######
+if(Qt${QT_VERSION_MAJOR}_FOUND)
+    cpack_add_install_type(QtDeveloper
+        DISPLAY_NAME "Qt 开发者")
+
+    cpack_add_install_type(QtEndUser
+        DISPLAY_NAME "Qt 应用程序")
+
+    cpack_add_component(QtRuntime
+        DISPLAY_NAME  "Qt 运行库"
+        DESCRIPTION   "Qt 运行库"
+        GROUP Runtimes
+        DEPENDS Runtime
+	    )
+
+    cpack_add_component(QtDevelopment
+        DISPLAY_NAME  "Qt 开发库"
+        DESCRIPTION   "Qt 开发库"
+	    GROUP Developments
+	    INSTALL_TYPES All QtDeveloper Developer 
+        DEPENDS QtRuntime Development
+        )
+
+    cpack_add_component(QtApplications
+        DISPLAY_NAME  "Qt 应用程序"
+        DESCRIPTION   "Qt 应用程序"
+        DEPENDS QtRuntime
+	    INSTALL_TYPES All EndUser QtEndUser
+	    GROUP Applications
+        )
+endif()
+
+####### MFC #######
+if(MFC_FOUND)
+    cpack_add_install_type(MFCDeveloper
+        DISPLAY_NAME "MFC 开发者")
+
+    cpack_add_install_type(MFCEndUser
+        DISPLAY_NAME "MFC 应用程序")
+
+    cpack_add_component(MFCRuntime
+        DISPLAY_NAME  "MFC 运行库"
+        DESCRIPTION   "MFC 运行库"
+        GROUP Runtimes
+        DEPENDS Runtime
+        )
+
+    cpack_add_component(MFCDevelopment
+        DISPLAY_NAME  "MFC 开发库"
+        DESCRIPTION   "MFC 开发库"
+	    GROUP Developments
+	    INSTALL_TYPES MFCDeveloper Developer All
+        DEPENDS MFCRuntime Development
+        )
+
+    cpack_add_component(MFCApplications
+        DISPLAY_NAME  "MFC 应用程序"
+        DESCRIPTION   "MFC 应用程序"
+        DEPENDS MFCRuntime
+	    INSTALL_TYPES MFCEndUser EndUser All
+	    GROUP Applications
+        )
+endif()

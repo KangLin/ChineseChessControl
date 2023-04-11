@@ -31,6 +31,7 @@ if(ChineseChessControl_VERSION)
         -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}")
 endif()
 
+find_package(MFC REQUIRED)
 # 1. DLL分类：
 # 1.1. MFC Extension Dll
 #      MFC扩展动态库，动态库内部可以使用MFC类，提供的外部接口也可以使用MFC类作为参数。
@@ -43,7 +44,7 @@ endif()
 #
 #         _WINDLL,_AFXDLL,_USRDLL
 #
-# 1.3. Win32 DLL 
+# 1.3. Win32 DLL
 #
 #      Win32动态库，没有任何与MFC相关的dll。
 #
@@ -84,13 +85,13 @@ target_compile_options(${PROJECT_NAME} PRIVATE
 INSTALL(TARGETS ${PROJECT_NAME}
 	EXPORT ${PROJECT_NAME}Targets
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-	    COMPONENT Runtime
+	    COMPONENT MFCRuntime
     LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
+        COMPONENT MFCRuntime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        COMPONENT Development
+        COMPONENT MFCDevelopment
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
-        COMPONENT Development
+        COMPONENT MFCDevelopment
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     )
 export(TARGETS ${PROJECT_NAME}
@@ -101,7 +102,7 @@ export(TARGETS ${PROJECT_NAME}
 install(EXPORT ${PROJECT_NAME}Targets
     NAMESPACE ChineseChessControl::
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
-        COMPONENT Development
+        COMPONENT MFCDevelopment
     )
 # 因为编译树中已有 export(${PROJECT_NAME}Config.cmake)
 configure_package_config_file(
@@ -111,7 +112,7 @@ configure_package_config_file(
       )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in
       DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl
-          COMPONENT Development
+          COMPONENT MFCDevelopment
       RENAME ${PROJECT_NAME}Config.cmake)
 
 write_basic_package_version_file(
@@ -120,4 +121,4 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
-        COMPONENT Development)
+        COMPONENT MFCDevelopment)

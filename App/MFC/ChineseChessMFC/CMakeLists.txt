@@ -30,6 +30,8 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
     -DChineseChessControl_VERSION="${ChineseChessControl_VERSION}"
     )
 
+find_package(MFC REQUIRED)
+
 # 1. DLL分类：
 # 1.1. MFC Extension Dll
 #      MFC扩展动态库，动态库内部可以使用MFC类，提供的外部接口也可以使用MFC类作为参数。
@@ -42,7 +44,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 #
 #         _WINDLL,_AFXDLL,_USRDLL
 #
-# 1.3. Win32 DLL 
+# 1.3. Win32 DLL
 #
 #      Win32动态库，没有任何与MFC相关的dll。
 #
@@ -88,20 +90,8 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
     )
 
-# 安装系统运行库
-set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
-if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
-    set(CMAKE_INSTALL_DEBUG_LIBRARIES TRUE)
-endif()
-set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT DependLibraries)
-include(InstallRequiredSystemLibraries)
-
 # 安装中国象棋
 INSTALL(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Application
-    LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Application
-    ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        COMPONENT Development
+        COMPONENT MFCApplications
     )

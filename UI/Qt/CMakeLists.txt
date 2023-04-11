@@ -174,13 +174,13 @@ endif()
 INSTALL(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}Targets
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-        COMPONENT Runtime
+        COMPONENT QtRuntime
     LIBRARY DESTINATION "${INSTALL_LIBRARY}"
-        COMPONENT Runtime
+        COMPONENT QtRuntime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        COMPONENT Development
+        COMPONENT QtDevelopment
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
-        COMPONENT Development
+        COMPONENT QtDevelopment
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ChineseChessControl
     )
 
@@ -197,14 +197,14 @@ configure_package_config_file(
       )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ChineseChessQtConfig.cmake.in
       DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl
-          COMPONENT Development
+          COMPONENT QtDevelopment
       RENAME ChineseChessQtConfig.cmake)
 
 # Install cmake configure files
 install(EXPORT ${PROJECT_NAME}Targets
     NAMESPACE ChineseChessControl::
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
-        COMPONENT Development
+        COMPONENT QtDevelopment
     )
 
 write_basic_package_version_file(
@@ -213,7 +213,7 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"
-        COMPONENT Development)
+        COMPONENT QtDevelopment)
 
 # Install pkg-config file
 foreach(d ${CHINESE_CHESS_QT_DEFINITIONS})
@@ -225,7 +225,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/${PROJECT_NAME}.pc.in
     ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
-    COMPONENT Development)
+    COMPONENT QtDevelopment)
 
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
