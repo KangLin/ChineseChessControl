@@ -7,26 +7,38 @@ on:
   push:
   
 jobs:
-  build_linux:
+  ubuntu:
     uses: ./.github/workflows/ubuntu.yml
 
-  build_windows:
+  msvc:
     uses: ./.github/workflows/msvc.yml
+
+  mingw:
+    uses: ./.github/workflows/mingw.yml
+
+  macos:
+    uses: ./.github/workflows/macos.yml
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [build_linux, build_windows]
+    needs: [ubuntu, msvc, mingw]
     steps:
-      - name: Download linux
+      - name: Download ubuntu
         uses: actions/download-artifact@v3
         with:
-          name: ${{ needs.build_linux.outputs.name }}
+          name: ${{ needs.ubuntu.outputs.name }}
           path: ${{ env.artifact_path }}
 
-      - name: Download windows
+      - name: Download msvc
         uses: actions/download-artifact@v3
         with:
-          name: ${{ needs.build_windows.outputs.name }}
+          name: ${{ needs.msvc.outputs.name }}
+          path: ${{ env.artifact_path }}
+
+      - name: Download mingw
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ needs.mingw.outputs.name }}
           path: ${{ env.artifact_path }}
 
       - name: deploy
