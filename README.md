@@ -70,7 +70,7 @@
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
   - windows x86
-      - [MSVC 2017 x86 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1916_x86_v2.0.6.exe)
+      - [MSVC 2017 x86 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1916_x86_v2.0.6.exe)
       - [MSVC 2015 x86 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1900_x86_v2.0.6.exe)
 
   - windows x86_64
