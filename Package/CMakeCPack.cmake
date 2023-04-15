@@ -61,7 +61,7 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY "ChineseChessControl")
 # 设置注册表健。仅用于 WINDOWS
 set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "ChineseChessControl")
 
-set(CPACK_PACKAGE_CHECKSUM "MD5")
+#set(CPACK_PACKAGE_CHECKSUM "MD5")
 
 ############### Debian ###################
 if(UNIX AND (NOT (MACOS AND APPLE)))

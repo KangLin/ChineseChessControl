@@ -33,7 +33,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
-      ChineseChessControl_VERSION: 2.0.5
+      ChineseChessControl_VERSION: "2.0.6"
       artifact_name: build_macos
 
     # Map the job outputs to step outputs
@@ -99,7 +99,7 @@ jobs:
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }} 
+        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.artifact_name }}

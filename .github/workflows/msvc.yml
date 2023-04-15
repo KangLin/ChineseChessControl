@@ -48,7 +48,7 @@ jobs:
       CMAKE_GENERATOR: "Visual Studio 17 2022"
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
-      ChineseChessControl_VERSION: v2.0.5
+      ChineseChessControl_VERSION: "v2.0.6"
       VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1
       qt_modules: qtwebengine ${{matrix.qt_modules}}
       
@@ -182,8 +182,8 @@ jobs:
         run: |
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
-      - name: update 
-        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
+      - name: Update artifact
+        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.artifact_name }}

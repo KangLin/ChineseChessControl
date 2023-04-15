@@ -6,9 +6,6 @@ on:
       name:
         description: "The artifact name"
         value: ${{ jobs.build_ubuntu.outputs.name }}
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
 jobs:
   build_ubuntu:
@@ -24,7 +21,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
-      ChineseChessControl_VERSION: 2.0.5
+      ChineseChessControl_VERSION: "2.0.6"
       artifact_name: build_ubuntu
 
     # Map the job outputs to step outputs
@@ -99,7 +96,7 @@ jobs:
           cpack -G "DEB;STGZ"
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' }} 
+        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.BUILD_TYPE == 'Release' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.artifact_name }}

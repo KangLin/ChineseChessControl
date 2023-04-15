@@ -5,16 +5,8 @@
 ------------------------
 
 [![Gitter](https://badges.gitter.im/ChineseChessControl/community.svg)](https://gitter.im/ChineseChessControl/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Build status](https://ci.appveyor.com/api/projects/status/lxs0mxtdl238yrq4?svg=true)](https://ci.appveyor.com/project/KangLin/chinesechesscontrol)
-[![Build Status](https://travis-ci.org/KangLin/ChineseChessControl.svg)](https://travis-ci.org/KangLin/ChineseChessControl)
-
-[![ubuntu master](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml)
-[![ubuntu develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/ubuntu.yml)
-[![mingw](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml/badge.svg)](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml)
-[![mingw develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/mingw.yml)
-
-[![msvc master](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml)
-[![msvc develop](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/msvc.yml)
+[![build](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml)
+[![build](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml)
 
 -------------------------
 
@@ -78,29 +70,29 @@
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
   - windows x86
-      - [MSVC 2017 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1916_x86_v2.0.5.exe)
-      - [MSVC 2015 x86 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1900_x86_v2.0.5.exe)
+      - [MSVC 2017 x86 v2.0.3](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1916_x86_v2.0.6.exe)
+      - [MSVC 2015 x86 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1900_x86_v2.0.6.exe)
 
   - windows x86_64
-      - [MSVC 2017 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1916_x86_64_v2.0.5.exe)
-      - [MSVC 2015 x86_64 v2.0.5](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChessControl_Setup_msvc1900_x86_64_v2.0.5.exe)
+      - [MSVC 2017 x86_64 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1916_x86_64_v2.0.6.exe)
+      - [MSVC 2015 x86_64 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1900_x86_64_v2.0.6.exe)
 
   Windows安装包，支持 Windows xp 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
   - android
-      + [ChineseChess_arm64-v8a_v2.0.5.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChess_arm64-v8a_v2.0.5.apk)
-      + [ChineseChess_armeabi-v7a_v2.0.5.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChess_armeabi-v7a_v2.0.5.apk)
+      + [ChineseChess_arm64-v8a_v2.0.6.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChess_arm64-v8a_v2.0.6.apk)
+      + [ChineseChess_armeabi-v7a_v2.0.6.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChess_armeabi-v7a_v2.0.6.apk)
 
   - linux
-      - [ChineseChess_v2.0.5.tar.gz](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/ChineseChess_v2.0.5.tar.gz)  
+      - [ChineseChess_v2.0.6.tar.gz](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChess_v2.0.6.tar.gz)  
       AppImage格式的执行程序，可直接运行在linux系统，详见：https://appimage.org/  
       使用:    
-        1. 解压。复制ChineseChess_v2.0.5.tar.gz到安装目录，然后解压：
+        1. 解压。复制ChineseChess_v2.0.6.tar.gz到安装目录，然后解压：
 
                 mkdir ChineseChess
                 cd ChineseChess
-                cp $DOWNLOAD/ChineseChess_v2.0.5.tar.gz .
-                tar xvfz ChineseChess_v2.0.5.tar.gz
+                cp $DOWNLOAD/ChineseChess_v2.0.6.tar.gz .
+                tar xvfz ChineseChess_v2.0.6.tar.gz
 
         2. 安装
         
@@ -111,7 +103,7 @@
                 ./install1.sh remove ChineseChess
 
   - ubuntu
-      - [ChineseChess_2.0.5_amd64.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.5/chinesechess_2.0.5_amd64.deb)  
+      - [ChineseChess_2.0.6_amd64.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechess_2.0.6_amd64.deb)  
   deb 安装包,可用于 Ubuntu
 
 #### 贡献

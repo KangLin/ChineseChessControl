@@ -1,6 +1,7 @@
 ## 修改日志
 
 - v2.0.6
+  + 重命名 tag.sh 到 deploy.sh
   + 修改 CI: 使用 github action
   + Qt: 使用图标主题
   + 重构 CMakeLists.txt
