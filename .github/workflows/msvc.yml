@@ -183,7 +183,7 @@ jobs:
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
       - name: Update artifact
-        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
+        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.artifact_name }}

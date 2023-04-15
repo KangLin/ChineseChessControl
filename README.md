@@ -69,42 +69,16 @@
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
-  - windows x86
-      - [MSVC 2017 x86 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1916_x86_v2.0.6.exe)
-      - [MSVC 2015 x86 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1900_x86_v2.0.6.exe)
+  - Windows
+    - [chinesechesscontrol_v2.0.6_Windows_AMD64_setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechesscontrol_v2.0.6_Windows_AMD64_setup.exe)
 
-  - windows x86_64
-      - [MSVC 2017 x86_64 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1916_x86_64_v2.0.6.exe)
-      - [MSVC 2015 x86_64 v2.0.6](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChessControl_Setup_msvc1900_x86_64_v2.0.6.exe)
-
-  Windows安装包，支持 Windows xp 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
-
-  - android
-      + [ChineseChess_arm64-v8a_v2.0.6.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChess_arm64-v8a_v2.0.6.apk)
-      + [ChineseChess_armeabi-v7a_v2.0.6.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChess_armeabi-v7a_v2.0.6.apk)
+  Windows安装包，支持 Windows 7 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
   - linux
-      - [ChineseChess_v2.0.6.tar.gz](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/ChineseChess_v2.0.6.tar.gz)  
-      AppImage格式的执行程序，可直接运行在linux系统，详见：https://appimage.org/  
-      使用:    
-        1. 解压。复制ChineseChess_v2.0.6.tar.gz到安装目录，然后解压：
-
-                mkdir ChineseChess
-                cd ChineseChess
-                cp $DOWNLOAD/ChineseChess_v2.0.6.tar.gz .
-                tar xvfz ChineseChess_v2.0.6.tar.gz
-
-        2. 安装
-        
-                ./install1.sh install ChineseChess
-        
-        3. 如果需要，卸载
-        
-                ./install1.sh remove ChineseChess
+    - [chinesechesscontrol_v2.0.6_Linux_x86_64_setup.sh](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechesscontrol_v2.0.6_Linux_x86_64_setup.sh)
 
   - ubuntu
-      - [ChineseChess_2.0.6_amd64.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechess_2.0.6_amd64.deb)  
-  deb 安装包,可用于 Ubuntu
+    - [chinesechesscontrol_v2.0.6_Linux_x86_64_setup.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechesscontrol_v2.0.6_Linux_x86_64_setup.deb)
 
 #### 贡献
 - 欢迎大家参与本项目开发，共同完成[功能](#功能)列表中未完成的功能。
