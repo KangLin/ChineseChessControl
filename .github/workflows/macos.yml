@@ -32,7 +32,7 @@ jobs:
       BUILD_TYPE:  ${{ matrix.BUILD_TYPE }}
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
-      INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
+      INSTALL_DIR: ${{github.workspace}}/.cache/install_macos
       ChineseChessControl_VERSION: "2.0.6"
       artifact_name: build_macos
 

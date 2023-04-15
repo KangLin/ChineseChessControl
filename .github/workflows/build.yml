@@ -52,7 +52,7 @@ jobs:
         run: |
           echo "[:cn: 修改日志](ChangeLog.md)" > NoteFile
           echo "" >> NoteFile
-          echo "File checksum:" >> NoteFile
+          echo "文件签名:" >> NoteFile
           cd ${{ env.artifact_path }}
           for file in *
           do

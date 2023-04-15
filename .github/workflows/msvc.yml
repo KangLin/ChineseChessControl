@@ -9,13 +9,11 @@ on:
 
 jobs:
   build_msvc:
-    name: ${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
 
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
         triplet: [x64-windows, x86-windows]
-        os: [windows-latest]
 
         include:
           #- triplet: x64-windows

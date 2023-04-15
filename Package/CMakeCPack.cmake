@@ -15,8 +15,14 @@ set(CPACK_SOURCE_IGNORE_FILES
     ${CMAKE_SOURCE_DIR}/.dockerignore
     ${CMAKE_SOURCE_DIR}/CMakeCache.txt)
 
-set(CPACK_SYSTEM_NAME "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
-set(CPACK_TOPLEVEL_TAG "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
+if(MSVC)
+    set(CPACK_SYSTEM_NAME "${CMAKE_SYSTEM_NAME}_${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
+    set(CPACK_TOPLEVEL_TAG "${CMAKE_SYSTEM_NAME}_${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
+else()
+    set(CPACK_SYSTEM_NAME "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
+    set(CPACK_TOPLEVEL_TAG "${CMAKE_SYSTEM_NAME}_${CMAKE_SYSTEM_PROCESSOR}")
+endif()
+message("CPACK_SYSTEM_NAME:${CPACK_SYSTEM_NAME}")
 
 # 包名。建议用英文。
 set(CPACK_PACKAGE_NAME "ChineseChessControl")
@@ -27,7 +33,7 @@ string(TOLOWER ${CPACK_PACKAGE_NAME} CPACK_PACKAGE_NAME_lower)
 # 设置二进制安装包的文件名
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}_setup")
 # 设置源码安装包的文件名
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME_lower}_${ChineseChessControl_VERSION}_${CPACK_SYSTEM_NAME}_source")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME_lower}_${ChineseChessControl_VERSION}_source")
 # 不设置，默认为编译目录
 #set(CPACK_PACKAGE_DIRECTORY ${CMAKE_BINARY_DIR})
 
@@ -64,7 +70,7 @@ set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "ChineseChessControl")
 #set(CPACK_PACKAGE_CHECKSUM "MD5")
 
 ############### Debian ###################
-if(UNIX AND (NOT (MACOS AND APPLE)))
+if(UNIX AND (NOT (MACOS AND APPLE)) AND (NOT ANDROID))
     #set(CPACK_GENERATOR "DEB;STGZ;TGZ;TZ")
     set(CPACK_DEBIAN_PACKAGE_DEBUG ON)
 
@@ -254,6 +260,7 @@ cpack_add_component_group(Applications
 cpack_add_component(DependLibraries
     DISPLAY_NAME  "依赖库"
     DESCRIPTION   "依赖库"
+    INSTALL_TYPES All EndUser Developer QtDeveloper QtEndUser
     GROUP Runtimes
     )
 
@@ -261,13 +268,14 @@ cpack_add_component(Development
     DISPLAY_NAME  "开发库"
     DESCRIPTION   "开发库"
 	GROUP Developments
-	INSTALL_TYPES Developer
+	INSTALL_TYPES All Developer QtDeveloper MFCDeveloper
     DEPENDS Runtime
     )
 
 cpack_add_component(Runtime
     DISPLAY_NAME  "运行库"
     DESCRIPTION   "运行库"
+    INSTALL_TYPES All EndUser Developer QtDeveloper QtEndUser MFCDeveloper MFCEndUser
     GROUP Runtimes
     DEPENDS DependLibraries
 	REQUIRED
@@ -284,6 +292,7 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     cpack_add_component(QtRuntime
         DISPLAY_NAME  "Qt 运行库"
         DESCRIPTION   "Qt 运行库"
+        INSTALL_TYPES All EndUser Developer QtDeveloper QtEndUser
         GROUP Runtimes
         DEPENDS Runtime
 	    )
@@ -292,7 +301,7 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
         DISPLAY_NAME  "Qt 开发库"
         DESCRIPTION   "Qt 开发库"
 	    GROUP Developments
-	    INSTALL_TYPES All QtDeveloper Developer 
+	    INSTALL_TYPES All QtDeveloper Developer
         DEPENDS QtRuntime Development
         )
 
@@ -318,13 +327,14 @@ if(MFC_FOUND)
         DESCRIPTION   "MFC 运行库"
         GROUP Runtimes
         DEPENDS Runtime
+        INSTALL_TYPES All EndUser Developer MFCDeveloper MFCEndUser
         )
 
     cpack_add_component(MFCDevelopment
         DISPLAY_NAME  "MFC 开发库"
         DESCRIPTION   "MFC 开发库"
 	    GROUP Developments
-	    INSTALL_TYPES MFCDeveloper Developer All
+	    INSTALL_TYPES All Developer MFCDeveloper
         DEPENDS MFCRuntime Development
         )
 
@@ -332,7 +342,7 @@ if(MFC_FOUND)
         DISPLAY_NAME  "MFC 应用程序"
         DESCRIPTION   "MFC 应用程序"
         DEPENDS MFCRuntime
-	    INSTALL_TYPES MFCEndUser EndUser All
+	    INSTALL_TYPES All EndUser MFCEndUser
 	    GROUP Applications
         )
 endif()
