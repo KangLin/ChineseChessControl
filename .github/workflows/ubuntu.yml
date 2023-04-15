@@ -14,16 +14,16 @@ jobs:
   build_ubuntu:
     strategy:
       matrix:
-        os: [Ubuntu-20.04, Ubuntu-22.04]
         # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
         BUILD_TYPE: [Release, Debug]
 
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
+
     env:
       BUILD_TYPE:  ${{ matrix.BUILD_TYPE }}
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
-      INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu_2022_02_14
+      INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
       ChineseChessControl_VERSION: 2.0.5
       artifact_name: build_ubuntu
 
@@ -96,10 +96,10 @@ jobs:
             -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} \
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install
           cmake --build . --config ${{matrix.BUILD_TYPE}}
-          cmake --build . --target package
+          cpack -G "DEB;STGZ"
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.os == 'Ubuntu-22.04' }} 
+        if: ${{ matrix.BUILD_TYPE == 'Release' }} 
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.artifact_name }}

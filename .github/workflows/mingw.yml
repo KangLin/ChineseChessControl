@@ -111,13 +111,12 @@ jobs:
         working-directory: ${{github.workspace}}/build
         if: ${{ matrix.BUILD_TYPE == 'Release' }}
         run: |
-          cmake --build . --target package
+          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
-      - name: Update artifact 
-        uses: actions/upload-artifact@v3
-        if: ${{ matrix.BUILD_TYPE == 'Release' }}
-        with:
-          name: rabbitremotecontrol_${{ matrix.os }}
-          path: |
-            ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
-      
+#      - name: Update artifact 
+#        uses: actions/upload-artifact@v3
+#        if: false
+#        with:
+#          name: rabbitremotecontrol_${{ matrix.os }}
+#          path: |
+#            ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe
