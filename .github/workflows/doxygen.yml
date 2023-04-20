@@ -1,17 +1,18 @@
 name: Doxygen
 
-on: [push]
+on:
+  workflow_call:
+    outputs:
+      name:
+        description: "The artifact name"
+        value: ${{ jobs.build_doxygen.outputs.name }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        os: [Ubuntu-20.04]
-
-    runs-on: ${{matrix.os}}
+  build_doxygen:
+    runs-on: ubuntu-latest
     env:
       BUILD_TYPE:  Release
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
@@ -19,9 +20,15 @@ jobs:
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
       ChineseChessControl_VERSION: v0.0.27
       DOXYGEN_VERSION: 1.9.5
+      artifact_name: build_doxygen
+
+    # Map the job outputs to step outputs
+    outputs:
+      name: ${{ env.artifact_name }}
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v3
       with:
         submodules: true
 
@@ -30,26 +37,24 @@ jobs:
         cmake -E make_directory ${{env.SOURCE_DIR}}
         cmake -E make_directory ${{env.TOOSL_DIR}}
         cmake -E make_directory ${{env.INSTALL_DIR}}
+        cmake -E make_directory ${{github.workspace}}/build
 
     - name: Cache installed
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-installed
       with:
         path: |
           ${{env.TOOSL_DIR}}
-        key: cache-installed-doxygen-${{matrix.os}}
-    
+        key: cache-installed-doxygen
+
     - name: git clone RabbitCommon
       working-directory: ${{env.SOURCE_DIR}}
       run: git clone https://github.com/KangLin/RabbitCommon.git
-      
-    - name: apt helper action
-      uses: ryankurte/action-apt@v0.2.0
-      with:
-        # architectures to pass to dpkg --add-architecture
-        #architectures: # optional
-        # apt packages to install
-        packages: cmake build-essential graphviz qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools
+
+    - name: install apt packages
+      run: |
+        sudo apt install -y -q cmake build-essential graphviz \
+            qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools
 
     - name: Download doxygen
       run: |
@@ -61,13 +66,11 @@ jobs:
         sudo cp ${{env.TOOSL_DIR}}/doxygen-${{env.DOXYGEN_VERSION}}/bin/doxygen /usr/bin/doxygen
 
     - name: build doxygen
-      working-directory: ${{github.workspace}}
+      working-directory: ${{github.workspace}}/build
       env:
         RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
         BUILD_DOCS: ON
       run: |
-        cmake -E make_directory ${{github.workspace}}/build
-        cd ${{github.workspace}}/build
         cmake ${{github.workspace}} \
             -DBUILD_APP:BOOL=OF \
             -DBUILD_CLIENT:BOOL=OFF \
@@ -83,14 +86,16 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install \
             -DBUILD_DOCS=ON
         cmake --build . --target doc
+        7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_document.zip Doxygen/*
 
-    - name: update 
-      uses: actions/upload-artifact@v2
+    - name: Update artifact
+#      if: ${{ matrix.BUILD_TYPE == 'Release' }}
+      uses: actions/upload-artifact@v3
       with:
-          name: ChineseChessControl_doxygen_${{ matrix.os }}
-          path: |
-            build/Doxygen
-      
+        name: ${{ env.artifact_name }}
+        path: |
+          ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_document.zip
+
     - name: Deploy to GitHub Pages
       if: startsWith(github.ref, 'refs/tags/')
       uses: crazy-max/ghaction-github-pages@v2
