@@ -4,7 +4,7 @@
 #include "RabbitCommonDir.h"
 #include "DlgAbout/DlgAbout.h"
 #include "FrmUpdater/FrmUpdater.h"
-#include "FrmStyle/FrmStyle.h"
+#include "Style/FrmStyle.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

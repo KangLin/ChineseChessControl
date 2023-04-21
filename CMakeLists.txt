@@ -28,7 +28,7 @@ if(POLICY CMP0021)
     cmake_policy(SET CMP0021 NEW)
 endif()
 
-SET(ChineseChessControl_VERSION "v2.0.6")
+SET(ChineseChessControl_VERSION "v2.0.7")
 # Find Git Version Patch
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)

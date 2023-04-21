@@ -26,7 +26,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
-      ChineseChessControl_VERSION: v0.0.25
+      ChineseChessControl_VERSION: ""
       VCPKGGITCOMMITID: 0ba60bfef5dea4cb2599daa7ad8364e309835a68
       qt_modules: '${{matrix.qt_modules}}'
 

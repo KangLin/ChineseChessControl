@@ -70,15 +70,15 @@
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
   - Windows
-    - [chinesechesscontrol_v2.0.6_Windows_AMD64_setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechesscontrol_v2.0.6_Windows_AMD64_setup.exe)
+    - [chinesechesscontrol_v2.0.7_Windows_AMD64_setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/chinesechesscontrol_v2.0.7_Windows_AMD64_setup.exe)
 
   Windows安装包，支持 Windows 7 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
   - linux
-    - [chinesechesscontrol_v2.0.6_Linux_x86_64_setup.sh](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechesscontrol_v2.0.6_Linux_x86_64_setup.sh)
+    - [chinesechesscontrol_v2.0.7_Linux_x86_64_setup.sh](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/chinesechesscontrol_v2.0.7_Linux_x86_64_setup.sh)
 
   - ubuntu
-    - [chinesechesscontrol_v2.0.6_Linux_x86_64_setup.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.6/chinesechesscontrol_v2.0.6_Linux_x86_64_setup.deb)
+    - [chinesechesscontrol_v2.0.7_Linux_x86_64_setup.deb](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/chinesechesscontrol_v2.0.7_Linux_x86_64_setup.deb)
 
 #### 贡献
 - 欢迎大家参与本项目开发，共同完成[功能](#功能)列表中未完成的功能。

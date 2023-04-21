@@ -140,12 +140,12 @@ case ${BUILD_TARGERT} in
 esac
 
 if [ -n "$appveyor_build_version" -a -z "$VERSION" ]; then
-    export VERSION="v2.0.6"
+    export VERSION="v2.0.7"
 fi
 if [ -z "$VERSION" ]; then
-    export VERSION="v2.0.6"
+    export VERSION="v2.0.7"
 fi
-export DEBIAN_VERSION="2.0.6"
+export DEBIAN_VERSION="2.0.7"
 export UPLOADTOOL_BODY="Release ChineseChess ${VERSION}.<br/> The change see [ChangeLog.md](ChangeLog.md)"
 #export UPLOADTOOL_PR_BODY=
         

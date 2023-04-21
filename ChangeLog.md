@@ -1,4 +1,9 @@
 ## 修改日志
+- v2.0.8
+  + 使用 RabbitCommon v2
+
+- v2.0.7
+  + 使用 RabbitCommon v1.0.10
 
 - v2.0.6
   + 重命名 tag.sh 到 deploy.sh
