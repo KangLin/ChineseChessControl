@@ -5,7 +5,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="72"/>
+        <location filename="../../MainWindow.cpp" line="69"/>
         <source>Chinese chess</source>
         <translation type="unfinished"></translation>
     </message>
@@ -80,14 +80,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="36"/>
-        <location filename="../../MainWindow.cpp" line="45"/>
+        <location filename="../../MainWindow.cpp" line="33"/>
+        <location filename="../../MainWindow.cpp" line="42"/>
         <source>Open chess game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="47"/>
+        <location filename="../../MainWindow.cpp" line="44"/>
         <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../main.cpp" line="28"/>
+        <source>Chinese chess</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

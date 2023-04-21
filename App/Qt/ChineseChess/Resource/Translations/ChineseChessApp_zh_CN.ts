@@ -74,19 +74,27 @@
         <translation>样式(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="36"/>
-        <location filename="../../MainWindow.cpp" line="45"/>
+        <location filename="../../MainWindow.cpp" line="33"/>
+        <location filename="../../MainWindow.cpp" line="42"/>
         <source>Open chess game</source>
         <translation>打开棋局</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="47"/>
+        <location filename="../../MainWindow.cpp" line="44"/>
         <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
         <translation>中国象棋控件文件(*ccc);;便携式游戏符号文件(*.pgn);;所有文件(*.*)</translation>
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="72"/>
+        <location filename="../../MainWindow.cpp" line="69"/>
+        <source>Chinese chess</source>
+        <translation>中国象棋</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../main.cpp" line="28"/>
         <source>Chinese chess</source>
         <translation>中国象棋</translation>
     </message>

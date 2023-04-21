@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
     if(bTranslator)
         qApp->installTranslator(&translator);
 
+    a.setApplicationDisplayName(QObject::tr("Chinese chess"));
+
     CFrmUpdater *pUpdate = new CFrmUpdater();
     pUpdate->SetTitle(QImage(":/image/Chess"));
     if(!pUpdate->GenerateUpdateXml())
