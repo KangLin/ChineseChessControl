@@ -78,12 +78,13 @@ jobs:
           # Version of Qt to install
           version: ${{matrix.qt_version}} # optional, default is 5.15.2
           modules: ${{env.qt_modules}} # optional
-      
+
       - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
-        run: git clone https://github.com/KangLin/RabbitCommon.git
-      
-      - name: Compile
+        run: |
+          git clone https://github.com/KangLin/RabbitCommon.git
+
+      - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
           RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon

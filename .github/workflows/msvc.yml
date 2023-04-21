@@ -77,7 +77,7 @@ jobs:
         with:
           path: |
             ${{env.INSTALL_DIR}}
-          key: ChineseChessControl_msvc_cache-installed-${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+          key: msvc_cache_installed_qt${{matrix.qt_version}}
 
       - name: run-vcpkg
         uses: lukka/run-vcpkg@v7
@@ -86,13 +86,9 @@ jobs:
           vcpkgDirectory: ${{runner.workspace}}/vcpkg/
           # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
           # compute its hash and append this to the computed cache's key.
-          appendedCacheKey: cache-vcpkg-msvc-${{matrix.os}}-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
+          appendedCacheKey: cache-vcpkg-msvc-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
           vcpkgTriplet: '${{matrix.triplet}}'
           vcpkgArguments: 'zlib openssl'
-
-      - name: git clone RabbitCommon
-        working-directory: ${{env.SOURCE_DIR}}
-        run: git clone https://github.com/KangLin/RabbitCommon.git
 
       - name: Cache Qt
         id: cache-qt
@@ -137,26 +133,10 @@ jobs:
           # Any extra arguments to append to the back
           #extra: # optional
 
-      - name: build log4qt
-        if: false
+      - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
         run: |
-          IF NOT EXIST ${{env.INSTALL_DIR}}\lib\cmake\Log4Qt (
-              git clone https://github.com/MEONMedical/Log4Qt.git
-              cd Log4Qt
-              git checkout -b eb4b952a886ab03d24e896e38df015cf0ff5bd7a eb4b952a886ab03d24e896e38df015cf0ff5bd7a
-              cmake -E make_directory build
-              cd build
-              cmake .. ^
-                  -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
-                  -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} ^
-                  -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_DIR}} ^
-                  -DLOG4QT_ENABLE_EXAMPLES=OFF ^
-                  -DLOG4QT_ENABLE_TESTS=OFF ^
-                  -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake
-              cmake --build . --config ${{matrix.BUILD_TYPE}}
-              cmake --build . --config ${{matrix.BUILD_TYPE}} --target install
-          )
+          git clone https://github.com/KangLin/RabbitCommon.git
 
       - name: build ChineseChessControl
         env:
@@ -188,15 +168,3 @@ jobs:
           path: |
             ${{github.workspace}}\build\chinesechesscontrol_*_setup.exe
             ${{github.workspace}}\build\chinesechesscontrol_*_setup.exe.md5
-
-#    - name: Upload To Github Release
-#      if: ${{ matrix.BUILD_TYPE == 'Release' && '5.12.12' == matrix.qt_version && startsWith(github.ref, 'refs/tags/') }}
-#      uses: softprops/action-gh-release@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        prerelease: true
-#        body: |
-#          [:cn: 修改日志](ChangeLog.md)
-#        files: |
-#          ${{github.workspace}}\build\chinesechesscontrol_${{env.ChineseChessControl_VERSION}}_*_setup.exe

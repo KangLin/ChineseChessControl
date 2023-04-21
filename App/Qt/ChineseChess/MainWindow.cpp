@@ -2,9 +2,9 @@
 #include "./ui_MainWindow.h"
 
 #include "RabbitCommonDir.h"
-#include "DlgAbout/DlgAbout.h"
-#include "FrmUpdater/FrmUpdater.h"
-#include "Style/FrmStyle.h"
+#include "DlgAbout.h"
+#include "FrmUpdater.h"
+#include "FrmStyle.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

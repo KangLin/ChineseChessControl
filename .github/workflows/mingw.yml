@@ -66,10 +66,11 @@ jobs:
           path: |
             ${{env.INSTALL_DIR}}
           key: cache-installed-mingw
-        
+
       - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
-        run: git clone https://github.com/KangLin/RabbitCommon.git
+        run: |
+          git clone https://github.com/KangLin/RabbitCommon.git
 
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}
