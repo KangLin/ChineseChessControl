@@ -6,6 +6,8 @@
 #include "FrmUpdater.h"
 #include "FrmStyle.h"
 
+#include <QCursor>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -64,11 +66,13 @@ void MainWindow::on_actionExit_E_triggered()
 
 void MainWindow::on_actionAbout_A_triggered()
 {
+    QCursor cursor = this->cursor();
+    setCursor(Qt::WaitCursor);
     CDlgAbout about(this);
     about.m_AppIcon = QImage(":/image/Chess");
     about.m_szAppName = tr("Chinese chess");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
-    about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
+    about.m_szCopyrightStartTime = "1994";
     about.m_szVersion = ChineseChessApp_VERSION;
     about.m_szVersionRevision = ChineseChessApp_REVISION;
     if(about.isHidden())
@@ -76,6 +80,7 @@ void MainWindow::on_actionAbout_A_triggered()
         about.showMaximized();
 #endif
     about.exec();
+    setCursor(cursor);
 }
 
 void MainWindow::on_actionPrompt_sound_S_triggered(bool checked)

@@ -80,10 +80,12 @@ int CFrmChineseChess::InitResource(const QString szLanguage)
 #if (defined(DEBUG) || defined(_DEBUG)) && !defined (BUILD_SHARED_LIBS)
     Q_INIT_RESOURCE(translations_ChineseChessQt);
 #endif
-    
-    g_Translator.load(RabbitCommon::CDir::Instance()->GetDirTranslations()
-                      + QDir::separator() + "ChineseChessQt_" + szLanguage + ".qm");
-    qApp->installTranslator(&g_Translator);
+    QString szQM = RabbitCommon::CDir::Instance()->GetDirTranslations()
+            + QDir::separator() + "ChineseChessQt_" + szLanguage + ".qm";
+    if(g_Translator.load(szQM))
+        qApp->installTranslator(&g_Translator);
+    else
+        qCritical() << "Load translator fail:" << szQM;
     return 0;
 }
 
