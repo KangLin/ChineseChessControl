@@ -2,6 +2,7 @@
 #include "./ui_MainWindow.h"
 
 #include "RabbitCommonDir.h"
+#include "RabbitCommonTools.h"
 #include "DlgAbout.h"
 #include "FrmUpdater.h"
 #include "FrmStyle.h"
@@ -13,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(ui->menuTools));
     m_pChess = new CFrmChineseChess(this);
     //m_pChess->SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
     this->setCentralWidget(m_pChess);

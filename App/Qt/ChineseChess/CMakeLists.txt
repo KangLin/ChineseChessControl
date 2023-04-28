@@ -64,12 +64,24 @@ if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
     LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
 endif()
 
-if(ANDROID)
-    add_library(${PROJECT_NAME} ${SOURCES_FILES}
-        ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+    qt_add_executable(${PROJECT_NAME}
+        ${SOURCES_FILES}
+        ${HEADER_FILES}
+        ${SOURCE_UI_FILES}
+        ${RCC_FILES}
+    )
 else()
-    add_executable(${PROJECT_NAME} ${SOURCES_FILES}
-        ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+    if(ANDROID)
+        add_library(${PROJECT_NAME}
+            ${SOURCES_FILES}
+            ${HEADER_FILES}
+            ${SOURCE_UI_FILES}
+            ${RCC_FILES})
+    else()
+        add_executable(${PROJECT_NAME} ${SOURCES_FILES}
+            ${HEADER_FILES} ${SOURCE_UI_FILES} ${RCC_FILES})
+    endif()
 endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ChineseChessQt RabbitCommon ${QT_LIBRARIES})
@@ -185,3 +197,12 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
             COMPONENT DependLibraries)
         
 ENDIF()
+
+if(NOT EXISTS ${CMAKE_BINARY_DIR}/etc/ChineseChess_logqt.ini)
+    configure_file(${CMAKE_SOURCE_DIR}/etc/ChineseChess_logqt.ini
+        ${CMAKE_BINARY_DIR}/etc/ChineseChess_logqt.ini
+        COPYONLY)
+endif()
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/etc/ChineseChess_logqt.ini
+    DESTINATION etc
+    COMPONENT Runtime)

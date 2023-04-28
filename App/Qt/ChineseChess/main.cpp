@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
     int nRet = 0;
     QApplication a(argc, argv);
 
+    a.setApplicationName("ChineseChess");
+
     QString szLoacleName = QLocale::system().name();
     RabbitCommon::CTools::Instance()->Init(szLoacleName);
     CFrmChineseChess::InitResource(szLoacleName);
