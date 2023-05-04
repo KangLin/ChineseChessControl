@@ -13,14 +13,14 @@ jobs:
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
-        triplet: [x64-windows, x86-windows]
+        qt_version: [6.5.0, 5.15.2, 5.12.12]
 
         include:
-          #- triplet: x64-windows
-          #  qt_version: 6.2.4
-          #  qt_arch: win64_msvc2019_64
-          #  CMAKE_GENERATOR_PLATFORM: x64
-          #  qt_modules: 'qtwebengine qtscxml qtmultimedia qtwebview qtimageformats'
+          - triplet: x64-windows
+            qt_version: 6.5.0
+            qt_arch: win64_msvc2019_64
+            CMAKE_GENERATOR_PLATFORM: x64
+            qt_modules: 'qtwebengine qtscxml qtmultimedia qtimageformats'
 
           - triplet: x64-windows
             qt_version: 5.15.2
@@ -115,11 +115,11 @@ jobs:
           # Whether or not to install Qt dependencies on Linux
           #install-deps: true # optional, default is true
           # Additional Qt modules to install
-          modules: ${{env.qt_modules}} # optional
+          modules: ${{env.qt_modules}} # optional. See: https://ddalcino.github.io/aqt-list-server/
           # Force a Qt mirror in case the default is not working
           #mirror: # optional
           # Whether or not to actually download Qt
-          cached: ${{ steps.cache-qt.outputs.cache-hit }} # optional, default is false
+          cache: ${{ steps.cache-qt.outputs.cache-hit }} # optional, default is false
           # Whether or not to automatically run setup-python to find a valid python version.
           #setup-python: false # optional, default is true
           # Qt tools to download--specify comma-separated argument lists which are themselves separated by spaces: <tool_name>,<tool_version>,<tool_arch>
