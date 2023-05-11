@@ -44,6 +44,7 @@ jobs:
           cmake -E make_directory ${{env.SOURCE_DIR}}
           cmake -E make_directory ${{env.TOOSL_DIR}}
           cmake -E make_directory ${{env.INSTALL_DIR}}
+          cmake -E make_directory ${{github.workspace}}/build
 
       - name: pacman
         env:
@@ -73,15 +74,13 @@ jobs:
           git clone https://github.com/KangLin/RabbitCommon.git
 
       - name: build ChineseChessControl
-        working-directory: ${{github.workspace}}
+        working-directory: ${{github.workspace}}/build
         env:
           RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
           MSYSTEM: MINGW64
           PATH: C:\msys64\mingw64\bin;C:\msys64\usr\bin
         run: |
-          cmake -E make_directory build
-          cd build
-          cmake .. -G"MinGW Makefiles" ^
+          cmake ${{github.workspace}} -G"MinGW Makefiles" ^
               -DCMARK_SHARED=OFF ^
               -DCMARK_TESTS=OFF ^
               -DCMARK_STATIC=ON ^

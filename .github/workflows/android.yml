@@ -3,22 +3,21 @@ name: android
 on: [push]
 
 jobs:
-  use_install_qt:
-    name: use install qt android-qt${{matrix.qt_version}}-${{matrix.VCPKG_TARGET_TRIPLET}}-${{matrix.BUILD_TYPE}}
+  build_android:
 
     strategy:
       matrix:
         BUILD_TYPE: [Release]
-        ANDROID_ABI: [armeabi-v7a, x86]
-        ANDROID_PLATFORM: [android-28]
-        os: [ubuntu-latest]
-        qt_version: [5.12.12]
+        qt_arch: [android_armv7, android_x86_64]
+        qt_version: [6.5.0]
         include:
-          - VCPKG_TARGET_TRIPLET: arm-android
-            qt_version: 5.12.12
+          - BUILD_TYPE: Release
             qt_arch: android_armv7
-            ANDROID_ABI: armeabi-v7a
-            #qt_modules: 'qtscxml qtmultimedia qtwebview qtimageformats'
+            qt_version: 6.5.0
+
+          - BUILD_TYPE: Release
+            qt_version: 6.5.0
+            qt_arch: android_x86_64
 
     runs-on: ubuntu-latest
 
@@ -26,9 +25,10 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
-      ChineseChessControl_VERSION: ""
+      ChineseChessControl_VERSION: "v2.0.7"
       VCPKGGITCOMMITID: 0ba60bfef5dea4cb2599daa7ad8364e309835a68
-      qt_modules: '${{matrix.qt_modules}}'
+      ANDROID_PLATFORM: android-28
+      qt_modules: 'qtimageformats qtlocation qtmultimedia qtpositioning qtscxml qtwebchannel qtwebsockets qtwebview qt5compat qtshadertools'
 
     steps:
       - name: Checkout Repository
@@ -41,23 +41,33 @@ jobs:
           cmake -E make_directory ${{env.SOURCE_DIR}}
           cmake -E make_directory ${{env.TOOSL_DIR}}
           cmake -E make_directory ${{env.INSTALL_DIR}}
+          cmake -E make_directory ${{github.workspace}}/build
 
       - name: Cache Qt
         id: cache-qt
         uses: actions/cache@v1  # not v2!
         with:
           path: ${{env.TOOSL_DIR}}/qt
-          key: android-qt${{matrix.qt_version}}-${{matrix.VCPKG_TARGET_TRIPLET}}-${{matrix.BUILD_TYPE}}-2022-12-25
+          key: android-qt${{matrix.qt_version}}-${{matrix.VCPKG_TARGET_TRIPLET}}-${{matrix.BUILD_TYPE}}
 
-      - name: Install Qt
+      - name: Install Qt of gcc_64
+        uses: jurplel/install-qt-action@v3
+        with:
+          dir: '${{env.TOOSL_DIR}}' # optional
+          version: '${{matrix.qt_version}}'
+          #host: 'linux'
+          target: 'desktop'
+          arch: 'gcc_64'
+          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
+
+      - name: Install Qt of android
         # You may pin to the exact commit or the version.
-        # uses: jurplel/install-qt-action@a962fb91949c8e846a3e4a944d50e7ef5cc3a28a
         uses: jurplel/install-qt-action@v3
         with:
           # Directory to install Qt
-          dir: '${{env.TOOSL_DIR}}/qt' # optional
+          dir: '${{env.TOOSL_DIR}}' # optional
           # Version of Qt to install
-          version: '${{matrix.qt_version}}' # optional, default is 5.15.2
+          version: '${{matrix.qt_version}}'
           # Host platform
           #host: linux # optional
           # Target platform for build
@@ -67,7 +77,7 @@ jobs:
           # Whether or not to install Qt dependencies on Linux
           #install-deps: true # optional, default is true
           # Additional Qt modules to install
-          modules: '${{env.qt_modules}}' # optional
+          modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
           # Force a Qt mirror in case the default is not working
           #mirror: # optional
           # Whether or not to actually download Qt
@@ -114,90 +124,36 @@ jobs:
           git clone https://github.com/KangLin/RabbitCommon.git
 
       - name: build ChineseChessControl
+        working-directory: ${{github.workspace}}/build
         env:
           QT_ROOT: ${{env.Qt5_Dir}}
           STOREPASS: ${{secrets.STOREPASS}}
           RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
-          cmake -E make_directory ${{github.workspace}}/build
-          cd ${{github.workspace}}/build
-          cmake ${{github.workspace}} \
-              -DCMARK_SHARED=OFF \
-              -DCMARK_TESTS=OFF \
-              -DCMARK_STATIC=ON \
-              -DBUILD_FREERDP=ON \
-              -DLog4Qt_DIR=${{env.INSTALL_DIR}}/lib/cmake/Log4Qt \
+          sudo chmod 777 ${Qt6_DIR}/bin/qt-cmake
+          ${Qt6_DIR}/bin/qt-cmake .. \
               -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} \
-              -DQT_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5 \
-              -DQt5_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5 \
-              -DQt5Core_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Core \
-              -DQt5Gui_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Gui \
-              -DQt5Widgets_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Widgets \
-              -DQt5Xml_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Xml \
-              -DQt5Sql_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Sql \
-              -DQt5Positioning_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Positioning \
-              -DQt5Network_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Network \
-              -DQt5Multimedia_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Multimedia \
-              -DQt5LinguistTools_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5LinguistTools \
-              -DQt5Qml_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Qml \
-              -DQt5Quick_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Quick \
-              -DQt5QuickWidgets_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5QuickWidgets \
-              -DQt5AndroidExtras_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5AndroidExtras \
-              -DQt5Concurrent_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Concurrent \
-              -DQt5Test_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5Test \
-              -DQt5WebEngineWidgets_DIR=${{env.QT_ROOT}}/lib/cmake/Qt5WebEngineWidgets \
-              -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_DIR}} \
-              -DCMAKE_PREFIX_PATH="${{env.QT_ROOT}}:${{env.INSTALL_DIR}}" \
-              -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
-              -DANDROID_ABI=${{matrix.ANDROID_ABI}} \
-              -DANDROID_PLATFORM=${{matrix.ANDROID_PLATFORM}} \
-              -DCMAKE_MAKE_PROGRAM=make
-          cmake --build . --config ${{ matrix.BUILD_TYPE }}
-          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install-runtime
-          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target APK
+              -DQT_HOST_PATH=${Qt6_DIR}/../gcc_64
+          cmake --build . --config ${{matrix.BUILD_TYPE}}
 
-      - name: Package
-        if: ${{matrix.BUILD_TYPE == 'Release'}}
-        working-directory: ${{env.INSTALL_DIR}}
-        env:
-          QT_ROOT: ${{env.Qt5_Dir}}
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
-        run: |
-          APK_FILE=`find . -name "install-release-signed.apk"`
-          APK_NAME=RabbitCommon_${{matrix.ANDROID_ABI}}_${ChineseChessControl_VERSION}.apk
-          mv -f ${APK_FILE} ${APK_NAME}
-          APK_FILE=${APK_NAME}
-          cp ${{github.workspace}}/Update/update_android.xml .
-          md5sum ${APK_FILE} > ${APK_FILE}.md5
-          MD5=`cat ${APK_FILE}.md5 | awk '{print $1}'`
-          echo "MD5:${MD5}"
-          sed -i "s/<VERSION>.*</<VERSION>${ChineseChessControl_VERSION}</g" update_android.xml
-          sed -i "s/<INFO>.*</<INFO>Release rabbit remote control ${ChineseChessControl_VERSION}</g" update_android.xml
-          sed -i "s/<TIME>.*</<TIME>`date`</g" update_android.xml
-          sed -i "s/<ARCHITECTURE>.*</<ARCHITECTURE>${BUILD_ARCH}</g" update_android.xml
-          sed -i "s/<MD5SUM>.*</<MD5SUM>${MD5}</g" update_android.xml
-          sed -i "s/<FILENAME>.*</<FILENAME>${APK_NAME}</g" update_android.xml
-          sed -i "s:<URL>.*<:<URL>https\://github.com/KangLin/LunarCalendar/releases/download/${ChineseChessControl_VERSION}/${APK_NAME}<:g" update_android.xml
-          sed -i "s/<MIN_UPDATE_VERSION>.*</<MIN_UPDATE_VERSION>${ChineseChessControl_VERSION}</g" update_android.xml
-    
-      - name: update 
-        if: ${{ matrix.BUILD_TYPE == 'Release' }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: RabbitCommon_Android_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}
-          path: |
-            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk
+#      - name: update
+#        if: ${{ matrix.BUILD_TYPE == 'Release' }}
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: RabbitCommon_Android_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}
+#          path: |
+#            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk
 
-      - name: Upload To Github Release
-        if: ${{matrix.ANDROID_ABI=='armeabi-v7a' && matrix.BUILD_TYPE == 'Release' && startsWith(github.ref, 'refs/tags/') }}
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          prerelease: true
-          body: |
-            [:cn: Change log](ChangeLog.md)
-          files: |
-            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk
-            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk.md5
-            ${{env.INSTALL_DIR}}/update_android.xml
+#      - name: Upload To Github Release
+#        if: ${{matrix.ANDROID_ABI=='armeabi-v7a' && matrix.BUILD_TYPE == 'Release' && startsWith(github.ref, 'refs/tags/') }}
+#        uses: softprops/action-gh-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          prerelease: true
+#          body: |
+#            [:cn: Change log](ChangeLog.md)
+#          files: |
+#            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk
+#            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk.md5
+#            ${{env.INSTALL_DIR}}/update_android.xml

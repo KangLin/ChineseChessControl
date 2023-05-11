@@ -70,6 +70,7 @@ jobs:
           cmake -E make_directory ${{env.SOURCE_DIR}}
           cmake -E make_directory ${{env.TOOSL_DIR}}
           cmake -E make_directory ${{env.INSTALL_DIR}}
+          cmake -E make_directory ${{github.workspace}}/build
 
       - name: Cache installed
         uses: actions/cache@v2
@@ -139,11 +140,10 @@ jobs:
           git clone https://github.com/KangLin/RabbitCommon.git
 
       - name: build ChineseChessControl
+        working-directory: ${{github.workspace}}/build
         env:
           RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
-          cmake -E make_directory ${{github.workspace}}/build
-          cd ${{github.workspace}}/build
           cmake ${{github.workspace}} ^
               -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
               -DCMARK_SHARED=OFF ^
