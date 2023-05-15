@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(ui->menuTools));
+    ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(this));
     m_pChess = new CFrmChineseChess(this);
     //m_pChess->SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
     this->setCentralWidget(m_pChess);
