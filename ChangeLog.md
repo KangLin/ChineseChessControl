@@ -1,6 +1,7 @@
 ## 修改日志
 - v2.0.8
   + 使用 RabbitCommon v2
+  + 编译 Android 时，Qt 版本必须大于6.0.0
 
 - v2.0.7
   + 使用 RabbitCommon v1.0.10

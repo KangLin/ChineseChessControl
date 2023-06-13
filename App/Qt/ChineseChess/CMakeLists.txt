@@ -9,26 +9,21 @@ endif()
 message("ChineseChessApp_VERSION:${ChineseChessApp_VERSION};ChineseChessApp_REVISION:${ChineseChessApp_REVISION}")
 
 #需要的QT组件
-SET(QT_LIBRARIES)
-SET(QT_COMPONENTS Core Gui Widgets)
-if(ANDROID AND (Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS 6.0.0))
-    SET(QT_COMPONENTS ${QT_COMPONENTS} AndroidExtras)
-ELSE()
-    LIST(APPEND QT_COMPONENTS Designer)
-endif()
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
+if((QT_VERSION_MAJOR LESS 6) AND ANDROID)
+    message(FATAL_ERROR "Qt version must great 6.0.0 in android")
+endif()
+SET(QT_LIBRARIES)
+SET(QT_COMPONENTS Core Gui Widgets Multimedia Designer)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS})
 if(Qt${QT_VERSION_MAJOR}_FOUND)
     message("QT_VERSION:${Qt${QT_VERSION_MAJOR}_VERSION}")
-    
+
     if (NOT BUILD_SHARED_LIBS)
         # Qt 静态插件
         add_definitions(-DQT_STATICPLUGIN)
     endif()
-    
-    if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS 5.10.0 AND ANDROID)
-        message(FATAL_ERROR "Qt must great 5.10.0")
-    endif()
+
     FOREACH(_COMPONENT ${QT_COMPONENTS})
 	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt${QT_VERSION_MAJOR}::${_COMPONENT})
     ENDFOREACH()
@@ -57,8 +52,8 @@ endif()
 LIST(APPEND RCC_FILES Resource/Resource.qrc)
 
 #翻译
-include(${RabbitCommon_DIR}/cmake/Translations.cmake)
-GENERATED_QT_TRANSLATIONS(SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
+GENERATED_QT_TRANSLATIONS(ALL
+    SOURCES ${SOURCES_FILES} ${SOURCE_UI_FILES}
     OUT_QRC TRANSLATIONS_QRC_FILES)
 if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
     LIST(APPEND RCC_FILES ${TRANSLATIONS_QRC_FILES})
@@ -85,10 +80,24 @@ else()
 endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ChineseChessQt RabbitCommon ${QT_LIBRARIES})
+if(ANDROID)
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E echo "copy directory ${CMAKE_BINARY_DIR}/assets to ${CMAKE_CURRENT_BINARY_DIR}/android-build/assets"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/assets" "${CMAKE_CURRENT_BINARY_DIR}/android-build/assets"
+        COMMENT "Copy directory ${CMAKE_BINARY_DIR}/assets/ to ${CMAKE_CURRENT_BINARY_DIR}/android-build/assets"
+        COMMAND_EXPAND_LISTS
+        VERBATIM)
+    set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY
+        QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+else()
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    )
+endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     VERSION ${ChineseChessApp_VERSION})
 # 程序以windows方式启动，不出现控制台窗口,加 /ENTRY:mainCRTStartup
 if(MSVC)
@@ -156,21 +165,6 @@ if(UNIX AND NOT ANDROID)
             COMPONENT QtApplications)
 endif()
 
-IF(ANDROID)
-    Set(JSON_FILE ${CMAKE_CURRENT_BINARY_DIR}/android_deployment_settings.json)
-    GENERATED_DEPLOYMENT_SETTINGS(NAME ${JSON_FILE}
-        APPLACTION "${CMAKE_BINARY_DIR}/bin/lib${PROJECT_NAME}.so")
-
-    add_custom_target(APK #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中
-            COMMAND "${QT_INSTALL_DIR}/bin/androiddeployqt"
-                --output ${CMAKE_INSTALL_PREFIX}
-                --input ${JSON_FILE}
-                --verbose
-                --gradle
-                --android-platform ${ANDROID_PLATFORM}
-        )
-ENDIF(ANDROID)
-
 IF( WIN32 AND BUILD_SHARED_LIBS )
 
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
@@ -195,7 +189,7 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
     INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT DependLibraries)
-        
+
 ENDIF()
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/etc/ChineseChess_logqt.ini)
@@ -206,3 +200,12 @@ endif()
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/etc/ChineseChess_logqt.ini
     DESTINATION etc
     COMPONENT Runtime)
+
+# Install other files
+set(OTHER_FILES
+    ${CMAKE_SOURCE_DIR}/License.md
+    ${CMAKE_SOURCE_DIR}/Authors.md
+    ${CMAKE_SOURCE_DIR}/ChangeLog.md
+    )
+
+INSTALL_FILE(SOURCES ${OTHER_FILES} DESTINATION "." COMPONENT Runtime)

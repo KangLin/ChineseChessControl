@@ -13,28 +13,26 @@ jobs:
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
-        qt_version: [6.5.0, 5.15.2, 5.12.12]
+        qt_version: [6.5.1, 5.15.2, 5.12.12]
 
         include:
           - triplet: x64-windows
-            qt_version: 6.5.0
+            qt_version: 6.5.1
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
-            qt_modules: 'qtwebengine qtscxml qtmultimedia qtimageformats'
+            qt_modules: 'qtscxml qtmultimedia qtimageformats'
 
           - triplet: x64-windows
             qt_version: 5.15.2
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
             VCPKG_PLATFORM_TOOLSET: v142
-            qt_modules: 'qtwebengine'
 
           - triplet: x86-windows
             qt_version: 5.12.12
             qt_arch: win32_msvc2017
             CMAKE_GENERATOR_PLATFORM: Win32
             VCPKG_PLATFORM_TOOLSET: v141
-            qt_modules: 'qtwebengine'
 
     runs-on: windows-latest
 

@@ -1,6 +1,11 @@
 name: android
 
-on: [push]
+on:
+  workflow_call:
+    outputs:
+      name:
+        description: "The artifact name"
+        value: ${{ jobs.build_android.outputs.name }}
 
 jobs:
   build_android:
@@ -8,33 +13,46 @@ jobs:
     strategy:
       matrix:
         BUILD_TYPE: [Release]
-        qt_arch: [android_armv7, android_x86_64]
-        qt_version: [6.5.0]
+        qt_arch: [android_arm64_v8a, android_armv7, android_x86_64]
+        qt_version: [6.5.1]
         include:
           - BUILD_TYPE: Release
-            qt_arch: android_armv7
-            qt_version: 6.5.0
+            qt_arch: android_arm64_v8a
+            qt_version: 6.5.1
+            VCPKG_TARGET_TRIPLET: arm-android
 
           - BUILD_TYPE: Release
-            qt_version: 6.5.0
-            qt_arch: android_x86_64
+            qt_arch: android_armv7
+            qt_version: 6.5.1
+            VCPKG_TARGET_TRIPLET: arm-android
+
+          - BUILD_TYPE: Release
+            qt_version: 6.5.1
+            qt_arch: android_x86_64 
+            VCPKG_TARGET_TRIPLET: x64-android
 
     runs-on: ubuntu-latest
 
     env:
+      artifact_name: build_android
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
-      INSTALL_DIR: ${{github.workspace}}/.cache/install
+      INSTALL_DIR: ${{github.workspace}}/.cache/install_${{matrix.BUILD_TYPE}}
+      ANDROID_PLATFORM: android-23
+      ANDROID_NATIVE_API_LEVEL: 23
       ChineseChessControl_VERSION: "v2.0.7"
-      VCPKGGITCOMMITID: 0ba60bfef5dea4cb2599daa7ad8364e309835a68
-      ANDROID_PLATFORM: android-28
+      VCPKGGITCOMMITID: 1ba9a2591f15af5900f2ce2b3e2bf31771e3ac48
       qt_modules: 'qtimageformats qtlocation qtmultimedia qtpositioning qtscxml qtwebchannel qtwebsockets qtwebview qt5compat qtshadertools'
+
+    # Map the job outputs to step outputs
+    outputs:
+      name: ${{ env.artifact_name }}
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          submodules: true
+          submodules: recursive
 
       - name: make directory
         run: |
@@ -44,28 +62,29 @@ jobs:
           cmake -E make_directory ${{github.workspace}}/build
 
       - name: Cache Qt
+        #if: false
         id: cache-qt
         uses: actions/cache@v1  # not v2!
         with:
           path: ${{env.TOOSL_DIR}}/qt
-          key: android-qt${{matrix.qt_version}}-${{matrix.VCPKG_TARGET_TRIPLET}}-${{matrix.BUILD_TYPE}}
+          key: qt${{matrix.qt_version}}_${{matrix.qt_arch}}
 
       - name: Install Qt of gcc_64
         uses: jurplel/install-qt-action@v3
         with:
-          dir: '${{env.TOOSL_DIR}}' # optional
+          dir: '${{env.TOOSL_DIR}}/qt' # optional
           version: '${{matrix.qt_version}}'
           #host: 'linux'
           target: 'desktop'
           arch: 'gcc_64'
-          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
+          set-env: false
+#          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
 
       - name: Install Qt of android
-        # You may pin to the exact commit or the version.
         uses: jurplel/install-qt-action@v3
         with:
           # Directory to install Qt
-          dir: '${{env.TOOSL_DIR}}' # optional
+          dir: '${{env.TOOSL_DIR}}/qt' # optional
           # Version of Qt to install
           version: '${{matrix.qt_version}}'
           # Host platform
@@ -74,26 +93,13 @@ jobs:
           target: 'android' # optional, default is desktop
           # Architecture for Windows/Android
           arch: '${{matrix.qt_arch}}' # optional
-          # Whether or not to install Qt dependencies on Linux
-          #install-deps: true # optional, default is true
           # Additional Qt modules to install
-          modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
-          # Force a Qt mirror in case the default is not working
-          #mirror: # optional
+          #modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
+          modules: 'qt3d qtcharts qtconnectivity qtdatavis3d qtgrpc qthttpserver qtimageformats qtlocation qtlottie qtmultimedia qtnetworkauth qtpositioning qtquick3dphysics qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtspeech qtvirtualkeyboard qtwebchannel qtwebsockets qtwebview qt5compat qtquick3d qtquicktimeline qtshadertools'
           # Whether or not to actually download Qt
-          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
-          # Whether or not to automatically run setup-python to find a valid python version.
-          #setup-python: false # optional, default is true
-          # Qt tools to download--specify comma-separated argument lists which are themselves separated by spaces: <tool_name>,<tool_version>,<tool_arch>
-          #tools: # optional
-          # Whether or not to actually install Qt or just the tools from the tools argument
-          #tools-only: false # optional, default is false
-          # Version of aqtinstall to use in case of issues
-          #aqtversion: # optional, default is ==0.10.0
-          # Version of py7zr to use in case of issues
-          #py7zrversion: # optional, default is ==0.11.0
-          # Any extra arguments to append to the back
-          #extra: # optional
+#          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
+#          archives: none
+      
 
 #    - name: run-vcpkg
 #      uses: lukka/run-vcpkg@v7.4
@@ -126,34 +132,29 @@ jobs:
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
-          QT_ROOT: ${{env.Qt5_Dir}}
           STOREPASS: ${{secrets.STOREPASS}}
           RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
           sudo chmod 777 ${Qt6_DIR}/bin/qt-cmake
           ${Qt6_DIR}/bin/qt-cmake .. \
               -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} \
-              -DQT_HOST_PATH=${Qt6_DIR}/../gcc_64
-          cmake --build . --config ${{matrix.BUILD_TYPE}}
+              -DQT_HOST_PATH=${Qt6_DIR}/../gcc_64 \
+              -DANDROID_PLATFORM=${{env.ANDROID_PLATFORM}} \
+              -DANDROID_NATIVE_API_LEVEL=${{env.ANDROID_NATIVE_API_LEVEL}} \
+              -DQt6LinguistTools_DIR=${Qt6_DIR}/../gcc_64/lib/cmake/Qt6LinguistTools \
+              -DCMAKE_INSTALL_PREFIX=`pwd`/install
+          cmake --build . --config ${{matrix.BUILD_TYPE}}  --target all
+          cmake --build . --config ${{matrix.BUILD_TYPE}}  --target install
+          APK_FILE=`find . -name "android-*.apk"`
+          cp $APK_FILE ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.apk
+          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.zip install/*
 
-#      - name: update
-#        if: ${{ matrix.BUILD_TYPE == 'Release' }}
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: RabbitCommon_Android_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}
-#          path: |
-#            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk
-
-#      - name: Upload To Github Release
-#        if: ${{matrix.ANDROID_ABI=='armeabi-v7a' && matrix.BUILD_TYPE == 'Release' && startsWith(github.ref, 'refs/tags/') }}
-#        uses: softprops/action-gh-release@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          prerelease: true
-#          body: |
-#            [:cn: Change log](ChangeLog.md)
-#          files: |
-#            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk
-#            ${{env.INSTALL_DIR}}/RabbitCommon_${{matrix.ANDROID_ABI}}_${{env.ChineseChessControl_VERSION}}.apk.md5
-#            ${{env.INSTALL_DIR}}/update_android.xml
+      - name: Update artifact
+        #if: ${{ matrix.BUILD_TYPE == 'Release' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.artifact_name }}
+          path: |
+            ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.zip
+            ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.apk
+     

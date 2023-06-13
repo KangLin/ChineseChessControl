@@ -28,8 +28,9 @@ if(POLICY CMP0021)
     cmake_policy(SET CMP0021 NEW)
 endif()
 
+# 设置版本号
 SET(ChineseChessControl_VERSION "v2.0.7")
-# Find Git Version Patch
+# 用 GIT 得到版本号
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)
         SET(GIT $ENV{GIT})
@@ -137,8 +138,8 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
         add_definitions(-DQT_STATICPLUGIN)
     endif()
     
-    if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS 5.10.0 AND ANDROID)
-        message(FATAL_ERROR "Qt must great 5.10.0")
+    if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_LESS 6.0.0 AND ANDROID)
+        message(FATAL_ERROR "Qt version must great 6.0.0 in android")
     endif()
     get_filename_component(QT_INSTALL_DIR "${Qt${QT_VERSION_MAJOR}_DIR}/../../.." ABSOLUTE)
     
@@ -155,15 +156,23 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
                 set(RabbitCommon_DIR ${CMAKE_SOURCE_DIR}/../RabbitCommon)
             endif()
         endif()
-        if(DEFINED RabbitCommon_DIR AND EXISTS ${RabbitCommon_DIR}/Src)
+        if(RabbitCommon_DIR AND EXISTS ${RabbitCommon_DIR}/Src)
+            message("Use RabbitCommon source code")
             add_subdirectory(${RabbitCommon_DIR}/Src ${CMAKE_BINARY_DIR}/RabbitCommon)
         else()
-            message("1. Please download RabbitCommon source code from https://github.com/KangLin/RabbitCommon")
-            message("   ag:")
-            message("       git clone https://github.com/KangLin/RabbitCommon.git")
-            message("2. Then set cmake value or environment variable RabbitCommon_DIR to download root dirctory.")
-            message("   ag:")
-            message(FATAL_ERROR "       cmake -DRabbitCommon_DIR= ")
+            find_package(RabbitCommon)
+            if(NOT RabbitCommon_FOUND)
+                message("RabbitCommon_DIR is not found. Please use one of the following ways to set it:")
+                message("1. Set RabbitCommon_DIR to the install prefix of RabbitCommon.")
+                message("2. Set RabbitCommon_DIR to source code root of RabbitCommon.")
+                message("2.1 Please download the source code of RabbitCommon from https://github.com/KangLin/RabbitCommon")
+                message("   ag:")
+                message("       git clone https://github.com/KangLin/RabbitCommon.git")
+                message("2.2 Then set cmake variable or environment variable RabbitCommon_DIR to download root directory.")
+                message("   ag:")
+                message("       cmake -DRabbitCommon_DIR= ")
+                message(FATAL_ERROR "RabbitCommon_DIR isn't set.")
+            endif()
         endif()
         
         add_subdirectory(UI/Qt)
@@ -175,16 +184,6 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     endif()
 endif()
 
-# Create will be delete files
-CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-    "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake"
-    IMMEDIATE @ONLY)
-# Create unistall target
-ADD_CUSTOM_TARGET(uninstall
-    "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake"
-    )
-
 #IF(WIN32)
 #    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
 #    configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
@@ -192,17 +191,6 @@ ADD_CUSTOM_TARGET(uninstall
 #        DESTINATION ..
 #            COMPONENT Runtime)
 #ENDIF()
-# Install other files
-set(OTHER_FILES
-    License.md
-    Authors.md
-    ChangeLog.md
-    )
-if(ANDROID)
-    INSTALL(FILES ${OTHER_FILES} DESTINATION "assets" COMPONENT Runtime)
-else()
-    INSTALL(FILES ${OTHER_FILES} DESTINATION "." COMPONENT Runtime)
-endif()
 
 # 安装系统运行库
 if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)
@@ -216,6 +204,7 @@ include(InstallRequiredSystemLibraries)
 # CPack 制作包
 include(Package/CMakeCPack.cmake)
 
+# 产生文档
 option(BUILD_DOCS "Generating API documentation" OFF)
 if(BUILD_DOCS)
     find_package(Doxygen)
