@@ -35,6 +35,7 @@ jobs:
       ChineseChessControl_VERSION: "2.0.7"
       artifact_name: build_macos
       qt_modules: qtwebengine ${{ matrix.qt_modules }}
+      VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1
 
     # Map the job outputs to step outputs
     outputs:
@@ -60,6 +61,17 @@ jobs:
           path: |
             ${{env.INSTALL_DIR}}
           key: Cache-macos-installed-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}
+
+      - name: run-vcpkg
+        uses: lukka/run-vcpkg@v7
+        with:
+          vcpkgGitCommitId: ${{env.VCPKGGITCOMMITID}}
+          vcpkgDirectory: ${{runner.workspace}}/vcpkg/
+          # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
+          # compute its hash and append this to the computed cache's key.
+          appendedCacheKey: cache-vcpkg-msvc-${{matrix.triplet}}-qt${{matrix.qt_version}}-${{matrix.BUILD_TYPE}}-${{env.VCPKGGITCOMMITID}}
+          vcpkgTriplet: '${{matrix.triplet}}'
+          vcpkgArguments: 'zlib openssl'
 
       - name: Cache Qt
         id: cache-qt
