@@ -1,3 +1,8 @@
+/*!
+ * QtCreator 中国象棋插件
+ * 作者：康林
+ */
+
 #ifndef FRMCHINESECHESSPLUGIN_H
 #define FRMCHINESECHESSPLUGIN_H
 
@@ -11,7 +16,7 @@ class CFrmChineseChessPlugin : public QObject, public QDesignerCustomWidgetInter
 #endif // QT_VERSION >= 0x050000
     
 public:
-    CFrmChineseChessPlugin(QObject *parent = nullptr);
+    explicit CFrmChineseChessPlugin(QObject *parent = nullptr);
     
     bool isContainer() const;
     bool isInitialized() const;

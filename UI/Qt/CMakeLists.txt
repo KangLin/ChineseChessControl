@@ -48,11 +48,11 @@ LIST(APPEND INSTALLHEADER_FILES
     )
 
 IF(NOT ANDROID)
-    LIST(APPEND CHINESE_CHESS_QT_SOURCES_FILES
+    LIST(APPEND CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES
         FrmChineseChessPlugin.cpp
         )
     
-    LIST(APPEND INSTALLHEADER_FILES
+    LIST(APPEND DESIGNER_FILES
         FrmChineseChessPlugin.h
         )
 ENDIF()
@@ -97,11 +97,21 @@ if(WIN32)
 endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    
     qt_add_library(${PROJECT_NAME} ${CHINESE_CHESS_QT_SOURCES_FILES}
         ${CHINESE_CHESS_QT_HEADER_FILES}
         ${CHINESE_CHESS_QT_RCC_FILES} ${CHINESE_CHESS_QT_SOURCE_UI_FILES})
+    
+    if(NOT ANDROID)
+        qt_add_plugin(plugin${PROJECT_NAME} ${CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES}
+            ${${DESIGNER_FILES}})
+        
+        target_link_libraries(plugin${PROJECT_NAME} PRIVATE ${PROJECT_NAME})
+    endif()
+    
 else()
     add_library(${PROJECT_NAME} ${CHINESE_CHESS_QT_SOURCES_FILES}
+        ${CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES}
         ${CHINESE_CHESS_QT_HEADER_FILES}
         ${CHINESE_CHESS_QT_RCC_FILES} ${CHINESE_CHESS_QT_SOURCE_UI_FILES})
 endif()
@@ -169,6 +179,17 @@ export(TARGETS ${PROJECT_NAME}
     APPEND FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     NAMESPACE ChineseChessControl::
     )
+
+# 安装 QtCreator 插件
+option(INSTALL_DESIGNER_PLUGIN "Enable install plugin to QtCreator" OFF)
+if(INSTALL_DESIGNER_PLUGIN)
+    set(INSTALL_PLUGDIR "${QT${QT_VERSION_MAJOR}_INSTALL_PREFIX}/${QT${QT_VERSION_MAJOR}_INSTALL_PLUGINS}/designer")
+    install(TARGETS ${PROJECT_NAME}
+        RUNTIME DESTINATION "${INSTALL_PLUGDIR}"
+        BUNDLE DESTINATION "${INSTALL_PLUGDIR}"
+        LIBRARY DESTINATION "${INSTALL_PLUGDIR}"
+    )
+endif()
 
 # 因为编译树中已有 export(ChineseChessQtConfig.cmake)
 configure_package_config_file(

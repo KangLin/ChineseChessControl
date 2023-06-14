@@ -17,14 +17,13 @@ jobs:
         # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
         BUILD_TYPE: [Release, Debug]
         qt_version: [6.5.1, 5.15.2, 5.12.12]
+        qt_arch: [clang_64]
         include:
           - qt_version: 6.5.1
-            qt_modules: 'qtwebengine qtscxml qtmultimedia qtimageformats'
+            qt_modules: 'qtscxml qtmultimedia qtimageformats'
 
           - qt_version: 5.15.2
-            qt_modules: "qtwebengine"
           - qt_version: 5.12.12
-            qt_modules: "qtwebengine"
 
     runs-on: macos-latest
 
@@ -35,6 +34,7 @@ jobs:
       INSTALL_DIR: ${{github.workspace}}/.cache/install_macos
       ChineseChessControl_VERSION: "2.0.7"
       artifact_name: build_macos
+      qt_modules: qtwebengine ${{ matrix.qt_modules }}
 
     # Map the job outputs to step outputs
     outputs:
