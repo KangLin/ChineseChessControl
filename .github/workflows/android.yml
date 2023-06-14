@@ -78,7 +78,7 @@ jobs:
           target: 'desktop'
           arch: 'gcc_64'
           set-env: false
-#          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
+          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
 
       - name: Install Qt of android
         uses: jurplel/install-qt-action@v3
@@ -94,12 +94,9 @@ jobs:
           # Architecture for Windows/Android
           arch: '${{matrix.qt_arch}}' # optional
           # Additional Qt modules to install
-          #modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
-          modules: 'qt3d qtcharts qtconnectivity qtdatavis3d qtgrpc qthttpserver qtimageformats qtlocation qtlottie qtmultimedia qtnetworkauth qtpositioning qtquick3dphysics qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtspeech qtvirtualkeyboard qtwebchannel qtwebsockets qtwebview qt5compat qtquick3d qtquicktimeline qtshadertools'
+          modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
           # Whether or not to actually download Qt
-#          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
-#          archives: none
-      
+          cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
 
 #    - name: run-vcpkg
 #      uses: lukka/run-vcpkg@v7.4
