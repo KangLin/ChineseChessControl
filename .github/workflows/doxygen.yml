@@ -18,7 +18,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
-      ChineseChessControl_VERSION: v0.0.27
+      ChineseChessControl_VERSION: "v2.0.7"
       DOXYGEN_VERSION: 1.9.5
       artifact_name: build_doxygen
 

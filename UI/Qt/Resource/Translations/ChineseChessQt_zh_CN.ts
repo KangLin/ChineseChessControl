@@ -9,23 +9,23 @@
         <translation>中国象棋</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="172"/>
-        <location filename="../../FrmChineseChess.cpp" line="176"/>
+        <location filename="../../FrmChineseChess.cpp" line="174"/>
+        <location filename="../../FrmChineseChess.cpp" line="178"/>
         <source>This step cannot be taken, otherwise you will lose</source>
         <translation>这步不能走，否则会输棋！</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="173"/>
+        <location filename="../../FrmChineseChess.cpp" line="175"/>
         <source>checked</source>
         <translation>被将军</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="177"/>
+        <location filename="../../FrmChineseChess.cpp" line="179"/>
         <source>Opposite</source>
         <translation>将对面</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="213"/>
+        <location filename="../../FrmChineseChess.cpp" line="215"/>
         <source>Chinese chess control</source>
         <translation>中国象棋控件</translation>
     </message>
@@ -33,11 +33,8 @@
 <context>
     <name>CFrmChineseChessPlugin</name>
     <message>
-        <location filename="../../FrmChineseChessPlugin.cpp" line="35"/>
-        <location filename="../../FrmChineseChessPlugin.cpp" line="50"/>
-        <location filename="../../FrmChineseChessPlugin.cpp" line="55"/>
         <source>Chinese chess</source>
-        <translation>中国象棋</translation>
+        <translation type="vanished">中国象棋</translation>
     </message>
 </context>
 </TS>

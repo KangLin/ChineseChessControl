@@ -9,34 +9,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="172"/>
-        <location filename="../../FrmChineseChess.cpp" line="176"/>
+        <location filename="../../FrmChineseChess.cpp" line="174"/>
+        <location filename="../../FrmChineseChess.cpp" line="178"/>
         <source>This step cannot be taken, otherwise you will lose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="173"/>
+        <location filename="../../FrmChineseChess.cpp" line="175"/>
         <source>checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="177"/>
+        <location filename="../../FrmChineseChess.cpp" line="179"/>
         <source>Opposite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="213"/>
+        <location filename="../../FrmChineseChess.cpp" line="215"/>
         <source>Chinese chess control</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CFrmChineseChessPlugin</name>
-    <message>
-        <location filename="../../FrmChineseChessPlugin.cpp" line="35"/>
-        <location filename="../../FrmChineseChessPlugin.cpp" line="50"/>
-        <location filename="../../FrmChineseChessPlugin.cpp" line="55"/>
-        <source>Chinese chess</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

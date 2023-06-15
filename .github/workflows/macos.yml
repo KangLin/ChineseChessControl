@@ -32,7 +32,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_macos
-      ChineseChessControl_VERSION: "2.0.7"
+      ChineseChessControl_VERSION: "2.0.8"
       artifact_name: build_macos
       qt_modules: 'qtwebengine ${{ matrix.qt_modules }}'
       VCPKGGITCOMMITID: 5cf60186a241e84e8232641ee973395d4fde90e1

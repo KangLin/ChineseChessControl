@@ -3,7 +3,7 @@ name: build
 env:
   artifact_path: artifact_path
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  ChineseChessControl_VERSION: "v2.0.7"
+  ChineseChessControl_VERSION: "v2.0.8"
 on: 
   push:
   
@@ -70,20 +70,19 @@ jobs:
       - name: Make note file
         run: |
           cd ${{ env.artifact_path }}
-          echo "[:cn: 修改日志](https://github.com/KangLin/ChineseChessControl/blob/${{env.ChineseChessControl_VERSION}}/ChangeLog_zh_CN.md)" > Release.md
-          echo "[:en: Change log](https://github.com/KangLin/ChineseChessControl/blob/${{env.ChineseChessControl_VERSION}}/ChangeLog.md)" >> Release.md
-          echo "" >> Release.md
-          echo "文件签名:" >> Release.md
+          echo "[:cn: 修改日志](https://github.com/KangLin/ChineseChessControl/blob/${{env.ChineseChessControl_VERSION}}/ChangeLog_zh_CN.md)" > ${{github.workspace}}/Release.md
+          echo "" >> ${{github.workspace}}/Release.md
+          echo "文件签名:" >> ${{github.workspace}}/Release.md
           for file in *
           do
               echo $file
               if [ -f $file ]; then
                   md5sum $file > $file.md5sum
-                  cat $file.md5sum >> Release.md
+                  cat $file.md5sum >> ${{github.workspace}}/Release.md
               fi
           done
 
       - name: Upload To Github Release
         run: |
-          gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --notes-file NoteFile
+          gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --notes-file ${{github.workspace}}/Release.md
           gh release upload ${{ github.ref_name }} ${{github.workspace}}/${{ env.artifact_path }}/*
