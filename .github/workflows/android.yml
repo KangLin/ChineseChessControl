@@ -70,7 +70,7 @@ jobs:
           key: qt${{matrix.qt_version}}_${{matrix.qt_arch}}
 
       - name: Install Qt of gcc_64
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v3.2.1
         with:
           dir: '${{env.TOOSL_DIR}}/qt' # optional
           version: '${{matrix.qt_version}}'
@@ -81,7 +81,7 @@ jobs:
           cached: '${{ steps.cache-qt.outputs.cache-hit }}' # optional, default is false
 
       - name: Install Qt of android
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v3.2.1
         with:
           # Directory to install Qt
           dir: '${{env.TOOSL_DIR}}/qt' # optional
