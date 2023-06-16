@@ -1,4 +1,6 @@
 ## 修改日志
+- v2.0.9
+  + 修复 org.Rabbit.ChineseChess.desktop 错误
 
 - v2.0.8
   + 使用 RabbitCommon v2
