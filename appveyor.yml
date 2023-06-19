@@ -1,4 +1,4 @@
-version: 'v2.0.8.{build}'
+version: 'v2.0.7.{build}'
 
 cache:
   - Package
@@ -10,7 +10,7 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-  ChineseChessControl_VERSION: "v2.0.8"
+  ChineseChessControl_VERSION: "v2.0.7"
   
   matrix:
   ##### msvc 2019 ########
