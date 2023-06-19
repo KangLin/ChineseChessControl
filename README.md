@@ -57,7 +57,7 @@
   + [x] Windows
   + [x] Linux
   + [x] Android
-  + [ ] mac、IOS 本人无此设备，请你自行编译、测试
+  + [x] mac、IOS 本人无此设备，请你自行编译、测试
 
 #### 屏幕截图
 
@@ -85,16 +85,16 @@
 
   - Android
     - APK
-      - [ChineseChessControl_v2.0.7_android_arm64_v8a_qt2.0.7_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_arm64_v8a_qt2.0.7_Release.apk)
-      - [ChineseChessControl_v2.0.7_android_armv7_qt2.0.7_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_armv7_qt2.0.7_Release.apk)
-      - [ChineseChessControl_v2.0.7_android_x86_64_qt2.0.7_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_x86_64_qt2.0.7_Release.apk)
+      - [ChineseChessControl_v2.0.7_android_arm64_v8a_qt6.5.1_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_arm64_v8a_qt6.5.1_Release.apk)
+      - [ChineseChessControl_v2.0.7_android_armv7_qt6.5.1_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_armv7_qt6.5.1_Release.apk)
+      - [ChineseChessControl_v2.0.7_android_x86_64_qt6.5.1_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_x86_64_qt6.5.1_Release.apk)
     - 开发包
-      - [ChineseChessControl_v2.0.7_android_arm64_v8a_qt2.0.7_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_arm64_v8a_qt2.0.7_Release.zip)
-      - [ChineseChessControl_v2.0.7_android_armv7_qt2.0.7_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_armv7_qt2.0.7_Release.zip)
-      - [ChineseChessControl_v2.0.7_android_x86_64_qt2.0.7_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_x86_64_qt2.0.7_Release.zip)
+      - [ChineseChessControl_v2.0.7_android_arm64_v8a_qt6.5.1_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_arm64_v8a_qt6.5.1_Release.zip)
+      - [ChineseChessControl_v2.0.7_android_armv7_qt6.5.1_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_armv7_qt6.5.1_Release.zip)
+      - [ChineseChessControl_v2.0.7_android_x86_64_qt6.5.1_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_android_x86_64_qt6.5.1_Release.zip)
 
 + [文档](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/ChineseChessControl_v2.0.7_document.zip)
-+ [在线文档](https://kanglin.github.io/ChineseChessControl/Chinese/html/group__API.html)
++ [在线文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
 
 #### 贡献
 - 欢迎大家参与本项目开发，共同完成[功能](#功能)列表中未完成的功能。
