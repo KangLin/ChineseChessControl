@@ -20,7 +20,8 @@ jobs:
             qt_version: 6.5.1
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
-            qt_modules: 'qtscxml qtmultimedia qtimageformats'
+            VCPKG_PLATFORM_TOOLSET: v142
+            qt_modules: 'qtscxml qtmultimedia qtimageformats qtwebchannel qtwebsockets qtwebview qtpositioning'
 
           - triplet: x64-windows
             qt_version: 5.15.2
@@ -143,6 +144,7 @@ jobs:
         run: |
           cmake ${{github.workspace}} ^
               -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
+              -T ${{matrix.VCPKG_PLATFORM_TOOLSET}} ^
               -DCMARK_SHARED=OFF ^
               -DCMARK_TESTS=OFF ^
               -DCMARK_STATIC=ON ^
@@ -164,4 +166,3 @@ jobs:
           name: ${{ env.artifact_name }}
           path: |
             ${{github.workspace}}\build\chinesechesscontrol_*_setup.exe
-            ${{github.workspace}}\build\chinesechesscontrol_*_setup.exe.md5
