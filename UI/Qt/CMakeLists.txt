@@ -227,7 +227,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/${PROJECT_NAME}.pc.in
     ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
-    COMPONENT QtDevelopment)
+        COMPONENT QtDevelopment)
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
@@ -245,12 +245,12 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
     #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
-        --no-compiler-runtime
-        --verbose 7
-        --dir "${CMAKE_BINARY_DIR}/DependLibraries"
-        --libdir "${CMAKE_BINARY_DIR}/DependLibraries"
-        --plugindir "${CMAKE_BINARY_DIR}/DependLibraries"
-        "$<TARGET_FILE:${PROJECT_NAME}>"
+            --no-compiler-runtime
+            --verbose 7
+            --dir "${CMAKE_BINARY_DIR}/DependLibraries"
+            --libdir "${CMAKE_BINARY_DIR}/DependLibraries"
+            --plugindir "${CMAKE_BINARY_DIR}/DependLibraries"
+            "$<TARGET_FILE:${PROJECT_NAME}>"
         )
     INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
