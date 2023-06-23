@@ -41,7 +41,7 @@ jobs:
       ANDROID_PLATFORM: android-23
       ANDROID_NATIVE_API_LEVEL: 23
       ChineseChessControl_VERSION: "v2.0.7"
-      VCPKGGITCOMMITID: 1ba9a2591f15af5900f2ce2b3e2bf31771e3ac48
+      VCPKGGITCOMMITID: 1286cac8751e13bb289061b7e3b89eb4c3f613a2
       qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtwebsockets qtwebview'
 
     # Map the job outputs to step outputs
