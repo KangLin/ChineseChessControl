@@ -113,7 +113,11 @@ before_build:
   - set RabbitCommon_DIR=%APPVEYOR_BUILD_FOLDER%/RabbitCommon
   - cd %APPVEYOR_BUILD_FOLDER%
   #- C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build-install-tools-windows.sh
-
+  - set CMAKE_VERSION=3.25.0
+  - if not exist cmake-%CMAKE_VERSION%-windows-i386 (curl -fsSL -o cmake-%CMAKE_VERSION%-windows-i386.zip https://github.com/Kitware/CMake/releases/download/v%CMAKE_VERSION%/cmake-%CMAKE_VERSION%-windows-i386.zip && 7z x cmake-%CMAKE_VERSION%-windows-i386.zip)
+  - cd cmake-%CMAKE_VERSION%-windows-i386
+  - set PATH="%CD%/bin";%PATH%
+  
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build.sh
