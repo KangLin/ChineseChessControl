@@ -185,13 +185,13 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     endif()
 endif()
 
-#IF(WIN32)
-#    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
-#    configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
-#    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
-#        DESTINATION ..
-#            COMPONENT Runtime)
-#ENDIF()
+IF(WIN32)
+    # 替换 Install.nsi 中的 MSVC_VERSION 和 BUILD_ARCH
+    configure_file(Install/Install.nsi ${CMAKE_BINARY_DIR}/Install.nsi @ONLY)
+    INSTALL(FILES ${CMAKE_BINARY_DIR}/Install.nsi Install/InstallRedistributables.nsh
+        DESTINATION ..
+            COMPONENT Runtime)
+ENDIF()
 
 # 安装系统运行库
 if("debug" STREQUAL CHINESE_CHESS_CONTROL_BUILD_TYPE)

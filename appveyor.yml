@@ -73,18 +73,18 @@ environment:
 #    QT_ROOT: C:\Qt\5.6\msvc2013_64
 #    BUILD_ARCH: x64
     
-  ##### mingw ########
-  - BUILD_TARGERT: windows_mingw
-    GENERATORS: "MSYS Makefiles"
-    TOOLCHAIN_VERSION: 492_32
-    QT_ROOT: C:\Qt\5.6\mingw49_32
-    BUILD_ARCH: x86
+#  ##### mingw ########
+#  - BUILD_TARGERT: windows_mingw
+#    GENERATORS: "MSYS Makefiles"
+#    TOOLCHAIN_VERSION: 492_32
+#    QT_ROOT: C:\Qt\5.6\mingw49_32
+#    BUILD_ARCH: x86
 
-  - BUILD_TARGERT: windows_mingw
-    GENERATORS: "MSYS Makefiles"
-    TOOLCHAIN_VERSION: 530_32
-    QT_ROOT: C:\Qt\5.10\mingw53_32
-    BUILD_ARCH: x86
+#  - BUILD_TARGERT: windows_mingw
+#    GENERATORS: "MSYS Makefiles"
+#    TOOLCHAIN_VERSION: 530_32
+#    QT_ROOT: C:\Qt\5.10\mingw53_32
+#    BUILD_ARCH: x86
 
 matrix:
   fast_finish: false
@@ -111,22 +111,37 @@ before_build:
   #- git submodule update --init --recursive
   - git clone https://github.com/KangLin/RabbitCommon.git
   - set RabbitCommon_DIR=%APPVEYOR_BUILD_FOLDER%/RabbitCommon
+
   - cd %APPVEYOR_BUILD_FOLDER%
   #- C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build-install-tools-windows.sh
-  - set CMAKE_VERSION=3.25.0
+  - set CMAKE_VERSION=3.26.4
   - if not exist cmake-%CMAKE_VERSION%-windows-i386 (curl -fsSL -o cmake-%CMAKE_VERSION%-windows-i386.zip https://github.com/Kitware/CMake/releases/download/v%CMAKE_VERSION%/cmake-%CMAKE_VERSION%-windows-i386.zip && 7z x cmake-%CMAKE_VERSION%-windows-i386.zip)
   - cd cmake-%CMAKE_VERSION%-windows-i386
   - set PATH="%CD%/bin";%PATH%
   
 build_script:
+  - set OTHER_SOURCE=%APPVEYOR_BUILD_FOLDER%\..\other_source
+  - set INSTALL_DIR=%OTHER_SOURCE%\install_dir
+  - set VCPKG_DIR=%OTHER_SOURCE%\vcpkg
+  - if not exist "%OTHER_SOURCE%" ( mkdir "%OTHER_SOURCE%" )
+  
+  - cd %OTHER_SOURCE%
+  - if not exist "%INSTALL_DIR%" (mkdir "%INSTALL_DIR%")
+  - cd %OTHER_SOURCE%
+  - if not exist vcpkg (git clone "https://github.com/microsoft/vcpkg.git" && cd "%VCPKG_DIR%" && git checkout -b 56765209ec0e92c58a5fd91aa09c46a16d660026 56765209ec0e92c58a5fd91aa09c46a16d660026 )
+  - cd %VCPKG_DIR%
+  - bootstrap-vcpkg.bat
+  - vcpkg --triplet %BUILD_ARCH%-windows install zlib openssl
+  
   - cd %APPVEYOR_BUILD_FOLDER%
-  - C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build.sh
+  - mkdir build
+  - cd build
+  - cmake .. -G"%GENERATORS%" -DQT_DIR=%QT_ROOT%/lib/cmake/Qt5 -DQt5_DIR=%QT_ROOT%/lib/cmake/Qt5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%cd%/install" -DCMAKE_PREFIX_PATH="%INSTALL_DIR%" -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%/scripts/buildsystems/vcpkg.cmake"
+  - cmake --build . --config Release
+  - cmake --build . --config Release --target package
   
 artifacts:
   - path: build_$(BUILD_TARGERT)\ChineseChessControl_Setup_*.exe
-  - path: build_$(BUILD_TARGERT)\update_windows.xml
-  - path: update_android.xml
-  - path: ChineseChess_*.apk
 
 test: off
 
