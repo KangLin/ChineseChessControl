@@ -44,7 +44,7 @@ set(CPACK_PACKAGE_VERSION ${${PROJECT_NAME}_VERSION})
 
 # 将在安装程序（由 GUI 安装程序使用）中显示的图标。
 if(WIN32)
-    set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+    set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\Chess.ico")
 else()
     set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/Src/Res/Picture/Chess.ico")
 endif()
@@ -179,8 +179,8 @@ if(WIN32)
     #set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA")
     set(CPACK_NSIS_MODIFY_PATH ON)
     set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
-    set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
-    set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\Chess.ico")
+    set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\Chess.ico")
+    set(CPACK_NSIS_MUI_UNICON "${CMAKE_SOURCE_DIR}\\\\Src\\\\Res\\\\Picture\\\\Chess.ico")
     #set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\CHESS.BMP")
     #set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP "${CMAKE_SOURCE_DIR}\\Src\\Res\\Picture\\CHESS.BMP")
     
@@ -214,11 +214,11 @@ if(WIN32)
     set(CPACK_NSIS_MUI_FINISHPAGE_RUN ChineseChessApp.exe)
     # 建立桌面快捷方式
     set(CPACK_NSIS_CREATE_ICONS_EXTRA "
-         CreateShortCut '$DESKTOP\\中国象棋.lnk\' '$INSTDIR\\bin\\ChineseChessApp.exe\'
+         CreateShortCut '$DESKTOP\\\\中国象棋.lnk' '$INSTDIR\\\\bin\\\\ChineseChessApp.exe'
          ")
     # Delete the Startup menu link after uninstallation
     set(CPACK_NSIS_DELETE_ICONS_EXTRA "
-        Delete '$DESKTOP\\中国象棋.lnk\'
+        Delete '$DESKTOP\\\\中国象棋.lnk'
     ")
 endif()
 ############### NSIS ###################
@@ -236,7 +236,7 @@ cpack_add_install_type(All
 cpack_add_install_type(Developer
     DISPLAY_NAME "开发者")
 
-cpack_add_install_type(EndUser
+cpack_add_install_type(User
     DISPLAY_NAME "应用程序")
 
 cpack_add_component_group(Runtimes
@@ -260,7 +260,7 @@ cpack_add_component_group(Applications
 cpack_add_component(DependLibraries
     DISPLAY_NAME  "依赖库"
     DESCRIPTION   "依赖库"
-    INSTALL_TYPES All EndUser Developer QtDeveloper QtEndUser
+    INSTALL_TYPES All User Developer QtDeveloper QtUser
     GROUP Runtimes
     )
 
@@ -275,7 +275,7 @@ cpack_add_component(Development
 cpack_add_component(Runtime
     DISPLAY_NAME  "运行库"
     DESCRIPTION   "运行库"
-    INSTALL_TYPES All EndUser Developer QtDeveloper QtEndUser MFCDeveloper MFCEndUser
+    INSTALL_TYPES All User Developer QtDeveloper QtUser MFCDeveloper MFCUser
     GROUP Runtimes
     DEPENDS DependLibraries
 	REQUIRED
@@ -286,13 +286,13 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     cpack_add_install_type(QtDeveloper
         DISPLAY_NAME "Qt 开发者")
 
-    cpack_add_install_type(QtEndUser
+    cpack_add_install_type(QtUser
         DISPLAY_NAME "Qt 应用程序")
 
     cpack_add_component(QtRuntime
         DISPLAY_NAME  "Qt 运行库"
         DESCRIPTION   "Qt 运行库"
-        INSTALL_TYPES All EndUser Developer QtDeveloper QtEndUser
+        INSTALL_TYPES All User Developer QtDeveloper QtUser
         GROUP Runtimes
         DEPENDS Runtime
 	    )
@@ -309,7 +309,7 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
         DISPLAY_NAME  "Qt 应用程序"
         DESCRIPTION   "Qt 应用程序"
         DEPENDS QtRuntime
-	    INSTALL_TYPES All EndUser QtEndUser
+	    INSTALL_TYPES All User QtUser
 	    GROUP Applications
         )
 endif()
@@ -319,7 +319,7 @@ if(MFC_FOUND)
     cpack_add_install_type(MFCDeveloper
         DISPLAY_NAME "MFC 开发者")
 
-    cpack_add_install_type(MFCEndUser
+    cpack_add_install_type(MFCUser
         DISPLAY_NAME "MFC 应用程序")
 
     cpack_add_component(MFCRuntime
@@ -327,7 +327,7 @@ if(MFC_FOUND)
         DESCRIPTION   "MFC 运行库"
         GROUP Runtimes
         DEPENDS Runtime
-        INSTALL_TYPES All EndUser Developer MFCDeveloper MFCEndUser
+        INSTALL_TYPES All User Developer MFCDeveloper MFCUser
         )
 
     cpack_add_component(MFCDevelopment
@@ -342,7 +342,7 @@ if(MFC_FOUND)
         DISPLAY_NAME  "MFC 应用程序"
         DESCRIPTION   "MFC 应用程序"
         DEPENDS MFCRuntime
-	    INSTALL_TYPES All EndUser MFCEndUser
+	    INSTALL_TYPES All User MFCUser
 	    GROUP Applications
         )
 endif()
