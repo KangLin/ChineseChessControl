@@ -18,7 +18,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu
-      ChineseChessControl_VERSION: "v2.0.7"
+      ChineseChessControl_VERSION: "v2.0.8"
       DOXYGEN_VERSION: 1.9.5
       artifact_name: build_doxygen
 
@@ -51,11 +51,14 @@ jobs:
       working-directory: ${{env.SOURCE_DIR}}
       run: git clone https://github.com/KangLin/RabbitCommon.git
 
-    - name: install apt packages
-      run: |
-        sudo apt install -y -q cmake build-essential graphviz \
-            qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools
-
+    - name: apt helper action
+      uses: ryankurte/action-apt@v0.2.0
+      with:
+        # architectures to pass to dpkg --add-architecture
+        #architectures: # optional
+        # apt packages to install
+        packages: xvfb xpra libglu1-mesa-dev libpulse-mainloop-glib0 cmake build-essential debhelper fakeroot graphviz doxygen qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools qtmultimedia5-dev libqt5svg5-dev libqtermwidget5-0-dev qtwebengine5-dev
+    
     - name: Download doxygen
       run: |
         if [ ! -d ${{env.TOOSL_DIR}}/doxygen-${{env.DOXYGEN_VERSION}} ]; then

@@ -1,18 +1,16 @@
-## 修改日志
-- v2.0.9
-  + 修复 org.Rabbit.ChineseChess.desktop 错误
-
 - v2.0.8
+  + Modify CI
+
+- v2.0.7
   + 使用 RabbitCommon v2
   + 编译 Android 时，Qt 版本必须大于6.0.0
+  + 修复 org.Rabbit.ChineseChess.desktop 错误
   + 自动化编译：
     - Android
     - macos
 
-- v2.0.7
-  + 使用 RabbitCommon v1.0.10
-
 - v2.0.6
+  + 使用 RabbitCommon v1.0.10
   + 重命名 tag.sh 到 deploy.sh
   + 修改 CI: 使用 github action
   + Qt: 使用图标主题
