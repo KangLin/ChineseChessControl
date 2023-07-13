@@ -34,42 +34,53 @@
         <translation>保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="101"/>
         <source>Previou(&amp;P)</source>
         <translation>上一步(&amp;P)</translation>
     </message>
     <message>
+        <location filename="../../MainWindow.ui" line="101"/>
+        <source>Previous(&amp;P)</source>
+        <translation>上一步(&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../../MainWindow.ui" line="104"/>
+        <location filename="../../MainWindow.ui" line="107"/>
         <location filename="../../MainWindow.ui" line="110"/>
+        <source>Previous(P)</source>
+        <translation>上一步(P)</translation>
+    </message>
+    <message>
+        <location filename="../../MainWindow.ui" line="119"/>
         <source>Next(&amp;N)</source>
         <translation>下一步(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="119"/>
+        <location filename="../../MainWindow.ui" line="128"/>
         <source>About(&amp;A)</source>
         <translation>關於(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="124"/>
+        <location filename="../../MainWindow.ui" line="133"/>
         <source>Update(&amp;U)</source>
         <translation>更新(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="133"/>
+        <location filename="../../MainWindow.ui" line="142"/>
         <source>Exit(&amp;E)</source>
         <translation>退出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="141"/>
+        <location filename="../../MainWindow.ui" line="150"/>
         <source>Prompt message(&amp;M)</source>
         <translation>提示消息(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="149"/>
+        <location filename="../../MainWindow.ui" line="158"/>
         <source>Prompt sound(&amp;S)</source>
         <translation>提示音(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="158"/>
+        <location filename="../../MainWindow.ui" line="167"/>
         <source>Style(&amp;T)</source>
         <translation>樣式(&amp;T)</translation>
     </message>
@@ -96,7 +107,7 @@
     <message>
         <location filename="../../main.cpp" line="30"/>
         <source>Chinese chess</source>
-        <translation type="unfinished">中國象棋</translation>
+        <translation>中國象棋</translation>
     </message>
 </context>
 </TS>

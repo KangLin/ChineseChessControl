@@ -1,7 +1,7 @@
 '作者:康林
 
-'1、用<script language="vbscript" src="..\..\..\..\..\我的文档\Scrpit\webscrpit.bas"></script>标记,先在网页中加入此文件
-'2、加入样式：<link rel="stylesheet" type="text/css" href="..\..\..\..\..\我的文档\Scrpit\样式.css">
+'1、用<script language="vbscript" src="..\..\..\..\..\我的文档\Script\webscript.bas"></script>标记,先在网页中加入此文件
+'2、加入样式：<link rel="stylesheet" type="text/css" href="..\..\..\..\..\我的文档\Script\样式.css">
 
 '功能:如果对象为显示,则变为不显示,如果是不显示,则变为显示
 '参数:要设置的对象

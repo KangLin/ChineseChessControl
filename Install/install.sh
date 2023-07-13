@@ -14,7 +14,7 @@ case "$1" in
 
     install|*)
         echo "install ..."
-        # Install destop
+        # Install desktop
         if [ -f /usr/share/applications/ChineseChess.desktop ]; then
             rm /usr/share/applications/ChineseChess.desktop
         fi

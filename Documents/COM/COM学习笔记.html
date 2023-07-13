@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>COM 学习笔记</title>
-<link rel="stylesheet" type="text/css" href="../Scrpit/样式.css">
-<script language ="vbscript" src ="../Scrpit/webscrpit.bas" ></script>
+<link rel="stylesheet" type="text/css" href="../Script/样式.css">
+<script language ="vbscript" src ="../Script/webScript.bas" ></script>
 <script language="JavaScript" fptype="dynamicoutline">
 <!--
 function dynOutline() {}
@@ -650,7 +650,7 @@ public:
 	// CLSID.
 	static const IID&amp; GetIID()
 		{ ASSERT(_IID != NULL); return *_IID; }</pre>
-			<pre>	// Construct empty in preperation for assignment.
+			<pre>	// Construct empty in preparation for assignment.
 	_CIP();</pre>
 			<pre>	// Copy the pointer and AddRef().
 	_CIP(const _CIP&amp; cp) : _pInterface(cp._pInterface)
@@ -714,14 +714,14 @@ public:
 	}</pre>
 			<pre>	~_CIP();</pre>
 			<pre>	// Saves/sets the interface without AddRef()ing.  This call
-	// will release any previously aquired interface.
+	// will release any previously acquired interface.
 	void Attach(Interface* pInterface)
 	{
 		_Release();
 		_pInterface = pInterface;
 	}</pre>
 			<pre>	// Saves/sets the interface only AddRef()ing if bAddRef is TRUE.
-	// This call will release any previously aquired interface.
+	// This call will release any previously acquired interface.
 	void Attach(Interface* pInterface, BOOL bAddRef)
 	{
 		_Release();
@@ -832,7 +832,7 @@ public:
 			reinterpret_cast&lt;void**&gt;(&amp;pInterface));
 		if (FAILED(hr))
 		{
-			// If failed intialize interface to NULL and return HRESULT.
+			// If failed initialize interface to NULL and return HRESULT.
 			Attach(NULL);
 			return hr;
 		}</pre>
@@ -866,7 +866,7 @@ _CIP&lt;_Interface, _IID&gt;::_CIP&lt;_Interface, _IID&gt;()
 _CIP&lt;_Interface, _IID&gt;::~_CIP&lt;_Interface, _IID&gt;()
 {
 	// If we still have an interface then Release() it.  The interface
-	// may be NULL if Detach() has previosly been called, or if it was
+	// may be NULL if Detach() has previously been called, or if it was
 	// never set.</pre>
 			<pre>	_Release();
 }</pre>
@@ -879,7 +879,7 @@ public:
 	typedef _CIP&lt;_Interface, _IID&gt; BC;</pre>
 			<pre>	// Provideds derived classes access to the interface type.
 	typedef _Interface Interface;</pre>
-			<pre>	// Construct empty in preperation for assignment.
+			<pre>	// Construct empty in preparation for assignment.
 	CIP() { }
 	~CIP();</pre>
 			<pre>	// Copy the pointer and AddRef().
@@ -940,7 +940,7 @@ public:
 	typedef _CIP&lt;IUnknown, &amp;IID_IUnknown&gt; BC;</pre>
 			<pre>	// Provideds derived classes access to the interface type.
 	typedef IUnknown Interface;</pre>
-			<pre>	// Construct empty in preperation for assignment.
+			<pre>	// Construct empty in preparation for assignment.
 	CIP() { }</pre>
 			<pre>	// Copy the pointer and AddRef().
 	CIP(const CIP&amp; cp) : _CIP&lt;IUnknown, &amp;IID_IUnknown&gt;(cp) { }</pre>

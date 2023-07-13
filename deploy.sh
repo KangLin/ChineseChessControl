@@ -9,7 +9,7 @@ if [ -n "$1" ]; then
         VERSION=` git rev-parse HEAD`
     fi
     
-    echo "Current verion: $VERSION, The version to will be set: $1"
+    echo "Current version: $VERSION, The version to will be set: $1"
     echo "Please check the follow list:"
     echo "    - Test is ok ?"
     echo "    - Translation is ok ?"
@@ -40,13 +40,14 @@ sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSIO
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/build.yml
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/doxygen.yml
 sed -i "s/export VERSION=.*/export VERSION=\"${VERSION}\"/g" ${SOURCE_DIR}/.travis.yml
+sed -i "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/${VERSION}/g" ${SOURCE_DIR}/README*.md
 
 sed -i "s/^\Standards-Version:.*/\Standards-Version:\"${VERSION}\"/g" ${SOURCE_DIR}/debian/control
 DEBIAN_VERSION=`echo ${VERSION}|cut -d "v" -f 2`
 sed -i "s/export DEBIAN_VERSION=.*/export DEBIAN_VERSION=\"${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/ci/build.sh
 sed -i "s/chinesechess (.*)/chinesechess (${DEBIAN_VERSION})/g" ${SOURCE_DIR}/debian/changelog
 sed -i "s/Version=.*/Version=${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Package/share/applications/org.Rabbit.ChineseChess.desktop
-sed -i "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/README*.md
+sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/README*.md
 sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/App/Qt/ChineseChess/android/AndroidManifest.xml
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/macos.yml
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/ubuntu.yml

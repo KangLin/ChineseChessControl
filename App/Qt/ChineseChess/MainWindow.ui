@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -39,7 +39,7 @@
     <property name="title">
      <string>Tools(&amp;T)</string>
     </property>
-    <addaction name="actionPreviou_P"/>
+    <addaction name="actionPrevious_P"/>
     <addaction name="actionNext_N"/>
     <addaction name="actionPrompt_message_M"/>
     <addaction name="actionPrompt_sound_S"/>
@@ -70,7 +70,7 @@
    <addaction name="actionOpen_O"/>
    <addaction name="actionSave_S"/>
    <addaction name="separator"/>
-   <addaction name="actionPreviou_P"/>
+   <addaction name="actionPrevious_P"/>
    <addaction name="actionNext_N"/>
    <addaction name="separator"/>
   </widget>
@@ -92,13 +92,22 @@
     <string>Save(&amp;S)</string>
    </property>
   </action>
-  <action name="actionPreviou_P">
+  <action name="actionPrevious_P">
    <property name="icon">
     <iconset theme="go-previous">
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Previou(&amp;P)</string>
+    <string>Previous(&amp;P)</string>
+   </property>
+   <property name="toolTip">
+    <string>Previous(P)</string>
+   </property>
+   <property name="statusTip">
+    <string>Previous(P)</string>
+   </property>
+   <property name="whatsThis">
+    <string>Previous(P)</string>
    </property>
   </action>
   <action name="actionNext_N">
@@ -150,10 +159,10 @@
    </property>
   </action>
   <action name="actionStyle_T">
-  <property name="icon">
-   <iconset theme="style">
-   <normaloff>.</normaloff>.</iconset>
-    </property>
+   <property name="icon">
+    <iconset theme="style">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
    <property name="text">
     <string>Style(&amp;T)</string>
    </property>

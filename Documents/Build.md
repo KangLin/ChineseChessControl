@@ -65,7 +65,7 @@
 - 安装
   + 安装库和程序
 
-        cmake --build . --config Release --target install    # --target install/strip stip 目标
+        cmake --build . --config Release --target install    # --target install/strip strip 目标
     
 - 打包
 

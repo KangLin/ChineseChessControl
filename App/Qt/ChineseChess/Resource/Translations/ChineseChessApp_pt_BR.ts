@@ -41,41 +41,48 @@
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="101"/>
-        <source>Previou(&amp;P)</source>
+        <source>Previous(&amp;P)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../MainWindow.ui" line="104"/>
+        <location filename="../../MainWindow.ui" line="107"/>
         <location filename="../../MainWindow.ui" line="110"/>
-        <source>Next(&amp;N)</source>
+        <source>Previous(P)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="119"/>
+        <source>Next(&amp;N)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../MainWindow.ui" line="128"/>
         <source>About(&amp;A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="124"/>
+        <location filename="../../MainWindow.ui" line="133"/>
         <source>Update(&amp;U)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="133"/>
+        <location filename="../../MainWindow.ui" line="142"/>
         <source>Exit(&amp;E)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="141"/>
+        <location filename="../../MainWindow.ui" line="150"/>
         <source>Prompt message(&amp;M)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="149"/>
+        <location filename="../../MainWindow.ui" line="158"/>
         <source>Prompt sound(&amp;S)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="158"/>
+        <location filename="../../MainWindow.ui" line="167"/>
         <source>Style(&amp;T)</source>
         <translation type="unfinished"></translation>
     </message>
