@@ -159,12 +159,27 @@ jobs:
         if: ${{ matrix.BUILD_TYPE == 'Release' }}
         working-directory: ${{github.workspace}}\build
         run: |
-          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --component=MFCApplications
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --component=MFCRuntime
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --component=QtApplications
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --component=QtRuntime
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --component=Runtime
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --component=DependLibraries
+          copy /Y ${{env.INSTALL_DIR}}\bin\*.dll install\bin
+          copy /Y ${{env.INSTALL_DIR}}\lib\*.dll install\bin
+          copy /Y ${{env.RUNVCPKG_VCPKG_ROOT}}\installed\${{env.RUNVCPKG_VCPKG_TRIPLET_OUT}}\bin\*.dll install\bin
+          makensis Install.nsi
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --prefix=%CD%\install_develop --component=MFCDevelopment
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --prefix=%CD%\install_develop --component=QtDevelopment
+          cmake --install . --config ${{matrix.BUILD_TYPE}} --prefix=%CD%\install_develop --component=Development
+          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_Develop.zip %CD%\install_develop\.
+#          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
+        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version != '5.15.2' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.artifact_name }}
           path: |
-            ${{github.workspace}}\build\chinesechesscontrol_*_setup.exe
+            ${{github.workspace}}\build\chinesechesscontrol_*.exe
+            ${{github.workspace}}\build\ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_Develop.zip

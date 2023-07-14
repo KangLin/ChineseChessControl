@@ -68,10 +68,14 @@
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
-  - Windows
-    - [chinesechesscontrol_v2.0.8_Windows_X86_setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/chinesechesscontrol_v2.0.8_Windows_X86_setup.exe)
+  - Windows安装包，支持 Windows 7 以上系统。
+    - [ChineseChessControl_v2.0.8_msvc1929_x86_64_Setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_msvc1929_x86_64_Setup.exe)
+    - [ChineseChessControl_v2.0.7_msvc1916_x86_Setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_msvc1929_x86_Setup.exe)
 
-  Windows安装包，支持 Windows 7 以上系统。安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
+  - Windows开发包，安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
+
+    - [ChineseChessControl_v2.0.8_win32_msvc2017_qt6.12.12_Develop.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_win32_msvc2017_qt6.12.12_Develop.zip)
+    - [ChineseChessControl_v2.0.8_win64_msvc2019_64_qt6.5.1_Develop.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_win64_msvc2019_64_qt6.5.1_Develop.zip)
 
   - linux
     - [chinesechesscontrol_v2.0.8_Linux_x86_64_setup.sh](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/chinesechesscontrol_v2.0.8_Linux_x86_64_setup.sh)
@@ -84,13 +88,13 @@
 
   - Android
     - APK
-      - [ChineseChessControl_v2.0.8_android_arm64_v8a_qt2.0.8_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_arm64_v8a_qt2.0.8_Release.apk)
-      - [ChineseChessControl_v2.0.8_android_armv7_qt2.0.8_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_armv7_qt2.0.8_Release.apk)
-      - [ChineseChessControl_v2.0.8_android_x86_64_qt2.0.8_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_x86_64_qt2.0.8_Release.apk)
+      - [ChineseChessControl_v2.0.8_android_arm64_v8a_qt6.5.1_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_arm64_v8a_qt6.5.1_Release.apk)
+      - [ChineseChessControl_v2.0.8_android_armv7_qt6.5.1_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_armv7_qt6.5.1_Release.apk)
+      - [ChineseChessControl_v2.0.8_android_x86_64_qt6.5.1_Release.apk](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_x86_64_qt6.5.1_Release.apk)
     - 开发包
-      - [ChineseChessControl_v2.0.8_android_arm64_v8a_qt2.0.8_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_arm64_v8a_qt2.0.8_Release.zip)
-      - [ChineseChessControl_v2.0.8_android_armv7_qt2.0.8_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_armv7_qt2.0.8_Release.zip)
-      - [ChineseChessControl_v2.0.8_android_x86_64_qt2.0.8_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_x86_64_qt2.0.8_Release.zip)
+      - [ChineseChessControl_v2.0.8_android_arm64_v8a_qt6.5.1_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_arm64_v8a_qt6.5.1_Release.zip)
+      - [ChineseChessControl_v2.0.8_android_armv7_qt6.5.1_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_armv7_qt6.5.1_Release.zip)
+      - [ChineseChessControl_v2.0.8_android_x86_64_qt6.5.1_Release.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_android_x86_64_qt6.5.1_Release.zip)
 
 + [文档](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_document.zip)
 + [在线文档](https://kanglin.github.io/ChineseChessControl/html/index.html)

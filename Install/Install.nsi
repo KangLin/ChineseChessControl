@@ -70,7 +70,7 @@ LangString LANG_DIRECTORY_PERMISSION ${LANG_SIMPCHINESE} "无目录访问权限"
 
 Name "$(LANG_PRODUCT_NAME) ${PRODUCT_VERSION}"
 Caption "$(LANG_PRODUCT_NAME) ${PRODUCT_VERSION}"
-OutFile "${PRODUCT_NAME}_Setup_msvc@MSVC_VERSION@_@BUILD_ARCH@_${PRODUCT_VERSION}.exe"
+OutFile "${PRODUCT_NAME}_${PRODUCT_VERSION}_msvc@MSVC_VERSION@_@BUILD_ARCH@_Setup.exe"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 ;InstallDirRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_DIR_REGKEY}" ""
 
@@ -99,12 +99,12 @@ Function InstallVC64
     Push $R0
     ClearErrors
     ReadRegDword $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{FF66E9F6-83E7-3A3E-AF14-8DE9A809A6A4}" "Version"
-    
+
     ; check register
     IfErrors 0 VSRedistInstalled
     Exec "$INSTDIR\bin\vcredist_x64.exe /q /norestart"
     StrCpy $R0 "-1"
-    
+
     VSRedistInstalled:
     ;MessageBox MB_OK  "Vcredist_x64.exe is installed"
     Exch $R0
@@ -152,7 +152,7 @@ Section "${PRODUCT_NAME}" SEC01
   SetOverwrite ifnewer
   File /r "install\*"
   ;SetShellVarContext all
-  
+
   ;SetShellVarContext current
   call InstallRuntime
 SectionEnd
