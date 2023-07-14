@@ -70,11 +70,11 @@
 + 当前版本：
   - Windows安装包，支持 Windows 7 以上系统。
     - [ChineseChessControl_v2.0.8_msvc1929_x86_64_Setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_msvc1929_x86_64_Setup.exe)
-    - [ChineseChessControl_v2.0.8_msvc1916_x86_Setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_msvc1929_x86_Setup.exe)
+    - [ChineseChessControl_v2.0.8_msvc1916_x86_Setup.exe](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_msvc1916_x86_Setup.exe)
 
   - Windows开发包，安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
-    - [ChineseChessControl_v2.0.8_win32_msvc2017_qt6.12.12_Develop.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_win32_msvc2017_qt6.12.12_Develop.zip)
+    - [ChineseChessControl_v2.0.8_win32_msvc2017_Qt5.12.12_Develop.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_win32_msvc2017_Qt5.12.12_Develop.zip)
     - [ChineseChessControl_v2.0.8_win64_msvc2019_64_qt6.5.1_Develop.zip](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/ChineseChessControl_v2.0.8_win64_msvc2019_64_qt6.5.1_Develop.zip)
 
   - linux
