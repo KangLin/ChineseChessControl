@@ -74,7 +74,7 @@ jobs:
       - name: Make Note.md file
         run: |
           cd ${{ env.artifact_path }}
-          echo "[:cn: 修改日志](https://github.com/KangLin/ChineseChessControl/blob/${{env.ChineseChessControl_VERSION}}/ChangeLog_zh_CN.md)" > ${{github.workspace}}/Note.md
+          echo "[:cn: 修改日志](https://github.com/KangLin/ChineseChessControl/blob/${{env.ChineseChessControl_VERSION}}/ChangeLog.md)" > ${{github.workspace}}/Note.md
           echo "" >> ${{github.workspace}}/Note.md
           echo "文件签名:" >> ${{github.workspace}}/Note.md
           for file in *
