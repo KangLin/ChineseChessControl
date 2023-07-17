@@ -81,7 +81,7 @@
       - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.9/ChineseChessControl_v2.0.9_msvc1929_x86_64_Setup.exe/download)
     - ChineseChessControl_v2.0.9_msvc1916_x86_Setup.exe
       - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.9/ChineseChessControl_v2.0.9_msvc1916_x86_Setup.exe)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.9/ChineseChessControl_v2.0.9_msvc1929_x86_64_Setup.exe/download)
+      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.9/ChineseChessControl_v2.0.9_msvc1916_x86_Setup.exe/download)
 
   - Windows开发包，安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
 
@@ -90,7 +90,7 @@
       - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.9/ChineseChessControl_v2.0.9_win32_msvc2017_Qt5.12.12_Develop.zip/download)
     - ChineseChessControl_v2.0.9_win64_msvc2019_64_qt6.5.1_Develop.zip
       - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.9/ChineseChessControl_v2.0.9_win64_msvc2019_64_qt6.5.1_Develop.zip)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.9/ChineseChessControl_v2.0.9_win64_msvc2019_64_qt6.5.1_Develop.zip/download)
+      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.9/ChineseChessControl_v2.0.9_win64_msvc2019_64_Qt6.5.1_Develop.zip/download)
 
   - linux
     - chinesechesscontrol_v2.0.9_Linux_x86_64_setup.sh
