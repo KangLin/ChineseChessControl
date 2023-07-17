@@ -1,3 +1,6 @@
+- v2.0.9
+  + 修改 INSTALL.nsi
+
 - v2.0.8
   + Modify CI
 

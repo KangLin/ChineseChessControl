@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ChineseChessControl"
-!define PRODUCT_VERSION "v2.0.8"
+!define PRODUCT_VERSION "v2.0.9"
 !define PRODUCT_PUBLISHER "Kang Lin (kl222@126.com)"
 !define PRODUCT_WEB_SITE "https://github.com/KangLin/${PRODUCT_NAME}"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME}.exe"
@@ -24,8 +24,8 @@ SetCompressor lzma
 
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "install\Chess.ICO"
-!define MUI_UNICON "install\Chess.ICO"
+!define MUI_ICON "@CMAKE_INSTALL_PREFIX@\Chess.ICO"
+!define MUI_UNICON "@CMAKE_INSTALL_PREFIX@\Chess.ICO"
 
 ; Language Selection Dialog Settings
 !define MUI_LANGDLL_REGISTRY_ROOT "${PRODUCT_UNINST_ROOT_KEY}"
@@ -35,7 +35,7 @@ SetCompressor lzma
 ; Welcome page
 !insertmacro MUI_PAGE_WELCOME
 ; License page
-!insertmacro MUI_PAGE_LICENSE "install\LICENSE.md"
+!insertmacro MUI_PAGE_LICENSE "@CMAKE_INSTALL_PREFIX@\LICENSE.md"
 ; Components page
 !insertmacro MUI_PAGE_COMPONENTS
 ; Directory page
@@ -150,7 +150,7 @@ Section "${PRODUCT_NAME}" SEC01
   IfFileExists "$INSTDIR\*.*" +2 0
   call DirectoryPermissionErrorBox
   SetOverwrite ifnewer
-  File /r "install\*"
+  File /r "@CMAKE_INSTALL_PREFIX@\*"
   ;SetShellVarContext all
 
   ;SetShellVarContext current
