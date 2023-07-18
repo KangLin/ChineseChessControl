@@ -33,8 +33,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionOpen_O_triggered()
 {
     if(!m_pChess) return;
-    QString szFile = RabbitCommon::CDir::GetOpenFileName(this,
-                                                         tr("Open chess game"));
+    QString szFile = QFileDialog::getOpenFileName(this, tr("Open chess game"));
     m_pChess->LoadChessGame(szFile.toStdString().c_str());
     m_pChess->update();
 }
@@ -42,9 +41,9 @@ void MainWindow::on_actionOpen_O_triggered()
 void MainWindow::on_actionSave_S_triggered()
 {
     if(!m_pChess) return;
-    QString szFile = RabbitCommon::CDir::GetSaveFileName(this,
-                                                         tr("Open chess game"),
-                                                         QString(),
+    QString szFile = QFileDialog::getSaveFileName(this,
+                                                  tr("Open chess game"),
+                                                  QString(),
         tr("Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)"));
     m_pChess->SaveChessGame(szFile.toStdString().c_str());
 }

@@ -1,3 +1,7 @@
+- v2.0.10
+  + 用 QFileDialog::getOpenFileName 替换 RabbitCommon::CDir::GetOpenFileName
+  + 用 QFileDialog::getSaveFileName 替换 RabbitCommon::CDir::GetSaveFileName
+
 - v2.0.9
   + 修改 INSTALL.nsi
 
