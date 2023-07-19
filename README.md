@@ -65,6 +65,8 @@
   + [x] Android
   + [x] mac、IOS 本人无此设备，请你自行编译、测试
 
+  详见：[Qt5 支持平台](https://doc.qt.io/qt-5/supported-platforms.html)、[Qt6 支持平台](https://doc.qt.io/qt-6/supported-platforms.html)。
+
 #### 屏幕截图
 
 ![屏幕截图](Documents/Image/ShotScreen.png "屏幕截图")
