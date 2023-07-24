@@ -40,7 +40,7 @@ jobs:
       INSTALL_DIR: ${{github.workspace}}/.cache/install_${{matrix.BUILD_TYPE}}
       ANDROID_PLATFORM: android-23
       ANDROID_NATIVE_API_LEVEL: 23
-      ChineseChessControl_VERSION: "2.0.11"
+      ChineseChessControl_VERSION: "v2.0.11"
       VCPKGGITCOMMITID: d765306b074717dea8dc1c4723e1b025acb61c2d
       qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtwebsockets qtwebview'
 

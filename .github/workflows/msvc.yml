@@ -45,7 +45,7 @@ jobs:
       CMAKE_GENERATOR: "Visual Studio 17 2022"
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
-      ChineseChessControl_VERSION: "2.0.11"
+      ChineseChessControl_VERSION: "v2.0.11"
       VCPKGGITCOMMITID: d765306b074717dea8dc1c4723e1b025acb61c2d
       qt_modules: 'qtwebengine ${{matrix.qt_modules}}'
 

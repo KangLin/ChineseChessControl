@@ -78,7 +78,7 @@
 + [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
 + 当前版本：
   - Windows安装包，支持 Windows 7 以上系统。
-    - chinesechesscontrol_v2.0.1_Windows_x64_setup.exe
+    - chinesechesscontrol_v2.0.11_Windows_x64_setup.exe
       - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Windows_x64_setup.exe)
       - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/chinesechesscontrol_v2.0.11_Windows_x64_setup.exe/download)
     - chinesechesscontrol_v2.0.11_Windows_X86_setup.exe
