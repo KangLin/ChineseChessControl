@@ -13,11 +13,19 @@ jobs:
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
-        qt_version: [6.5.1, 5.15.2, 5.12.12]
+        qt_version: [6.6.0, 6.5.2, 5.15.2, 5.12.12]
 
         include:
           - triplet: x64-windows
-            qt_version: 6.5.1
+            qt_version: 6.6.0
+            qt_arch: win64_msvc2019_64
+            CMAKE_GENERATOR_PLATFORM: x64
+            VCPKG_PLATFORM_TOOLSET: v142
+            qt_modules: 'qtscxml qtmultimedia qtimageformats qtwebchannel qtwebsockets qtwebview qtpositioning'
+            update_artifact: true
+
+          - triplet: x64-windows
+            qt_version: 6.5.2
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
             VCPKG_PLATFORM_TOOLSET: v142
@@ -25,9 +33,10 @@ jobs:
 
           - triplet: x64-windows
             qt_version: 5.15.2
-            qt_arch: win64_msvc2019_64
-            CMAKE_GENERATOR_PLATFORM: x64
+            qt_arch: win32_msvc2019
+            CMAKE_GENERATOR_PLATFORM: Win32
             VCPKG_PLATFORM_TOOLSET: v142
+            update_artifact: true
 
           - triplet: x86-windows
             qt_version: 5.12.12
@@ -176,7 +185,7 @@ jobs:
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version != '5.15.2' }}
+        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.update_artifact }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.artifact_name }}
