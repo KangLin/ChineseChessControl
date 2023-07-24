@@ -1,3 +1,6 @@
+- v2.0.11
+  + CI: 更新 VCPKG。修复CPAKE错误。详见： https://github.com/microsoft/vcpkg/issues/32560
+
 - v2.0.10
   + 用 QFileDialog::getOpenFileName 替换 RabbitCommon::CDir::GetOpenFileName
   + 用 QFileDialog::getSaveFileName 替换 RabbitCommon::CDir::GetSaveFileName
@@ -81,7 +84,7 @@
 - v1.1.0
   + 重构程序
     - 按[象棋竞赛规则(2011)](Documents/ChineseChessRule2011.pdf)重构棋盘布局
-  + 优化程序算可读性
+  + 优化程序可读性
   + 优化算法性能
 
 - v1.0.2

@@ -45,8 +45,8 @@ jobs:
       CMAKE_GENERATOR: "Visual Studio 17 2022"
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
-      ChineseChessControl_VERSION: "v2.0.10"
-      VCPKGGITCOMMITID: 1286cac8751e13bb289061b7e3b89eb4c3f613a2
+      ChineseChessControl_VERSION: "2.0.11"
+      VCPKGGITCOMMITID: d765306b074717dea8dc1c4723e1b025acb61c2d
       qt_modules: 'qtwebengine ${{matrix.qt_modules}}'
 
     # Map the job outputs to step outputs
@@ -173,7 +173,7 @@ jobs:
           cmake --install . --config ${{matrix.BUILD_TYPE}} --prefix=%CD%\install_develop --component=QtDevelopment
           cmake --install . --config ${{matrix.BUILD_TYPE}} --prefix=%CD%\install_develop --component=Development
           7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_Develop.zip %CD%\install_develop\.
-#          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
+          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
       - name: Update artifact
         if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version != '5.15.2' }}

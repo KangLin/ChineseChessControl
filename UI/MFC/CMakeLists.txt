@@ -67,6 +67,7 @@ if(CMAKE_MFC_FLAG EQUAL 2)
     target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXDLL")
 endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE "_AFXEXT" "_WINDLL"
+    "WIN32" "_WINDOWS"
     "_UNICODE" "UNICODE"
     $<$<CONFIG:Debug>:_DEBUG DEBUG>
     )
