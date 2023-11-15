@@ -137,10 +137,10 @@
         - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.zip)
         - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.zip/download)
 
-+ 文档
++ 开发文档
   - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_document.zip)
   - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_document.zip/download)
-+ [在线文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
++ [在线开发文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
 
 #### 贡献
 - 欢迎大家参与本项目开发，共同完成[功能](#功能)列表中未完成的功能。
@@ -161,6 +161,7 @@
 #### [修改日志](ChangeLog.md)
 #### 文档
 - [开发者文档](Documents/Developer.md)
+- [在线开发文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
 - COM 文档
   + [COM学习笔记](Documents/COM/COM学习笔记.html)
   + [COM中的事件响应](Documents/COM/COM中的事件响应.html)
