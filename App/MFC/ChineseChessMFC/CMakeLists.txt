@@ -52,15 +52,15 @@ find_package(MFC REQUIRED)
 #
 # 2. 宏
 #
-#    _WINDLL 表示要做一个用到MFC的DLL
+#   _WINDLL 表示要做一个用到MFC的DLL
 #　　_USRDLL 表示做一个非扩展MFC DLL（相对MFC扩展DLL而言）
 #　　_AFXEXT 表示要做一个MFC扩展DLL
 #
-#    这3个宏搭配可定义以上3种DLL
+#   这3个宏搭配可定义以上3种DLL
 #
-#    _AFXDLL 表示MFC以动态链接库形式提供，Using MFC in a Shared DLL；
+#   _AFXDLL 表示MFC以动态链接库形式提供，Using MFC in a Shared DLL；
 #
-#                        否则代表MFC以静态方式连接，Using MFC in a static Library；
+#            否则代表MFC以静态方式连接，Using MFC in a static Library；
 #参考：https://blog.csdn.net/nsaygl/article/details/39252485
 set(CMAKE_MFC_FLAG 2) # 1：用 MFC 静态库 2： 用 MFC DLL  同时需要定义宏 "_AFXDLL"
 if(CMAKE_MFC_FLAG EQUAL 2)
@@ -79,7 +79,7 @@ if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
         LINK_FLAGS "/SUBSYSTEM:WINDOWS\",5.01\" ")
 else()
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "/SUBSYSTEM:WINDOWS ")
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS")
 endif()
 target_include_directories(${PROJECT_NAME} PRIVATE
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
