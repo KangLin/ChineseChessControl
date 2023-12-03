@@ -5,7 +5,8 @@
 #include <QIcon>
 
 CFrmChineseChessPlugin::CFrmChineseChessPlugin(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+    QDesignerCustomWidgetInterface()
 {
     m_initialized = false;
 }

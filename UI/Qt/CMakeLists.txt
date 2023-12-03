@@ -17,13 +17,26 @@ if(${PROJECT_NAME}_REVISION)
 endif()
 message("${PROJECT_NAME}_VERSION:${${PROJECT_NAME}_VERSION};${PROJECT_NAME}_REVISION=${${PROJECT_NAME}_REVISION}")
 
+SET(QT_LIBRARIES)
+SET(QT_COMPONENTS)
+
+option(WITH_QT_DESIGENER "Add qt desigener plugin" ON)
+if(NOT ANDROID AND WITH_QT_DESIGENER)
+    list(APPEND QT_COMPONENTS Designer)
+    LIST(APPEND CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES
+        FrmChineseChessPlugin.cpp
+        )
+    LIST(APPEND DESIGNER_FILES
+        FrmChineseChessPlugin.h
+        )
+ENDIF()
+
 #需要的QT组件
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
 if((QT_VERSION_MAJOR LESS 6) AND ANDROID)
     message(FATAL_ERROR "Qt version must great 6.0.0 in android")
 endif()
-SET(QT_LIBRARIES)
-SET(QT_COMPONENTS Core Gui Widgets Multimedia Designer)
+list(APPEND QT_COMPONENTS Core Gui Widgets Multimedia)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS})
 if(Qt${QT_VERSION_MAJOR}_FOUND)
     message("QT_VERSION:${Qt${QT_VERSION_MAJOR}_VERSION}")
@@ -46,16 +59,6 @@ LIST(APPEND CHINESE_CHESS_QT_SOURCES_FILES
 LIST(APPEND INSTALLHEADER_FILES
     FrmChineseChess.h
     )
-
-IF(NOT ANDROID)
-    LIST(APPEND CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES
-        FrmChineseChessPlugin.cpp
-        )
-    
-    LIST(APPEND DESIGNER_FILES
-        FrmChineseChessPlugin.h
-        )
-ENDIF()
 
 LIST(APPEND CHINESE_CHESS_QT_HEADER_FILES
     ${INSTALLHEADER_FILES}
