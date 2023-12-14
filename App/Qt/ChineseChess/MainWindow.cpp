@@ -5,7 +5,6 @@
 #include "RabbitCommonTools.h"
 #include "DlgAbout.h"
 #include "FrmUpdater.h"
-#include "FrmStyle.h"
 
 #include <QCursor>
 
@@ -14,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    RabbitCommon::CTools::AddStyleMenu(ui->menuTools);
     ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(this));
     m_pChess = new CFrmChineseChess(this);
     //m_pChess->SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
@@ -105,10 +105,4 @@ void MainWindow::on_actionUpdate_U_triggered()
     #else
         m_pfrmUpdater->show();
     #endif
-}
-
-void MainWindow::on_actionStyle_T_triggered()
-{
-    CFrmStyle* s = new CFrmStyle();
-    s->show();
 }

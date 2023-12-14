@@ -13,11 +13,11 @@ jobs:
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
-        qt_version: [6.6.0, 6.5.2, 5.15.2, 5.12.12]
+        qt_version: [6.6.1, 6.5.2, 5.15.2, 5.12.12]
 
         include:
           - triplet: x64-windows
-            qt_version: 6.6.0
+            qt_version: 6.6.1
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
             VCPKG_PLATFORM_TOOLSET: v142

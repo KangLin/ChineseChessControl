@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -43,7 +43,6 @@
     <addaction name="actionNext_N"/>
     <addaction name="actionPrompt_message_M"/>
     <addaction name="actionPrompt_sound_S"/>
-    <addaction name="actionStyle_T"/>
    </widget>
    <widget class="QMenu" name="menuHelp_H">
     <property name="title">
@@ -156,15 +155,6 @@
    </property>
    <property name="text">
     <string>Prompt sound(&amp;S)</string>
-   </property>
-  </action>
-  <action name="actionStyle_T">
-   <property name="icon">
-    <iconset theme="style">
-     <normaloff>.</normaloff>.</iconset>
-   </property>
-   <property name="text">
-    <string>Style(&amp;T)</string>
    </property>
   </action>
  </widget>
