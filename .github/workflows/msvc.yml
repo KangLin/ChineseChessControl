@@ -55,7 +55,7 @@ jobs:
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
       ChineseChessControl_VERSION: "v2.0.11"
-      VCPKGGITCOMMITID: 43cf47eccfbe27006cf9534a5db809798f8c37fe
+      VCPKGGITCOMMITID: 6359372f3ca1e6072e302e1d7238f31b259c5b51
       qt_modules: 'qtwebengine ${{matrix.qt_modules}}'
 
     # Map the job outputs to step outputs
