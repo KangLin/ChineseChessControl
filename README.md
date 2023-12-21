@@ -38,6 +38,7 @@
     - https://sourceforge.net/projects/chinesechesscontrol/
     - https://gitlab.com/kl222/ChineseChessControl
     - https://launchpad.net/chinesechesscontrol
+    - https://invent.kde.org/kanglin/ChineseChessControl
 
 ##### 功能
 - [x] 控件
