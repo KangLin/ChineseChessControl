@@ -17,9 +17,12 @@ set -e
 # for details, see https://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-
+INSTALL_ROOT=/opt/ChineseChess
 case "$1" in
     configure)
+	chmod -R a+rw $INSTALL_ROOT/etc
+        chmod -R a+rw $INSTALL_ROOT/log
+
         if [ ! -f /usr/share/applications/org.Rabbit.ChineseChess.desktop ]; then
             ln -s /opt/ChineseChess/share/applications/org.Rabbit.ChineseChess.desktop /usr/share/applications/org.Rabbit.ChineseChess.desktop
         fi
