@@ -31,8 +31,11 @@ int main(int argc, char *argv[])
 
     CFrmUpdater *pUpdate = new CFrmUpdater();
     pUpdate->SetTitle(QImage(":/image/Chess"));
-    if(!pUpdate->GenerateUpdateXml())
+    if(a.arguments().length() > 1) {
+        pUpdate->GenerateUpdateJson();
+        pUpdate->GenerateUpdateXml();
         return 0;
+    }
 
     MainWindow w;
     w.show();
