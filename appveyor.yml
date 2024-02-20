@@ -1,8 +1,10 @@
 version: 'v2.0.11.{build}'
 
 cache:
-  - Package
-  
+  - ..\other_source
+# Clean cached
+# https://www.appveyor.com/docs/build-cache/#cleaning-up-cache
+
 environment:
   STOREPASS:
     secure: l9BZEU39F1a4vSkhwl0CHR+yh6CD1c7byGzMv+1NUa4=
@@ -13,78 +15,16 @@ environment:
   ChineseChessControl_VERSION: "v2.0.11"
   
   matrix:
-  ##### msvc 2019 ########
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    GENERATORS: "Visual Studio 16 2019"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 16
-    MSVC: 2019
-    QT_ROOT: C:\Qt\6.4\msvc2019_64
-    BUILD_ARCH: x64
-    
-  ##### msvc 2017 ########
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    GENERATORS: "Visual Studio 15 2017"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 15
-    MSVC: 2017
-    QT_ROOT: C:\Qt\5.12\msvc2017
-    BUILD_ARCH: x86
-    
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    GENERATORS: "Visual Studio 15 2017 Win64"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 15
-    MSVC: 2017
-    QT_ROOT: C:\Qt\5.12\msvc2017_64
-    BUILD_ARCH: x64
-
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    GENERATORS: "Visual Studio 15 2017"
-    BUILD_TARGERT: windows_msvc
-    TOOLCHAIN_VERSION: 15
-    MSVC: 2017
-    QT_ROOT: C:\Qt\5.6\msvc2017
-    BUILD_ARCH: x86
-
   ##### msvc 2015 ########
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 14 2015"
+  - GENERATORS: "Visual Studio 14 2015"
     TOOLCHAIN_VERSION: 14
     QT_ROOT: C:\Qt\5.6\msvc2015
     BUILD_ARCH: x86
    
-  - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 14 2015 Win64"
+  - GENERATORS: "Visual Studio 14 2015 Win64"
     TOOLCHAIN_VERSION: 14
     QT_ROOT: C:\Qt\5.12\msvc2015_64
     BUILD_ARCH: x64
-
-  ##### msvc 2013 ########
-#  - BUILD_TARGERT: windows_msvc
-#    GENERATORS: "Visual Studio 12 2013"
-#    TOOLCHAIN_VERSION: 12
-#    QT_ROOT: C:\Qt\5.6\msvc2013
-#    BUILD_ARCH: x86
-    
-#  - BUILD_TARGERT: windows_msvc
-#    GENERATORS: "Visual Studio 12 2013 Win64"
-#    TOOLCHAIN_VERSION: 12
-#    QT_ROOT: C:\Qt\5.6\msvc2013_64
-#    BUILD_ARCH: x64
-    
-#  ##### mingw ########
-#  - BUILD_TARGERT: windows_mingw
-#    GENERATORS: "MSYS Makefiles"
-#    TOOLCHAIN_VERSION: 492_32
-#    QT_ROOT: C:\Qt\5.6\mingw49_32
-#    BUILD_ARCH: x86
-
-#  - BUILD_TARGERT: windows_mingw
-#    GENERATORS: "MSYS Makefiles"
-#    TOOLCHAIN_VERSION: 530_32
-#    QT_ROOT: C:\Qt\5.10\mingw53_32
-#    BUILD_ARCH: x86
 
 matrix:
   fast_finish: false
@@ -98,50 +38,53 @@ init:
   - if NOT "%QT_ROOT%" == "NO" for /f "delims=" %%i in ('%QT_ROOT%/bin/qmake -query QT_VERSION') do (set QT_VERSION=%%i) 
   - echo QT_ROOT=%QT_ROOT%
   - echo QT_VERSION=%QT_VERSION%
-  - del C:\msys64\usr\bin\link.exe
 
 install:
-  - C:\msys64\autorebase.bat
-  - C:\msys64\usr\bin\pacman.exe -S --noconfirm unzip
-  #- if "%BUILD_TARGERT%"=="windows_mingw" set PATH=C:\Qt\Tools\mingw%TOOLCHAIN_VERSION%_32\bin;%PATH%
-  - if "%BUILD_TARGERT%" == "windows_mingw" set MSYSTEM=MINGW32  #设置编译系统为MINGW32
-
-before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
-  #- git submodule update --init --recursive
+  - git submodule update --init --recursive
   - git clone https://github.com/KangLin/RabbitCommon.git
   - set RabbitCommon_DIR=%APPVEYOR_BUILD_FOLDER%/RabbitCommon
 
-  - cd %APPVEYOR_BUILD_FOLDER%
-  #- C:\msys64\usr\bin\bash.exe %APPVEYOR_BUILD_FOLDER%\ci\build-install-tools-windows.sh
-  - set CMAKE_VERSION=3.26.4
+  - set OTHER_SOURCE=%APPVEYOR_BUILD_FOLDER%\..\other_source
+  - set INSTALL_DIR=%OTHER_SOURCE%\install_dir
+  - if not exist "%OTHER_SOURCE%" ( mkdir "%OTHER_SOURCE%" )
+  - if not exist "%INSTALL_DIR%" (mkdir "%INSTALL_DIR%")
+
+  - cd %OTHER_SOURCE%
+  - set CMAKE_VERSION=3.28.3
   - if not exist cmake-%CMAKE_VERSION%-windows-i386 (curl -fsSL -o cmake-%CMAKE_VERSION%-windows-i386.zip https://github.com/Kitware/CMake/releases/download/v%CMAKE_VERSION%/cmake-%CMAKE_VERSION%-windows-i386.zip && 7z x cmake-%CMAKE_VERSION%-windows-i386.zip)
   - cd cmake-%CMAKE_VERSION%-windows-i386
   - set PATH="%CD%/bin";%PATH%
-  
-build_script:
-  - set OTHER_SOURCE=%APPVEYOR_BUILD_FOLDER%\..\other_source
-  - set INSTALL_DIR=%OTHER_SOURCE%\install_dir
+
+  - cd %OTHER_SOURCE%
   - set VCPKG_DIR=%OTHER_SOURCE%\vcpkg
-  - if not exist "%OTHER_SOURCE%" ( mkdir "%OTHER_SOURCE%" )
-  
-  - cd %OTHER_SOURCE%
-  - if not exist "%INSTALL_DIR%" (mkdir "%INSTALL_DIR%")
-  - cd %OTHER_SOURCE%
-  - if not exist vcpkg (git clone "https://github.com/microsoft/vcpkg.git" && cd "%VCPKG_DIR%" && git checkout -b 56765209ec0e92c58a5fd91aa09c46a16d660026 56765209ec0e92c58a5fd91aa09c46a16d660026 )
-  - cd %VCPKG_DIR%
-  - bootstrap-vcpkg.bat
-  - vcpkg --triplet %BUILD_ARCH%-windows install zlib openssl
-  
+  - if not exist %VCPKG_DIR% (git clone "https://github.com/microsoft/vcpkg.git" && cd "%VCPKG_DIR%" && git checkout -b a1a1cbc975abf909a6c8985a6a2b8fe20bbd9bd6 a1a1cbc975abf909a6c8985a6a2b8fe20bbd9bd6 && bootstrap-vcpkg.bat)
+
+before_build:
+
+build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - mkdir build
   - cd build
-  - cmake .. -G"%GENERATORS%" -DQT_DIR=%QT_ROOT%/lib/cmake/Qt5 -DQt5_DIR=%QT_ROOT%/lib/cmake/Qt5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%cd%/install" -DCMAKE_PREFIX_PATH="%INSTALL_DIR%" -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%/scripts/buildsystems/vcpkg.cmake"
+  - cmake %APPVEYOR_BUILD_FOLDER% ^
+      -G"%GENERATORS%" ^
+      -DCMARK_SHARED=OFF ^
+      -DCMARK_TESTS=OFF ^
+      -DCMARK_STATIC=ON ^
+      -DQT_DIR=%QT_ROOT%/lib/cmake/Qt5 ^
+      -DQt5_DIR=%QT_ROOT%/lib/cmake/Qt5 ^
+      -DINSTALL_QT=ON ^
+      -DCMAKE_BUILD_TYPE=Release ^
+      -DCMAKE_INSTALL_PREFIX="%cd%/install" ^
+      -DCMAKE_PREFIX_PATH="%INSTALL_DIR%" ^
+      -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%/scripts/buildsystems/vcpkg.cmake" ^
+      -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON ^
+      -DVCPKG_APPLOCAL_DEPS=ON
   - cmake --build . --config Release
   - cmake --build . --config Release --target package
   
 artifacts:
-  - path: build_$(BUILD_TARGERT)\ChineseChessControl_Setup_*.exe
+  - path: build\chinesechesscontrol*.exe
 
 test: off
 
@@ -149,31 +92,16 @@ test: off
 deploy:
   - provider: GitHub
     #release: ChineseChessControl$(appveyor_build_version)
-    description: '中国象棋控件 变更详见[ChangeLog.md](ChangeLog.md)'
+    #description: '中国象棋控件 变更详见[ChangeLog.md](ChangeLog.md)'
     #token: https://github.com/settings/tokens
     #password encrypt: https://ci.appveyor.com/tools/encrypt
     auth_token:
       secure: 43H2qtl+UKweMvnOUVCGuNkAElipdJJcCIzQcyE+Idb/Jo4Nm1fta2zsNwYiaQP/
     #draft: true
-    prerelease: true
-    force_update: true
+    #prerelease: true
+    #force_update: true
     on:
-      BUILD_TARGERT: windows_msvc
       #TOOLCHAIN_VERSION: 14
       #QT_VERSION: 5.6.3
-      #BUILD_ARCH: x86
-      appveyor_repo_tag: true        # deploy on tag push only
-
-  - provider: GitHub
-    #release: ChineseChessControl$(appveyor_build_version)
-    description: '中国象棋控件 变更详见[ChangeLog.md](ChangeLog.md)'
-    #token: https://github.com/settings/tokens
-    #password encrypt: https://ci.appveyor.com/tools/encrypt
-    auth_token:
-      secure: 43H2qtl+UKweMvnOUVCGuNkAElipdJJcCIzQcyE+Idb/Jo4Nm1fta2zsNwYiaQP/
-    #draft: true
-    prerelease: true
-    force_update: true
-    on:
-      BUILD_TARGERT: android
+      BUILD_ARCH: x86
       appveyor_repo_tag: true        # deploy on tag push only

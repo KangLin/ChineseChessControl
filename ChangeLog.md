@@ -1,3 +1,8 @@
+- v2.0.12
+  + CI: 修改 GITHUB action 发布
+  + 增加 vcpkg.json
+  + 使用 RabbitCommon v2.0.1 更新
+
 - v2.0.11
   + CI: 更新 VCPKG。修复CPAKE错误。详见： https://github.com/microsoft/vcpkg/issues/32560
 

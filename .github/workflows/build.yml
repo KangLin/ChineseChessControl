@@ -1,4 +1,4 @@
-# 作者：康林<kl222@126.com>
+# 作者：康林 <kl222@126.com>
 
 name: build
 
@@ -80,10 +80,14 @@ jobs:
           echo "文件签名:" >> ${{github.workspace}}/Note.md
           for file in *
           do
-              #echo $file
-              if [ -f $file ] && [ "${file##*.}" != "xml" ]; then
-                  md5sum $file > $file.md5sum
-                  cat $file.md5sum >> ${{github.workspace}}/Note.md
+              echo "$file"
+              if [ -f $file ]; then
+                  if [ "${file##*.}" != "xml" ] && [ "${file##*.}" != "json" ]; then
+                      md5sum $file > $file.md5sum
+                      cat $file.md5sum >> ${{github.workspace}}/Notes.md
+                  fi
+              else
+                 rm -fr $file
               fi
           done
 

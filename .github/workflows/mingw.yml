@@ -1,4 +1,4 @@
-name: build_mingw
+name: mingw
 
 on:
   workflow_call:
@@ -9,11 +9,9 @@ on:
 
 jobs:
   build_mingw:
-    name: build mingw
 
     strategy:
       matrix:
-        # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
         BUILD_TYPE: [Release, Debug]
 
     defaults:
@@ -25,9 +23,9 @@ jobs:
       BUILD_TYPE:  ${{ matrix.BUILD_TYPE }}
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
-      INSTALL_DIR: ${{github.workspace}}\.cache\install_mingw
-      ChineseChessControl_VERSION: "v2.0.11"
+      INSTALL_DIR: ${{github.workspace}}\.cache\install
       artifact_name: build_mingw
+      ChineseChessControl_VERSION: "v2.0.11"
 
     # Map the job outputs to step outputs
     outputs:
@@ -46,6 +44,14 @@ jobs:
           cmake -E make_directory ${{env.INSTALL_DIR}}
           cmake -E make_directory ${{github.workspace}}/build
 
+      - name: Cache installed
+        uses: actions/cache@v3
+        id: cache-installed
+        with:
+          path: |
+            ${{env.INSTALL_DIR}}
+          key: install_mingw_${{matrix.BUILD_TYPE}}
+
       - name: pacman
         env:
           PATH: C:\msys64\usr\bin
@@ -56,17 +62,12 @@ jobs:
               mingw-w64-x86_64-nsis ^
               mingw-w64-x86_64-gcc ^
               mingw-w64-x86_64-qt5 ^
+              mingw-w64-x86_64-qt5-multimedia ^
+              mingw-w64-x86_64-qt5-svg ^
               mingw-w64-x86_64-qtwebkit ^
               mingw-w64-x86_64-zlib ^
+              mingw-w64-x86_64-7zip ^
               git base-devel
-
-      - name: Cache installed
-        uses: actions/cache@v3
-        id: cache-installed
-        with:
-          path: |
-            ${{env.INSTALL_DIR}}
-          key: cache-installed-mingw
 
       - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
@@ -87,7 +88,8 @@ jobs:
               -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} ^
               -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install ^
               -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}} ^
-              -DCMAKE_CXX_COMPILER_ARCHITECTURE_ID=x86_64
+              -DINSTALL_QT=ON ^
+              -DBUILD_APP=ON
           cmake --build . --config ${{ matrix.BUILD_TYPE }}
 
       - name: Package

@@ -6,21 +6,22 @@ on:
       name:
         description: "The artifact name"
         value: ${{ jobs.build_ubuntu.outputs.name }}
-  
+
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
 jobs:
   build_ubuntu:
     strategy:
       matrix:
-        # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
         BUILD_TYPE: [Release, Debug]
 
     runs-on: ubuntu-latest
 
     env:
-      BUILD_TYPE:  ${{ matrix.BUILD_TYPE }}
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
-      INSTALL_DIR: ${{github.workspace}}/.cache/install_ubuntu_${{matrix.BUILD_TYPE}}
+      INSTALL_DIR: ${{github.workspace}}/.cache/install
       ChineseChessControl_VERSION: "2.0.11"
       artifact_name: build_ubuntu
 
@@ -32,7 +33,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          submodules: true
+          submodules: recursive
     
       - name: make_directory
         run: |
@@ -40,14 +41,20 @@ jobs:
           cmake -E make_directory ${{env.TOOSL_DIR}}
           cmake -E make_directory ${{env.INSTALL_DIR}}
           cmake -E make_directory ${{github.workspace}}/build
-  
-      - name: apt helper action
-        uses: ryankurte/action-apt@v0.2.0
-        with:
-          # architectures to pass to dpkg --add-architecture
-          #architectures: # optional
-          # apt packages to install
-          packages: xvfb xpra libglu1-mesa-dev libpulse-mainloop-glib0 cmake build-essential debhelper fakeroot graphviz doxygen qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools qtmultimedia5-dev libqt5svg5-dev libqtermwidget5-0-dev qtwebengine5-dev
+
+      - name: Install apt packages
+        run: |
+          sudo apt update
+          sudo apt upgrade
+          sudo apt install xvfb xpra \
+              libglu1-mesa-dev libpulse-mainloop-glib0 \
+              cmake build-essential \
+              debhelper fakeroot graphviz \
+              qt6-tools-dev qt6-tools-dev-tools \
+              qt6-base-dev qt6-base-dev-tools \
+              qt6-l10n-tools qt6-translations-l10n \
+              qt6-scxml-dev qt6-webengine-dev qt6-webengine-dev-tools \
+              qt6-multimedia-dev libqt6svg6-dev
 
       - name: Cache installed
         uses: actions/cache@v2
@@ -55,12 +62,28 @@ jobs:
         with:
           path: |
             ${{env.INSTALL_DIR}}
-          key: cache-installed-ubuntu
+          key: install_ubuntu_${{matrix.BUILD_TYPE}}
 
       - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
         run: |
           git clone https://github.com/KangLin/RabbitCommon.git
+
+      - name: Build develop library
+        working-directory: ${{github.workspace}}/build
+        env:
+          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+        run: |
+          cmake ${{github.workspace}} \
+            -DCMARK_SHARED=OFF \
+            -DCMARK_TESTS=OFF \
+            -DCMARK_STATIC=ON \
+            -DINSTALL_QT=OFF \
+            -DBUILD_APP=OFF \
+            -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} \
+            -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/install \
+            -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}}/lib/cmake
+          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
 
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build

@@ -12,6 +12,9 @@
 [![github 下载量](https://img.shields.io/github/downloads/KangLin/ChineseChessControl/total?label=Github%20下载量)](https://github.com/KangLin/ChineseChessControl/releases)
 [![sourceforge 下载量](https://img.shields.io/sourceforge/dt/chinesechesscontrol.svg?label=Sourceforge%20下载总量)](https://sourceforge.net/projects/chinesechesscontrol/files/latest/download)
 
+- [![从 github 下载](https://img.shields.io/github/release/KangLin/ChineseChessControl.svg?label=Github%20Release)](https://github.com/KangLin/ChineseChessControl/releases/latest)
+- [![从 sourceforge 下载](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/rabbitChineseChessControl/files/latest/download)
+
 - master 分支: [![build](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml)
 - develop 分支: [![build](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/KangLin/ChineseChessControl/actions/workflows/build.yml)
 
@@ -76,67 +79,9 @@
 ![Android 屏幕截图](Documents/Image/androidShotScreen.jpg "Android 屏幕截图")
 
 #### [下载安装包](https://github.com/KangLin/ChineseChessControl/releases/latest)
-+ [最后版本](https://github.com/KangLin/ChineseChessControl/releases/latest)
-+ 当前版本：
-  - Windows安装包，支持 Windows 7 以上系统。
-    - chinesechesscontrol_v2.0.11_Windows_x64_setup.exe
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Windows_x64_setup.exe)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/chinesechesscontrol_v2.0.11_Windows_x64_setup.exe/download)
-    - chinesechesscontrol_v2.0.11_Windows_X86_setup.exe
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Windows_X86_setup.exe)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/chinesechesscontrol_v2.0.11_Windows_X86_setup.exe/download)
-    - ChineseChessControl_v2.0.11_msvc1929_x86_64_Setup.exe
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_msvc1929_x86_64_Setup.exe)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_msvc1929_x86_64_Setup.exe/download)
-    - ChineseChessControl_v2.0.11_msvc1916_x86_Setup.exe
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_msvc1916_x86_Setup.exe)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_msvc1916_x86_Setup.exe/download)
-
-  - Windows开发包，安装完成后，使用请详见：[开发者文档](Documents/Developer.md#调试)
-
-    - ChineseChessControl_v2.0.11_win32_msvc2017_Qt5.12.12_Develop.zip
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_win32_msvc2017_Qt5.12.12_Develop.zip)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_win32_msvc2017_Qt5.12.12_Develop.zip/download)
-    - ChineseChessControl_v2.0.11_win64_msvc2019_64_qt6.5.1_Develop.zip
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_win64_msvc2019_64_qt6.5.1_Develop.zip)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_win64_msvc2019_64_Qt6.5.1_Develop.zip/download)
-
-  - linux
-    - chinesechesscontrol_v2.0.11_Linux_x86_64_setup.sh
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Linux_x86_64_setup.sh)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/chinesechesscontrol_v2.0.11_Linux_x86_64_setup.sh/download)
-
-  - ubuntu
-    - chinesechesscontrol_v2.0.11_Linux_x86_64_setup.deb
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Linux_x86_64_setup.deb)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/chinesechesscontrol_v2.0.11_Linux_x86_64_setup.deb/download)
-
-  - Macos
-    - chinesechesscontrol_v2.0.11_Darwin_x86_64_setup.tar.gz
-      - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Darwin_x86_64_setup.tar.gz)
-      - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/chinesechesscontrol_v2.0.11_Darwin_x86_64_setup.tar.gz/download)
-
-  - Android
-    - APK
-      - ChineseChessControl_v2.0.11_android_arm64_v8a_qt6.5.1_Release.apk
-        - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_arm64_v8a_qt6.5.1_Release.apk)
-        - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_arm64_v8a_qt6.5.1_Release.apk/download)
-      - ChineseChessControl_v2.0.11_android_armv7_qt6.5.1_Release.apk
-        - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_armv7_qt6.5.1_Release.apk)
-        - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_armv7_qt6.5.1_Release.apk/download)
-      - ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.apk
-        - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.apk)
-        - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.apk/download)
-    - 开发包
-      - ChineseChessControl_v2.0.11_android_arm64_v8a_qt6.5.1_Release.zip
-        - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_arm64_v8a_qt6.5.1_Release.zip)
-        - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_arm64_v8a_qt6.5.1_Release.zip/download)
-      - ChineseChessControl_v2.0.11_android_armv7_qt6.5.1_Release.zip
-        - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_armv7_qt6.5.1_Release.zip)
-        - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_armv7_qt6.5.1_Release.zip/download)
-      - ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.zip
-        - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.zip)
-        - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.11/ChineseChessControl_v2.0.11_android_x86_64_qt6.5.1_Release.zip/download)
++ 最后版本
+  - [![从 github 下载](https://img.shields.io/github/release/KangLin/ChineseChessControl.svg?label=Github%20Release)](https://github.com/KangLin/ChineseChessControl/releases/latest)
+  - [![从 sourceforge 下载](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/rabbitChineseChessControl/files/latest/download)
 
 + 开发文档
   - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/ChineseChessControl_v2.0.11_document.zip)
