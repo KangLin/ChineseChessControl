@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     int nRet = 0;
     QApplication a(argc, argv);
 
-    a.setApplicationName("ChineseChess");
+    a.setApplicationName("ChineseChessControl");
 
     QString szLoacleName = QLocale::system().name();
     RabbitCommon::CTools::Instance()->Init(szLoacleName);

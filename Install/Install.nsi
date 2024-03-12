@@ -35,7 +35,7 @@ SetCompressor lzma
 ; Welcome page
 !insertmacro MUI_PAGE_WELCOME
 ; License page
-!insertmacro MUI_PAGE_LICENSE "@CMAKE_INSTALL_PREFIX@\share\doc\LICENSE.md"
+!insertmacro MUI_PAGE_LICENSE "@CMAKE_INSTALL_PREFIX@\share\doc\ChineseChessControl\LICENSE.md"
 ; Components page
 !insertmacro MUI_PAGE_COMPONENTS
 ; Directory page
