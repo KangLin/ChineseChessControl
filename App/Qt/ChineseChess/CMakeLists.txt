@@ -97,8 +97,21 @@ else()
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     )
 endif()
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${ChineseChessApp_VERSION})
+
+# setup rpath to where binary is at.
+if(APPLE)
+    SET_TARGET_PROPERTIES(${PROJECT_NAME}
+        PROPERTIES INSTALL_RPATH
+        "lib;../lib;../lib/${CMAKE_LIBRARY_ARCHITECTURE};@executable_path/../lib;@executable_path;@executable_path/../lib/${CMAKE_LIBRARY_ARCHITECTURE}")
+else()
+    SET_TARGET_PROPERTIES(${PROJECT_NAME}
+        PROPERTIES INSTALL_RPATH
+            "$ORIGIN;$ORIGIN/../lib;$ORIGIN/../lib/${CMAKE_LIBRARY_ARCHITECTURE};lib;../lib;../lib/${CMAKE_LIBRARY_ARCHITECTURE}")
+endif()
+
 # 程序以windows方式启动，不出现控制台窗口,加 /ENTRY:mainCRTStartup
 if(MSVC)
     if(CMAKE_WINDOWS_VERSION STREQUAL "WINXP")
@@ -111,10 +124,12 @@ if(MSVC)
 else(MINGW)
     set_target_properties(${PARA_NAME} PROPERTIES LINK_FLAGS "-mwindows")
 endif()
+
 if(UNIX AND NOT ANDROID)
     set_target_properties(${PROJECT_NAME} PROPERTIES
         RUNTIME_OUTPUT_NAME ${PROJECT_NAME})
 endif()
+
 target_compile_options(${PROJECT_NAME} PRIVATE
     "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
     "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"

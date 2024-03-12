@@ -119,6 +119,17 @@ else()
         ${CHINESE_CHESS_QT_RCC_FILES} ${CHINESE_CHESS_QT_SOURCE_UI_FILES})
 endif()
 
+# setup rpath to where binary is at.
+if(APPLE)
+    SET_TARGET_PROPERTIES(${PROJECT_NAME}
+        PROPERTIES INSTALL_RPATH
+        "lib;../lib;../lib/${CMAKE_LIBRARY_ARCHITECTURE};@executable_path/../lib;@executable_path;@executable_path/../lib/${CMAKE_LIBRARY_ARCHITECTURE}")
+else()
+    SET_TARGET_PROPERTIES(${PROJECT_NAME}
+        PROPERTIES INSTALL_RPATH
+            "$ORIGIN;$ORIGIN/../lib;$ORIGIN/../lib/${CMAKE_LIBRARY_ARCHITECTURE};lib;../lib;../lib/${CMAKE_LIBRARY_ARCHITECTURE}")
+endif()
+    
 GENERATE_EXPORT_HEADER(${PROJECT_NAME})
 string(TOLOWER ${PROJECT_NAME} LOWER_PROJECT_NAME)
 list(APPEND INSTALLHEADER_FILES

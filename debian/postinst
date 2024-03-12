@@ -20,7 +20,7 @@ set -e
 INSTALL_ROOT=/opt/ChineseChess
 case "$1" in
     configure)
-	chmod -R a+rw $INSTALL_ROOT/etc
+	    mkdir -p $INSTALL_ROOT/etc
         chmod -R a+rw $INSTALL_ROOT/log
 
         if [ ! -f /usr/share/applications/org.Rabbit.ChineseChess.desktop ]; then
