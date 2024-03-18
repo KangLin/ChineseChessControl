@@ -21,6 +21,7 @@ INSTALL_ROOT=/opt/ChineseChess
 case "$1" in
     configure)
 	    mkdir -p $INSTALL_ROOT/etc
+		mkdir -p $INSTALL_ROOT/log
         chmod -R a+rw $INSTALL_ROOT/log
 
         if [ ! -f /usr/share/applications/org.Rabbit.ChineseChess.desktop ]; then
@@ -43,6 +44,7 @@ case "$1" in
         rm -fr /usr/share/applications/org.Rabbit.ChineseChess.desktop
         rm -fr /etc/ld.so.conf.d/ChineseChess.conf
         rm -fr /usr/share/pixmaps/org.Rabbit.ChineseChess.png
+        rm -fr $INSTALL_ROOT/log
     ;;
 
     *)

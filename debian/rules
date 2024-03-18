@@ -41,12 +41,18 @@ override_dh_auto_build:
 	cmake --build $(BUILD_DIR) --config Release
 
 override_dh_auto_install:
-	cmake --install $(BUILD_DIR) --config Release --component Runtime --prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
-	cmake --install $(BUILD_DIR) --config Release --component QtRuntime --prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
-	cmake --install $(BUILD_DIR) --config Release --component DependLibraries --prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
-	cmake --install $(BUILD_DIR) --config Release --component QtApplications --prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
-	cmake --install $(BUILD_DIR) --config Release --component Development --prefix $(PACKAGE_chinesechess_dev_DIR)/opt/ChineseChess
-	cmake --install $(BUILD_DIR) --config Release --component QtDevelopment --prefix $(PACKAGE_chinesechess_dev_DIR)/opt/ChineseChess
+	cmake --install $(BUILD_DIR) --config Release --component Runtime \
+		--prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
+	cmake --install $(BUILD_DIR) --config Release --component QtRuntime \
+		--prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
+	cmake --install $(BUILD_DIR) --config Release --component DependLibraries \
+		--prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
+	cmake --install $(BUILD_DIR) --config Release --component QtApplications \
+		--prefix $(PACKAGE_chinesechess_DIR)/opt/ChineseChess
+	cmake --install $(BUILD_DIR) --config Release --component Development \
+		--prefix $(PACKAGE_chinesechess_dev_DIR)/opt/ChineseChess
+	cmake --install $(BUILD_DIR) --config Release --component QtDevelopment \
+		--prefix $(PACKAGE_chinesechess_dev_DIR)/opt/ChineseChess
 
 override_dh_builddeb:
 	dh_builddeb --package=chinesechess -P$(PACKAGE_chinesechess_DIR)
