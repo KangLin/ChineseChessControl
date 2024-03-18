@@ -214,7 +214,7 @@ if(NOT EXISTS ${CMAKE_BINARY_DIR}/etc/ChineseChess_logqt.ini)
 endif()
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/etc/ChineseChess_logqt.ini
     DESTINATION etc
-    COMPONENT Runtime)
+    COMPONENT QtApplications)
 
 # Install other files
 set(OTHER_FILES
@@ -225,4 +225,4 @@ set(OTHER_FILES
 
 INSTALL_FILE(SOURCES ${OTHER_FILES}
     DESTINATION ${CMAKE_INSTALL_DOCDIR}
-        COMPONENT Runtime)
+        COMPONENT QtApplications)
