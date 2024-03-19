@@ -2,6 +2,7 @@
 #include "ui_FrmChineseChess.h"
 #include "DlgAbout/DlgAbout.h"
 #include "RabbitCommonDir.h"
+#include "RabbitCommonTools.h"
 
 #include <QResizeEvent>
 #include <QMouseEvent>
@@ -73,25 +74,26 @@ CFrmChineseChess::~CFrmChineseChess()
     delete ui;
 }
 
-static QTranslator g_Translator;
+static QSharedPointer<QTranslator> g_Translator;
 int CFrmChineseChess::InitResource(const QString szLanguage)
 {
     Q_INIT_RESOURCE(ResourceChineseChess);
 #if (defined(DEBUG) || defined(_DEBUG)) && !defined (BUILD_SHARED_LIBS)
     Q_INIT_RESOURCE(translations_ChineseChessQt);
 #endif
-    QString szQM = RabbitCommon::CDir::Instance()->GetDirTranslations()
-            + QDir::separator() + "ChineseChessQt_" + szLanguage + ".qm";
-    if(g_Translator.load(szQM))
-        qApp->installTranslator(&g_Translator);
-    else
-        qCritical() << "Load translator fail:" << szQM;
-    return 0;
+    g_Translator = RabbitCommon::CTools::Instance()->InstallTranslator(
+        "ChineseChessQt",
+        RabbitCommon::CTools::TranslationType::Library,
+        "",
+        szLanguage);
+    if(g_Translator)
+        return 0;
+    return -1;
 }
 
 int CFrmChineseChess::CleanResource()
 {
-    qApp->removeTranslator(&g_Translator);
+    RabbitCommon::CTools::Instance()->RemoveTranslator(g_Translator);
 
 #if (defined(DEBUG) || defined(_DEBUG)) && !defined (BUILD_SHARED_LIBS)
     Q_CLEANUP_RESOURCE(translations_ChineseChessQt);

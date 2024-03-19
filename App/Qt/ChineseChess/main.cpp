@@ -19,13 +19,8 @@ int main(int argc, char *argv[])
     RabbitCommon::CTools::Instance()->Init(szLoacleName);
     CFrmChineseChess::InitResource(szLoacleName);
 
-    QString qmFile = RabbitCommon::CDir::Instance()->GetDirTranslations()
-            + QDir::separator() + "ChineseChessApp_" + szLoacleName + ".qm";
-
-    QTranslator translator;
-    bool bTranslator = translator.load(qmFile);
-    if(bTranslator)
-        qApp->installTranslator(&translator);
+    QSharedPointer<QTranslator> translator =
+        RabbitCommon::CTools::Instance()->InstallTranslator("ChineseChessApp");
 
     a.setApplicationDisplayName(QObject::tr("Chinese chess"));
 
@@ -42,8 +37,8 @@ int main(int argc, char *argv[])
 
     nRet = a.exec();
 
-    if(bTranslator)
-        qApp->removeTranslator(&translator);
+    if(translator)
+        RabbitCommon::CTools::Instance()->RemoveTranslator(translator);
     CFrmChineseChess::CleanResource();
     RabbitCommon::CTools::Instance()->Clean();
 

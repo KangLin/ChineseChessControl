@@ -100,18 +100,18 @@ if(WIN32)
 endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    
+
     qt_add_library(${PROJECT_NAME} ${CHINESE_CHESS_QT_SOURCES_FILES}
         ${CHINESE_CHESS_QT_HEADER_FILES}
         ${CHINESE_CHESS_QT_RCC_FILES} ${CHINESE_CHESS_QT_SOURCE_UI_FILES})
-    
+
     if(NOT ANDROID)
         qt_add_plugin(plugin${PROJECT_NAME} ${CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES}
             ${${DESIGNER_FILES}})
-        
+
         target_link_libraries(plugin${PROJECT_NAME} PRIVATE ${PROJECT_NAME})
     endif()
-    
+
 else()
     add_library(${PROJECT_NAME} ${CHINESE_CHESS_QT_SOURCES_FILES}
         ${CHINESE_CHESS_QT_DESIGNER_SOURCES_FILES}
