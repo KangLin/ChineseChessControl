@@ -78,6 +78,7 @@ build_script:
       -DCMAKE_INSTALL_PREFIX="%cd%/install" ^
       -DCMAKE_PREFIX_PATH="%INSTALL_DIR%" ^
       -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%/scripts/buildsystems/vcpkg.cmake" ^
+      -DVCPKG_MANIFEST_DIR="%APPVEYOR_BUILD_FOLDER%/vcpkg/manifests" ^
       -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON ^
       -DVCPKG_APPLOCAL_DEPS=ON
   - cmake --build . --config Release
