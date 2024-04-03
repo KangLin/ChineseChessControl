@@ -1,9 +1,9 @@
 - v2.0.12
   - CI: 修改 GITHUB action 发布
   - 增加 vcpkg.json
-  - 使用 RabbitCommon v2.2.0
   - 复制 ChangLog.md 等文件到 ${CMAKE_INSTALL_DOCDIR}
-  
+  - 使用 [RabbitCommon v2.2.1](https://github.com/KangLin/RabbitCommon/releases/tag/v2.2.1)
+
 - v2.0.11
   - CI: 更新 VCPKG。修复CPAKE错误。详见： https://github.com/microsoft/vcpkg/issues/32560
 

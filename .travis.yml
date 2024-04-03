@@ -50,7 +50,7 @@ before_install:
 - sudo Xvfb :99 -ac &
 - export DISPLAY=:99.0
 - mkdir ${SOURCE_DIR}/Tools
-- export VERSION="v2.0.11"
+- export VERSION="v2.0.12"
 - echo "QT_USER:$QT_USER"
 - echo "QT_PASSWORD:$QT_PASSWORD"
 - echo "STOREPASS:$STOREPASS"

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.KangLinStudio.ChineseChess"
-    android:versionName="2.0.11"
+    android:versionName="2.0.12"
     android:versionCode="2"
     android:installLocation="auto">
     

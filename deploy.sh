@@ -31,7 +31,6 @@ fi
 sed -i "s/^\!define PRODUCT_VERSION.*/\!define PRODUCT_VERSION \"${VERSION}\"/g" ${SOURCE_DIR}/Install/Install.nsi
 sed -i "s/^\SET(ChineseChessControl_VERSION.*/SET(ChineseChessControl_VERSION \"${VERSION}\")/g" ${SOURCE_DIR}/CMakeLists.txt
 sed -i "s/    SET(${PROJECT_NAME}_VERSION.*/    SET(${PROJECT_NAME}_VERSION \"${VERSION}\")/g" ${SOURCE_DIR}/Src/CMakeLists.txt
-sed -i "s/export VERSION=.*/export VERSION=\"${VERSION}\"/g" ${SOURCE_DIR}/ci/build.sh
 sed -i "s/^version: '.*{build}'/version: '${VERSION}.{build}'/g" ${SOURCE_DIR}/appveyor.yml
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/appveyor.yml
 sed -i "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/msvc.yml
@@ -44,7 +43,6 @@ sed -i "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/${VERSION}/g" ${SOURCE_DIR}/README*.md
 
 sed -i "s/^\Standards-Version:.*/\Standards-Version:\"${VERSION}\"/g" ${SOURCE_DIR}/debian/control
 DEBIAN_VERSION=`echo ${VERSION}|cut -d "v" -f 2`
-sed -i "s/export DEBIAN_VERSION=.*/export DEBIAN_VERSION=\"${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/ci/build.sh
 sed -i "s/chinesechess (.*)/chinesechess (${DEBIAN_VERSION})/g" ${SOURCE_DIR}/debian/changelog
 sed -i "s/Version=.*/Version=${DEBIAN_VERSION}/g" ${SOURCE_DIR}/Package/share/applications/org.Rabbit.ChineseChess.desktop
 #sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${DEBIAN_VERSION}/g" ${SOURCE_DIR}/README*.md
