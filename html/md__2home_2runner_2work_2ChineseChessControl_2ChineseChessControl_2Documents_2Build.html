@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: 编译</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">编译</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md18"></a></p><ul>
+<li>依赖</li>
+<li>CMake 配置参数</li>
+<li>各平台编译<ul>
+<li>linux 平台编译说明</li>
+<li>windows 平台编译说明</li>
+<li>Android 平台编译说明</li>
+</ul>
+</li>
+<li>安装目录</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md19"></a>
+依赖</h2>
+<ul>
+<li>工具<ul>
+<li>编译器<ul>
+<li>For linux or android<ul>
+<li>GNU GCC</li>
+<li>Clang</li>
+</ul>
+</li>
+<li>For windows<ul>
+<li><a href="http://msdn.microsoft.com/zh-cn/vstudio">Microsoft Visual studio c++</a></li>
+<li><a href="http://sourceforge.net/projects/msys2/">MSYS2/MinGW</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://www.cmake.org/">CMake</a></li>
+<li>[可选，linux平台] Automake and autoconfig</li>
+<li>[可选，编译ChineseChessQt时] <a href="http://qt.io/">Qt</a></li>
+<li>[可选，编译Android时] android sdk and ndk <br  />
+</li>
+</ul>
+</li>
+<li>依赖库<ul>
+<li>[可选] 玉兔公共库: <a href="https://github.com/KangLin/RabbitCommon">https://github.com/KangLin/RabbitCommon</a></li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md20"></a>
+CMake 配置参数</h2>
+<ul>
+<li>[可选] Qt5_DIR: qt 安装位置(指向Qt5Config.cmake的目录，默认为 安装目录/lib/cmake/Qt5)。 详见：https://doc.qt.io/qt-5/cmake-get-started.html</li>
+<li>[可选] RabbitCommon_DIR: RabbitCommon 源码位置</li>
+<li>[可选] BUILD_CHINESE_CHESS_MFC_VIEW：编译中国象棋 MFC 扩展动态库</li>
+<li>[可选] BUILD_CHINESE_CHESS_ACTIVEX：编译中国象棋 ActiveX</li>
+<li>[可选] BUILD_CHINESE_CHESS_APP_MFC：编译中国象棋 MFC 程序</li>
+<li>[可选] BUILD_CHINESE_CHESS_QT：编译中国象棋 QT 插件</li>
+<li>[可选] BUILD_CHINESE_CHESS_QT_APP：编译中国象棋 QT 应用程序</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md21"></a>
+各平台编译</h2>
+<h3><a class="anchor" id="autotoc_md22"></a>
+下载源码</h3>
+<ul>
+<li>下载本项目源码 <pre class="fragment">git clone https://github.com/KangLin/ChineseChessControl.git
+</pre></li>
+<li>下载必选库（玉兔公共）库源码 <pre class="fragment">git clone https://github.com/KangLin/RabbitCommon.git
+</pre> </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md23"></a>
+linux 平台编译说明</h3>
+<ul>
+<li>编译 <pre class="fragment">git clone https://github.com/KangLin/RabbitCommon.git
+git clone https://github.com/KangLin/ChineseChessControl.git
+cd ChineseChessControl
+mkdir build
+cd build
+cmake .. -G"Unix Makefiles" \
+      -DCMAKE_INSTALL_PREFIX=`pwd`/install \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DQt5_DIR= \
+      -DRabbitCommon_DIR= \
+      [其它可选 CMake 配置参数]
+cmake --build . --config Release 
+</pre></li>
+<li>安装<ul>
+<li>安装库和程序 <pre class="fragment">cmake --build . --config Release --target install    # --target install/strip strip 目标
+</pre></li>
+</ul>
+</li>
+<li>打包 <pre class="fragment">cmake --build . --target package
+</pre></li>
+<li>运行例子<ul>
+<li>把生成库的目录加入到变量 LD_LIBRARY_PATH 中 <pre class="fragment">cd ChineseChessControl
+cd build/install
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`/bin:[可选库的目录]
+</pre></li>
+<li>执行安装目录 bin 目录下的程序 <pre class="fragment">cd build/install/bin
+./ChineseChessApp  #Qt 程序
+</pre> </li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md24"></a>
+windows 平台编译说明</h3>
+<ul>
+<li>使用 cmake-gui.exe 工具编译。打开 cmake-gui.exe 配置</li>
+<li>命令行编译<ul>
+<li>把 cmake 命令所在目录加入到环境变量 PATH 中</li>
+<li>从开始菜单打开 “VS2015开发人员命令提示”，进入命令行<ul>
+<li>编译 <pre class="fragment">git clone https://github.com/KangLin/RabbitCommon.git
+git clone https://github.com/KangLin/ChineseChessControl.git
+cd ChineseChessControl
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=install ^
+     -DCMAKE_BUILD_TYPE=Release ^
+     -DQt5_DIR= ^
+     -DRabbitCommon_DIR= ^
+     [其它可选 CMake 配置参数]
+cmake --build . --config Release
+</pre></li>
+<li>安装<ul>
+<li>安装库和程序 <pre class="fragment">cmake --build . --config Release --target install
+</pre></li>
+</ul>
+</li>
+<li>打包 <pre class="fragment">  cmake --build . --target package
+</pre></li>
+<li>运行例子<ul>
+<li>执行安装目录 bin 目录下的程序 <pre class="fragment">cd ChineseChessControl
+cd build/install/bin
+ChineseChessApp.exe
+或者：
+ChineseChessMfcApp.exe
+</pre> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md25"></a>
+Android 平台编译说明</h3>
+<ul>
+<li>安装 ndk 编译工具<ul>
+<li>从 <a href="https://developer.android.com/ndk/downloads">https://developer.android.com/ndk/downloads</a> 下载 ndk，并安装到：/home/android-ndk</li>
+<li>设置环境变量： <pre class="fragment">export ANDROID_NDK=/home/android-ndk
+</pre></li>
+</ul>
+</li>
+<li>安装 sdk 工具<ul>
+<li>从 <a href="https://developer.android.google.cn/studio/releases">https://developer.android.google.cn/studio/releases</a> 下载 sdk tools, 并安装到 /home/android-sdk</li>
+<li>设置环境变量： <pre class="fragment">export ANDROID_SDK=/home/android-sdk
+</pre></li>
+</ul>
+</li>
+<li>编译<ul>
+<li>主机是 linux<ul>
+<li>编译 <pre class="fragment">git clone https://github.com/KangLin/RabbitCommon.git
+git clone https://github.com/KangLin/ChineseChessControl.git
+cd ChineseChessControl
+mkdir build
+cd build
+cmake .. -G"Unix Makefiles" \
+         -DCMAKE_INSTALL_PREFIX=`pwd`/android-build \
+         -DCMAKE_BUILD_TYPE=Release \
+         -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake \
+         -DANDROID_ABI="armeabi-v7a with NEON" \
+         -DANDROID_PLATFORM=android-24 \
+         -DQt5_DIR= \
+         -DRabbitCommon_DIR= \                   
+         [其它可选 CMake 配置参数]
+cmake --build . --config Release
+</pre></li>
+<li>安装<ul>
+<li><p class="startli">安装库和程序</p>
+<p class="startli">cmake &ndash;build . &ndash;config Release &ndash;target install/strip</p>
+</li>
+<li><p class="startli">仅安装程序</p>
+<p class="startli">cmake &ndash;build . &ndash;config Release &ndash;target install-runtime</p>
+</li>
+</ul>
+</li>
+<li>生成 APK <pre class="fragment">cmake --build . --config Release --target APK
+</pre></li>
+</ul>
+</li>
+<li>主机是 windows<ul>
+<li>windows 控制台<ul>
+<li>编译 <pre class="fragment">git clone https://github.com/KangLin/RabbitCommon.git
+git clone https://github.com/KangLin/ChineseChessControl.git
+cd ChineseChessControl
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=%cd%\android-build ^
+         -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ^
+         -DCMAKE_TOOLCHAIN_FILE=%ANDROID_NDK%/build/cmake/android.toolchain.cmake ^
+         -DCMAKE_MAKE_PROGRAM=%ANDROID_NDK%/prebuilt/windows-x86_64/bin/make.exe ^
+         -DANDROID_ABI=arm64-v8a ^
+         -DANDROID_ARM_NEON=ON ^
+         -DANDROID_PLATFORM=android-24 ^
+         -DQt5_DIR= ^
+         -DRabbitCommon_DIR= ^
+         [其它可选 CMake 配置参数]
+cmake --build . --config Release
+</pre></li>
+<li>安装<ul>
+<li>安装库和程序 <pre class="fragment">cmake --build . --config Release --target install/strip
+</pre></li>
+<li>仅安装程序 <pre class="fragment">cmake --build . --config Release --target install-runtime
+</pre></li>
+<li>生成 APK <pre class="fragment">cmake --build . --config Release --target APK
+</pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>msys2 或 cygwin <pre class="fragment">git clone https://github.com/KangLin/RabbitCommon.git
+git clone https://github.com/KangLin/ChineseChessControl.git
+cd ChineseChessControl
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/android-build \
+         -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
+         -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake \
+         -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/windows-x86_64/bin/make.exe \
+         -DANDROID_ABI=arm64-v8a \
+         -DANDROID_ARM_NEON=ON \
+         -DANDROID_PLATFORM=android-24 \
+         -DQt5_DIR= \
+         -DRabbitCommon_DIR= \
+         [其它可选 CMake 配置参数]
+</pre><ul>
+<li>安装<ul>
+<li>安装库和程序 <pre class="fragment">cmake --build . --config Release --target install/strip
+</pre></li>
+<li>仅安装程序 <pre class="fragment">cmake --build . --config Release --target install-runtime
+</pre></li>
+<li>生成 APK <pre class="fragment">cmake --build . --config Release --target APK
+</pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CMake for android 参数说明：https://developer.android.google.cn/ndk/guides/cmake<ul>
+<li>ANDROID_ABI: 可取下列值： 目标 ABI。如果未指定目标 ABI，则 CMake 默认使用 armeabi-v7a。 <br  />
+ 有效的目标名称为：<ul>
+<li>armeabi：带软件浮点运算并基于 ARMv5TE 的 CPU。</li>
+<li>armeabi-v7a：带硬件 FPU 指令 (VFPv3_D16) 并基于 ARMv7 的设备。</li>
+<li>armeabi-v7a with NEON：与 armeabi-v7a 相同，但启用 NEON 浮点指令。这相当于设置 -DANDROID_ABI=armeabi-v7a 和 -DANDROID_ARM_NEON=ON 。</li>
+<li>arm64-v8a：ARMv8 AArch64 指令集。</li>
+<li>x86：IA-32 指令集。</li>
+<li>x86_64 - 用于 x86-64 架构的指令集。</li>
+</ul>
+</li>
+<li>ANDROID_NDK &lt;path&gt; 主机上安装的 NDK 根目录的绝对路径</li>
+<li>ANDROID_PLATFORM: 如需平台名称和对应 Android 系统映像的完整列表，请参阅 <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html">Android NDK 原生 API</a></li>
+<li>ANDROID_ARM_MODE</li>
+<li>ANDROID_ARM_NEON</li>
+<li>ANDROID_STL: 指定 CMake 应使用的 STL。默认情况下，CMake 使用 c++_static。<ul>
+<li>c++_shared: 使用 libc++ 动态库</li>
+<li>c++_static: 使用 libc++ 静态库</li>
+<li>none: 没有 C++ 库支持</li>
+<li>system: 用系统的 STL</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="startli">安装 apk 到设备</p>
+<p class="startli">adb install android-build-debug.apk</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md26"></a>
+安装目录</h2>
+<div class="fragment"><div class="line">ROOT</div>
+<div class="line">  |------- bin    存放应用程序</div>
+<div class="line">  |------- lib    存放库文件</div>
+<div class="line">  |         |-- cmake</div>
+<div class="line">  |               |---- ChineseChessControl  存放 CMAKE 配置文件</div>
+<div class="line">  |         |-- pkgconfig                    存放 pkg-config 配置文件</div>
+<div class="line">  |        </div>
+<div class="line">  |------- include</div>
+<div class="line">              |--- ChineseChessControl 存放头文件</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

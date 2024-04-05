@@ -1,0 +1,716 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: CPGN类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classCPGN-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CPGN类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class to hold all information for the Portable Game Notation (PGN) of a single game.  
+ <a href="classCPGN.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Pgn_8h_source.html">Pgn.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a34fcae1a8a53c60141098b227d1f7a5b" id="r_a34fcae1a8a53c60141098b227d1f7a5b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a34fcae1a8a53c60141098b227d1f7a5b">GetTag</a> (const std::string &amp;szTag)</td></tr>
+<tr class="separator:a34fcae1a8a53c60141098b227d1f7a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8b1ef76acde3295b18889e5b6bba6e" id="r_a9e8b1ef76acde3295b18889e5b6bba6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a9e8b1ef76acde3295b18889e5b6bba6e">SetTag</a> (const std::string &amp;szTag, const std::string &amp;szValue)</td></tr>
+<tr class="separator:a9e8b1ef76acde3295b18889e5b6bba6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0df8c572b6b7dd0476de27b5321f95d3" id="r_a0df8c572b6b7dd0476de27b5321f95d3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a0df8c572b6b7dd0476de27b5321f95d3">toString</a> () const</td></tr>
+<tr class="memdesc:a0df8c572b6b7dd0476de27b5321f95d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the game as PGN string.  <br /></td></tr>
+<tr class="separator:a0df8c572b6b7dd0476de27b5321f95d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac66d03cf31c9882a9454604e915df395" id="r_ac66d03cf31c9882a9454604e915df395"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#ac66d03cf31c9882a9454604e915df395">ParseString</a> (const std::string szPgn)</td></tr>
+<tr class="memdesc:ac66d03cf31c9882a9454604e915df395"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析 PGN  <br /></td></tr>
+<tr class="separator:ac66d03cf31c9882a9454604e915df395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbfdca25821a84b0886a6a2663b1e67" id="r_aefbfdca25821a84b0886a6a2663b1e67"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#aefbfdca25821a84b0886a6a2663b1e67">GetEvent</a> () const</td></tr>
+<tr class="memdesc:aefbfdca25821a84b0886a6a2663b1e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the tournament or match event.  <br /></td></tr>
+<tr class="separator:aefbfdca25821a84b0886a6a2663b1e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3451f3eb1d65c8d05fef443feda722c" id="r_aa3451f3eb1d65c8d05fef443feda722c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#aa3451f3eb1d65c8d05fef443feda722c">SetEvent</a> (const char *pEvent)</td></tr>
+<tr class="separator:aa3451f3eb1d65c8d05fef443feda722c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7ab19fafc2a915740c819c6fb5b04f8" id="r_ae7ab19fafc2a915740c819c6fb5b04f8"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#ae7ab19fafc2a915740c819c6fb5b04f8">GetSite</a> () const</td></tr>
+<tr class="memdesc:ae7ab19fafc2a915740c819c6fb5b04f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the location of the event.  <br /></td></tr>
+<tr class="separator:ae7ab19fafc2a915740c819c6fb5b04f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf39909773956b768171e88a98adf546" id="r_aaf39909773956b768171e88a98adf546"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#aaf39909773956b768171e88a98adf546">SetSite</a> (const char *pSite)</td></tr>
+<tr class="separator:aaf39909773956b768171e88a98adf546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2d175b1e428df633835a0227317bd7" id="r_abf2d175b1e428df633835a0227317bd7"><td class="memItemLeft" align="right" valign="top">const time_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#abf2d175b1e428df633835a0227317bd7">GetDate</a> () const</td></tr>
+<tr class="memdesc:abf2d175b1e428df633835a0227317bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the date of the event.  <br /></td></tr>
+<tr class="separator:abf2d175b1e428df633835a0227317bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc54c2b648409c8a002e3d9c408e9ca0" id="r_adc54c2b648409c8a002e3d9c408e9ca0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#adc54c2b648409c8a002e3d9c408e9ca0">SetDate</a> (const time_t &amp;t)</td></tr>
+<tr class="separator:adc54c2b648409c8a002e3d9c408e9ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f7348886c82d46900f73274714fdf8" id="r_ac6f7348886c82d46900f73274714fdf8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#ac6f7348886c82d46900f73274714fdf8">parseDate</a> (const std::string &amp;dateText)</td></tr>
+<tr class="separator:ac6f7348886c82d46900f73274714fdf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a53dddf740a7901a76f0cfe3125a7ee" id="r_a8a53dddf740a7901a76f0cfe3125a7ee"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a8a53dddf740a7901a76f0cfe3125a7ee">dateToString</a> (const time_t &amp;t) const</td></tr>
+<tr class="separator:a8a53dddf740a7901a76f0cfe3125a7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bebd13ce1299ac19f05c6338c6c0f05" id="r_a6bebd13ce1299ac19f05c6338c6c0f05"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a6bebd13ce1299ac19f05c6338c6c0f05">GetRound</a> () const</td></tr>
+<tr class="memdesc:a6bebd13ce1299ac19f05c6338c6c0f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the playing round ordinal of the game.  <br /></td></tr>
+<tr class="separator:a6bebd13ce1299ac19f05c6338c6c0f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca486ef59e6b0909968cf408602ce4ae" id="r_aca486ef59e6b0909968cf408602ce4ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#aca486ef59e6b0909968cf408602ce4ae">SetRound</a> (const char *pRound)</td></tr>
+<tr class="separator:aca486ef59e6b0909968cf408602ce4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d8f052b512562d2d96e863b3eeb2ff4" id="r_a2d8f052b512562d2d96e863b3eeb2ff4"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a2d8f052b512562d2d96e863b3eeb2ff4">GetRed</a> () const</td></tr>
+<tr class="memdesc:a2d8f052b512562d2d96e863b3eeb2ff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the player(s) of the white pieces.  <br /></td></tr>
+<tr class="separator:a2d8f052b512562d2d96e863b3eeb2ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43278a3ba47b9357faf724f1ea5ddb6c" id="r_a43278a3ba47b9357faf724f1ea5ddb6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a43278a3ba47b9357faf724f1ea5ddb6c">SetRed</a> (const char *pRed)</td></tr>
+<tr class="separator:a43278a3ba47b9357faf724f1ea5ddb6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8863e8b6053a0bed2a1a5532960f2b74" id="r_a8863e8b6053a0bed2a1a5532960f2b74"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a8863e8b6053a0bed2a1a5532960f2b74">GetBlack</a> () const</td></tr>
+<tr class="memdesc:a8863e8b6053a0bed2a1a5532960f2b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the player(s) of the black pieces.  <br /></td></tr>
+<tr class="separator:a8863e8b6053a0bed2a1a5532960f2b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cb825687d2cb71b39b6ddd877c623ae" id="r_a8cb825687d2cb71b39b6ddd877c623ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a8cb825687d2cb71b39b6ddd877c623ae">SetBlack</a> (const char *pBlack)</td></tr>
+<tr class="separator:a8cb825687d2cb71b39b6ddd877c623ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67ae6771721bf428e90685ae0513584" id="r_ac67ae6771721bf428e90685ae0513584"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#ac67ae6771721bf428e90685ae0513584">GetResult</a> () const</td></tr>
+<tr class="memdesc:ac67ae6771721bf428e90685ae0513584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the result of the game, if any.  <br /></td></tr>
+<tr class="separator:ac67ae6771721bf428e90685ae0513584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7eaa874f7365972c303ce3dbea1858d" id="r_ac7eaa874f7365972c303ce3dbea1858d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#ac7eaa874f7365972c303ce3dbea1858d">SetResult</a> (const char *pResult)</td></tr>
+<tr class="separator:ac7eaa874f7365972c303ce3dbea1858d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a2d9fba9884ca2ba1fa35b0ddda007" id="r_a60a2d9fba9884ca2ba1fa35b0ddda007"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a60a2d9fba9884ca2ba1fa35b0ddda007">GetFen</a> () const</td></tr>
+<tr class="separator:a60a2d9fba9884ca2ba1fa35b0ddda007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4eec9c980ab328a65427137a7ac53f5" id="r_ae4eec9c980ab328a65427137a7ac53f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#ae4eec9c980ab328a65427137a7ac53f5">SetFen</a> (const char *pFen)</td></tr>
+<tr class="separator:ae4eec9c980ab328a65427137a7ac53f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fdf7d654dc7bd1b7d570583e3fd5b1a" id="r_a4fdf7d654dc7bd1b7d570583e3fd5b1a"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a4fdf7d654dc7bd1b7d570583e3fd5b1a">GetFormat</a> () const</td></tr>
+<tr class="separator:a4fdf7d654dc7bd1b7d570583e3fd5b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3904f93942fbe9584f688738a5584662" id="r_a3904f93942fbe9584f688738a5584662"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a3904f93942fbe9584f688738a5584662">SetFormat</a> (const char *pFormat)</td></tr>
+<tr class="separator:a3904f93942fbe9584f688738a5584662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a378aa165ea3ac82e68366e9c011869d7" id="r_a378aa165ea3ac82e68366e9c011869d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPGN.html#a378aa165ea3ac82e68366e9c011869d7">SetSteps</a> (std::shared_ptr&lt; <a class="el" href="classCChessSteps.html">CChessSteps</a> &gt; steps)</td></tr>
+<tr class="separator:a378aa165ea3ac82e68366e9c011869d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Class to hold all information for the Portable Game Notation (PGN) of a single game. </p>
+<dl class="section see"><dt>参见</dt><dd><a href="http://www.xqbase.com/protocol/cchess_pgn.htm">http://www.xqbase.com/protocol/cchess_pgn.htm</a> <a href="https://www.xqbase.com/protocol/pgnfen1.htm">https://www.xqbase.com/protocol/pgnfen1.htm</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8h_source.html">Pgn.h</a> 第 <a class="el" href="Pgn_8h_source.html#l00022">22</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a24eedbd3c6662c2184e2c6b24162c01f" name="a24eedbd3c6662c2184e2c6b24162c01f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24eedbd3c6662c2184e2c6b24162c01f">&#9670;&#160;</a></span>CPGN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CPGN::CPGN </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00006">6</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a8a53dddf740a7901a76f0cfe3125a7ee" name="a8a53dddf740a7901a76f0cfe3125a7ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a53dddf740a7901a76f0cfe3125a7ee">&#9670;&#160;</a></span>dateToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CPGN::dateToString </td>
+          <td>(</td>
+          <td class="paramtype">const time_t &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00150">150</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8863e8b6053a0bed2a1a5532960f2b74" name="a8863e8b6053a0bed2a1a5532960f2b74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8863e8b6053a0bed2a1a5532960f2b74">&#9670;&#160;</a></span>GetBlack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetBlack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the player(s) of the black pieces. </p>
+<dl class="section return"><dt>返回</dt><dd>player(s) of the black pieces </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00189">189</a> 行定义.</p>
+
+</div>
+</div>
+<a id="abf2d175b1e428df633835a0227317bd7" name="abf2d175b1e428df633835a0227317bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2d175b1e428df633835a0227317bd7">&#9670;&#160;</a></span>GetDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const time_t &amp; CPGN::GetDate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the date of the event. </p>
+<dl class="section return"><dt>返回</dt><dd>date of the event </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00130">130</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aefbfdca25821a84b0886a6a2663b1e67" name="aefbfdca25821a84b0886a6a2663b1e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbfdca25821a84b0886a6a2663b1e67">&#9670;&#160;</a></span>GetEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the name of the tournament or match event. </p>
+<dl class="section return"><dt>返回</dt><dd>name of the tournament or match event </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00108">108</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a60a2d9fba9884ca2ba1fa35b0ddda007" name="a60a2d9fba9884ca2ba1fa35b0ddda007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60a2d9fba9884ca2ba1fa35b0ddda007">&#9670;&#160;</a></span>GetFen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetFen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00214">214</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4fdf7d654dc7bd1b7d570583e3fd5b1a" name="a4fdf7d654dc7bd1b7d570583e3fd5b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fdf7d654dc7bd1b7d570583e3fd5b1a">&#9670;&#160;</a></span>GetFormat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetFormat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00225">225</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2d8f052b512562d2d96e863b3eeb2ff4" name="a2d8f052b512562d2d96e863b3eeb2ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d8f052b512562d2d96e863b3eeb2ff4">&#9670;&#160;</a></span>GetRed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetRed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the player(s) of the white pieces. </p>
+<dl class="section return"><dt>返回</dt><dd>player(s) of the white pieces </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00175">175</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac67ae6771721bf428e90685ae0513584" name="ac67ae6771721bf428e90685ae0513584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67ae6771721bf428e90685ae0513584">&#9670;&#160;</a></span>GetResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetResult </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the result of the game, if any. </p>
+<dl class="section return"><dt>返回</dt><dd>result of the game </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00203">203</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6bebd13ce1299ac19f05c6338c6c0f05" name="a6bebd13ce1299ac19f05c6338c6c0f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bebd13ce1299ac19f05c6338c6c0f05">&#9670;&#160;</a></span>GetRound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetRound </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the playing round ordinal of the game. </p>
+<dl class="section return"><dt>返回</dt><dd>playing round ordinal of the game </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00164">164</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae7ab19fafc2a915740c819c6fb5b04f8" name="ae7ab19fafc2a915740c819c6fb5b04f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7ab19fafc2a915740c819c6fb5b04f8">&#9670;&#160;</a></span>GetSite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CPGN::GetSite </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the location of the event. </p>
+<dl class="section return"><dt>返回</dt><dd>location of the event </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00119">119</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a34fcae1a8a53c60141098b227d1f7a5b" name="a34fcae1a8a53c60141098b227d1f7a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34fcae1a8a53c60141098b227d1f7a5b">&#9670;&#160;</a></span>GetTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CPGN::GetTag </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szTag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00019">19</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac6f7348886c82d46900f73274714fdf8" name="ac6f7348886c82d46900f73274714fdf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6f7348886c82d46900f73274714fdf8">&#9670;&#160;</a></span>parseDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::parseDate </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dateText</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00135">135</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac66d03cf31c9882a9454604e915df395" name="ac66d03cf31c9882a9454604e915df395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac66d03cf31c9882a9454604e915df395">&#9670;&#160;</a></span>ParseString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::ParseString </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>szPgn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解析 PGN </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">szPgn</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00103">103</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8cb825687d2cb71b39b6ddd877c623ae" name="a8cb825687d2cb71b39b6ddd877c623ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cb825687d2cb71b39b6ddd877c623ae">&#9670;&#160;</a></span>SetBlack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetBlack </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pBlack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00194">194</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adc54c2b648409c8a002e3d9c408e9ca0" name="adc54c2b648409c8a002e3d9c408e9ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc54c2b648409c8a002e3d9c408e9ca0">&#9670;&#160;</a></span>SetDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetDate </td>
+          <td>(</td>
+          <td class="paramtype">const time_t &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00158">158</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa3451f3eb1d65c8d05fef443feda722c" name="aa3451f3eb1d65c8d05fef443feda722c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3451f3eb1d65c8d05fef443feda722c">&#9670;&#160;</a></span>SetEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetEvent </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pEvent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00113">113</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae4eec9c980ab328a65427137a7ac53f5" name="ae4eec9c980ab328a65427137a7ac53f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4eec9c980ab328a65427137a7ac53f5">&#9670;&#160;</a></span>SetFen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetFen </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFen</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00219">219</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3904f93942fbe9584f688738a5584662" name="a3904f93942fbe9584f688738a5584662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3904f93942fbe9584f688738a5584662">&#9670;&#160;</a></span>SetFormat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetFormat </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFormat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00230">230</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a43278a3ba47b9357faf724f1ea5ddb6c" name="a43278a3ba47b9357faf724f1ea5ddb6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43278a3ba47b9357faf724f1ea5ddb6c">&#9670;&#160;</a></span>SetRed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetRed </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pRed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00180">180</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac7eaa874f7365972c303ce3dbea1858d" name="ac7eaa874f7365972c303ce3dbea1858d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7eaa874f7365972c303ce3dbea1858d">&#9670;&#160;</a></span>SetResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetResult </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pResult</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00208">208</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aca486ef59e6b0909968cf408602ce4ae" name="aca486ef59e6b0909968cf408602ce4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca486ef59e6b0909968cf408602ce4ae">&#9670;&#160;</a></span>SetRound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetRound </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pRound</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00169">169</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aaf39909773956b768171e88a98adf546" name="aaf39909773956b768171e88a98adf546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf39909773956b768171e88a98adf546">&#9670;&#160;</a></span>SetSite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetSite </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pSite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00124">124</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a378aa165ea3ac82e68366e9c011869d7" name="a378aa165ea3ac82e68366e9c011869d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a378aa165ea3ac82e68366e9c011869d7">&#9670;&#160;</a></span>SetSteps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetSteps </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classCChessSteps.html">CChessSteps</a> &gt;&#160;</td>
+          <td class="paramname"><em>steps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00239">239</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9e8b1ef76acde3295b18889e5b6bba6e" name="a9e8b1ef76acde3295b18889e5b6bba6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e8b1ef76acde3295b18889e5b6bba6e">&#9670;&#160;</a></span>SetTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CPGN::SetTag </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00050">50</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0df8c572b6b7dd0476de27b5321f95d3" name="a0df8c572b6b7dd0476de27b5321f95d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0df8c572b6b7dd0476de27b5321f95d3">&#9670;&#160;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CPGN::toString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the game as PGN string. </p>
+<dl class="section return"><dt>返回</dt><dd>Returns the complete PNG notation for the game. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a> 第 <a class="el" href="Pgn_8cpp_source.html#l00075">75</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="Pgn_8h_source.html">Pgn.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="Pgn_8cpp_source.html">Pgn.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: 中国象棋 ActiveX 控件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">中国象棋 ActiveX 控件</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md5"></a> 作者： 康林(<a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>)</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md7"></a>
+编译</h2>
+<ul>
+<li>用 cmake , 建议使用此方法编译 <pre class="fragment">git clone https://github.com/KangLin/ChineseChessControl.git
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=`pwd`/install -DCMAKE_BUILD_TYPE=Release  #配置
+cmake --build . --config=Release                   #编译
+cmake --build . --config=Release --target install  #安装
+</pre> </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+调试</h2>
+<h3><a class="anchor" id="autotoc_md9"></a>
+VC6.0</h3>
+<ul>
+<li>打开 ActiveX control test container 工具 <br  />
+ <img src="OpenActivexControlTestContainer.png" alt="" class="inline" title="打开 ActiveX control test container 工具"/>    </li>
+<li>注册中国象棋控件 <br  />
+ 这一步在编译或安装时，会自动完成。如果没有成功，可以按下面方法之一注册： <br  />
+ <b>注意</b>:需要管理员权限<ul>
+<li>手工注册，使用 regsvr32 命令 <pre class="fragment">regsvr32 /s /c "D:\Source\ChineseChessControl\Src\.\DebugU\ChineseChessControl.ocx" 
+</pre></li>
+<li>用 ActiveX control test container 注册<ul>
+<li>打开注册控件 <br  />
+ <img src="OpenRegisterControl.png" alt="" class="inline" title="打开注册控件"/>    </li>
+<li><p class="startli">注册中国象棋控件 <br  />
+</p><ul>
+<li><img src="RegisterControl.PNG" alt="" class="inline"/>    </li>
+</ul>
+<ul>
+<li><img src="RegisterChineseChessControl.PNG" alt="" class="inline"/>    </li>
+</ul>
+<ul>
+<li><img src="RegisteredChineseChessControl.PNG" alt="" class="inline"/>    </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>插入中国象棋控件 <br  />
+ <img src="InsertChineseChessControl.PNG" alt="" class="inline"/>    </li>
+</ul>
+<ul>
+<li>调试 <br  />
+ <img src="Debug.PNG" alt="" class="inline"/>    </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md10"></a>
+VS 2017</h3>
+<ul>
+<li>从 VS 2010 没有自带 ActivX control test container 工具，而是以例子程序的方式提供。所以你可以从 vc6.0 中复制过来，或者，从 VS 2017 安装的例子程序中编译得到。</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-us/cpp/mfc/testing-properties-and-events-with-test-container">Testing Properties and Events with Test Container</a></p>
+<p>如果没安装，则可从 github 上下载<a href="https://github.com/microsoft/VCSamples/tree/master/VC2010Samples/MFC/ole/TstCon">源码</a></p>
+<ul>
+<li><p class="startli">工具-&gt;外部工具-&gt;添加</p><ul>
+<li><img src="OpenActivexControlTestContainerVC2013.png" alt="" class="inline"/>    </li>
+</ul>
+<ul>
+<li><img src="AddActivexControlTestContainer.PNG" alt="" class="inline"/>    </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>剩下的调试步骤与上面VC6.0的一样</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md11"></a>
+使用</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/how-to-add-activex-controls-to-windows-forms">如何：向 Windows 窗体添加 ActiveX 控件</a></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md12"></a>
+控件</h2>
+<p><a href="../Src/ActiveX/ChineseChessActiveX.idl">接口文件</a></p>
+<h3><a class="anchor" id="autotoc_md13"></a>
+属性:</h3>
+<ul>
+<li>Enabled: 允许或禁止控件</li>
+<li>QiPangColor: 棋盘颜色</li>
+<li>TiShiBoxColor: 提示框的颜色</li>
+<li>QiPangPicture: 棋盘图片</li>
+<li>BoardLayout: 棋盘布局。取下列值：<ul>
+<li>NoQi = 0,</li>
+<li>OnlyTopBlack = 1,</li>
+<li>OnlyBottomRed = 2,</li>
+<li>SwapRedBetweenBlack = 4,</li>
+<li>OnlyTopRed = OnlyTopBlack | SwapRedBetweenBlack,</li>
+<li>OnlyBottomBlack = OnlyBottomRed | SwapRedBetweenBlack,</li>
+<li>TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,</li>
+<li>TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack <br  />
+ **注意**：如果布局不完全，则由用户控制属性（Enabled）以决定是否下棋。</li>
+</ul>
+</li>
+<li>EnablePromptSound: 允许提示音</li>
+<li>EnablePromptMessage: 允许提示消息</li>
+<li>RedName: 设置红方名</li>
+<li>BlackName: 设置黑方名</li>
+<li>StartTime: 设置开始时间</li>
+<li>EndTime: 设置结束时间</li>
+<li>GameTags: 设置标签</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md14"></a>
+方法:</h3>
+<ul>
+<li>NextStep(): 下一步</li>
+<li>PreviouStep(): 上一步</li>
+<li>GoChess(SHORT i, SHORT j): 走棋</li>
+<li>SaveChessGame(BSTR szFile): 保存棋局</li>
+<li>LoadChessGame(BSTR szFile): 装载棋局并设置为初始状态</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md15"></a>
+事件:</h3>
+<ul>
+<li>EventGoChess(short i, short i, ENUM_QiZi chess): 走棋。</li>
+</ul>
+<p>棋盘描述 </p><pre class="fragment">   [0][0] ------------------&gt; i 或 x 方向
+          |
+          |
+          |
+          |
+          |
+          |
+         \|/                 [9][10]
+
+     j 或 y 方向
+</pre> <h2><a class="anchor" id="autotoc_md16"></a>
+开发</h2>
+<h3><a class="anchor" id="autotoc_md17"></a>
+字符编码</h3>
+<p>WIndows 中文系统字符编码默认为GB2313。 linux系统下字符编码一般使用 UTF-8 。 所以本项目跨平台部分的文件中的字符釆用**多字节编码**， 而与VC相关的部分文件使用 UNICODE 编码（位于：UI/ActiveX 和 App/MFC）。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

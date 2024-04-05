@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: /home/runner/work/ChineseChessControl/ChineseChessControl/Src/Pgn.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_413f4e031a85da0d68269c6fd2f76e1c.html">Src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Pgn.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// 作者：康林 &lt;kl222@126.com&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef CPGN_H_KL_2020_06_11_</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define CPGN_H_KL_2020_06_11_</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;ChessStepsChinese.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classCPGN.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classCPGN.html">CPGN</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="classCPGN.html">CPGN</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::string GetTag(<span class="keyword">const</span> std::string &amp;szTag);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> SetTag(<span class="keyword">const</span> std::string &amp;szTag, <span class="keyword">const</span> std::string&amp; szValue);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::string <a class="code hl_function" href="classCPGN.html#a0df8c572b6b7dd0476de27b5321f95d3">toString</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classCPGN.html#ac66d03cf31c9882a9454604e915df395">ParseString</a>(<span class="keyword">const</span> std::string szPgn);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">const</span> std::string&amp; <a class="code hl_function" href="classCPGN.html#aefbfdca25821a84b0886a6a2663b1e67">GetEvent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> SetEvent(<span class="keyword">const</span> <span class="keywordtype">char</span>* pEvent);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">const</span> std::string&amp; <a class="code hl_function" href="classCPGN.html#ae7ab19fafc2a915740c819c6fb5b04f8">GetSite</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">int</span> SetSite(<span class="keyword">const</span> <span class="keywordtype">char</span>* pSite);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> time_t&amp; <a class="code hl_function" href="classCPGN.html#abf2d175b1e428df633835a0227317bd7">GetDate</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">int</span> SetDate(<span class="keyword">const</span> time_t &amp;t);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">int</span> parseDate(<span class="keyword">const</span> std::string&amp; dateText);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    std::string dateToString(<span class="keyword">const</span> time_t &amp;t) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">const</span> std::string&amp; <a class="code hl_function" href="classCPGN.html#a6bebd13ce1299ac19f05c6338c6c0f05">GetRound</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">int</span> SetRound(<span class="keyword">const</span> <span class="keywordtype">char</span>* pRound);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">const</span> std::string&amp; <a class="code hl_function" href="classCPGN.html#a2d8f052b512562d2d96e863b3eeb2ff4">GetRed</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">int</span> SetRed(<span class="keyword">const</span> <span class="keywordtype">char</span>* pRed);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">const</span> std::string&amp; <a class="code hl_function" href="classCPGN.html#a8863e8b6053a0bed2a1a5532960f2b74">GetBlack</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> SetBlack(<span class="keyword">const</span> <span class="keywordtype">char</span>* pBlack);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">const</span> std::string&amp; <a class="code hl_function" href="classCPGN.html#ac67ae6771721bf428e90685ae0513584">GetResult</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">int</span> SetResult(<span class="keyword">const</span> <span class="keywordtype">char</span>* pResult);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">const</span> std::string&amp; GetFen() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">int</span> SetFen(<span class="keyword">const</span> <span class="keywordtype">char</span>* pFen);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keyword">const</span> std::string&amp; GetFormat() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">int</span> SetFormat(<span class="keyword">const</span> <span class="keywordtype">char</span>* pFormat);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">int</span> SetSteps(std::shared_ptr&lt;CChessSteps&gt; steps);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    std::string m_Game;                        <span class="comment">//游戏类型，国际象棋没有这个标签，中国象棋的PGN文件中这个标签必须放在第一位，其值必须为“Chinese Chess”</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    std::string m_Event;                       <span class="comment">//比赛名</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    std::string m_Site;                        <span class="comment">//比赛地点</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    time_t m_Date;                             <span class="comment">//比赛日期，格式统一为“yyyy.mm.dd”</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    std::string m_Round;                       <span class="comment">//比赛轮次</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    std::string m_Red;                         <span class="comment">//红方棋手，不同与国际象棋的White</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    std::string m_Black;                       <span class="comment">//黑方棋手</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    std::string m_Result;                      <span class="comment">//比赛结果，“红先胜”用“1-0”表示，“黑先胜”用“0-1”表示，和棋用“1/2-1/2”表示，未知用“*”表示。</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    std::string m_szFEN;                       <span class="comment">//开始局面，中局、残局和排局等摆出来的局面，作棋谱记录时通常要规定这个选项</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    std::string m_Format;                      <span class="comment">//表示记谱方法，可以是Chinese(中文纵线格式)、WXF(WXF纵线格式)和ICCS(ICCS坐标格式)，默认为Chinese。</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    std::map&lt;std::string, std::string&gt; m_Tags; </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    std::shared_ptr&lt;CChessSteps&gt; m_pSteps;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>};</div>
+</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">#endif </span><span class="comment">// CPGN_H_KL_2020_06_11_</span></div>
+<div class="ttc" id="aclassCPGN_html"><div class="ttname"><a href="classCPGN.html">CPGN</a></div><div class="ttdoc">Class to hold all information for the Portable Game Notation (PGN) of a single game.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8h_source.html#l00022">Pgn.h:23</a></div></div>
+<div class="ttc" id="aclassCPGN_html_a0df8c572b6b7dd0476de27b5321f95d3"><div class="ttname"><a href="classCPGN.html#a0df8c572b6b7dd0476de27b5321f95d3">CPGN::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdoc">Gets the game as PGN string.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00075">Pgn.cpp:75</a></div></div>
+<div class="ttc" id="aclassCPGN_html_a2d8f052b512562d2d96e863b3eeb2ff4"><div class="ttname"><a href="classCPGN.html#a2d8f052b512562d2d96e863b3eeb2ff4">CPGN::GetRed</a></div><div class="ttdeci">const std::string &amp; GetRed() const</div><div class="ttdoc">Get the player(s) of the white pieces.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00175">Pgn.cpp:175</a></div></div>
+<div class="ttc" id="aclassCPGN_html_a6bebd13ce1299ac19f05c6338c6c0f05"><div class="ttname"><a href="classCPGN.html#a6bebd13ce1299ac19f05c6338c6c0f05">CPGN::GetRound</a></div><div class="ttdeci">const std::string &amp; GetRound() const</div><div class="ttdoc">Get the playing round ordinal of the game.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00164">Pgn.cpp:164</a></div></div>
+<div class="ttc" id="aclassCPGN_html_a8863e8b6053a0bed2a1a5532960f2b74"><div class="ttname"><a href="classCPGN.html#a8863e8b6053a0bed2a1a5532960f2b74">CPGN::GetBlack</a></div><div class="ttdeci">const std::string &amp; GetBlack() const</div><div class="ttdoc">Get the player(s) of the black pieces.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00189">Pgn.cpp:189</a></div></div>
+<div class="ttc" id="aclassCPGN_html_abf2d175b1e428df633835a0227317bd7"><div class="ttname"><a href="classCPGN.html#abf2d175b1e428df633835a0227317bd7">CPGN::GetDate</a></div><div class="ttdeci">const time_t &amp; GetDate() const</div><div class="ttdoc">Gets the date of the event.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00130">Pgn.cpp:130</a></div></div>
+<div class="ttc" id="aclassCPGN_html_ac66d03cf31c9882a9454604e915df395"><div class="ttname"><a href="classCPGN.html#ac66d03cf31c9882a9454604e915df395">CPGN::ParseString</a></div><div class="ttdeci">int ParseString(const std::string szPgn)</div><div class="ttdoc">解析 PGN</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00103">Pgn.cpp:103</a></div></div>
+<div class="ttc" id="aclassCPGN_html_ac67ae6771721bf428e90685ae0513584"><div class="ttname"><a href="classCPGN.html#ac67ae6771721bf428e90685ae0513584">CPGN::GetResult</a></div><div class="ttdeci">const std::string &amp; GetResult() const</div><div class="ttdoc">Gets the result of the game, if any.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00203">Pgn.cpp:203</a></div></div>
+<div class="ttc" id="aclassCPGN_html_ae7ab19fafc2a915740c819c6fb5b04f8"><div class="ttname"><a href="classCPGN.html#ae7ab19fafc2a915740c819c6fb5b04f8">CPGN::GetSite</a></div><div class="ttdeci">const std::string &amp; GetSite() const</div><div class="ttdoc">Gets the location of the event.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00119">Pgn.cpp:119</a></div></div>
+<div class="ttc" id="aclassCPGN_html_aefbfdca25821a84b0886a6a2663b1e67"><div class="ttname"><a href="classCPGN.html#aefbfdca25821a84b0886a6a2663b1e67">CPGN::GetEvent</a></div><div class="ttdeci">const std::string &amp; GetEvent() const</div><div class="ttdoc">Gets the name of the tournament or match event.</div><div class="ttdef"><b>Definition</b> <a href="Pgn_8cpp_source.html#l00108">Pgn.cpp:108</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

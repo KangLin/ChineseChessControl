@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: /home/runner/work/ChineseChessControl/ChineseChessControl/Src/ChineseChess.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_413f4e031a85da0d68269c6fd2f76e1c.html">Src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ChineseChess.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ChineseChess_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef CHINESE_CHESS_H_KL_2020_05_13__</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define CHINESE_CHESS_H_KL_2020_05_13__</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;GoRule.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;ChessGame.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;chinesechess_export.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classCChineseChess.html">   30</a></span><span class="keyword">class </span>CHINESECHESS_EXPORT <a class="code hl_class" href="classCChineseChess.html">CChineseChess</a></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="classCChineseChess.html">CChineseChess</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classCChineseChess.html">~CChineseChess</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classCChineseChess.html#ae24b0518a6326cf58d2bd131d1ca5754">   39</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span>  <a class="code hl_enumeration" href="classCChineseChess.html#ae24b0518a6326cf58d2bd131d1ca5754">_ENUM_BoardLayout</a>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        NoQi = 0,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        OnlyTopBlack = 1,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        OnlyBottomRed = 2,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        SwapRedBetweenBlack = 4,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        OnlyTopRed = OnlyBottomRed | SwapRedBetweenBlack,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        OnlyBottomBlack = OnlyTopBlack | SwapRedBetweenBlack,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        TopBlackAndBottomRed = OnlyTopBlack | OnlyBottomRed,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        TopRedAndBottomBlack = TopBlackAndBottomRed | SwapRedBetweenBlack</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classCChineseChess.html#a79cf82a8d5ef61e1f596974c9c115c8f">   48</a></span>    } ENUM_BoardLayout;</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">int</span> SetBoardLayout(ENUM_BoardLayout layout);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    ENUM_BoardLayout GetBoardLayout();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">bool</span> GoChess(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keywordtype">bool</span> bNext = <span class="keyword">false</span>); <span class="comment">//走棋</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// 复盘操作</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">int</span> NextStep();    <span class="comment">//下一步</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">int</span> PreviouStep();     <span class="comment">//上一步</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> SaveChessGame(<span class="keyword">const</span> <span class="keywordtype">char</span>* pszFile);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> LoadChessGame(<span class="keyword">const</span> <span class="keywordtype">char</span>* pszFile);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    time_t GetStartTime();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> SetStartTime(<span class="keyword">const</span> time_t &amp;t);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    time_t GetEndTime();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">int</span> SetEndTime(<span class="keyword">const</span> time_t &amp;t);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    std::string GetRedName();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">int</span> SetRedName(<span class="keyword">const</span> <span class="keywordtype">char</span>* pszName);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    std::string GetBlackName();</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">int</span> SetBlackName(<span class="keyword">const</span> <span class="keywordtype">char</span>* pszName);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    std::string GetGameTag(<span class="keyword">const</span> std::string &amp;tag);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">int</span> AddGameTag(<span class="keyword">const</span> std::string &amp;szTag, <span class="keyword">const</span> std::string &amp;szVal);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">int</span> EnablePromptSound(<span class="keywordtype">bool</span> sound = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">bool</span> getEnablePromptSound();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">int</span> EnablePromptMessage(<span class="keywordtype">bool</span> bMsg = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> getEnablePromptMessage();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// 下列虚拟函数由界面实现类完成</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="};">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classCChineseChess.html#a459eda8080baef01e63fd57b70e7d053">  104</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="classCChineseChess.html#a459eda8080baef01e63fd57b70e7d053">PROMPT_SOUND</a> {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        JiangJun, <span class="comment">//&lt; 将军</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        Eat,      <span class="comment">//&lt; 吃子</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        Go,       <span class="comment">//&lt; 走棋</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        NoGo,     <span class="comment">//&lt; 不能走</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        Select    <span class="comment">//&lt; 选棋</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    };</div>
+</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> onPromptSound(PROMPT_SOUND sound = NoGo) = 0;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classCChineseChess.html#a71ec4b66b5d65d1a81642ee1b953f053">  113</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classCChineseChess.html#a71ec4b66b5d65d1a81642ee1b953f053">onPromptMessage</a>(CGoRule::ENUM_ReturnValue val) = 0;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classCChineseChess.html#ad5fd47d71e5a7ecb48bf5f8feec9252a">  115</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classCChineseChess.html#ad5fd47d71e5a7ecb48bf5f8feec9252a">onCleanPrompt</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) = 0;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classCChineseChess.html#aab0ec57a69296b06bc34dc844c7991a0">  117</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classCChineseChess.html#aab0ec57a69296b06bc34dc844c7991a0">onDrawPrompt</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) = 0;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="comment">// @see m_ChessBoard</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classCChineseChess.html#a75a572f30baa5179b50e65e3c2aa2ca1">  120</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classCChineseChess.html#a75a572f30baa5179b50e65e3c2aa2ca1">onGoChess</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, CPiece::ENUM_QiZi chess) = 0;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="comment">// 判断当前着法是否合法</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">bool</span> IsGoChess(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <a class="code hl_class" href="classCGoRule.html">CGoRule</a> m_GoRule;  <span class="comment">//下棋规则</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_class" href="classCChessGame.html">CChessGame</a> m_Game; <span class="comment">//棋局</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">bool</span> m_bPromptSound;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">bool</span> m_bPromptMessage;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classCChineseChess.html#a39c217776cf7c36dd960794f52c76e9d">  154</a></span>    CPiece::ENUM_QiZi m_ChessBoard[9][10]; <span class="comment">//棋盘 m_ChessBoard[i][j]</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_typedef" href="classCChineseChess.html#a79cf82a8d5ef61e1f596974c9c115c8f">ENUM_BoardLayout</a> m_BoardLayout;        <span class="comment">//棋盘布局</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="comment">//走棋状态，行棋，红方先行：详见《象棋竞赛规则(2011)》第一章 第2条</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> _ENUM_WalkState {</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        RedReadly,</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        RedWalked,</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        BlackReadly,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        BlackWalked</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    } ENUM_WalkState;           </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    ENUM_WalkState m_WalkState; <span class="comment">//走棋状态（红方选棋，红方走棋，黑方先棋，黑方走棋）</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="comment">// 提示框</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="comment">// 上一步棋的位置</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">int</span> m_PreviouPositionX;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">int</span> m_PreviouPositionY;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordtype">int</span> m_CurrentPositionX;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordtype">int</span> m_CurrentPositionY;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordtype">int</span> CleanPrompt(<span class="keywordtype">int</span> &amp;i, <span class="keywordtype">int</span> &amp;j); <span class="comment">//清理指定位置的提示框</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">bool</span> IsValidPosition(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordtype">int</span> Initial();</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="comment">// 因为棋局是用的标准棋盘布局（红下黑上），而界面可以是非标准布局</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="comment">// 所以是交换布局时，需要转换</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">int</span> ConvertQiPang(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;i, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;j, <span class="keywordtype">int</span> &amp;x, <span class="keywordtype">int</span> &amp;y);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>};</div>
+</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif </span><span class="comment">//CHINESE_CHESS_H_KL_2020_05_13__</span></div>
+<div class="ttc" id="aclassCChessGame_html"><div class="ttname"><a href="classCChessGame.html">CChessGame</a></div><div class="ttdoc">棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]</div><div class="ttdef"><b>Definition</b> <a href="ChessGame_8h_source.html#l00040">ChessGame.h:41</a></div></div>
+<div class="ttc" id="aclassCChineseChess_html"><div class="ttname"><a href="classCChineseChess.html">CChineseChess</a></div><div class="ttdoc">中国象棋类</div><div class="ttdef"><b>Definition</b> <a href="ChineseChess_8h_source.html#l00030">ChineseChess.h:31</a></div></div>
+<div class="ttc" id="aclassCChineseChess_html_a459eda8080baef01e63fd57b70e7d053"><div class="ttname"><a href="classCChineseChess.html#a459eda8080baef01e63fd57b70e7d053">CChineseChess::PROMPT_SOUND</a></div><div class="ttdeci">PROMPT_SOUND</div><div class="ttdoc">提示音</div><div class="ttdef"><b>Definition</b> <a href="ChineseChess_8h_source.html#l00104">ChineseChess.h:104</a></div></div>
+<div class="ttc" id="aclassCChineseChess_html_a71ec4b66b5d65d1a81642ee1b953f053"><div class="ttname"><a href="classCChineseChess.html#a71ec4b66b5d65d1a81642ee1b953f053">CChineseChess::onPromptMessage</a></div><div class="ttdeci">virtual int onPromptMessage(CGoRule::ENUM_ReturnValue val)=0</div><div class="ttdoc">提示错误消息</div></div>
+<div class="ttc" id="aclassCChineseChess_html_a75a572f30baa5179b50e65e3c2aa2ca1"><div class="ttname"><a href="classCChineseChess.html#a75a572f30baa5179b50e65e3c2aa2ca1">CChineseChess::onGoChess</a></div><div class="ttdeci">virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess)=0</div><div class="ttdoc">走棋事件</div></div>
+<div class="ttc" id="aclassCChineseChess_html_a79cf82a8d5ef61e1f596974c9c115c8f"><div class="ttname"><a href="classCChineseChess.html#a79cf82a8d5ef61e1f596974c9c115c8f">CChineseChess::ENUM_BoardLayout</a></div><div class="ttdeci">enum CChineseChess::_ENUM_BoardLayout ENUM_BoardLayout</div><div class="ttdoc">标准棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条。红棋在下，黑棋在上。 界面可以支持非标准棋盘布局（红在上，黑在下）</div></div>
+<div class="ttc" id="aclassCChineseChess_html_aab0ec57a69296b06bc34dc844c7991a0"><div class="ttname"><a href="classCChineseChess.html#aab0ec57a69296b06bc34dc844c7991a0">CChineseChess::onDrawPrompt</a></div><div class="ttdeci">virtual int onDrawPrompt(int i, int j)=0</div><div class="ttdoc">画提示框</div></div>
+<div class="ttc" id="aclassCChineseChess_html_ad5fd47d71e5a7ecb48bf5f8feec9252a"><div class="ttname"><a href="classCChineseChess.html#ad5fd47d71e5a7ecb48bf5f8feec9252a">CChineseChess::onCleanPrompt</a></div><div class="ttdeci">virtual int onCleanPrompt(int i, int j)=0</div><div class="ttdoc">清除提示框</div></div>
+<div class="ttc" id="aclassCChineseChess_html_ae24b0518a6326cf58d2bd131d1ca5754"><div class="ttname"><a href="classCChineseChess.html#ae24b0518a6326cf58d2bd131d1ca5754">CChineseChess::_ENUM_BoardLayout</a></div><div class="ttdeci">_ENUM_BoardLayout</div><div class="ttdoc">标准棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条。红棋在下，黑棋在上。 界面可以支持非标准棋盘布局（红在上，黑在下）</div><div class="ttdef"><b>Definition</b> <a href="ChineseChess_8h_source.html#l00039">ChineseChess.h:39</a></div></div>
+<div class="ttc" id="aclassCGoRule_html"><div class="ttname"><a href="classCGoRule.html">CGoRule</a></div><div class="ttdoc">文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-18 时 间：9:55:40</div><div class="ttdef"><b>Definition</b> <a href="GoRule_8h_source.html#l00023">GoRule.h:24</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

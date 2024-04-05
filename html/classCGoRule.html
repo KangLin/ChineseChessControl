@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: CGoRule类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classCGoRule-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CGoRule类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-18 时 间：9:55:40  
+ <a href="classCGoRule.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="GoRule_8h_source.html">GoRule.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a6eab3d9463ce3344f55e8bf7c248def5" id="r_a6eab3d9463ce3344f55e8bf7c248def5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>_ENUM_ReturnValue</b> { <br />
+&#160;&#160;<b>RETURNFALSE</b>
+, <b>BEIJIANGJUN</b>
+, <b>JIANGDUIMIAN</b>
+, <b>JIANGJUN</b>
+, <br />
+&#160;&#160;<b>JIANGBEICHI</b>
+, <b>RETURNTRUE</b>
+<br />
+ }</td></tr>
+<tr class="separator:a6eab3d9463ce3344f55e8bf7c248def5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbf1574b6b180577e044c56522e43788" id="r_adbf1574b6b180577e044c56522e43788"><td class="memItemLeft" align="right" valign="top"><a id="adbf1574b6b180577e044c56522e43788" name="adbf1574b6b180577e044c56522e43788"></a>
+typedef enum CGoRule::_ENUM_ReturnValue&#160;</td><td class="memItemRight" valign="bottom"><b>ENUM_ReturnValue</b></td></tr>
+<tr class="separator:adbf1574b6b180577e044c56522e43788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a304ecc9bdfd0be8c82b68af26a0a78fa" id="r_a304ecc9bdfd0be8c82b68af26a0a78fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGoRule.html#a304ecc9bdfd0be8c82b68af26a0a78fa">CGoRule</a> ()</td></tr>
+<tr class="memdesc:a304ecc9bdfd0be8c82b68af26a0a78fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">文件名：GoRule.cpp 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-1 时 间：21:38:52  <br /></td></tr>
+<tr class="separator:a304ecc9bdfd0be8c82b68af26a0a78fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92901ff368c22353c658c95ec4314237" id="r_a92901ff368c22353c658c95ec4314237"><td class="memItemLeft" align="right" valign="top">ENUM_ReturnValue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGoRule.html#a92901ff368c22353c658c95ec4314237">GoChess</a> (int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10])</td></tr>
+<tr class="memdesc:a92901ff368c22353c658c95ec4314237"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数名：GoChess 功 能：判断能否从点（ifrom, jfrom）到点（ito, jto）走棋 参 数： int ito：目标点横坐标[0-8] int jto：目标点纵坐标[0-9] int ifrom：源点横坐标[0-8] int jfrom：源点纵坐标[0-9] CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组 返回值：将对面、JIANGDUIMIAN,叫将、BEIJIANGJUN,将军、JIANGJUN, 可以走棋、RETURNTRUE，不能走棋、RETURNFALSE, 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-1 时 间：22:34:32  <br /></td></tr>
+<tr class="separator:a92901ff368c22353c658c95ec4314237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-18 时 间：9:55:40 </p>
+<p>走棋规则。 </p>
+
+<p class="definition">在文件 <a class="el" href="GoRule_8h_source.html">GoRule.h</a> 第 <a class="el" href="GoRule_8h_source.html#l00023">23</a> 行定义.</p>
+</div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a6eab3d9463ce3344f55e8bf7c248def5" name="a6eab3d9463ce3344f55e8bf7c248def5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eab3d9463ce3344f55e8bf7c248def5">&#9670;&#160;</a></span>_ENUM_ReturnValue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum CGoRule::_ENUM_ReturnValue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="GoRule_8h_source.html">GoRule.h</a> 第 <a class="el" href="GoRule_8h_source.html#l00029">29</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a304ecc9bdfd0be8c82b68af26a0a78fa" name="a304ecc9bdfd0be8c82b68af26a0a78fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304ecc9bdfd0be8c82b68af26a0a78fa">&#9670;&#160;</a></span>CGoRule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CGoRule::CGoRule </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文件名：GoRule.cpp 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-1 时 间：21:38:52 </p>
+
+<p class="definition">在文件 <a class="el" href="GoRule_8cpp_source.html">GoRule.cpp</a> 第 <a class="el" href="GoRule_8cpp_source.html#l00019">19</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7a87f5ca0c3bc596a209079c0c96118a" name="a7a87f5ca0c3bc596a209079c0c96118a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a87f5ca0c3bc596a209079c0c96118a">&#9670;&#160;</a></span>~CGoRule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CGoRule::~CGoRule </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="GoRule_8cpp_source.html">GoRule.cpp</a> 第 <a class="el" href="GoRule_8cpp_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a92901ff368c22353c658c95ec4314237" name="a92901ff368c22353c658c95ec4314237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92901ff368c22353c658c95ec4314237">&#9670;&#160;</a></span>GoChess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CGoRule::ENUM_ReturnValue CGoRule::GoChess </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ito</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ifrom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jfrom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CPiece::ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>ChessBoard</em>[][10]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>函数名：GoChess 功 能：判断能否从点（ifrom, jfrom）到点（ito, jto）走棋 参 数： int ito：目标点横坐标[0-8] int jto：目标点纵坐标[0-9] int ifrom：源点横坐标[0-8] int jfrom：源点纵坐标[0-9] CPiece::ENUM_QiZi ChessBoard[9][10]：棋盘数组 返回值：将对面、JIANGDUIMIAN,叫将、BEIJIANGJUN,将军、JIANGJUN, 可以走棋、RETURNTRUE，不能走棋、RETURNFALSE, 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-1 时 间：22:34:32 </p>
+
+<p class="definition">在文件 <a class="el" href="GoRule_8cpp_source.html">GoRule.cpp</a> 第 <a class="el" href="GoRule_8cpp_source.html#l00041">41</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="GoRule_8h_source.html">GoRule.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="GoRule_8cpp_source.html">GoRule.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

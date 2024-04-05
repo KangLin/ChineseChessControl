@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: CFen类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classCFen-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CFen类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>福斯夫-爱德华兹记号法 (Forsyth-Edwards Notation)  
+ <a href="classCFen.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Fen_8h_source.html">Fen.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac6d08d8ecd6690b51a5226a24f6e613e" id="r_ac6d08d8ecd6690b51a5226a24f6e613e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCFen.html#ac6d08d8ecd6690b51a5226a24f6e613e">CFen</a> ()</td></tr>
+<tr class="memdesc:ac6d08d8ecd6690b51a5226a24f6e613e"><td class="mdescLeft">&#160;</td><td class="mdescRight">作者：康林 <a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>  <br /></td></tr>
+<tr class="separator:ac6d08d8ecd6690b51a5226a24f6e613e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ee1853ec20670cefbbeca19ca8975c0" id="r_a0ee1853ec20670cefbbeca19ca8975c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCFen.html#a0ee1853ec20670cefbbeca19ca8975c0">FenFromBoard</a> (std::string &amp;szFen, CPiece::ENUM_QiZi board[][10], char side='r', int nStep=1)</td></tr>
+<tr class="separator:a0ee1853ec20670cefbbeca19ca8975c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f013cff0c393096b32a3cfafab700bc" id="r_a8f013cff0c393096b32a3cfafab700bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCFen.html#a8f013cff0c393096b32a3cfafab700bc">FenToBoard</a> (const std::string &amp;szFen, CPiece::ENUM_QiZi board[][10], char &amp;side, int &amp;nStep)</td></tr>
+<tr class="separator:a8f013cff0c393096b32a3cfafab700bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad601e53737d216d9d06815313c46a884" id="r_ad601e53737d216d9d06815313c46a884"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCFen.html#ad601e53737d216d9d06815313c46a884">FenFromStartGame</a> (std::string &amp;szFen, std::vector&lt; <a class="el" href="structCChessGame_1_1strStartGame.html">CChessGame::strStartGame</a> &gt; startGame, char side='r', int nStep=1)</td></tr>
+<tr class="separator:ad601e53737d216d9d06815313c46a884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>福斯夫-爱德华兹记号法 (Forsyth-Edwards Notation) </p>
+<dl class="section see"><dt>参见</dt><dd><a href="https://www.xqbase.com/protocol/cchess_fen.htm">https://www.xqbase.com/protocol/cchess_fen.htm</a> <a href="http://www.xqbase.com/protocol/pgnfen2.htm">http://www.xqbase.com/protocol/pgnfen2.htm</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Fen_8h_source.html">Fen.h</a> 第 <a class="el" href="Fen_8h_source.html#l00019">19</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ac6d08d8ecd6690b51a5226a24f6e613e" name="ac6d08d8ecd6690b51a5226a24f6e613e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6d08d8ecd6690b51a5226a24f6e613e">&#9670;&#160;</a></span>CFen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CFen::CFen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>作者：康林 <a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a> </p>
+<p>红方 黑方 字母 相当于国际象棋中的棋子 帅 将 K King(王) 仕 士 A Advisor(没有可比较的棋子) 相 象 B/E Bishop(象) 马 马 N/H Knight(马) 车 车 R Rook(车) 炮 炮 C Cannon(没有可比较的棋子) 兵 卒 P Pawn(兵)</p>
+<p>红方用大写字母，黑方用小写字母</p>
+<dl class="section see"><dt>参见</dt><dd><a href="https://www.xqbase.com/protocol/cchess_fen.htm">https://www.xqbase.com/protocol/cchess_fen.htm</a> <a href="http://www.xqbase.com/protocol/pgnfen2.htm">http://www.xqbase.com/protocol/pgnfen2.htm</a></dd></dl>
+<p>FEN就是“福斯夫-爱德华兹记号法”(Forsyth-Edwards Notation)， 这是一种使用ASCII码字符描述国际象棋局面的标准。 FEN是建立在19世纪由报社记者S·D·福斯夫设计的记录局面的标准基础上的。 后来为了适合象棋软件的需要，由爱德华兹对此做了少许修改。</p>
+<p>1-1 结构描述 　　一个FEN记录使用长度可不同的一行来表示，由六个区域组成。 单纯的FEN记录文件后缀应该是“.fen”，比如：kk-1.fen。 　　FEN描述了：棋子位置、轮走棋方、易位可行性、吃过路兵目标格、半步计数、以及总回合数。 所有这一切用一行文字符号表示就行了而且非常容易读。 　　看看一个FEN的六个区域及其含义，先举一个谁都太熟悉了的局面的FEN文件： rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1 　　这就是每盘常规对局的最初局面，一个子都没有动。 　　译文以不同颜色表示了这个FEN中的六个不同区域，它们是： 　 1) 棋子位置数值区域(Piece placement data) 　　就是表示双方棋子各在棋盘哪个格子上的。 规则是从第8横线开始顺次数到第1横线(白方在下，从上数到下)，从a线开始顺次数到h线； 白方棋子以大写字母“PNBRQK”表示，黑方棋子以小写“pnbrqk”表示，这是英文表示法， 每个字母代表的意义与常规规定相同。数字代表一个横线上的连续空格，反斜杠“/” 表示结束一个横线的描述。 　　上面的那pppppppp，就是表示黑方在第7横线上排有8只兵；后面那4个数字8， 就是表示从第6到第3横线，双方一个棋子都不在，是空格；7个反斜杠“/”将第一区域分成8段， 因为棋盘有8条横线；其它的照着图完全可以类推。 　 2) 轮走棋方(Active color) 　　表示目前局面该谁走棋。小写“r”表示红方走棋；小写“b”表示黑方走棋； 显然起初局面肯定是红先，所以上面就是“r” 。</p>
+<p>3) 易位可行性(Castling availability) 　　这表示在当前局面下每一方有没有潜在的各种王车易位的可行性(目前不一定行，但以后有可能行)。 如果谁都没有，就用“-”表示；大写“K”表示白方有短易位的可行性， 大写“Q”表示白方有长易位的可行性；对应的小写“k”和“q”代表黑方短和长易位的可行性。 书写顺序必须是先大写后小写、先短易位后长易位，并且之间不能有空格。 中国象棋中没有这个，用 “-” 表示 　 4) 吃过路兵目标格(En passant target square) 　　如果没有，就用“-”表示。如果有，就用具体完成吃过路兵的那个格子坐标来表示， 显然对于白兵被吃只可能在第3横线，对于黑兵被吃只可能在第6横线。 而且，这个标记是且只是在该局面紧接的上一步棋是某方刚走兵推进两格的情况下出现。 中国象棋中没有这个，用 “-” 表示</p>
+<p>5) 半回合计数(Halfmove clock) 　　用一个非负数表示自从上一次动兵或吃子之后目前走了的半回合数。这个是为了适应50步和棋规则而定。 【译注：但是在winboard的FEN输出中，这个值好象总是0】</p>
+<p>6) 回合数(Fullmove number) 　　当前要进行到的回合数。不管白还是黑，第一步时总是以1表示，以后黑方每走一步数字就加1。</p>
+<p>注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]</p>
+<p><a class="el" href="classCFen.html#ac6d08d8ecd6690b51a5226a24f6e613e" title="作者：康林 kl222@126.com">CFen::CFen</a> </p>
+
+<p class="definition">在文件 <a class="el" href="Fen_8cpp_source.html">Fen.cpp</a> 第 <a class="el" href="Fen_8cpp_source.html#l00076">76</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0ee1853ec20670cefbbeca19ca8975c0" name="a0ee1853ec20670cefbbeca19ca8975c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ee1853ec20670cefbbeca19ca8975c0">&#9670;&#160;</a></span>FenFromBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CFen::FenFromBoard </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>szFen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CPiece::ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>board</em>[][10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>side</em> = <code>'r'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nStep</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Fen_8cpp_source.html">Fen.cpp</a> 第 <a class="el" href="Fen_8cpp_source.html#l00079">79</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad601e53737d216d9d06815313c46a884" name="ad601e53737d216d9d06815313c46a884"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad601e53737d216d9d06815313c46a884">&#9670;&#160;</a></span>FenFromStartGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CFen::FenFromStartGame </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>szFen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structCChessGame_1_1strStartGame.html">CChessGame::strStartGame</a> &gt;&#160;</td>
+          <td class="paramname"><em>startGame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>side</em> = <code>'r'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nStep</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Fen_8cpp_source.html">Fen.cpp</a> 第 <a class="el" href="Fen_8cpp_source.html#l00260">260</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8f013cff0c393096b32a3cfafab700bc" name="a8f013cff0c393096b32a3cfafab700bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f013cff0c393096b32a3cfafab700bc">&#9670;&#160;</a></span>FenToBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CFen::FenToBoard </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szFen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CPiece::ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>board</em>[][10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char &amp;&#160;</td>
+          <td class="paramname"><em>side</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>nStep</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Fen_8cpp_source.html">Fen.cpp</a> 第 <a class="el" href="Fen_8cpp_source.html#l00160">160</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="Fen_8h_source.html">Fen.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="Fen_8cpp_source.html">Fen.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

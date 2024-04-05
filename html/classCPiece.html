@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: CPiece类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classCPiece-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CPiece类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>文件名：Piece.h 功 能：棋子类 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2020-05-15 时 间：15:25:10  
+ <a href="classCPiece.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Piece_8h_source.html">Piece.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a4a04f5bfce8b6134f522830ccf643fce" id="r_a4a04f5bfce8b6134f522830ccf643fce"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>_ENUM_QiZi</b> { <br />
+&#160;&#160;<b>RShuai</b> = 1
+, <b>RShi</b> = 2
+, <b>RXiang</b> = 3
+, <b>RMa</b> = 4
+, <br />
+&#160;&#160;<b>RChe</b> = 5
+, <b>RPao</b> = 6
+, <b>RBing</b> = 7
+, <b>NoQiZi</b> = 0
+, <br />
+&#160;&#160;<b>BShuai</b> = 0x8 | RShuai
+, <b>BShi</b> = 0x08 | RShi
+, <b>BXiang</b> = 0x08 | RXiang
+, <b>BMa</b> = 0x08 | RMa
+, <br />
+&#160;&#160;<b>BChe</b> = 0x08 | RChe
+, <b>BPao</b> = 0x08 | RPao
+, <b>BBing</b> = 0x08 | RBing
+<br />
+ }</td></tr>
+<tr class="separator:a4a04f5bfce8b6134f522830ccf643fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaba6895b1fcab41f68b274a60ab350a" id="r_acaba6895b1fcab41f68b274a60ab350a"><td class="memItemLeft" align="right" valign="top"><a id="acaba6895b1fcab41f68b274a60ab350a" name="acaba6895b1fcab41f68b274a60ab350a"></a>
+typedef enum CPiece::_ENUM_QiZi&#160;</td><td class="memItemRight" valign="bottom"><b>ENUM_QiZi</b></td></tr>
+<tr class="separator:acaba6895b1fcab41f68b274a60ab350a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a509459ab2f26b268754e1dd6e92796bd" id="r_a509459ab2f26b268754e1dd6e92796bd"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a509459ab2f26b268754e1dd6e92796bd">IsRedQiZi</a> (ENUM_QiZi qz)</td></tr>
+<tr class="memdesc:a509459ab2f26b268754e1dd6e92796bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数名：GetQiZiSide 功 能：得到棋子是红棋,还是黑棋 参 数： ENUM_QiZi qz：要专断的棋子 返回值：返回红棋还是黑棋或无棋 作 者：康 林 版 本：1.0.0.1 日 期：2004-9-26 时 间：12:10:36  <br /></td></tr>
+<tr class="separator:a509459ab2f26b268754e1dd6e92796bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21009e3f1daa5cad26f785d546cc7412" id="r_a21009e3f1daa5cad26f785d546cc7412"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a21009e3f1daa5cad26f785d546cc7412">IsBlackQiZi</a> (ENUM_QiZi qz)</td></tr>
+<tr class="separator:a21009e3f1daa5cad26f785d546cc7412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86bea884c66bbaed8d25acb5a2a9f7b0" id="r_a86bea884c66bbaed8d25acb5a2a9f7b0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a86bea884c66bbaed8d25acb5a2a9f7b0">IsExistQiZi</a> (ENUM_QiZi qz)</td></tr>
+<tr class="separator:a86bea884c66bbaed8d25acb5a2a9f7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf93401a5b3ee602363452dd6e2b484a" id="r_aaf93401a5b3ee602363452dd6e2b484a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#aaf93401a5b3ee602363452dd6e2b484a">IsNoQiZi</a> (ENUM_QiZi qz)</td></tr>
+<tr class="separator:aaf93401a5b3ee602363452dd6e2b484a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06f7cfaad23ee4e5bdc12a61e765ce4" id="r_ac06f7cfaad23ee4e5bdc12a61e765ce4"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#ac06f7cfaad23ee4e5bdc12a61e765ce4">IsSameSide</a> (ENUM_QiZi me, ENUM_QiZi other)</td></tr>
+<tr class="separator:ac06f7cfaad23ee4e5bdc12a61e765ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606d8322f6bc740fecd966e452bc258d" id="r_a606d8322f6bc740fecd966e452bc258d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a606d8322f6bc740fecd966e452bc258d">IsOtherSide</a> (ENUM_QiZi me, ENUM_QiZi other)</td></tr>
+<tr class="separator:a606d8322f6bc740fecd966e452bc258d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9615089929de71547b79f7dfa89527" id="r_a9d9615089929de71547b79f7dfa89527"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a9d9615089929de71547b79f7dfa89527">IsOtherSideMa</a> (ENUM_QiZi me, ENUM_QiZi otherMa)</td></tr>
+<tr class="separator:a9d9615089929de71547b79f7dfa89527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf7a5ee12e216ff1c13ad19095067b6" id="r_a0cf7a5ee12e216ff1c13ad19095067b6"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a0cf7a5ee12e216ff1c13ad19095067b6">IsShuai</a> (ENUM_QiZi qz)</td></tr>
+<tr class="separator:a0cf7a5ee12e216ff1c13ad19095067b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b42cb4cfbbbbb48f021a93d4a0df228" id="r_a7b42cb4cfbbbbb48f021a93d4a0df228"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPiece.html#a7b42cb4cfbbbbb48f021a93d4a0df228">IsShi</a> (ENUM_QiZi qz)</td></tr>
+<tr class="separator:a7b42cb4cfbbbbb48f021a93d4a0df228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>文件名：Piece.h 功 能：棋子类 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2020-05-15 时 间：15:25:10 </p>
+<p>棋子类，用于描述棋子。对棋子做判断操作 </p>
+
+<p class="definition">在文件 <a class="el" href="Piece_8h_source.html">Piece.h</a> 第 <a class="el" href="Piece_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a4a04f5bfce8b6134f522830ccf643fce" name="a4a04f5bfce8b6134f522830ccf643fce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a04f5bfce8b6134f522830ccf643fce">&#9670;&#160;</a></span>_ENUM_QiZi</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum CPiece::_ENUM_QiZi</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8h_source.html">Piece.h</a> 第 <a class="el" href="Piece_8h_source.html#l00030">30</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a339daf56ff988ae427cadfc0f4db8eb3" name="a339daf56ff988ae427cadfc0f4db8eb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a339daf56ff988ae427cadfc0f4db8eb3">&#9670;&#160;</a></span>CPiece()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CPiece::CPiece </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00005">5</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a25a555395c5a35a1bc7efb0e97bad901" name="a25a555395c5a35a1bc7efb0e97bad901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25a555395c5a35a1bc7efb0e97bad901">&#9670;&#160;</a></span>~CPiece()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CPiece::~CPiece </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00008">8</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a21009e3f1daa5cad26f785d546cc7412" name="a21009e3f1daa5cad26f785d546cc7412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21009e3f1daa5cad26f785d546cc7412">&#9670;&#160;</a></span>IsBlackQiZi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsBlackQiZi </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>qz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00037">37</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a86bea884c66bbaed8d25acb5a2a9f7b0" name="a86bea884c66bbaed8d25acb5a2a9f7b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86bea884c66bbaed8d25acb5a2a9f7b0">&#9670;&#160;</a></span>IsExistQiZi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsExistQiZi </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>qz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aaf93401a5b3ee602363452dd6e2b484a" name="aaf93401a5b3ee602363452dd6e2b484a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf93401a5b3ee602363452dd6e2b484a">&#9670;&#160;</a></span>IsNoQiZi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsNoQiZi </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>qz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00048">48</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a606d8322f6bc740fecd966e452bc258d" name="a606d8322f6bc740fecd966e452bc258d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606d8322f6bc740fecd966e452bc258d">&#9670;&#160;</a></span>IsOtherSide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsOtherSide </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>me</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>other</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00060">60</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9d9615089929de71547b79f7dfa89527" name="a9d9615089929de71547b79f7dfa89527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9615089929de71547b79f7dfa89527">&#9670;&#160;</a></span>IsOtherSideMa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsOtherSideMa </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>me</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>otherMa</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00067">67</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a509459ab2f26b268754e1dd6e92796bd" name="a509459ab2f26b268754e1dd6e92796bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a509459ab2f26b268754e1dd6e92796bd">&#9670;&#160;</a></span>IsRedQiZi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsRedQiZi </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>qz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>函数名：GetQiZiSide 功 能：得到棋子是红棋,还是黑棋 参 数： ENUM_QiZi qz：要专断的棋子 返回值：返回红棋还是黑棋或无棋 作 者：康 林 版 本：1.0.0.1 日 期：2004-9-26 时 间：12:10:36 </p>
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac06f7cfaad23ee4e5bdc12a61e765ce4" name="ac06f7cfaad23ee4e5bdc12a61e765ce4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06f7cfaad23ee4e5bdc12a61e765ce4">&#9670;&#160;</a></span>IsSameSide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsSameSide </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>me</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>other</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00053">53</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7b42cb4cfbbbbb48f021a93d4a0df228" name="a7b42cb4cfbbbbb48f021a93d4a0df228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b42cb4cfbbbbb48f021a93d4a0df228">&#9670;&#160;</a></span>IsShi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsShi </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>qz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00081">81</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0cf7a5ee12e216ff1c13ad19095067b6" name="a0cf7a5ee12e216ff1c13ad19095067b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf7a5ee12e216ff1c13ad19095067b6">&#9670;&#160;</a></span>IsShuai()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CPiece::IsShuai </td>
+          <td>(</td>
+          <td class="paramtype">ENUM_QiZi&#160;</td>
+          <td class="paramname"><em>qz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Piece_8cpp_source.html">Piece.cpp</a> 第 <a class="el" href="Piece_8cpp_source.html#l00074">74</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="Piece_8h_source.html">Piece.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="Piece_8cpp_source.html">Piece.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

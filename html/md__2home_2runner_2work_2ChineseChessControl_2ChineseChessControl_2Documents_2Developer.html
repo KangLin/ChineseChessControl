@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: 开发者文档</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">开发者文档</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md27"></a>作者：康林 (<a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>)</p>
+<hr  />
+<ul>
+<li>设计思想<ul>
+<li>中国象棋库</li>
+<li>[界面适配](界面适配)<ul>
+<li>中国象棋 MFC 扩展动态库</li>
+<li><a class="el" href="md__2home_2runner_2work_2ChineseChessControl_2ChineseChessControl_2Documents_2ActiveX.html">中国象棋 ActiveX 控件</a></li>
+<li>中国象棋 Qt 插件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="el" href="md__2home_2runner_2work_2ChineseChessControl_2ChineseChessControl_2Documents_2Build.html">编译</a></li>
+<li>使用</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md30"></a>
+设计思想</h2>
+<p>本项目建立一个 C++ 中国象棋组件。方便集成到应用程序中。 由于界面开发有着不同的开发框架，所以针对界面需要对不同框架进行适配。 而中国象棋算法与结构与界面相对独立，所以本项目把它单独做为一部分。 针对不同的界面开发框架，本项目提供相应的适配。</p>
+<ul>
+<li>中国象棋库，代码位于 <a href="../Src">Src</a> 下<ul>
+<li>中国象棋基本规则</li>
+<li>棋局保存和复盘</li>
+</ul>
+</li>
+<li>界面适配<ul>
+<li>中国象棋 MFC 扩展动态库，代码位于 <a href="../UI/MFC">UI/MFC</a> 下</li>
+<li><a class="el" href="md__2home_2runner_2work_2ChineseChessControl_2ChineseChessControl_2Documents_2ActiveX.html">中国象棋 ActiveX 控件</a>，代码位于 <a href="../UI/ActiveX">UI/ActiveX</a> 下</li>
+<li>中国象棋 Qt 插件，代码位于 <a href="../UI/Qt">UI/Qt</a> 下</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md31"></a>
+中国象棋库</h2>
+<p>代码位于源码树中的 <a href="../Src">Src</a> 目录下。 它提供中国象棋的基本规则算法与结构。接口详见：<a href="../Src/ChineseChess.h">ChineseChess.h</a></p>
+<ul>
+<li>中国象棋流程控制</li>
+<li>中国象棋基本规则</li>
+<li>棋局保存和复盘</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md32"></a>
+界面适配</h2>
+<h3><a class="anchor" id="autotoc_md33"></a>
+中国象棋 MFC 扩展动态库</h3>
+<p>它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 <a href="../UI/MFC">UI/MFC</a> 下，接口详见：<a href="../UI/MFC/ChineseChessView.h">ChineseChessView.h</a>。 其使用方式与使用普通的 MFC 类一样。 <br  />
+ <b>注意</b>:在使用时，必须在程序初始化时（一般在 main 函数开始时)，必须先调用 ChineseChessViewNewDynLinkLibrary() 初始化资源。</p>
+<h3><a class="anchor" id="autotoc_md34"></a>
+中国象棋 Qt 插件</h3>
+<p>它实现了中国象棋 Qt 插件，代码位于 <a href="../UI/Qt">UI/Qt</a> 下。接口详见：<a href="../UI/Qt/FrmChineseChess.h">FrmChineseChess.h</a>。 其使用方式与使用普通Qt控件类一样。它还能在 Qt 设计器中使用。 使用：</p><ul>
+<li>在程序开始时调用一次 InitResource() 函数，初始化资源。</li>
+<li>在程序结束时调用一次 CleanResource() 函数，释放资源;</li>
+<li>Qt 设计器中使用<ul>
+<li>复制安装目录（bin、lib）下的所有动态库文件到 ${Qt_Install_Root}/plugins/designer 下。 就可以在 qt 设计器的控件窗口中看到此插件。然后就与使用普通Qt控件一样。</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md35"></a>
+@ref "/home/runner/work/ChineseChessControl/ChineseChessControl/Documents/Build.md" "编译"</h2>
+<h2><a class="anchor" id="autotoc_md36"></a>
+使用</h2>
+<h3><a class="anchor" id="autotoc_md37"></a>
+使用 cmake 项目管理工具（建议使用此方法）</h3>
+<ul>
+<li>使用 ChineseChess<ul>
+<li>使用 find_package 查找你需要的库。例如,你需要从 ChineseChess 为一个新的界面框架实现中国象棋： <pre class="fragment">find_package(ChineseChess)  #查找 ChineseChess 库
+if(ChineseChess_FOUND)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChess)  # 应用链接 ChineseChess 库
+endif()
+</pre></li>
+</ul>
+</li>
+<li>使用 ChineseChessView ，只能由 MFC 程序使用 <pre class="fragment">find_package(ChineseChessView)  #查找 ChineseChessView 库
+if(ChineseChessView_FOUND)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChessView)  # 应用链接 ChineseChessView 库
+endif()
+</pre></li>
+<li>使用 ChineseChessActiveX ，只能由 WINDOWS 程序使用。参见：<a href="ActiveX.md#使用">ActiveX</a></li>
+<li>使用 ChineseChessQt <pre class="fragment">find_package(ChineseChessQt)  #查找 ChineseChessQt 库
+if(ChineseChessQt_FOUND)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ChineseChessControl::ChineseChessQt)  # 应用链接 ChineseChessQt 库
+endif()
+</pre> </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md38"></a>
+使用其它项目管理工具</h3>
+<p>请详见<a href="Build.md#安装目录">安装后的目录</a>。然后使用相应项目管理工具特定的方式指定头文件目录与链接库。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

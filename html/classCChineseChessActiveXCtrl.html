@@ -1,0 +1,1174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: CChineseChessActiveXCtrl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classCChineseChessActiveXCtrl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CChineseChessActiveXCtrl类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>�й����� ActiveX �ؼ��Ľ���ʵ����  
+ <a href="classCChineseChessActiveXCtrl.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a>&gt;</code></p>
+<div class="dynheader">
+类 CChineseChessActiveXCtrl 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classCChineseChessActiveXCtrl.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a7c000b86b9d9ede222afad5ce085fc27" id="r_a7c000b86b9d9ede222afad5ce085fc27"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>eventidEventGoChess</b> = 1L
+, <b>dispidGetgameTag</b> = 16L
+, <b>dispidAddGameTag</b> = 15L
+, <b>dispidEndTime</b> = 14
+, <br />
+&#160;&#160;<b>dispidStartTime</b> = 13
+, <b>dispidBlackName</b> = 12L
+, <b>dispidRedName</b> = 11L
+, <b>dispidPreviouStep</b> = 10L
+, <br />
+&#160;&#160;<b>dispidNextStep</b> = 9L
+, <b>dispidLoadChessGame</b> = 8L
+, <b>dispidSaveChessGame</b> = 7L
+, <b>dispidGoChess</b> = 6L
+, <br />
+&#160;&#160;<b>dispidEnablePromptMessage</b> = 5
+, <b>dispidEnablePromptSound</b> = 4
+, <b>dispidBoardLayout</b> = 3
+, <b>dispidTiShiBoxColor</b> = 2
+, <br />
+&#160;&#160;<b>dispidQiPangColor</b> = 1
+<br />
+ }</td></tr>
+<tr class="separator:a7c000b86b9d9ede222afad5ce085fc27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a5c09fb4a0fca65e7c944215629ccb18f" id="r_a5c09fb4a0fca65e7c944215629ccb18f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a5c09fb4a0fca65e7c944215629ccb18f">DoPropExchange</a> (CPropExchange *pPX)</td></tr>
+<tr class="separator:a5c09fb4a0fca65e7c944215629ccb18f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9b0656b6c657ac404b5c46224370d9" id="r_aff9b0656b6c657ac404b5c46224370d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#aff9b0656b6c657ac404b5c46224370d9">OnResetState</a> ()</td></tr>
+<tr class="separator:aff9b0656b6c657ac404b5c46224370d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ebeb2c30f88066178b6377b2be92432" id="r_a6ebeb2c30f88066178b6377b2be92432"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a6ebeb2c30f88066178b6377b2be92432">EventGoChess</a> (SHORT i, SHORT j, LONG qz)</td></tr>
+<tr class="separator:a6ebeb2c30f88066178b6377b2be92432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:ad113dbfe7c0ee15a06d50fe116d9854e" id="r_ad113dbfe7c0ee15a06d50fe116d9854e"><td class="memItemLeft" align="right" valign="top">afx_msg int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#ad113dbfe7c0ee15a06d50fe116d9854e">OnCreate</a> (LPCREATESTRUCT lpCreateStruct)</td></tr>
+<tr class="separator:ad113dbfe7c0ee15a06d50fe116d9854e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f3c5f3d3900ec816d39b5a959c7154" id="r_aa0f3c5f3d3900ec816d39b5a959c7154"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#aa0f3c5f3d3900ec816d39b5a959c7154">OnSize</a> (UINT nType, int cx, int cy)</td></tr>
+<tr class="separator:aa0f3c5f3d3900ec816d39b5a959c7154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538464333e47bccb35eb2e5bde7d1285" id="r_a538464333e47bccb35eb2e5bde7d1285"><td class="memItemLeft" align="right" valign="top">OLE_COLOR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a538464333e47bccb35eb2e5bde7d1285">GetQiPangColor</a> ()</td></tr>
+<tr class="separator:a538464333e47bccb35eb2e5bde7d1285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323cf4887a5479d4ed76b095ae3e64e1" id="r_a323cf4887a5479d4ed76b095ae3e64e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a323cf4887a5479d4ed76b095ae3e64e1">SetQiPangColor</a> (OLE_COLOR val)</td></tr>
+<tr class="separator:a323cf4887a5479d4ed76b095ae3e64e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3690b43ff2397b503daff962da2a73" id="r_a6a3690b43ff2397b503daff962da2a73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a6a3690b43ff2397b503daff962da2a73">SetTiShiBoxColor</a> (OLE_COLOR val)</td></tr>
+<tr class="separator:a6a3690b43ff2397b503daff962da2a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc67a1d1f21a4c94f79faafe3659247" id="r_a0fc67a1d1f21a4c94f79faafe3659247"><td class="memItemLeft" align="right" valign="top">OLE_COLOR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a0fc67a1d1f21a4c94f79faafe3659247">GetTiShiBoxColor</a> ()</td></tr>
+<tr class="separator:a0fc67a1d1f21a4c94f79faafe3659247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5acbb1846f2850d77767ede92361c9c2" id="r_a5acbb1846f2850d77767ede92361c9c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a5acbb1846f2850d77767ede92361c9c2">SetBoardLayout</a> (SHORT layout)</td></tr>
+<tr class="separator:a5acbb1846f2850d77767ede92361c9c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2585a07fa471ca571a86c26777cf645d" id="r_a2585a07fa471ca571a86c26777cf645d"><td class="memItemLeft" align="right" valign="top">SHORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a2585a07fa471ca571a86c26777cf645d">GetBoardLayout</a> ()</td></tr>
+<tr class="separator:a2585a07fa471ca571a86c26777cf645d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36c1db37427de6ba7572ed1da393938" id="r_ac36c1db37427de6ba7572ed1da393938"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#ac36c1db37427de6ba7572ed1da393938">OnEnablePromptSoundChanged</a> ()</td></tr>
+<tr class="separator:ac36c1db37427de6ba7572ed1da393938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a628ec5d4dff4504c80a4d203c13f64" id="r_a6a628ec5d4dff4504c80a4d203c13f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a6a628ec5d4dff4504c80a4d203c13f64">OnEnablePromptMessageChanged</a> ()</td></tr>
+<tr class="separator:a6a628ec5d4dff4504c80a4d203c13f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cc4079587b50870a646271b0844c211" id="r_a1cc4079587b50870a646271b0844c211"><td class="memItemLeft" align="right" valign="top">BSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a1cc4079587b50870a646271b0844c211">GetRedName</a> ()</td></tr>
+<tr class="separator:a1cc4079587b50870a646271b0844c211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a279b62e574effd35f237a68160da4e96" id="r_a279b62e574effd35f237a68160da4e96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a279b62e574effd35f237a68160da4e96">SetRedName</a> (LPCTSTR newVal)</td></tr>
+<tr class="separator:a279b62e574effd35f237a68160da4e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c86b126136ca7d21d67bb0dca89041" id="r_a23c86b126136ca7d21d67bb0dca89041"><td class="memItemLeft" align="right" valign="top">BSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a23c86b126136ca7d21d67bb0dca89041">GetBlackName</a> ()</td></tr>
+<tr class="separator:a23c86b126136ca7d21d67bb0dca89041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6fb3830e272d3edf115e4f95b96897" id="r_a0a6fb3830e272d3edf115e4f95b96897"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a0a6fb3830e272d3edf115e4f95b96897">SetBlackName</a> (LPCTSTR newVal)</td></tr>
+<tr class="separator:a0a6fb3830e272d3edf115e4f95b96897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aec112a9a9eee648742c80a5384b476" id="r_a7aec112a9a9eee648742c80a5384b476"><td class="memItemLeft" align="right" valign="top">LONG&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a7aec112a9a9eee648742c80a5384b476">GetStartTime</a> ()</td></tr>
+<tr class="separator:a7aec112a9a9eee648742c80a5384b476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3fe71261273a99ae5b48a5761baacb" id="r_a3c3fe71261273a99ae5b48a5761baacb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a3c3fe71261273a99ae5b48a5761baacb">SetStartTime</a> (LONG val)</td></tr>
+<tr class="separator:a3c3fe71261273a99ae5b48a5761baacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34175b1517919bcf5235a43687bb1145" id="r_a34175b1517919bcf5235a43687bb1145"><td class="memItemLeft" align="right" valign="top">LONG&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a34175b1517919bcf5235a43687bb1145">GetEndTime</a> ()</td></tr>
+<tr class="separator:a34175b1517919bcf5235a43687bb1145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b7dff12bf9ec61e9a957aaf3ba8416" id="r_a52b7dff12bf9ec61e9a957aaf3ba8416"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a52b7dff12bf9ec61e9a957aaf3ba8416">SetEndTime</a> (LONG val)</td></tr>
+<tr class="separator:a52b7dff12bf9ec61e9a957aaf3ba8416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97f33fbf8c303d73dc835ed16dc04ce" id="r_af97f33fbf8c303d73dc835ed16dc04ce"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#af97f33fbf8c303d73dc835ed16dc04ce">AboutBox</a> ()</td></tr>
+<tr class="separator:af97f33fbf8c303d73dc835ed16dc04ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afab74379447ae5c35e082b8580f92645" id="r_afab74379447ae5c35e082b8580f92645"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#afab74379447ae5c35e082b8580f92645">NextStep</a> ()</td></tr>
+<tr class="separator:afab74379447ae5c35e082b8580f92645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd9128388aa5071beb381fb16ac3e90" id="r_a9cd9128388aa5071beb381fb16ac3e90"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a9cd9128388aa5071beb381fb16ac3e90">PreviouStep</a> ()</td></tr>
+<tr class="separator:a9cd9128388aa5071beb381fb16ac3e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4775ce41d2fa3774fccd33e4fd145641" id="r_a4775ce41d2fa3774fccd33e4fd145641"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a4775ce41d2fa3774fccd33e4fd145641">GoChess</a> (SHORT i, SHORT j)</td></tr>
+<tr class="separator:a4775ce41d2fa3774fccd33e4fd145641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fcaff51c1b11365258520aa7d8b32d" id="r_ab8fcaff51c1b11365258520aa7d8b32d"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#ab8fcaff51c1b11365258520aa7d8b32d">SaveChessGame</a> (LPCTSTR szFile)</td></tr>
+<tr class="separator:ab8fcaff51c1b11365258520aa7d8b32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20ca0a4c1c7bc2303df4a7bdf56406b0" id="r_a20ca0a4c1c7bc2303df4a7bdf56406b0"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a20ca0a4c1c7bc2303df4a7bdf56406b0">LoadChessGame</a> (LPCTSTR szFile)</td></tr>
+<tr class="separator:a20ca0a4c1c7bc2303df4a7bdf56406b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afea68c58ed42446215e078eac8c46d15" id="r_afea68c58ed42446215e078eac8c46d15"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#afea68c58ed42446215e078eac8c46d15">AddGameTag</a> (LPCTSTR szTag, LPCTSTR szVal)</td></tr>
+<tr class="separator:afea68c58ed42446215e078eac8c46d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e7e15d1fd119780872f542afedc53e" id="r_aa7e7e15d1fd119780872f542afedc53e"><td class="memItemLeft" align="right" valign="top">BSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#aa7e7e15d1fd119780872f542afedc53e">GetgameTag</a> (LPCTSTR szTag)</td></tr>
+<tr class="separator:aa7e7e15d1fd119780872f542afedc53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a6ddb21b77515a448dadee96ef7d3faa0" id="r_a6ddb21b77515a448dadee96ef7d3faa0"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a6ddb21b77515a448dadee96ef7d3faa0">m_EnablePromptSound</a></td></tr>
+<tr class="separator:a6ddb21b77515a448dadee96ef7d3faa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb4aa132253aba3aebd07b4ec02aba5" id="r_a4fb4aa132253aba3aebd07b4ec02aba5"><td class="memItemLeft" align="right" valign="top">VARIANT_BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChineseChessActiveXCtrl.html#a4fb4aa132253aba3aebd07b4ec02aba5">m_EnablePromptMessage</a></td></tr>
+<tr class="separator:a4fb4aa132253aba3aebd07b4ec02aba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>�й����� ActiveX �ؼ��Ľ���ʵ���� </p>
+<dl class="section author"><dt>作者</dt><dd>KangLin(<a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2020/5/17 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html#l00036">36</a> 行定义.</p>
+</div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a7c000b86b9d9ede222afad5ce085fc27" name="a7c000b86b9d9ede222afad5ce085fc27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c000b86b9d9ede222afad5ce085fc27">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html#l00106">106</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ab8038c06c90c03168a63e533a518f8c9" name="ab8038c06c90c03168a63e533a518f8c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8038c06c90c03168a63e533a518f8c9">&#9670;&#160;</a></span>CChineseChessActiveXCtrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CChineseChessActiveXCtrl::CChineseChessActiveXCtrl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00118">118</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a09c0828cd6aa25f866ad26a448e0488e" name="a09c0828cd6aa25f866ad26a448e0488e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c0828cd6aa25f866ad26a448e0488e">&#9670;&#160;</a></span>~CChineseChessActiveXCtrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CChineseChessActiveXCtrl::~CChineseChessActiveXCtrl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00128">128</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="af97f33fbf8c303d73dc835ed16dc04ce" name="af97f33fbf8c303d73dc835ed16dc04ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97f33fbf8c303d73dc835ed16dc04ce">&#9670;&#160;</a></span>AboutBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::AboutBox </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00315">315</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afea68c58ed42446215e078eac8c46d15" name="afea68c58ed42446215e078eac8c46d15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afea68c58ed42446215e078eac8c46d15">&#9670;&#160;</a></span>AddGameTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::AddGameTag </td>
+          <td>(</td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>szTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>szVal</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00385">385</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5c09fb4a0fca65e7c944215629ccb18f" name="a5c09fb4a0fca65e7c944215629ccb18f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c09fb4a0fca65e7c944215629ccb18f">&#9670;&#160;</a></span>DoPropExchange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::DoPropExchange </td>
+          <td>(</td>
+          <td class="paramtype">CPropExchange *&#160;</td>
+          <td class="paramname"><em>pPX</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00137">137</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6ebeb2c30f88066178b6377b2be92432" name="a6ebeb2c30f88066178b6377b2be92432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ebeb2c30f88066178b6377b2be92432">&#9670;&#160;</a></span>EventGoChess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::EventGoChess </td>
+          <td>(</td>
+          <td class="paramtype">SHORT&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SHORT&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LONG&#160;</td>
+          <td class="paramname"><em>qz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html#l00099">99</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a23c86b126136ca7d21d67bb0dca89041" name="a23c86b126136ca7d21d67bb0dca89041"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c86b126136ca7d21d67bb0dca89041">&#9670;&#160;</a></span>GetBlackName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BSTR CChineseChessActiveXCtrl::GetBlackName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00252">252</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2585a07fa471ca571a86c26777cf645d" name="a2585a07fa471ca571a86c26777cf645d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2585a07fa471ca571a86c26777cf645d">&#9670;&#160;</a></span>GetBoardLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SHORT CChineseChessActiveXCtrl::GetBoardLayout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00193">193</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a34175b1517919bcf5235a43687bb1145" name="a34175b1517919bcf5235a43687bb1145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34175b1517919bcf5235a43687bb1145">&#9670;&#160;</a></span>GetEndTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LONG CChineseChessActiveXCtrl::GetEndTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00293">293</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa7e7e15d1fd119780872f542afedc53e" name="aa7e7e15d1fd119780872f542afedc53e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7e7e15d1fd119780872f542afedc53e">&#9670;&#160;</a></span>GetgameTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BSTR CChineseChessActiveXCtrl::GetgameTag </td>
+          <td>(</td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>szTag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00400">400</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a538464333e47bccb35eb2e5bde7d1285" name="a538464333e47bccb35eb2e5bde7d1285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538464333e47bccb35eb2e5bde7d1285">&#9670;&#160;</a></span>GetQiPangColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">OLE_COLOR CChineseChessActiveXCtrl::GetQiPangColor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00169">169</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1cc4079587b50870a646271b0844c211" name="a1cc4079587b50870a646271b0844c211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cc4079587b50870a646271b0844c211">&#9670;&#160;</a></span>GetRedName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BSTR CChineseChessActiveXCtrl::GetRedName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00231">231</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7aec112a9a9eee648742c80a5384b476" name="a7aec112a9a9eee648742c80a5384b476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aec112a9a9eee648742c80a5384b476">&#9670;&#160;</a></span>GetStartTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LONG CChineseChessActiveXCtrl::GetStartTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00273">273</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0fc67a1d1f21a4c94f79faafe3659247" name="a0fc67a1d1f21a4c94f79faafe3659247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fc67a1d1f21a4c94f79faafe3659247">&#9670;&#160;</a></span>GetTiShiBoxColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">OLE_COLOR CChineseChessActiveXCtrl::GetTiShiBoxColor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00185">185</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4775ce41d2fa3774fccd33e4fd145641" name="a4775ce41d2fa3774fccd33e4fd145641"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4775ce41d2fa3774fccd33e4fd145641">&#9670;&#160;</a></span>GoChess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::GoChess </td>
+          <td>(</td>
+          <td class="paramtype">SHORT&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SHORT&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00346">346</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a20ca0a4c1c7bc2303df4a7bdf56406b0" name="a20ca0a4c1c7bc2303df4a7bdf56406b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ca0a4c1c7bc2303df4a7bdf56406b0">&#9670;&#160;</a></span>LoadChessGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::LoadChessGame </td>
+          <td>(</td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>szFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00370">370</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afab74379447ae5c35e082b8580f92645" name="afab74379447ae5c35e082b8580f92645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afab74379447ae5c35e082b8580f92645">&#9670;&#160;</a></span>NextStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::NextStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00322">322</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad113dbfe7c0ee15a06d50fe116d9854e" name="ad113dbfe7c0ee15a06d50fe116d9854e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad113dbfe7c0ee15a06d50fe116d9854e">&#9670;&#160;</a></span>OnCreate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChineseChessActiveXCtrl::OnCreate </td>
+          <td>(</td>
+          <td class="paramtype">LPCREATESTRUCT&#160;</td>
+          <td class="paramname"><em>lpCreateStruct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00421">421</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6a628ec5d4dff4504c80a4d203c13f64" name="a6a628ec5d4dff4504c80a4d203c13f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a628ec5d4dff4504c80a4d203c13f64">&#9670;&#160;</a></span>OnEnablePromptMessageChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::OnEnablePromptMessageChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00221">221</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac36c1db37427de6ba7572ed1da393938" name="ac36c1db37427de6ba7572ed1da393938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac36c1db37427de6ba7572ed1da393938">&#9670;&#160;</a></span>OnEnablePromptSoundChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::OnEnablePromptSoundChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00212">212</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aff9b0656b6c657ac404b5c46224370d9" name="aff9b0656b6c657ac404b5c46224370d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9b0656b6c657ac404b5c46224370d9">&#9670;&#160;</a></span>OnResetState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::OnResetState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00148">148</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa0f3c5f3d3900ec816d39b5a959c7154" name="aa0f3c5f3d3900ec816d39b5a959c7154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0f3c5f3d3900ec816d39b5a959c7154">&#9670;&#160;</a></span>OnSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::OnSize </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>nType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00437">437</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9cd9128388aa5071beb381fb16ac3e90" name="a9cd9128388aa5071beb381fb16ac3e90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cd9128388aa5071beb381fb16ac3e90">&#9670;&#160;</a></span>PreviouStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::PreviouStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00334">334</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab8fcaff51c1b11365258520aa7d8b32d" name="ab8fcaff51c1b11365258520aa7d8b32d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fcaff51c1b11365258520aa7d8b32d">&#9670;&#160;</a></span>SaveChessGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::SaveChessGame </td>
+          <td>(</td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>szFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00358">358</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0a6fb3830e272d3edf115e4f95b96897" name="a0a6fb3830e272d3edf115e4f95b96897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6fb3830e272d3edf115e4f95b96897">&#9670;&#160;</a></span>SetBlackName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetBlackName </td>
+          <td>(</td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>newVal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00265">265</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5acbb1846f2850d77767ede92361c9c2" name="a5acbb1846f2850d77767ede92361c9c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5acbb1846f2850d77767ede92361c9c2">&#9670;&#160;</a></span>SetBoardLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetBoardLayout </td>
+          <td>(</td>
+          <td class="paramtype">SHORT&#160;</td>
+          <td class="paramname"><em>layout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00200">200</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a52b7dff12bf9ec61e9a957aaf3ba8416" name="a52b7dff12bf9ec61e9a957aaf3ba8416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52b7dff12bf9ec61e9a957aaf3ba8416">&#9670;&#160;</a></span>SetEndTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetEndTime </td>
+          <td>(</td>
+          <td class="paramtype">LONG&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00303">303</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a323cf4887a5479d4ed76b095ae3e64e1" name="a323cf4887a5479d4ed76b095ae3e64e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323cf4887a5479d4ed76b095ae3e64e1">&#9670;&#160;</a></span>SetQiPangColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetQiPangColor </td>
+          <td>(</td>
+          <td class="paramtype">OLE_COLOR&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00159">159</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a279b62e574effd35f237a68160da4e96" name="a279b62e574effd35f237a68160da4e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a279b62e574effd35f237a68160da4e96">&#9670;&#160;</a></span>SetRedName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetRedName </td>
+          <td>(</td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>newVal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00244">244</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3c3fe71261273a99ae5b48a5761baacb" name="a3c3fe71261273a99ae5b48a5761baacb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3fe71261273a99ae5b48a5761baacb">&#9670;&#160;</a></span>SetStartTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetStartTime </td>
+          <td>(</td>
+          <td class="paramtype">LONG&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00283">283</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6a3690b43ff2397b503daff962da2a73" name="a6a3690b43ff2397b503daff962da2a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3690b43ff2397b503daff962da2a73">&#9670;&#160;</a></span>SetTiShiBoxColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CChineseChessActiveXCtrl::SetTiShiBoxColor </td>
+          <td>(</td>
+          <td class="paramtype">OLE_COLOR&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html#l00177">177</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a4fb4aa132253aba3aebd07b4ec02aba5" name="a4fb4aa132253aba3aebd07b4ec02aba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb4aa132253aba3aebd07b4ec02aba5">&#9670;&#160;</a></span>m_EnablePromptMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::m_EnablePromptMessage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html#l00075">75</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6ddb21b77515a448dadee96ef7d3faa0" name="a6ddb21b77515a448dadee96ef7d3faa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ddb21b77515a448dadee96ef7d3faa0">&#9670;&#160;</a></span>m_EnablePromptSound</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VARIANT_BOOL CChineseChessActiveXCtrl::m_EnablePromptSound</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a> 第 <a class="el" href="ChineseChessActiveXCtrl_8h_source.html#l00073">73</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/UI/ActiveX/<a class="el" href="ChineseChessActiveXCtrl_8h_source.html">ChineseChessActiveXCtrl.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/UI/ActiveX/<a class="el" href="ChineseChessActiveXCtrl_8cpp_source.html">ChineseChessActiveXCtrl.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

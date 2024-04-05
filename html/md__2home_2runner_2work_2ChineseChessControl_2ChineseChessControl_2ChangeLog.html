@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: ChangeLog</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;v2.0.13</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">ChangeLog</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><ul>
+<li>v2.0.13<ul>
+<li>修复: 修改 build.yml 增加文件签名</li>
+</ul>
+</li>
+</ul>
+<p>v2.0.12</p><ul>
+<li>CI: 修改 GITHUB action 发布</li>
+<li>增加 vcpkg.json</li>
+<li>复制 ChangLog.md 等文件到 ${CMAKE_INSTALL_DOCDIR}</li>
+<li>使用 <a href="https://github.com/KangLin/RabbitCommon/releases/tag/v2.2.1">RabbitCommon v2.2.1</a></li>
+</ul>
+<p>v2.0.11</p><ul>
+<li>CI: 更新 VCPKG。修复CPAKE错误。详见： <a href="https://github.com/microsoft/vcpkg/issues/32560">https://github.com/microsoft/vcpkg/issues/32560</a></li>
+</ul>
+<p>v2.0.10</p><ul>
+<li>用 QFileDialog::getOpenFileName 替换 RabbitCommon::CDir::GetOpenFileName</li>
+<li>用 QFileDialog::getSaveFileName 替换 RabbitCommon::CDir::GetSaveFileName</li>
+</ul>
+<p>v2.0.9</p><ul>
+<li>修改 INSTALL.nsi</li>
+</ul>
+<p>v2.0.8</p><ul>
+<li>Modify CI</li>
+</ul>
+<p>v2.0.7</p><ul>
+<li>使用 RabbitCommon v2</li>
+<li>编译 Android 时，Qt 版本必须大于6.0.0</li>
+<li>修复 org.Rabbit.ChineseChess.desktop 错误</li>
+<li>自动化编译：<ul>
+<li>Android</li>
+<li>macos</li>
+</ul>
+</li>
+</ul>
+<p>v2.0.6</p><ul>
+<li>使用 RabbitCommon v1.0.10</li>
+<li>重命名 tag.sh 到 deploy.sh</li>
+<li>修改 CI: 使用 github action</li>
+<li>Qt: 使用图标主题</li>
+<li>重构 CMakeLists.txt</li>
+<li>重构 CPack</li>
+</ul>
+<p>v2.0.5</p><ul>
+<li>增加残局支持</li>
+<li>增加 FEN 支持</li>
+<li>增加 PGN 支持</li>
+<li>界面框架从 Src 移到 UI 目录下</li>
+<li>增加 CMake 导出配置文件</li>
+<li>修复除 0 引起的崩溃。影响前面所有发行版本。此错误是 RabbitCommon 引起的。 详见：RabbitCommon: 7ed300a206d8a36c30003b6c19ad181682d0ff5f</li>
+</ul>
+<p>v2.0.4</p><ul>
+<li>用 <a class="el" href="classCChineseChessView.html">CChineseChessView</a> 修改 MFC 应用程序</li>
+<li>修改 MFC 中国象棋资源图片</li>
+</ul>
+<p>v2.0.3</p><ul>
+<li>修改ci</li>
+<li>修改 tag.sh</li>
+<li>修改资源图片</li>
+</ul>
+<p>v2.0.2</p><ul>
+<li>增加保存棋局标签</li>
+<li>修改加载棋局时没有初始化 ActiveX 属性错误</li>
+<li>保存和加载棋局</li>
+<li>完成 android 版本中国象棋应用程序</li>
+<li>修复重构时引入的将军错误</li>
+</ul>
+<p>v2.0.1</p><ul>
+<li>Qt 中国象棋程序增加关于</li>
+<li>Qt 中国象棋程序增加更新功能</li>
+<li>Qt 中国象棋程序增加翻译</li>
+<li>增加 ANDROID 下 Qt 中国象棋程序</li>
+<li>增加 linux 下 Qt 中国象棋程序</li>
+<li>清理以前的无用代码</li>
+</ul>
+<p>v2.0.0</p><ul>
+<li>增加中国象棋 Qt 插件</li>
+<li>增加中国象棋 Qt 应用程序</li>
+</ul>
+<p>v1.2.0</p><ul>
+<li>增加 MFC 中国象棋类</li>
+<li>修复保存棋局时没有保存布局的错误。</li>
+<li>使用 MFC 中国象棋类重构中国象棋 ActiveX</li>
+</ul>
+<p>v1.1.2</p><ul>
+<li>重新新建中国象棋 ActiveX</li>
+<li>完成界面功能</li>
+<li>完成走棋功能</li>
+<li>完成复盘功能</li>
+<li>完成棋局从文件加载和保存到文件</li>
+<li>允许/禁止错误提示音与提示消息</li>
+<li>中国象棋程序使用新的 ActiveX 控件</li>
+</ul>
+<p>v1.1.1</p><ul>
+<li>字符编码使用多字节编码</li>
+</ul>
+<p>v1.1.0</p><ul>
+<li>重构程序<ul>
+<li>按<a href="Documents/ChineseChessRule2011.pdf">象棋竞赛规则(2011)</a>重构棋盘布局</li>
+</ul>
+</li>
+<li>优化程序可读性</li>
+<li>优化算法性能</li>
+</ul>
+<p>v1.0.2</p><ul>
+<li>固定棋盘初始化不正确错误</li>
+<li>修改 VC&ndash;6.0 不能打开项目错误</li>
+<li>增加 MFC 中国象棋程序</li>
+</ul>
+<p>v1.0.1</p><ul>
+<li>修改文档</li>
+<li>修改文件名大小写</li>
+</ul>
+<p>v1.0.0</p><ul>
+<li>整理以前的代码</li>
+<li>使用 CMake 管理本项目</li>
+<li>增加自动化编译</li>
+</ul>
+<p>中国象棋的历史变更</p><ul>
+<li>生命不息，维护不止！</li>
+<li>2020年5月：整理项目代码</li>
+<li>2014年：开源到 <a href="https://github.com/KangLin/ChineseChessControl/">github</a></li>
+<li>2003年~2005年：VC6.0 写的中国象棋控件。本项目的<a href="https://github.com/KangLin/pre2006/tree/master/Programe/VC/%E4%B8%AD%E5%9B%BD%E8%B1%A1%E6%A3%8B%E6%8E%A7%E4%BB%B6">原始版本</a>。</li>
+<li>2000年~2002年：VB6.0 写的中国象棋控件, 源码丢失。</li>
+<li>1994年~2000年：<a href="https://github.com/KangLin/pre2006/tree/master/Programe/VB/XQ">QBasic 写的中国象棋程序</a> </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
