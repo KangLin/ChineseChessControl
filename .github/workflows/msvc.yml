@@ -17,21 +17,21 @@ jobs:
         include:
           - qt_version: 6.6.2
             triplet: x64-windows
-            VCPKG_PLATFORM_TOOLSET: v142
+            VCPKG_PLATFORM_TOOLSET: v143
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
             qt_modules: qtmultimedia qtimageformats qtscxml qtwebchannel qtwebsockets qtwebview qtpositioning
 
           - qt_version: 5.15.2
             triplet: x64-windows
-            VCPKG_PLATFORM_TOOLSET: v142
+            VCPKG_PLATFORM_TOOLSET: v143
             VCPKG_MANIFEST_DIR: "\\vcpkg\\manifests"
             qt_arch: win64_msvc2019_64
             CMAKE_GENERATOR_PLATFORM: x64
 
           - qt_version: 5.12.12
             triplet: x86-windows
-            VCPKG_PLATFORM_TOOLSET: v141
+            VCPKG_PLATFORM_TOOLSET: v143
             VCPKG_MANIFEST_DIR: "\\vcpkg\\manifests"
             qt_arch: win32_msvc2017
             CMAKE_GENERATOR_PLATFORM: Win32
@@ -48,7 +48,7 @@ jobs:
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
       VCPKG_MANIFEST_DIR: "${{github.workspace}}${{matrix.VCPKG_MANIFEST_DIR}}"
-      VCPKGGITCOMMITID: a1a1cbc975abf909a6c8985a6a2b8fe20bbd9bd6
+      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
       qt_modules: qtwebengine ${{matrix.qt_modules}}
 
     # Map the job outputs to step outputs

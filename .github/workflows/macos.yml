@@ -27,7 +27,9 @@ jobs:
 
           - qt_version: 5.12.12
 
-    runs-on: macos-latest
+    # See: https://docs.github.com/zh/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
+    # See: https://github.com/actions/runner-images/tree/main
+    runs-on: macos-13
 
     env:
       BUILD_TYPE:  ${{ matrix.BUILD_TYPE }}
@@ -35,7 +37,7 @@ jobs:
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
       qt_modules: 'qtwebengine ${{ matrix.qt_modules }}'
-      VCPKGGITCOMMITID: a1a1cbc975abf909a6c8985a6a2b8fe20bbd9bd6
+      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
       artifact_name: build_macos
       ChineseChessControl_VERSION: "2.0.13"
 
