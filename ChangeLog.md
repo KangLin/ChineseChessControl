@@ -1,4 +1,7 @@
 - v2.0.12
+  - 修复: 修改 build.yml 增加文件签名
+
+- v2.0.12
   - CI: 修改 GITHUB action 发布
   - 增加 vcpkg.json
   - 复制 ChangLog.md 等文件到 ${CMAKE_INSTALL_DOCDIR}

@@ -80,7 +80,7 @@ jobs:
         with:
           path: |
             ${{env.INSTALL_DIR}}
-          key:  install_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}
+          key: install_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}
 
       - name: run vcpkg
         uses: lukka/run-vcpkg@v11
