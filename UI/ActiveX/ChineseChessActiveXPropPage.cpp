@@ -17,7 +17,7 @@ END_MESSAGE_MAP()
 
 // 初始化类工厂和 guid
 
-IMPLEMENT_OLECREATE_EX(CChineseChessActiveXPropPage, "ChineseChessActiveXPropPage.2.0.12",
+IMPLEMENT_OLECREATE_EX(CChineseChessActiveXPropPage, "ChineseChessActiveXPropPage.2.0.13",
 	0x035c7fb0,0x47a0,0x45fb,0xa4,0x5a,0xc2,0x9d,0xcf,0xe9,0xe0,0x01)
 
 // CChineseChessActiveXPropPage::CChineseChessActiveXPropPageFactory::UpdateRegistry -

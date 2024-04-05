@@ -39,7 +39,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      ChineseChessControl_VERSION: "v2.0.12"
+      ChineseChessControl_VERSION: "v2.0.13"
       artifact_name: build_msvc
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools

@@ -85,8 +85,8 @@
   - [![从 sourceforge 下载](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/rabbitChineseChessControl/files/latest/download)
 
 + 开发文档
-  - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.12/ChineseChessControl_v2.0.12_document.zip)
-  - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.12/ChineseChessControl_v2.0.12_document.zip/download)
+  - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.13/ChineseChessControl_v2.0.13_document.zip)
+  - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.13/ChineseChessControl_v2.0.13_document.zip/download)
 + [在线开发文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
 
 #### 贡献

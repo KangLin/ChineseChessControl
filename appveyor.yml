@@ -1,4 +1,4 @@
-version: 'v2.0.12.{build}'
+version: 'v2.0.13.{build}'
 
 cache:
   - ..\other_source
@@ -12,7 +12,7 @@ environment:
     secure: EoBPaPuJ6u9UDYpQWjKhUg==
   QT_PASSWORD:
     secure: ejAYGgB+3sBispRxUSr0xw==
-  ChineseChessControl_VERSION: "v2.0.12"
+  ChineseChessControl_VERSION: "v2.0.13"
   
   matrix:
   ##### msvc 2015 ########

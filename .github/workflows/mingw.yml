@@ -25,7 +25,7 @@ jobs:
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
       INSTALL_DIR: ${{github.workspace}}\.cache\install
       artifact_name: build_mingw
-      ChineseChessControl_VERSION: "v2.0.12"
+      ChineseChessControl_VERSION: "v2.0.13"
 
     # Map the job outputs to step outputs
     outputs:

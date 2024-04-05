@@ -22,7 +22,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
-      ChineseChessControl_VERSION: "2.0.12"
+      ChineseChessControl_VERSION: "2.0.13"
       artifact_name: build_ubuntu
 
     # Map the job outputs to step outputs
