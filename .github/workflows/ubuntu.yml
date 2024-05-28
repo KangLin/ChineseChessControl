@@ -81,9 +81,10 @@ jobs:
             -DINSTALL_QT=OFF \
             -DBUILD_APP=OFF \
             -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} \
-            -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/install \
+            -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/install_dev \
             -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}}/lib/cmake
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
+          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_Linux_${{ matrix.BUILD_TYPE }}.zip ./install_dev/*
 
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
@@ -107,3 +108,4 @@ jobs:
           path: |
             ${{github.workspace}}/build/chinesechesscontrol_*.deb
             ${{github.workspace}}/build/chinesechesscontrol_*.sh
+            ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_Linux_${{ matrix.BUILD_TYPE }}.zip
