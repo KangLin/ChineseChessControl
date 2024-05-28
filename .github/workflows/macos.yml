@@ -102,7 +102,7 @@ jobs:
               -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON \
               -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
-          7z a ChineseChessControl_${{env.LunarCalendar_VERSION}}_macos_qt${{matrix.qt_version}}_${{ matrix.BUILD_TYPE }}.zip ./install/*
+          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_macos_qt${{matrix.qt_version}}_${{ matrix.BUILD_TYPE }}.zip ./install/*
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
       - name: Update artifact
@@ -112,16 +112,4 @@ jobs:
           name: ${{ env.artifact_name }}
           path: |
             ${{github.workspace}}/build/chinesechesscontrol_*.tar.gz
-            ${{github.workspace}}/build/ChineseChessControl_${{env.LunarCalendar_VERSION}}_macos_qt${{matrix.qt_version}}_${{ matrix.BUILD_TYPE }}.zip
-
-#    - name: Upload To Github Release
-#      if: ${{ matrix.BUILD_TYPE == 'Release' && startsWith(github.ref, 'refs/tags/') }}
-#      uses: softprops/action-gh-release@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        prerelease: true
-#        body: |
-#           [:cn: 修改日志](ChangeLog_zh_CN.md) [:us: Change log](ChangeLog.md)
-#        files: |
-#            ${{github.workspace}}/rabbitcommon_${{env.RabbitCommon_VERSION}}_amd64.deb
+            ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_macos_qt${{matrix.qt_version}}_${{ matrix.BUILD_TYPE }}.zip
