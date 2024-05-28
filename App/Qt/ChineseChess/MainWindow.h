@@ -32,5 +32,9 @@ private:
     Ui::MainWindow *ui;
     
     CFrmChineseChess *m_pChess;
+    
+    // QWidget interface
+protected:
+    virtual void closeEvent(QCloseEvent *event) override;
 };
 #endif // MAINWINDOW_H

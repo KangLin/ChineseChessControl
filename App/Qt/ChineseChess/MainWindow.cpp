@@ -23,11 +23,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     CFrmUpdater updater;
     ui->actionUpdate_U->setIcon(updater.windowIcon());
+    RabbitCommon::CTools::Instance()->RestoreWidget(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    RabbitCommon::CTools::Instance()->SaveWidget(this);
+    QMainWindow::closeEvent(event);
 }
 
 void MainWindow::on_actionOpen_O_triggered()
