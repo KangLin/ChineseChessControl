@@ -4,7 +4,7 @@
 - v2.0.12
   - CI: 修改 GITHUB action 发布
   - 增加 vcpkg.json
-  - 复制 ChangLog.md 等文件到 ${CMAKE_INSTALL_DOCDIR}
+  - 复制 ChangeLog.md 等文件到 ${CMAKE_INSTALL_DOCDIR}
   - 使用 [RabbitCommon v2.2.1](https://github.com/KangLin/RabbitCommon/releases/tag/v2.2.1)
 
 - v2.0.11

@@ -18,5 +18,5 @@ jobs:
         with:
           check_filenames: true
           path: ${{github.workspace}}
-          skip: "*.lua,codespell.yml,*.ts,ChineseChessRule2011.pdf"
-          ignore_words_list: "doubleclick,msdos,rabits,eArch,pEvent"
+          skip: "*.lua,codespell.yml,*.ts,ChineseChessRule2011.pdf,ANIMATE.JS"
+          ignore_words_list: "doubleclick,msdos,rabits,eArch,pEvent,nEmpty"
