@@ -25,13 +25,13 @@ case "$1" in
         chmod -R a+rw $INSTALL_ROOT/log
 
         if [ ! -f /usr/share/applications/org.Rabbit.ChineseChess.desktop ]; then
-            ln -s /opt/ChineseChess/share/applications/org.Rabbit.ChineseChess.desktop /usr/share/applications/org.Rabbit.ChineseChess.desktop
+            ln -s $INSTALL_ROOT/share/applications/org.Rabbit.ChineseChess.desktop /usr/share/applications/org.Rabbit.ChineseChess.desktop
         fi
         if [ ! -f /usr/share/pixmaps/org.Rabbit.ChineseChess.png ]; then
             if [ ! -d /usr/share/pixmaps ]; then
                 mkdir -p /usr/share/pixmaps
             fi
-            ln -s /opt/ChineseChess/share/pixmaps/org.Rabbit.ChineseChess.png /usr/share/pixmaps/org.Rabbit.ChineseChess.png
+            ln -s $INSTALL_ROOT/share/pixmaps/org.Rabbit.ChineseChess.png /usr/share/pixmaps/org.Rabbit.ChineseChess.png
         fi
         export QT_VERSION_DIR=
         if [ -n "${QT_VERSION_DIR}" ]; then

@@ -83,6 +83,10 @@
         cd build/install/bin
         ./ChineseChessApp  #Qt 程序
 
+#### ubuntu
+
+使用脚本： build_debpackage.sh
+
 #### windows 平台编译说明
 
 - 使用 cmake-gui.exe 工具编译。打开 cmake-gui.exe 配置
