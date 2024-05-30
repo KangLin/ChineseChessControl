@@ -6,11 +6,11 @@ Section: games
 Priority: optional
 Maintainer: Kang Lin <kl222@126.com>
 Build-Depends: debhelper (>=13~), debhelper-compat (=13), fakeroot, cmake,
- libssl-dev, rabbitcommon-dev (>=2),
+ libssl-dev, rabbitcommon-dev (>=2.2.4),
  qt6-tools-dev, qt6-tools-dev-tools, qt6-base-dev, qt6-base-dev-tools,
  qt6-l10n-tools, qt6-translations-l10n, qt6-scxml-dev,
  qt6-webengine-dev, qt6-webengine-dev-tools
-Standards-Version:"v2.0.13"
+Standards-Version: 4.6.2
 Homepage: https://github.com/KangLin/ChineseChessControl
 Vcs-Git: https://github.com/KangLin/ChineseChessControl.git
 #Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/ChineseChessControl.git
@@ -28,6 +28,6 @@ Package: chinesechess-dev
 Section: libdevel
 Architecture: any
 Depends: chinesechess (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
-Recommends: rabbitcommon (>=2)
+Recommends: rabbitcommon (>=2), rabbitcommon-dev (>=2)
 Description: ChineseChess devel library
  Chinese chess devel library
