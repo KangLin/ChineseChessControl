@@ -1,5 +1,8 @@
 - v2.0.13
   - 修复: 修改 build.yml 增加文件签名
+  - 修改 Package/share/applications/org.Rabbit.ChineseChess.desktop
+  - 修改版本
+  - 使用 [RabbitCommon v2.2.4](https://github.com/KangLin/RabbitCommon/releases/tag/v2.2.4)
 
 - v2.0.12
   - CI: 修改 GITHUB action 发布

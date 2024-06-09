@@ -30,7 +30,7 @@ if(POLICY CMP0021)
 endif()
 
 # 设置版本号
-SET(ChineseChessControl_VERSION "v2.0.13")
+
 # 用 GIT 得到版本号
 IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     if(NOT GIT)
@@ -55,6 +55,10 @@ IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
         SET(ChineseChessControl_VERSION ${GIT_VERSION})
     ENDIF()
 ENDIF()
+if(NOT ChineseChessControl_VERSION)
+    SET(ChineseChessControl_VERSION "2.0.13")
+endif()
+string(REPLACE "v" "" ChineseChessControl_VERSION ${ChineseChessControl_VERSION})
 message("ChineseChessControl_VERSION:${ChineseChessControl_VERSION}")
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
