@@ -14,6 +14,7 @@ Standards-Version: 4.6.2
 Homepage: https://github.com/KangLin/ChineseChessControl
 Vcs-Git: https://github.com/KangLin/ChineseChessControl.git
 #Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/ChineseChessControl.git
+Rules-Requires-Root: no
 
 Package: chinesechess
 Section: libs

@@ -6,7 +6,9 @@ Icon=org.Rabbit.ChineseChess
 Exec=/opt/ChineseChess/bin/ChineseChess.sh
 Terminal=false
 StartupNotify=true
-Categories=Application;Development;Game;
+
+# https://specifications.freedesktop.org/menu-spec/latest/apa.html
+Categories=Development;Game;
 
 Name=ChineseChess
 GenericName=ChineseChess
