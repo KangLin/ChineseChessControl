@@ -44,31 +44,31 @@ jobs:
           submodules: false
 
       - name: Download ubuntu
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ needs.ubuntu.outputs.name }}
           path: ${{ env.artifact_path }}
 
       - name: Download msvc
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.msvc.outputs.name }}
+          pattern: ${{ needs.msvc.outputs.name }}*
           path: ${{ env.artifact_path }}
 
       - name: Download macos
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.macos.outputs.name }}
+          pattern: ${{ needs.macos.outputs.name }}*
           path: ${{ env.artifact_path }}
 
       - name: Download android
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.android.outputs.name }}
+          pattern: ${{ needs.android.outputs.name }}*
           path: ${{ env.artifact_path }}
 
       - name: Download doxygen
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ needs.doxygen.outputs.name }}
           path: ${{ env.artifact_path }}

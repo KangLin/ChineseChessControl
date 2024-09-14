@@ -13,9 +13,9 @@ jobs:
     strategy:
       matrix:
         BUILD_TYPE: [Release, Debug]
-        qt_version: [6.6.2, 5.15.2, 5.12.12]
+        qt_version: [6.6.3, 5.15.2, 5.12.12]
         include:
-          - qt_version: 6.6.2
+          - qt_version: 6.6.3
             triplet: x64-windows
             VCPKG_PLATFORM_TOOLSET: v143
             qt_arch: win64_msvc2019_64
@@ -48,7 +48,7 @@ jobs:
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
       VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
       VCPKG_MANIFEST_DIR: "${{github.workspace}}${{matrix.VCPKG_MANIFEST_DIR}}"
-      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
+      VCPKGGITCOMMITID: 110c50d4700794d87d95138cd8c1b3bbfee9bab5
       qt_modules: qtwebengine ${{matrix.qt_modules}}
 
     # Map the job outputs to step outputs
@@ -150,9 +150,9 @@ jobs:
           7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}_Develop.zip %CD%\install_develop\.
 
       - name: Update artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.artifact_name }}
+          name: ${{ env.artifact_name }}_${{matrix.qt_version}}_${{matrix.qt_arch}}_${{matrix.BUILD_TYPE}}
           path: |
             ${{github.workspace}}\build\ChineseChessControl_*.exe
             ${{github.workspace}}\build\ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}_Develop.zip

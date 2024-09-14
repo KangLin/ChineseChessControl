@@ -99,7 +99,7 @@ jobs:
           cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
 
 #      - name: Update artifact 
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@v4
 #        if: false
 #        with:
 #          name: rabbitremotecontrol_${{ matrix.os }}

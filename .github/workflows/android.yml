@@ -14,7 +14,7 @@ jobs:
       matrix:
         BUILD_TYPE: [Release]
         qt_arch: [android_arm64_v8a, android_x86_64]
-        qt_version: [6.6.2]
+        qt_version: [6.6.3]
         include:
           - BUILD_TYPE: Release
             qt_arch: android_arm64_v8a
@@ -34,10 +34,10 @@ jobs:
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
       ChineseChessControl_VERSION: "v2.0.13"
-      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
+      VCPKGGITCOMMITID: 110c50d4700794d87d95138cd8c1b3bbfee9bab5
       ANDROID_PLATFORM: android-23
       ANDROID_NATIVE_API_LEVEL: 23
-      qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtwebsockets qtwebview'
+      qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtpositioning qtserialport qt5compat'
 
     # Map the job outputs to step outputs
     outputs:
@@ -138,9 +138,9 @@ jobs:
 
       - name: Update artifact
         #if: ${{ matrix.BUILD_TYPE == 'Release' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.artifact_name }}
+          name: ${{ env.artifact_name }}_${{matrix.qt_version}}_${{matrix.qt_arch}}
           path: |
             ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.zip
             ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.apk
