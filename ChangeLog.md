@@ -1,6 +1,7 @@
-### v2.0.14-dev
+### v2.0.14
   - 使用 [RabbitCommon v2.3.4](https://github.com/KangLin/RabbitCommon/releases/tag/v2.3.4)
   - 修复声音错误
+  - 修复 Qt 应用中上一步按钮错误
   - 增加编译脚本
   - 修改分发脚本 deploy.sh
   - CI: 修改 GITHUB action 发布
