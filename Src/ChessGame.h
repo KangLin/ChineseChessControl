@@ -27,8 +27,8 @@
 			  |       [i][j]
 			  |
 			  |
-			 \|/                 [9][10]
-			  |
+			 \|/
+			  |                 [9][10]
 	      j 或 y 方向
 
        @endcode
@@ -48,12 +48,12 @@ public:
 	int SaveStep(int i, int j,
                  CPiece::ENUM_QiZi qz,
                  const char* pDescript = nullptr,
-                 time_t tm = time(nullptr)); //保存当前步
-	int RevokeStep();						 //撤回当前步
+                 time_t tm = time(nullptr)); // 保存当前步
+	int RevokeStep();						 // 撤回当前步
 
 	// 只移动指针位置，不改变棋局存储大小。用于复盘
-    int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); //得到上一步
-	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);    //得到下一步
+    int GetPreviouStep(int &i, int &j, CPiece::ENUM_QiZi &qz); // 得到上一步
+	int GetNextStep(int &i, int &j, CPiece::ENUM_QiZi &qz);    // 得到下一步
 
 	time_t GetStartTime();
 	int SetStartTime(const time_t &t);
@@ -70,7 +70,7 @@ public:
 
 #define MAX_STRING_BUFFER 33
 #define APPNAME "Chinese chess control"
-#define AUTHOR "Author: Kang Lin (kl222@126.com)"
+#define AUTHOR "Author: Kang Lin <kl222@126.com>"
 
 	//文件头
 	struct strFileHead {
@@ -91,7 +91,7 @@ public:
 	/**
 	 * Saves the chess game
 	 *
-	 * @author KangLin(kl222@126.com)
+	 * @author KangLin <kl222@126.com>
 	 * @date 2020/5/19
 	 *
 	 * @param  pFileName Filename of the file.
@@ -110,15 +110,15 @@ public:
     int SaveChessGamePgn(const char* pFileName, _SavePgnFormat f = Chinese);
     int LoadChessGamePgn(const char* pFileName, _SavePgnFormat f = Chinese);
     
-    //开局
+    //! 棋局结构
     struct strStartGame
     {
         int i;
         int j;
         CPiece::ENUM_QiZi qz;
     };
-    std::vector<strStartGame> m_StartGame; // 棋盘开局
-    /// 检测布局是否合法, 使用标准棋盘布局，红下黑上
+    std::vector<strStartGame> m_StartGame; //! 棋盘开局
+    //! 检测布局是否合法, 使用标准棋盘布局，红下黑上
     static int CheckGame(const CPiece::ENUM_QiZi board[][10]);
     /**
      * @brief 得到开局棋盘布局
@@ -129,12 +129,12 @@ public:
 
 private:
 	struct strCODE{
-		char step[3];           //棋子和相应的位置 @see QiZiBianMa
+		char step[3];           //! 棋子和相应的位置 @see QiZiBianMa
 	};
 	struct strStep {
 		strCODE code;
-        time_t tm;              //走棋时间
-		std::string szDescript; //这一步的描述信息
+        time_t tm;              //! 走棋时间
+		std::string szDescript; //! 这一步的描述信息
 	};
 	typedef enum _ENUM_BianMa {
 		BianMa, 
@@ -145,15 +145,15 @@ private:
 	int WriteStringToFile(std::ofstream &o, std::string &s);
 	int ReadStringFromFile(std::ifstream &i, std::string &s);
 
-	int m_nIndex;					  //走棋步数
-	bool m_bFuPang;					  //复盘标志
-	std::vector<strStep> m_ChessGame; //棋局
+	int m_nIndex;					  //! 走棋步数
+	bool m_bFuPang;					  //! 复盘标志
+	std::vector<strStep> m_ChessGame; //! 棋局
 
-	time_t m_tmStart;			      //开始时间
-	time_t m_tmEnd;				      //结束时间
-	std::string m_szRedName;		  //红方名
-	std::string m_szBlackName;		  //黑方名
-	std::map<std::string, std::string> m_Tags; //保存棋局的标签部分，标签用来描述此局的信息
+	time_t m_tmStart;			      //! 开始时间
+	time_t m_tmEnd;				      //! 结束时间
+	std::string m_szRedName;		  //! 红方名
+	std::string m_szBlackName;		  //! 黑方名
+	std::map<std::string, std::string> m_Tags; //! 保存棋局的标签部分，标签用来描述此局的信息
 
 };
 

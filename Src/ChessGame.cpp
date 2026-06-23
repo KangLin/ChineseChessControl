@@ -544,9 +544,8 @@ int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
     int nBBing = 0;
     
     //检查各种棋子个数
-    for(int i = 0; i < 9; i++)
-        for(int j = 0; j < 10; j++)
-        {
+    for(int i = 0; i < 9; i++) {
+        for(int j = 0; j < 10; j++) {
             switch(board[i][j])
             {
             case CPiece::RChe:
@@ -623,6 +622,8 @@ int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
                 break;
             }
         }
+    }
+
     if(nBChe > 2 || nRChe > 2
             || nBMa > 2 || nRMa > 2
             || nBXiang > 2 || nRXiang > 2
