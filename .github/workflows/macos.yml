@@ -1,4 +1,6 @@
-name: build_macos
+# Author: Kang Lin <kl222@126.com>
+
+name: macos
 
 on:
   workflow_call:
@@ -9,37 +11,44 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+
 jobs:
   build_macos:
     strategy:
       matrix:
-        # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-        BUILD_TYPE: [Release, Debug]
-        qt_version: [6.6.2, 5.15.2, 5.12.12]
-        qt_arch: [clang_64]
-        VCPKG_TARGET_TRIPLET: [x64-osx]
         include:
-          - qt_version: 6.6.2
-            qt_modules: 'qtscxml qtmultimedia qtimageformats'
+          - VCPKG_TARGET_TRIPLET: x64-osx
+            os: macos-15-intel
+            qt_version: 6.9.3
+            qt_arch: clang_64
 
-          - qt_version: 5.15.2
+          - VCPKG_TARGET_TRIPLET: arm64-osx
+            os: macos-15
+            qt_version: 6.9.3
+            qt_arch: clang_64
 
-          - qt_version: 5.12.12
+          - VCPKG_TARGET_TRIPLET: arm64-osx
+            os: macos-14
+            qt_version: 6.9.3
+            qt_arch: clang_64
 
-    # See: https://docs.github.com/zh/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
-    # See: https://github.com/actions/runner-images/tree/main
-    runs-on: macos-13
+
+    # See: [About GitHub-hosted runners](https://docs.github.com/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners)
+    # See: [Choosing the runner for a job](https://docs.github.com/actions/writing-workflows/choosing-where-your-workflow-runs/choosing-the-runner-for-a-job)
+    # See: https://github.com/actions/runner-images/
+    runs-on: ${{matrix.os}}
 
     env:
-      BUILD_TYPE:  ${{ matrix.BUILD_TYPE }}
+      BUILD_DIR:   ${{github.workspace}}/build
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
-      qt_modules: 'qtwebengine ${{ matrix.qt_modules }}'
-      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
+      qt_modules: "qtscxml qtmultimedia qtserialport qt5compat"
+      VCPKGGITCOMMITID: 7213cf8135c329c37c7e2778e40774489a0583a8
+      VCPKG_TARGET_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
+      VCPKG_DEFAULT_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
       artifact_name: build_macos
-      ChineseChessControl_VERSION: "2.0.13"
+      ChineseChessControl_VERSION: "2.0.14-dev"
 
     # Map the job outputs to step outputs
     outputs:
@@ -47,7 +56,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: recursive
     
@@ -59,12 +68,12 @@ jobs:
           cmake -E make_directory ${{github.workspace}}/build
 
       - name: Cache installed
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         id: cache-installed
         with:
           path: |
             ${{env.INSTALL_DIR}}
-          key: install_macos_qt${{matrix.qt_version}}_${{matrix.qt_arch}}_${{matrix.BUILD_TYPE}}
+          key: install_macos_qt${{matrix.qt_version}}_${{matrix.qt_arch}}
 
       - name: run vcpkg
         uses: lukka/run-vcpkg@v11
@@ -73,7 +82,7 @@ jobs:
           vcpkgDirectory: ${{runner.workspace}}/vcpkg/
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           dir: '${{env.TOOSL_DIR}}/qt' # optional
           version: '${{matrix.qt_version}}' # optional, default is 5.15.2
@@ -89,27 +98,27 @@ jobs:
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+          RabbitCommon_ROOT: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
           cmake ${{github.workspace}} \
               -DCMARK_SHARED=OFF \
               -DCMARK_TESTS=OFF \
               -DCMARK_STATIC=ON \
-              -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} \
+              -DCMAKE_BUILD_TYPE=Release \
               -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/install \
               -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}}/lib/cmake \
               -DVCPKG_VERBOSE=ON \
               -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON \
-              -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake
-          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target install
-          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_macos_qt${{matrix.qt_version}}_${{ matrix.BUILD_TYPE }}.zip ./install/*
-          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
+              -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake \
+              -DVCPKG_TARGET_TRIPLET=${{matrix.VCPKG_TARGET_TRIPLET}}              
+          cmake --build . --config Release --target install
+          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt${{matrix.qt_version}}_${{matrix.os}}.zip ./install/*
+          cmake --build . --config Release --target package
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' && matrix.qt_version == '5.12.12' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
-          name: ${{ env.artifact_name }}
+          name: ${{ env.artifact_name }}_${{matrix.qt_version}}_${{matrix.os}}
           path: |
             ${{github.workspace}}/build/chinesechesscontrol_*.tar.gz
-            ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_macos_qt${{matrix.qt_version}}_${{ matrix.BUILD_TYPE }}.zip
+            ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt${{matrix.qt_version}}_${{matrix.os}}.zip

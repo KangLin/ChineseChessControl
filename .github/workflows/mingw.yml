@@ -25,7 +25,7 @@ jobs:
       TOOSL_DIR:   ${{github.workspace}}\.cache\tools
       INSTALL_DIR: ${{github.workspace}}\.cache\install
       artifact_name: build_mingw
-      ChineseChessControl_VERSION: "v2.0.13"
+      ChineseChessControl_VERSION: "v2.0.14-dev"
 
     # Map the job outputs to step outputs
     outputs:
@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: true
 
@@ -45,7 +45,7 @@ jobs:
           cmake -E make_directory ${{github.workspace}}/build
 
       - name: Cache installed
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         id: cache-installed
         with:
           path: |
@@ -77,7 +77,7 @@ jobs:
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+          RabbitCommon_ROOT: ${{env.SOURCE_DIR}}/RabbitCommon
           MSYSTEM: MINGW64
           PATH: C:\msys64\mingw64\bin;C:\msys64\usr\bin
         run: |
@@ -92,14 +92,8 @@ jobs:
               -DBUILD_APP=ON
           cmake --build . --config ${{ matrix.BUILD_TYPE }}
 
-      - name: Package
-        working-directory: ${{github.workspace}}/build
-        if: ${{ matrix.BUILD_TYPE == 'Release' }}
-        run: |
-          cmake --build . --config ${{ matrix.BUILD_TYPE }} --target package
-
 #      - name: Update artifact 
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@v4
 #        if: false
 #        with:
 #          name: rabbitremotecontrol_${{ matrix.os }}

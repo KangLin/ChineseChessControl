@@ -22,7 +22,7 @@ jobs:
       SOURCE_DIR:  ${{github.workspace}}/.cache/source
       TOOSL_DIR:   ${{github.workspace}}/.cache/tools
       INSTALL_DIR: ${{github.workspace}}/.cache/install
-      ChineseChessControl_VERSION: "2.0.13"
+      ChineseChessControl_VERSION: "2.0.14-dev"
       artifact_name: build_ubuntu
 
     # Map the job outputs to step outputs
@@ -31,7 +31,7 @@ jobs:
       
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: recursive
     
@@ -57,7 +57,7 @@ jobs:
               qt6-multimedia-dev libqt6svg6-dev
 
       - name: Cache installed
-        uses: actions/cache@v2
+        uses: actions/cache@v5
         id: cache-installed
         with:
           path: |
@@ -72,7 +72,7 @@ jobs:
       - name: Build develop library
         working-directory: ${{github.workspace}}/build
         env:
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+          RabbitCommon_ROOT: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
           cmake ${{github.workspace}} \
             -DCMARK_SHARED=OFF \
@@ -89,7 +89,7 @@ jobs:
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+          RabbitCommon_ROOT: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
           cmake ${{github.workspace}} \
             -DCMARK_SHARED=OFF \
@@ -101,8 +101,8 @@ jobs:
           cpack -G "DEB;STGZ"
 
       - name: Update artifact
-        if: ${{ matrix.BUILD_TYPE == 'Release' }}
-        uses: actions/upload-artifact@v2
+        if: false #${{ matrix.BUILD_TYPE == 'Release' }}
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.artifact_name }}
           path: |

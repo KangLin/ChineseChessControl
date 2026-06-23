@@ -1,3 +1,5 @@
+# Author: Kang Lin <kl222@126.com>
+
 name: android
 
 on:
@@ -12,32 +14,43 @@ jobs:
 
     strategy:
       matrix:
-        BUILD_TYPE: [Release]
-        qt_arch: [android_arm64_v8a, android_x86_64]
-        qt_version: [6.6.2]
         include:
-          - BUILD_TYPE: Release
-            qt_arch: android_arm64_v8a
+          - qt_arch: android_arm64_v8a
             VCPKG_TARGET_TRIPLET: arm64-android
-            config_arch: arm64_v8a
+            ANDROID_ABI: arm64-v8a
+            arch: arm64
+            qt_version: 6.10.3
+            BUILD_TYPE: Release
 
-          - BUILD_TYPE: Release
-            qt_arch: android_x86_64 
+          - qt_arch: android_x86_64
             VCPKG_TARGET_TRIPLET: x64-android
-            config_arch: x86_64
+            ANDROID_ABI: x86_64
+            arch: x86_64
+            qt_version: 6.10.3
+            BUILD_TYPE: Release
 
-    runs-on: ubuntu-latest
-
+    # See: [About GitHub-hosted runners](https://docs.github.com/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners)
+    # See: [Choosing the runner for a job](https://docs.github.com/actions/writing-workflows/choosing-where-your-workflow-runs/choosing-the-runner-for-a-job)
+    # See: https://github.com/actions/runner-images/
+    runs-on: ubuntu-24.04
+    
     env:
       artifact_name: build_android
-      SOURCE_DIR:  ${{github.workspace}}/.cache/source
-      TOOSL_DIR:   ${{github.workspace}}/.cache/tools
-      INSTALL_DIR: ${{github.workspace}}/.cache/install
-      ChineseChessControl_VERSION: "v2.0.13"
-      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
-      ANDROID_PLATFORM: android-23
-      ANDROID_NATIVE_API_LEVEL: 23
-      qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtwebsockets qtwebview'
+      VCPKGGITCOMMITID: 7213cf8135c329c37c7e2778e40774489a0583a8
+      VCPKG_TARGET_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
+      VCPKG_DEFAULT_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
+      VCPKG_DEFAULT_HOST_TRIPLET: x64-linux
+      VCPKG_MANIFEST_FEATURES: "freerdp;vnc;wol;filetransfer;${{matrix.VCPKG_MANIFEST_FEATURES}}"
+      BUILD_DIR:     ${{github.workspace}}/build
+      SOURCE_DIR:    ${{github.workspace}}/.cache/source
+      TOOLS_DIR:     ${{github.workspace}}/.cache/tools
+      INSTALL_DIR:   ${{github.workspace}}/.cache/install
+      #ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/26.3.11579264
+      ANDROID_PLATFORM: android-34
+      ANDROID_NATIVE_API_LEVEL: 34
+      ANDROID_ABI: ${{matrix.ANDROID_ABI}}
+      qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtpositioning qtserialport qt5compat'
+      ChineseChessControl_VERSION: "v2.0.14-dev"
 
     # Map the job outputs to step outputs
     outputs:
@@ -45,25 +58,31 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: recursive
 
       - name: make directory
         run: |
           cmake -E make_directory ${{env.SOURCE_DIR}}
-          cmake -E make_directory ${{env.TOOSL_DIR}}
+          cmake -E make_directory ${{env.TOOLS_DIR}}
           cmake -E make_directory ${{env.INSTALL_DIR}}
-          cmake -E make_directory ${{github.workspace}}/build
+          cmake -E make_directory ${{env.BUILD_DIR}}
+
+      - name: Install apt packages
+        run: |
+          #sudo apt-get update -y
+          #sudo apt-get upgrade -y
+          sudo apt install -y -q ninja-build nasm
 
       - name: Cache installed
         #if: false
-        uses: actions/cache@v2
+        uses: actions/cache@v5
         id: cache-installed
         with:
           path: |
             ${{env.INSTALL_DIR}}
-          key: install_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}
+          key: install_android_qt${{matrix.qt_version}}_${{matrix.qt_arch}}_${{matrix.BUILD_TYPE}}
 
       - name: run vcpkg
         uses: lukka/run-vcpkg@v11
@@ -74,23 +93,23 @@ jobs:
           vcpkgGitCommitId: ${{env.VCPKGGITCOMMITID}}
           vcpkgDirectory: ${{ runner.workspace }}/vcpkg/
 
-      - name: Install Qt of gcc_64
-        uses: jurplel/install-qt-action@v3
+      - name: Install Qt of linux_gcc_64
+        uses: jurplel/install-qt-action@v4
         with:
-          dir: '${{env.TOOSL_DIR}}/qt' # optional
+          dir: '${{env.TOOLS_DIR}}/qt' # optional
           version: '${{matrix.qt_version}}'
           #host: 'linux'
           target: 'desktop'
-          arch: 'gcc_64'
+          arch: 'linux_gcc_64'
           set-env: false
           cache: true
-          cache-key-prefix: cached_qt
+          cache-key-prefix: cached-qt_${{matrix.qt_version}}_${{matrix.qt_arch}}
 
       - name: Install Qt of android
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           # Directory to install Qt
-          dir: '${{env.TOOSL_DIR}}/qt' # optional
+          dir: '${{env.TOOLS_DIR}}/qt' # optional
           # Version of Qt to install
           version: '${{matrix.qt_version}}'
           # Host platform
@@ -102,7 +121,11 @@ jobs:
           # Additional Qt modules to install
           modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
           cache: true
-          cache-key-prefix: cached_qt
+          cache-key-prefix: cached-qt_${{matrix.qt_version}}_${{matrix.qt_arch}}
+
+      - name: chmod qt-cmake
+        run: |
+          sudo chmod 777 ${QT_ROOT_DIR}/bin/qt-cmake
 
       - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
@@ -112,25 +135,39 @@ jobs:
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+          RabbitCommon_ROOT: ${{env.SOURCE_DIR}}/RabbitCommon
           QT_ANDROID_KEYSTORE_PATH: ${{env.SOURCE_DIR}}/RabbitCommon/RabbitCommon.keystore
           QT_ANDROID_KEYSTORE_ALIAS: rabbitcommon
           QT_ANDROID_KEYSTORE_STORE_PASS: ${{secrets.STOREPASS}}
+          JAVA_HOME: ${{env.JAVA_HOME_17_X64}}
         run: |
-          sudo chmod 777 ${Qt6_DIR}/bin/qt-cmake
-          ${Qt6_DIR}/bin/qt-cmake .. \
+          sudo chmod 777 ${QT_ROOT_DIR}/bin/qt-cmake
+          ${QT_ROOT_DIR}/bin/qt-cmake .. \
               -DCMARK_SHARED=OFF \
               -DCMARK_TESTS=OFF \
               -DCMARK_STATIC=ON \
+              -DWITH_CMARK=OFF \
+              -DWITH_CMARK_GFM=ON \
               -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} \
-              -DQT_HOST_PATH=${Qt6_DIR}/../gcc_64 \
               -DANDROID_PLATFORM=${{env.ANDROID_PLATFORM}} \
-              -DANDROID_NATIVE_API_LEVEL=${{env.ANDROID_NATIVE_API_LEVEL}} \
+              -DQT_CHAINLOAD_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake \
+              -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
+              -DVCPKG_TARGET_TRIPLET=${{env.VCPKG_TARGET_TRIPLET}} \
+              -DVCPKG_MANIFEST_FEATURES="${{env.VCPKG_MANIFEST_FEATURES}}" \
+              -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON \
+              -DVCPKG_VERBOSE=ON \
+              -DRABBIT_ENABLE_INSTALL_DEPENDENT=ON \
+              -DRABBIT_ENABLE_INSTALL_QT=ON \
+              -DRABBIT_ENABLE_INSTALL_TO_BUILD_PATH=ON \
+              -DCMAKE_PREFIX_PATH=${QT_ROOT_DIR}:${{env.INSTALL_DIR}} \
+              -DQT_HOST_PATH=${QT_ROOT_DIR}/../gcc_64 \
               -DQT_ANDROID_SIGN_APK=ON \
-              -DQT_ENABLE_VERBOSE_DEPLOYMENT=OFF \
-              -DQt6LinguistTools_DIR=${Qt6_DIR}/../gcc_64/lib/cmake/Qt6LinguistTools \
-              -DCMAKE_INSTALL_PREFIX=`pwd`/install
-          cmake --build . --config ${{matrix.BUILD_TYPE}} --target all
+              -DQT_ENABLE_VERBOSE_DEPLOYMENT=ON \
+              -DVCPKG_TRACE_FIND_PACKAGE=ON \
+              -DQt6LinguistTools_DIR=${QT_ROOT_DIR}/../gcc_64/lib/cmake/Qt6LinguistTools \
+              -DCMAKE_INSTALL_PREFIX=`pwd`/install \
+              -DENABLE_UPDATE_TRANSLATIONS=ON
+          cmake --build . --parallel $(nproc) --config ${{matrix.BUILD_TYPE}} --target all
           APK_FILE=`find . -name "android-*.apk"`
           cp $APK_FILE ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.apk
           cmake --build . --config ${{matrix.BUILD_TYPE}} --target install
@@ -138,9 +175,9 @@ jobs:
 
       - name: Update artifact
         #if: ${{ matrix.BUILD_TYPE == 'Release' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
-          name: ${{ env.artifact_name }}
+          name: ${{ env.artifact_name }}_${{matrix.qt_version}}_${{matrix.qt_arch}}
           path: |
             ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.zip
             ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}.apk

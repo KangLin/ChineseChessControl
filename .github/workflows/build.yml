@@ -5,7 +5,8 @@ name: build
 env:
   artifact_path: artifact_path
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  ChineseChessControl_VERSION: "v2.0.13"
+  ChineseChessControl_VERSION: "2.0.14-dev"
+  ChineseChessControl_VERSION_PRE: v2.0.13
 
 on: 
   push:
@@ -27,7 +28,11 @@ jobs:
   android:
     uses: ./.github/workflows/android.yml
     secrets: inherit
-  
+
+  docker:
+    uses: ./.github/workflows/docker.yml
+    secrets: inherit
+
   doxygen:
     uses: ./.github/workflows/doxygen.yml
     secrets: inherit
@@ -36,64 +41,141 @@ jobs:
   deploy:
     #if: ${{ startsWith(github.ref, 'refs/tags/') }}
     runs-on: ubuntu-latest
-    needs: [ubuntu, msvc, macos, android, doxygen]
+    needs: [docker, msvc, android, doxygen]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: false
+          fetch-depth: 1
 
+      - name: clean test tag
+        if: ${{ startsWith(github.ref, 'refs/heads/master') }}
+        continue-on-error: true
+        run: |
+          gh release delete test_${{ github.ref_name }} -y --cleanup-tag
+      
       - name: Download ubuntu
-        uses: actions/download-artifact@v3
+        if: false
+        uses: actions/download-artifact@v7
         with:
           name: ${{ needs.ubuntu.outputs.name }}
           path: ${{ env.artifact_path }}
+          merge-multiple: true
+
+      - name: Download docker
+        uses: actions/download-artifact@v7
+        with:
+          pattern: ${{ needs.docker.outputs.name }}*
+          path: ${{ env.artifact_path }}
+          merge-multiple: true
 
       - name: Download msvc
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
-          name: ${{ needs.msvc.outputs.name }}
+          pattern: ${{ needs.msvc.outputs.name }}*
           path: ${{ env.artifact_path }}
+          merge-multiple: true
 
       - name: Download macos
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
-          name: ${{ needs.macos.outputs.name }}
+          pattern: ${{ needs.macos.outputs.name }}*
           path: ${{ env.artifact_path }}
+          merge-multiple: true
 
       - name: Download android
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
-          name: ${{ needs.android.outputs.name }}
+          pattern: ${{ needs.android.outputs.name }}*
           path: ${{ env.artifact_path }}
+          merge-multiple: true
 
       - name: Download doxygen
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
           name: ${{ needs.doxygen.outputs.name }}
           path: ${{ env.artifact_path }}
+          merge-multiple: true
 
-      - name: Make Note.md file
+      - name: Add change log file in Release.md file
+        #if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
-          echo "[:cn: 修改日志](https://github.com/KangLin/ChineseChessControl/blob/${{env.ChineseChessControl_VERSION}}/ChangeLog.md)" > ${{github.workspace}}/Note.md
-          echo "" >> ${{github.workspace}}/Note.md
-          echo "文件签名:" >> ${{github.workspace}}/Note.md
+          export BRANCH_NAME=${{ github.ref_name }}
+          if [ "${{ github.ref_name }}" = "master" ]; then
+              export BRANCH_NAME=test_${{ github.ref_name }}
+          fi
+          if [ -f ${{github.workspace}}/Script/common.sh ]; then
+              source ${{github.workspace}}/Script/common.sh
+              content=$(<"${{github.workspace}}/ChangeLog.md")
+              if [[ $content =~ "${{env.ChineseChessControl_VERSION}}" ]]; then
+                echo "## [修改日志](https://github.com/KangLin/ChineseChessControl/blob/${BRANCH_NAME}/ChangeLog_zh_CN.md)" >> ${{github.workspace}}/Release.md
+                echo "" >> ${{github.workspace}}/Release.md
+                get_section ${{github.workspace}}/ChangeLog.md >> ${{github.workspace}}/Release.md
+                echo "" >> ${{github.workspace}}/Release.md
+              fi
+          fi
+          echo "-------------------------" >> ${{github.workspace}}/Release.md
+          # 因为其它网站也可能需要，所以用完整的 URL
+          echo "全部修改: [${{env.ChineseChessControl_VERSION_PRE}}...v${{env.ChineseChessControl_VERSION}}](https://github.com/KangLin/ChineseChessControl/compare/${{env.ChineseChessControl_VERSION_PRE}}...v${{env.ChineseChessControl_VERSION}})" >> ${{github.workspace}}/Release.md
+          BUILD_TIME=`date --rfc-3339=second`
+          echo "构建时间：$BUILD_TIME" >> ${{github.workspace}}/Release.md
+          echo "支持平台: [Qt5](https://doc.qt.io/qt-5/supported-platforms.html) [Qt6](https://doc.qt.io/qt-6/supported-platforms.html)" >> ${{github.workspace}}/Release.md
+          echo "[文件检验和](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/CheckSum.md)" >> ${{github.workspace}}/Release.md
+          echo "[开发文档](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_document.zip)" >> ${{github.workspace}}/Release.md
+          echo "" >> ${{github.workspace}}/Release.md
+
+      - name: Add download
+        run: |
+          export BRANCH_NAME=${{ github.ref_name }}
+          if [ "${{ github.ref_name }}" = "master" ]; then
+              export BRANCH_NAME=test_${{ github.ref_name }}
+          fi
+          echo "## 下载:" >> ${{github.workspace}}/Release.md
+          echo "" >> ${{github.workspace}}/Release.md
+          echo "|       | x86-64 (64-bit) | x86-32 (32-bit) | AArch64 (ARM64) | ARMv7 (32-bit) | 备注|" >> ${{github.workspace}}/Release.md
+          echo "|:-     | :-------------- | :-------------- | :-------------- | :------------- |---|" >> ${{github.workspace}}/Release.md
+          echo "|Windows|[EXE](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_win64_msvc2022_64_qt6.10.3_Setup.exe)|[EXE](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_win32_msvc2019_qt5.15.2_Setup.exe)|[EXE](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_win64_msvc2022_arm64_qt6.10.3_Setup.exe)| |支持平台：<br> [x86-32(Qt5)](https://doc.qt.io/qt-5/supported-platforms.html)<br> [x86-64(Qt6)](https://doc.qt.ac.cn/qt-6/supported-platforms.html)|" >> ${{github.workspace}}/Release.md
+          echo "|Android|[APK](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_android_x86_64_qt6.10.3_Release.apk) | |[APK](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_android_arm64_v8a_qt6.10.3_Release.apk)| |Experiment.<br> [Supported platforms](https://doc.qt.io/qt-6/supported-platforms.html)|实验性的。<br> [支持平台](https://doc.qt.io/qt-6/supported-platforms.html)|" >> ${{github.workspace}}/Release.md
+
+          echo "|macOS 15|[Develop zip](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt6.9.3_macos-15-intel.zip)||[Develop zip](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt6.9.3_macos-15.zip)||实验性的。<br> [支持平台](https://doc.qt.ac.cn/qt-6/supported-platforms.html)|" >> ${{github.workspace}}/Release.md
+          echo "|macOS 14|||[Develop zip](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt6.9.3_macos-14.zip)||实验性的。<br> [支持平台](https://doc.qt.ac.cn/qt-6/supported-platforms.html)|" >> ${{github.workspace}}/Release.md
+
+          echo "|Linux|[zip file of install AppImage](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChess_${{env.ChineseChessControl_VERSION}}_Linux_x86_64_Setup.zip)| |[zip file of install AppImage](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChess_${{env.ChineseChessControl_VERSION}}_Linux_aarch64_Setup.zip) | |解压 zip 文件，然后执行  \`install.sh\`， 安装用于图形界面的目录、桌面快捷方式；或者在终端中执行  \`ChineseChessControl_${{env.ChineseChessControl_VERSION}}_Linux_*.AppImage\`  文件，运行程序。<br>注意：\`GLIBC >= 2.43\` 并且安装了 \`fuse3\`|" >> ${{github.workspace}}/Release.md
+
+          echo "|Ubuntu 26.04 (resolute)|[DEB](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess_${{env.ChineseChessControl_VERSION}}_ubuntu26.04_x86_64.deb)| |[DEB](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess_${{env.ChineseChessControl_VERSION}}_ubuntu26.04_aarch64.deb)| |运行命令 \`sudo apt install ./chinesechess_${{env.ChineseChessControl_VERSION}}_ubuntu26.04_*.deb\` 进行安装。 |" >> ${{github.workspace}}/Release.md
+          echo "|Ubuntu 24.04 (noble)|[DEB](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess_${{env.ChineseChessControl_VERSION}}_ubuntu24.04_x86_64.deb)| |[DEB](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess_${{env.ChineseChessControl_VERSION}}_ubuntu24.04_aarch64.deb)| |运行命令 \`sudo apt install ./chinesechess_${{env.ChineseChessControl_VERSION}}_ubuntu24.04_*.deb\` 进行安装。 |" >> ${{github.workspace}}/Release.md
+
+          echo "|Debian 13 (trixie)|[DEB](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess_${{env.ChineseChessControl_VERSION}}_debian13_x86_64.deb)| |[DEB](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess_${{env.ChineseChessControl_VERSION}}_debian13_aarch64.deb)| |运行命令 \`sudo apt install ./chinesechess_${{env.ChineseChessControl_VERSION}}_debian13_*.deb\` 进行安装。 |" >> ${{github.workspace}}/Release.md
+
+          RPM_VERSION=${ChineseChessControl_VERSION//-/\_}
+          echo "|Fedora 43|[RPM](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess-${RPM_VERSION}-1.fc43.x86_64.rpm)| |[RPM](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess-${RPM_VERSION}-1.fc43.aarch64.rpm)| |执行命令  \`sudo dnf install \"rpm file\"\`  进行安装。 |" >> ${{github.workspace}}/Release.md
+          echo "|Fedora 42|[RPM](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess-${RPM_VERSION}-1.fc42.x86_64.rpm)| |[RPM](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess-${RPM_VERSION}-1.fc42.aarch64.rpm)| |执行命令  \`sudo dnf install \"rpm file\"\`  进行安装。 |" >> ${{github.workspace}}/Release.md
+          echo "|Fedora 41|[RPM](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess-${RPM_VERSION}-1.fc41.x86_64.rpm)| |[RPM](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/chinesechess-${RPM_VERSION}-1.fc41.aarch64.rpm)| |执行命令  \`sudo dnf install \"rpm file\"\`  进行安装。 |" >> ${{github.workspace}}/Release.md
+
+          # echo "|Flatpak|[flatpak](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_Linux_x86_64.flatpak)| |[flatpak](https://github.com/KangLin/ChineseChessControl/releases/download/${BRANCH_NAME}/ChineseChessControl_v${{env.ChineseChessControl_VERSION}}_Linux_aarch64.flatpak)| |执行命令  \`flatpak install \"flatpak File\" [--user]\`  进行安装。|" >> ${{github.workspace}}/Release.md
+      
+      - name: Add artifact sha256sum in Release.md file
+        run: |
+          echo "" >> ${{github.workspace}}/Release.md
           cd ${{ env.artifact_path }}
           for file in *
           do
               echo "$file"
               if [ -f $file ]; then
                   if [ "${file##*.}" != "xml" ] && [ "${file##*.}" != "json" ]; then
-                      md5sum $file > $file.md5sum
-                      cat $file.md5sum >> ${{github.workspace}}/Note.md
+                      SumMd5=`md5sum $file | awk '{print  "|", $2, "|", $1, "|"}'`
+                      Sum256=`sha256sum $file | awk '{print $1, "|"}'`
+                      echo "${SumMd5}${Sum256}" >> ${{github.workspace}}/CheckSum.md
                   fi
               else
                  rm -fr $file
               fi
           done
+          echo "" >> ${{github.workspace}}/Release.md
 
       - name: Upload To Github Release
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        #if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
-          gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --notes-file ${{github.workspace}}/Note.md
-          gh release upload ${{ github.ref_name }} ${{github.workspace}}/${{ env.artifact_path }}/* ${{github.workspace}}/Note.md
+          gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --notes-file ${{github.workspace}}/Release.md
+          gh release upload ${{ github.ref_name }} ${{github.workspace}}/${{ env.artifact_path }}/* ${{github.workspace}}/Release.md ${{github.workspace}}/CheckSum.md

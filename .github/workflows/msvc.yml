@@ -1,3 +1,5 @@
+# Author: Kang Lin <kl222@126.com>
+
 name: msvc
 
 on:
@@ -12,44 +14,58 @@ jobs:
 
     strategy:
       matrix:
-        BUILD_TYPE: [Release, Debug]
-        qt_version: [6.6.2, 5.15.2, 5.12.12]
         include:
-          - qt_version: 6.6.2
-            triplet: x64-windows
+          - CMAKE_GENERATOR_PLATFORM: x64
+            VCPKG_TARGET_TRIPLET: x64-windows
             VCPKG_PLATFORM_TOOLSET: v143
-            qt_arch: win64_msvc2019_64
-            CMAKE_GENERATOR_PLATFORM: x64
-            qt_modules: qtmultimedia qtimageformats qtscxml qtwebchannel qtwebsockets qtwebview qtpositioning
+            BUILD_TYPE: Release
+            qt_version: 6.10.3
+            qt_arch: win64_msvc2022_64
+            qt_modules: qtscxml qtmultimedia qtimageformats qt5compat
+            os: windows-2022
 
-          - qt_version: 5.15.2
-            triplet: x64-windows
+          - CMAKE_GENERATOR_PLATFORM: arm64
+            VCPKG_TARGET_TRIPLET: arm64-windows
             VCPKG_PLATFORM_TOOLSET: v143
-            VCPKG_MANIFEST_DIR: "\\vcpkg\\manifests"
-            qt_arch: win64_msvc2019_64
-            CMAKE_GENERATOR_PLATFORM: x64
+            BUILD_TYPE: Release
+            qt_version: 6.10.3
+            qt_arch: win64_msvc2022_arm64
+            qt_modules: qtscxml qtmultimedia qtimageformats qt5compat
+            os: windows-11-arm
 
-          - qt_version: 5.12.12
-            triplet: x86-windows
+          - CMAKE_GENERATOR_PLATFORM: Win32
+            VCPKG_TARGET_TRIPLET: x86-windows
             VCPKG_PLATFORM_TOOLSET: v143
-            VCPKG_MANIFEST_DIR: "\\vcpkg\\manifests"
-            qt_arch: win32_msvc2017
-            CMAKE_GENERATOR_PLATFORM: Win32
+            #VCPKG_OVERLAY_PORTS: "vcpkg/ports"
+            BUILD_TYPE: Release
+            #VCPKG_MANIFEST_FEATURES: "ffmpeg"
+            qt_version: 5.15.2
+            qt_arch: win32_msvc2019
+            #qt_modules: qtwebengine
+            os: windows-2022
 
-    runs-on: windows-latest
+    # See: [About GitHub-hosted runners](https://docs.github.com/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners)
+    # See: [Choosing the runner for a job](https://docs.github.com/actions/writing-workflows/choosing-where-your-workflow-runs/choosing-the-runner-for-a-job)
+    # See: https://github.com/actions/runner-images/
+    runs-on: ${{matrix.os}}
 
     env:
-      ChineseChessControl_VERSION: "v2.0.13"
-      artifact_name: build_msvc
+      BUILD_DIR:   ${{github.workspace}}\build
       SOURCE_DIR:  ${{github.workspace}}\.cache\source
-      TOOSL_DIR:   ${{github.workspace}}\.cache\tools
+      TOOLS_DIR:   ${{github.workspace}}\.cache\tools
       INSTALL_DIR: ${{github.workspace}}\.cache\install
+      VCPKGGITCOMMITID: 7213cf8135c329c37c7e2778e40774489a0583a8
+      VCPKG_TARGET_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
+      VCPKG_DEFAULT_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
+      VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
+      #VCPKG_OVERLAY_PORTS: "${{github.workspace}}/${{matrix.VCPKG_OVERLAY_PORTS}}"
+      #VCPKG_MANIFEST_FEATURES: "${{matrix.VCPKG_MANIFEST_FEATURES}}"
+      #VCPKG_INSTALLED_DIR: ${{github.workspace}}\.cache\install
       CMAKE_GENERATOR: "Visual Studio 17 2022"
       CMAKE_GENERATOR_PLATFORM: ${{matrix.CMAKE_GENERATOR_PLATFORM}}
-      VCPKG_PLATFORM_TOOLSET: ${{matrix.VCPKG_PLATFORM_TOOLSET}}
-      VCPKG_MANIFEST_DIR: "${{github.workspace}}${{matrix.VCPKG_MANIFEST_DIR}}"
-      VCPKGGITCOMMITID: 007aaced1a9d3245e28a2ba9395dca88ea890db1
-      qt_modules: qtwebengine ${{matrix.qt_modules}}
+      qt_modules: "${{matrix.qt_modules}}"
+      artifact_name: build_msvc
+      ChineseChessControl_VERSION: "v2.0.14-dev"
 
     # Map the job outputs to step outputs
     outputs:
@@ -61,7 +77,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: recursive
 
@@ -75,7 +91,7 @@ jobs:
           cmake -E make_directory ${{github.workspace}}/build_package
 
       - name: Cache installed
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         id: cache-installed
         with:
           path: |
@@ -89,14 +105,14 @@ jobs:
           vcpkgDirectory: ${{runner.workspace}}/vcpkg/
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           dir: '${{env.TOOSL_DIR}}/qt' # optional
           version: '${{matrix.qt_version}}' # optional, default is 5.15.2
           arch: '${{matrix.qt_arch}}' # optional
           modules: '${{env.qt_modules}}' # optional. See: https://ddalcino.github.io/aqt-list-server/
           cache: true
-          cache-key-prefix: cached_qt
+          cache-key-prefix: cached-qt_${{matrix.qt_version}}_${{matrix.qt_arch}}
  
       - name: git clone RabbitCommon
         working-directory: ${{env.SOURCE_DIR}}
@@ -105,7 +121,7 @@ jobs:
       - name: build ChineseChessControl
         working-directory: ${{github.workspace}}/build
         env:
-          RabbitCommon_DIR: ${{env.SOURCE_DIR}}/RabbitCommon
+          RabbitCommon_ROOT: ${{env.SOURCE_DIR}}/RabbitCommon
         run: |
           cmake ${{github.workspace}} ^
               -A ${{matrix.CMAKE_GENERATOR_PLATFORM}} ^
@@ -113,16 +129,20 @@ jobs:
               -DCMARK_SHARED=OFF ^
               -DCMARK_TESTS=OFF ^
               -DCMARK_STATIC=ON ^
+              -DWITH_CMARK=ON ^
+              -DWITH_CMARK_GFM=OFF ^
               -DRABBIT_ENABLE_INSTALL_DEPENDENT=ON ^
               -DRABBIT_ENABLE_INSTALL_QT=ON ^
               -DRABBIT_ENABLE_INSTALL_TO_BUILD_PATH=OFF ^
               -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}} ^
               -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/install ^
+              -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}} ^
               -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake ^
-              -DVCPKG_MANIFEST_DIR=${{env.VCPKG_MANIFEST_DIR}} ^
-              -DVCPKG_VERBOSE=ON ^
+              -DVCPKG_TARGET_TRIPLET=${{matrix.VCPKG_TARGET_TRIPLET}} ^
               -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON ^
-              -DVCPKG_APPLOCAL_DEPS=ON
+              -DVCPKG_APPLOCAL_DEPS=ON ^
+              -DVCPKG_TRACE_FIND_PACKAGE=ON ^
+              -DVCPKG_VERBOSE=ON
           cmake --build . --config ${{matrix.BUILD_TYPE}}
 
       - name: Package program
@@ -137,9 +157,9 @@ jobs:
           cmake --install . --config ${{matrix.BUILD_TYPE}} --component=DependLibraries
           copy /Y ${{env.INSTALL_DIR}}\bin\*.dll install\bin
           copy /Y ${{env.INSTALL_DIR}}\lib\*.dll install\bin
-          copy /Y ${{env.RUNVCPKG_VCPKG_ROOT}}\installed\${{env.RUNVCPKG_VCPKG_TRIPLET_OUT}}\bin\*.dll install\bin
+          copy /Y ${{env.INSTALL_DIR}}\vcpkg_installed\${{matrix.VCPKG_TARGET_TRIPLET}}\bin\*.dll install\bin
           makensis Install.nsi
-          RENAME ChineseChessControl_${{env.ChineseChessControl_VERSION}}_Setup.exe ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}_Setup.exe 
+          RENAME ChineseChessControl_${{env.ChineseChessControl_VERSION}}_Setup.exe ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_qt${{matrix.qt_version}}_Setup.exe
 
       - name: Package develop library
         working-directory: ${{github.workspace}}\build
@@ -150,9 +170,9 @@ jobs:
           7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}_Develop.zip %CD%\install_develop\.
 
       - name: Update artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v7
         with:
-          name: ${{ env.artifact_name }}
+          name: ${{ env.artifact_name }}_${{matrix.qt_version}}_${{matrix.qt_arch}}_${{matrix.BUILD_TYPE}}
           path: |
             ${{github.workspace}}\build\ChineseChessControl_*.exe
             ${{github.workspace}}\build\ChineseChessControl_${{env.ChineseChessControl_VERSION}}_${{matrix.qt_arch}}_Qt${{matrix.qt_version}}_${{matrix.BUILD_TYPE}}_Develop.zip
