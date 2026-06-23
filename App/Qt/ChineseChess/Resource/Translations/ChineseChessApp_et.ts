@@ -83,13 +83,17 @@
     </message>
     <message>
         <location filename="../../MainWindow.cpp" line="43"/>
-        <location filename="../../MainWindow.cpp" line="52"/>
         <source>Open chess game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../MainWindow.cpp" line="52"/>
+        <source>Save chess game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../MainWindow.cpp" line="54"/>
-        <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
+        <source>Chinese chess control file(*.ccc);; Portable game notation file(*.pgn);; All files(*.*)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

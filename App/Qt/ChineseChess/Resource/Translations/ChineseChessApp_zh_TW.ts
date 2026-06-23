@@ -34,10 +34,6 @@
         <translation>保存(&amp;S)</translation>
     </message>
     <message>
-        <source>Previou(&amp;P)</source>
-        <translation type="vanished">上一步(&amp;P)</translation>
-    </message>
-    <message>
         <location filename="../../MainWindow.ui" line="100"/>
         <source>Previous(&amp;P)</source>
         <translation>上一步(&amp;P)</translation>
@@ -80,19 +76,19 @@
         <translation>提示音(&amp;S)</translation>
     </message>
     <message>
-        <source>Style(&amp;T)</source>
-        <translation type="vanished">樣式(&amp;T)</translation>
-    </message>
-    <message>
         <location filename="../../MainWindow.cpp" line="43"/>
-        <location filename="../../MainWindow.cpp" line="52"/>
         <source>Open chess game</source>
         <translation>打開棋局</translation>
     </message>
     <message>
+        <location filename="../../MainWindow.cpp" line="52"/>
+        <source>Save chess game</source>
+        <translation>保存棋局</translation>
+    </message>
+    <message>
         <location filename="../../MainWindow.cpp" line="54"/>
-        <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
-        <translation>中國象棋控件文件(*ccc);;便攜式遊戲符號文件(*.pgn);;所有文件(*.*)</translation>
+        <source>Chinese chess control file(*.ccc);; Portable game notation file(*.pgn);; All files(*.*)</source>
+         <translation>中國象棋控件文件(*ccc);; 便攜式遊戲符號文件(*.pgn);; 所有文件(*.*)</translation>
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
