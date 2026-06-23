@@ -68,7 +68,7 @@
   + [x] Windows
   + [x] Linux
   + [x] Android
-  + [x] mac、IOS 本人无此设备，请你自行编译、测试
+  + [x] macOS、IOS 本人无此设备，请你自行编译、测试。
 
   详见：[Qt5 支持平台](https://doc.qt.io/qt-5/supported-platforms.html)、[Qt6 支持平台](https://doc.qt.io/qt-6/supported-platforms.html)。
 
@@ -84,9 +84,6 @@
   - [![从 github 下载](https://img.shields.io/github/release/KangLin/ChineseChessControl.svg?label=Github%20Release)](https://github.com/KangLin/ChineseChessControl/releases/latest)
   - [![从 sourceforge 下载](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/rabbitChineseChessControl/files/latest/download)
 
-+ 开发文档
-  - [从 GITHUB 下载](https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.14-dev/ChineseChessControl_v2.0.14-dev)
-  - [从 Sourceforge 下载](https://sourceforge.net/projects/chinesechesscontrol/files/v2.0.14-dev/ChineseChessControl_v2.0.14-dev/download)
 + [在线开发文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
 
 #### 贡献
@@ -105,10 +102,11 @@
 - https://sourceforge.net/p/rabbitcommon/code/ci/master/tree/Src/Resource/image/Contribute_zh_CN.png
 
 #### [许可协议](License.md)
+
 #### [修改日志](ChangeLog.md)
+
 #### 文档
 - [开发者文档](Documents/Developer.md)
-- [在线开发文档](https://kanglin.github.io/ChineseChessControl/html/index.html)
 - COM 文档
   + [COM学习笔记](Documents/COM/COM学习笔记.html)
   + [COM中的事件响应](Documents/COM/COM中的事件响应.html)
