@@ -50,7 +50,7 @@ jobs:
       ANDROID_NATIVE_API_LEVEL: 34
       ANDROID_ABI: ${{matrix.ANDROID_ABI}}
       qt_modules: 'qtimageformats qtmultimedia qtscxml qtwebchannel qtpositioning qtserialport qt5compat'
-      ChineseChessControl_VERSION: "v2.0.14-dev"
+      ChineseChessControl_VERSION: "v2.0.14"
 
     # Map the job outputs to step outputs
     outputs:

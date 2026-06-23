@@ -3,7 +3,7 @@
 %define   INSTALL_PREFIX /opt/ChineseChess
 
 Name:           chinesechess
-Version:        2.0.14_dev
+Version:        2.0.14
 Release:        1%{?dist}
 Summary:        Chinese chess
 

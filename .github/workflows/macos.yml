@@ -48,7 +48,7 @@ jobs:
       VCPKG_TARGET_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
       VCPKG_DEFAULT_TRIPLET: ${{matrix.VCPKG_TARGET_TRIPLET}}
       artifact_name: build_macos
-      ChineseChessControl_VERSION: "2.0.14-dev"
+      ChineseChessControl_VERSION: "2.0.14"
 
     # Map the job outputs to step outputs
     outputs:
