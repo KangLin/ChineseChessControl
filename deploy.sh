@@ -58,7 +58,7 @@ update_verion() {
 
     CHANGLOG_TMP=${SOURCE_DIR}/debian/changelog.tmp
     CHANGLOG_FILE=${SOURCE_DIR}/debian/changelog
-    echo "rabbitcommon (${DEBIAN_VERSION}) unstable; urgency=medium" > ${CHANGLOG_FILE}
+    echo "chinesechess (${DEBIAN_VERSION}) unstable; urgency=medium" > ${CHANGLOG_FILE}
     echo "" >> ${CHANGLOG_FILE}
     echo "`git log --pretty=format:'    * %s' ${PRE_TAG}..HEAD`" >> ${CHANGLOG_FILE}
     echo "" >> ${CHANGLOG_FILE}
@@ -342,12 +342,6 @@ check_chang_log() {
         echo_color_success "    √ Modified in \"ChangeLog.md\""
     else
         echo_color_warn "    ! Warning: Don't include \"$VERSION\" in the file \"ChangeLog.md\""
-    fi
-    content=$(<${SOURCE_DIR}/ChangeLog_zh_CN.md)
-    if [[ $content =~ "$VERSION" ]]; then
-        echo_color_success "    √ Modified in \"ChangeLog_zh_CN.md\""
-    else
-        echo_color_warn "    ! Warning: Don't include \"$VERSION\" in the file \"ChangeLog_zh_CN.md\""
     fi
 }
 
