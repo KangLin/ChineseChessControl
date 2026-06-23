@@ -1,7 +1,6 @@
 ﻿// 作者：康林 <kl222@126.com>
 
 #include "ChineseChess.h"
-#include <iostream>
 #include <algorithm>
 
 CChineseChess::CChineseChess()

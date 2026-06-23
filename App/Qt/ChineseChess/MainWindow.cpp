@@ -49,13 +49,13 @@ void MainWindow::on_actionSave_S_triggered()
 {
     if(!m_pChess) return;
     QString szFile = QFileDialog::getSaveFileName(this,
-                                                  tr("Open chess game"),
+                                                  tr("Save chess game"),
                                                   QString(),
-        tr("Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)"));
+        tr("Chinese chess control file(*.ccc);; Portable game notation file(*.pgn);; All files(*.*)"));
     m_pChess->SaveChessGame(szFile.toStdString().c_str());
 }
 
-void MainWindow::on_actionPreviou_P_triggered()
+void MainWindow::on_actionPrevious_P_triggered()
 {
     if(m_pChess)
         m_pChess->PreviouStep();

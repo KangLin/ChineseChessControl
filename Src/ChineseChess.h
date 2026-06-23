@@ -132,25 +132,25 @@ private:
     
 protected:
     /**
-            @brief 棋盘描述
+      @brief 棋盘描述
             
-            @details 
-            @code
+      @details
+      @code
             
-            [0][0] ------------------> i 或 x 方向
-                   |
-                   |
-                   |
-                   |       [i][j]
-                   |
-                   |
-                  \|/                 [9][10]
-                   |
-              j 或 y 方向
+        [0][0] ------------------> i 或 x 方向
+               |
+               |
+               |
+               |       [i][j]
+               |
+               |
+              \|/                 [9][10]
+               |
+          j 或 y 方向
               
-            @endcode
+      @endcode
             
-            @see CChessGame
+      @see CChessGame
     */
     CPiece::ENUM_QiZi m_ChessBoard[9][10]; //棋盘 m_ChessBoard[i][j]
     ENUM_BoardLayout m_BoardLayout;		   //棋盘布局
