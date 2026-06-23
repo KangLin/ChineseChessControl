@@ -5,7 +5,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="75"/>
+        <location filename="../../MainWindow.cpp" line="81"/>
         <source>Chinese chess</source>
         <translation type="unfinished"></translation>
     </message>
@@ -20,80 +20,75 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="50"/>
+        <location filename="../../MainWindow.ui" line="49"/>
         <source>Help(&amp;H)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="62"/>
+        <location filename="../../MainWindow.ui" line="61"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="83"/>
+        <location filename="../../MainWindow.ui" line="82"/>
         <source>Open(&amp;O)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="92"/>
+        <location filename="../../MainWindow.ui" line="91"/>
         <source>Save(&amp;S)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="101"/>
+        <location filename="../../MainWindow.ui" line="100"/>
         <source>Previous(&amp;P)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="104"/>
-        <location filename="../../MainWindow.ui" line="107"/>
-        <location filename="../../MainWindow.ui" line="110"/>
+        <location filename="../../MainWindow.ui" line="103"/>
+        <location filename="../../MainWindow.ui" line="106"/>
+        <location filename="../../MainWindow.ui" line="109"/>
         <source>Previous(P)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="119"/>
+        <location filename="../../MainWindow.ui" line="118"/>
         <source>Next(&amp;N)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="128"/>
+        <location filename="../../MainWindow.ui" line="127"/>
         <source>About(&amp;A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="133"/>
+        <location filename="../../MainWindow.ui" line="132"/>
         <source>Update(&amp;U)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="142"/>
+        <location filename="../../MainWindow.ui" line="141"/>
         <source>Exit(&amp;E)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="150"/>
+        <location filename="../../MainWindow.ui" line="149"/>
         <source>Prompt message(&amp;M)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="158"/>
+        <location filename="../../MainWindow.ui" line="157"/>
         <source>Prompt sound(&amp;S)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="167"/>
-        <source>Style(&amp;T)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../MainWindow.cpp" line="37"/>
-        <location filename="../../MainWindow.cpp" line="46"/>
+        <location filename="../../MainWindow.cpp" line="43"/>
+        <location filename="../../MainWindow.cpp" line="52"/>
         <source>Open chess game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="48"/>
+        <location filename="../../MainWindow.cpp" line="54"/>
         <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -101,7 +96,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../main.cpp" line="30"/>
+        <location filename="../../main.cpp" line="25"/>
         <source>Chinese chess</source>
         <translation type="unfinished"></translation>
     </message>

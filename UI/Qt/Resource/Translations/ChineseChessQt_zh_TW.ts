@@ -9,23 +9,23 @@
         <translation>中國象棋</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="174"/>
-        <location filename="../../FrmChineseChess.cpp" line="178"/>
+        <location filename="../../FrmChineseChess.cpp" line="176"/>
+        <location filename="../../FrmChineseChess.cpp" line="180"/>
         <source>This step cannot be taken, otherwise you will lose</source>
         <translation>這步不能走，否則會輸棋！</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="175"/>
+        <location filename="../../FrmChineseChess.cpp" line="177"/>
         <source>checked</source>
         <translation>被將軍</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="179"/>
+        <location filename="../../FrmChineseChess.cpp" line="181"/>
         <source>Opposite</source>
         <translation>將對面</translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="215"/>
+        <location filename="../../FrmChineseChess.cpp" line="217"/>
         <source>Chinese chess control</source>
         <translation>中國象棋控件</translation>
     </message>

@@ -14,90 +14,89 @@
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="50"/>
+        <location filename="../../MainWindow.ui" line="49"/>
         <source>Help(&amp;H)</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="62"/>
+        <location filename="../../MainWindow.ui" line="61"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="83"/>
+        <location filename="../../MainWindow.ui" line="82"/>
         <source>Open(&amp;O)</source>
         <translation>打开(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="92"/>
+        <location filename="../../MainWindow.ui" line="91"/>
         <source>Save(&amp;S)</source>
         <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <source>Previou(&amp;P)</source>
-        <translation>上一步(&amp;P)</translation>
+        <translation type="vanished">上一步(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="101"/>
+        <location filename="../../MainWindow.ui" line="100"/>
         <source>Previous(&amp;P)</source>
         <translation>上一步(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="104"/>
-        <location filename="../../MainWindow.ui" line="107"/>
-        <location filename="../../MainWindow.ui" line="110"/>
+        <location filename="../../MainWindow.ui" line="103"/>
+        <location filename="../../MainWindow.ui" line="106"/>
+        <location filename="../../MainWindow.ui" line="109"/>
         <source>Previous(P)</source>
         <translation>上一步(P)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="119"/>
+        <location filename="../../MainWindow.ui" line="118"/>
         <source>Next(&amp;N)</source>
         <translation>下一步(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="128"/>
+        <location filename="../../MainWindow.ui" line="127"/>
         <source>About(&amp;A)</source>
         <translation>关于(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="133"/>
+        <location filename="../../MainWindow.ui" line="132"/>
         <source>Update(&amp;U)</source>
         <translation>更新(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="142"/>
+        <location filename="../../MainWindow.ui" line="141"/>
         <source>Exit(&amp;E)</source>
         <translation>退出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="150"/>
+        <location filename="../../MainWindow.ui" line="149"/>
         <source>Prompt message(&amp;M)</source>
         <translation>提示消息(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="158"/>
+        <location filename="../../MainWindow.ui" line="157"/>
         <source>Prompt sound(&amp;S)</source>
         <translation>提示音(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.ui" line="167"/>
         <source>Style(&amp;T)</source>
-        <translation>样式(&amp;T)</translation>
+        <translation type="vanished">样式(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="37"/>
-        <location filename="../../MainWindow.cpp" line="46"/>
+        <location filename="../../MainWindow.cpp" line="43"/>
+        <location filename="../../MainWindow.cpp" line="52"/>
         <source>Open chess game</source>
         <translation>打开棋局</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="48"/>
+        <location filename="../../MainWindow.cpp" line="54"/>
         <source>Chinese chess control file(*.ccc);;Portable game notation file(*.pgn);;All files(*.*)</source>
         <translation>中国象棋控件文件(*ccc);;便携式游戏符号文件(*.pgn);;所有文件(*.*)</translation>
     </message>
     <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="75"/>
+        <location filename="../../MainWindow.cpp" line="81"/>
         <source>Chinese chess</source>
         <translation>中国象棋</translation>
     </message>
@@ -105,7 +104,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../main.cpp" line="30"/>
+        <location filename="../../main.cpp" line="25"/>
         <source>Chinese chess</source>
         <translation>中国象棋</translation>
     </message>
