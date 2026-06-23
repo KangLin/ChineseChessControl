@@ -240,6 +240,7 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
 ENDIF()
 
 IF(APPLE)
+    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
     # See: https://doc.qt.io/qt-6/macos-deployment.html
     find_program(MACDEPLOYQT_EXECUTABLE macdeployqt
         HINTS ${QT_INSTALL_DIR}/bin
