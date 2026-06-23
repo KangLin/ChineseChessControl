@@ -564,7 +564,7 @@ int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
                 break;
             case CPiece::RShi:
                 nRShi++;
-                if(i < 3 || i > 5 || j < 7)
+                if((i < 3) || (i > 5) || (j < 7))
                     return -2;
                 if((i == 3 ||  5 == i) && j == 8)
                     return -3;
@@ -573,7 +573,7 @@ int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
                 break;
             case CPiece::RShuai:
                 nRShuai++;
-                if(i < 3 || i > 5 || j < 7)
+                if((i < 3) || (i > 5) || (j < 7))
                     return -5;
                 break;
             case CPiece::RPao:
@@ -606,7 +606,7 @@ int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
                 break;
             case CPiece::BShi:
                 nBShi++;
-                if(i < 3 || i > 5 || j > 2)
+                if((i < 3) || (i > 5) || (j > 2))
                     return -9;
                 if((i == 3 ||  5 == i) && j == 1)
                     return -10;
@@ -615,7 +615,7 @@ int CChessGame::CheckGame(const CPiece::ENUM_QiZi board[][10])
                 break;
             case CPiece::BShuai:
                 nBShuai++;
-                if(i < 3 || i > 5 || j > 2)
+                if((i < 3) || (i > 5) || (j > 2))
                     return -12;
                 break;
             default:

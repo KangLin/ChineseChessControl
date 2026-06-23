@@ -24,9 +24,11 @@ public:
 	CPiece();
 	virtual ~CPiece();
 
-	/*
-	四个位表示棋子，最左1位表示颜色	
-	*/
+	/**
+	 *  棋子枚举值
+	 *  四个位表示棋子，最左1位表示颜色
+	 *  @see CChessSteps
+	 */
 	typedef enum _ENUM_QiZi {
 		RShuai = 1,             //红帅
 		RShi = 2,               //红仕

@@ -5,6 +5,9 @@
 
 #include "ChessSteps.h"
 
+/*!
+ * \brief The CChessStepsChinese class
+ */
 class CChessStepsChinese : public CChessSteps
 {
 public:

@@ -27,12 +27,12 @@ public:
 	virtual ~CGoRule();
     
 	typedef enum _ENUM_ReturnValue {
-		RETURNFALSE,    //错误，不能走
-		BEIJIANGJUN,    //被将军
-		JIANGDUIMIAN,   //将对面
-		JIANGJUN,       //将军
-		JIANGBEICHI,    //将已被吃
-		RETURNTRUE      //可以走棋
+		RETURNFALSE,    //! 错误，不能走
+		BEIJIANGJUN,    //! 被将军
+		JIANGDUIMIAN,   //! 将对面
+		JIANGJUN,       //! 将军
+		JIANGBEICHI,    //! 将已被吃
+		RETURNTRUE      //! 可以走棋
 	} ENUM_ReturnValue;
 	ENUM_ReturnValue GoChess(int ito, int jto, int ifrom, int jfrom, CPiece::ENUM_QiZi ChessBoard[][10]);
     

@@ -67,7 +67,7 @@ public:
     
     // 复盘操作
     int NextStep();	   //下一步
-    int PreviouStep();     //上一步
+    int PreviouStep(); //上一步
     
     /**
      * 保存棋局。
@@ -76,7 +76,7 @@ public:
      */
     virtual int SaveChessGame(const char* pszFile);
     /**
-     *  加载棋局。
+     * 加载棋局。
      * 根据文件扩展名来解析文件的格式。
      * 当前支持自定义格式、PGN格式
      */
@@ -98,7 +98,7 @@ public:
     bool getEnablePromptMessage();
     
 protected:
-    // 下列虚拟函数由界面实现类完成
+    //@{ 下列虚拟函数由界面实现类完成
     
     /// 提示音
     enum PROMPT_SOUND {
@@ -118,7 +118,8 @@ protected:
     /// 走棋事件
     // @see m_ChessBoard
     virtual int onGoChess(int i, int j, CPiece::ENUM_QiZi chess) = 0;
-    
+    //@}
+
 private:
     // 判断当前着法是否合法
     bool IsGoChess(int i, int j);

@@ -120,7 +120,7 @@ int CChineseChess::SetBoardLayout(ENUM_BoardLayout layout)
 
 bool CChineseChess::IsValidPosition(int i, int j)
 {
-	if (i < 0 || i > 9 - 1 || j < 0 || j > 10 - 1)
+    if (i < 0 || i > (9 - 1) || j < 0 || j > (10 - 1))
 	{   //出界
 		return false;
 	}
