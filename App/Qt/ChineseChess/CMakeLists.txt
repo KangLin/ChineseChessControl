@@ -6,7 +6,7 @@ GET_VERSION(OUT_VERSION ChineseChessApp_VERSION
 if(NOT ChineseChessApp_VERSION)
     set(ChineseChessApp_VERSION ${ChineseChessControl_VERSION})
 endif()
-message("ChineseChessApp_VERSION:${ChineseChessApp_VERSION};ChineseChessApp_REVISION:${ChineseChessApp_REVISION}")
+message("ChineseChessApp_VERSION: ${ChineseChessApp_VERSION}; ChineseChessApp_REVISION: ${ChineseChessApp_REVISION}")
 
 #需要的QT组件
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core)
@@ -121,8 +121,8 @@ if(MSVC)
         set_target_properties(${PROJECT_NAME} PROPERTIES
             LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
     endif()
-else(MINGW)
-    set_target_properties(${PARA_NAME} PROPERTIES LINK_FLAGS "-mwindows")
+elseif(MINGW)
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mwindows")
 endif()
 
 if(UNIX AND NOT ANDROID)
@@ -161,26 +161,42 @@ if(ANDROID)
             COMPONENT QtDevelopment
         )
 else()
+    SET(INSTALL_RUNTIME "${CMAKE_INSTALL_BINDIR}")
+    if(APPLE)
+        # See: [Apple's Developer Website](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/Introduction/Introduction.html#//apple_ref/doc/uid/10000123i-CH1-SW1)
+        SET(INSTALL_RUNTIME "MacOS")
+    endif()
     INSTALL(TARGETS ${PROJECT_NAME}
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+        RUNTIME DESTINATION "${INSTALL_RUNTIME}"
             COMPONENT QtApplications
         )        
 endif()
 
+SET(APP_ID io.github.KangLin.ChineseChess)
 if(UNIX AND NOT ANDROID)
     INSTALL(PROGRAMS ${CMAKE_SOURCE_DIR}/Package/share/applications/ChineseChess.sh
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT QtApplications)
-    INSTALL(FILES ${CMAKE_SOURCE_DIR}/Package/share/applications/org.Rabbit.ChineseChess.desktop
-        DESTINATION "share/applications"
-            COMPONENT QtApplications)
+    configure_file(${CMAKE_SOURCE_DIR}/Package/share/applications/${APP_ID}.desktop.in
+        ${CMAKE_BINARY_DIR}/${APP_ID}.desktop)
+    INSTALL(FILES ${CMAKE_BINARY_DIR}/${APP_ID}.desktop
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
+            COMPONENT QtApplications
+        PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
     INSTALL(FILES ${CMAKE_SOURCE_DIR}/Src/Res/Picture/69/bjiang.png
-        RENAME org.Rabbit.ChineseChess.png
-        DESTINATION "share/pixmaps"
+        RENAME ${APP_ID}.png
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/pixmaps"
             COMPONENT QtApplications)
 endif()
 
 IF( WIN32 AND BUILD_SHARED_LIBS )
+
+    if(RABBIT_ENABLE_INSTALL_DEPENDENT)
+        set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION "${CMAKE_INSTALL_BINDIR}")
+        set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT QtApplications)
+        set(CMAKE_INSTALL_UCRT_LIBRARIES TRUE)
+        include(InstallRequiredSystemLibraries)
+    endif()
 
     IF( ("Release" STREQUAL CMAKE_BUILD_TYPE)
         OR ("MinSizeRel" STREQUAL CMAKE_BUILD_TYPE)
@@ -192,19 +208,67 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
     ENDIF()
 
     #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
-            --no-compiler-runtime
-            --verbose 7
-            --dir "${CMAKE_BINARY_DIR}/DependLibraries"
-            --libdir "${CMAKE_BINARY_DIR}/DependLibraries"
-            --plugindir "${CMAKE_BINARY_DIR}/DependLibraries"
-            "$<TARGET_FILE:${PROJECT_NAME}>"
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt
+        HINTS ${QT_INSTALL_DIR}/bin
+        DOC "Path to windeployqt executable"
+    )
+    if(WINDEPLOYQT_EXECUTABLE)
+        message("find windeployqt: ${WINDEPLOYQT_EXECUTABLE}")
+        string(CONFIGURE [[
+            message(STATUS "Exec windeployqt for @PROJECT_NAME@ ......")
+            execute_process(
+                COMMAND "@WINDEPLOYQT_EXECUTABLE@"
+                    #--compiler-runtime # 因为已用了 include(InstallRequiredSystemLibraries)
+                    --verbose 7
+                    --no-quick-import
+                    --dir "@CMAKE_BINARY_DIR@/DependLibraries"
+                    --libdir "@CMAKE_BINARY_DIR@/DependLibraries"
+                    --plugindir "@CMAKE_BINARY_DIR@/DependLibraries"
+                    "$<TARGET_FILE:@PROJECT_NAME@>"
+            )
+            ]] code_windeployqt @ONLY)
+        INSTALL(CODE ${code_windeployqt}
+            COMPONENT ${PARA_COMPONENT_DEPEND_LIBRARY}
         )
-    INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
-        DESTINATION "${CMAKE_INSTALL_BINDIR}"
-            COMPONENT DependLibraries)
+        INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
+            DESTINATION "${CMAKE_INSTALL_BINDIR}"
+                COMPONENT DependLibraries)
+    else()
+        message(WARNING "Don't find windeployqt in ${QT_INSTALL_DIR}/bin")
+    endif()
 
+ENDIF()
+
+IF(APPLE)
+    # See: https://doc.qt.io/qt-6/macos-deployment.html
+    find_program(MACDEPLOYQT_EXECUTABLE macdeployqt
+        HINTS ${QT_INSTALL_DIR}/bin
+        DOC "Path to macdeployqt executable"
+    )
+    if(MACDEPLOYQT_EXECUTABLE)
+        message("Find macdeployqt: ${MACDEPLOYQT_EXECUTABLE}")
+    else()
+        message(FATAL_ERROR "Don't find macdeployqt in ${QT_INSTALL_DIR}/bin")
+    endif()
+    # 将变量值直接嵌入到代码字符串中
+    string(CONFIGURE [[
+        message(STATUS "Copy directory to $<TARGET_BUNDLE_DIR_NAME:@PROJECT_NAME@>/Contents ......")
+        file(COPY "$<INSTALL_PREFIX>/"
+            DESTINATION "$<INSTALL_PREFIX>/$<TARGET_BUNDLE_DIR_NAME:@PROJECT_NAME@>/Contents"
+            PATTERN $<TARGET_BUNDLE_DIR_NAME:@PROJECT_NAME@> EXCLUDE)
+        ]] copy_dir_string @ONLY)
+    INSTALL(CODE ${copy_dir_string}
+            COMPONENT QtApplications
+    )
+    # Create dmg file
+    string(CONFIGURE [[
+        message(STATUS "Execute macdeployqt to deploy @PROJECT_NAME@.app ......")
+        execute_process(COMMAND @MACDEPLOYQT_EXECUTABLE@ "$<INSTALL_PREFIX>/@PROJECT_NAME@.app" -dmg -verbose=3)
+        ]] macdeploy_string @ONLY
+    )
+    INSTALL(CODE ${macdeploy_string}
+            COMPONENT QtApplications
+    )
 ENDIF()
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/etc/ChineseChess_logqt.ini)

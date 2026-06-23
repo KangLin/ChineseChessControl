@@ -35,11 +35,12 @@ PACKAGE_chinesechess_dev_DIR = "debian/chinesechess-dev"
 override_dh_auto_configure:
 	dh_auto_configure -B$(BUILD_DIR) -- \
 		-DCMARK_SHARED=OFF \
-            -DCMARK_TESTS=OFF \
+		-DCMARK_TESTS=OFF \
 	    -DCMARK_STATIC=ON \
-	    -DCMAKE_BUILD_TYPE=Release \
-        ${PARAS}
- 
+	    -DCMAKE_BUILD_TYPE=Release ${PARAS} \
+		-DRabbitCommon_ROOT=${RabbitCommon_ROOT} \
+		-DCMAKE_INSTALL_PREFIX=/opt/ChineseChess
+
 override_dh_auto_build:
 	cmake --build $(BUILD_DIR) --config Release
 

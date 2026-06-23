@@ -1,0 +1,39 @@
+# https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
+# The desktop directory:
+# ~/.local/share/applications/
+# /usr/share/applications/
+# /usr/local/share/applications/
+#
+# Use follow order to update desktop database
+# `sudo update-desktop-database`
+
+[Desktop Entry]
+Type=Application
+# Icon path: http://freedesktop.org/wiki/Standards/icon-theme-spec
+# The freedesktop.org standard specifies in which order and directories programs should look for icons:
+#
+#    $HOME/.icons (for backwards compatibility)
+#    $XDG_DATA_DIRS/icons
+#    /usr/share/pixmaps
+Icon=@APP_ID@
+Exec=ChineseChessApp
+Path=@CMAKE_INSTALL_PREFIX@/bin
+Terminal=false
+StartupNotify=true
+
+# https://specifications.freedesktop.org/menu-spec/latest/apa.html
+Categories=Development;Game;
+
+Keywords=Chess;Chinese chess;象棋;中国象棋
+
+Name=ChineseChess
+GenericName=ChineseChess
+Comment=ChineseChess
+
+Name[zh_CN]=中国象棋
+GenericName[zh_CN]=中国象棋
+Comment[zh_CN]=中国象棋
+
+Name[zh_TW]=中國象棋
+GenericName[zh_TW]=中國象棋
+Comment[zh_TW]=中國象棋

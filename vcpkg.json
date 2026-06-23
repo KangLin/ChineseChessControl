@@ -1,7 +1,12 @@
 {
   "name": "chinesechesscontrol",
-  "version-string":"2.0.11",
+  "version-string": "2.0.14-dev",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/KangLin/ChineseChessControl",
+  "description": "A Chinese chess control library written in C++.",
+
   "dependencies": [
-    "openssl"
+    "openssl",
+    "cmark"
   ]
 }

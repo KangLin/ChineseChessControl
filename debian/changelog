@@ -1,5 +1,29 @@
-chinesechess (2.0.13) unstable; urgency=medium
+chinesechess (2.0.14-dev) unstable; urgency=medium
 
-  * Initial Release.
+    * CI: modify build.yml
+    * Modify deploy.sh
+    * CMake: modify windeployqt
+    * Fix sound bug
+    * CI: add docker.yml
+    * CI: modify ci
+    * Update translations
+    * Script: add build script
+    * Rename org.Rabbit.ChineseChess.desktop to io.github.KangLin.ChineseChess
+    * CI: update version
+    * Modify README
+    * Modify build_debpackage.sh
+    * CI: update actions/download-artifact to 4
+    * Modify etc/ChineseChess_logqt.ini
+    * Fix deploy.sh bug
+    * Modify debian
+    * Modify version
+    * Modify deploy.sh
+    * Fix typo
+    * Modify Package/share/applications/org.Rabbit.ChineseChess.desktop
+    * Modify debian/control
+    * CI: add develop package
+    * CI: fix version in macos.yml
+    * Add save windows state
+    * CI: modify ci
 
- -- Kang Lin <kl222@126.com>  Sat, 20 Apr 2019 19:53:02 -0700
+ -- Kang Lin <kl222@126.com>  Sun, 21 Jun 2026 09:09:36 +0800

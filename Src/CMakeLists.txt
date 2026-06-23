@@ -23,36 +23,37 @@ IF(EXISTS "${CMAKE_SOURCE_DIR}/.git")
         EXECUTE_PROCESS(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             COMMAND ${GIT} describe --tags
-            OUTPUT_VARIABLE ${PROJECT_NAME}_VERSION  OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE ChineseChess_VERSION  OUTPUT_STRIP_TRAILING_WHITESPACE
         )
         EXECUTE_PROCESS(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             COMMAND ${GIT} rev-parse --short HEAD
-            OUTPUT_VARIABLE ${PROJECT_NAME}_REVISION OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE ChineseChess_REVISION OUTPUT_STRIP_TRAILING_WHITESPACE
         )
-        if(NOT ${PROJECT_NAME}_VERSION)
-            set(${PROJECT_NAME}_VERSION ${${PROJECT_NAME}_REVISION})
+        if(NOT ChineseChess_VERSION)
+            if(${ChineseChess_REVISION})
+                set(ChineseChess_VERSION ${ChineseChess_REVISION})
+                string(REPLACE "v" "" ChineseChess_REVISION ${ChineseChess_REVISION})
+            endif()
         endif()
-        SET(${PROJECT_NAME}_VERSION ${${PROJECT_NAME}_VERSION})
+        if(ChineseChess_VERSION)
+            string(REPLACE "v" "" ChineseChess_VERSION ${ChineseChess_VERSION})
+        endif()
     ENDIF()
 ENDIF()
-if(NOT ${PROJECT_NAME}_VERSION)
-    SET(${PROJECT_NAME}_VERSION "v2.0.5")
-endif()
-string(REPLACE "v" "" ${PROJECT_NAME}_VERSION ${${PROJECT_NAME}_VERSION})
-if(${${PROJECT_NAME}_REVISION})
-    string(REPLACE "v" "" ${PROJECT_NAME}_REVISION ${${PROJECT_NAME}_REVISION})
+if(NOT ChineseChess_VERSION)
+    SET(ChineseChess_VERSION "${ChineseChessControl_VERSION}")
 endif()
 
-if(${PROJECT_NAME}_VERSION)
+if(ChineseChess_VERSION)
     list(APPEND CHINESE_CHESS_DEFINITIONS
-        ${PROJECT_NAME}_VERSION="${${PROJECT_NAME}_VERSION}")
+        ChineseChess_VERSION="${ChineseChess_VERSION}")
 endif()
-if(${PROJECT_NAME}_REVISION)
+if(ChineseChess_REVISION)
     list(APPEND CHINESE_CHESS_DEFINITIONS
-        ${PROJECT_NAME}_REVISION="${${PROJECT_NAME}_REVISION}")
+        ChineseChess_REVISION="${ChineseChess_REVISION}")
 endif()
-message("${PROJECT_NAME}_VERSION:${${PROJECT_NAME}_VERSION};${PROJECT_NAME}_REVISION=${${PROJECT_NAME}_REVISION}")
+message("ChineseChess_VERSION:${ChineseChess_VERSION};ChineseChess_REVISION=${ChineseChess_REVISION}")
 
 set(CHINESE_CHESS_SOURCES_FILES
     ChineseChess.cpp
@@ -92,11 +93,11 @@ if(WIN32)
     if(WITH_LIBRARY_SUFFIX_VERSION)
         if(CMAKE_BUILD_TYPE)
             string(TOUPPER ${CMAKE_BUILD_TYPE} UPPER_CMAKE_BUILD_TYPE)
-            SET(CMAKE_${UPPER_CMAKE_BUILD_TYPE}_POSTFIX "${CMAKE_${UPPER_CMAKE_BUILD_TYPE}_POSTFIX}_${${PROJECT_NAME}_VERSION}")
+            SET(CMAKE_${UPPER_CMAKE_BUILD_TYPE}_POSTFIX "${CMAKE_${UPPER_CMAKE_BUILD_TYPE}_POSTFIX}_${ChineseChess_VERSION}")
         elseif(CMAKE_CONFIGURATION_TYPES)
             foreach(PARA_CONFIG ${CMAKE_CONFIGURATION_TYPES})
                 string(TOUPPER ${PARA_CONFIG} UPPER_PARA_CONFIG)
-                SET(CMAKE_${UPPER_PARA_CONFIG}_POSTFIX "${CMAKE_${UPPER_PARA_CONFIG}_POSTFIX}_${${PROJECT_NAME}_VERSION}")
+                SET(CMAKE_${UPPER_PARA_CONFIG}_POSTFIX "${CMAKE_${UPPER_PARA_CONFIG}_POSTFIX}_${ChineseChess_VERSION}")
             endforeach()
         endif()
     endif()
@@ -116,7 +117,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     PUBLIC_HEADER "${CHINESE_CHESS_HEADER_FILES}" # Install head files
-    VERSION ${${PROJECT_NAME}_VERSION})
+    VERSION ${ChineseChess_VERSION})
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
@@ -164,13 +165,21 @@ endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${CHINESE_CHESS_DEFINITIONS})
 
 # 安装
+# cmake >= 3.16, the CMAKE_INSTALL_LIBDIR is support multi-arch lib dir
+# See: https://gitlab.kitware.com/cmake/cmake/-/issues/20565
+# See: [GNUInstallDirs](https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html#module:GNUInstallDirs)
+SET(INSTALL_RUNTIME "${CMAKE_INSTALL_BINDIR}")
 SET(INSTALL_LIBRARY "${CMAKE_INSTALL_LIBDIR}")
-if(WIN32)
+if(APPLE)
+    # See: [Apple's Developer Website](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/Introduction/Introduction.html#//apple_ref/doc/uid/10000123i-CH1-SW1)
+    SET(INSTALL_RUNTIME "MacOS")
+    SET(INSTALL_LIBRARY "FrameWorks")
+elseif(WIN32)
 	SET(INSTALL_LIBRARY "${CMAKE_INSTALL_BINDIR}")
 endif()
 INSTALL(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}Config
-    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+    RUNTIME DESTINATION "${INSTALL_RUNTIME}"
         COMPONENT Runtime
     LIBRARY DESTINATION "${INSTALL_LIBRARY}"
         COMPONENT Runtime
@@ -194,7 +203,7 @@ install(EXPORT ${PROJECT_NAME}Config
 # Install cmake configure version file
 write_basic_package_version_file(
     "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${${PROJECT_NAME}_VERSION}
+    VERSION ${ChineseChess_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ChineseChessControl"

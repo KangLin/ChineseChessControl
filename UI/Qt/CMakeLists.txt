@@ -47,7 +47,7 @@ if(Qt${QT_VERSION_MAJOR}_FOUND)
     endif()
 
     FOREACH(_COMPONENT ${QT_COMPONENTS})
-	    SET(QT_LIBRARIES ${QT_LIBRARIES} Qt${QT_VERSION_MAJOR}::${_COMPONENT})
+	    list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::${_COMPONENT})
     ENDFOREACH()
     get_filename_component(QT_INSTALL_DIR "${Qt${QT_VERSION_MAJOR}_DIR}/../../.." ABSOLUTE)
 endif()
@@ -172,13 +172,21 @@ target_link_libraries(${PROJECT_NAME} PRIVATE RabbitCommon)
 #endif()
 
 # 安装中国象棋控件
+# cmake >= 3.16, the CMAKE_INSTALL_LIBDIR is support multi-arch lib dir
+# See: https://gitlab.kitware.com/cmake/cmake/-/issues/20565
+# See: [GNUInstallDirs](https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html#module:GNUInstallDirs)
+SET(INSTALL_RUNTIME "${CMAKE_INSTALL_BINDIR}")
 SET(INSTALL_LIBRARY "${CMAKE_INSTALL_LIBDIR}")
-if(WIN32)
+if(APPLE)
+    # See: [Apple's Developer Website](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/Introduction/Introduction.html#//apple_ref/doc/uid/10000123i-CH1-SW1)
+    SET(INSTALL_RUNTIME "MacOS")
+    SET(INSTALL_LIBRARY "FrameWorks")
+elseif(WIN32)
 	SET(INSTALL_LIBRARY "${CMAKE_INSTALL_BINDIR}")
 endif()
 INSTALL(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}Targets
-    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+    RUNTIME DESTINATION "${INSTALL_RUNTIME}"
         COMPONENT QtRuntime
     LIBRARY DESTINATION "${INSTALL_LIBRARY}"
         COMPONENT QtRuntime
