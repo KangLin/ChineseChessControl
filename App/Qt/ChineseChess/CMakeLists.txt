@@ -163,6 +163,7 @@ if(ANDROID)
 else()
     SET(INSTALL_RUNTIME "${CMAKE_INSTALL_BINDIR}")
     if(APPLE)
+        # See: https://doc.qt.io/qt-6/macos-deployment.html
         # See: [Apple's Developer Website](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/Introduction/Introduction.html#//apple_ref/doc/uid/10000123i-CH1-SW1)
         SET(INSTALL_RUNTIME "MacOS")
     endif()
@@ -173,7 +174,17 @@ else()
 endif()
 
 SET(APP_ID io.github.KangLin.ChineseChess)
-if(UNIX AND NOT ANDROID)
+IF(APPLE)
+
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Resource/App.Info.plist
+        ${CMAKE_CURRENT_BINARY_DIR}/Info.plist
+        @ONLY)
+    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/Info.plist
+        DESTINATION "." COMPONENT QtApplications)
+    target_add_resources(${PROJECT_NAME} . "${CMAKE_CURRENT_SOURCE_DIR}/Resource/Image/${APP_ID}.icns")
+
+ELSEIF(UNIX AND NOT ANDROID)
+
     INSTALL(PROGRAMS ${CMAKE_SOURCE_DIR}/Package/share/applications/ChineseChess.sh
         DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT QtApplications)
@@ -187,9 +198,8 @@ if(UNIX AND NOT ANDROID)
         RENAME ${APP_ID}.png
         DESTINATION "${CMAKE_INSTALL_DATADIR}/pixmaps"
             COMPONENT QtApplications)
-endif()
 
-IF( WIN32 AND BUILD_SHARED_LIBS )
+ELSEIF( WIN32 AND BUILD_SHARED_LIBS )
 
     if(RABBIT_ENABLE_INSTALL_DEPENDENT)
         set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION "${CMAKE_INSTALL_BINDIR}")
@@ -237,39 +247,6 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
         message(WARNING "Don't find windeployqt in ${QT_INSTALL_DIR}/bin")
     endif()
 
-ENDIF()
-
-IF(APPLE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
-    # See: https://doc.qt.io/qt-6/macos-deployment.html
-    find_program(MACDEPLOYQT_EXECUTABLE macdeployqt
-        HINTS ${QT_INSTALL_DIR}/bin
-        DOC "Path to macdeployqt executable"
-    )
-    if(MACDEPLOYQT_EXECUTABLE)
-        message("Find macdeployqt: ${MACDEPLOYQT_EXECUTABLE}")
-    else()
-        message(FATAL_ERROR "Don't find macdeployqt in ${QT_INSTALL_DIR}/bin")
-    endif()
-    # 将变量值直接嵌入到代码字符串中
-    string(CONFIGURE [[
-        message(STATUS "Copy directory to $<TARGET_BUNDLE_DIR_NAME:@PROJECT_NAME@>/Contents ......")
-        file(COPY "$<INSTALL_PREFIX>/"
-            DESTINATION "$<INSTALL_PREFIX>/$<TARGET_BUNDLE_DIR_NAME:@PROJECT_NAME@>/Contents"
-            PATTERN $<TARGET_BUNDLE_DIR_NAME:@PROJECT_NAME@> EXCLUDE)
-        ]] copy_dir_string @ONLY)
-    INSTALL(CODE ${copy_dir_string}
-            COMPONENT QtApplications
-    )
-    # Create dmg file
-    string(CONFIGURE [[
-        message(STATUS "Execute macdeployqt to deploy @PROJECT_NAME@.app ......")
-        execute_process(COMMAND @MACDEPLOYQT_EXECUTABLE@ "$<INSTALL_PREFIX>/@PROJECT_NAME@.app" -dmg -verbose=3)
-        ]] macdeploy_string @ONLY
-    )
-    INSTALL(CODE ${macdeploy_string}
-            COMPONENT QtApplications
-    )
 ENDIF()
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/etc/ChineseChess_logqt.ini)

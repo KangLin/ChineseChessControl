@@ -105,14 +105,19 @@ jobs:
               -DCMARK_TESTS=OFF \
               -DCMARK_STATIC=ON \
               -DCMAKE_BUILD_TYPE=Release \
-              -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/install \
+              -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/ChineseChess.App/Contents \
               -DCMAKE_PREFIX_PATH=${{env.INSTALL_DIR}}/lib/cmake \
               -DVCPKG_VERBOSE=ON \
               -DX_VCPKG_APPLOCAL_DEPS_INSTALL=ON \
               -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake \
               -DVCPKG_TARGET_TRIPLET=${{matrix.VCPKG_TARGET_TRIPLET}}              
           cmake --build . --config Release --target install
-          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt${{matrix.qt_version}}_${{matrix.os}}.zip ./install/*
+          echo "executable bin/macdeployqt `pwd`/ChineseChess.App -dmg -verbose=3"
+          macdeployqt ChineseChess.App -dmg -verbose=3
+          if [ -f ChineseChess.dmg ]; then
+            mv ChineseChess.dmg ChineseChess_${{env.ChineseChessControl_VERSION}}_${{matrix.os}}.dmg
+          fi
+          7z a ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt${{matrix.qt_version}}_${{matrix.os}}.zip ./ChineseChess.App/*
           cmake --build . --config Release --target package
 
       - name: Update artifact
@@ -121,4 +126,5 @@ jobs:
           name: ${{ env.artifact_name }}_${{matrix.qt_version}}_${{matrix.os}}
           path: |
             ${{github.workspace}}/build/chinesechesscontrol_*.tar.gz
+            ${{github.workspace}}/build/ChineseChess_*.dmg
             ${{github.workspace}}/build/ChineseChessControl_${{env.ChineseChessControl_VERSION}}_qt${{matrix.qt_version}}_${{matrix.os}}.zip
