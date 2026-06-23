@@ -155,16 +155,13 @@ int CFrmChineseChess::onPromptSound(PROMPT_SOUND sound)
         return 0;
 	}
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-    static QSoundEffect* pEffect = nullptr;
-    if(!pEffect) pEffect = new QSoundEffect();
-    if(pEffect) {
-        pEffect->setSource(QUrl::fromLocalFile(szFile));
-        //pEffect->setLoopCount(1);
-        //pEffect->setVolume(1);
-        if(pEffect->isPlaying())
-            pEffect->stop();
-        pEffect->play();
-    }
+    static QSoundEffect effect;
+    effect.setSource(QUrl::fromLocalFile(szFile));
+    //effect.setLoopCount(1);
+    //effect.setVolume(1);
+    if(effect.isPlaying())
+        effect.stop();
+    effect.play();
 #else
     QSound::play(szFile);
 #endif
