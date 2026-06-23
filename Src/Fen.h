@@ -1,3 +1,4 @@
+// 作者：康林 <kl222@126.com>
 
 #ifndef CFEN_H_KL_2020_06_11_
 #define CFEN_H_KL_2020_06_11_
@@ -5,7 +6,6 @@
 #pragma once
 
 #include <vector>
-// 作者：康林 <kl222@126.com>
 
 #include <string>
 #include "Piece.h"
