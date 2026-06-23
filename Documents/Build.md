@@ -26,9 +26,9 @@
  
 ### CMake 配置参数
   
-- [可选] Qt5_DIR: qt 安装位置(指向Qt5Config.cmake的目录，默认为 安装目录/lib/cmake/Qt5)。
-                   详见：https://doc.qt.io/qt-5/cmake-get-started.html
-- [可选] RabbitCommon_DIR: RabbitCommon 源码位置
+- [可选] Qt6_ROOT: qt 安装位置(指向Qt6Config.cmake的目录，默认为 安装目录/lib/cmake/Qt6)。
+                   详见：https://doc.qt.io/qt-6/cmake-manual.html
+- [可选] RabbitCommon_ROOT: RabbitCommon 源码位置
 - [可选] BUILD_CHINESE_CHESS_MFC_VIEW：编译中国象棋 MFC 扩展动态库
 - [可选] BUILD_CHINESE_CHESS_ACTIVEX：编译中国象棋 ActiveX
 - [可选] BUILD_CHINESE_CHESS_APP_MFC：编译中国象棋 MFC 程序
@@ -57,8 +57,8 @@
       cmake .. -G"Unix Makefiles" \
             -DCMAKE_INSTALL_PREFIX=`pwd`/install \
             -DCMAKE_BUILD_TYPE=Release \
-            -DQt5_DIR= \
-            -DRabbitCommon_DIR= \
+            -DQt6_ROOT= \
+            -DRabbitCommon_ROOT= \
             [其它可选 CMake 配置参数]
       cmake --build . --config Release 
 
@@ -83,9 +83,19 @@
         cd build/install/bin
         ./ChineseChessApp  #Qt 程序
 
-#### ubuntu
+#### 使用脚本编译
+- 编译 deb 包
 
-使用脚本： build_debpackage.sh
+      ./Script/build_linux.sh --deb
+
+- 编译 AppImage 包
+
+      ./Script/build_linux.sh --appimage
+
+- 使用　docker 编译
+
+      ./Script/build_linux.sh --deb --docker # 默认使用当前系统的最新 docker　映像
+      ./Script/build_linux.sh --deb --docker-image=ubuntu:24.04 # 指定 docker 映像
 
 #### windows 平台编译说明
 
@@ -102,8 +112,8 @@
           cd build
           cmake .. -DCMAKE_INSTALL_PREFIX=install ^
                -DCMAKE_BUILD_TYPE=Release ^
-               -DQt5_DIR= ^
-               -DRabbitCommon_DIR= ^
+               -DQt6_ROOT= ^
+               -DRabbitCommon_ROOT= ^
                [其它可选 CMake 配置参数]
           cmake --build . --config Release
 
@@ -154,8 +164,8 @@
                    -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake \
                    -DANDROID_ABI="armeabi-v7a with NEON" \
                    -DANDROID_PLATFORM=android-24 \
-                   -DQt5_DIR= \
-                   -DRabbitCommon_DIR= \                   
+                   -DQt6_ROOT= \
+                   -DRabbitCommon_ROOT= \                   
                    [其它可选 CMake 配置参数]
           cmake --build . --config Release
 
@@ -188,8 +198,8 @@
                      -DANDROID_ABI=arm64-v8a ^
                      -DANDROID_ARM_NEON=ON ^
                      -DANDROID_PLATFORM=android-24 ^
-                     -DQt5_DIR= ^
-                     -DRabbitCommon_DIR= ^
+                     -DQt6_ROOT= ^
+                     -DRabbitCommon_ROOT= ^
                      [其它可选 CMake 配置参数]
             cmake --build . --config Release
 
@@ -220,8 +230,8 @@
                    -DANDROID_ABI=arm64-v8a \
                    -DANDROID_ARM_NEON=ON \
                    -DANDROID_PLATFORM=android-24 \
-                   -DQt5_DIR= \
-                   -DRabbitCommon_DIR= \
+                   -DQt6_ROOT= \
+                   -DRabbitCommon_ROOT= \
                    [其它可选 CMake 配置参数]
 
       - 安装

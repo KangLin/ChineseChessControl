@@ -41,13 +41,16 @@
 ### 界面适配
 #### 中国象棋 MFC 扩展动态库
 
-它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [UI/MFC](../UI/MFC) 下，接口详见：[ChineseChessView.h](../UI/MFC/ChineseChessView.h)。
+它实现了中国象棋 MFC 扩展动态库。只能由 MFC 程序使用。代码位于 [UI/MFC](../UI/MFC) 下，
+接口详见：[ChineseChessView.h](../UI/MFC/ChineseChessView.h)。
 其使用方式与使用普通的 MFC 类一样。  
-**注意**:在使用时，必须在程序初始化时（一般在 main 函数开始时)，必须先调用 ChineseChessViewNewDynLinkLibrary() 初始化资源。
+**注意**:在使用时，必须在程序初始化时（一般在 main 函数开始时)，
+必须先调用 ChineseChessViewNewDynLinkLibrary() 初始化资源。
 
 #### 中国象棋 Qt 插件
 
-它实现了中国象棋 Qt 插件，代码位于 [UI/Qt](../UI/Qt) 下。接口详见：[FrmChineseChess.h](../UI/Qt/FrmChineseChess.h)。
+它实现了中国象棋 Qt 插件，代码位于 [UI/Qt](../UI/Qt) 下。
+接口详见：[FrmChineseChess.h](../UI/Qt/FrmChineseChess.h)。
 其使用方式与使用普通Qt控件类一样。它还能在 Qt 设计器中使用。
 使用：
 - 在程序开始时调用一次 InitResource() 函数，初始化资源。
@@ -61,7 +64,8 @@
 ### 使用
 #### 使用 cmake 项目管理工具（建议使用此方法）
 - 使用 ChineseChess
-  + 使用 find_package 查找你需要的库。例如,你需要从 ChineseChess 为一个新的界面框架实现中国象棋：
+  + 使用 find_package 查找你需要的库。
+    例如,你需要从 ChineseChess 为一个新的界面框架实现中国象棋：
 
         find_package(ChineseChess)  #查找 ChineseChess 库
         if(ChineseChess_FOUND)
