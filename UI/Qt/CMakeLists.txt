@@ -265,8 +265,14 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
     ENDIF()
 
     #注意 需要把 ${QT_INSTALL_DIR}/bin 加到环境变量PATH中
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND "${QT_INSTALL_DIR}/bin/windeployqt"
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt
+        HINTS ${QT_INSTALL_DIR}/bin
+        DOC "Path to windeployqt executable"
+    )
+    if(WINDEPLOYQT_EXECUTABLE)
+        message("find windeployqt: ${WINDEPLOYQT_EXECUTABLE}")
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND "${WINDEPLOYQT_EXECUTABLE}"
             --no-compiler-runtime
             --verbose 7
             --dir "${CMAKE_BINARY_DIR}/DependLibraries"
@@ -274,7 +280,11 @@ IF( WIN32 AND BUILD_SHARED_LIBS )
             --plugindir "${CMAKE_BINARY_DIR}/DependLibraries"
             "$<TARGET_FILE:${PROJECT_NAME}>"
         )
-    INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
-        DESTINATION "${CMAKE_INSTALL_BINDIR}"
+        INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
+            DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT DependLibraries)
+    else()
+        message(WARNING "Don't find windeployqt in ${QT_INSTALL_DIR}/bin")
+    endif()
+
 ENDIF()

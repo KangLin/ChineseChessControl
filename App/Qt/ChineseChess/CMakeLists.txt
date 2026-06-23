@@ -199,7 +199,7 @@ ELSEIF(UNIX AND NOT ANDROID)
         DESTINATION "${CMAKE_INSTALL_DATADIR}/pixmaps"
             COMPONENT QtApplications)
 
-ELSEIF( WIN32 AND BUILD_SHARED_LIBS )
+ELSEIF(WIN32 AND BUILD_SHARED_LIBS)
 
     if(RABBIT_ENABLE_INSTALL_DEPENDENT)
         set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION "${CMAKE_INSTALL_BINDIR}")
@@ -228,21 +228,21 @@ ELSEIF( WIN32 AND BUILD_SHARED_LIBS )
             message(STATUS "Exec windeployqt for @PROJECT_NAME@ ......")
             execute_process(
                 COMMAND "@WINDEPLOYQT_EXECUTABLE@"
-                    #--compiler-runtime # 因为已用了 include(InstallRequiredSystemLibraries)
-                    --verbose 7
-                    --no-quick-import
-                    --dir "@CMAKE_BINARY_DIR@/DependLibraries"
-                    --libdir "@CMAKE_BINARY_DIR@/DependLibraries"
-                    --plugindir "@CMAKE_BINARY_DIR@/DependLibraries"
-                    "$<TARGET_FILE:@PROJECT_NAME@>"
+                #--compiler-runtime # 因为已用了 include(InstallRequiredSystemLibraries)
+                --verbose 7
+                --no-quick-import
+                --dir "@CMAKE_BINARY_DIR@/DependLibraries"
+                --libdir "@CMAKE_BINARY_DIR@/DependLibraries"
+                --plugindir "@CMAKE_BINARY_DIR@/DependLibraries"
+                "$<TARGET_FILE:@PROJECT_NAME@>"
             )
-            ]] code_windeployqt @ONLY)
+        ]] code_windeployqt @ONLY)
         INSTALL(CODE ${code_windeployqt}
-            COMPONENT ${PARA_COMPONENT_DEPEND_LIBRARY}
+            COMPONENT DependLibraries
         )
         INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/DependLibraries/"
             DESTINATION "${CMAKE_INSTALL_BINDIR}"
-                COMPONENT DependLibraries)
+            COMPONENT DependLibraries)
     else()
         message(WARNING "Don't find windeployqt in ${QT_INSTALL_DIR}/bin")
     endif()
