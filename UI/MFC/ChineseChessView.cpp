@@ -1,5 +1,5 @@
-﻿// 实现文件
-//
+﻿// 作者：康林 <kl222@126.com>
+
 #include "framework.h"
 #include <afxdialogex.h>
 #include "Resource.h"       // 主符号

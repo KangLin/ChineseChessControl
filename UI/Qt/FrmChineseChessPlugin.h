@@ -1,6 +1,6 @@
 /*!
  * QtCreator 中国象棋插件
- * 作者：康林
+ * \author 康林 <kl222@126.com>
  */
 
 #ifndef FRMCHINESECHESSPLUGIN_H

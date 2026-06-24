@@ -1,4 +1,5 @@
-﻿ 
+﻿//作者： 康林 <kl222@126.com>
+
 #ifndef CHESS_GAME_KL_2020_05_15_
 #define CHESS_GAME_KL_2020_05_15_
 

@@ -65,21 +65,15 @@ CChessGame::CChessGame()
 CChessGame::~CChessGame()
 {}
 
-/*******************************************************************************************************
-函数名：QiZiBianMa
-功  能：棋子编解码
-参  数：
-		 char *i：棋盘横坐标[0-8]
-		 char *j：棋盘纵坐标[0-9]
-		 CPiece::ENUM_QiZi *qz：棋子
-		 strCODE *pCode：棋子编码
-		 ENUM_BianMa：枚举常量（BianMa:编码(默认值)，JieMa：解码）
-返回值：
-作  者：康  林
-版  本：1.0.0.1
-日  期：2004-9-2
-时  间：7:36:32
-*******************************************************************************************************/
+/*!
+ * \brief 棋子编解码
+ * \param i: 棋盘横坐标[0-8]
+ * \param j: 棋盘纵坐标[0-9]
+ * \param qz: 棋子
+ * \param pCode: 棋子编码
+ * \param bianma: 枚举常量（BianMa:编码(默认值)，JieMa：解码）
+ * \return 
+ */
 int CChessGame::QiZiBianMa(int *i, int *j, CPiece::ENUM_QiZi *qz, strCODE *pCode, ENUM_BianMa bianma)
 {
 	switch (bianma)
