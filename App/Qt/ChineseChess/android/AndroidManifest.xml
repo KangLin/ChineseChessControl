@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.KangLinStudio.ChineseChess"
+    package="io.github.KangLinStudio.ChineseChess"
     android:versionName="2.0.14"
     android:versionCode="2"
     android:installLocation="auto">
@@ -8,8 +8,6 @@
 	<uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    
-    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="34"/>
 
     <supports-screens android:anyDensity="true"
     	android:largeScreens="true"
