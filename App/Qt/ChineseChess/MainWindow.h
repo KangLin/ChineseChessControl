@@ -30,7 +30,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     
-    CFrmChineseChess *m_pChess;
+    CFrmChineseChess m_Chess;
     
     // QWidget interface
 protected:

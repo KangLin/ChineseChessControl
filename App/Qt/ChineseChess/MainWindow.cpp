@@ -1,25 +1,27 @@
-#include "MainWindow.h"
-#include "./ui_MainWindow.h"
+#include <QMessageBox>
+#include <QCursor>
 
 #include "RabbitCommonDir.h"
 #include "RabbitCommonTools.h"
 #include "DlgAbout.h"
 #include "FrmUpdater.h"
 
-#include <QCursor>
+#include "MainWindow.h"
+#include "./ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
+    , m_Chess(this)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     RabbitCommon::CTools::AddStyleMenu(ui->menuTools);
     ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(this));
-    m_pChess = new CFrmChineseChess(this);
-    //m_pChess->SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
-    this->setCentralWidget(m_pChess);
-    ui->actionPrompt_sound_S->setChecked(m_pChess->getEnablePromptSound());
-    ui->actionPrompt_message_M->setChecked(m_pChess->getEnablePromptMessage());
+
+    //m_Chess.SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
+    this->setCentralWidget(&m_Chess);
+    ui->actionPrompt_sound_S->setChecked(m_Chess.getEnablePromptSound());
+    ui->actionPrompt_message_M->setChecked(m_Chess.getEnablePromptMessage());
 
     CFrmUpdater updater;
     ui->actionUpdate_U->setIcon(updater.windowIcon());
@@ -39,32 +41,37 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::on_actionOpen_O_triggered()
 {
-    if(!m_pChess) return;
     QString szFile = QFileDialog::getOpenFileName(this, tr("Open chess game"));
-    m_pChess->LoadChessGame(szFile.toStdString().c_str());
-    m_pChess->update();
+    if(szFile.isEmpty()) return;
+    int nRet = m_Chess.LoadChessGame(szFile.toStdString().c_str());
+    if(nRet) return;
+    QMessageBox::information(
+        this, "Load chess game",
+        tr("Load chess game from file %1 successfully!").arg(szFile));
+    m_Chess.update();
 }
 
 void MainWindow::on_actionSave_S_triggered()
 {
-    if(!m_pChess) return;
-    QString szFile = QFileDialog::getSaveFileName(this,
-                                                  tr("Save chess game"),
-                                                  QString(),
+    QString szFile = QFileDialog::getSaveFileName(
+        this, tr("Save chess game"), QString(),
         tr("Chinese chess control file(*.ccc);; Portable game notation file(*.pgn);; All files(*.*)"));
-    m_pChess->SaveChessGame(szFile.toStdString().c_str());
+    if(szFile.isEmpty()) return;
+    int nRet = m_Chess.SaveChessGame(szFile.toStdString().c_str());
+    if(nRet) return;
+    QMessageBox::information(
+        this, tr("Save chess game"),
+        tr("Save chess game to file %1 successfully!").arg(szFile));
 }
 
 void MainWindow::on_actionPrevious_P_triggered()
 {
-    if(m_pChess)
-        m_pChess->PreviouStep();
+    m_Chess.PreviouStep();
 }
 
 void MainWindow::on_actionNext_N_triggered()
 {
-    if(m_pChess)
-        m_pChess->NextStep();
+    m_Chess.NextStep();
 }
 
 void MainWindow::on_actionExit_E_triggered()
@@ -74,8 +81,6 @@ void MainWindow::on_actionExit_E_triggered()
 
 void MainWindow::on_actionAbout_A_triggered()
 {
-    QCursor cursor = this->cursor();
-    setCursor(Qt::WaitCursor);
     CDlgAbout about(this);
     about.m_AppIcon = QImage(":/image/Chess");
     about.m_szAppName = tr("Chinese chess");
@@ -83,33 +88,24 @@ void MainWindow::on_actionAbout_A_triggered()
     about.m_szCopyrightStartTime = "1994";
     about.m_szVersion = ChineseChessApp_VERSION;
     about.m_szVersionRevision = ChineseChessApp_REVISION;
-    if(about.isHidden())
-#if defined (Q_OS_ANDROID)
-        about.showMaximized();
-#endif
-    about.exec();
-    setCursor(cursor);
+    RC_SHOW_WINDOW(&about);
+    
+    //m_Chess.AboutBox();
 }
 
 void MainWindow::on_actionPrompt_sound_S_triggered(bool checked)
 {
-    if(m_pChess)
-        m_pChess->EnablePromptSound(checked);
+    m_Chess.EnablePromptSound(checked);
 }
 
 void MainWindow::on_actionPrompt_message_M_triggered(bool checked)
 {
-    if(m_pChess)
-        m_pChess->EnablePromptMessage(checked);
+    m_Chess.EnablePromptMessage(checked);
 }
 
 void MainWindow::on_actionUpdate_U_triggered()
 {
     CFrmUpdater* m_pfrmUpdater = new CFrmUpdater();
     m_pfrmUpdater->SetTitle(QImage(":/image/Chess"));
-    #if defined (Q_OS_ANDROID)
-        m_pfrmUpdater->showMaximized();
-    #else
-        m_pfrmUpdater->show();
-    #endif
+    RC_SHOW_WINDOW(m_pfrmUpdater);
 }

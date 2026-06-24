@@ -215,10 +215,13 @@ int CFrmChineseChess::onGoChess(int i, int j, CPiece::ENUM_QiZi chess)
 void CFrmChineseChess::AboutBox()
 {
     CDlgAbout about(this);
+    about.m_AppIcon = QImage(":/image/Chess");
     about.m_szAppName = tr("Chinese chess control");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
     about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
-    about.exec();
+    about.m_szVersion = ChineseChessQt_VERSION;
+    about.m_szVersionRevision = ChineseChessQt_REVISION;
+    RC_SHOW_WINDOW(&about);
 }
 
 QDateTime CFrmChineseChess::GetStartTime()
