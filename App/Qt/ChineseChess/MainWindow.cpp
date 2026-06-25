@@ -96,18 +96,18 @@ void MainWindow::on_actionExit_E_triggered()
 
 void MainWindow::on_actionAbout_A_triggered()
 {
-    CDlgAbout about(this);
-    about.m_AppIcon = QImage(":/image/Chess");
-    about.m_szAppName = tr("Chinese chess");
-    about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
-    about.m_szCopyrightStartTime = "1994";
+    CDlgAbout* pAbout = new CDlgAbout(this);
+    pAbout->m_AppIcon = QImage(":/image/Chess");
+    pAbout->m_szAppName = tr("Chinese chess");
+    pAbout->m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
+    pAbout->m_szCopyrightStartTime = "1994";
 #ifdef ChineseChessApp_VERSION
-    about.m_szVersion = ChineseChessApp_VERSION;
+    pAbout->m_szVersion = ChineseChessApp_VERSION;
 #endif
 #ifdef ChineseChessApp_REVISION
-    about.m_szVersionRevision = ChineseChessApp_REVISION;
+    pAbout->m_szVersionRevision = ChineseChessApp_REVISION;
 #endif
-    RC_SHOW_WINDOW(&about);
+    RC_SHOW_WINDOW(pAbout);
     
     //m_Chess.AboutBox();
 }
