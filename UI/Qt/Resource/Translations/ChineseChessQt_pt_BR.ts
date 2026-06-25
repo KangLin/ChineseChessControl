@@ -9,23 +9,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="177"/>
-        <location filename="../../FrmChineseChess.cpp" line="181"/>
+        <location filename="../../FrmChineseChess.cpp" line="179"/>
+        <location filename="../../FrmChineseChess.cpp" line="183"/>
         <source>This step cannot be taken, otherwise you will lose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="178"/>
+        <location filename="../../FrmChineseChess.cpp" line="180"/>
         <source>checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="182"/>
+        <location filename="../../FrmChineseChess.cpp" line="184"/>
         <source>Opposite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../FrmChineseChess.cpp" line="218"/>
+        <location filename="../../FrmChineseChess.cpp" line="221"/>
         <source>Chinese chess control</source>
         <translation type="unfinished"></translation>
     </message>

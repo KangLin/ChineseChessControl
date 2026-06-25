@@ -76,23 +76,41 @@
         <translation>提示音(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="43"/>
+        <location filename="../../MainWindow.cpp" line="26"/>
+        <location filename="../../MainWindow.cpp" line="28"/>
+        <location filename="../../MainWindow.cpp" line="29"/>
+        <source>menu</source>
+        <translation>菜单</translation>
+    </message>
+    <message>
+        <location filename="../../MainWindow.cpp" line="59"/>
         <source>Open chess game</source>
         <translation>打开棋局</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="52"/>
+        <location filename="../../MainWindow.cpp" line="65"/>
+        <source>Load chess game from file %1 successfully!</source>
+        <translation>从文件 %1 加载中国象棋游戏成功！</translation>
+    </message>
+    <message>
+        <location filename="../../MainWindow.cpp" line="72"/>
+        <location filename="../../MainWindow.cpp" line="78"/>
         <source>Save chess game</source>
         <translation>保存棋局</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.cpp" line="54"/>
+        <location filename="../../MainWindow.cpp" line="73"/>
         <source>Chinese chess control file(*.ccc);; Portable game notation file(*.pgn);; All files(*.*)</source>
         <translation>中国象棋控件文件(*ccc);; 便携式游戏符号文件(*.pgn);; 所有文件(*.*)</translation>
     </message>
     <message>
+        <location filename="../../MainWindow.cpp" line="79"/>
+        <source>Save chess game to file %1 successfully!</source>
+        <translation>保存中国象棋游戏到文件 %1 成功！</translation>
+    </message>
+    <message>
         <location filename="../../MainWindow.ui" line="14"/>
-        <location filename="../../MainWindow.cpp" line="81"/>
+        <location filename="../../MainWindow.cpp" line="101"/>
         <source>Chinese chess</source>
         <translation>中国象棋</translation>
     </message>
