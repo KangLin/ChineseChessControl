@@ -221,8 +221,12 @@ void CFrmChineseChess::AboutBox()
     about.m_szAppName = tr("Chinese chess control");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
     about.m_szCopyrightTime = "1994 - " + QString::number(QDate::currentDate().year());
+#ifdef ChineseChessQt_VERSION
     about.m_szVersion = ChineseChessQt_VERSION;
+#endif
+#ifdef ChineseChessQt_REVISION
     about.m_szVersionRevision = ChineseChessQt_REVISION;
+#endif
     RC_SHOW_WINDOW(&about);
 }
 
