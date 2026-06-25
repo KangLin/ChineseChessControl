@@ -1,6 +1,6 @@
 #include <QMessageBox>
 #include <QCursor>
-
+#include <QToolButton>
 #include "RabbitCommonDir.h"
 #include "RabbitCommonTools.h"
 #include "DlgAbout.h"
@@ -17,6 +17,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     RabbitCommon::CTools::AddStyleMenu(ui->menuTools);
     ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(this));
+
+#if defined(Q_OS_ANDROID)
+    auto pTbMenu = new QToolButton(ui->toolBar);
+    pTbMenu->setFocusPolicy(Qt::NoFocus);
+    pTbMenu->setPopupMode(QToolButton::InstantPopup);
+    //m_pTbMenu->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    pTbMenu->setText(tr("menu")); //tr("⋮"));
+    pTbMenu->setIcon(QIcon::fromTheme("menu"));
+    pTbMenu->setToolTip(tr("menu"));
+    pTbMenu->setStatusTip(tr("menu"));
+    QMenu *pMenu = new QMenu(pTbMenu);
+    pMenu->addActions(this->menuBar()->actions());
+    pTbMenu->setMenu(pMenu);
+    ui->toolBar->addWidget(pTbMenu);
+#endif
 
     //m_Chess.SetBoardLayout(CChineseChess::TopRedAndBottomBlack);
     this->setCentralWidget(&m_Chess);
