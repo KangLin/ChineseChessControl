@@ -81,8 +81,7 @@ endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ChineseChessQt RabbitCommon ${QT_LIBRARIES})
 if(ANDROID)
-
-    if(QT_VERSION GREATER_EQUAL 6.11.0)
+    if(CMAKE_HOST_WIN32)
         set(ANDROID_BUILD ${CMAKE_CURRENT_BINARY_DIR}/android-build-${PROJECT_NAME})
     else()
         set(ANDROID_BUILD ${CMAKE_CURRENT_BINARY_DIR}/android-build)
@@ -138,7 +137,6 @@ if(ANDROID)
         DEPENDS ${PROJECT_NAME}_make_apk  # 依赖 APK 生成目标
         COMMENT "Patching build.gradle after androiddeployqt"
     )
-
 else()
     set_target_properties(${PROJECT_NAME} PROPERTIES
         LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
