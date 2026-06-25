@@ -81,15 +81,64 @@ endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ChineseChessQt RabbitCommon ${QT_LIBRARIES})
 if(ANDROID)
+
+    if(QT_VERSION GREATER_EQUAL 6.11.0)
+        set(ANDROID_BUILD ${CMAKE_CURRENT_BINARY_DIR}/android-build-${PROJECT_NAME})
+    else()
+        set(ANDROID_BUILD ${CMAKE_CURRENT_BINARY_DIR}/android-build)
+    endif()
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E echo "copy directory ${CMAKE_BINARY_DIR}/assets to ${CMAKE_CURRENT_BINARY_DIR}/android-build/assets"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/assets" "${CMAKE_CURRENT_BINARY_DIR}/android-build/assets"
-        COMMENT "Copy directory ${CMAKE_BINARY_DIR}/assets/ to ${CMAKE_CURRENT_BINARY_DIR}/android-build/assets"
+        COMMAND ${CMAKE_COMMAND} -E echo "copy directory ${CMAKE_BINARY_DIR}/assets to ${ANDROID_BUILD}/assets"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/assets" "${ANDROID_BUILD}/assets"
+        COMMENT "Copy directory ${CMAKE_BINARY_DIR}/assets/ to ${ANDROID_BUILD}/assets"
         COMMAND_EXPAND_LISTS
         VERBATIM)
     set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY
         QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+
+    # 设置 Android 相关属性
+    # See: https://doc.qt.io/qt-6/zh/qt-android-generate-deployment-settings.html
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        # Android 包名
+        QT_ANDROID_PACKAGE_NAME "io.github.KangLinStudio.ChineseChess"
+        # 最小 SDK 版本
+        QT_ANDROID_MIN_SDK_VERSION 28
+        # 目标 SDK 版本
+        QT_ANDROID_TARGET_SDK_VERSION 34
+    )
+
+    # 创建临时 CMake 脚本来修改 build.gradle
+    set(FIX_SCRIPT "${CMAKE_CURRENT_BINARY_DIR}/fix_build_gradle.cmake")
+
+    file(WRITE "${FIX_SCRIPT}"
+        "
+        if(EXISTS \"\${BUILD_DIR}/build.gradle\")
+            file(READ \"\${BUILD_DIR}/build.gradle\" CONTENT)
+
+            # 方式1：添加中文支持
+            #string(REPLACE \"resConfig \\\"en\\\"\" \"resConfig \\\"en\\\", \\\"zh\\\"\" CONTENT \"\${CONTENT}\")
+
+            # 方式2：或者直接注释掉 resConfigs 行
+            string(REGEX REPLACE \"resConfig \\\"en\\\"\" \"// resConfig \\\"en\\\"  // Disabled for multi-language\" CONTENT \"\${CONTENT}\")
+
+            file(WRITE \"\${BUILD_DIR}/build.gradle\" \"\${CONTENT}\")
+            message(STATUS \"Updated build.gradle for multi-language\")
+        else()
+            message(FATAL_ERROR \"\${BUILD_DIR}/build.gradle not found\")
+        endif()
+        "
+    )
+
+    # 创建一个独立的目标，在 androiddeployqt 之后运行
+    add_custom_target(fix_build_gradle ALL
+        COMMAND ${CMAKE_COMMAND}
+            -DBUILD_DIR="${ANDROID_BUILD}"
+            -P "${FIX_SCRIPT}"
+        DEPENDS ${PROJECT_NAME}_make_apk  # 依赖 APK 生成目标
+        COMMENT "Patching build.gradle after androiddeployqt"
+    )
+
 else()
     set_target_properties(${PROJECT_NAME} PROPERTIES
         LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
@@ -184,41 +233,6 @@ IF(APPLE)
     target_add_resources(${PROJECT_NAME} . "${CMAKE_CURRENT_SOURCE_DIR}/Resource/Image/${APP_ID}.icns")
     cmake_minimum_required(VERSION 3.16)
     project(ChineseChessApp)
-
-ELSEIF(ANDROID)
-
-    process_build_gradle(${PROJECT_NAME} "${CMAKE_CURRENT_BINARY_DIR}/android-build-ChineseChessApp/")
-
-    # # 创建临时 CMake 脚本来修改 build.gradle
-    # set(FIX_SCRIPT "${CMAKE_CURRENT_BINARY_DIR}/fix_gradle.cmake")
-
-    # file(WRITE "${FIX_SCRIPT}"
-    # "
-    # if(EXISTS \"\${BUILD_DIR}/build.gradle\")
-    #     file(READ \"\${BUILD_DIR}/build.gradle\" CONTENT)
-
-    #     # 方式1：添加中文支持
-    #     string(REPLACE \"resConfigs \\\"en\\\"\" \"resConfigs \\\"en\\\", \\\"zh\\\"\" CONTENT \"\${CONTENT}\")
-
-    #     # 方式2：或者直接注释掉 resConfigs 行
-    #     # string(REGEX REPLACE \"(resConfigs .*)\" \"// \\1  # Disabled for multi-language\" CONTENT \"\${CONTENT}\")
-
-    #     file(WRITE \"\${BUILD_DIR}/build.gradle\" \"\${CONTENT}\")
-    #     message(STATUS \"Updated build.gradle for multi-language\")
-    # else()
-    #     message(FATAL_ERROR \"\${BUILD_DIR}/build.gradle not found\")
-    # endif()
-    # "
-    # )
-
-    # add_custom_command(
-    #     TARGET ${PROJECT_NAME}
-    #     POST_BUILD
-    #     COMMAND ${CMAKE_COMMAND}
-    #     -DBUILD_DIR="${CMAKE_CURRENT_BINARY_DIR}/android-build-ChineseChessApp/"
-    #     -P "${FIX_SCRIPT}"
-    #     COMMENT "Patching build.gradle"
-    # )
 
 ELSEIF(UNIX AND NOT ANDROID)
 
