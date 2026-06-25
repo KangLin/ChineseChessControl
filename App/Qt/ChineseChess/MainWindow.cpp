@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     RabbitCommon::CTools::AddStyleMenu(ui->menuTools);
     ui->menuTools->addMenu(RabbitCommon::CTools::GetLogMenu(this));
 
-#if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID) && QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     auto pTbMenu = new QToolButton(ui->toolBar);
     pTbMenu->setFocusPolicy(Qt::NoFocus);
     pTbMenu->setPopupMode(QToolButton::InstantPopup);
