@@ -101,8 +101,12 @@ void MainWindow::on_actionAbout_A_triggered()
     about.m_szAppName = tr("Chinese chess");
     about.m_szHomePage = "https://github.com/KangLin/ChineseChessControl";
     about.m_szCopyrightStartTime = "1994";
+#ifdef ChineseChessApp_VERSION
     about.m_szVersion = ChineseChessApp_VERSION;
+#endif
+#ifdef ChineseChessApp_REVISION
     about.m_szVersionRevision = ChineseChessApp_REVISION;
+#endif
     RC_SHOW_WINDOW(&about);
     
     //m_Chess.AboutBox();
