@@ -182,6 +182,43 @@ IF(APPLE)
     INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/Info.plist
         DESTINATION "." COMPONENT QtApplications)
     target_add_resources(${PROJECT_NAME} . "${CMAKE_CURRENT_SOURCE_DIR}/Resource/Image/${APP_ID}.icns")
+    cmake_minimum_required(VERSION 3.16)
+    project(ChineseChessApp)
+
+ELSEIF(ANDROID)
+
+    process_build_gradle(${PROJECT_NAME} "${CMAKE_CURRENT_BINARY_DIR}/android-build-ChineseChessApp/")
+
+    # # 创建临时 CMake 脚本来修改 build.gradle
+    # set(FIX_SCRIPT "${CMAKE_CURRENT_BINARY_DIR}/fix_gradle.cmake")
+
+    # file(WRITE "${FIX_SCRIPT}"
+    # "
+    # if(EXISTS \"\${BUILD_DIR}/build.gradle\")
+    #     file(READ \"\${BUILD_DIR}/build.gradle\" CONTENT)
+
+    #     # 方式1：添加中文支持
+    #     string(REPLACE \"resConfigs \\\"en\\\"\" \"resConfigs \\\"en\\\", \\\"zh\\\"\" CONTENT \"\${CONTENT}\")
+
+    #     # 方式2：或者直接注释掉 resConfigs 行
+    #     # string(REGEX REPLACE \"(resConfigs .*)\" \"// \\1  # Disabled for multi-language\" CONTENT \"\${CONTENT}\")
+
+    #     file(WRITE \"\${BUILD_DIR}/build.gradle\" \"\${CONTENT}\")
+    #     message(STATUS \"Updated build.gradle for multi-language\")
+    # else()
+    #     message(FATAL_ERROR \"\${BUILD_DIR}/build.gradle not found\")
+    # endif()
+    # "
+    # )
+
+    # add_custom_command(
+    #     TARGET ${PROJECT_NAME}
+    #     POST_BUILD
+    #     COMMAND ${CMAKE_COMMAND}
+    #     -DBUILD_DIR="${CMAKE_CURRENT_BINARY_DIR}/android-build-ChineseChessApp/"
+    #     -P "${FIX_SCRIPT}"
+    #     COMMENT "Patching build.gradle"
+    # )
 
 ELSEIF(UNIX AND NOT ANDROID)
 
