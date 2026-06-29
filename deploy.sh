@@ -3,10 +3,10 @@
 
 set -e
 
-update_verion() {
+update_version() {
 
     $SED_CMD "s/^\!define PRODUCT_VERSION.*/\!define PRODUCT_VERSION \"${VERSION}\"/g" ${SOURCE_DIR}/Install/Install.nsi
-    $SED_CMD "s/^version: '${VERSION_PATTERN}.\{build\}'/version: '${VERSION}.\{build\}'/g" ${SOURCE_DIR}/appveyor.yml
+    $SED_CMD "s/^version: '${VERSION_PATTERN}.\{build\}'/version: '${VERSION}\.\{build\}'/g" ${SOURCE_DIR}/appveyor.yml
     $SED_CMD "s/ChineseChessControl_VERSION: ${VERSION_PATTERN}/ChineseChessControl_VERSION: \"v${VERSION}\"/g" ${SOURCE_DIR}/appveyor.yml
     $SED_CMD "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/msvc.yml
     $SED_CMD "s/ChineseChessControl_VERSION:.*/ChineseChessControl_VERSION: \"${VERSION}\"/g" ${SOURCE_DIR}/.github/workflows/mingw.yml
@@ -429,7 +429,7 @@ create_tag
 
 echo "= Update version to $VERSION ......"
 
-update_verion
+update_version
 
 echo_success "Version updated to $VERSION successfully!"
 #echo "  Time: $DATE_TIME_UTC"
