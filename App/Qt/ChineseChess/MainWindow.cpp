@@ -40,7 +40,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     CFrmUpdater updater;
     ui->actionUpdate_U->setIcon(updater.windowIcon());
+#if !defined(Q_OS_ANDROID)
     RabbitCommon::CTools::Instance()->RestoreWidget(this);
+#endif
 }
 
 MainWindow::~MainWindow()
@@ -50,7 +52,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
+#if !defined(Q_OS_ANDROID)
     RabbitCommon::CTools::Instance()->SaveWidget(this);
+#endif
     QMainWindow::closeEvent(event);
 }
 
