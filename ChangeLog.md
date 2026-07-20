@@ -1,4 +1,4 @@
-### v2.0.15
+### v2.0.15-dev
   - 使用 CMake 产生 AndroidManifest.xml，移除 AndroidManifest.xml 文件
   - Android:
     - 增加菜单到工具栏上
