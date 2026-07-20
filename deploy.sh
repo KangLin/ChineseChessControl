@@ -30,8 +30,6 @@ update_version() {
     fi
 
     MAJOR_VERSION=`echo ${DEBIAN_VERSION}|cut -d "." -f 1`
-    $SED_CMD "s/android:versionCode=.*android/android:versionCode=\"${MAJOR_VERSION}\" android/g" ${SOURCE_DIR}/App/Qt/ChineseChess/android/AndroidManifest.xml
-    $SED_CMD "s/android:versionName=\"${VERSION_PATTERN}\"/android:versionName=\"${DEBIAN_VERSION}\"/g" ${SOURCE_DIR}/App/Qt/ChineseChess/android/AndroidManifest.xml
 
     MSVC_VERSION="`echo ${DEBIAN_VERSION} | sed "s/\./,/g"`,0"
 

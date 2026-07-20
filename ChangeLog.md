@@ -1,3 +1,6 @@
+### v2.0.15-dev
+  - 使用 CMake 产生 AndroidManifest.xml，移除 AndroidManifest.xml 文件
+
 ### v2.0.14
   - 使用 [RabbitCommon v2.3.4](https://github.com/KangLin/RabbitCommon/releases/tag/v2.3.4)
   - 修复声音错误
