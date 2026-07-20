@@ -22,6 +22,10 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     RabbitCommon::CTools::Instance()->Init();
+    QStringList lstPermissions;
+    lstPermissions << "android.permission.WRITE_EXTERNAL_STORAGE"
+                   << "android.permission.READ_EXTERNAL_STORAGE";
+    RabbitCommon::CTools::AndroidRequestPermission(lstPermissions);
     CFrmChineseChess::InitResource(RabbitCommon::CTools::Instance()->GetLanguage());
 
     QSharedPointer<QTranslator> translator =
