@@ -1,5 +1,8 @@
-### v2.0.15-dev
+### v2.0.15
   - 使用 CMake 产生 AndroidManifest.xml，移除 AndroidManifest.xml 文件
+  - Android:
+    - 增加菜单到工具栏上
+    - CI: 修改多语言
 
 ### v2.0.14
   - 使用 [RabbitCommon v2.3.4](https://github.com/KangLin/RabbitCommon/releases/tag/v2.3.4)
