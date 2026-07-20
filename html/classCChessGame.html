@@ -1,0 +1,1250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: CChessGame类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;2.0.15</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="#pri-types">Private 类型</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classCChessGame-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CChessGame类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]  
+ <a href="classCChessGame.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ChessGame_8h_source.html">ChessGame.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCChessGame_1_1strCODE.html">strCODE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCChessGame_1_1strFile.html">strFile</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCChessGame_1_1strFileHead.html">strFileHead</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCChessGame_1_1strStartGame.html">strStartGame</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋局结构  <a href="structCChessGame_1_1strStartGame.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCChessGame_1_1strStep.html">strStep</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a9a324704842aacfc9038221f58c0e85c" id="r_a9a324704842aacfc9038221f58c0e85c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>_SavePgnFormat</b> { <b>ICCS</b>
+, <b>Chinese</b>
+, <b>WXF</b>
+ }</td></tr>
+<tr class="separator:a9a324704842aacfc9038221f58c0e85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9693f59b49531ac930a1ce66e375c97c" id="r_a9693f59b49531ac930a1ce66e375c97c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a9693f59b49531ac930a1ce66e375c97c">SaveStep</a> (int i, int j, <a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> qz, const char *pDescript=nullptr, time_t tm=time(nullptr))</td></tr>
+<tr class="memdesc:a9693f59b49531ac930a1ce66e375c97c"><td class="mdescLeft">&#160;</td><td class="mdescRight">保存一步  <br /></td></tr>
+<tr class="separator:a9693f59b49531ac930a1ce66e375c97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7406619e20f7f3e7c0b5976f2cff8b32" id="r_a7406619e20f7f3e7c0b5976f2cff8b32"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a7406619e20f7f3e7c0b5976f2cff8b32">RevokeStep</a> ()</td></tr>
+<tr class="memdesc:a7406619e20f7f3e7c0b5976f2cff8b32"><td class="mdescLeft">&#160;</td><td class="mdescRight">撤销一步  <br /></td></tr>
+<tr class="separator:a7406619e20f7f3e7c0b5976f2cff8b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3401b9a0c6e9c625b08aa78784ece768" id="r_a3401b9a0c6e9c625b08aa78784ece768"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a3401b9a0c6e9c625b08aa78784ece768">GetPreviouStep</a> (int &amp;i, int &amp;j, <a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> &amp;qz)</td></tr>
+<tr class="memdesc:a3401b9a0c6e9c625b08aa78784ece768"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数名：GetPreviouStep 功 能：上步棋 参 数：无 返回值：走棋步数 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-5 时 间：10:19:51  <br /></td></tr>
+<tr class="separator:a3401b9a0c6e9c625b08aa78784ece768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac387a0f1563a65486f6ad73b221e6cf" id="r_aac387a0f1563a65486f6ad73b221e6cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#aac387a0f1563a65486f6ad73b221e6cf">GetNextStep</a> (int &amp;i, int &amp;j, <a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> &amp;qz)</td></tr>
+<tr class="memdesc:aac387a0f1563a65486f6ad73b221e6cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next step  <br /></td></tr>
+<tr class="separator:aac387a0f1563a65486f6ad73b221e6cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74edd1709b880f256cadb1f45c7a6fe6" id="r_a74edd1709b880f256cadb1f45c7a6fe6"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a74edd1709b880f256cadb1f45c7a6fe6">GetStartTime</a> ()</td></tr>
+<tr class="separator:a74edd1709b880f256cadb1f45c7a6fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641c00fdb0baf8e92de6a031e3eca3b3" id="r_a641c00fdb0baf8e92de6a031e3eca3b3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a641c00fdb0baf8e92de6a031e3eca3b3">SetStartTime</a> (const time_t &amp;t)</td></tr>
+<tr class="separator:a641c00fdb0baf8e92de6a031e3eca3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811a26b7b4feeb3b73d61a4da60a03e3" id="r_a811a26b7b4feeb3b73d61a4da60a03e3"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a811a26b7b4feeb3b73d61a4da60a03e3">GetEndTime</a> ()</td></tr>
+<tr class="separator:a811a26b7b4feeb3b73d61a4da60a03e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b669be73d0b7ca8c6f9a3565e555bb4" id="r_a4b669be73d0b7ca8c6f9a3565e555bb4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a4b669be73d0b7ca8c6f9a3565e555bb4">SetEndTime</a> (const time_t &amp;t)</td></tr>
+<tr class="separator:a4b669be73d0b7ca8c6f9a3565e555bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a549fdadd2c4dd409d582757f38471432" id="r_a549fdadd2c4dd409d582757f38471432"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a549fdadd2c4dd409d582757f38471432">GetRedName</a> ()</td></tr>
+<tr class="separator:a549fdadd2c4dd409d582757f38471432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea814c453141cfbe703fc4f70649016" id="r_a8ea814c453141cfbe703fc4f70649016"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a8ea814c453141cfbe703fc4f70649016">SetRedName</a> (const char *pszName)</td></tr>
+<tr class="separator:a8ea814c453141cfbe703fc4f70649016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaccdce062f35b92d0807e9acab145f0" id="r_afaccdce062f35b92d0807e9acab145f0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#afaccdce062f35b92d0807e9acab145f0">GetBlackName</a> ()</td></tr>
+<tr class="separator:afaccdce062f35b92d0807e9acab145f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae79ef6d9953081f233372a6e2547d8ec" id="r_ae79ef6d9953081f233372a6e2547d8ec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#ae79ef6d9953081f233372a6e2547d8ec">SetBlackName</a> (const char *pszName)</td></tr>
+<tr class="separator:ae79ef6d9953081f233372a6e2547d8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8397eed761cea91130ddd60d66281954" id="r_a8397eed761cea91130ddd60d66281954"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a8397eed761cea91130ddd60d66281954">GetTag</a> (const std::string &amp;szpTag)</td></tr>
+<tr class="separator:a8397eed761cea91130ddd60d66281954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3255303b38208106723cd48d95550207" id="r_a3255303b38208106723cd48d95550207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a3255303b38208106723cd48d95550207">AddTag</a> (const std::string &amp;szTag, const std::string &amp;szVal)</td></tr>
+<tr class="separator:a3255303b38208106723cd48d95550207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be0fe0e2bc8117171bb5d06df745f4a" id="r_a7be0fe0e2bc8117171bb5d06df745f4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a7be0fe0e2bc8117171bb5d06df745f4a">SaveChessGame</a> (const char *pFileName)</td></tr>
+<tr class="memdesc:a7be0fe0e2bc8117171bb5d06df745f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the chess game  <br /></td></tr>
+<tr class="separator:a7be0fe0e2bc8117171bb5d06df745f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3afd70a144c09a075c363d7ea49205e" id="r_af3afd70a144c09a075c363d7ea49205e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#af3afd70a144c09a075c363d7ea49205e">LoadChessGame</a> (const char *pFileName)</td></tr>
+<tr class="separator:af3afd70a144c09a075c363d7ea49205e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76c95ab8ff4f46186187aa90917a10d" id="r_af76c95ab8ff4f46186187aa90917a10d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#af76c95ab8ff4f46186187aa90917a10d">SaveChessGamePgn</a> (const char *pFileName, _SavePgnFormat f=Chinese)</td></tr>
+<tr class="separator:af76c95ab8ff4f46186187aa90917a10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c838f88b116aed98bc539a908e90b91" id="r_a7c838f88b116aed98bc539a908e90b91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a7c838f88b116aed98bc539a908e90b91">LoadChessGamePgn</a> (const char *pFileName, _SavePgnFormat f=Chinese)</td></tr>
+<tr class="separator:a7c838f88b116aed98bc539a908e90b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5923bcf608bf1ec2106df21d5b18415" id="r_ae5923bcf608bf1ec2106df21d5b18415"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#ae5923bcf608bf1ec2106df21d5b18415">GetStartGameBoard</a> (<a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> board[][10])</td></tr>
+<tr class="memdesc:ae5923bcf608bf1ec2106df21d5b18415"><td class="mdescLeft">&#160;</td><td class="mdescRight">得到开局棋盘布局  <br /></td></tr>
+<tr class="separator:ae5923bcf608bf1ec2106df21d5b18415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:af9520fcd6f1b21525d3c59f0f27a99bb" id="r_af9520fcd6f1b21525d3c59f0f27a99bb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#af9520fcd6f1b21525d3c59f0f27a99bb">CheckGame</a> (const <a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> board[][10])</td></tr>
+<tr class="memdesc:af9520fcd6f1b21525d3c59f0f27a99bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋盘开局 检测布局是否合法, 使用标准棋盘布局，红下黑上  <br /></td></tr>
+<tr class="separator:af9520fcd6f1b21525d3c59f0f27a99bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a4339c95a075e12da8364b1341c301cb8" id="r_a4339c95a075e12da8364b1341c301cb8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCChessGame_1_1strStartGame.html">strStartGame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a4339c95a075e12da8364b1341c301cb8">m_StartGame</a></td></tr>
+<tr class="separator:a4339c95a075e12da8364b1341c301cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private 类型</h2></td></tr>
+<tr class="memitem:a73f3f10ddc03239cbffd18e1d1fd2bb4" id="r_a73f3f10ddc03239cbffd18e1d1fd2bb4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>_ENUM_BianMa</b> { <b>BianMa</b>
+, <b>JieMa</b>
+ }</td></tr>
+<tr class="separator:a73f3f10ddc03239cbffd18e1d1fd2bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45bdc5456246626c3a36aa29f9d89219" id="r_a45bdc5456246626c3a36aa29f9d89219"><td class="memItemLeft" align="right" valign="top"><a id="a45bdc5456246626c3a36aa29f9d89219" name="a45bdc5456246626c3a36aa29f9d89219"></a>
+typedef enum CChessGame::_ENUM_BianMa&#160;</td><td class="memItemRight" valign="bottom"><b>ENUM_BianMa</b></td></tr>
+<tr class="separator:a45bdc5456246626c3a36aa29f9d89219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a80059add30c9e4725351825004376d53" id="r_a80059add30c9e4725351825004376d53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a80059add30c9e4725351825004376d53">QiZiBianMa</a> (int *i, int *j, <a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> *qz, <a class="el" href="structCChessGame_1_1strCODE.html">strCODE</a> *pCode, ENUM_BianMa bianma=BianMa)</td></tr>
+<tr class="memdesc:a80059add30c9e4725351825004376d53"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋子编解码  <br /></td></tr>
+<tr class="separator:a80059add30c9e4725351825004376d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a612af3d39bc9baa1de9f4643c8be3cf6" id="r_a612af3d39bc9baa1de9f4643c8be3cf6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a612af3d39bc9baa1de9f4643c8be3cf6">WriteStringToFile</a> (std::ofstream &amp;o, std::string &amp;s)</td></tr>
+<tr class="separator:a612af3d39bc9baa1de9f4643c8be3cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad637655087b37202890526b36a35cf" id="r_a1ad637655087b37202890526b36a35cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a1ad637655087b37202890526b36a35cf">ReadStringFromFile</a> (std::ifstream &amp;i, std::string &amp;s)</td></tr>
+<tr class="separator:a1ad637655087b37202890526b36a35cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:abe4862e14c4e9f1973e4ad06c6b220b0" id="r_abe4862e14c4e9f1973e4ad06c6b220b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#abe4862e14c4e9f1973e4ad06c6b220b0">m_nIndex</a></td></tr>
+<tr class="separator:abe4862e14c4e9f1973e4ad06c6b220b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac4018459c635507cb0db680ebfb9f12" id="r_aac4018459c635507cb0db680ebfb9f12"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#aac4018459c635507cb0db680ebfb9f12">m_bFuPang</a></td></tr>
+<tr class="memdesc:aac4018459c635507cb0db680ebfb9f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">走棋步数  <br /></td></tr>
+<tr class="separator:aac4018459c635507cb0db680ebfb9f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9572fda853005ddd25452764ec9ec3c9" id="r_a9572fda853005ddd25452764ec9ec3c9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCChessGame_1_1strStep.html">strStep</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a9572fda853005ddd25452764ec9ec3c9">m_ChessGame</a></td></tr>
+<tr class="memdesc:a9572fda853005ddd25452764ec9ec3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">复盘标志  <br /></td></tr>
+<tr class="separator:a9572fda853005ddd25452764ec9ec3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f5ff2ac47bae12b531908eb55737c11" id="r_a0f5ff2ac47bae12b531908eb55737c11"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a0f5ff2ac47bae12b531908eb55737c11">m_tmStart</a></td></tr>
+<tr class="memdesc:a0f5ff2ac47bae12b531908eb55737c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋局  <br /></td></tr>
+<tr class="separator:a0f5ff2ac47bae12b531908eb55737c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96083139d55f879e9d4c4673d0eab2c" id="r_aa96083139d55f879e9d4c4673d0eab2c"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#aa96083139d55f879e9d4c4673d0eab2c">m_tmEnd</a></td></tr>
+<tr class="memdesc:aa96083139d55f879e9d4c4673d0eab2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">开始时间  <br /></td></tr>
+<tr class="separator:aa96083139d55f879e9d4c4673d0eab2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3105320904d945213882f3b168f3e5e3" id="r_a3105320904d945213882f3b168f3e5e3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a3105320904d945213882f3b168f3e5e3">m_szRedName</a></td></tr>
+<tr class="memdesc:a3105320904d945213882f3b168f3e5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">结束时间  <br /></td></tr>
+<tr class="separator:a3105320904d945213882f3b168f3e5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e65a2860dfe1dc4fde10590843588eb" id="r_a1e65a2860dfe1dc4fde10590843588eb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a1e65a2860dfe1dc4fde10590843588eb">m_szBlackName</a></td></tr>
+<tr class="memdesc:a1e65a2860dfe1dc4fde10590843588eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">红方名  <br /></td></tr>
+<tr class="separator:a1e65a2860dfe1dc4fde10590843588eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28f15d5830e1f127e2b7d1222293f7c8" id="r_a28f15d5830e1f127e2b7d1222293f7c8"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChessGame.html#a28f15d5830e1f127e2b7d1222293f7c8">m_Tags</a></td></tr>
+<tr class="memdesc:a28f15d5830e1f127e2b7d1222293f7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">黑方名  <br /></td></tr>
+<tr class="separator:a28f15d5830e1f127e2b7d1222293f7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10] </p>
+<p>棋盘位置 </p><div class="fragment"><div class="line">[0][0] ------------------&gt; i 或 x 方向</div>
+<div class="line">     |</div>
+<div class="line">     |</div>
+<div class="line">     |</div>
+<div class="line">     |       [i][j]</div>
+<div class="line">     |</div>
+<div class="line">     |</div>
+<div class="line">    \|/</div>
+<div class="line">     |                 [9][10]</div>
+<div class="line">  j 或 y 方向</div>
+</div><!-- fragment --><p>行棋，红方先行：详见《象棋竞赛规则(2011)》第一章 第2条 </p><dl class="section author"><dt>作者</dt><dd>康林 <a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a> </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2020/5/17 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00041">41</a> 行定义.</p>
+</div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a73f3f10ddc03239cbffd18e1d1fd2bb4" name="a73f3f10ddc03239cbffd18e1d1fd2bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73f3f10ddc03239cbffd18e1d1fd2bb4">&#9670;&#160;</a></span>_ENUM_BianMa</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum CChessGame::_ENUM_BianMa</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9a324704842aacfc9038221f58c0e85c" name="a9a324704842aacfc9038221f58c0e85c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a324704842aacfc9038221f58c0e85c">&#9670;&#160;</a></span>_SavePgnFormat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum CChessGame::_SavePgnFormat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00105">105</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a35ec07e005366757ce5b049c1779787a" name="a35ec07e005366757ce5b049c1779787a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ec07e005366757ce5b049c1779787a">&#9670;&#160;</a></span>CChessGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CChessGame::CChessGame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00019">19</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af39c2933e89e0b77124744f51e56776b" name="af39c2933e89e0b77124744f51e56776b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af39c2933e89e0b77124744f51e56776b">&#9670;&#160;</a></span>~CChessGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CChessGame::~CChessGame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a3255303b38208106723cd48d95550207" name="a3255303b38208106723cd48d95550207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3255303b38208106723cd48d95550207">&#9670;&#160;</a></span>AddTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::AddTag </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szVal</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00513">513</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af9520fcd6f1b21525d3c59f0f27a99bb" name="af9520fcd6f1b21525d3c59f0f27a99bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9520fcd6f1b21525d3c59f0f27a99bb">&#9670;&#160;</a></span>CheckGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::CheckGame </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a>&#160;</td>
+          <td class="paramname"><em>board</em>[][10]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>棋盘开局 检测布局是否合法, 使用标准棋盘布局，红下黑上 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00520">520</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afaccdce062f35b92d0807e9acab145f0" name="afaccdce062f35b92d0807e9acab145f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaccdce062f35b92d0807e9acab145f0">&#9670;&#160;</a></span>GetBlackName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CChessGame::GetBlackName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00493">493</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a811a26b7b4feeb3b73d61a4da60a03e3" name="a811a26b7b4feeb3b73d61a4da60a03e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a811a26b7b4feeb3b73d61a4da60a03e3">&#9670;&#160;</a></span>GetEndTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t CChessGame::GetEndTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00471">471</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aac387a0f1563a65486f6ad73b221e6cf" name="aac387a0f1563a65486f6ad73b221e6cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac387a0f1563a65486f6ad73b221e6cf">&#9670;&#160;</a></span>GetNextStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::GetNextStep </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> &amp;&#160;</td>
+          <td class="paramname"><em>qz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the next step </p>
+<dl class="section author"><dt>作者</dt><dd>KangLin(<a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2020/5/17</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">int</td><td>i：当前下棋的位置,横坐标[0-8] </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">int</td><td>j：当前下棋的位置,纵坐标[0-9] </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">qz</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>The next step. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00179">179</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3401b9a0c6e9c625b08aa78784ece768" name="a3401b9a0c6e9c625b08aa78784ece768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3401b9a0c6e9c625b08aa78784ece768">&#9670;&#160;</a></span>GetPreviouStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::GetPreviouStep </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> &amp;&#160;</td>
+          <td class="paramname"><em>qz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>函数名：GetPreviouStep 功 能：上步棋 参 数：无 返回值：走棋步数 作 者：康 林 版 本：1.0.0.1 日 期：2004-10-5 时 间：10:19:51 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00158">158</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a549fdadd2c4dd409d582757f38471432" name="a549fdadd2c4dd409d582757f38471432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a549fdadd2c4dd409d582757f38471432">&#9670;&#160;</a></span>GetRedName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CChessGame::GetRedName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00482">482</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae5923bcf608bf1ec2106df21d5b18415" name="ae5923bcf608bf1ec2106df21d5b18415"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5923bcf608bf1ec2106df21d5b18415">&#9670;&#160;</a></span>GetStartGameBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::GetStartGameBoard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a>&#160;</td>
+          <td class="paramname"><em>board</em>[][10]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>得到开局棋盘布局 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">board</td><td>返回开局棋盘布局 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功，返回0，失败，返回非0 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00633">633</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a74edd1709b880f256cadb1f45c7a6fe6" name="a74edd1709b880f256cadb1f45c7a6fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74edd1709b880f256cadb1f45c7a6fe6">&#9670;&#160;</a></span>GetStartTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t CChessGame::GetStartTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00460">460</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8397eed761cea91130ddd60d66281954" name="a8397eed761cea91130ddd60d66281954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8397eed761cea91130ddd60d66281954">&#9670;&#160;</a></span>GetTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CChessGame::GetTag </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szpTag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00504">504</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af3afd70a144c09a075c363d7ea49205e" name="af3afd70a144c09a075c363d7ea49205e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3afd70a144c09a075c363d7ea49205e">&#9670;&#160;</a></span>LoadChessGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::LoadChessGame </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00268">268</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c838f88b116aed98bc539a908e90b91" name="a7c838f88b116aed98bc539a908e90b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c838f88b116aed98bc539a908e90b91">&#9670;&#160;</a></span>LoadChessGamePgn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::LoadChessGamePgn </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">_SavePgnFormat&#160;</td>
+          <td class="paramname"><em>f</em> = <code>Chinese</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00417">417</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a80059add30c9e4725351825004376d53" name="a80059add30c9e4725351825004376d53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80059add30c9e4725351825004376d53">&#9670;&#160;</a></span>QiZiBianMa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::QiZiBianMa </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a> *&#160;</td>
+          <td class="paramname"><em>qz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCChessGame_1_1strCODE.html">strCODE</a> *&#160;</td>
+          <td class="paramname"><em>pCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ENUM_BianMa&#160;</td>
+          <td class="paramname"><em>bianma</em> = <code>BianMa</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>棋子编解码 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>棋盘横坐标[0-8] </td></tr>
+    <tr><td class="paramname">j</td><td>棋盘纵坐标[0-9] </td></tr>
+    <tr><td class="paramname">qz</td><td>棋子 </td></tr>
+    <tr><td class="paramname">pCode</td><td>棋子编码 </td></tr>
+    <tr><td class="paramname">bianma</td><td>枚举常量（BianMa:编码(默认值)，JieMa：解码） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00077">77</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1ad637655087b37202890526b36a35cf" name="a1ad637655087b37202890526b36a35cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ad637655087b37202890526b36a35cf">&#9670;&#160;</a></span>ReadStringFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::ReadStringFromFile </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00444">444</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7406619e20f7f3e7c0b5976f2cff8b32" name="a7406619e20f7f3e7c0b5976f2cff8b32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7406619e20f7f3e7c0b5976f2cff8b32">&#9670;&#160;</a></span>RevokeStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::RevokeStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>撤销一步 </p>
+<dl class="section author"><dt>作者</dt><dd>KangLin(<a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2020/5/17</dd></dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回 0 ，否则返回非零 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00139">139</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7be0fe0e2bc8117171bb5d06df745f4a" name="a7be0fe0e2bc8117171bb5d06df745f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7be0fe0e2bc8117171bb5d06df745f4a">&#9670;&#160;</a></span>SaveChessGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SaveChessGame </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saves the chess game </p>
+<dl class="section author"><dt>作者</dt><dd>KangLin <a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a> </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2020/5/19</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pFileName</td><td>Filename of the file.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>An int. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00189">189</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af76c95ab8ff4f46186187aa90917a10d" name="af76c95ab8ff4f46186187aa90917a10d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af76c95ab8ff4f46186187aa90917a10d">&#9670;&#160;</a></span>SaveChessGamePgn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SaveChessGamePgn </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">_SavePgnFormat&#160;</td>
+          <td class="paramname"><em>f</em> = <code>Chinese</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00351">351</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9693f59b49531ac930a1ce66e375c97c" name="a9693f59b49531ac930a1ce66e375c97c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9693f59b49531ac930a1ce66e375c97c">&#9670;&#160;</a></span>SaveStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SaveStep </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCPiece.html#acaba6895b1fcab41f68b274a60ab350a">CPiece::ENUM_QiZi</a>&#160;</td>
+          <td class="paramname"><em>qz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pDescript</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">time_t&#160;</td>
+          <td class="paramname"><em>tm</em> = <code>time(nullptr)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>保存一步 </p>
+<dl class="section author"><dt>作者</dt><dd>KangLin(<a href="#" onclick="location.href='mai'+'lto:'+'kl2'+'22'+'@12'+'6.'+'com'; return false;">kl222<span class="obfuscator">.nosp@m.</span>@126<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2020/5/17</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>i：当前下棋的位置,横坐标[0-8] </td></tr>
+    <tr><td class="paramname">char</td><td>j：当前下棋的位置,纵坐标[0-9] </td></tr>
+    <tr><td class="paramname">qz</td><td>棋子 </td></tr>
+    <tr><td class="paramname">const</td><td>char* pDescript： 这一步的描述</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回 0 ，否则返回非零 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00109">109</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae79ef6d9953081f233372a6e2547d8ec" name="ae79ef6d9953081f233372a6e2547d8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae79ef6d9953081f233372a6e2547d8ec">&#9670;&#160;</a></span>SetBlackName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SetBlackName </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pszName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00498">498</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4b669be73d0b7ca8c6f9a3565e555bb4" name="a4b669be73d0b7ca8c6f9a3565e555bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b669be73d0b7ca8c6f9a3565e555bb4">&#9670;&#160;</a></span>SetEndTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SetEndTime </td>
+          <td>(</td>
+          <td class="paramtype">const time_t &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00476">476</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8ea814c453141cfbe703fc4f70649016" name="a8ea814c453141cfbe703fc4f70649016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea814c453141cfbe703fc4f70649016">&#9670;&#160;</a></span>SetRedName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SetRedName </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pszName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00487">487</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a641c00fdb0baf8e92de6a031e3eca3b3" name="a641c00fdb0baf8e92de6a031e3eca3b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641c00fdb0baf8e92de6a031e3eca3b3">&#9670;&#160;</a></span>SetStartTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::SetStartTime </td>
+          <td>(</td>
+          <td class="paramtype">const time_t &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00465">465</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a612af3d39bc9baa1de9f4643c8be3cf6" name="a612af3d39bc9baa1de9f4643c8be3cf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612af3d39bc9baa1de9f4643c8be3cf6">&#9670;&#160;</a></span>WriteStringToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::WriteStringToFile </td>
+          <td>(</td>
+          <td class="paramtype">std::ofstream &amp;&#160;</td>
+          <td class="paramname"><em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a> 第 <a class="el" href="ChessGame_8cpp_source.html#l00432">432</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aac4018459c635507cb0db680ebfb9f12" name="aac4018459c635507cb0db680ebfb9f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac4018459c635507cb0db680ebfb9f12">&#9670;&#160;</a></span>m_bFuPang</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CChessGame::m_bFuPang</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走棋步数 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00150">150</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9572fda853005ddd25452764ec9ec3c9" name="a9572fda853005ddd25452764ec9ec3c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9572fda853005ddd25452764ec9ec3c9">&#9670;&#160;</a></span>m_ChessGame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structCChessGame_1_1strStep.html">strStep</a>&gt; CChessGame::m_ChessGame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>复盘标志 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00151">151</a> 行定义.</p>
+
+</div>
+</div>
+<a id="abe4862e14c4e9f1973e4ad06c6b220b0" name="abe4862e14c4e9f1973e4ad06c6b220b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe4862e14c4e9f1973e4ad06c6b220b0">&#9670;&#160;</a></span>m_nIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CChessGame::m_nIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00149">149</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4339c95a075e12da8364b1341c301cb8" name="a4339c95a075e12da8364b1341c301cb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4339c95a075e12da8364b1341c301cb8">&#9670;&#160;</a></span>m_StartGame</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structCChessGame_1_1strStartGame.html">strStartGame</a>&gt; CChessGame::m_StartGame</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00121">121</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1e65a2860dfe1dc4fde10590843588eb" name="a1e65a2860dfe1dc4fde10590843588eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e65a2860dfe1dc4fde10590843588eb">&#9670;&#160;</a></span>m_szBlackName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CChessGame::m_szBlackName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>红方名 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00156">156</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3105320904d945213882f3b168f3e5e3" name="a3105320904d945213882f3b168f3e5e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3105320904d945213882f3b168f3e5e3">&#9670;&#160;</a></span>m_szRedName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CChessGame::m_szRedName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>结束时间 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00155">155</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a28f15d5830e1f127e2b7d1222293f7c8" name="a28f15d5830e1f127e2b7d1222293f7c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28f15d5830e1f127e2b7d1222293f7c8">&#9670;&#160;</a></span>m_Tags</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; CChessGame::m_Tags</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>黑方名 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00157">157</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa96083139d55f879e9d4c4673d0eab2c" name="aa96083139d55f879e9d4c4673d0eab2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa96083139d55f879e9d4c4673d0eab2c">&#9670;&#160;</a></span>m_tmEnd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t CChessGame::m_tmEnd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>开始时间 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00154">154</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0f5ff2ac47bae12b531908eb55737c11" name="a0f5ff2ac47bae12b531908eb55737c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f5ff2ac47bae12b531908eb55737c11">&#9670;&#160;</a></span>m_tmStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t CChessGame::m_tmStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>棋局 </p>
+
+<p class="definition">在文件 <a class="el" href="ChessGame_8h_source.html">ChessGame.h</a> 第 <a class="el" href="ChessGame_8h_source.html#l00153">153</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="ChessGame_8h_source.html">ChessGame.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/Src/<a class="el" href="ChessGame_8cpp_source.html">ChessGame.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

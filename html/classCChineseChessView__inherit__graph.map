@@ -1,0 +1,7 @@
+<map id="CChineseChessView" name="CChineseChessView">
+<area shape="rect" id="Node000001" title=" " alt="" coords="18,79,173,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,68,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,40,88,77,84,80,53,43"/>
+<area shape="rect" id="Node000003" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="93,5,215,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,43,107,80,103,77,134,40"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="Node000000" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="5,55,128,80"/>
+<area shape="rect" id="Node000001" href="$classCChineseChessView.html" title=" " alt="" coords="176,31,331,56"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="141,55,175,51,176,56,142,60"/>
+<area shape="rect" id="Node000003" href="$classCFrmChineseChess.html" title="中国象棋窗体，完成中国象棋的界面" alt="" coords="180,92,327,117"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="142,80,190,89,189,95,141,85"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="35,5,98,31"/>
+<area shape="poly" id="edge5_Node000002_Node000001" title=" " alt="" coords="112,21,176,30,176,35,111,27"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="27,104,106,129"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="120,111,180,107,180,112,120,116"/>
+</map>

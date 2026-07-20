@@ -1,0 +1,7 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="Node000000" href="$classCChessSteps.html" title="着法" alt="" coords="5,31,112,56"/>
+<area shape="rect" id="Node000001" href="$classCChessStepsChinese.html" title="The CChessStepsChinese class" alt="" coords="160,5,319,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="126,31,159,27,160,32,126,37"/>
+<area shape="rect" id="Node000002" href="$classCChessStepsIccs.html" title="ICCS是中国象棋互联网服务器(Internet Chinese Chess Server)的缩写。" alt="" coords="174,55,305,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="126,50,174,56,174,61,126,55"/>
+</map>

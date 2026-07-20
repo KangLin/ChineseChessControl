@@ -1,0 +1,13 @@
+<map id="CChineseChessView" name="CChineseChessView">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,181,231,207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,68,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,125,140,179,136,183,62,129"/>
+<area shape="rect" id="Node000003" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="93,93,215,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,133,157,181,151,181,151,133"/>
+<area shape="rect" id="Node000004" href="$classCGoRule.html" title="文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004&#45;10&#45;18 时 间：9:55:40" alt="" coords="55,5,133,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="97,44,106,68,117,81,132,91,129,95,114,85,101,71,92,46"/>
+<area shape="rect" id="Node000005" href="$classCChessGame.html" title="棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]" alt="" coords="158,5,267,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="199,44,164,94,160,91,195,41"/>
+<area shape="rect" id="Node000006" href="$classCChineseChessHandler.html" title=" " alt="" coords="239,93,413,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="292,127,179,183,176,179,290,122"/>
+</map>

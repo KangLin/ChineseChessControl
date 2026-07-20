@@ -1,0 +1,32 @@
+<map id="/home/runner/work/ChineseChessControl/ChineseChessControl/Src/ChineseChess.h" name="/home/runner/work/ChineseChessControl/ChineseChessControl/Src/ChineseChess.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="947,5,1198,60"/>
+<area shape="rect" id="Node000002" href="$ChineseChess_8cpp_source.html" title=" " alt="" coords="673,108,923,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="989,67,870,110,869,105,988,62"/>
+<area shape="rect" id="Node000003" href="$ChineseChessView_8h_source.html" title=" " alt="" coords="947,108,1198,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1075,74,1075,108,1070,108,1070,74"/>
+<area shape="rect" id="Node000010" href="$FrmChineseChess_8h_source.html" title=" " alt="" coords="1542,108,1793,163"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1212,55,1542,110,1541,115,1211,60"/>
+<area shape="rect" id="Node000004" href="$ChineseChessMFCDlg_8h_source.html" title=" " alt="" coords="396,211,763,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="934,168,708,213,707,208,933,162"/>
+<area shape="rect" id="Node000007" href="$ChineseChessActiveXCtrl_8h.html" title=" " alt="" coords="793,211,1067,265"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="1026,173,969,213,966,208,1023,168"/>
+<area shape="rect" id="Node000009" href="$ChineseChessView_8cpp_source.html" title=" " alt="" coords="1091,211,1342,265"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="1123,168,1180,208,1177,213,1120,173"/>
+<area shape="rect" id="Node000005" href="$ChineseChessMFC_8cpp_source.html" title=" " alt="" coords="5,313,364,368"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="464,271,288,316,287,311,463,266"/>
+<area shape="rect" id="Node000006" href="$ChineseChessMFCDlg_8cpp_source.html" title=" " alt="" coords="389,313,770,368"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="582,279,582,313,577,313,577,279"/>
+<area shape="rect" id="Node000008" href="$ChineseChessActiveXCtrl_8cpp_source.html" title=" " alt="" coords="794,313,1082,368"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="936,279,939,313,933,313,931,279"/>
+<area shape="rect" id="Node000011" href="$MainWindow_8h_source.html" title=" " alt="" coords="1366,211,1630,265"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1613,172,1544,213,1541,208,1610,168"/>
+<area shape="rect" id="Node000013" href="$main_8cpp_source.html" title=" " alt="" coords="1542,313,1793,368"/>
+<area shape="poly" id="edge13_Node000010_Node000013" title=" " alt="" coords="1670,177,1670,313,1665,313,1665,177"/>
+<area shape="rect" id="Node000014" href="$FrmChineseChess_8cpp_source.html" title=" " alt="" coords="1705,211,1955,265"/>
+<area shape="poly" id="edge14_Node000010_Node000014" title=" " alt="" coords="1723,168,1789,208,1786,213,1720,172"/>
+<area shape="rect" id="Node000015" href="$FrmChineseChessPlugin_8cpp_source.html" title=" " alt="" coords="1979,211,2230,265"/>
+<area shape="poly" id="edge15_Node000010_Node000015" title=" " alt="" coords="1795,163,1991,208,1990,213,1794,168"/>
+<area shape="rect" id="Node000012" href="$MainWindow_8cpp_source.html" title=" " alt="" coords="1239,313,1517,368"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1458,276,1411,315,1408,311,1454,272"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="1555,270,1624,311,1622,315,1553,275"/>
+</map>

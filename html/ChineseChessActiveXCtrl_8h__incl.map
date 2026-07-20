@@ -1,0 +1,26 @@
+<map id="/home/runner/work/ChineseChessControl/ChineseChessControl/UI/ActiveX/ChineseChessActiveXCtrl.h" name="/home/runner/work/ChineseChessControl/ChineseChessControl/UI/ActiveX/ChineseChessActiveXCtrl.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,279,60"/>
+<area shape="rect" id="Node000002" href="$ChineseChessView_8h_source.html" title=" " alt="" coords="64,108,220,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,60,145,94,139,94,139,60"/>
+<area shape="rect" id="Node000003" href="$ChineseChess_8h.html" title=" " alt="" coords="79,181,205,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="145,134,145,168,139,168,139,134"/>
+<area shape="rect" id="Node000004" href="$GoRule_8h_source.html" title=" " alt="" coords="101,255,183,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="145,207,145,241,139,241,139,207"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="50,401,221,427"/>
+<area shape="poly" id="edge13_Node000003_Node000006" title=" " alt="" coords="128,209,108,229,91,256,83,282,80,304,83,326,91,352,101,372,115,390,111,393,97,375,86,354,78,327,75,304,77,281,86,254,103,226,125,205"/>
+<area shape="rect" id="Node000007" href="$ChessGame_8h_source.html" title=" " alt="" coords="246,255,358,280"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="169,204,264,247,262,251,167,209"/>
+<area shape="rect" id="Node000005" href="$Piece_8h_source.html" title=" " alt="" coords="101,328,170,353"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="144,281,140,315,135,314,138,280"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="138,354,138,388,133,388,133,354"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="276,282,176,325,174,320,274,278"/>
+<area shape="poly" id="edge12_Node000007_Node000006" title=" " alt="" coords="348,278,384,290,417,307,428,317,436,329,436,342,429,355,417,366,399,375,350,390,293,401,235,408,234,403,292,396,349,385,396,371,414,362,425,352,431,340,430,330,424,321,414,311,382,295,347,283"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="491,328,553,353"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="338,277,478,322,477,328,337,283"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="194,328,253,353"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="291,282,248,321,244,317,288,278"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="277,328,327,353"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="305,280,305,314,299,314,299,280"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="351,328,415,353"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="317,278,362,317,358,321,313,282"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="CFrmChineseChess" name="CFrmChineseChess">
+<area shape="rect" id="Node000001" title="中国象棋窗体，完成中国象棋的界面" alt="" coords="34,79,181,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,84,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,39,99,77,95,80,62,43"/>
+<area shape="rect" id="Node000003" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="109,5,231,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,43,119,80,115,77,149,39"/>
+</map>

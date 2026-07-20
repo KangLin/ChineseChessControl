@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>中国象棋控件: MainWindow类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Chess.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">中国象棋控件<span id="projectnumber">&#160;2.0.15</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pri-slots">Private 槽</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classMainWindow-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">MainWindow类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 MainWindow 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMainWindow__inherit__graph.png" border="0" usemap="#aMainWindow_inherit__map" alt="Inheritance graph"/></div>
+<map name="aMainWindow_inherit__map" id="aMainWindow_inherit__map">
+<area shape="rect" title=" " alt="" coords="10,79,117,104"/>
+<area shape="rect" title=" " alt="" coords="5,5,121,31"/>
+<area shape="poly" title=" " alt="" coords="66,44,66,79,61,79,61,44"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+MainWindow 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMainWindow__coll__graph.png" border="0" usemap="#aMainWindow_coll__map" alt="Collaboration graph"/></div>
+<map name="aMainWindow_coll__map" id="aMainWindow_coll__map">
+<area shape="rect" title=" " alt="" coords="31,256,138,281"/>
+<area shape="rect" title=" " alt="" coords="5,168,121,193"/>
+<area shape="poly" title=" " alt="" coords="72,206,84,255,79,256,67,207"/>
+<area shape="rect" href="classCFrmChineseChess.html" title="中国象棋窗体，完成中国象棋的界面" alt="" coords="146,168,293,193"/>
+<area shape="poly" title=" " alt="" coords="191,203,104,258,102,253,188,199"/>
+<area shape="rect" title=" " alt="" coords="140,93,219,119"/>
+<area shape="poly" title=" " alt="" coords="195,130,215,166,211,169,190,132"/>
+<area shape="rect" href="classCChineseChess.html" title="中国象棋类" alt="" coords="243,93,366,119"/>
+<area shape="poly" title=" " alt="" coords="282,130,235,170,232,166,279,126"/>
+<area shape="rect" href="classCGoRule.html" title="文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004&#45;10&#45;18 时 间：9:55:40" alt="" coords="205,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="248,44,256,68,268,81,282,91,279,95,264,85,252,71,243,46"/>
+<area shape="rect" href="classCChessGame.html" title="棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]" alt="" coords="309,5,418,31"/>
+<area shape="poly" title=" " alt="" coords="350,44,315,94,311,91,345,41"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a996c5a2b6f77944776856f08ec30858d" id="r_a996c5a2b6f77944776856f08ec30858d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a> (QWidget *parent=nullptr)</td></tr>
+<tr class="separator:a996c5a2b6f77944776856f08ec30858d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a05fb9d72c044aa3bb7d187b994704e2f" id="r_a05fb9d72c044aa3bb7d187b994704e2f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a05fb9d72c044aa3bb7d187b994704e2f">closeEvent</a> (QCloseEvent *event) override</td></tr>
+<tr class="separator:a05fb9d72c044aa3bb7d187b994704e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-slots" name="pri-slots"></a>
+Private 槽</h2></td></tr>
+<tr class="memitem:a60c65d03ef0cbde7028c86b113f26a5b" id="r_a60c65d03ef0cbde7028c86b113f26a5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a60c65d03ef0cbde7028c86b113f26a5b">on_actionOpen_O_triggered</a> ()</td></tr>
+<tr class="separator:a60c65d03ef0cbde7028c86b113f26a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45441a30f5a730047c41e8b75b1ba080" id="r_a45441a30f5a730047c41e8b75b1ba080"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a45441a30f5a730047c41e8b75b1ba080">on_actionSave_S_triggered</a> ()</td></tr>
+<tr class="separator:a45441a30f5a730047c41e8b75b1ba080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f889d66c214367784dbd0959b39c91" id="r_a85f889d66c214367784dbd0959b39c91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a85f889d66c214367784dbd0959b39c91">on_actionPrevious_P_triggered</a> ()</td></tr>
+<tr class="separator:a85f889d66c214367784dbd0959b39c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffa513e31bbeecedec486cfa6bca0e7" id="r_adffa513e31bbeecedec486cfa6bca0e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#adffa513e31bbeecedec486cfa6bca0e7">on_actionNext_N_triggered</a> ()</td></tr>
+<tr class="separator:adffa513e31bbeecedec486cfa6bca0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5edfb51fcdee2ff09f2299df65863ab" id="r_ac5edfb51fcdee2ff09f2299df65863ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#ac5edfb51fcdee2ff09f2299df65863ab">on_actionExit_E_triggered</a> ()</td></tr>
+<tr class="separator:ac5edfb51fcdee2ff09f2299df65863ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f4a8a5c5d42fee703f731ccf024a6aa" id="r_a7f4a8a5c5d42fee703f731ccf024a6aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a7f4a8a5c5d42fee703f731ccf024a6aa">on_actionAbout_A_triggered</a> ()</td></tr>
+<tr class="separator:a7f4a8a5c5d42fee703f731ccf024a6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2730b6754803f3d6f30540c9c2685a0f" id="r_a2730b6754803f3d6f30540c9c2685a0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a2730b6754803f3d6f30540c9c2685a0f">on_actionPrompt_sound_S_triggered</a> (bool checked)</td></tr>
+<tr class="separator:a2730b6754803f3d6f30540c9c2685a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5352dec6ad202b07f260dba2e6563ac4" id="r_a5352dec6ad202b07f260dba2e6563ac4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a5352dec6ad202b07f260dba2e6563ac4">on_actionPrompt_message_M_triggered</a> (bool checked)</td></tr>
+<tr class="separator:a5352dec6ad202b07f260dba2e6563ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a868e3cf8cba6fd64a3c2c9b2be2e4ebb" id="r_a868e3cf8cba6fd64a3c2c9b2be2e4ebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a868e3cf8cba6fd64a3c2c9b2be2e4ebb">on_actionUpdate_U_triggered</a> ()</td></tr>
+<tr class="separator:a868e3cf8cba6fd64a3c2c9b2be2e4ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a35466a70ed47252a0191168126a352a5" id="r_a35466a70ed47252a0191168126a352a5"><td class="memItemLeft" align="right" valign="top">Ui::MainWindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a></td></tr>
+<tr class="separator:a35466a70ed47252a0191168126a352a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9336791cdf4919d0edd4ab0c93445d3e" id="r_a9336791cdf4919d0edd4ab0c93445d3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCFrmChineseChess.html">CFrmChineseChess</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a9336791cdf4919d0edd4ab0c93445d3e">m_Chess</a></td></tr>
+<tr class="separator:a9336791cdf4919d0edd4ab0c93445d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="MainWindow_8h_source.html">MainWindow.h</a> 第 <a class="el" href="MainWindow_8h_source.html#l00011">11</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a996c5a2b6f77944776856f08ec30858d" name="a996c5a2b6f77944776856f08ec30858d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a996c5a2b6f77944776856f08ec30858d">&#9670;&#160;</a></span>MainWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::MainWindow </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00012">12</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae98d00a93bc118200eeef9f9bba1dba7" name="ae98d00a93bc118200eeef9f9bba1dba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98d00a93bc118200eeef9f9bba1dba7">&#9670;&#160;</a></span>~MainWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::~MainWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00048">48</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a05fb9d72c044aa3bb7d187b994704e2f" name="a05fb9d72c044aa3bb7d187b994704e2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05fb9d72c044aa3bb7d187b994704e2f">&#9670;&#160;</a></span>closeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::closeEvent </td>
+          <td>(</td>
+          <td class="paramtype">QCloseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00053">53</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7f4a8a5c5d42fee703f731ccf024a6aa" name="a7f4a8a5c5d42fee703f731ccf024a6aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f4a8a5c5d42fee703f731ccf024a6aa">&#9670;&#160;</a></span>on_actionAbout_A_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionAbout_A_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00101">101</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac5edfb51fcdee2ff09f2299df65863ab" name="ac5edfb51fcdee2ff09f2299df65863ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5edfb51fcdee2ff09f2299df65863ab">&#9670;&#160;</a></span>on_actionExit_E_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionExit_E_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00096">96</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adffa513e31bbeecedec486cfa6bca0e7" name="adffa513e31bbeecedec486cfa6bca0e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adffa513e31bbeecedec486cfa6bca0e7">&#9670;&#160;</a></span>on_actionNext_N_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionNext_N_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00091">91</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a60c65d03ef0cbde7028c86b113f26a5b" name="a60c65d03ef0cbde7028c86b113f26a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60c65d03ef0cbde7028c86b113f26a5b">&#9670;&#160;</a></span>on_actionOpen_O_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionOpen_O_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00061">61</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a85f889d66c214367784dbd0959b39c91" name="a85f889d66c214367784dbd0959b39c91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f889d66c214367784dbd0959b39c91">&#9670;&#160;</a></span>on_actionPrevious_P_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionPrevious_P_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00086">86</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5352dec6ad202b07f260dba2e6563ac4" name="a5352dec6ad202b07f260dba2e6563ac4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5352dec6ad202b07f260dba2e6563ac4">&#9670;&#160;</a></span>on_actionPrompt_message_M_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionPrompt_message_M_triggered </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checked</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00124">124</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2730b6754803f3d6f30540c9c2685a0f" name="a2730b6754803f3d6f30540c9c2685a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2730b6754803f3d6f30540c9c2685a0f">&#9670;&#160;</a></span>on_actionPrompt_sound_S_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionPrompt_sound_S_triggered </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checked</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00119">119</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a45441a30f5a730047c41e8b75b1ba080" name="a45441a30f5a730047c41e8b75b1ba080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45441a30f5a730047c41e8b75b1ba080">&#9670;&#160;</a></span>on_actionSave_S_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionSave_S_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00073">73</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a868e3cf8cba6fd64a3c2c9b2be2e4ebb" name="a868e3cf8cba6fd64a3c2c9b2be2e4ebb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a868e3cf8cba6fd64a3c2c9b2be2e4ebb">&#9670;&#160;</a></span>on_actionUpdate_U_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionUpdate_U_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a> 第 <a class="el" href="MainWindow_8cpp_source.html#l00129">129</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a9336791cdf4919d0edd4ab0c93445d3e" name="a9336791cdf4919d0edd4ab0c93445d3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9336791cdf4919d0edd4ab0c93445d3e">&#9670;&#160;</a></span>m_Chess</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCFrmChineseChess.html">CFrmChineseChess</a> MainWindow::m_Chess</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8h_source.html">MainWindow.h</a> 第 <a class="el" href="MainWindow_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a35466a70ed47252a0191168126a352a5" name="a35466a70ed47252a0191168126a352a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35466a70ed47252a0191168126a352a5">&#9670;&#160;</a></span>ui</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ui::MainWindow* MainWindow::ui</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MainWindow_8h_source.html">MainWindow.h</a> 第 <a class="el" href="MainWindow_8h_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/App/Qt/ChineseChess/<a class="el" href="MainWindow_8h_source.html">MainWindow.h</a></li>
+<li>/home/runner/work/ChineseChessControl/ChineseChessControl/App/Qt/ChineseChess/<a class="el" href="MainWindow_8cpp_source.html">MainWindow.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

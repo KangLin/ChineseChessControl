@@ -1,0 +1,21 @@
+<map id="CChineseChessActiveXCtrl" name="CChineseChessActiveXCtrl">
+<area shape="rect" id="Node000001" title="ÖйúÏóÆå ActiveX �ؼþ�ĽçÃæʵÏÖÀà" alt="" coords="153,269,348,295"/>
+<area shape="rect" id="Node000009" href="$classCChineseChessActiveXHandler.html" title=" " alt="" coords="25,357,247,383"/>
+<area shape="poly" id="edge10_Node000009_Node000001" title=" " alt="" coords="243,309,223,335,202,350,180,360,177,355,200,345,219,331,239,306"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="353,181,453,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="377,217,329,248,280,272,277,267,327,243,374,213"/>
+<area shape="rect" id="Node000003" href="$classCChineseChessView.html" title=" " alt="" coords="173,181,328,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="253,221,253,269,248,269,248,221"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="243,93,306,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="270,133,257,182,251,180,265,131"/>
+<area shape="rect" id="Node000005" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="331,93,453,119"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="363,128,271,183,268,179,360,123"/>
+<area shape="rect" id="Node000006" href="$classCGoRule.html" title="文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004&#45;10&#45;18 时 间：9:55:40" alt="" coords="293,5,371,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="335,44,342,68,354,81,368,91,365,95,350,85,338,71,330,46"/>
+<area shape="rect" id="Node000007" href="$classCChessGame.html" title="棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]" alt="" coords="396,5,505,31"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="437,44,402,94,398,91,433,41"/>
+<area shape="rect" id="Node000008" href="$classCChineseChessHandler.html" title=" " alt="" coords="5,93,179,119"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="101,131,107,144,116,155,143,172,174,182,172,187,141,177,113,159,103,147,96,133"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="98,132,101,157,113,245,129,333,135,356,130,358,124,334,108,246,96,158,93,133"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="128,343,129,330,135,317,150,303,168,293,171,297,153,307,140,320,135,331,134,344"/>
+</map>

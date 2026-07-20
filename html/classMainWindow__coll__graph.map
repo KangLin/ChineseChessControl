@@ -1,0 +1,15 @@
+<map id="MainWindow" name="MainWindow">
+<area shape="rect" id="Node000001" title=" " alt="" coords="31,256,138,281"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,168,121,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,206,84,255,79,256,67,207"/>
+<area shape="rect" id="Node000003" href="$classCFrmChineseChess.html" title="中国象棋窗体，完成中国象棋的界面" alt="" coords="146,168,293,193"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,203,104,258,102,253,188,199"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="140,93,219,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="195,130,215,166,211,169,190,132"/>
+<area shape="rect" id="Node000005" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="243,93,366,119"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="282,130,235,170,232,166,279,126"/>
+<area shape="rect" id="Node000006" href="$classCGoRule.html" title="文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004&#45;10&#45;18 时 间：9:55:40" alt="" coords="205,5,284,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="248,44,256,68,268,81,282,91,279,95,264,85,252,71,243,46"/>
+<area shape="rect" id="Node000007" href="$classCChessGame.html" title="棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]" alt="" coords="309,5,418,31"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="350,44,315,94,311,91,345,41"/>
+</map>

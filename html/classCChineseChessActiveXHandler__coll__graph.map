@@ -1,0 +1,21 @@
+<map id="CChineseChessActiveXHandler" name="CChineseChessActiveXHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="129,181,352,207"/>
+<area shape="rect" id="Node000003" href="$classCChineseChessActiveXCtrl.html" title="ÖйúÏóÆå ActiveX �ؼþ�ĽçÃæʵÏÖÀà" alt="" coords="110,269,305,295"/>
+<area shape="poly" id="edge10_Node000003_Node000001" title=" " alt="" coords="167,215,148,232,146,242,151,251,176,267,174,272,147,254,140,243,144,229,164,211"/>
+<area shape="rect" id="Node000002" href="$classCChineseChessHandler.html" title=" " alt="" coords="181,93,354,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,132,247,182,242,180,257,131"/>
+<area shape="rect" id="Node000005" href="$classCChineseChessView.html" title=" " alt="" coords="375,181,530,207"/>
+<area shape="poly" id="edge9_Node000005_Node000002" title=" " alt="" coords="282,129,294,143,307,155,340,171,376,182,375,187,339,176,305,160,290,147,278,132"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,257,233,244,238,225,239,207,244,207,243,226,238,246,230,260"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,181,105,207"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="86,212,139,243,185,267,183,272,137,248,84,216"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="415,215,330,248,251,272,250,267,328,243,413,210"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="420,93,483,119"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="454,133,455,181,450,181,449,133"/>
+<area shape="rect" id="Node000007" href="$classCChineseChess.html" title="中国象棋类" alt="" coords="507,93,630,119"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="544,129,470,183,467,179,541,125"/>
+<area shape="rect" id="Node000008" href="$classCGoRule.html" title="文件名：GoRule.h 功 能：走棋规则 编译器：Visual C++ 6.0 作 者：康 林 版 本：1.0.0.1 日 期：2004&#45;10&#45;18 时 间：9:55:40" alt="" coords="471,5,549,31"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="518,43,530,68,553,91,550,95,525,71,513,45"/>
+<area shape="rect" id="Node000009" href="$classCChessGame.html" title="棋局类 完成棋局的加载、保存、复盘等对棋局的操作 注意：棋盘布局:详见《象棋竞赛规则(2011)》第一章 第1条 红棋在下，黑棋在上，左上角为[0][0]，右下角为[9][10]" alt="" coords="574,5,683,31"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="618,44,601,71,582,94,578,91,597,68,614,42"/>
+</map>

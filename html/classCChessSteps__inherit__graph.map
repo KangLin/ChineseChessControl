@@ -1,0 +1,7 @@
+<map id="CChessSteps" name="CChessSteps">
+<area shape="rect" id="Node000001" title="着法" alt="" coords="115,5,222,31"/>
+<area shape="rect" id="Node000002" href="$classCChessStepsChinese.html" title="The CChessStepsChinese class" alt="" coords="5,79,164,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,42,100,80,97,76,143,38"/>
+<area shape="rect" id="Node000003" href="$classCChessStepsIccs.html" title="ICCS是中国象棋互联网服务器(Internet Chinese Chess Server)的缩写。" alt="" coords="189,79,319,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,37,242,76,238,80,191,41"/>
+</map>
